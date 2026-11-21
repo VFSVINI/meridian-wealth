@@ -19,7 +19,9 @@
   "avisos": [
     "O documento não informa tipo de imóvel, nome dos inquilinos nem participação do fundo; traz só os setores dos inquilinos acima de 10% da receita de cada imóvel.",
     "O documento não define 'ABL': o campo publicado é 'Área (m2)'.",
-    "O mesmo Informe registra, na seção 2.2.2 (alienações do trimestre), a venda do HGLG Itapevi I em 30/07/2026 (34.286,00 m²); ele não consta da carteira atual."
+    "O mesmo Informe registra, na seção 2.2.2 (alienações do trimestre), a venda do HGLG Itapevi I em 30/07/2026 (34.286,00 m²); ele não consta da carteira atual.",
+    "A soma dos percentuais de receita publicados por imóvel é 70.85%; o documento não explica a diferença para 100%.",
+    "Três imóveis (HGLG Embu, HGLG Guarulhos e HGLG Parque Novo Mundo) trazem '-' no lugar dos setores dos inquilinos: ficam sem setores informados."
   ],
   "ativos": [
     {
@@ -240,12 +242,7 @@
       "areaPublicada": "39.475,00",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "1.3190",
-      "setoresDosInquilinos": [
-        {
-          "setor": "\"-\"",
-          "percentualDaReceitaDoImovel": "0"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "hglg11-hglg-embu",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -348,12 +345,7 @@
       "areaPublicada": "105.638,00",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "2.1825",
-      "setoresDosInquilinos": [
-        {
-          "setor": "\"-\"",
-          "percentualDaReceitaDoImovel": "0"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "hglg11-hglg-guarulhos",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -528,12 +520,7 @@
       "areaPublicada": "34.297,00",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "0.7449",
-      "setoresDosInquilinos": [
-        {
-          "setor": "\"-\"",
-          "percentualDaReceitaDoImovel": "0"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "hglg11-hglg-parque-novo-mundo",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
