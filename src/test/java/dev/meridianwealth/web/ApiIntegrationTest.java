@@ -212,6 +212,36 @@ class ApiIntegrationTest {
         assertThat(noOrder.getStatusCode().value()).isEqualTo(400);
     }
 
+    @Test void thesisLensTranslatesPortfolioAndStatesThatThesesAreIllustrative() {
+        Map<String, Object> body = Map.of("positions", List.of(Map.of("symbol", "AAPL", "valueBrl", "6000"), Map.of("type", "TESOURO_SELIC", "valueBrl", "4000")));
+        Map<?, ?> r = rest.postForObject("/api/thesis/lens", body, Map.class);
+        assertThat(r.get("illustrative")).isEqualTo(true);
+        assertThat((String) r.get("disclaimer")).contains("Não representam posições reais de nenhuma instituição");
+        Map<?, ?> geo = (Map<?, ?>) r.get("geopolitics");
+        assertThat(((Number) geo.get("unclassifiedPercent")).doubleValue()).isEqualTo(40.0);
+        List<Map<String, Object>> sectors = (List<Map<String, Object>>) geo.get("sectors");
+        assertThat(sectors).hasSize(1);
+        assertThat(sectors.get(0).get("sector")).isEqualTo("tecnologia");
+        assertThat(((Number) sectors.get(0).get("exposurePercent")).doubleValue()).isEqualTo(60.0);
+        assertThat((List<?>) geo.get("assumptions")).isNotEmpty();
+        assertThat((List<?>) r.get("readings")).hasSize(5);
+        assertThat(r.get("macro")).isNotNull();
+        Map<?, ?> catalog = rest.getForObject("/api/thesis", Map.class);
+        assertThat((List<?>) catalog.get("theses")).hasSize(5);
+        assertThat((String) catalog.get("disclaimer")).contains("ilustrativas");
+    }
+
+    @Test void thesisLensRejectsInvalidInputWithClearErrors() {
+        assertThat(rest.postForEntity("/api/thesis/lens", Map.of("positions", List.of()), Map.class).getStatusCode().value()).isEqualTo(400);
+        assertThat(rest.postForEntity("/api/thesis/lens", Map.of(), Map.class).getStatusCode().value()).isEqualTo(400);
+        var unknown = rest.postForEntity("/api/thesis/lens", Map.of("positions", List.of(Map.of("symbol", "NAOEXISTE", "valueBrl", "10"))), Map.class);
+        assertThat((String) unknown.getBody().get("error")).contains("fora do universo");
+        var index = rest.postForEntity("/api/thesis/lens", Map.of("positions", List.of(Map.of("type", "INDICE", "valueBrl", "10"))), Map.class);
+        assertThat(index.getStatusCode().value()).isEqualTo(400);
+        var huge = rest.postForEntity("/api/thesis/lens", "{\"positions\":[{\"type\":\"ACAO\",\"valueBrl\":1E999999999}]}", Map.class);
+        assertThat(huge.getStatusCode().value()).isIn(400, 415);
+    }
+
     @Test void overviewShowsRealSourcesAndExplicitGaps() {
         Map<?, ?> body = rest.getForObject("/api/overview", Map.class);
         assertThat(body.get("mode")).isEqualTo("PARCIAL");
