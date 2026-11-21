@@ -1,0 +1,167 @@
+{
+  "versaoDoEsquema": 1,
+  "ativo": "MXRF11",
+  "tipo": "FII",
+  "cnpj": "97.521.225/0001-25",
+  "codigoIsin": "BRMXRFCTF008",
+  "fontes": [
+    {
+      "nome": "Dados abertos da CVM: Informe Mensal de FII",
+      "url": "https://dados.cvm.gov.br/dataset/fii-doc-inf_mensal",
+      "tipo": "OFICIAL",
+      "consultadoEm": "2026-11-21",
+      "arquivos": {
+        "inf_mensal_fii_2025.zip": "9d8e485f92caf635d73f7b299b36ae193bf0f52780d6e6468753035025226016",
+        "inf_mensal_fii_2026.zip": "d5477dc8ffdc4f00e76574861cddb3a1792526437780e65d56624824d08f1776"
+      }
+    }
+  ],
+  "meses": [
+    {
+      "id": "INF_MENSAL-2026-10-01",
+      "fimDoPeriodo": "2026-10-31",
+      "primeiraEntregaEm": "2026-11-13",
+      "versaoEntregueEm": "2026-11-13",
+      "versao": 1,
+      "dividendYieldPercentual": "0.010157",
+      "valorPatrimonialPorCota": "9.166535",
+      "patrimonioLiquido": "5199316226.31",
+      "rentabilidadeEfetivaPercentual": "-0.009734",
+      "cotistas": 1617116,
+      "encerramentoDoExercicio": "31/12"
+    },
+    {
+      "id": "INF_MENSAL-2026-09-01",
+      "fimDoPeriodo": "2026-09-30",
+      "primeiraEntregaEm": "2026-10-15",
+      "versaoEntregueEm": "2026-10-15",
+      "versao": 1,
+      "dividendYieldPercentual": "0.010614",
+      "valorPatrimonialPorCota": "9.352547",
+      "patrimonioLiquido": "5304823085.04",
+      "rentabilidadeEfetivaPercentual": "0.02059",
+      "cotistas": 1570595,
+      "encerramentoDoExercicio": "31/12"
+    },
+    {
+      "id": "INF_MENSAL-2026-08-01",
+      "fimDoPeriodo": "2026-08-31",
+      "primeiraEntregaEm": "2026-09-15",
+      "versaoEntregueEm": "2026-09-15",
+      "versao": 1,
+      "dividendYieldPercentual": "0.010126",
+      "valorPatrimonialPorCota": "9.260171",
+      "patrimonioLiquido": "5252427199.9",
+      "rentabilidadeEfetivaPercentual": "0.009875",
+      "cotistas": 1529305,
+      "encerramentoDoExercicio": "31/12"
+    },
+    {
+      "id": "INF_MENSAL-2026-07-01",
+      "fimDoPeriodo": "2026-07-31",
+      "primeiraEntregaEm": "2026-08-14",
+      "versaoEntregueEm": "2026-08-14",
+      "versao": 1,
+      "dividendYieldPercentual": "0.00808",
+      "valorPatrimonialPorCota": "9.262499",
+      "patrimonioLiquido": "5253747540.01",
+      "rentabilidadeEfetivaPercentual": "0.01168",
+      "cotistas": 1509087,
+      "encerramentoDoExercicio": "31/12"
+    },
+    {
+      "id": "INF_MENSAL-2026-06-01",
+      "fimDoPeriodo": "2026-06-30",
+      "primeiraEntregaEm": "2026-07-30",
+      "versaoEntregueEm": "2026-07-30",
+      "versao": 2,
+      "dividendYieldPercentual": "0.011701",
+      "valorPatrimonialPorCota": "9.229278",
+      "patrimonioLiquido": "4247955314.21",
+      "rentabilidadeEfetivaPercentual": "-0.003538",
+      "cotistas": 1485336,
+      "encerramentoDoExercicio": "31/12"
+    },
+    {
+      "id": "INF_MENSAL-2026-05-01",
+      "fimDoPeriodo": "2026-05-31",
+      "primeiraEntregaEm": "2026-06-15",
+      "versaoEntregueEm": "2026-06-15",
+      "versao": 1,
+      "dividendYieldPercentual": "0.010499",
+      "valorPatrimonialPorCota": "9.372101",
+      "patrimonioLiquido": "4313692471.65",
+      "rentabilidadeEfetivaPercentual": "0.009791",
+      "cotistas": 1468513,
+      "encerramentoDoExercicio": "31/12"
+    },
+    {
+      "id": "INF_MENSAL-2026-04-01",
+      "fimDoPeriodo": "2026-04-30",
+      "primeiraEntregaEm": "2026-05-15",
+      "versaoEntregueEm": "2026-05-15",
+      "versao": 1,
+      "dividendYieldPercentual": "0.011018",
+      "valorPatrimonialPorCota": "9.37874",
+      "patrimonioLiquido": "4316748113.3",
+      "rentabilidadeEfetivaPercentual": "0.011024",
+      "cotistas": 1453148,
+      "encerramentoDoExercicio": "31/12"
+    },
+    {
+      "id": "INF_MENSAL-2026-03-01",
+      "fimDoPeriodo": "2026-03-31",
+      "primeiraEntregaEm": "2026-04-16",
+      "versaoEntregueEm": "2026-04-16",
+      "versao": 2,
+      "dividendYieldPercentual": "0.010135",
+      "valorPatrimonialPorCota": "9.37868",
+      "patrimonioLiquido": "4316720449.78",
+      "rentabilidadeEfetivaPercentual": "-0.010443",
+      "cotistas": 1423541,
+      "encerramentoDoExercicio": "31/12"
+    },
+    {
+      "id": "INF_MENSAL-2026-02-01",
+      "fimDoPeriodo": "2026-02-28",
+      "primeiraEntregaEm": "2026-03-27",
+      "versaoEntregueEm": "2026-03-27",
+      "versao": 2,
+      "dividendYieldPercentual": "0.010114",
+      "valorPatrimonialPorCota": "9.57573",
+      "patrimonioLiquido": "4407416704.26",
+      "rentabilidadeEfetivaPercentual": "0.021878",
+      "cotistas": 1402221,
+      "encerramentoDoExercicio": "31/12"
+    },
+    {
+      "id": "INF_MENSAL-2026-01-01",
+      "fimDoPeriodo": "2026-01-31",
+      "primeiraEntregaEm": "2026-02-20",
+      "versaoEntregueEm": "2026-02-20",
+      "versao": 2,
+      "dividendYieldPercentual": "0.010086",
+      "valorPatrimonialPorCota": "9.464393",
+      "patrimonioLiquido": "4356171528.14",
+      "rentabilidadeEfetivaPercentual": "0.018464",
+      "cotistas": 1389786,
+      "encerramentoDoExercicio": "31/12"
+    },
+    {
+      "id": "INF_MENSAL-2025-12-01",
+      "fimDoPeriodo": "2025-12-31",
+      "primeiraEntregaEm": "2026-01-20",
+      "versaoEntregueEm": "2026-01-20",
+      "versao": 2,
+      "dividendYieldPercentual": "0.009328",
+      "valorPatrimonialPorCota": "9.409927",
+      "patrimonioLiquido": "4331102591",
+      "rentabilidadeEfetivaPercentual": "0.007876",
+      "cotistas": 1357621,
+      "encerramentoDoExercicio": "31/12"
+    }
+  ],
+  "avisos": [
+    "Dividend yield e valor patrimonial da cota são os do Informe Mensal (versão mais recente de cada mês)."
+  ]
+}
