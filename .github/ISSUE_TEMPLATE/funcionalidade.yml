@@ -1,0 +1,35 @@
+name: Nova funcionalidade
+description: Proponha uma evolução do produto
+title: "feat: "
+labels: []
+body:
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto
+      description: Qual problema do investidor ou do time isto resolve?
+    validations:
+      required: true
+  - type: textarea
+    id: escopo
+    attributes:
+      label: Escopo
+      description: Liste as entregas em checklist.
+      placeholder: "- [ ] ..."
+    validations:
+      required: true
+  - type: textarea
+    id: aceite
+    attributes:
+      label: Critérios de aceite
+    validations:
+      required: true
+  - type: checkboxes
+    id: honestidade
+    attributes:
+      label: Regras do projeto
+      options:
+        - label: Não introduz dado simulado no produto (projeções sempre rotuladas como projeção).
+          required: true
+        - label: Valores monetários usam BigDecimal (ADR 002).
+          required: true

@@ -1,0 +1,37 @@
+name: Relato de bug
+description: Algo não funciona como deveria
+title: "fix: "
+labels: []
+body:
+  - type: textarea
+    id: descricao
+    attributes:
+      label: O que aconteceu
+      description: Descreva o comportamento observado.
+    validations:
+      required: true
+  - type: textarea
+    id: esperado
+    attributes:
+      label: O que era esperado
+    validations:
+      required: true
+  - type: textarea
+    id: passos
+    attributes:
+      label: Como reproduzir
+      placeholder: |
+        1. Suba o app com ./mvnw spring-boot:run
+        2. Acesse ...
+    validations:
+      required: true
+  - type: input
+    id: ambiente
+    attributes:
+      label: Ambiente
+      placeholder: "SO, versão do Java, navegador, Docker ou não"
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs relevantes (sem chaves ou tokens)
+      render: shell

@@ -1,8 +1,13 @@
 # MeridianWealth
 
-Plataforma analítica em Java 21 que mostra, em tempo real, **quando comprar na baixa, quando manter a tendência e quando realizar lucro na alta**, com cada sinal explicado por fórmulas e gatilhos. Não executa ordens.
+[![ci](https://github.com/VFSVINI/meridian-wealth/actions/workflows/ci.yml/badge.svg)](https://github.com/VFSVINI/meridian-wealth/actions/workflows/ci.yml)
+[![codeql](https://github.com/VFSVINI/meridian-wealth/actions/workflows/codeql.yml/badge.svg)](https://github.com/VFSVINI/meridian-wealth/actions/workflows/codeql.yml)
 
-> **Aviso legal:** ferramenta de análise quantitativa e educacional. Não constitui recomendação financeira regulada e não executa ordens.
+**Plataforma institucional multi-ativo de gestão de patrimônio, inteligência quantitativa e geolocalização de ativos reais**, em Java 21 e Spring Boot 3. Hoje entrega um cockpit analítico que mostra **quando comprar na baixa, quando manter a tendência e quando realizar lucro na alta**, com cada sinal explicado por fórmulas e gatilhos.
+
+> **Aviso legal:** ferramenta analítica e educacional. Não executa ordens reais e não constitui recomendação financeira.
+
+> **Estado atual (série 0.x):** a base herdada ainda contém um simulador de fallback e um "fluxo simulado" opcional. Pela regra de **dados 100% reais** do projeto, ambos saem do produto no PR #2. Roadmap, regras e dívidas técnicas em [`docs/PROJETO.md`](docs/PROJETO.md).
 
 ## O que o sistema faz
 
@@ -17,15 +22,18 @@ Plataforma analítica em Java 21 que mostra, em tempo real, **quando comprar na 
 
 ## Executar
 
+Só é preciso Java 21: o Maven Wrapper baixa o Maven 3.9.9 (com checksum verificado).
+
 ```bash
 cp .env.example .env              # opcional: FINNHUB_API_KEY e FRED_API_KEY
 docker compose up --build         # app + PostgreSQL + Redis em http://localhost:8080
 
-# sem Docker (Java 21 + Maven): sem Postgres/Redis, cache em memória
-mvn verify
-mvn spring-boot:run
-MW_DATA_MODE=simulated mvn spring-boot:run     # modo offline
+# sem Docker: sem Postgres/Redis, cache em memória
+./mvnw verify                     # testes, cobertura JaCoCo, Checkstyle e Spotless
+./mvnw spring-boot:run
 ```
+
+No PowerShell, use `.\mvnw.cmd` no lugar de `./mvnw`.
 
 Swagger: `http://localhost:8080/swagger-ui.html`. Saúde: `/actuator/health`.
 
@@ -33,7 +41,7 @@ Swagger: `http://localhost:8080/swagger-ui.html`. Saúde: `/actuator/health`.
 
 | Variável | Padrão | Uso |
 |---|---|---|
-| `MW_DATA_MODE` | `auto` | `auto` = provedores reais com fallback; `simulated` = só simulador |
+| `MW_DATA_MODE` | `auto` | `auto` = provedores reais com failover; `simulated` é legado e sai no PR #2 |
 | `FINNHUB_API_KEY` | vazio | cotações Finnhub, fundamentos e notícias |
 | `FRED_API_KEY` | vazio | juros de 10 anos via FRED (senão usa Yahoo `^TNX`) |
 | `MW_CACHE_TYPE` | `memory` | `redis` no Compose |
@@ -68,7 +76,7 @@ flowchart LR
   API --> M
 ```
 
-Pacotes: `domain` (cálculos e regras, sem framework), `application` (casos de uso e portas), `infrastructure` (provedores, resiliência, cache, persistência, stream), `web` (REST e OpenAPI). Detalhes em `docs/architecture.md` e `docs/quant-models.md`.
+Pacotes: `domain` (cálculos e regras, sem framework), `application` (casos de uso e portas), `infrastructure` (provedores, resiliência, cache, persistência, stream), `web` (REST e OpenAPI). Detalhes em `docs/architecture.md`, `docs/quant-models.md` e nos ADRs em `docs/adr/`.
 
 ## Limites reais das fontes gratuitas
 
@@ -78,3 +86,9 @@ Pacotes: `domain` (cálculos e regras, sem framework), `application` (casos de u
 - **Barras diárias:** o motor trabalha com barras diárias. A última barra é atualizada ao vivo; uma nova barra nasce quando a cotação muda de dia.
 - **Notícias:** o risco geopolítico usa palavras-chave em inglês. É um indicador grosseiro, não leitura de contexto.
 - **Backtest:** estima como as regras se comportariam no histórico carregado; não prova retorno futuro.
+
+## Documentação do projeto
+
+- [`docs/PROJETO.md`](docs/PROJETO.md): visão, regras, roadmap, decisões, dívidas e como rodar.
+- [`docs/adr/`](docs/adr/): decisões de arquitetura (hexagonal, precisão financeira, frontend sem build).
+- [`CONTRIBUTING.md`](CONTRIBUTING.md), [`SECURITY.md`](SECURITY.md) e [`CHANGELOG.md`](CHANGELOG.md).
