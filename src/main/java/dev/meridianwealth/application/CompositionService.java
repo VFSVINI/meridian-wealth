@@ -3,6 +3,8 @@ package dev.meridianwealth.application;
 import dev.meridianwealth.application.port.CompositionPort;
 import dev.meridianwealth.domain.composition.FundComposition;
 import dev.meridianwealth.domain.composition.RealAsset;
+import java.time.Clock;
+import java.time.LocalDate;
 import java.util.List;
 
 /** Caso de uso: Raio-X de composição dos fundos e os imóveis com coordenada (base do mapa). */
@@ -11,8 +13,14 @@ public class CompositionService {
     public record GeoAsset(FundComposition fund, RealAsset asset) {}
 
     private final CompositionPort port;
+    private final Clock clock;
 
-    public CompositionService(CompositionPort port) { this.port = port; }
+    public CompositionService(CompositionPort port, Clock clock) {
+        this.port = port;
+        this.clock = clock;
+    }
+
+    public LocalDate today() { return LocalDate.now(clock); }
 
     public List<FundComposition> all() { return port.all(); }
 

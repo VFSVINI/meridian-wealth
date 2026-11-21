@@ -68,13 +68,15 @@ public class CompositionController {
                                   Integer declaredAssetCount, int listedAssetCount, int geolocatedCount,
                                   BigDecimal listedAreaM2, FundMetrics metrics, String classification,
                                   List<AssetView> assets, List<Allocation> allocations, Map<String, BigDecimal> totalsBrl,
-                                  List<String> notices, String attribution, String disclaimer) {
-        static CompositionView of(FundComposition f) {
+                                  List<String> notices, String attribution, String disclaimer, long dataAgeDays, int staleAfterDays,
+                                  boolean stale) {
+        static CompositionView of(FundComposition f, LocalDate today) {
+            var age = f.age(today);
             BigDecimal total = f.listedAreaM2();
             return new CompositionView(f.fundSymbol(), f.fundName(), f.cnpj(), SourceView.of(f.source()), f.areaLabel(),
                     f.declaredAssetCount(), f.assets().size(), (int) f.geolocatedCount(), total, f.metrics(),
                     f.classification(), f.assets().stream().map(a -> AssetView.of(f, a, total)).toList(), f.allocations(),
-                    f.totalsBrl(), f.notices(), ATTRIBUTION, DISCLAIMER);
+                    f.totalsBrl(), f.notices(), ATTRIBUTION, DISCLAIMER, age.days(), age.staleAfterDays(), age.stale());
         }
     }
 
@@ -87,7 +89,7 @@ public class CompositionController {
     public CompositionController(CompositionService service) { this.service = service; }
 
     @GetMapping
-    public List<CompositionView> all() { return service.all().stream().map(CompositionView::of).toList(); }
+    public List<CompositionView> all() { return service.all().stream().map(f -> CompositionView.of(f, service.today())).toList(); }
 
     @GetMapping("/geo")
     public GeoView geo() {
@@ -99,7 +101,7 @@ public class CompositionController {
 
     @GetMapping("/{symbol}")
     public CompositionView one(@PathVariable String symbol) {
-        return CompositionView.of(service.composition(symbol.toUpperCase(java.util.Locale.ROOT)));
+        return CompositionView.of(service.composition(symbol.toUpperCase(java.util.Locale.ROOT)), service.today());
     }
 
     private static GeoPoint point(GeoAsset g, BigDecimal listedTotalM2) {

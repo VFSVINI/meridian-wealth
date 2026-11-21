@@ -45,5 +45,12 @@ public record FundComposition(String fundSymbol, String fundName, String cnpj, S
                 .divide(listedTotalM2, 2, RoundingMode.HALF_EVEN);
     }
 
+    /** Os dados vêm de informes trimestrais (90 dias de período + 45 de prazo): passado disso, podem estar defasados. */
+    public static final int STALE_AFTER_DAYS = 135;
+
+    public dev.meridianwealth.domain.DataAge age(java.time.LocalDate today) {
+        return dev.meridianwealth.domain.DataAge.of(source.consultedOn(), today, STALE_AFTER_DAYS);
+    }
+
     public long geolocatedCount() { return assets.stream().filter(RealAsset::geolocated).count(); }
 }

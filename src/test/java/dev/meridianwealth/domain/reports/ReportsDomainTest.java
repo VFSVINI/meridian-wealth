@@ -175,4 +175,15 @@ class ReportsDomainTest {
         assertThatThrownBy(() -> new Report("x", ReportPeriodicity.ANNUAL, "a", D, D, D, 1, "http://x", List.of())).hasMessageContaining("https");
         assertThatThrownBy(() -> new ReportSource("n", "http://x", SourceKind.OFFICIAL, D, Map.of())).hasMessageContaining("https");
     }
+
+    @Test void curatedDataGoesStaleAfterTheCvmCadencePlusDeadline() {
+        LocalDate consulted = LocalDate.of(2026, 11, 21);
+        IssuerReports i = company(List.of());
+        assertThat(i.age(consulted.plusDays(0)).stale()).isFalse();
+        // as fontes de company() foram consultadas em D (2026-11-10)
+        assertThat(i.age(D.plusDays(45)).stale()).isFalse();
+        assertThat(i.age(D.plusDays(46)).stale()).isTrue();
+        assertThat(i.age(D.plusDays(46)).days()).isEqualTo(46);
+        assertThat(i.age(D.minusDays(3)).days()).isZero();  // relógio antes da consulta nunca dá idade negativa
+    }
 }
