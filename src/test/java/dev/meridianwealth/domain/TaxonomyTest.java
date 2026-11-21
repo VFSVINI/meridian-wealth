@@ -55,6 +55,11 @@ class TaxonomyTest {
         assertThat(AssetType.TESOURO_IPCA_JUROS.label()).contains("Juros Semestrais");
     }
 
+    @Test void privateCreditNeverClaimsAPaymentScheduleTheProductDoesNotDefine() {
+        assertThat(AssetType.byCategory(AssetCategory.RENDA_FIXA_PRIVADA)).allMatch(t -> t.indexer() == Indexer.CONFORME_EMISSAO)
+                .allMatch(t -> t.income() == IncomeKind.CONFORME_REGRAS);
+    }
+
     @Test void fixedIncomeHasMaturityAndMarketAssetsDoNot() {
         for (AssetType t : AssetType.values()) {
             boolean fixedIncome = t.category() == AssetCategory.RENDA_FIXA_PUBLICA || t.category() == AssetCategory.RENDA_FIXA_PRIVADA;
