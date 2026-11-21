@@ -71,6 +71,7 @@ public class LiveMarketData implements MarketDataPort {
     private final BrapiClient brapi;
     private final FrankfurterClient frankfurter;
     private final FinnhubClient finnhub;
+    private final PaidQuoteFeed paidFeed;
     private final CandleStore store;
     private final CacheStore cache;
     private final LiveMacroData macro;
@@ -78,7 +79,8 @@ public class LiveMarketData implements MarketDataPort {
     private final ExecutorService pool = Executors.newVirtualThreadPerTaskExecutor();
 
     public LiveMarketData(YahooClient yahoo, StooqClient stooq, BrapiClient brapi, FrankfurterClient frankfurter,
-                          FinnhubClient finnhub, CandleStore store, CacheStore cache, LiveMacroData macro,
+                          FinnhubClient finnhub, PaidQuoteFeed paidFeed, CandleStore store, CacheStore cache,
+                          LiveMacroData macro,
                           @Value("${meridianwealth.data.poll-open-seconds:30}") long pollOpen,
                           @Value("${meridianwealth.data.poll-closed-seconds:600}") long pollClosed,
                           @Value("${meridianwealth.cache.quote-ttl-seconds:25}") long quoteTtl) {
@@ -87,6 +89,7 @@ public class LiveMarketData implements MarketDataPort {
         this.brapi = brapi;
         this.frankfurter = frankfurter;
         this.finnhub = finnhub;
+        this.paidFeed = paidFeed;
         this.store = store;
         this.cache = cache;
         this.macro = macro;
@@ -115,6 +118,23 @@ public class LiveMarketData implements MarketDataPort {
         Freshness nominal = Provider.byLabel(source).map(Provider::nominal).orElse(Freshness.DELAYED);
         if (nominal == Freshness.STORED) return Freshness.STORED;
         return open ? nominal : Freshness.END_OF_DAY;
+    }
+
+    /** Selo efetivo: o feed pago declara o próprio atraso (plano contratado); as demais fontes seguem o catálogo. */
+    Freshness seal(String source, boolean open) {
+        if (paidFeed.enabled() && paidFeed.label().equals(source)) {
+            return open ? paidFeed.freshness() : Freshness.END_OF_DAY;
+        }
+        return freshness(source, open);
+    }
+
+    /**
+     * Cotação empurrada por um stream (ex.: negócios do WebSocket da Finnhub). Só atualiza ativos já
+     * carregados com histórico real; nunca cria série a partir de um negócio isolado.
+     */
+    public void onStreamQuote(Quote q) {
+        Real r = real.get(q.symbol());
+        if (r != null) apply(r, q);
     }
 
     @Override
@@ -165,7 +185,7 @@ public class LiveMarketData implements MarketDataPort {
                 log.warn("Banco: gravação de {} falhou ({})", symbol, e.getMessage());
             }
         }
-        return new HistoryResult(candles, source, q.tsMillis(), freshness(source, marketOpen(symbol)));
+        return new HistoryResult(candles, source, q.tsMillis(), seal(source, marketOpen(symbol)));
     }
 
     private static List<Candle> trim(List<Candle> c, int bars) {
@@ -188,7 +208,7 @@ public class LiveMarketData implements MarketDataPort {
             Candle b = r.bar;
             double px = q.price();
             r.bar = new Candle(b.time(), b.open(), Math.max(b.high(), px), Math.min(b.low(), px), px, b.volume());
-            QuoteMeta meta = new QuoteMeta(q.source(), q.tsMillis(), freshness(q.source(), open), r.nextPoll);
+            QuoteMeta meta = new QuoteMeta(q.source(), q.tsMillis(), seal(q.source(), open), r.nextPoll);
             return Optional.of(new LiveUpdate(r.bar, newBar, meta, open));
         }
     }
@@ -214,6 +234,7 @@ public class LiveMarketData implements MarketDataPort {
         }
         Symbols sy = Universe.entry(symbol).symbols();
         List<Supplier<Quote>> chain = new ArrayList<>();
+        if (paidFeed.enabled() && paidFeed.covers(sy)) chain.add(() -> paidFeed.quote(symbol, sy));
         if (finnhub.enabled() && sy.finnhub() != null) chain.add(() -> finnhub.quote(symbol, sy.finnhub()));
         if (sy.yahoo() != null) chain.add(() -> yahoo.quote(symbol, sy.yahoo()));
         if (sy.stooq() != null && stooq.enabled()) chain.add(() -> stooq.quote(symbol, sy.stooq()));

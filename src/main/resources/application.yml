@@ -33,6 +33,11 @@ meridianwealth:
     poll-closed-seconds: 600
   finnhub:
     api-key: ${FINNHUB_API_KEY:}
+    websocket: ${MW_FINNHUB_WS:true}       # WebSocket de negócios (só com chave)
+  paid-feed:
+    provider: ${MW_PAID_FEED:none}         # none | twelvedata (desligado por padrão)
+    api-key: ${MW_PAID_FEED_KEY:}
+    freshness: ${MW_PAID_FEED_FRESHNESS:DELAYED}  # selo do plano: REAL_TIME | DELAYED
   fred:
     api-key: ${FRED_API_KEY:}
   brapi:

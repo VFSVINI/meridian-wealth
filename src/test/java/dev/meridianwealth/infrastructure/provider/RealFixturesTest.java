@@ -63,7 +63,7 @@ class RealFixturesTest {
         YahooClient yahoo = new YahooClient(gw);
         FinnhubClient finnhub = new FinnhubClient(gw, "");
         LiveMarketData d = new LiveMarketData(yahoo, new StooqClient(gw, false), new BrapiClient(gw, ""),
-                new FrankfurterClient(gw), finnhub, none, new InMemoryCacheStore(),
+                new FrankfurterClient(gw), finnhub, new TwelveDataFeed(gw, "none", "", "DELAYED"), none, new InMemoryCacheStore(),
                 new LiveMacroData(yahoo, new FredClient(gw, ""), finnhub, new RssNewsClient(gw)), 30, 600, 25);
         HistoryResult r = d.history("PETR4", 500);
         assertThat(r.source()).isEqualTo("brapi");
