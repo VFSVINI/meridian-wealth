@@ -177,7 +177,10 @@ public class LiveMarketData implements MarketDataPort {
                                       boolean persist) {
         Candle last = candles.get(candles.size() - 1);
         Quote q = lastQuote != null ? lastQuote : new Quote(symbol, last.close(), last.time(), source);
-        real.put(symbol, new Real(q, last, System.currentTimeMillis() + FIRST_POLL_DELAY_MS));
+        Real fresh = new Real(q, last, System.currentTimeMillis() + FIRST_POLL_DELAY_MS);
+        // Cotação de um dia posterior à última barra: abre barra nova em vez de reescrever a barra anterior.
+        if (q.tsMillis() - last.time() >= NEW_BAR_GAP_MS) fresh.pendingNewBar = true;
+        real.put(symbol, fresh);
         if (persist) {
             try {
                 store.saveAll(symbol, source, candles);
@@ -201,7 +204,8 @@ public class LiveMarketData implements MarketDataPort {
             Quote q = r.quote;
             boolean newBar = false;
             if (r.pendingNewBar) {
-                r.bar = new Candle(q.tsMillis(), r.bar.close(), q.price(), q.price(), q.price(), 0);
+                // Abertura = primeiro preço real observado no dia (nunca o fechamento anterior).
+                r.bar = new Candle(q.tsMillis(), q.price(), q.price(), q.price(), q.price(), 0);
                 r.pendingNewBar = false;
                 newBar = true;
             }

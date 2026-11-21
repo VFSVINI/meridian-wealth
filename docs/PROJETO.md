@@ -100,6 +100,7 @@ Decisões menores (no corpo dos PRs):
 | 12 | Calendários de feriados não verificados: Euronext, Tóquio, Hong Kong, ASX, Tadawul, JSE | `domain/Exchange` | PR futuro |
 
 **Resolvidas**
+- PR #3 (pós-review): com o dia em andamento, a Yahoo manda a barra corrente com close nulo; o parser a descartava e a cotação de hoje era gravada sobre a barra de ontem (SPY 19/11 aparecia com 689,81 em vez de 715,87). Agora a barra do dia usa os OHLC reais com o close do meta, cotação de dia posterior abre barra nova e a abertura é o primeiro preço observado.
 - PR #3: dívida 7 (parsers de Yahoo, brapi, Frankfurter e Stooq validados contra respostas reais gravadas) e dívida 10 (Stooq desligado por padrão, mensagem clara de verificação JavaScript).
 - PR #2 (pós-review): o rate limiter descartava na hora a carga paralela de históricos da partida (rajada de 5 da Yahoo para 10 ativos), deixando 3 ou 4 ativos sem dado com a fonte no ar; agora históricos aguardam o próximo token (até 20 s, dormindo fora do lock) e os 10 ativos carregam em 7,8 s. Rate limit local também deixou de zerar o circuit breaker.
 - PR #2: dívida 1 (`application` sem Spring/Jackson/SLF4J, POJOs ligados em `config`), dívida 2 (portas `TickSink` e `ProviderStatusSource`; `web` sem `infrastructure`), dívida 4 (`JsonBacktestCache` testado e chave pela versão dos dados) e dívida 8 (simulador fora do produto).
@@ -125,7 +126,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 101 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 104 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | PR #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
