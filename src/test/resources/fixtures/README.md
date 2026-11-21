@@ -20,5 +20,10 @@ para não depender de rede e para validar os parsers contra o contrato verdadeir
 | `crypto/coinbase-ticker.jsonl` | mensagens reais do `wss://ws-feed.exchange.coinbase.com` (canal `ticker`, BTC-USD e ETH-USD) | 2026-11-21 |
 | `crypto/kraken-ticker.jsonl` | mensagens reais do `wss://ws.kraken.com/v2` (canal `ticker`, BTC/USD e ETH/USD) | 2026-11-21 |
 
+| `yahoo/HGLG11.SA-2y.json` | `query1.finance.yahoo.com/v8/finance/chart/HGLG11.SA?range=2y&interval=1d` | 2026-11-21 |
+| `bcb/sgs-432.json`, `sgs-12.json`, `sgs-4389.json` | `https://api.bcb.gov.br/dados/serie/bcdata.sgs.<código>/dados?formato=json&dataInicial=07/10/2026&dataFinal=21/11/2026` | 2026-11-21 |
+| `bcb/sgs-433.json`, `sgs-13522.json` | mesmo endpoint, janela de 17/10/2025 a 21/11/2026 | 2026-11-21 |
+| `bcb/ptax-periodo.json` | `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(...)` (11-11-2026 a 11-21-2026, top 1), **resposta crua**, com os zeros à direita do original | 2026-11-21 |
+
 Finnhub, FRED e RSS não têm fixture gravada (sem chave ou sem necessidade); os testes usam o formato da documentação pública e dizem isso.
 URLs sem fixture respondem HTTP 404 no `FixtureHttpGateway`, o que exercita o estado "sem dado em tempo real".

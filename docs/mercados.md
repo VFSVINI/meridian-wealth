@@ -59,9 +59,34 @@ Regras do failover (resumo; detalhes no ADR 005):
 
 Limites honestos: a Binance cota em USDT e as demais em USD (degrau no preço ao trocar de bolsa); o miniTicker da Binance é o último preço por segundo, não cada negócio; o bloqueio regional real (HTTP 451) ainda **não foi observado**, só simulado nos testes.
 
+## Brasil: juros, inflação e câmbio oficial (BCB)
+
+Selic, CDI, IPCA e PTAX, lidos do Banco Central e exibidos como o BCB publicou, com a data de referência de cada valor (`GET /api/brazil/rates` e o card "Juros e inflação" do painel). Atualização a cada 30 minutos; cada indicador é independente e mantém o último valor bom se a fonte falhar.
+
+| Indicador | Fonte | Unidade | Como o código foi confirmado |
+|---|---|---|---|
+| Meta Selic | SGS 432 | % a.a. | página oficial "Taxa de juros - Meta Selic definida pelo Copom" no portal de dados abertos do BCB (série diária, % ao ano), lida em 2026-11-20 |
+| CDI, taxa diária | SGS 12 | % a.d. | sem página no portal de dados abertos (busca nos 4.261 conjuntos de dados); confirmado por consistência: `(1 + 0,050788%)^252 − 1 = 13,65%`, igual ao SGS 4389 na mesma data |
+| CDI anualizado (base 252) | SGS 4389 | % a.a. | idem; coerente com a meta Selic de 13,75% (CDI 0,10 ponto abaixo) |
+| IPCA, variação mensal | SGS 433 | % no mês (data = 1º dia do mês de referência) | sem página no portal; os 12 últimos IPCA mensais compostos dão 4,63%, igual ao SGS 13522 |
+| IPCA, acumulado em 12 meses | SGS 13522 | % em 12 meses | idem |
+| PTAX, dólar (compra e venda) | Olinda `CotacaoDolarPeriodo` | R$ por US$ | `$metadata` oficial do serviço PTAX lista as entidades e os campos (`cotacaoCompra`, `cotacaoVenda`, `dataHoraCotacao`) |
+
+Os conjuntos 11 (Selic diária), 1 (dólar livre, venda), 10813 (dólar livre, compra), 4189 e 4390 (Selic acumulada) existem no portal, mas não são usados. Em 2026-11-19 os valores do SGS 1 e 10813 coincidiram com o PTAX (5,8889 e 5,8883), mas a fonte oficial da PTAX é o Olinda.
+
+### Contrato observado da API (2026-11-20 e 21)
+
+- **Janela de datas:** `dataInicial` e `dataFinal` em `dd/MM/aaaa`. A consulta sem filtro é limitada e a janela máxima é de 10 anos (página oficial do recurso JSON do SGS).
+- **Modo "últimos N" (não usado):** a série 432 traz datas futuras (08/12 e 09/12/2026, com a meta vigente repetida) e a 4389 veio em ordem decrescente. O cliente usa janela de datas, descarta data posterior ao corte e ordena.
+- **Janela sem dados:** HTTP 404 com `{"erro":{"statusCode":404,"detail":"...Value(s) not found"}}` (um objeto, não uma lista vazia). Data fora do formato: HTTP 400 com `{"erro":"dataInicial invalida..."}`. Série inexistente: HTTP 404 com o texto `A serie nao existe!`.
+- **Tipos dos valores:** o SGS devolve o valor como **texto** (`"13.75"`); o PTAX devolve **número decimal com 5 casas** (`5.88890`). Ambos viram `BigDecimal`, sem passar por `double`.
+- **PTAX em feriado:** não há cotação no feriado nacional (20/11/2026, Consciência Negra, devolveu lista vazia). O painel mostra o PTAX de 19/11 com essa data.
+- **Latência HTTP medida:** SGS 0,26 a 0,80 s (9 séries, uma medição cada); Olinda 0,29 s.
+
 ## Pendências de validação
 
 - Medir o atraso real (negócio → publicação) da Yahoo e do brapi com o pregão aberto.
 - Validar a Finnhub (REST e WebSocket) com uma chave gratuita: confirmar o selo "tempo real" na prática.
 - Conferir os calendários das bolsas marcadas como "não verificado" contra as páginas oficiais.
+- Ler a documentação oficial das séries 12, 4389, 433 e 13522, que não têm página no portal de dados abertos (hoje confirmadas por consistência aritmética), e a página de documentação do Olinda, que respondeu como template sem renderizar.
 - Validar o failover contra um bloqueio regional real (HTTP 451 da Binance) rodando de um servidor em região bloqueada, por exemplo no deploy do PR #21 do roadmap.

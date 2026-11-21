@@ -11,8 +11,10 @@
 
 ## O que o sistema faz
 
+- **Taxonomia multi-ativo:** 22 tipos (ação, ETF, FII, fundos, os cinco títulos do Tesouro Direto, LCI, LCA, CRI, CRA, notas comerciais e promissórias, cripto, câmbio, commodity e índice) com atributos verificados em fonte pública, como a proteção do FGC. Detalhes e o que **não** foi verificado em [`docs/taxonomia.md`](docs/taxonomia.md).
+- **Juros e inflação do Brasil:** Meta Selic, CDI, IPCA e PTAX do Banco Central, exibidos como publicados (texto exato, data de referência, selo de desatualizado), com séries e contratos confirmados contra a API real ([ADR 006](docs/adr/006-taxonomia-e-dados-oficiais-do-bcb.md)).
 - **Cripto 24/7:** BTC, ETH, SOL e XRP com preço por WebSocket (Binance, com failover automático para Coinbase e Kraken se houver bloqueio regional HTTP 451), volatilidade anualizada por √365 e beta contra o BTC. Bolsa em uso e motivo de cada isolamento aparecem no status ([ADR 005](docs/adr/005-stream-cripto-com-failover.md)).
-- **Bolsas globais:** 29 ativos (25 de bolsas e 4 cripto) de EUA, Brasil (B3), Europa, Ásia, Oceania, Oriente Médio/África e mercado global, com calendário de pregão por bolsa (fuso, sessões, feriados oficiais conferidos para NYSE, B3 e Xetra). Detalhes em [`docs/mercados.md`](docs/mercados.md).
+- **Bolsas globais:** 33 ativos (29 de bolsas, incluindo 4 FIIs, e 4 cripto) de EUA, Brasil (B3), Europa, Ásia, Oceania, Oriente Médio/África e mercado global, com calendário de pregão por bolsa (fuso, sessões, feriados oficiais conferidos para NYSE, B3 e Xetra). Detalhes em [`docs/mercados.md`](docs/mercados.md).
 - **Dados reais gratuitos com failover:** Yahoo Finance, brapi.dev (B3), Frankfurter (BCE), Finnhub REST e WebSocket (com chave), FRED (com chave) e feeds RSS; Stooq desligado (passou a exigir verificação JavaScript); adapter plugável para feed pago, desligado. Cada provedor tem rate limiter, circuit breaker, retry com backoff exponencial e jitter, e cache (Redis ou memória). Se tudo falhar, usa o último dado real gravado no banco (rotulado) e, sem ele, mostra o ativo como sem dado e tenta de novo a cada 2 minutos.
 - **Polling inteligente:** a cada 30 s com pregão aberto e a cada 10 min com pregão fechado (EUA, Europa, câmbio e commodities), com cotações compartilhadas via cache.
 - **Procedência em cada cotação:** selo de atraso (tempo real, ~15 min, fechamento, último dado real gravado), horário da cotação na origem, contagem até a próxima atualização e aviso de cotação desatualizada. O pulso visual só aparece quando chega uma cotação nova.
@@ -46,6 +48,7 @@ Swagger: `http://localhost:8080/swagger-ui.html`. Saúde: `/actuator/health`.
 | `FINNHUB_API_KEY` | vazio | cotações Finnhub, fundamentos e notícias |
 | `FRED_API_KEY` | vazio | juros de 10 anos via FRED (senão usa Yahoo `^TNX`) |
 | `MW_BRAPI_TOKEN` | vazio | brapi.dev: sem token só PETR4, VALE3, ITUB4 e MGLU3 |
+| `MW_BCB_ENABLED` | `true` | indicadores do Banco Central (Selic, CDI, IPCA e PTAX; sem chave) |
 | `MW_CRYPTO_STREAM` | `true` | stream de cripto (Binance, com failover Coinbase e Kraken; sem chave) |
 | `MW_FINNHUB_WS` | `true` | WebSocket de negócios da Finnhub (só conecta com `FINNHUB_API_KEY`) |
 | `MW_STOOQ_ENABLED` | `false` | religa o Stooq (exige verificação JavaScript desde 2026-11) |
@@ -57,7 +60,7 @@ Swagger: `http://localhost:8080/swagger-ui.html`. Saúde: `/actuator/health`.
 
 ## Endpoints
 
-`GET /api/universe`, `/api/overview`, `/api/candles/{symbol}`, `/api/assessment/{symbol}`, `/api/micro/{symbol}`, `/api/signals/{symbol}`, `/api/backtest/{symbol}?buyScore=35&sellScore=30&bars=600`, `/api/status`, `/api/markets` (pregão por bolsa, com motivo e feriado), `/api/stream` (SSE), `/ws/stream` (WebSocket).
+`GET /api/universe`, `/api/overview`, `/api/candles/{symbol}`, `/api/assessment/{symbol}`, `/api/micro/{symbol}`, `/api/signals/{symbol}`, `/api/backtest/{symbol}?buyScore=35&sellScore=30&bars=600`, `/api/status`, `/api/taxonomy` (tipos de ativo), `/api/brazil/rates` (Selic, CDI, IPCA e PTAX), `/api/markets` (pregão por bolsa, com motivo e feriado), `/api/stream` (SSE), `/ws/stream` (WebSocket).
 
 Ativo sem dado real responde **503** com `{"error": "Sem dado em tempo real para ...", "status": "UNAVAILABLE"}`. Cada item de `/api/overview` traz `status`, `source`, `quoteTime`, `freshness`, `nextUpdateAt` e `marketOpen`.
 
@@ -97,6 +100,8 @@ Comportamento e latência observados em 2026-11-20 (sexta-feira, após o fechame
 | Binance WS | cripto | handshake 1,85 s; 1 msg/s por par | tempo real (1 s) | respondeu daqui, sem bloqueio |
 | Coinbase WS | cripto (failover) | handshake 1,70 s; ~136 ms entre msgs | tempo real | respondeu daqui |
 | Kraken WS | cripto (failover) | handshake 1,42 s; ~405 ms entre msgs | tempo real | respondeu daqui |
+| BCB SGS | Selic, CDI e IPCA | 0,26 a 0,80 s | diário ou mensal, com data de referência | contrato validado; janela de datas obrigatória |
+| BCB Olinda | PTAX | 0,29 s | diário (dia útil) | sem cotação em feriado |
 | Stooq | desligado | — | — | exige verificação JavaScript |
 | Finnhub REST/WS | EUA (com chave) | não medido | tempo real (documentação) | não validado: sem chave |
 
@@ -110,6 +115,7 @@ Comportamento e latência observados em 2026-11-20 (sexta-feira, após o fechame
 ## Documentação do projeto
 
 - [`docs/PROJETO.md`](docs/PROJETO.md): visão, regras, roadmap, decisões, dívidas e como rodar.
-- [`docs/mercados.md`](docs/mercados.md): bolsas, calendários e fontes com latência medida.
+- [`docs/mercados.md`](docs/mercados.md): bolsas, calendários, fontes com latência medida e indicadores do BCB.
+- [`docs/taxonomia.md`](docs/taxonomia.md): tipos de ativo, atributos e o que foi verificado.
 - [`docs/adr/`](docs/adr/): decisões de arquitetura (hexagonal, precisão financeira, frontend sem build, dados reais e procedência).
 - [`CONTRIBUTING.md`](CONTRIBUTING.md), [`SECURITY.md`](SECURITY.md) e [`CHANGELOG.md`](CHANGELOG.md).
