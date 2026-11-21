@@ -25,6 +25,8 @@
 - **Radar de relatórios:** prazos de divulgação pela regra da CVM e veredito POSITIVO, NEUTRO ou NEGATIVO de cada relatório entregue, sempre com os números e a regra ([docs/relatorios.md](docs/relatorios.md), [ADR 008](docs/adr/008-radar-de-relatorios-e-veredito-mecanico.md)).
 - **Suitability e carteira modelo:** questionário de perfil (inspirado nas dimensões da Resolução CVM 30), carteira modelo por perfil e aderência da sua carteira, sem gravar suas respostas ([docs/suitability.md](docs/suitability.md), [ADR 009](docs/adr/009-suitability-por-questionario-e-tetos.md)).
 - **Simulador pré-ordem e glossário:** efeito de uma compra ou venda hipotética na concentração, no risco e na aderência (sem cotação e sem enviar ordem), e um glossário que explica cada métrica do painel ([docs/simulador-e-glossario.md](docs/simulador-e-glossario.md), [ADR 010](docs/adr/010-impacto-pre-ordem-e-glossario.md)).
+- **Tradutor geopolítico e teses genéricas:** cruza a pressão das manchetes reais por setor com o peso do setor na carteira e lê a carteira por cinco lentes ilustrativas, sem atribuir posições a nenhuma gestora ([docs/teses.md](docs/teses.md), [ADR 011](docs/adr/011-tradutor-geopolitico-e-teses-genericas.md)).
+- **Protótipo visual:** a interface segue o protótipo aprovado ([docs/design-prototipo.md](docs/design-prototipo.md), [ADR 012](docs/adr/012-prototipo-visual-como-referencia.md)); a adoção ocorre nos itens #15 a #17.
 - **Persistência:** PostgreSQL com Flyway (candles e histórico de sinais) e Redis (cotações, backtests, rate limit da API).
 - **Qualidade:** testes JUnit 5 (unitários e de integração), Checkstyle, Spotless, GitHub Actions, OpenAPI/Swagger.
 

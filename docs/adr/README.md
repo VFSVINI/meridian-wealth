@@ -15,3 +15,5 @@ ADRs aceitos não são reescritos; uma mudança de rumo gera um ADR novo que sub
 | [008](008-radar-de-relatorios-e-veredito-mecanico.md) | Radar de relatórios e veredito mecânico | Aceito | 2026-11-21 |
 | [009](009-suitability-por-questionario-e-tetos.md) | Suitability por questionário, tetos e carteira modelo | Aceito | 2026-11-21 |
 | [010](010-impacto-pre-ordem-e-glossario.md) | Impacto pré-ordem e glossário ligado às métricas | Aceito | 2026-11-21 |
+| [011](011-tradutor-geopolitico-e-teses-genericas.md) | Tradutor geopolítico e teses institucionais genéricas | Aceito | 2026-11-21 |
+| [012](012-prototipo-visual-como-referencia.md) | Protótipo visual como referência obrigatória da interface | Aceito | 2026-11-21 |
