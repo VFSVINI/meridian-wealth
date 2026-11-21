@@ -26,7 +26,7 @@ Os 22 tipos de ativo que a plataforma conhece (`AssetType`, exposto em `GET /api
 | Commodity | `COMMODITY` | Câmbio e commodities | sem | sem renda periódica | não | não se aplica | mercado |
 | Índice de referência | `INDICE` | Referência (não negociável) | sem | sem renda periódica | não | não se aplica | mercado |
 
-"Preço" é a **intenção de projeto**: hoje só "mercado" está implementado. "Tabela oficial" (preços e taxas do Tesouro Direto, cotas de fundos) e "informado pelo investidor" entram junto com a carteira (itens #12 e #13 do roadmap).
+"Preço" é a **intenção de projeto**: hoje só "mercado" está implementado. "Tabela oficial" e "informado pelo investidor" entram junto com a carteira (itens #12 e #13 do roadmap). As fontes oficiais previstas existem e foram conferidas em 2026-11-21: os preços e taxas do Tesouro Direto no Tesouro Transparente (STN) e as cotas de fundos no conjunto [Informe Diário](https://dados.cvm.gov.br/dataset/fi-doc-inf_diario) do portal de dados abertos da CVM (arquivos mensais até 2026-11).
 
 ## O que foi verificado e onde
 
