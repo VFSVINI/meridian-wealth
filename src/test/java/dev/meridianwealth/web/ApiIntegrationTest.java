@@ -68,6 +68,35 @@ class ApiIntegrationTest {
         assertThat((String) response.getBody().get("error")).contains("Sem composição publicada");
     }
 
+    @Test void reportsRadarShowsVerdictWithNumbersRuleAndCalendar() {
+        Map<?, ?> petr = rest.getForObject("/api/reports/petr4", Map.class);
+        assertThat(petr.get("symbol")).isEqualTo("PETR4");
+        assertThat((String) petr.get("rule")).contains("limiar").contains("POSITIVO");
+        assertThat((String) petr.get("disclaimer")).contains("não é recomendação");
+        List<Map<String, Object>> reports = (List<Map<String, Object>>) petr.get("reports");
+        Map<String, Object> q3 = reports.stream().filter(r -> "3T2026".equals(r.get("label"))).findFirst().orElseThrow();
+        assertThat(q3.get("verdict")).isEqualTo("POSITIVE");
+        assertThat(q3.get("verdictLabel")).isEqualTo("POSITIVO");
+        List<Map<String, Object>> signals = (List<Map<String, Object>>) q3.get("signals");
+        assertThat(signals).hasSize(2);
+        assertThat(signals.get(0).get("thresholdPercent")).isNotNull();
+        assertThat((String) signals.get(0).get("explanation")).contains("contra").contains("Limiar");
+        List<Map<String, Object>> calendar = (List<Map<String, Object>>) petr.get("calendar");
+        assertThat(calendar).isNotEmpty().allSatisfy(c -> assertThat((String) c.get("rule")).contains("Resolução CVM"));
+        assertThat(petr.get("nextDeadline")).isNotNull();
+    }
+
+    @Test void reportsSummaryListsEveryCuratedIssuer() {
+        List<?> all = rest.getForObject("/api/reports", List.class);
+        assertThat(all).hasSize(7);
+    }
+
+    @Test void reportsForUnsupportedAssetIs404WithAClearReason() {
+        var response = rest.getForEntity("/api/reports/AAPL", Map.class);
+        assertThat(response.getStatusCode().value()).isEqualTo(404);
+        assertThat((String) response.getBody().get("error")).contains("Sem relatórios publicados");
+    }
+
     @Test void overviewShowsRealSourcesAndExplicitGaps() {
         Map<?, ?> body = rest.getForObject("/api/overview", Map.class);
         assertThat(body.get("mode")).isEqualTo("PARCIAL");
