@@ -35,6 +35,20 @@ class Numeros(unittest.TestCase):
         self.assertIsNone(g.marco_km("Rua dos Pinheiros, 701"))
 
 
+class Hglg(unittest.TestCase):
+    BLOCO = ["1.1.2.1.1", "HGLG Embu", "Estrada Santa Clara, nº 150, Bairro Maria Imaculada", "Área (m2):", "39.475,00",
+             "Nº de unidades ou lojas:", "1", "- | 0,0000% | 0,0000% | 1,3190% |", '"-" |', "|", "0,0000% |", "|", "0,0000% |", "|",
+             "Extrema", "Estrada Municipal X, Extrema, MG", "Área (m2):", "34.100,63", "Nº de unidades ou lojas:", "1",
+             "- | 0,0000% | 0,0000% | 1,4592% |", "Automotivo |", "|", "100,0000% |", "|", "1,4592% |", "|", "1.1.2.1.2"]
+
+    def test_traco_da_fonte_nao_vira_setor(self):
+        embu, extrema = g.analisar_hglg(self.BLOCO)
+        self.assertEqual(embu["setoresDosInquilinos"], [])
+        self.assertEqual(extrema["setoresDosInquilinos"], [{"setor": "Automotivo", "percentualDaReceitaDoImovel": "100"}])
+        self.assertEqual(embu["percentualDaReceitaDoFundo"], "1.3190")
+        self.assertIsNone(embu["cidade"])
+
+
 class Cidades(unittest.TestCase):
     def test_extrai_cidade_e_uf(self):
         self.assertEqual(g.cidade_uf("Avenida Parque B, 347, Betim, MG"), ("Betim", "MG"))

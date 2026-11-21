@@ -148,7 +148,8 @@ def analisar_hglg(L):
         nomes = grupos[0] if grupos else []
         pcts_imovel = grupos[1] if len(grupos) > 1 else []
         setores = [{"setor": s, "percentualDaReceitaDoImovel": txt(numero(p.rstrip("%")))}
-                   for s, p in zip(nomes, pcts_imovel) if re.fullmatch(r"[\d.]+,\d+%", p)]
+                   for s, p in zip(nomes, pcts_imovel)
+                   if re.fullmatch(r"[\d.]+,\d+%", p) and s.strip('"').strip() not in ("-", "")]  # "-" = sem dado
         cidade, uf = cidade_uf(endereco)
         ativos.append({
             "nome": nome, "enderecoPublicado": endereco, "cidade": cidade, "uf": uf,
@@ -394,6 +395,7 @@ def main():
     referencia = f"{ref.group(3)}-{ref.group(2)}-{ref.group(1)}"
     cnpj = re.search(r"\d\d\.\d{3}\.\d{3}/\d{4}-\d\d", L[3]).group(0)
     ativos = analisar_hglg(L)
+    soma_receita = sum(numero(a["percentualDaReceitaDoFundo"]) for a in ativos if a["percentualDaReceitaDoFundo"])
     doc = montar("HGLG11", nome.title() if nome.isupper() else nome,
                  fonte(FONTES["HGLG11"], "OFICIAL", "Informe Trimestral de FII (Anexo 39-II, CVM), via B3/FNET", referencia, L),
                  ativos, {"cnpj": cnpj, "rotuloDaArea": "Área (m2)",
@@ -401,7 +403,11 @@ def main():
                                      "traz só os setores dos inquilinos acima de 10% da receita de cada imóvel.",
                                      "O documento não define 'ABL': o campo publicado é 'Área (m2)'.",
                                      "O mesmo Informe registra, na seção 2.2.2 (alienações do trimestre), a venda do HGLG Itapevi I em "
-                                     "30/07/2026 (34.286,00 m²); ele não consta da carteira atual."]},
+                                     "30/07/2026 (34.286,00 m²); ele não consta da carteira atual.",
+                                     f"A soma dos percentuais de receita publicados por imóvel é {soma_receita:.2f}%; o documento "
+                                     "não explica a diferença para 100%.",
+                                     "Três imóveis (HGLG Embu, HGLG Guarulhos e HGLG Parque Novo Mundo) trazem '-' no lugar dos "
+                                     "setores dos inquilinos: ficam sem setores informados."]},
                  geocod, ao_vivo, cache)
     gravar("HGLG11", doc)
 
