@@ -9,6 +9,13 @@ updates:
     labels: [infra]
     commit-message:
       prefix: "build"
+    # Majors do Spring Boot e a distribuição do Maven do wrapper (fixada por checksum) mudam por decisão
+    # manual, em PR próprio com migração; o Dependabot não as propõe.
+    ignore:
+      - dependency-name: "org.springframework.boot:spring-boot-starter-parent"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "org.apache.maven:apache-maven"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
     groups:
       spring:
         patterns: ["org.springframework*", "io.spring*"]
@@ -28,11 +35,12 @@ updates:
       interval: weekly
       day: monday
     labels: [infra]
-    # O projeto fixa o Java 21 (LTS); versões não-LTS do JDK nas imagens são ignoradas.
+    # O projeto fixa o Java 21 (LTS): o JDK das imagens muda só por decisão manual.
     ignore:
       - dependency-name: "eclipse-temurin"
-        versions: ["22", "23", "24", "25", "26", "27"]
+        update-types: ["version-update:semver-major"]
       - dependency-name: "maven"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
         versions: ["3.9-eclipse-temurin-22", "3.9-eclipse-temurin-23", "3.9-eclipse-temurin-24", "3.9-eclipse-temurin-25", "3.9-eclipse-temurin-26", "3.9-eclipse-temurin-27"]
     commit-message:
       prefix: "build"
