@@ -10,7 +10,7 @@
   </parent>
   <groupId>dev.meridianwealth</groupId>
   <artifactId>meridian-wealth</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>0.1.0</version>
   <name>MeridianWealth</name>
   <description>Plataforma institucional multi-ativo de gestão de patrimônio, inteligência quantitativa e geolocalização de ativos reais (analítica e educacional)</description>
   <properties>
