@@ -88,7 +88,8 @@ public class JsonReportsRepository implements ReportsPort {
                 for (JsonNode m : n.path("meses")) {
                     months.add(new FiiReportFactory.Month(text(m, "id"), LocalDate.parse(text(m, "fimDoPeriodo")),
                             LocalDate.parse(text(m, "primeiraEntregaEm")), LocalDate.parse(text(m, "versaoEntregueEm")),
-                            m.path("versao").asInt(), optDec(m, "dividendYieldPercentual"), optDec(m, "valorPatrimonialPorCota")));
+                            m.path("versao").asInt(), optDec(m, "dividendYieldPercentual"), optDec(m, "valorPatrimonialPorCota"),
+                            m.path("menorVersaoNaBase").asInt(1) <= 1));
                     if (fiscalYearEnd == null) fiscalYearEnd = optText(m, "encerramentoDoExercicio");
                 }
                 reports.addAll(FiiReportFactory.build(months));
@@ -127,7 +128,7 @@ public class JsonReportsRepository implements ReportsPort {
         }
         return new Report(text(r, "id"), periodicity, text(r, "rotulo"), LocalDate.parse(text(r, "fimDoPeriodo")),
                 LocalDate.parse(text(r, "primeiraEntregaEm")), LocalDate.parse(text(r, "versaoEntregueEm")), r.path("versao").asInt(),
-                optText(r, "link"), metrics);
+                optText(r, "link"), metrics, r.path("menorVersaoNaBase").asInt(1) <= 1);
     }
 
     private static String text(JsonNode n, String field) {

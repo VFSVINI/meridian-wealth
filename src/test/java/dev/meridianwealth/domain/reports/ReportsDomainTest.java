@@ -186,4 +186,31 @@ class ReportsDomainTest {
         assertThat(i.age(D.plusDays(46)).days()).isEqualTo(46);
         assertThat(i.age(D.minusDays(3)).days()).isZero();  // relógio antes da consulta nunca dá idade negativa
     }
+
+    @Test void refiledReportWithoutTheOriginalNeverGetsAPunctualityVerdict() {
+        // a base só traz a versão 2, entregue 107 dias depois do mês: não é possível afirmar atraso
+        LocalDate end = LocalDate.of(2026, 6, 30);
+        Report refiled = new Report("x", ReportPeriodicity.MONTHLY, "jun/2026", end, LocalDate.of(2026, 10, 15), LocalDate.of(2026, 10, 15),
+                2, null, List.of(), false);
+        IssuerReports fii = new IssuerReports("XPML11", "XP Malls", "1", IssuerKind.FII, List.of(), List.of(refiled), "31/12", List.of());
+        DeliveryCalendar.Entry e = DeliveryCalendar.of(fii, LocalDate.of(2026, 11, 21)).stream()
+                .filter(x -> x.label().equals("06/2026")).findFirst().orElse(null);
+        // jun/2026 está fora das 4 últimas competências; confere a função de entrada direto pelo estado do relatório
+        assertThat(refiled.originalInSource()).isFalse();
+        assertThat(e).isNull();
+        IssuerReports recent = new IssuerReports("XPML11", "XP Malls", "1", IssuerKind.FII, List.of(), List.of(new Report("y",
+                ReportPeriodicity.MONTHLY, "out/2026", LocalDate.of(2026, 10, 31), LocalDate.of(2026, 12, 20), LocalDate.of(2026, 12, 20), 2,
+                null, List.of(), false)), "31/12", List.of());
+        DeliveryCalendar.Entry october = DeliveryCalendar.of(recent, LocalDate.of(2026, 12, 21)).stream()
+                .filter(x -> x.label().equals("10/2026")).findFirst().orElseThrow();
+        assertThat(october.status()).isEqualTo(DeliveryCalendar.Status.REFILED_ORIGINAL_UNKNOWN);
+        assertThat(DeliveryCalendar.nextDeadline(List.of(october), LocalDate.of(2026, 11, 1))).isEmpty();
+    }
+
+    @Test void dfpRuleStatesTheEarlierSendDateCaveat() {
+        IssuerReports c = company(List.of());
+        DeliveryCalendar.Entry annual = DeliveryCalendar.of(c, LocalDate.of(2026, 11, 21)).stream()
+                .filter(e -> e.periodicity() == ReportPeriodicity.ANNUAL).findFirst().orElseThrow();
+        assertThat(annual.rule()).contains("se anterior").contains("só o limite de 3 meses");
+    }
 }

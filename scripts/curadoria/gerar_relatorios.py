@@ -118,11 +118,13 @@ def relatorios_da_empresa(cnpj, zips):
         prefixo = f"{categoria.lower()}_cia_aberta"
         indice = {}
         primeira = {}
+        menor_versao = {}
         for x in linhas(zip_path, f"{prefixo}_{ano}.csv"):
             if x["CNPJ_CIA"] != cnpj:
                 continue
             ref = x["DT_REFER"]
             primeira[ref] = min(primeira.get(ref, x["DT_RECEB"]), x["DT_RECEB"])
+            menor_versao[ref] = min(menor_versao.get(ref, int(x["VERSAO"])), int(x["VERSAO"]))
             if ref not in indice or int(x["VERSAO"]) > int(indice[ref]["VERSAO"]):
                 indice[ref] = x
         if not indice:
@@ -170,6 +172,7 @@ def relatorios_da_empresa(cnpj, zips):
                 "rotulo": f"{trimestre}T{fim.year}" if categoria == "ITR" else f"Exercício {fim.year} (inclui o 4T)",
                 "fimDoPeriodo": ref,
                 "primeiraEntregaEm": primeira[ref],
+                "menorVersaoNaBase": menor_versao[ref],
                 "versaoEntregueEm": doc["DT_RECEB"],
                 "versao": int(doc["VERSAO"]),
                 "link": https(doc["LINK_DOC"]),
@@ -180,12 +183,13 @@ def relatorios_da_empresa(cnpj, zips):
 
 
 def meses_do_fii(cnpj, zips):
-    geral, comp, primeira = {}, {}, {}
+    geral, comp, primeira, menor_versao = {}, {}, {}, {}
     for ano, zip_path in zips:
         for x in linhas(zip_path, f"inf_mensal_fii_geral_{ano}.csv"):
             if x["CNPJ_Fundo_Classe"] == cnpj:
                 chave = x["Data_Referencia"]
                 primeira[chave] = min(primeira.get(chave, x["Data_Entrega"]), x["Data_Entrega"])
+                menor_versao[chave] = min(menor_versao.get(chave, int(x["Versao"])), int(x["Versao"]))
                 if chave not in geral or int(x["Versao"]) > int(geral[chave]["Versao"]):
                     geral[chave] = x
         for x in linhas(zip_path, f"inf_mensal_fii_complemento_{ano}.csv"):
@@ -206,6 +210,7 @@ def meses_do_fii(cnpj, zips):
             "id": f"INF_MENSAL-{ref}",
             "fimDoPeriodo": fim_do_mes(ref),
             "primeiraEntregaEm": primeira[ref],
+            "menorVersaoNaBase": menor_versao[ref],
             "versaoEntregueEm": g["Data_Entrega"],
             "versao": int(g["Versao"]),
             "dividendYieldPercentual": num("Percentual_Dividend_Yield_Mes"),
