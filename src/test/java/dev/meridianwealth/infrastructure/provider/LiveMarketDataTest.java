@@ -118,6 +118,14 @@ class LiveMarketDataTest {
         assertThat(u.candle().close()).isEqualTo(689.81);
     }
 
+    @Test void yahooHistoryCarriesTheRealQuoteTimeNotTheBarOpen() {
+        LiveMarketData d = build(new FixtureHttpGateway(), store(new ArrayList<>(), List.of()));
+        HistoryResult r = d.history("SPY", 500);
+        assertThat(r.source()).isEqualTo("Yahoo");
+        assertThat(r.quoteTime()).isEqualTo(1_795_208_404_000L);
+        assertThat(r.candles().get(r.candles().size() - 1).time()).isNotEqualTo(r.quoteTime());
+    }
+
     @Test void freshnessFollowsTheSourceContractAndTheSession() {
         assertThat(LiveMarketData.freshness("Finnhub", true)).isEqualTo(Freshness.REAL_TIME);
         assertThat(LiveMarketData.freshness("Yahoo", true)).isEqualTo(Freshness.DELAYED);

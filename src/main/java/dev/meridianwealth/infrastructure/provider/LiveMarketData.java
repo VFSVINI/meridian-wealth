@@ -58,7 +58,10 @@ public class LiveMarketData implements MarketDataPort {
         }
     }
 
-    private record Source(String name, Supplier<List<Candle>> fetch) {}
+    /** Histórico de uma fonte; {@code lastQuote} traz o horário real da última cotação quando a fonte informa. */
+    private record Fetched(List<Candle> candles, Quote lastQuote) {}
+
+    private record Source(String name, Supplier<Fetched> fetch) {}
 
     private final long pollOpenMs;
     private final long pollClosedMs;
@@ -117,31 +120,42 @@ public class LiveMarketData implements MarketDataPort {
     public HistoryResult history(String symbol, int bars) {
         Symbols sy = Universe.entry(symbol).symbols();
         List<Source> sources = new ArrayList<>();
-        if (sy.yahoo() != null) sources.add(new Source("Yahoo", () -> yahoo.history(sy.yahoo())));
-        if (sy.stooq() != null) sources.add(new Source("Stooq", () -> stooq.history(sy.stooq())));
-        if (sy.fxBase() != null) sources.add(new Source("Frankfurter", () -> frankfurter.history(sy.fxBase(), sy.fxQuote())));
+        if (sy.yahoo() != null) {
+            sources.add(new Source("Yahoo", () -> {
+                YahooClient.Chart c = yahoo.chart(sy.yahoo(), "2y");
+                return new Fetched(c.candles(), new Quote(symbol, c.price(), c.tsMillis(), "Yahoo"));
+            }));
+        }
+        if (sy.stooq() != null) sources.add(new Source("Stooq", () -> new Fetched(stooq.history(sy.stooq()), null)));
+        if (sy.fxBase() != null) {
+            sources.add(new Source("Frankfurter",
+                    () -> new Fetched(frankfurter.history(sy.fxBase(), sy.fxQuote()), null)));
+        }
         for (Source s : sources) {
             try {
-                List<Candle> got = s.fetch().get();
-                if (got.size() >= MIN_BARS) return realHistory(symbol, trim(got, bars), s.name(), true);
-                log.warn("{}: histórico de {} com só {} barras", s.name(), symbol, got.size());
+                Fetched got = s.fetch().get();
+                if (got.candles().size() >= MIN_BARS) {
+                    return realHistory(symbol, trim(got.candles(), bars), s.name(), got.lastQuote(), true);
+                }
+                log.warn("{}: histórico de {} com só {} barras", s.name(), symbol, got.candles().size());
             } catch (RuntimeException e) {
                 log.warn("{}: histórico de {} falhou ({})", s.name(), symbol, e.getMessage());
             }
         }
         try {
             List<Candle> db = store.load(symbol, bars);
-            if (db.size() >= MIN_BARS) return realHistory(symbol, db, STORED_SOURCE, false);
+            if (db.size() >= MIN_BARS) return realHistory(symbol, db, STORED_SOURCE, null, false);
         } catch (RuntimeException e) {
             log.warn("Banco: leitura de {} falhou ({})", symbol, e.getMessage());
         }
         return HistoryResult.empty();
     }
 
-    private HistoryResult realHistory(String symbol, List<Candle> candles, String source, boolean persist) {
+    private HistoryResult realHistory(String symbol, List<Candle> candles, String source, Quote lastQuote,
+                                      boolean persist) {
         Candle last = candles.get(candles.size() - 1);
-        real.put(symbol, new Real(new Quote(symbol, last.close(), last.time(), source), last,
-                System.currentTimeMillis() + FIRST_POLL_DELAY_MS));
+        Quote q = lastQuote != null ? lastQuote : new Quote(symbol, last.close(), last.time(), source);
+        real.put(symbol, new Real(q, last, System.currentTimeMillis() + FIRST_POLL_DELAY_MS));
         if (persist) {
             try {
                 store.saveAll(symbol, source, candles);
@@ -149,7 +163,7 @@ public class LiveMarketData implements MarketDataPort {
                 log.warn("Banco: gravação de {} falhou ({})", symbol, e.getMessage());
             }
         }
-        return new HistoryResult(candles, source, freshness(source, marketOpen(symbol)));
+        return new HistoryResult(candles, source, q.tsMillis(), freshness(source, marketOpen(symbol)));
     }
 
     private static List<Candle> trim(List<Candle> c, int bars) {

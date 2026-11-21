@@ -123,10 +123,9 @@ public class MarketService {
                 Series s = series.get(symbol);
                 s.candles.clear();
                 s.candles.addAll(h.candles());
-                Candle last = h.candles().get(h.candles().size() - 1);
                 s.source = h.source();
                 s.freshness = h.freshness();
-                s.quoteTime = last.time();
+                s.quoteTime = h.quoteTime();
                 s.open = data.marketOpen(symbol);
                 log.info("{}: {} barras reais via {} ({})", symbol, h.candles().size(), h.source(),
                         h.freshness().label());
