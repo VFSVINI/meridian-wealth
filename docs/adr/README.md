@@ -10,3 +10,4 @@ ADRs aceitos não são reescritos; uma mudança de rumo gera um ADR novo que sub
 | [003](003-frontend-sem-build.md) | Frontend sem etapa de build | Aceito | 2026-11-20 |
 | [004](004-dados-reais-e-procedencia.md) | Dados 100% reais e procedência explícita | Aceito | 2026-11-20 |
 | [005](005-stream-cripto-com-failover.md) | Stream de cripto com failover e anualização por √365 | Aceito | 2026-11-21 |
+| [006](006-taxonomia-e-dados-oficiais-do-bcb.md) | Taxonomia multi-ativo e dados oficiais do BCB | Aceito | 2026-11-21 |

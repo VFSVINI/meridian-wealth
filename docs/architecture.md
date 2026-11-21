@@ -3,16 +3,17 @@
 Hexagonal estrita ([ADR 001](adr/001-arquitetura-hexagonal.md)), verificada pelo `ArchitectureTest` (ArchUnit) a cada `mvn verify`.
 
 ## Camadas
-- **domain**: `Indicators`, `TimingEngine`, `GeoRiskScorer`, `MarketHours`, `Freshness`, `MacroSnapshot` e registros. Só JDK.
-- **application** (POJOs, sem Spring/Jackson): `MarketService` (estado por ativo só com dados reais, benchmark, sinais, backtest), `BacktestService`, `StreamService`, `StatusService` e as portas `MarketDataPort`, `CacheStore`, `CandleStore`, `SignalStore`, `FundamentalsPort`, `BacktestCache`, `TickSink` e `ProviderStatusSource`.
+- **domain**: taxonomia (`AssetType`, `AssetCategory`, `Indexer`, `IncomeKind`, `CreditProtection`, `PriceSource`), `Rate` e os indicadores do BCB (`RateSeries`, `RateObservation`, `BrazilRates`), `Indicators`, `TimingEngine`, `GeoRiskScorer`, `MarketHours`, `Freshness`, `MacroSnapshot` e registros. Só JDK.
+- **application** (POJOs, sem Spring/Jackson): `MarketService` (estado por ativo só com dados reais, benchmark, sinais, backtest), `BacktestService`, `BrazilRatesService`, `StreamService`, `StatusService` e as portas `MarketDataPort`, `CacheStore`, `CandleStore`, `SignalStore`, `FundamentalsPort`, `BacktestCache`, `BrazilRatesPort`, `TickSink` e `ProviderStatusSource`.
 - **infrastructure** (adaptadores de saída e agendamento)
   - `resilience`: `TokenBucketRateLimiter`, `CircuitBreaker`, `RetryPolicy`, `ResilientExecutor`.
   - `provider`: clientes Yahoo, Stooq, Frankfurter, Finnhub, FRED e RSS (todos `ProviderStatusSource`); `LiveMarketData` (failover, polling e selo de frescor); `LiveMacroData`; `FundamentalsService`.
   - `cache`: `InMemoryCacheStore`, `RedisCacheStore` e `JsonBacktestCache`.
   - `persistence`: `JdbcCandleStore`, `JdbcSignalStore` (Flyway `V1__init.sql`) e versões sem efeito quando o banco está desligado.
   - `stream`: `StreamWebSocketHandler` (canal `TickSink`), `MarketLoop` (agendador) e `ApiRateLimitFilter`.
+  - `bcb`: `BcbClient` (SGS por janela de datas e PTAX do Olinda, valores em `BigDecimal`) e `LiveBrazilRates` (atualização a cada 30 min, último valor bom mantido); implementa `BrazilRatesPort`.
   - `crypto`: `CryptoVenue` (URL, assinatura e parser de Binance, Coinbase e Kraken), `CryptoTick` e `CryptoStreamManager` (failover, backoff, detecção de silêncio e retorno sem lacuna); entrega os preços a `LiveMarketData.onStreamQuote`.
-- **web** (adaptadores de entrada): `MarketController`, `StatusController`, `SseTickSink` (canal SSE) e OpenAPI.
+- **web** (adaptadores de entrada): `MarketController`, `StatusController`, `TaxonomyController`, `BrazilController`, `SseTickSink` (canal SSE) e OpenAPI.
 - **config**: `ApplicationConfig` cria os casos de uso e os liga às portas.
 
 ## Failover de dados (sem simulação)
