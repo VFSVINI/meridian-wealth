@@ -159,6 +159,9 @@ class ApiIntegrationTest {
         var index = rest.postForEntity("/api/suitability/adherence", Map.of("profile", "MODERATE",
                 "holdings", List.of(Map.of("type", "INDICE", "valueBrl", "100"))), Map.class);
         assertThat(index.getStatusCode().value()).isEqualTo(400);
+        var huge = rest.postForEntity("/api/suitability/adherence", "{\"profile\":\"MODERATE\",\"holdings\":[{\"type\":\"ACAO\",\"valueBrl\":1E999999999},"
+                + "{\"type\":\"TESOURO_SELIC\",\"valueBrl\":1}]}", Map.class);
+        assertThat(huge.getStatusCode().value()).isIn(400, 415);
         var empty = rest.postForEntity("/api/suitability/adherence", Map.of("profile", "MODERATE", "holdings", List.of()), Map.class);
         assertThat(empty.getStatusCode().value()).isEqualTo(400);
         var badType = rest.postForEntity("/api/suitability/adherence", Map.of("profile", "MODERATE",

@@ -21,12 +21,24 @@ import java.util.Objects;
 public final class PortfolioAdherence {
     public enum Status { WITHIN, ABOVE, BELOW }
 
+    /** Máximo de dígitos inteiros do valor (R$ 999 trilhões) e de casas decimais aceitas. */
+    public static final int MAX_INTEGER_DIGITS = 15;
+    public static final int MAX_DECIMAL_PLACES = 6;
+
     public record Holding(AssetType type, BigDecimal valueBrl) {
         public Holding {
             Objects.requireNonNull(type, "type");
             Objects.requireNonNull(valueBrl, "valueBrl");
             if (!type.investable()) throw new IllegalArgumentException(type.label() + " é só referência e não entra em carteira");
             if (valueBrl.signum() <= 0) throw new IllegalArgumentException("O valor de " + type.label() + " deve ser positivo");
+            // A magnitude é checada ANTES de qualquer conta: notação científica como 1E5000000 faria a soma alinhar milhões de
+            // dígitos (DoS). Sem zeros à direita a checagem custa O(1), mesmo com expoente absurdo.
+            BigDecimal stripped = valueBrl.stripTrailingZeros();
+            if (stripped.scale() > MAX_DECIMAL_PLACES || (long) stripped.precision() - stripped.scale() > MAX_INTEGER_DIGITS) {
+                throw new IllegalArgumentException("O valor de " + type.label() + " está fora do intervalo aceito (até "
+                        + MAX_INTEGER_DIGITS + " dígitos inteiros e " + MAX_DECIMAL_PLACES + " casas decimais)");
+            }
+            valueBrl = valueBrl.scale() < 0 ? valueBrl.setScale(0) : valueBrl;
         }
     }
 
