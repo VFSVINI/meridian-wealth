@@ -17,6 +17,7 @@ Referência operacional das bolsas acompanhadas e das fontes de cotação, com o
 | Tadawul | Oriente Médio/África | Asia/Riyadh | 10:00–15:00, de domingo a quinta | **não verificado** | — |
 | Johannesburgo (JSE) | Oriente Médio/África | Africa/Johannesburg | 09:00–17:00 | **não verificado** | — |
 | Mercado global 24h | Global | UTC | domingo 22:00 a sexta 22:00 (câmbio e futuros) | não se aplica | — |
+| Cripto 24/7 | Cripto | UTC | sempre aberto; a barra diária fecha à meia-noite UTC | não se aplica | — |
 
 "Não verificado" significa que o sistema conhece fuso, sessões e fim de semana, mas **não** os feriados: em um feriado local, o pregão pode aparecer como aberto. O painel marca essas bolsas com `*` e a API devolve `holidaysVerified: false`. Os testes em `MarketHoursTest` comparam os calendários conferidos dia a dia com as listas oficiais de 2026.
 
@@ -36,8 +37,31 @@ Medições de 2026-11-20 (sexta-feira, após o fechamento de NYSE e com a B3 em 
 
 Tempo real verdadeiro de B3 e de bolsas europeias exige feed pago. O adapter `PaidQuoteFeed` permite ligar um provedor contratado sem mudar o restante do sistema.
 
+## Cripto (24/7)
+
+BTC, ETH, SOL e XRP. Histórico diário de 2 anos pela Yahoo (`BTC-USD` etc., 731 barras em UTC, a barra de hoje já com o preço atual) e preço ao vivo por WebSocket, com failover automático entre as bolsas ([ADR 005](adr/005-stream-cripto-com-failover.md)). Volatilidade anualizada por **√365**, beta de 90 barras contra o BTC.
+
+| Ordem | Bolsa | Endpoint | Canal | Moeda | Cadência observada | Abertura do handshake |
+|---|---|---|---|---|---|---|
+| 1 | Binance | `wss://stream.binance.com:9443/stream?streams=<par>@miniTicker` | `miniTicker` (último preço de cada segundo) | USDT | 1 mensagem por par por segundo | 1,85 s |
+| 2 | Coinbase Exchange | `wss://ws-feed.exchange.coinbase.com` | `ticker` (a cada negócio) | USD | ~136 ms entre mensagens (2 pares) | 1,70 s |
+| 3 | Kraken | `wss://ws.kraken.com/v2` | `ticker` (a cada negócio) | USD | ~405 ms entre mensagens (2 pares) | 1,42 s |
+
+Medido em 2026-11-21 a partir do Brasil, 10 s de captura por bolsa (as mensagens gravadas estão em `src/test/resources/fixtures/crypto`). Nenhuma das três bloqueou o acesso daqui.
+
+Regras do failover (resumo; detalhes no ADR 005):
+
+- HTTP 451 ou 403 no handshake: a bolsa fica isolada por 30 min e o stream passa à próxima.
+- Falha de rede: backoff de 1 s a 60 s; 3 falhas seguidas isolam a bolsa por 5 min.
+- Conexão sem nenhuma mensagem por 20 s: derrubada e contada como falha.
+- A bolsa preferida volta a ser usada sem lacuna: a nova conexão abre antes de a antiga fechar.
+- O `/api/status` mostra a bolsa em uso e o estado das outras (conectada, em espera ou isolada, com o motivo e quando volta).
+
+Limites honestos: a Binance cota em USDT e as demais em USD (degrau no preço ao trocar de bolsa); o miniTicker da Binance é o último preço por segundo, não cada negócio; o bloqueio regional real (HTTP 451) ainda **não foi observado**, só simulado nos testes.
+
 ## Pendências de validação
 
 - Medir o atraso real (negócio → publicação) da Yahoo e do brapi com o pregão aberto.
 - Validar a Finnhub (REST e WebSocket) com uma chave gratuita: confirmar o selo "tempo real" na prática.
 - Conferir os calendários das bolsas marcadas como "não verificado" contra as páginas oficiais.
+- Validar o failover contra um bloqueio regional real (HTTP 451 da Binance) rodando de um servidor em região bloqueada, por exemplo no deploy do PR #21 do roadmap.

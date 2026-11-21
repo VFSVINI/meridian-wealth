@@ -11,6 +11,7 @@ Hexagonal estrita ([ADR 001](adr/001-arquitetura-hexagonal.md)), verificada pelo
   - `cache`: `InMemoryCacheStore`, `RedisCacheStore` e `JsonBacktestCache`.
   - `persistence`: `JdbcCandleStore`, `JdbcSignalStore` (Flyway `V1__init.sql`) e versões sem efeito quando o banco está desligado.
   - `stream`: `StreamWebSocketHandler` (canal `TickSink`), `MarketLoop` (agendador) e `ApiRateLimitFilter`.
+  - `crypto`: `CryptoVenue` (URL, assinatura e parser de Binance, Coinbase e Kraken), `CryptoTick` e `CryptoStreamManager` (failover, backoff, detecção de silêncio e retorno sem lacuna); entrega os preços a `LiveMarketData.onStreamQuote`.
 - **web** (adaptadores de entrada): `MarketController`, `StatusController`, `SseTickSink` (canal SSE) e OpenAPI.
 - **config**: `ApplicationConfig` cria os casos de uso e os liga às portas.
 
