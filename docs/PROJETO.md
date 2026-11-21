@@ -36,6 +36,22 @@
 - Fechamento de milestone: CHANGELOG, tag `v0.<N>.0` e GitHub Release em português.
 - Git: usuário `VFSVINI`, e-mail `vfs2@cin.ufpe.br`; `.gitattributes` com `eol=lf`.
 
+### 2.4 Login com Google (escopo incorporado em 2026-11-21)
+
+Decisão de escopo: a plataforma passa a oferecer **Sign in with Google** além do login por senha. Implementação nos itens #11 (backend) e #15 (front-end); nada é implementado antes deles.
+
+**Backend (item #11, Milestone 3):**
+- Autenticação por **Google OAuth2 / ID Token**: o backend valida o token do Google (assinatura pelas chaves públicas do Google, `iss`, `aud` igual ao `MW_GOOGLE_CLIENT_ID`, `exp` e `email_verified`) e então emite o **mesmo JWT interno + refresh token** do MeridianWealth. A autorização da API continua única, sem tratamento especial por provedor.
+- **Provisionamento automático** no primeiro login com Google: `email`, `nome`, `avatar_url` e `auth_provider = GOOGLE`. Sem perfil de investidor cadastrado, o usuário é levado ao fluxo de Suitability (item #8).
+- Variáveis `MW_GOOGLE_CLIENT_ID` e `MW_GOOGLE_CLIENT_SECRET`: nunca no código, documentadas no `.env.example` e no `README.md`, com o passo a passo do Google Cloud Console para `localhost` e para Hugging Face Spaces (origens e URIs de redirecionamento autorizadas).
+- **Degradação elegante (obrigatória):** `GET /api/auth/config` público devolve `{ "googleLoginEnabled": true|false }`. Sem `MW_GOOGLE_CLIENT_ID` (ambiente local ou CI) a aplicação sobe normalmente e apenas sinaliza que o provedor não está configurado.
+- Conta com o mesmo e-mail de um cadastro por senha: nunca vinculada em silêncio (regra a definir no ADR do item #11, com `email_verified` obrigatório).
+
+**Front-end (item #15, Milestone 4):**
+- Botão **"Continuar com Google"** na tela/modal de login e cadastro, seguindo as diretrizes visuais do Google dentro do tema *Private Banking Dark Luxury*.
+- Consome `/api/auth/config`: com o provedor desativado, o botão aparece desabilitado com aviso claro de que a chave não está configurada neste ambiente.
+- A stack do front-end segue o ADR 003 (sem etapa de build) até que um novo ADR a substitua; o critério acima vale em qualquer stack.
+
 ## 3. Roadmap
 
 Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são criadas no início de cada milestone.
@@ -55,13 +71,13 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 - [ ] **#10** Tradutor geopolítico de carteira e motor de teses institucionais (genéricas, sem posições reais).
 
 ### Milestone 3 — Segurança Zero-Trust, Concorrência & Resiliência Sênior
-- [ ] **#11** JWT com refresh, hash forte, rate limit por usuário/IP com `X-Forwarded-For` confiável (dívida 5), isolation guard, CORS/CSP, modo demo.
+- [ ] **#11** JWT com refresh, hash forte, rate limit por usuário/IP com `X-Forwarded-For` confiável (dívida 5), isolation guard, CORS/CSP, modo demo e **Login com Google** (seção 2.4).
 - [ ] **#12** Persistência multi-ativo (`V2__users_and_portfolio.sql`), preço médio ponderado, BRL/USD, `@Version`.
 - [ ] **#13** Livro de movimentações (`V3__portfolio_transactions.sql`), `Idempotency-Key`, domain events, IR.
 - [ ] **#14** Observabilidade e FinOps (Correlation-ID, Micrometer por provedor, health checks); dívidas 3 e 4.
 
 ### Milestone 4 — Interface Dark Luxury, Mapas & Home Broker
-- [ ] **#15** Protótipo visual + painel "Minha Carteira" (ECharts, montador de perfil).
+- [ ] **#15** Protótipo visual + painel "Minha Carteira" (ECharts, montador de perfil) e botão **"Continuar com Google"** na tela de login e cadastro (seção 2.4).
 - [ ] **#16** Mapa interativo de ativos reais (Leaflet, dark tiles, satélite/Street View).
 - [ ] **#17** Shopping financeiro multi-classe e cockpit home broker (Lightweight Charts, paleta de comandos).
 
