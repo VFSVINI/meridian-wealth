@@ -92,6 +92,8 @@ class BcbClientTest {
         assertThat(ptax.sell()).isEqualByComparingTo("5.8889");
         assertThat(ptax.time()).isEqualTo(LocalDateTime.parse("2026-11-19T13:04:18.325373"));
         assertThat(ptax.sell()).isGreaterThan(ptax.buy());
+        assertThat(ptax.buy().toPlainString()).as("escala exata do BCB, com o zero final").isEqualTo("5.88830");
+        assertThat(ptax.sell().toPlainString()).isEqualTo("5.88890");
     }
 
     @Test void ptaxToleratesVariableFractionDigitsAndRejectsIncompleteAnswers() throws IOException {

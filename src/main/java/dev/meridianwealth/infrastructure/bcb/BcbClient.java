@@ -3,6 +3,7 @@ package dev.meridianwealth.infrastructure.bcb;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.cfg.JsonNodeFeature;
 import dev.meridianwealth.application.ProviderStatus;
 import dev.meridianwealth.application.port.ProviderStatusSource;
 import dev.meridianwealth.infrastructure.provider.HttpGateway;
@@ -43,7 +44,10 @@ public class BcbClient implements ProviderStatusSource {
     /** PTAX do dia: compra, venda e o horário da cotação (hora de Brasília). */
     public record Ptax(BigDecimal buy, BigDecimal sell, LocalDateTime time) {}
 
-    private static final ObjectMapper JSON = new ObjectMapper().enable(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS);
+    /** Decimais exatos e sem apagar zeros à direita: o valor sai com a escala que o BCB publicou. */
+    private static final ObjectMapper JSON = new ObjectMapper()
+            .enable(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS)
+            .configure(JsonNodeFeature.STRIP_TRAILING_BIGDECIMAL_ZEROES, false);
     private static final DateTimeFormatter SGS_DATE = DateTimeFormatter.ofPattern("dd/MM/uuuu");
     private static final DateTimeFormatter OLINDA_DATE = DateTimeFormatter.ofPattern("MM-dd-uuuu");
     private static final DateTimeFormatter OLINDA_TIME = new DateTimeFormatterBuilder()
