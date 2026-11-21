@@ -36,8 +36,9 @@ public class BrazilRatesService {
     public List<Item> items() {
         BrazilRates rates = port.current();
         LocalDate today = today();
+        Instant now = clock.instant();
         return Arrays.stream(RateSeries.values()).map(series -> rates.get(series)
-                .map(o -> new Item(series, o, o.isStale(today) ? Status.STALE : Status.OK, o.ageDays(today)))
+                .map(o -> new Item(series, o, o.isStale(today, now) ? Status.STALE : Status.OK, o.ageDays(today)))
                 .orElseGet(() -> new Item(series, null, Status.UNAVAILABLE, null))).toList();
     }
 }

@@ -41,7 +41,8 @@ class LiveBrazilRatesTest {
         assertThat(r.get(RateSeries.PTAX_BUY).orElseThrow().value()).isEqualByComparingTo("5.8883");
         assertThat(r.get(RateSeries.PTAX_SELL).orElseThrow().value()).isEqualByComparingTo("5.8889");
         assertThat(r.get(RateSeries.PTAX_SELL).orElseThrow().date()).isEqualTo(LocalDate.parse("2026-11-19"));
-        assertThat(r.observations().values()).noneMatch(o -> o.isStale(TODAY));
+        assertThat(r.observations().values()).noneMatch(o -> o.isStale(TODAY, NOW));
+        assertThat(r.observations().values()).allMatch(o -> o.confirmedAt().equals(NOW));
     }
 
     @Test void queriesUseTheDocumentedWindows() {
@@ -96,6 +97,62 @@ class LiveBrazilRatesTest {
         stale.set(true);
         rates.refresh();
         assertThat(rates.current().get(RateSeries.SELIC_TARGET).orElseThrow().value()).isEqualByComparingTo("13.75");
+    }
+
+    @Test void anEqualValueRenewsTheConfirmationButAnOlderOneIsStillIgnored() {
+        FixtureHttpGateway fixtures = new FixtureHttpGateway();
+        java.util.concurrent.atomic.AtomicReference<Instant> clockNow = new java.util.concurrent.atomic.AtomicReference<>(NOW);
+        Clock moving = new Clock() {
+            @Override public ZoneId getZone() { return ZoneId.of("America/Sao_Paulo"); }
+
+            @Override public Clock withZone(ZoneId zone) { return this; }
+
+            @Override public Instant instant() { return clockNow.get(); }
+        };
+        LiveBrazilRates rates = new LiveBrazilRates(new BcbClient(fixtures, ResilientExecutor.withDefaults("BCB", 1000, 1000.0)), true, moving);
+        rates.refresh();
+        Instant firstConfirmation = rates.current().get(RateSeries.CDI_DAILY).orElseThrow().confirmedAt();
+
+        clockNow.set(NOW.plus(java.time.Duration.ofMinutes(30)));
+        rates.refresh();
+        RateObservation again = rates.current().get(RateSeries.CDI_DAILY).orElseThrow();
+        assertThat(again.value()).isEqualByComparingTo("0.050788");
+        assertThat(again.confirmedAt()).as("mesmo valor e mesma data: só a confirmação anda").isAfter(firstConfirmation);
+        assertThat(rates.current().fetchedAt()).isEqualTo(NOW.plus(java.time.Duration.ofMinutes(30)));
+    }
+
+    @Test void concurrentRefreshesNeverOverlapOnTheNetwork() throws Exception {
+        java.util.concurrent.atomic.AtomicInteger inFlight = new java.util.concurrent.atomic.AtomicInteger();
+        java.util.concurrent.atomic.AtomicInteger peak = new java.util.concurrent.atomic.AtomicInteger();
+        FixtureHttpGateway fixtures = new FixtureHttpGateway();
+        HttpGateway gw = (url, h) -> {
+            peak.accumulateAndGet(inFlight.incrementAndGet(), Math::max);
+            try {
+                Thread.sleep(15);
+                return fixtures.get(url, h);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new IOException(e);
+            } finally {
+                inFlight.decrementAndGet();
+            }
+        };
+        LiveBrazilRates rates = live(gw, true);
+        java.util.concurrent.ExecutorService pool = java.util.concurrent.Executors.newFixedThreadPool(2);
+        java.util.concurrent.CountDownLatch start = new java.util.concurrent.CountDownLatch(1);
+        java.util.List<java.util.concurrent.Future<?>> jobs = new java.util.ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            jobs.add(pool.submit(() -> {
+                start.await();
+                rates.refresh();
+                return null;
+            }));
+        }
+        start.countDown();
+        for (java.util.concurrent.Future<?> f : jobs) f.get();
+        pool.shutdown();
+        assertThat(peak.get()).as("duas rodadas simultâneas disputariam a cota do BCB e o mesmo retrato").isEqualTo(1);
+        assertThat(rates.current().observations()).hasSize(RateSeries.values().length);
     }
 
     @Test void disabledNeverCallsTheBcb() {

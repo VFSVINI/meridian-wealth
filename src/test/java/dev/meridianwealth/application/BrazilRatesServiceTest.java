@@ -22,7 +22,7 @@ class BrazilRatesServiceTest {
     }
 
     private static RateObservation obs(RateSeries s, String value, String date) {
-        return new RateObservation(s, new BigDecimal(value), LocalDate.parse(date));
+        return new RateObservation(s, new BigDecimal(value), LocalDate.parse(date), Instant.parse("2026-11-21T12:00:00Z"));
     }
 
     @Test void everyIndicatorAppearsEvenWithoutDataAndNothingIsInvented() {
@@ -47,11 +47,24 @@ class BrazilRatesServiceTest {
 
         assertThat(byKey.get(RateSeries.CDI_DAILY).status()).isEqualTo(Status.OK);
         assertThat(byKey.get(RateSeries.CDI_DAILY).ageDays()).isEqualTo(2);
-        assertThat(byKey.get(RateSeries.SELIC_TARGET).status()).as("11 dias sem atualizar uma série diária").isEqualTo(Status.STALE);
+        assertThat(byKey.get(RateSeries.SELIC_TARGET).status()).as("série preenchida para a frente: a data não conta, e a confirmação é de 3 h atrás").isEqualTo(Status.OK);
         assertThat(byKey.get(RateSeries.IPCA_MONTHLY).status()).as("51 dias é normal para o IPCA mensal").isEqualTo(Status.OK);
         assertThat(byKey.get(RateSeries.PTAX_SELL).status()).isEqualTo(Status.UNAVAILABLE);
         assertThat(s.fetchedAt()).isEqualTo(Instant.parse("2026-11-21T12:00:00Z"));
         assertThat(s.today()).isEqualTo(LocalDate.parse("2026-11-21"));
+    }
+
+    @Test void staleWhenTheCollectionStoppedEvenIfTheDateIsToday() {
+        BrazilRates rates = new BrazilRates(Map.of(
+                RateSeries.SELIC_TARGET, obs(RateSeries.SELIC_TARGET, "13.75", "2026-11-21"),
+                RateSeries.PTAX_SELL, obs(RateSeries.PTAX_SELL, "5.88890", "2026-11-19")), Instant.parse("2026-11-21T12:00:00Z"));
+        // Cinco horas depois da última confirmação (12:00 UTC), com a data da Selic ainda "de hoje".
+        Clock later = Clock.fixed(Instant.parse("2026-11-21T17:00:00Z"), ZoneId.of("America/Sao_Paulo"));
+        Map<RateSeries, BrazilRatesService.Item> byKey = new java.util.EnumMap<>(RateSeries.class);
+        new BrazilRatesService(() -> rates, later).items().forEach(i -> byKey.put(i.series(), i));
+        assertThat(byKey.get(RateSeries.SELIC_TARGET).status()).isEqualTo(Status.STALE);
+        assertThat(byKey.get(RateSeries.PTAX_SELL).status()).isEqualTo(Status.STALE);
+        assertThat(byKey.get(RateSeries.CDI_DAILY).status()).as("nunca coletado continua sem dado").isEqualTo(Status.UNAVAILABLE);
     }
 
     @Test void todayFollowsTheBrasiliaCalendarNotUtc() {

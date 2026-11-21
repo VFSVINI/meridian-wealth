@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Map;
@@ -45,18 +46,48 @@ class RateTest {
         assertThat(Rate.ofPercent("1").compareTo(Rate.ofPercent("2"))).isNegative();
     }
 
+    private static final Instant NOW = Instant.parse("2026-11-21T13:00:00Z");
+
     @Test void dailySeriesBecomeStaleAfterFiveDaysAndMonthlyAfterSeventyFive() {
         LocalDate today = LocalDate.parse("2026-11-21");
-        RateObservation cdi = new RateObservation(RateSeries.CDI_DAILY, new BigDecimal("0.050788"), LocalDate.parse("2026-11-16"));
+        RateObservation cdi = new RateObservation(RateSeries.CDI_DAILY, new BigDecimal("0.050788"), LocalDate.parse("2026-11-16"), NOW);
         assertThat(cdi.ageDays(today)).isEqualTo(5);
-        assertThat(cdi.isStale(today)).isFalse();
-        assertThat(cdi.isStale(today.plusDays(1))).isTrue();
+        assertThat(cdi.isStale(today, NOW)).isFalse();
+        assertThat(cdi.isStale(today.plusDays(1), NOW)).isTrue();
 
-        RateObservation ipca = new RateObservation(RateSeries.IPCA_MONTHLY, new BigDecimal("0.14"), LocalDate.parse("2026-10-01"));
+        RateObservation ipca = new RateObservation(RateSeries.IPCA_MONTHLY, new BigDecimal("0.14"), LocalDate.parse("2026-10-01"), NOW);
         assertThat(ipca.ageDays(today)).isEqualTo(51);
-        assertThat(ipca.isStale(today)).isFalse();
-        assertThat(ipca.isStale(LocalDate.parse("2026-12-16"))).isTrue();
+        assertThat(ipca.isStale(today, NOW)).isFalse();
+        assertThat(ipca.isStale(LocalDate.parse("2026-12-16"), NOW)).isTrue();
         assertThat(cdi.ageDays(LocalDate.parse("2026-11-01"))).as("data futura não gera idade negativa").isZero();
+    }
+
+    @Test void aSeriesFilledForwardIsNeverJudgedByItsDateButByTheLastConfirmation() {
+        LocalDate today = LocalDate.parse("2026-11-21");
+        // A série 432 sempre tem um ponto com a data de hoje: a data não prova que algo foi publicado.
+        RateObservation selic = new RateObservation(RateSeries.SELIC_TARGET, new BigDecimal("13.75"), today, NOW);
+        assertThat(selic.ageDays(today)).isZero();
+        assertThat(selic.isStale(today, NOW)).isFalse();
+        assertThat(selic.isStale(today, NOW.plus(Duration.ofHours(3)))).as("exatamente 3 h ainda vale").isFalse();
+        assertThat(selic.isStale(today, NOW.plus(Duration.ofHours(3)).plusSeconds(1)))
+                .as("coleta parada: a data de hoje não salva o valor").isTrue();
+        assertThat(selic.confirmationOverdue(NOW.plus(Duration.ofDays(2)))).isTrue();
+        assertThat(RateSeries.SELIC_TARGET.forwardFilled()).isTrue();
+        assertThat(RateSeries.SELIC_TARGET.dateLabel()).isEqualTo("vigente em");
+        assertThat(RateSeries.CDI_DAILY.forwardFilled()).isFalse();
+        assertThat(RateSeries.CDI_DAILY.dateLabel()).isEqualTo("referência");
+    }
+
+    @Test void aFailingCollectionMakesEvenAFreshDatedSeriesStale() {
+        LocalDate today = LocalDate.parse("2026-11-21");
+        RateObservation cdi = new RateObservation(RateSeries.CDI_DAILY, new BigDecimal("0.050788"), LocalDate.parse("2026-11-19"), NOW);
+        assertThat(cdi.isStale(today, NOW.plus(Duration.ofHours(1)))).isFalse();
+        assertThat(cdi.isStale(today, NOW.plus(Duration.ofHours(4)))).as("data de 2 dias, mas sem confirmar há 4 h").isTrue();
+    }
+
+    @Test void compoundingRejectsPeriodsBeyondWhatBigDecimalCanRaise() {
+        assertThatThrownBy(() -> Rate.ofPercent("1").compoundedOver(Rate.MAX_PERIODS + 1))
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("999999999");
     }
 
     @Test void brazilRatesNeverInventMissingIndicators() {
@@ -64,7 +95,7 @@ class RateTest {
         assertThat(none.fetchedAt()).isNull();
         assertThat(none.get(RateSeries.SELIC_TARGET)).isEmpty();
 
-        RateObservation selic = new RateObservation(RateSeries.SELIC_TARGET, new BigDecimal("13.75"), LocalDate.parse("2026-11-21"));
+        RateObservation selic = new RateObservation(RateSeries.SELIC_TARGET, new BigDecimal("13.75"), LocalDate.parse("2026-11-21"), NOW);
         BrazilRates one = none.with(RateSeries.SELIC_TARGET, selic, Instant.parse("2026-11-21T10:00:00Z"));
         assertThat(one.get(RateSeries.SELIC_TARGET)).contains(selic);
         assertThat(one.get(RateSeries.CDI_DAILY)).isEmpty();
