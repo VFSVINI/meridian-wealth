@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: chronosquant
+  threads:
+    virtual:
+      enabled: true
+  task:
+    scheduling:
+      pool:
+        size: 4
+  # Sem Docker: Postgres e Redis ficam fora. No Compose, CQ_EXCLUDE_AUTOCONFIG vazio liga ambos.
+  autoconfigure:
+    exclude: ${CQ_EXCLUDE_AUTOCONFIG:org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration,org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration,org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration,org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration,org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration}
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/chronosquant}
+    username: ${DB_USER:chronos}
+    password: ${DB_PASSWORD:chronos}
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+server:
+  port: 8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+chronosquant:
+  data:
+    mode: ${CQ_DATA_MODE:auto}          # auto = provedores reais com fallback simulado | simulated
+    history-bars: 500
+    poll-open-seconds: 30
+    poll-closed-seconds: 600
+  finnhub:
+    api-key: ${FINNHUB_API_KEY:}
+  fred:
+    api-key: ${FRED_API_KEY:}
+  stream:
+    flow-default: true
+  cache:
+    type: ${CQ_CACHE_TYPE:memory}        # memory | redis
+    quote-ttl-seconds: 25
+  persistence:
+    enabled: ${CQ_PERSISTENCE:false}
+  rate-limit:
+    api-per-minute: 300

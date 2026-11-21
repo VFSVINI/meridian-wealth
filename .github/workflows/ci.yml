@@ -1,0 +1,23 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+      - name: Build, testes, Checkstyle e Spotless
+        run: mvn -B verify
+        env:
+          CQ_DATA_MODE: simulated
+      - name: Valida o Compose
+        run: docker compose config -q
+      - name: Build da imagem
+        run: docker build -t chronosquant:ci .
