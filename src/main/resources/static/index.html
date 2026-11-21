@@ -65,7 +65,7 @@ footer{padding:8px 16px;border-top:1px solid var(--line);color:var(--mute);font-
 <header>
   <div class="brand">MeridianWealth<small>inteligência patrimonial e risco</small></div>
   <div class="ctl">
-    <select id="region" aria-label="Região"><option value="">Todas as regiões</option><option>EUA</option><option>Brasil</option><option>Europa</option><option>Ásia</option><option>Oceania</option><option>Oriente Médio/África</option><option>Global</option></select>
+    <select id="region" aria-label="Região"><option value="">Todas as regiões</option><option>EUA</option><option>Brasil</option><option>Europa</option><option>Ásia</option><option>Oceania</option><option>Oriente Médio/África</option><option>Cripto</option><option>Global</option></select>
     <select id="sigf" aria-label="Sinal"><option value="">Todos os sinais</option></select>
     <input id="q" placeholder="Buscar ativo" aria-label="Buscar ativo">
     <span class="clock" id="clock"></span>
@@ -206,11 +206,13 @@ function renderList(){
 function renderProv(){
   const r=rows[sel];if(!r){$('#hProv').innerHTML='';return}
   if(!hasData(r)){$('#hProv').innerHTML='<span class="fresh dn">sem dado em tempo real</span><span>nenhum provedor respondeu e não há dado real gravado</span>';return}
-  const next=r.nextUpdateAt?Math.max(0,Math.round((r.nextUpdateAt-Date.now())/1000)):null;
+  const streaming=/ WS$/.test(r.source||'');
+  const next=!streaming&&r.nextUpdateAt?Math.max(0,Math.round((r.nextUpdateAt-Date.now())/1000)):null;
   const when=r.status==='STORED'?`último dado real em <b>${dt(r.quoteTime)}</b>`:r.freshness==='END_OF_DAY'?`<b>${quoteWhen(r)}</b>`:`cotação de <b>${tm(r.quoteTime)}</b>`;
   $('#hProv').innerHTML=`${freshChip(r)}<span>fonte <b>${r.source}</b></span><span>${when}</span>`
    +(r.status==='STORED'?'<span class="dn">sem dado em tempo real</span>':'')
    +(isStale(r)?'<span class="dn">cotação desatualizada: o provedor não respondeu nas últimas consultas</span>':'')
+   +(streaming?'<span>stream ao vivo: cada preço chega assim que a bolsa o publica</span>':'')
    +(next!=null&&!paused?`<span>próxima atualização em <b class="num">${next}s</b></span>`:'')
    +`<span>pregão ${r.marketOpen?'aberto':'fechado'}</span>`;
 }
@@ -244,15 +246,15 @@ async function loadSignals(){
 }
 async function loadStatus(){
   const st=await j('/api/status').catch(()=>null);if(!st)return;
-  const c={CLOSED:'up',HALF_OPEN:'warn',OPEN:'dn'};
-  $('#status').innerHTML=st.providers.map(p=>`<div style="display:flex;justify-content:space-between"><span>${p.name}${p.enabled?'':' (sem chave)'}</span><span class="${p.enabled?c[p.circuit]:'mute'}">${p.circuit}</span><span class="num mute">${p.successes}/${p.failures}</span></div>`).join('')
+  const c={CLOSED:'up',HALF_OPEN:'warn',OPEN:'dn',CONECTADO:'up',RECONECTANDO:'warn',DESLIGADO:'mute'};
+  $('#status').innerHTML=st.providers.map(p=>`<div style="display:flex;justify-content:space-between"><span>${p.name}${p.enabled?'':' (sem chave)'}</span><span class="${p.enabled?c[p.circuit]:'mute'}">${p.circuit}</span><span class="num mute">${p.successes}/${p.failures}</span></div>${p.detail?`<div class="src" style="margin:-1px 0 5px">${p.detail}</div>`:''}`).join('')
    +`<div style="margin-top:6px">Cache: <b>${st.cache}</b> · Banco: <b>${st.persistence?'ligado':'desligado'}</b></div><div>Conexões: ${(st.channels||[]).map(c=>c.name+' '+c.clients).join(' · ')}</div>`;
 }
 setInterval(loadStatus,10000);setInterval(()=>{if(sel&&!paused){loadMicro();loadSignals()}},30000);
 
 function renderDetail(){
   const u=universe.find(x=>x.symbol===sel);if(!u)return;
-  $('#hSym').textContent=sel;$('#hName').textContent=u.name+' · '+u.assetClass+' · '+(u.exchange||'')+' · '+(u.currency||'');
+  $('#hSym').textContent=sel;$('#hName').textContent=u.name+' · '+u.assetClass+' · '+(EXS[u.exchange]||u.exchange||'')+' · '+(u.currency||'');
   renderProv();
   const c=candles[candles.length-1];
   $('#empty').hidden=!!c;
@@ -280,8 +282,9 @@ function renderDetail(){
    <div><span>Risco</span><span>${RISK[A.risk]}</span></div><div><span>Exposição sugerida</span><span class="num">${pc(A.suggestedExposure)}</span></div>
    <div><span>Entrada</span><span class="num">${f(A.entryLow)}–${f(A.entryHigh)}</span></div><div><span>Invalidação</span><span class="num dn">${f(A.invalidation)}</span></div>
    <div><span>Alvo 1</span><span class="num warn">${f(A.target1)}</span></div><div><span>Alvo 2</span><span class="num warn">${f(A.target2)}</span></div></div>`;
-  const m=[['Z-Score (50)',f(A.zScore)],['Percentil',f(A.percentile,0)+'%'],['RSI (14)',f(A.rsi,0)],['MACD hist.',f(A.macdHist,3)],['Vol. anual.',pc(A.annVol)],['Max drawdown',pc(A.maxDrawdown)],
+  const m=[['Z-Score (50)',f(A.zScore)],['Percentil',f(A.percentile,0)+'%'],['RSI (14)',f(A.rsi,0)],['MACD hist.',f(A.macdHist,3)],[`Vol. anual. (√${A.periodsPerYear})`,pc(A.annVol)],['Max drawdown',pc(A.maxDrawdown)],
    ['Sharpe',f(A.sharpe)],['VaR 95% (1 barra)',pc(A.var95)],['ATR (14)',f(A.atr)],['Valor justo (SMA50)',f(A.fairValue)],['Upside',pc(A.upside)],['Downside',pc(A.downside)],['Risco/retorno',f(A.riskReward)],['Expectativa',pc(A.expectedValue,2)],['Força relativa',(A.relStrength>=0?'+':'')+f(A.relStrength*100)+' pp'],['Volume relativo',f(A.relVolume)+'x']];
+  if(A.beta!=null){const bn=(universe.find(x=>x.symbol===sel)||{}).benchmark||'benchmark';m.push([`Beta vs ${bn} (90)`,f(A.beta)])}
   $('#metrics').innerHTML=m.map(([k,v])=>`<div><span>${k}</span><span class="num">${v}</span></div>`).join('');
   $('#why').innerHTML=A.factors.map(x=>`<li style="--c:${SIDE[x.side]}"><b class="mono" style="color:${SIDE[x.side]};font-size:11px">${x.side}</b> ${x.text}</li>`).join('');
 }
@@ -356,7 +359,7 @@ cv.addEventListener('mouseleave',()=>{hover=-1;$('#tip').style.display='none';dr
 addEventListener('resize',draw);
 
 /* ---------- relógio de mercados (estado calculado no servidor, com feriados oficiais) ---------- */
-const EXS={NYSE:'NYSE',B3:'B3',XETRA:'Xetra',LSE:'LSE',EURONEXT_AMS:'Euronext',TSE:'Tóquio',HKEX:'HK',ASX:'ASX',TADAWUL:'Tadawul',JSE:'JSE',GLOBAL_24H:'FX'};
+const EXS={NYSE:'NYSE',B3:'B3',XETRA:'Xetra',LSE:'LSE',EURONEXT_AMS:'Euronext',TSE:'Tóquio',HKEX:'HK',ASX:'ASX',TADAWUL:'Tadawul',JSE:'JSE',GLOBAL_24H:'FX',CRYPTO:'Cripto'};
 async function clock(){
   const ms=await j('/api/markets').catch(()=>null);if(!ms)return;
   $('#clock').innerHTML=ms.map(m=>{const st=m.open?'<b>aberto</b>':m.holiday?'<i>feriado</i>':'<u>fechado</u>';
