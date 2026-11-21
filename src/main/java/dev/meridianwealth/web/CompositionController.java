@@ -56,9 +56,9 @@ public class CompositionController {
                             BigDecimal areaM2, String publishedArea, BigDecimal areaSharePercent, BigDecimal vacancyPercent,
                             BigDecimal revenueSharePercent, List<TenantSector> tenantSectors, CoordinatesView coordinates,
                             String noCoordinatesReason) {
-        static AssetView of(FundComposition f, RealAsset a) {
+        static AssetView of(FundComposition f, RealAsset a, BigDecimal listedTotalM2) {
             return new AssetView(a.id(), a.name(), a.publishedAddress(), a.city(), a.uf(),
-                    a.kind() == null ? null : a.kind().name(), a.areaM2(), a.publishedArea(), f.areaSharePercent(a),
+                    a.kind() == null ? null : a.kind().name(), a.areaM2(), a.publishedArea(), f.areaSharePercent(a, listedTotalM2),
                     a.vacancyPercent(), a.revenueSharePercent(), a.tenantSectors(),
                     a.coordinates() == null ? null : CoordinatesView.of(a.coordinates()), a.noCoordinatesReason());
         }
@@ -70,9 +70,10 @@ public class CompositionController {
                                   List<AssetView> assets, List<Allocation> allocations, Map<String, BigDecimal> totalsBrl,
                                   List<String> notices, String attribution, String disclaimer) {
         static CompositionView of(FundComposition f) {
+            BigDecimal total = f.listedAreaM2();
             return new CompositionView(f.fundSymbol(), f.fundName(), f.cnpj(), SourceView.of(f.source()), f.areaLabel(),
-                    f.declaredAssetCount(), f.assets().size(), (int) f.geolocatedCount(), f.listedAreaM2(), f.metrics(),
-                    f.classification(), f.assets().stream().map(a -> AssetView.of(f, a)).toList(), f.allocations(),
+                    f.declaredAssetCount(), f.assets().size(), (int) f.geolocatedCount(), total, f.metrics(),
+                    f.classification(), f.assets().stream().map(a -> AssetView.of(f, a, total)).toList(), f.allocations(),
                     f.totalsBrl(), f.notices(), ATTRIBUTION, DISCLAIMER);
         }
     }
@@ -90,7 +91,9 @@ public class CompositionController {
 
     @GetMapping("/geo")
     public GeoView geo() {
-        List<GeoPoint> points = service.geolocated().stream().map(CompositionController::point).toList();
+        Map<String, BigDecimal> totals = new java.util.HashMap<>();
+        List<GeoPoint> points = service.geolocated().stream()
+                .map(g -> point(g, totals.computeIfAbsent(g.fund().fundSymbol(), k -> g.fund().listedAreaM2()))).toList();
         return new GeoView(points, ATTRIBUTION, DISCLAIMER);
     }
 
@@ -99,9 +102,9 @@ public class CompositionController {
         return CompositionView.of(service.composition(symbol.toUpperCase(java.util.Locale.ROOT)));
     }
 
-    private static GeoPoint point(GeoAsset g) {
+    private static GeoPoint point(GeoAsset g, BigDecimal listedTotalM2) {
         SourceRef s = g.fund().source();
-        return new GeoPoint(g.fund().fundSymbol(), s.kind().name(), s.name(), s.referenceDate(), AssetView.of(g.fund(), g.asset()));
+        return new GeoPoint(g.fund().fundSymbol(), s.kind().name(), s.name(), s.referenceDate(), AssetView.of(g.fund(), g.asset(), listedTotalM2));
     }
 
     @RestControllerAdvice(assignableTypes = CompositionController.class)

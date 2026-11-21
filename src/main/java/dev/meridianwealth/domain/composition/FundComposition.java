@@ -36,11 +36,13 @@ public record FundComposition(String fundSymbol, String fundName, String cnpj, S
     }
 
     /** Participação do imóvel na área somada da lista, em %, com 2 casas (HALF_EVEN). */
-    public BigDecimal areaSharePercent(RealAsset asset) {
-        BigDecimal total = listedAreaM2();
-        if (total.signum() == 0) return BigDecimal.ZERO;
+    public BigDecimal areaSharePercent(RealAsset asset) { return areaSharePercent(asset, listedAreaM2()); }
+
+    /** Igual a {@link #areaSharePercent(RealAsset)}, com o total já calculado (evita somar a lista a cada imóvel). */
+    public BigDecimal areaSharePercent(RealAsset asset, BigDecimal listedTotalM2) {
+        if (listedTotalM2.signum() == 0) return BigDecimal.ZERO;
         return asset.areaM2().multiply(BigDecimal.valueOf(100), MathContext.DECIMAL128)
-                .divide(total, 2, RoundingMode.HALF_EVEN);
+                .divide(listedTotalM2, 2, RoundingMode.HALF_EVEN);
     }
 
     public long geolocatedCount() { return assets.stream().filter(RealAsset::geolocated).count(); }

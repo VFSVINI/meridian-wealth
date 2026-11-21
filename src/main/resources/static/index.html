@@ -257,7 +257,7 @@ function rxAsset(a){
     :`<span class="gap">não informado</span><div class="mute">${esc(a.noCoordinatesReason)}</div>`;
   const sectors=a.tenantSectors.length?a.tenantSectors.map(t=>esc(t.setor||t.sector)+' '+f(t.percentOfPropertyRevenue,1)+'%').join('; '):'<span class="gap">não informado</span>';
   return `<tr><td><b>${esc(a.name)}</b><div class="mute">${esc([a.city,a.uf].filter(Boolean).join(' / '))||'cidade não informada'}${a.kind?' · '+esc(KIND[a.kind]||a.kind):''}</div><div class="mute">${sectors}</div></td>
-    <td class="n">${f(a.areaM2,0)} m²<div class="mute">${f(a.areaSharePercent,1)}% da lista</div></td>
+    <td class="n">${f(a.areaM2,0)} m²<div class="mute">${f(a.areaSharePercent,2)}% da lista</div></td>
     <td class="n">${dash(a.vacancyPercent,v=>f(v,2)+'%')}</td><td>${links}</td></tr>`;
 }
 async function loadComposition(sym){
