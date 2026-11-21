@@ -2,5 +2,5 @@ package dev.meridianwealth.application;
 
 import dev.meridianwealth.domain.Candle;
 
-/** Atualização de uma barra: {@code newBar} indica nova barra; senão substitui a última. */
-public record LiveUpdate(Candle candle, boolean newBar, String source, boolean simulated, boolean marketOpen) {}
+/** Barra viva derivada da última cotação real: {@code newBar} indica nova barra; senão substitui a última. */
+public record LiveUpdate(Candle candle, boolean newBar, QuoteMeta quote, boolean marketOpen) {}

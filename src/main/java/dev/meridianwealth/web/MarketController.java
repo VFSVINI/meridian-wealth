@@ -1,6 +1,7 @@
 package dev.meridianwealth.web;
 
 import dev.meridianwealth.application.BacktestService;
+import dev.meridianwealth.application.DataUnavailableException;
 import dev.meridianwealth.application.MarketService;
 import dev.meridianwealth.application.MicroView;
 import dev.meridianwealth.application.SignalRecord;
@@ -22,7 +23,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -72,12 +72,6 @@ public class MarketController {
         return market.backtest(symbol, buyScore, sellScore, bars);
     }
 
-    @PostMapping("/settings/flow")
-    public Map<String, Object> flow(@RequestParam boolean enabled) {
-        market.settings().setFlow(enabled);
-        return Map.of("flow", enabled);
-    }
-
     @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public SseEmitter stream() { return hub.subscribe(); }
 
@@ -86,6 +80,12 @@ public class MarketController {
         @ExceptionHandler(NoSuchElementException.class)
         @ResponseStatus(HttpStatus.NOT_FOUND)
         Map<String, String> notFound(NoSuchElementException e) { return Map.of("error", "Ativo desconhecido: " + e.getMessage()); }
+
+        @ExceptionHandler(DataUnavailableException.class)
+        @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
+        Map<String, String> unavailable(DataUnavailableException e) {
+            return Map.of("error", e.getMessage(), "status", e.status().name(), "symbol", e.symbol());
+        }
 
         @ExceptionHandler({ConstraintViolationException.class, IllegalArgumentException.class})
         @ResponseStatus(HttpStatus.BAD_REQUEST)

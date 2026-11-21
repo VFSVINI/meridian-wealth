@@ -33,7 +33,6 @@ services:
       MW_EXCLUDE_AUTOCONFIG: ""
       MW_PERSISTENCE: "true"
       MW_CACHE_TYPE: redis
-      MW_DATA_MODE: ${MW_DATA_MODE:-auto}
       DB_URL: jdbc:postgresql://postgres:5432/meridianwealth
       DB_USER: meridian
       DB_PASSWORD: meridian

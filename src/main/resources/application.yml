@@ -28,7 +28,6 @@ management:
         include: health,info,metrics
 meridianwealth:
   data:
-    mode: ${MW_DATA_MODE:auto}          # auto = provedores reais com fallback simulado | simulated
     history-bars: 500
     poll-open-seconds: 30
     poll-closed-seconds: 600
@@ -36,8 +35,6 @@ meridianwealth:
     api-key: ${FINNHUB_API_KEY:}
   fred:
     api-key: ${FRED_API_KEY:}
-  stream:
-    flow-default: true
   cache:
     type: ${MW_CACHE_TYPE:memory}        # memory | redis
     quote-ttl-seconds: 25

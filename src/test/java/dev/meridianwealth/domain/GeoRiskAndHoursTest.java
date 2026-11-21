@@ -27,7 +27,7 @@ class GeoRiskAndHoursTest {
     }
 
     @Test void macroRiskForSectorAndSafeHaven() {
-        MacroSnapshot m = MacroSnapshot.of(30, 104, 4.2, 0.6, "x", "t", List.of(), java.util.Map.of("energia", 0.9));
+        MacroSnapshot m = MacroSnapshot.of(30.0, 104.0, 4.2, 0.6, "x", "t", List.of(), java.util.Map.of("energia", 0.9));
         assertThat(m.riskFor("energia")).isGreaterThan(m.riskFor("tecnologia"));
         assertThat(m.riskFor("refugio")).isLessThan(m.riskScore());
     }

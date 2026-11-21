@@ -3,11 +3,12 @@ package dev.meridianwealth.infrastructure.provider;
 import dev.meridianwealth.application.HistoryResult;
 import dev.meridianwealth.application.LiveUpdate;
 import dev.meridianwealth.application.Quote;
-import dev.meridianwealth.application.StreamSettings;
+import dev.meridianwealth.application.QuoteMeta;
 import dev.meridianwealth.application.port.CacheStore;
 import dev.meridianwealth.application.port.CandleStore;
 import dev.meridianwealth.application.port.MarketDataPort;
 import dev.meridianwealth.domain.Candle;
+import dev.meridianwealth.domain.Freshness;
 import dev.meridianwealth.domain.Instrument;
 import dev.meridianwealth.domain.MacroSnapshot;
 import dev.meridianwealth.domain.MarketHours;
@@ -17,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
@@ -30,67 +30,61 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
- * Dados de mercado reais com failover (Yahoo, Stooq, Frankfurter, banco de dados) e fallback simulado.
- * Polling inteligente: intervalo curto com pregão aberto, longo com pregão fechado, cache compartilhado e
- * respeito aos rate limits de cada provedor. Entre cotações, o fluxo simulado (opcional) mantém o painel vivo.
+ * Dados de mercado reais com failover: Yahoo, Stooq e Frankfurter para histórico; Finnhub, Yahoo,
+ * Stooq e Frankfurter para cotações; banco de dados com o último dado real gravado como último
+ * recurso. Quando nada responde, o ativo fica sem dado (nunca é preenchido com valores sintéticos).
+ *
+ * <p>Polling inteligente: intervalo curto com pregão aberto, longo com pregão fechado, cache
+ * compartilhado entre instâncias e respeito aos rate limits de cada provedor.
  */
 @Component
 public class LiveMarketData implements MarketDataPort {
+    static final String STORED_SOURCE = "Banco";
     private static final Logger log = LoggerFactory.getLogger(LiveMarketData.class);
     private static final int MIN_BARS = 120;
     private static final long NEW_BAR_GAP_MS = 23L * 3_600_000L;
+    private static final long FIRST_POLL_DELAY_MS = 20_000;
 
     private static final class Real {
-        volatile Quote quote;
+        Quote quote;
         Candle bar;
-        double micro;
         boolean pendingNewBar;
         volatile long nextPoll;
-        final String source;
-        final Random rnd = new Random();
 
-        Real(Quote quote, Candle bar, String source) {
+        Real(Quote quote, Candle bar, long nextPoll) {
             this.quote = quote;
             this.bar = bar;
-            this.source = source;
+            this.nextPoll = nextPoll;
         }
     }
 
     private record Source(String name, Supplier<List<Candle>> fetch) {}
 
-    private final boolean simulatedOnly;
     private final long pollOpenMs;
     private final long pollClosedMs;
     private final Duration quoteTtl;
-    private final SimulatedFlow sim;
     private final YahooClient yahoo;
     private final StooqClient stooq;
     private final FrankfurterClient frankfurter;
     private final FinnhubClient finnhub;
     private final CandleStore store;
     private final CacheStore cache;
-    private final StreamSettings settings;
     private final LiveMacroData macro;
     private final Map<String, Real> real = new ConcurrentHashMap<>();
     private final ExecutorService pool = Executors.newVirtualThreadPerTaskExecutor();
 
-    public LiveMarketData(SimulatedFlow sim, YahooClient yahoo, StooqClient stooq, FrankfurterClient frankfurter,
-                          FinnhubClient finnhub, CandleStore store, CacheStore cache, StreamSettings settings,
-                          LiveMacroData macro,
-                          @Value("${meridianwealth.data.mode:auto}") String mode,
+    public LiveMarketData(YahooClient yahoo, StooqClient stooq, FrankfurterClient frankfurter,
+                          FinnhubClient finnhub, CandleStore store, CacheStore cache, LiveMacroData macro,
                           @Value("${meridianwealth.data.poll-open-seconds:30}") long pollOpen,
                           @Value("${meridianwealth.data.poll-closed-seconds:600}") long pollClosed,
                           @Value("${meridianwealth.cache.quote-ttl-seconds:25}") long quoteTtl) {
-        this.sim = sim;
         this.yahoo = yahoo;
         this.stooq = stooq;
         this.frankfurter = frankfurter;
         this.finnhub = finnhub;
         this.store = store;
         this.cache = cache;
-        this.settings = settings;
         this.macro = macro;
-        this.simulatedOnly = "simulated".equals(mode);
         this.pollOpenMs = pollOpen * 1000;
         this.pollClosedMs = pollClosed * 1000;
         this.quoteTtl = Duration.ofSeconds(quoteTtl);
@@ -100,38 +94,54 @@ public class LiveMarketData implements MarketDataPort {
     public List<Instrument> universe() { return Universe.instruments(); }
 
     @Override
-    public MacroSnapshot nextMacro() { return macro.current(); }
+    public MacroSnapshot macro() { return macro.current(); }
+
+    @Override
+    public boolean marketOpen(String symbol) {
+        Instrument ins = Universe.entry(symbol).instrument();
+        return MarketHours.isOpen(ins.region(), ins.assetClass(), Instant.now());
+    }
+
+    /**
+     * Selo de frescor pela fonte e pelo pregão. Com o pregão fechado a cotação é o fechamento; o
+     * Frankfurter publica só a taxa de referência diária do BCE; o Finnhub é tempo real segundo a
+     * documentação pública (a confirmar na prática no PR #3); Yahoo e Stooq são atrasados.
+     */
+    static Freshness freshness(String source, boolean open) {
+        if (STORED_SOURCE.equals(source)) return Freshness.STORED;
+        if (!open || "Frankfurter".equals(source)) return Freshness.END_OF_DAY;
+        return "Finnhub".equals(source) ? Freshness.REAL_TIME : Freshness.DELAYED;
+    }
 
     @Override
     public HistoryResult history(String symbol, int bars) {
-        if (!simulatedOnly) {
-            Symbols sy = Universe.entry(symbol).symbols();
-            List<Source> sources = new ArrayList<>();
-            if (sy.yahoo() != null) sources.add(new Source("Yahoo", () -> yahoo.history(sy.yahoo())));
-            if (sy.stooq() != null) sources.add(new Source("Stooq", () -> stooq.history(sy.stooq())));
-            if (sy.fxBase() != null) sources.add(new Source("Frankfurter", () -> frankfurter.history(sy.fxBase(), sy.fxQuote())));
-            for (Source s : sources) {
-                try {
-                    List<Candle> got = s.fetch().get();
-                    if (got.size() >= MIN_BARS) return realHistory(symbol, trim(got, bars), s.name(), true);
-                } catch (RuntimeException e) {
-                    log.warn("{}: histórico de {} falhou ({})", s.name(), symbol, e.getMessage());
-                }
-            }
+        Symbols sy = Universe.entry(symbol).symbols();
+        List<Source> sources = new ArrayList<>();
+        if (sy.yahoo() != null) sources.add(new Source("Yahoo", () -> yahoo.history(sy.yahoo())));
+        if (sy.stooq() != null) sources.add(new Source("Stooq", () -> stooq.history(sy.stooq())));
+        if (sy.fxBase() != null) sources.add(new Source("Frankfurter", () -> frankfurter.history(sy.fxBase(), sy.fxQuote())));
+        for (Source s : sources) {
             try {
-                List<Candle> db = store.load(symbol, bars);
-                if (db.size() >= MIN_BARS) return realHistory(symbol, db, "DB", false);
+                List<Candle> got = s.fetch().get();
+                if (got.size() >= MIN_BARS) return realHistory(symbol, trim(got, bars), s.name(), true);
+                log.warn("{}: histórico de {} com só {} barras", s.name(), symbol, got.size());
             } catch (RuntimeException e) {
-                log.warn("Banco: leitura de {} falhou ({})", symbol, e.getMessage());
+                log.warn("{}: histórico de {} falhou ({})", s.name(), symbol, e.getMessage());
             }
-            log.warn("{}: sem dados reais, usando fluxo simulado", symbol);
         }
-        return new HistoryResult(sim.history(symbol, bars), "SIMULADO", true);
+        try {
+            List<Candle> db = store.load(symbol, bars);
+            if (db.size() >= MIN_BARS) return realHistory(symbol, db, STORED_SOURCE, false);
+        } catch (RuntimeException e) {
+            log.warn("Banco: leitura de {} falhou ({})", symbol, e.getMessage());
+        }
+        return HistoryResult.empty();
     }
 
     private HistoryResult realHistory(String symbol, List<Candle> candles, String source, boolean persist) {
         Candle last = candles.get(candles.size() - 1);
-        real.put(symbol, new Real(new Quote(symbol, last.close(), last.time(), source), last, source));
+        real.put(symbol, new Real(new Quote(symbol, last.close(), last.time(), source), last,
+                System.currentTimeMillis() + FIRST_POLL_DELAY_MS));
         if (persist) {
             try {
                 store.saveAll(symbol, source, candles);
@@ -139,7 +149,7 @@ public class LiveMarketData implements MarketDataPort {
                 log.warn("Banco: gravação de {} falhou ({})", symbol, e.getMessage());
             }
         }
-        return new HistoryResult(candles, source, false);
+        return new HistoryResult(candles, source, freshness(source, marketOpen(symbol)));
     }
 
     private static List<Candle> trim(List<Candle> c, int bars) {
@@ -147,36 +157,29 @@ public class LiveMarketData implements MarketDataPort {
     }
 
     @Override
-    public LiveUpdate next(String symbol) {
-        Instrument ins = Universe.entry(symbol).instrument();
-        boolean open = MarketHours.isOpen(ins.region(), ins.assetClass(), Instant.now());
+    public Optional<LiveUpdate> next(String symbol) {
         Real r = real.get(symbol);
-        if (r == null) return new LiveUpdate(sim.next(symbol), true, "SIMULADO", true, open);
+        if (r == null) return Optional.empty();
+        boolean open = marketOpen(symbol);
         synchronized (r) {
             Quote q = r.quote;
             boolean newBar = false;
             if (r.pendingNewBar) {
                 r.bar = new Candle(q.tsMillis(), r.bar.close(), q.price(), q.price(), q.price(), 0);
                 r.pendingNewBar = false;
-                r.micro = 0;
                 newBar = true;
             }
-            double px = q.price();
-            if (settings.flow()) {
-                double sigma = ins.annVol() / 2428.0 * 5;
-                r.micro = Math.max(-0.004, Math.min(0.004, r.micro * 0.97 + r.rnd.nextGaussian() * sigma));
-                px = q.price() * (1 + r.micro);
-            }
             Candle b = r.bar;
+            double px = q.price();
             r.bar = new Candle(b.time(), b.open(), Math.max(b.high(), px), Math.min(b.low(), px), px, b.volume());
-            return new LiveUpdate(r.bar, newBar, r.source, false, open);
+            QuoteMeta meta = new QuoteMeta(q.source(), q.tsMillis(), freshness(q.source(), open), r.nextPoll);
+            return Optional.of(new LiveUpdate(r.bar, newBar, meta, open));
         }
     }
 
     /** Polling escalonado por instrumento: só consulta quem está "vencido" e respeita o cache compartilhado. */
-    @Scheduled(fixedDelay = 5_000, initialDelay = 20_000)
+    @Scheduled(fixedDelay = 5_000, initialDelay = FIRST_POLL_DELAY_MS)
     public void refreshQuotes() {
-        if (simulatedOnly) return;
         long now = System.currentTimeMillis();
         List<CompletableFuture<Void>> jobs = new ArrayList<>();
         real.forEach((symbol, r) -> {
@@ -186,9 +189,7 @@ public class LiveMarketData implements MarketDataPort {
     }
 
     private void poll(String symbol, Real r) {
-        Instrument ins = Universe.entry(symbol).instrument();
-        boolean open = MarketHours.isOpen(ins.region(), ins.assetClass(), Instant.now());
-        r.nextPoll = System.currentTimeMillis() + (open ? pollOpenMs : pollClosedMs);
+        r.nextPoll = System.currentTimeMillis() + (marketOpen(symbol) ? pollOpenMs : pollClosedMs);
         String key = "quote:" + symbol;
         Optional<String> cached = cache.get(key);
         if (cached.isPresent()) {
@@ -211,16 +212,24 @@ public class LiveMarketData implements MarketDataPort {
                 log.debug("Cotação de {} falhou: {}", symbol, e.getMessage());
             }
         }
+        log.debug("{}: nenhuma cotação nova; mantendo a última real de {}", symbol, r.quote.source());
+    }
+
+    /** Atualiza a cotação de um ativo já carregado (usado pelo polling e pelos testes). */
+    void refresh(String symbol) {
+        Real r = real.get(symbol);
+        if (r != null) poll(symbol, r);
     }
 
     private static Quote decode(String symbol, String raw) {
         String[] p = raw.split(";");
-        return new Quote(symbol, Double.parseDouble(p[0]), Long.parseLong(p[1]), p[2] + "+cache");
+        return new Quote(symbol, Double.parseDouble(p[0]), Long.parseLong(p[1]), p[2]);
     }
 
     private static void apply(Real r, Quote q) {
         synchronized (r) {
-            if (q.tsMillis() < r.quote.tsMillis()) return;
+            boolean upgradeFromStored = STORED_SOURCE.equals(r.quote.source());
+            if (!upgradeFromStored && q.tsMillis() < r.quote.tsMillis()) return;
             if (q.tsMillis() - r.bar.time() >= NEW_BAR_GAP_MS) r.pendingNewBar = true;
             r.quote = q;
         }

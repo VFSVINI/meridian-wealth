@@ -4,17 +4,43 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Radar macro/geopolítico. {@code riskScore} em [0,1] combina VIX e risco geopolítico;
- * {@code sectorImpact} (0 a 1) indica quais setores as manchetes pressionam.
+ * Radar macro e geopolítico.
+ *
+ * <p>Cada indicador é opcional ({@code null} quando nenhum provedor respondeu): o produto nunca
+ * preenche lacunas com valores inventados. {@code riskScore} em [0,1] combina apenas os componentes
+ * disponíveis (VIX e risco geopolítico); sem nenhum deles vale 0 e {@code available} é falso, ou
+ * seja, o motor simplesmente não aplica ajuste macro. {@code sectorImpact} (0 a 1) indica quais
+ * setores as manchetes pressionam.
  */
-public record MacroSnapshot(double vix, double dollarIndex, double yield10y, double geoRisk,
-                            String headline, double riskScore, String source,
+public record MacroSnapshot(Double vix, Double dollarIndex, Double yield10y, Double geoRisk,
+                            String headline, double riskScore, boolean available, String source,
                             List<NewsItem> news, Map<String, Double> sectorImpact) {
 
-    public static MacroSnapshot of(double vix, double usd, double y10, double geo, String headline,
+    public MacroSnapshot {
+        news = news == null ? List.of() : List.copyOf(news);
+        sectorImpact = sectorImpact == null ? Map.of() : Map.copyOf(sectorImpact);
+    }
+
+    public static MacroSnapshot of(Double vix, Double usd, Double y10, Double geo, String headline,
                                    String source, List<NewsItem> news, Map<String, Double> sectors) {
-        double r = 0.5 * Indicators.clamp((vix - 12) / 28.0, 0, 1) + 0.5 * Indicators.clamp(geo, 0, 1);
-        return new MacroSnapshot(vix, usd, y10, geo, headline, r, source, news, sectors);
+        double sum = 0;
+        int parts = 0;
+        if (vix != null) {
+            sum += Indicators.clamp((vix - 12) / 28.0, 0, 1);
+            parts++;
+        }
+        if (geo != null) {
+            sum += Indicators.clamp(geo, 0, 1);
+            parts++;
+        }
+        boolean any = vix != null || usd != null || y10 != null || geo != null;
+        return new MacroSnapshot(vix, usd, y10, geo, headline, parts == 0 ? 0 : sum / parts, any, source,
+                news, sectors);
+    }
+
+    /** Nenhum indicador macro disponível. */
+    public static MacroSnapshot unavailable() {
+        return of(null, null, null, null, "Sem dado macro em tempo real", "SEM DADOS", List.of(), Map.of());
     }
 
     /** Risco ajustado ao setor: manchetes do setor elevam o risco; ouro/metais atuam como refúgio. */

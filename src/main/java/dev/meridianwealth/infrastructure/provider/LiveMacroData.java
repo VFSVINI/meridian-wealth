@@ -9,70 +9,58 @@ import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-/** Radar macro: VIX, dólar e juros (Yahoo/FRED), manchetes (RSS/Finnhub) com fallback simulado por componente. */
+/**
+ * Radar macro: VIX, dólar e juros (Yahoo/FRED) e manchetes (RSS/Finnhub). Cada componente fica
+ * {@code null} até um provedor responder; um valor real obtido antes é mantido se a fonte cair.
+ */
 @Component
 public class LiveMacroData {
     private static final Logger log = LoggerFactory.getLogger(LiveMacroData.class);
     private static final long NEWS_EVERY_MS = 300_000;
 
-    private final SimulatedFlow sim;
     private final YahooClient yahoo;
     private final FredClient fred;
     private final FinnhubClient finnhub;
     private final RssNewsClient rss;
-    private final boolean simulatedOnly;
 
-    private volatile MacroSnapshot snapshot;
-    private volatile boolean anyReal;
-    private double vix;
-    private double usd;
-    private double y10;
-    private double geo;
+    private volatile MacroSnapshot snapshot = MacroSnapshot.unavailable();
+    private Double vix;
+    private Double usd;
+    private Double y10;
+    private Double geo;
     private List<NewsItem> news = List.of();
     private Map<String, Double> sectors = Map.of();
     private long lastNews;
 
-    public LiveMacroData(SimulatedFlow sim, YahooClient yahoo, FredClient fred, FinnhubClient finnhub,
-                         RssNewsClient rss, @Value("${meridianwealth.data.mode:auto}") String mode) {
-        this.sim = sim;
+    public LiveMacroData(YahooClient yahoo, FredClient fred, FinnhubClient finnhub, RssNewsClient rss) {
         this.yahoo = yahoo;
         this.fred = fred;
         this.finnhub = finnhub;
         this.rss = rss;
-        this.simulatedOnly = "simulated".equals(mode);
-        MacroSnapshot s = sim.nextMacro();
-        this.snapshot = s;
-        this.vix = s.vix();
-        this.usd = s.dollarIndex();
-        this.y10 = s.yield10y();
-        this.geo = s.geoRisk();
     }
 
-    public MacroSnapshot current() { return simulatedOnly || !anyReal ? sim.nextMacro() : snapshot; }
+    public MacroSnapshot current() { return snapshot; }
 
     @Scheduled(fixedDelay = 60_000, initialDelay = 8_000)
     public synchronized void refresh() {
-        if (simulatedOnly) return;
-        List<String> real = new ArrayList<>();
-        try { vix = yahoo.lastPrice("^VIX"); real.add("VIX"); } catch (RuntimeException e) { log.debug("VIX: {}", e.getMessage()); }
-        try { usd = yahoo.lastPrice("DX-Y.NYB"); real.add("DXY"); } catch (RuntimeException e) { log.debug("DXY: {}", e.getMessage()); }
+        List<String> got = new ArrayList<>();
+        try { vix = yahoo.lastPrice("^VIX"); got.add("VIX"); } catch (RuntimeException e) { log.debug("VIX: {}", e.getMessage()); }
+        try { usd = yahoo.lastPrice("DX-Y.NYB"); got.add("DXY"); } catch (RuntimeException e) { log.debug("DXY: {}", e.getMessage()); }
         try {
             y10 = fred.enabled() ? fred.latest("DGS10") : yahoo.lastPrice("^TNX");
-            real.add("Juros 10a");
+            got.add(fred.enabled() ? "Juros 10a (FRED)" : "Juros 10a (Yahoo)");
         } catch (RuntimeException e) { log.debug("Juros: {}", e.getMessage()); }
         long now = System.currentTimeMillis();
         if (now - lastNews > NEWS_EVERY_MS) {
             refreshNews();
             lastNews = now;
         }
-        if (!news.isEmpty()) real.add("Notícias");
-        anyReal = !real.isEmpty();
+        if (!news.isEmpty()) got.add("Notícias");
         String top = news.isEmpty() ? "Sem manchetes disponíveis" : news.get(0).title();
-        String label = real.isEmpty() ? "SIMULADO" : "REAL: " + String.join(", ", real);
+        String label = got.isEmpty() ? "SEM DADOS NESTA RODADA" : "REAL: " + String.join(", ", got);
         snapshot = MacroSnapshot.of(vix, usd, y10, geo, top, label, news, sectors);
     }
 

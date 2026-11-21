@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class StatusController {
-    public record Status(String dataMode, boolean flow, String cache, boolean persistence, int sseClients,
+    public record Status(String cache, boolean persistence, int sseClients,
                          int wsClients, List<ProviderStats> providers, List<MarketService.SourceView> instruments) {}
 
     private final List<ProviderInfo> providers;
@@ -23,22 +23,19 @@ public class StatusController {
     private final CacheStore cache;
     private final StreamHub hub;
     private final boolean persistence;
-    private final String mode;
 
     public StatusController(List<ProviderInfo> providers, MarketService market, CacheStore cache, StreamHub hub,
-                            @Value("${meridianwealth.persistence.enabled:false}") boolean persistence,
-                            @Value("${meridianwealth.data.mode:auto}") String mode) {
+                            @Value("${meridianwealth.persistence.enabled:false}") boolean persistence) {
         this.providers = providers;
         this.market = market;
         this.cache = cache;
         this.hub = hub;
         this.persistence = persistence;
-        this.mode = mode;
     }
 
     @GetMapping("/status")
     public Status status() {
-        return new Status(mode, market.settings().flow(), cache.kind(), persistence, hub.sseClients(), hub.wsClients(),
+        return new Status(cache.kind(), persistence, hub.sseClients(), hub.wsClients(),
                 providers.stream().map(ProviderInfo::stats).toList(), market.sources());
     }
 }
