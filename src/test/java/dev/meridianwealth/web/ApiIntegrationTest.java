@@ -169,6 +169,49 @@ class ApiIntegrationTest {
         assertThat(badType.getStatusCode().is4xxClientError()).isTrue();
     }
 
+    @Test void glossaryServesEveryEntryAndUnknownIdIs404() {
+        Map<?, ?> g = rest.getForObject("/api/glossary", Map.class);
+        assertThat((List<?>) g.get("entries")).hasSizeGreaterThanOrEqualTo(55);
+        Map<?, ?> score = rest.getForObject("/api/glossary/score", Map.class);
+        assertThat(score.get("term")).isEqualTo("Score do timing");
+        assertThat((String) score.get("whenToWorry")).isNotBlank();
+        var missing = rest.getForEntity("/api/glossary/nao-existe", Map.class);
+        assertThat(missing.getStatusCode().value()).isEqualTo(404);
+    }
+
+    @Test void preOrderSimulationIsLabeledAsSimulationAndUsesRealVolatility() {
+        Map<String, Object> body = Map.of("positions", List.of(Map.of("symbol", "SPY", "valueBrl", "6000"), Map.of("type", "TESOURO_SELIC", "valueBrl", "4000")),
+                "order", Map.of("side", "BUY", "symbol", "AAPL", "valueBrl", "2000"), "profile", "MODERATE");
+        Map<?, ?> r = rest.postForObject("/api/impact/pre-order", body, Map.class);
+        assertThat(r.get("simulation")).isEqualTo(true);
+        assertThat((String) r.get("label")).contains("não é cotação").contains("não executa ordens");
+        Map<?, ?> before = (Map<?, ?>) r.get("before");
+        Map<?, ?> after = (Map<?, ?>) r.get("after");
+        assertThat(before.get("positions")).isEqualTo(2);
+        assertThat(after.get("positions")).isEqualTo(3);
+        assertThat(before.get("weightedVolatility")).as("volatilidade real do SPY").isNotNull();
+        assertThat(((Number) before.get("hhi")).doubleValue()).isEqualTo(5200.0);
+        assertThat((List<?>) r.get("assumptions")).isNotEmpty();
+        assertThat((String) r.get("disclaimer")).contains("Nada aqui é recomendação");
+        assertThat(r.get("adherenceBefore")).isNotNull();
+    }
+
+    @Test void preOrderSimulationRejectsInvalidInputWithClearErrors() {
+        Map<String, Object> sellTooMuch = Map.of("positions", List.of(Map.of("symbol", "SPY", "valueBrl", "100")),
+                "order", Map.of("side", "SELL", "symbol", "SPY", "valueBrl", "100.01"));
+        var tooMuch = rest.postForEntity("/api/impact/pre-order", sellTooMuch, Map.class);
+        assertThat(tooMuch.getStatusCode().value()).isEqualTo(400);
+        assertThat((String) tooMuch.getBody().get("error")).contains("passa do valor da posição");
+        Map<String, Object> unknown = Map.of("positions", List.of(), "order", Map.of("side", "BUY", "symbol", "NAOEXISTE", "valueBrl", "10"));
+        assertThat((String) rest.postForEntity("/api/impact/pre-order", unknown, Map.class).getBody().get("error")).contains("fora do universo");
+        Map<String, Object> index = Map.of("positions", List.of(), "order", Map.of("side", "BUY", "type", "INDICE", "valueBrl", "10"));
+        assertThat(rest.postForEntity("/api/impact/pre-order", index, Map.class).getStatusCode().value()).isEqualTo(400);
+        var huge = rest.postForEntity("/api/impact/pre-order", "{\"positions\":[],\"order\":{\"side\":\"BUY\",\"type\":\"ACAO\",\"valueBrl\":1E999999999}}", Map.class);
+        assertThat(huge.getStatusCode().value()).isIn(400, 415);
+        var noOrder = rest.postForEntity("/api/impact/pre-order", Map.of("positions", List.of()), Map.class);
+        assertThat(noOrder.getStatusCode().value()).isEqualTo(400);
+    }
+
     @Test void overviewShowsRealSourcesAndExplicitGaps() {
         Map<?, ?> body = rest.getForObject("/api/overview", Map.class);
         assertThat(body.get("mode")).isEqualTo("PARCIAL");

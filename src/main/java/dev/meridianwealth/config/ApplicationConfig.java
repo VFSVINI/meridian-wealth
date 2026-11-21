@@ -7,6 +7,7 @@ import dev.meridianwealth.application.ReportsService;
 import dev.meridianwealth.application.port.ReportsPort;
 import dev.meridianwealth.application.port.CompositionPort;
 import dev.meridianwealth.application.MarketService;
+import dev.meridianwealth.application.OrderImpactService;
 import dev.meridianwealth.application.StatusService;
 import dev.meridianwealth.application.StreamService;
 import dev.meridianwealth.application.port.BacktestCache;
@@ -60,6 +61,9 @@ public class ApplicationConfig {
 
     @Bean
     ReportsService reportsService(ReportsPort reports, Clock brasiliaClock) { return new ReportsService(reports, brasiliaClock); }
+
+    @Bean
+    OrderImpactService orderImpactService(MarketService market) { return new OrderImpactService(market); }
 
     @Bean
     StatusService statusService(CacheStore cache, StreamService stream, List<ProviderStatusSource> providers,
