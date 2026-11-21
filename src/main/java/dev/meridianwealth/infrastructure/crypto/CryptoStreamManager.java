@@ -83,7 +83,7 @@ public class CryptoStreamManager implements ProviderStatusSource {
         final boolean probe;
         volatile WebSocket socket;
         volatile long lastMessageAt;
-        boolean finished;
+        volatile boolean finished;
 
         Link(VenueState state, boolean probe) {
             this.state = state;
@@ -208,7 +208,8 @@ public class CryptoStreamManager implements ProviderStatusSource {
             link.socket = ws;
             link.lastMessageAt = now;
             VenueState vs = link.state;
-            vs.failures = 0;
+            // As falhas só zeram quando a conexão provar que funciona (primeiro preço válido, em handle):
+            // uma bolsa que aceita o handshake e derruba a conexão logo depois continua somando falhas.
             vs.retryAt = 0;
             vs.blockReason = null;
             if (link == connecting) connecting = null;
@@ -224,14 +225,20 @@ public class CryptoStreamManager implements ProviderStatusSource {
         ws.request(1);
     }
 
-    private void lost(Link link, String reason) {
+    /**
+     * Conexão perdida. Quando a perda é decidida por nós (erro devolvido pela bolsa) o socket ainda está
+     * aberto e precisa ser fechado aqui; quando foi a própria conexão que avisou (onClose e onError) já
+     * está fechado.
+     */
+    private void lost(Link link, String reason, boolean closeSocket) {
         long now = clock.getAsLong();
         synchronized (lock) {
             if (link.finished) return;
-            link.finished = true;
             if (link == current) current = null;
             if (link == connecting) connecting = null;
             if (link == probing) probing = null;
+            if (closeSocket) close(link, reason);
+            link.finished = true;
             markFailure(link.state, now, reason);
         }
     }
@@ -318,12 +325,12 @@ public class CryptoStreamManager implements ProviderStatusSource {
 
             @Override
             public CompletionStage<?> onClose(WebSocket ws, int statusCode, String reason) {
-                lost(link, "conexão fechada (" + statusCode + (reason == null || reason.isEmpty() ? "" : " " + reason) + ")");
+                lost(link, "conexão fechada (" + statusCode + (reason == null || reason.isEmpty() ? "" : " " + reason) + ")", false);
                 return CompletableFuture.completedFuture(null);
             }
 
             @Override
-            public void onError(WebSocket ws, Throwable error) { lost(link, describe(error)); }
+            public void onError(WebSocket ws, Throwable error) { lost(link, describe(error), false); }
         };
     }
 
@@ -332,13 +339,15 @@ public class CryptoStreamManager implements ProviderStatusSource {
         try {
             ticks = link.state.venue.parse(message);
         } catch (IOException e) {
-            lost(link, e.getMessage());
+            lost(link, e.getMessage(), true);
             return;
         }
         long now = clock.getAsLong();
         synchronized (lock) {
             if (link != current) return;
             link.lastMessageAt = now;
+            // Primeiro preço válido: a conexão provou que funciona, o backoff recomeça do zero.
+            if (!ticks.isEmpty()) link.state.failures = 0;
         }
         for (CryptoTick t : ticks) {
             String symbol = link.state.symbolByPair.get(t.pair().toUpperCase(Locale.ROOT));
