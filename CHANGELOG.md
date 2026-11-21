@@ -6,6 +6,9 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (dívida 31, Issue #33)
+- Fontes do protótipo servidas pelo próprio projeto: Cormorant Garamond, Figtree e IBM Plex Mono (SIL OFL 1.1) em WOFF2 do subconjunto latino, com `font-display: swap`, as licenças ao lado dos arquivos e nenhuma requisição a domínio externo; `FontsContractTest` verifica arquivos, assinatura WOFF2, licenças e ausência de CDN.
+
 ### Adicionado (etapa 1 do item #15, Issue #31)
 - Interface reescrita sobre o protótipo aprovado: tokens do sistema de design nos temas escuro e Ivory (com alternância e preferência lembrada), shell com navbar (marca, busca rápida Ctrl+K, estado ao vivo, tema) e sidebar recolhível por grupos, navegação por rota (`#/pagina`), gaveta do menu no celular, foco visível e `prefers-reduced-motion`.
 - Páginas: Painel inicial (sinais do dia, maiores movimentos e notícias de risco, só com dado real, frescor e fonte), Mercados, Cockpit do ativo, Radar de relatórios, Brasil, Geopolítica e teses, Perfil, Simulador, Composição e Saúde dos dados. Páginas sem backend ficam desabilitadas e indicam o item do roadmap que as entrega.

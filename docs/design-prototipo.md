@@ -45,6 +45,7 @@ valores abaixo foram lidos da página "Sistema de design" do protótipo e **deve
 
 ## Tipografia
 
+- Servidas pelo projeto em `src/main/resources/static/fonts/` (WOFF2 latino, SIL OFL 1.1, licenças ao lado), sem CDN.
 - Títulos e marca: **Cormorant Garamond** (fallback Georgia), 26, 40 e 56 px.
 - Texto e interface: **Figtree** (fallback Segoe UI e system-ui).
 - Números: **IBM Plex Mono** tabular em todos os valores; caixa alta pequena em 11 px com espaçamento .16em para rótulos de seção.
