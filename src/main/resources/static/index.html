@@ -97,6 +97,7 @@ footer{padding:8px 16px;border-top:1px solid var(--line);color:var(--mute);font-
     <div class="card"><h2>Métricas quantitativas e risco</h2><div class="kv" id="metrics"></div></div>
     <div class="card"><h2>Microeconomia e força relativa</h2><div class="kv" id="micro"></div></div>
     <div class="card"><h2>Radar macro e geopolítico</h2><div id="macro"></div></div>
+    <div class="card"><h2>Juros e inflação (Brasil) <span class="tag" style="color:var(--ice);border-color:var(--ice)">dado oficial</span></h2><div id="br" class="mute" style="font-size:12px">carregando…</div></div>
     <div class="card"><h2>Histórico de sinais</h2><div id="sigHist" class="mute" style="font-size:12px">—</div></div>
     <div class="card"><h2>Backtest analítico <span class="tag">projeção</span></h2>
       <div class="bt">
@@ -250,6 +251,20 @@ async function loadStatus(){
   $('#status').innerHTML=st.providers.map(p=>`<div style="display:flex;justify-content:space-between"><span>${p.name}${p.enabled?'':' (sem chave)'}</span><span class="${p.enabled?c[p.circuit]:'mute'}">${p.circuit}</span><span class="num mute">${p.successes}/${p.failures}</span></div>${p.detail?`<div class="src" style="margin:-1px 0 5px">${p.detail}</div>`:''}`).join('')
    +`<div style="margin-top:6px">Cache: <b>${st.cache}</b> · Banco: <b>${st.persistence?'ligado':'desligado'}</b></div><div>Conexões: ${(st.channels||[]).map(c=>c.name+' '+c.clients).join(' · ')}</div>`;
 }
+async function loadBrazil(){
+  const r=await j('/api/brazil/rates').catch(()=>null);
+  if(!r){$('#br').innerHTML='<span class="mute">Sem resposta do servidor para os indicadores do Banco Central.</span>';return}
+  const fmt=v=>{const d=Math.min(6,(v.split('.')[1]||'').length);return Number(v).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d})};
+  const when=i=>i.periodicity==='MONTHLY'
+    ?new Date(i.date+'T12:00:00').toLocaleDateString('pt-BR',{month:'short',year:'numeric'})
+    :new Date(i.date+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});
+  $('#br').innerHTML=r.items.map(i=>i.status==='UNAVAILABLE'
+    ?`<div style="display:flex;justify-content:space-between;gap:8px;padding:2px 0"><span>${i.label}</span><span class="fresh dn">sem dado</span></div>`
+    :`<div style="display:flex;justify-content:space-between;gap:8px;padding:2px 0;align-items:baseline"><span>${i.label}<span class="src"> · ${when(i)}</span></span>
+      <span class="num">${fmt(i.value)} <span class="src">${i.unit}</span>${i.status==='STALE'?' <span class="fresh dn" title="o Banco Central não publicou nada novo no prazo esperado">desatualizado</span>':''}</span></div>`).join('')
+    +`<div class="src" style="margin-top:6px">Fonte: Banco Central do Brasil (SGS e PTAX), com a data de referência de cada publicação. IPCA mostra o mês de referência.${r.fetchedAt?' Atualizado em '+dt(Date.parse(r.fetchedAt))+'.':''}</div>`;
+}
+loadBrazil();setInterval(loadBrazil,300000);
 setInterval(loadStatus,10000);setInterval(()=>{if(sel&&!paused){loadMicro();loadSignals()}},30000);
 
 function renderDetail(){

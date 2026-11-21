@@ -33,6 +33,9 @@ class ApiIntegrationTest {
     @Autowired
     private TestRestTemplate rest;
 
+    @Autowired
+    private dev.meridianwealth.infrastructure.bcb.LiveBrazilRates brazilRates;
+
     @SuppressWarnings("unchecked")
     private Map<String, Object> tick(String symbol) {
         Map<String, Object> body = rest.getForObject("/api/overview", Map.class);
@@ -158,6 +161,28 @@ class ApiIntegrationTest {
         Map<String, Object> ntnb = types.stream().filter(t -> "TESOURO_IPCA_JUROS".equals(t.get("key"))).findFirst().orElseThrow();
         assertThat(ntnb.get("code")).isEqualTo("NTN-B");
         assertThat(ntnb.get("income")).isEqualTo("CUPOM_SEMESTRAL");
+    }
+
+    @Test void brazilRatesAreServedAsExactTextWithDateSourceAndStatus() {
+        brazilRates.refresh();
+        Map<String, Object> body = rest.getForObject("/api/brazil/rates", Map.class);
+        List<Map<String, Object>> items = (List<Map<String, Object>>) body.get("items");
+        assertThat(items).hasSize(dev.meridianwealth.domain.RateSeries.values().length);
+        assertThat(body.get("notice").toString()).contains("não é recomendação financeira");
+
+        Map<String, Object> selic = items.stream().filter(i -> "selicTarget".equals(i.get("key"))).findFirst().orElseThrow();
+        assertThat(selic.get("value")).as("texto exato, sem passar por double").isEqualTo("13.75");
+        assertThat(selic.get("unit")).isEqualTo("% a.a.");
+        assertThat(selic.get("source")).isEqualTo("BCB/SGS 432");
+        java.time.LocalDate selicDate = java.time.LocalDate.parse((String) selic.get("date"));
+        assertThat(selicDate).as("nunca uma data posterior a hoje (a fixture traz até 21/11/2026)")
+                .isAfterOrEqualTo("2026-11-01").isBeforeOrEqualTo(java.time.LocalDate.parse((String) body.get("today")));
+        assertThat(items.stream().filter(i -> "ptaxSell".equals(i.get("key"))).findFirst().orElseThrow().get("value"))
+                .isEqualTo("5.88890");
+        assertThat(items.stream().filter(i -> "cdiDaily".equals(i.get("key"))).findFirst().orElseThrow().get("value"))
+                .isEqualTo("0.050788");
+        assertThat(items).extracting(i -> i.get("status")).as("depois do refresh nenhum indicador fica sem dado")
+                .isSubsetOf("OK", "STALE").doesNotContain("UNAVAILABLE");
     }
 
     @Test void openApiAndHealthAreUp() {

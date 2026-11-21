@@ -1,16 +1,20 @@
 package dev.meridianwealth.config;
 
 import dev.meridianwealth.application.BacktestService;
+import dev.meridianwealth.application.BrazilRatesService;
 import dev.meridianwealth.application.MarketService;
 import dev.meridianwealth.application.StatusService;
 import dev.meridianwealth.application.StreamService;
 import dev.meridianwealth.application.port.BacktestCache;
+import dev.meridianwealth.application.port.BrazilRatesPort;
 import dev.meridianwealth.application.port.CacheStore;
 import dev.meridianwealth.application.port.FundamentalsPort;
 import dev.meridianwealth.application.port.MarketDataPort;
 import dev.meridianwealth.application.port.ProviderStatusSource;
 import dev.meridianwealth.application.port.SignalStore;
 import dev.meridianwealth.application.port.TickSink;
+import java.time.Clock;
+import java.time.ZoneId;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -34,6 +38,15 @@ public class ApplicationConfig {
     @Bean
     StreamService streamService(MarketService market, List<TickSink> sinks) {
         return new StreamService(market, sinks);
+    }
+
+    /** Relógio de Brasília: define o "hoje" da regra de defasagem dos indicadores oficiais. */
+    @Bean
+    Clock brasiliaClock() { return Clock.system(ZoneId.of("America/Sao_Paulo")); }
+
+    @Bean
+    BrazilRatesService brazilRatesService(BrazilRatesPort rates, Clock brasiliaClock) {
+        return new BrazilRatesService(rates, brasiliaClock);
     }
 
     @Bean
