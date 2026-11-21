@@ -20,7 +20,8 @@ import org.springframework.http.ResponseEntity;
  * Sobe a aplicação inteira com respostas reais gravadas da Yahoo para SPY e AAPL. Os outros ativos
  * não têm fixture (HTTP 404) e precisam aparecer como "sem dado em tempo real", nunca simulados.
  */
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+        properties = "meridianwealth.crypto.stream.enabled=false")
 class ApiIntegrationTest {
     @TestConfiguration
     static class Fixtures {

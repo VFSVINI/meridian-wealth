@@ -45,6 +45,8 @@ public class FinnhubTradeStream implements ProviderStatusSource {
     private static final Logger log = LoggerFactory.getLogger(FinnhubTradeStream.class);
     private static final ObjectMapper JSON = new ObjectMapper();
     private static final long MAX_BACKOFF_MS = 60_000;
+    /** Um único cliente para todas as reconexões (reaproveita threads e conexões). */
+    private static final HttpClient HTTP = HttpClient.newHttpClient();
 
     /** Negócio da Finnhub: símbolo da Finnhub, preço, horário (ms) e volume. */
     public record Trade(String finnhubSymbol, double price, long time, double volume) {}
@@ -94,7 +96,7 @@ public class FinnhubTradeStream implements ProviderStatusSource {
 
     private void connect() {
         if (stopped.get()) return;
-        HttpClient.newHttpClient().newWebSocketBuilder()
+        HTTP.newWebSocketBuilder()
                 .connectTimeout(Duration.ofSeconds(10))
                 .buildAsync(URI.create("wss://ws.finnhub.io?token=" + apiKey), listener())
                 .whenComplete((ws, err) -> {

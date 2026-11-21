@@ -76,6 +76,40 @@ class StreamingAndPaidFeedTest {
         stream.stop();
     }
 
+    private static LiveMarketData market(dev.meridianwealth.testsupport.FixtureHttpGateway gw) {
+        dev.meridianwealth.application.port.CandleStore none = new dev.meridianwealth.application.port.CandleStore() {
+            @Override public void saveAll(String symbol, String source, List<dev.meridianwealth.domain.Candle> candles) { }
+
+            @Override public List<dev.meridianwealth.domain.Candle> load(String symbol, int limit) { return List.of(); }
+        };
+        YahooClient yahoo = new YahooClient(gw);
+        FinnhubClient finnhub = new FinnhubClient(gw, "");
+        return new LiveMarketData(yahoo, new StooqClient(gw, false), new BrapiClient(gw, ""), new FrankfurterClient(gw),
+                finnhub, new TwelveDataFeed(gw, "none", "", "DELAYED"), none,
+                new dev.meridianwealth.infrastructure.cache.InMemoryCacheStore(),
+                new LiveMacroData(yahoo, new FredClient(gw, ""), finnhub, new RssNewsClient(gw)), 30, 600, 25);
+    }
+
+    @Test void aHealthyStreamSuspendsRestPollingSoTheDisplayedSourceDoesNotFlap() {
+        var gw = new dev.meridianwealth.testsupport.FixtureHttpGateway();
+        LiveMarketData d = market(gw);
+        d.history("SPY", 500);
+        long polls = gw.requested().stream().filter(u -> u.contains("range=5d")).count();
+
+        d.refresh("SPY");
+        assertThat(gw.requested().stream().filter(u -> u.contains("range=5d")).count())
+                .as("sem stream, o polling consulta a Yahoo").isEqualTo(polls + 1);
+
+        d.onStreamQuote(new Quote("SPY", 690.5, System.currentTimeMillis(), "Finnhub WS"));
+        d.refresh("SPY");
+        assertThat(gw.requested().stream().filter(u -> u.contains("range=5d")).count())
+                .as("com o stream entregando, o REST fica quieto").isEqualTo(polls + 1);
+        var u = d.next("SPY").orElseThrow();
+        assertThat(u.quote().source()).isEqualTo("Finnhub WS");
+        assertThat(u.quote().freshness()).as("tempo real com o pregão aberto; fechamento fora dele")
+                .isEqualTo(u.marketOpen() ? Freshness.REAL_TIME : Freshness.END_OF_DAY);
+    }
+
     @Test void withoutKeyTheStreamStaysOffAndSaysSo() {
         FinnhubTradeStream off = new FinnhubTradeStream("", true, q -> { });
         assertThat(off.enabled()).isFalse();
