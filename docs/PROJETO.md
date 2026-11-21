@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR #2 (Issue #2), 2026-11-20.
+> Atualizado em todo PR. Última atualização: PR #3 (Issue #3), 2026-11-20.
 > Numeração: Issues e PRs compartilham a sequência do GitHub; o PR do item #N do roadmap tem número próprio (ex.: item #1 = PR #6).
 
 ## 1. Visão
@@ -43,7 +43,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 ### Milestone 1 — Fundação Arquitetural & Mercados Globais
 - [x] **#1** Build verde, rebranding `dev.chronosquant` → `dev.meridianwealth`, CI (Checkstyle/Spotless, JaCoCo, Dependabot, CodeQL), governança e ADRs 001–003.
 - [x] **#2** Remoção total de dados simulados do produto + hexagonal estrita protegida por ArchUnit (dívidas 1, 2, 4 e 8).
-- [ ] **#3** Bolsas globais, `MarketHours` multi-fuso com feriados, Finnhub WebSocket, brapi.dev, adapter de feed pago, fixtures reais (dívida 7).
+- [x] **#3** Bolsas globais (25 ativos), calendário multi-fuso com feriados oficiais, Finnhub WebSocket, brapi.dev, adapter de feed pago, fixtures reais (dívidas 7 e 10).
 - [ ] **#4** Motor cripto 24/7 (Binance WS com failover Coinbase/Kraken, vol. √365, beta BTC).
 - [ ] **#5** Taxonomia multi-ativo + API do BCB (Selic, CDI, IPCA, PTAX).
 
@@ -85,6 +85,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 
 Decisões menores (no corpo dos PRs):
 - PR #1: Maven Wrapper com checksum; piso JaCoCo de 70% (medido 76%); CodeQL `security-extended`; Dependabot agrupado.
+- PR #3: calendário por regra conferido contra páginas oficiais (bolsas sem fonte verificada ficam marcadas, sem datas adivinhadas); brapi só para histórico (horário de cotação não confiável em feriado); Stooq desligado por padrão; Frankfurter no endpoint `.dev/v1`; feed pago com selo declarado pelo plano.
 - PR #2: `System.Logger` na `application` (sem SLF4J, ponte JUL do Spring Boot); chave do cache de backtest pela versão dos dados; 503 para ativo sem dado real; fixtures reais da Yahoo nos testes; Dependabot ignora JDK não-LTS nas imagens.
 
 ## 5. Dívidas técnicas abertas
@@ -94,11 +95,12 @@ Decisões menores (no corpo dos PRs):
 | 3 | `MarketService` usa um único monitor para todos os ativos (o I/O já saiu do lock no PR #2; falta snapshot imutável ou lock por ativo) | `application/MarketService` | PR #14 |
 | 5 | `ApiRateLimitFilter` usa `getRemoteAddr()` (todos iguais atrás de proxy) | `infrastructure/stream` | PR #11 |
 | 6 | Não há cálculos monetários; motor inteiro em `double` (fronteira definida no ADR 002) | — | PRs #12/#13 |
-| 7 | Parsers dos provedores sem contrato verificado contra respostas reais (Yahoo já tem fixture real desde o PR #2) | `infrastructure/provider` | PR #3 |
 | 9 | Persistência JDBC com 17% de cobertura (sem banco nos testes) | `infrastructure/persistence` | PR #20 |
-| 10 | Stooq exigiu chave no download CSV (observado em 2026-11-20); o failover segue funcionando, mas a fonte está inútil sem chave | `infrastructure/provider/StooqClient` | PR #3 |
+| 11 | Finnhub REST e WebSocket sem validação ao vivo (sem chave); FRED idem | `infrastructure/provider` | quando houver chave |
+| 12 | Calendários de feriados não verificados: Euronext, Tóquio, Hong Kong, ASX, Tadawul, JSE | `domain/Exchange` | PR futuro |
 
 **Resolvidas**
+- PR #3: dívida 7 (parsers de Yahoo, brapi, Frankfurter e Stooq validados contra respostas reais gravadas) e dívida 10 (Stooq desligado por padrão, mensagem clara de verificação JavaScript).
 - PR #2 (pós-review): o rate limiter descartava na hora a carga paralela de históricos da partida (rajada de 5 da Yahoo para 10 ativos), deixando 3 ou 4 ativos sem dado com a fonte no ar; agora históricos aguardam o próximo token (até 20 s, dormindo fora do lock) e os 10 ativos carregam em 7,8 s. Rate limit local também deixou de zerar o circuit breaker.
 - PR #2: dívida 1 (`application` sem Spring/Jackson/SLF4J, POJOs ligados em `config`), dívida 2 (portas `TickSink` e `ProviderStatusSource`; `web` sem `infrastructure`), dívida 4 (`JsonBacktestCache` testado e chave pela versão dos dados) e dívida 8 (simulador fora do produto).
 - PR #1 (pós-review): `InMemoryCacheStore` vazava memória (entradas expiradas só eram removidas quando relidas; a chave do backtest inclui parâmetros da query e muda a cada 30 s) e fazia varredura O(n) de todos os contadores a cada requisição da API. Agora há contador atômico por chave, limpeza amortizada, teto de 10 mil entradas e relógio injetável, com testes de concorrência.
@@ -123,8 +125,8 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 80 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 101 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
-| Provedores reais | Yahoo e Frankfurter **validados ao vivo** no PR #2; Stooq exigiu chave; Finnhub e FRED não testados (sem chave, PR #3) |
+| Provedores reais | PR #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
 | Painel no navegador | Validado no PR #2 em navegador Chromium (desktop): dados reais, selos, estado sem dado, sem erros de console da aplicação. Larguras 1024/390 px e acessibilidade completa ficam para o Milestone 4 |

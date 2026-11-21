@@ -11,7 +11,8 @@
 
 ## O que o sistema faz
 
-- **Dados reais gratuitos com failover:** Yahoo Finance, Stooq, Frankfurter (BCE), Finnhub (com chave), FRED (com chave) e feeds RSS. Cada provedor tem rate limiter, circuit breaker, retry com backoff exponencial e jitter, e cache (Redis ou memória). Se tudo falhar, usa o último dado real gravado no banco (rotulado) e, sem ele, mostra o ativo como sem dado e tenta de novo a cada 2 minutos.
+- **Bolsas globais:** 25 ativos de EUA, Brasil (B3), Europa, Ásia, Oceania, Oriente Médio/África e mercado global, com calendário de pregão por bolsa (fuso, sessões, feriados oficiais conferidos para NYSE, B3 e Xetra). Detalhes em [`docs/mercados.md`](docs/mercados.md).
+- **Dados reais gratuitos com failover:** Yahoo Finance, brapi.dev (B3), Frankfurter (BCE), Finnhub REST e WebSocket (com chave), FRED (com chave) e feeds RSS; Stooq desligado (passou a exigir verificação JavaScript); adapter plugável para feed pago, desligado. Cada provedor tem rate limiter, circuit breaker, retry com backoff exponencial e jitter, e cache (Redis ou memória). Se tudo falhar, usa o último dado real gravado no banco (rotulado) e, sem ele, mostra o ativo como sem dado e tenta de novo a cada 2 minutos.
 - **Polling inteligente:** a cada 30 s com pregão aberto e a cada 10 min com pregão fechado (EUA, Europa, câmbio e commodities), com cotações compartilhadas via cache.
 - **Procedência em cada cotação:** selo de atraso (tempo real, ~15 min, fechamento, último dado real gravado), horário da cotação na origem, contagem até a próxima atualização e aviso de cotação desatualizada. O pulso visual só aparece quando chega uma cotação nova.
 - **Motor quantitativo e de timing explicável:** Z-Score, percentil, RSI, MACD, Bollinger, ATR, volatilidade, drawdown, Sharpe, VaR, força relativa, volume relativo, risco/retorno, expectativa e Kelly fracionado.
@@ -43,6 +44,10 @@ Swagger: `http://localhost:8080/swagger-ui.html`. Saúde: `/actuator/health`.
 |---|---|---|
 | `FINNHUB_API_KEY` | vazio | cotações Finnhub, fundamentos e notícias |
 | `FRED_API_KEY` | vazio | juros de 10 anos via FRED (senão usa Yahoo `^TNX`) |
+| `MW_BRAPI_TOKEN` | vazio | brapi.dev: sem token só PETR4, VALE3, ITUB4 e MGLU3 |
+| `MW_FINNHUB_WS` | `true` | WebSocket de negócios da Finnhub (só conecta com `FINNHUB_API_KEY`) |
+| `MW_STOOQ_ENABLED` | `false` | religa o Stooq (exige verificação JavaScript desde 2026-11) |
+| `MW_PAID_FEED`, `MW_PAID_FEED_KEY`, `MW_PAID_FEED_FRESHNESS` | `none`, vazio, `DELAYED` | feed pago plugável (`twelvedata`); o selo declara o atraso do plano |
 | `MW_CACHE_TYPE` | `memory` | `redis` no Compose |
 | `MW_PERSISTENCE` | `false` | `true` grava candles e sinais no PostgreSQL |
 | `MW_EXCLUDE_AUTOCONFIG` | lista JDBC/Flyway/Redis | vazio no Compose para ligar banco e Redis |
@@ -50,7 +55,7 @@ Swagger: `http://localhost:8080/swagger-ui.html`. Saúde: `/actuator/health`.
 
 ## Endpoints
 
-`GET /api/universe`, `/api/overview`, `/api/candles/{symbol}`, `/api/assessment/{symbol}`, `/api/micro/{symbol}`, `/api/signals/{symbol}`, `/api/backtest/{symbol}?buyScore=35&sellScore=30&bars=600`, `/api/status`, `/api/stream` (SSE), `/ws/stream` (WebSocket).
+`GET /api/universe`, `/api/overview`, `/api/candles/{symbol}`, `/api/assessment/{symbol}`, `/api/micro/{symbol}`, `/api/signals/{symbol}`, `/api/backtest/{symbol}?buyScore=35&sellScore=30&bars=600`, `/api/status`, `/api/markets` (pregão por bolsa, com motivo e feriado), `/api/stream` (SSE), `/ws/stream` (WebSocket).
 
 Ativo sem dado real responde **503** com `{"error": "Sem dado em tempo real para ...", "status": "UNAVAILABLE"}`. Cada item de `/api/overview` traz `status`, `source`, `quoteTime`, `freshness`, `nextUpdateAt` e `marketOpen`.
 
@@ -80,15 +85,15 @@ Hexagonal estrita ([ADR 001](docs/adr/001-arquitetura-hexagonal.md)), verificada
 
 ## Limites reais das fontes gratuitas
 
-Comportamento observado em 2026-11-20 (sexta-feira, após o fechamento), rodando o app contra as APIs reais:
+Comportamento e latência observados em 2026-11-20 (sexta-feira, após o fechamento; B3 em feriado), rodando o app contra as APIs reais. Tabela completa em [`docs/mercados.md`](docs/mercados.md).
 
-| Fonte | Ativos | Atraso | Observado |
-|---|---|---|---|
-| Yahoo (chart v8) | ações, ETFs, índices, câmbio, futuros | ~15 min (fechamento fora do pregão) | respondeu para SPY, AAPL, MSFT, NVDA, STOXX50 e EUR/USD; `regularMarketTime` usado como horário da cotação |
-| Frankfurter (BCE) | EUR/USD, GBP/USD | referência diária | respondeu com 500 barras |
-| Stooq (CSV) | ações, índices, câmbio | atrasado / diário | **exigiu chave** no download CSV (resposta "sem dados ou exige chave") |
-| Finnhub | ações dos EUA | tempo real segundo a documentação pública | não testado (sem chave); validação no PR #3 |
-| FRED | juros de 10 anos | diário | não testado (sem chave) |
+| Fonte | Uso | Latência HTTP | Atraso nominal | Observado |
+|---|---|---|---|---|
+| Yahoo (chart v8) | todas as regiões | 0,16–0,36 s | ~15 min | respondeu para os 25 ativos |
+| brapi.dev | histórico da B3 | 0,34–0,38 s | barra diária | sem token: PETR4, VALE3, ITUB4; horário de cotação não confiável em feriado |
+| Frankfurter (BCE) | câmbio (failover) | 0,16–0,74 s | referência diária | endpoint novo `api.frankfurter.dev/v1` |
+| Stooq | desligado | — | — | exige verificação JavaScript |
+| Finnhub REST/WS | EUA (com chave) | não medido | tempo real (documentação) | não validado: sem chave |
 
 - **Atraso:** Yahoo e Stooq entregam cotações com atraso (em geral 15 min ou mais) e podem mudar o formato ou bloquear sem aviso. Tempo real verdadeiro de B3 e bolsas europeias exige feed pago (adapter plugável previsto no PR #3).
 - **Cobertura:** o plano gratuito do Finnhub cobre ações dos EUA e limita a 60 requisições por minuto. Fundamentos só existem para esses ativos.
@@ -100,5 +105,6 @@ Comportamento observado em 2026-11-20 (sexta-feira, após o fechamento), rodando
 ## Documentação do projeto
 
 - [`docs/PROJETO.md`](docs/PROJETO.md): visão, regras, roadmap, decisões, dívidas e como rodar.
+- [`docs/mercados.md`](docs/mercados.md): bolsas, calendários e fontes com latência medida.
 - [`docs/adr/`](docs/adr/): decisões de arquitetura (hexagonal, precisão financeira, frontend sem build, dados reais e procedência).
 - [`CONTRIBUTING.md`](CONTRIBUTING.md), [`SECURITY.md`](SECURITY.md) e [`CHANGELOG.md`](CHANGELOG.md).
