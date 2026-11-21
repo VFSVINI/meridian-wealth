@@ -53,6 +53,7 @@ canvas{width:100%;height:420px;display:block}
 .meter b{position:absolute;top:0;bottom:0;border-radius:4px}
 .kv{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}.kv div{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dotted #1c2837;padding-bottom:3px}
 .kv span:first-child{color:var(--mute)}
+.rx table{font-size:11.5px}.rx td,.rx th{padding:5px 4px;vertical-align:top}.rx th{color:var(--mute);font-weight:500;text-align:left}.rx td.n,.rx th.n{text-align:right;font-family:var(--mono)}.rx a{color:var(--ice)}.rx .gap{color:var(--warn)}.rx .note{margin:6px 0 0;padding-left:16px;color:var(--mute);font-size:11.5px}.rx .src{font-size:11.5px;color:var(--mute);margin-bottom:6px}.rx .scroll{max-height:340px;overflow:auto}
 ul.why{list-style:none;margin:0;padding:0}ul.why li{padding:5px 0 5px 10px;border-left:3px solid var(--c);margin-bottom:5px;font-size:12.5px}
 .bar{height:6px;background:#16212e;border-radius:3px;overflow:hidden;margin:3px 0 9px}.bar i{display:block;height:100%}
 .bt{display:flex;gap:8px;align-items:end;flex-wrap:wrap;margin-bottom:8px}.bt label{display:flex;flex-direction:column;gap:3px;color:var(--mute);font-size:11px}.bt input{width:74px}
@@ -98,6 +99,7 @@ footer{padding:8px 16px;border-top:1px solid var(--line);color:var(--mute);font-
     <div class="card"><h2>Microeconomia e força relativa</h2><div class="kv" id="micro"></div></div>
     <div class="card"><h2>Radar macro e geopolítico</h2><div id="macro"></div></div>
     <div class="card"><h2>Juros e inflação (Brasil) <span class="tag" style="color:var(--ice);border-color:var(--ice)">dado oficial</span></h2><div id="br" class="mute" style="font-size:12px">carregando…</div></div>
+    <div class="card rx"><h2>Raio-X de composição <span class="tag" style="color:var(--ice);border-color:var(--ice)">dado curado</span></h2><div id="rx" class="mute" style="font-size:12px">Selecione um fundo imobiliário.</div></div>
     <div class="card"><h2>Histórico de sinais</h2><div id="sigHist" class="mute" style="font-size:12px">—</div></div>
     <div class="card"><h2>Backtest analítico <span class="tag">projeção</span></h2>
       <div class="bt">
@@ -229,7 +231,7 @@ async function select(sym){
     else{candles=[];A=null}
   }finally{selecting=false}
   $('#btOut').innerHTML='<span class="mute">Rode o backtest para este ativo.</span>';
-  renderList();renderDetail();draw();loadMicro();loadSignals();
+  renderList();renderDetail();draw();loadMicro();loadSignals();loadComposition(sym);
 }
 
 async function loadMicro(){
@@ -244,6 +246,43 @@ async function loadMicro(){
 async function loadSignals(){
   const h=await j('/api/signals/'+sel+'?limit=8').catch(()=>[]);
   $('#sigHist').innerHTML=h.length?h.map(x=>`<div style="display:flex;justify-content:space-between"><span>${new Date(x.ts).toLocaleTimeString('pt-BR')}</span><span class="${SIG[x.signal][1]}">${SIG[x.signal][0]}</span><span class="num">${x.score>0?'+':''}${x.score}</span></div>`).join(''):'Sem histórico (persistência ligada só no Docker Compose).';
+}
+const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const KIND={GALPAO_LOGISTICO:'Galpão logístico',EDIFICIO_COMERCIAL:'Edifício comercial'};
+const dash=(v,fmt)=>v==null?'<span class="gap">não informado</span>':fmt(v);
+function rxAsset(a){
+  const c=a.coordinates;
+  const links=c?`<a href="${esc(c.satelliteUrl)}" target="_blank" rel="noopener noreferrer">Satélite</a> · <a href="${esc(c.streetViewUrl)}" target="_blank" rel="noopener noreferrer">Street View</a>`
+      +(c.approximate?'<div class="mute" title="'+esc(c.matchedAddress)+'">posição aproximada (via)</div>':'<div class="mute" title="'+esc(c.matchedAddress)+'">endereço localizado</div>')
+    :`<span class="gap">não informado</span><div class="mute">${esc(a.noCoordinatesReason)}</div>`;
+  const sectors=a.tenantSectors.length?a.tenantSectors.map(t=>esc(t.setor||t.sector)+' '+f(t.percentOfPropertyRevenue,1)+'%').join('; '):'<span class="gap">não informado</span>';
+  return `<tr><td><b>${esc(a.name)}</b><div class="mute">${esc([a.city,a.uf].filter(Boolean).join(' / '))||'cidade não informada'}${a.kind?' · '+esc(KIND[a.kind]||a.kind):''}</div><div class="mute">${sectors}</div></td>
+    <td class="n">${f(a.areaM2,0)} m²<div class="mute">${f(a.areaSharePercent,1)}% da lista</div></td>
+    <td class="n">${dash(a.vacancyPercent,v=>f(v,2)+'%')}</td><td>${links}</td></tr>`;
+}
+async function loadComposition(sym){
+  const el=$('#rx');
+  try{
+    const r=await fetch('/api/composition/'+encodeURIComponent(sym));
+    if(sel!==sym)return;
+    if(r.status===404){el.innerHTML='<span class="mute">Sem composição publicada para '+esc(sym)+': só há dados curados com fonte para alguns fundos imobiliários (HGLG11, KNRI11, XPML11, MXRF11).</span>';return}
+    if(!r.ok)throw new Error('composition');
+    const d=await r.json();if(sel!==sym)return;
+    const s=d.source;
+    let h=`<div class="src"><b>${esc(s.kindLabel)}</b>: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.name)}</a> · dados de ${esc(s.referenceDate||'data não informada')} · consultado em ${esc(s.consultedOn)}</div>`;
+    if(d.classification)h+=`<div class="src">Classificação no informe: ${esc(d.classification)}</div>`;
+    if(d.metrics){const m=d.metrics;h+=`<div class="kv"><div><span>ABL publicada</span><span>${dash(m.totalAreaM2,v=>f(v,0)+' m²')}</span></div><div><span>Vacância física</span><span>${dash(m.physicalVacancyPercent,v=>f(v,2)+'%')}</span></div><div><span>Vacância financeira</span><span>${dash(m.financialVacancyPercent,v=>f(v,2)+'%')}</span></div><div><span>Ref. das métricas</span><span>${esc(m.asOf||'—')}</span></div></div>`}
+    if(d.assets.length){
+      h+=`<div class="src" style="margin-top:8px">${d.listedAssetCount} imóveis listados${d.declaredAssetCount!=null&&d.declaredAssetCount!==d.listedAssetCount?' de '+d.declaredAssetCount+' declarados':''} · ${d.geolocatedCount} com coordenada · ${esc(d.areaLabel||'Área')}: ${f(d.listedAreaM2,0)} m² (soma da lista)</div>`;
+      h+=`<div class="scroll"><table><thead><tr><th>Imóvel</th><th class="n">Área</th><th class="n">Vacância</th><th>Mapa</th></tr></thead><tbody>${d.assets.map(rxAsset).join('')}</tbody></table></div>`;
+    }
+    if(d.allocations.length){
+      h+=`<table style="margin-top:8px"><thead><tr><th>Alocação</th><th class="n">R$</th><th class="n">% do ativo</th></tr></thead><tbody>${d.allocations.map(a=>`<tr><td>${esc(a.label)}</td><td class="n">${f(a.valueBrl,2)}</td><td class="n">${f(a.percentOfAssets,2)}%</td></tr>`).join('')}</tbody></table>`;
+    }
+    if(d.notices.length)h+='<ul class="note">'+d.notices.map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul>';
+    h+=`<div class="src" style="margin-top:8px">${esc(d.attribution)} Coordenadas por via são aproximadas. ${esc(d.disclaimer)}</div>`;
+    el.className='';el.style.fontSize='12px';el.innerHTML=h;
+  }catch(e){if(sel===sym){el.className='mute';el.textContent='Composição indisponível agora.'}}
 }
 async function loadStatus(){
   const st=await j('/api/status').catch(()=>null);if(!st)return;
