@@ -103,6 +103,69 @@ class ApiIntegrationTest {
         assertThat((String) response.getBody().get("error")).contains("Sem relatórios publicados");
     }
 
+    private static Map<String, String> boldestAnswers() {
+        return new java.util.HashMap<>(Map.of("HORIZON", "OVER_10Y", "DRAWDOWN", "BUY_MORE", "PURPOSE", "GROW", "INCOME", "LARGE_SURPLUS",
+                "WEALTH_SHARE", "UNDER_30", "LIQUIDITY_NEED", "NO", "EMERGENCY_RESERVE", "OVER_6M", "FAMILIARITY", "COMPLEX",
+                "EXPERIENCE", "OVER_5Y"));
+    }
+
+    @Test void suitabilityQuestionnaireCitesTheLawAndTheLimitation() {
+        Map<?, ?> q = rest.getForObject("/api/suitability/questionnaire", Map.class);
+        assertThat((List<?>) q.get("questions")).hasSize(9);
+        assertThat((String) q.get("disclaimer")).contains("não substitui a análise de um profissional habilitado");
+        assertThat(q.get("maxTotalPoints")).isEqualTo(36);
+        assertThat((List<?>) q.get("caps")).hasSize(4);
+    }
+
+    @Test void suitabilityEvaluatesWithCapsAndReturnsTheModelPortfolio() {
+        Map<?, ?> top = rest.postForObject("/api/suitability/evaluate", Map.of("answers", boldestAnswers()), Map.class);
+        assertThat(top.get("profile")).isEqualTo("AGGRESSIVE");
+        assertThat(top.get("profileLabel")).isEqualTo("AGRESSIVO");
+        Map<?, ?> portfolio = (Map<?, ?>) top.get("modelPortfolio");
+        assertThat((List<?>) portfolio.get("targets")).hasSize(6);
+        Map<String, String> shortHorizon = boldestAnswers();
+        shortHorizon.put("HORIZON", "UP_TO_1Y");
+        Map<?, ?> capped = rest.postForObject("/api/suitability/evaluate", Map.of("answers", shortHorizon), Map.class);
+        assertThat(capped.get("scoreProfile")).isEqualTo("AGGRESSIVE");
+        assertThat(capped.get("profile")).isEqualTo("CONSERVATIVE");
+        assertThat((List<?>) capped.get("appliedCaps")).hasSize(1);
+    }
+
+    @Test void suitabilityIncompleteAnswersAre400() {
+        Map<String, String> partial = boldestAnswers();
+        partial.remove("INCOME");
+        var response = rest.postForEntity("/api/suitability/evaluate", Map.of("answers", partial), Map.class);
+        assertThat(response.getStatusCode().value()).isEqualTo(400);
+        assertThat((String) response.getBody().get("error")).contains("INCOME");
+    }
+
+    @Test void modelPortfoliosListEveryProfileWithTargetsSummingToOneHundred() {
+        Map<?, ?> m = rest.getForObject("/api/suitability/model-portfolios", Map.class);
+        List<Map<String, Object>> list = (List<Map<String, Object>>) m.get("portfolios");
+        assertThat(list).hasSize(4);
+        for (Map<String, Object> p : list) {
+            double sum = ((List<Map<String, Object>>) p.get("targets")).stream().mapToDouble(t -> ((Number) t.get("percent")).doubleValue()).sum();
+            assertThat(sum).isEqualTo(100.0);
+        }
+    }
+
+    @Test void adherenceReportsDeviationPerClassAndRejectsInvalidInput() {
+        Map<String, Object> body = Map.of("profile", "MODERATE", "holdings", List.of(Map.of("type", "ACAO", "valueBrl", "700"),
+                Map.of("type", "TESOURO_SELIC", "valueBrl", "300")));
+        Map<?, ?> ok = rest.postForObject("/api/suitability/adherence", body, Map.class);
+        assertThat((List<?>) ok.get("classes")).hasSize(6);
+        assertThat(ok.get("classesOutsideBand")).isNotNull();
+        assertThat((String) ok.get("disclaimer")).contains("nada aqui é recomendação");
+        var index = rest.postForEntity("/api/suitability/adherence", Map.of("profile", "MODERATE",
+                "holdings", List.of(Map.of("type", "INDICE", "valueBrl", "100"))), Map.class);
+        assertThat(index.getStatusCode().value()).isEqualTo(400);
+        var empty = rest.postForEntity("/api/suitability/adherence", Map.of("profile", "MODERATE", "holdings", List.of()), Map.class);
+        assertThat(empty.getStatusCode().value()).isEqualTo(400);
+        var badType = rest.postForEntity("/api/suitability/adherence", Map.of("profile", "MODERATE",
+                "holdings", List.of(Map.of("type", "NAO_EXISTE", "valueBrl", "100"))), Map.class);
+        assertThat(badType.getStatusCode().is4xxClientError()).isTrue();
+    }
+
     @Test void overviewShowsRealSourcesAndExplicitGaps() {
         Map<?, ?> body = rest.getForObject("/api/overview", Map.class);
         assertThat(body.get("mode")).isEqualTo("PARCIAL");
