@@ -14,3 +14,4 @@ ADRs aceitos não são reescritos; uma mudança de rumo gera um ADR novo que sub
 | [007](007-composicao-curada-e-geolocalizacao.md) | Composição curada e geolocalização conservadora | Aceito | 2026-11-21 |
 | [008](008-radar-de-relatorios-e-veredito-mecanico.md) | Radar de relatórios e veredito mecânico | Aceito | 2026-11-21 |
 | [009](009-suitability-por-questionario-e-tetos.md) | Suitability por questionário, tetos e carteira modelo | Aceito | 2026-11-21 |
+| [010](010-impacto-pre-ordem-e-glossario.md) | Impacto pré-ordem e glossário ligado às métricas | Aceito | 2026-11-21 |

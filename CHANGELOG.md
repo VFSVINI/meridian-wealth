@@ -6,6 +6,13 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #9 do roadmap)
+- Simulador de impacto pré-ordem (`POST /api/impact/pre-order`): efeito de uma compra ou venda hipotética na concentração (maior posição, HHI, posições efetivas), no risco (volatilidade ponderada com cobertura declarada, dado real) e na aderência ao perfil, com achados descritivos. Rotulado como simulação, sem cotação, sem rota de ordem; a plataforma não executa ordens.
+- Glossário didático (`GET /api/glossary`): 60 entradas com "o que é", "como ler" e "quando se preocupar", escritas a partir do que o código calcula (o Sharpe do painel não desconta a taxa livre de risco; a expectativa usa uma probabilidade derivada do score).
+- Cada métrica do painel liga a uma entrada do glossário (botão "?" e diálogo com busca); teste garante que todo rótulo do painel, inclusive os das séries do BCB, resolve para uma entrada.
+- `MoneyBounds`: limite de magnitude de valores monetários compartilhado entre aderência e simulador.
+- ADR 010 e `docs/simulador-e-glossario.md`.
+
 ### Adicionado (item #8 do roadmap)
 - Motor de suitability: questionário de 9 perguntas cobrindo as dimensões do art. 3 da Resolução CVM 30 (objetivos, situação financeira e conhecimento), nota de 0 a 100 e perfil CONSERVADOR, MODERADO, ARROJADO ou AGRESSIVO, com tetos de perfil explicados (horizonte curto, necessidade de caixa, sem reserva, venda em pânico).
 - Carteira modelo por perfil com metas por classe de ativo (soma 100, testada), rotuladas como ilustrativas.
