@@ -50,8 +50,9 @@ public class LiveBrazilRates implements BrazilRatesPort {
     @Override
     public BrazilRates current() { return current; }
 
+    /** Exclusivo: duas rodadas simultâneas disputariam a cota do BCB e sobrescreveriam o mesmo retrato. */
     @Scheduled(fixedDelay = 1_800_000, initialDelay = 5_000)
-    public void refresh() {
+    public synchronized void refresh() {
         if (!enabled) return;
         LocalDate today = LocalDate.now(clock);
         Instant now = clock.instant();
@@ -62,7 +63,7 @@ public class LiveBrazilRates implements BrazilRatesPort {
             try {
                 List<BcbClient.Point> points = client.series(series.sgsCode(), today.minusDays(window), today);
                 BcbClient.Point last = points.get(points.size() - 1);
-                next = merge(next, new RateObservation(series, last.value(), last.date()), now);
+                next = merge(next, new RateObservation(series, last.value(), last.date(), now), now);
             } catch (RuntimeException e) {
                 log.warn("BCB: série {} ({}) não atualizada ({}); mantendo o último valor", series.sgsCode(),
                         series.label(), e.getMessage());
@@ -71,14 +72,15 @@ public class LiveBrazilRates implements BrazilRatesPort {
         try {
             BcbClient.Ptax ptax = client.latestPtax(today, PTAX_LOOKBACK_DAYS);
             LocalDate date = ptax.time().toLocalDate();
-            next = merge(next, new RateObservation(RateSeries.PTAX_BUY, ptax.buy(), date), now);
-            next = merge(next, new RateObservation(RateSeries.PTAX_SELL, ptax.sell(), date), now);
+            next = merge(next, new RateObservation(RateSeries.PTAX_BUY, ptax.buy(), date, now), now);
+            next = merge(next, new RateObservation(RateSeries.PTAX_SELL, ptax.sell(), date, now), now);
         } catch (RuntimeException e) {
             log.warn("BCB: PTAX não atualizado ({}); mantendo o último valor", e.getMessage());
         }
         current = next;
     }
 
+    /** Valor igual ou mais novo substitui (e renova a confirmação); valor mais antigo é ignorado. */
     private static BrazilRates merge(BrazilRates rates, RateObservation incoming, Instant now) {
         Optional<RateObservation> existing = rates.get(incoming.series());
         if (existing.isPresent() && existing.get().date().isAfter(incoming.date())) return rates;

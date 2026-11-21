@@ -260,8 +260,8 @@ async function loadBrazil(){
     :new Date(i.date+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});
   $('#br').innerHTML=r.items.map(i=>i.status==='UNAVAILABLE'
     ?`<div style="display:flex;justify-content:space-between;gap:8px;padding:2px 0"><span>${i.label}</span><span class="fresh dn">sem dado</span></div>`
-    :`<div style="display:flex;justify-content:space-between;gap:8px;padding:2px 0;align-items:baseline"><span>${i.label}<span class="src"> · ${when(i)}</span></span>
-      <span class="num">${fmt(i.value)} <span class="src">${i.unit}</span>${i.status==='STALE'?' <span class="fresh dn" title="o Banco Central não publicou nada novo no prazo esperado">desatualizado</span>':''}</span></div>`).join('')
+    :`<div style="display:flex;justify-content:space-between;gap:8px;padding:2px 0;align-items:baseline"><span>${i.label}<span class="src"> · ${i.dateLabel} ${when(i)}</span></span>
+      <span class="num">${fmt(i.value)} <span class="src">${i.unit}</span>${i.status==='STALE'?' <span class="fresh dn" title="sem dado novo no prazo esperado ou sem confirmação do Banco Central nas últimas 3 horas">desatualizado</span>':''}</span></div>`).join('')
     +`<div class="src" style="margin-top:6px">Fonte: Banco Central do Brasil (SGS e PTAX), com a data de referência de cada publicação. IPCA mostra o mês de referência.${r.fetchedAt?' Atualizado em '+dt(Date.parse(r.fetchedAt))+'.':''}</div>`;
 }
 loadBrazil();setInterval(loadBrazil,300000);

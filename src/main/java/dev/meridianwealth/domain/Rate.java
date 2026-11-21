@@ -11,6 +11,9 @@ import java.util.Objects;
  * na apresentação, com {@link #rounded(int)} (HALF_EVEN).
  */
 public record Rate(BigDecimal percent) {
+    /** Limite de {@link BigDecimal#pow(int, MathContext)}: acima disso a potência lança ArithmeticException. */
+    public static final int MAX_PERIODS = 999_999_999;
+
     public Rate {
         Objects.requireNonNull(percent, "percent");
     }
@@ -25,7 +28,9 @@ public record Rate(BigDecimal percent) {
      * {@code (1 + i)^n - 1}. Com a taxa diária do CDI e 252 períodos dá o CDI anualizado (base 252).
      */
     public Rate compoundedOver(int periods) {
-        if (periods < 0) throw new IllegalArgumentException("periods deve ser >= 0");
+        if (periods < 0 || periods > MAX_PERIODS) {
+            throw new IllegalArgumentException("periods deve estar entre 0 e " + MAX_PERIODS);
+        }
         BigDecimal factor = BigDecimal.ONE.add(fraction()).pow(periods, MathContext.DECIMAL128);
         return new Rate(factor.subtract(BigDecimal.ONE).movePointRight(2));
     }

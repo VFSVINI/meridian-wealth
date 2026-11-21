@@ -173,6 +173,10 @@ class ApiIntegrationTest {
         Map<String, Object> selic = items.stream().filter(i -> "selicTarget".equals(i.get("key"))).findFirst().orElseThrow();
         assertThat(selic.get("value")).as("texto exato, sem passar por double").isEqualTo("13.75");
         assertThat(selic.get("unit")).isEqualTo("% a.a.");
+        assertThat(selic.get("dateLabel")).as("série preenchida para a frente").isEqualTo("vigente em");
+        assertThat(selic.get("confirmedAt")).isNotNull();
+        assertThat(items.stream().filter(i -> "cdiDaily".equals(i.get("key"))).findFirst().orElseThrow().get("dateLabel"))
+                .isEqualTo("referência");
         assertThat(selic.get("source")).isEqualTo("BCB/SGS 432");
         java.time.LocalDate selicDate = java.time.LocalDate.parse((String) selic.get("date"));
         assertThat(selicDate).as("nunca uma data posterior a hoje (a fixture traz até 21/11/2026)")
