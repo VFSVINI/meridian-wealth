@@ -15,6 +15,12 @@ public enum Provider {
     FINNHUB_WS("Finnhub WS", Freshness.REAL_TIME),
     /** Feed pago plugável (desligado por padrão); o atraso depende do plano contratado. */
     PAID_FEED("Feed pago", Freshness.REAL_TIME),
+    /** Binance WebSocket (miniTicker, 1 s por par, cotado em USDT). */
+    BINANCE_WS("Binance WS", Freshness.REAL_TIME),
+    /** Coinbase Exchange WebSocket (canal ticker, a cada negócio, cotado em USD). */
+    COINBASE_WS("Coinbase WS", Freshness.REAL_TIME),
+    /** Kraken WebSocket v2 (canal ticker, a cada negócio, cotado em USD). */
+    KRAKEN_WS("Kraken WS", Freshness.REAL_TIME),
     YAHOO("Yahoo", Freshness.DELAYED),
     STOOQ("Stooq", Freshness.DELAYED),
     /** brapi.dev: usado só para histórico diário da B3; a barra diária é fechamento. */

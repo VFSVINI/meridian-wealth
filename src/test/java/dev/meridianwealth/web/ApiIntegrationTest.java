@@ -42,7 +42,7 @@ class ApiIntegrationTest {
     @Test void overviewShowsRealSourcesAndExplicitGaps() {
         Map<?, ?> body = rest.getForObject("/api/overview", Map.class);
         assertThat(body.get("mode")).isEqualTo("PARCIAL");
-        assertThat((List<?>) body.get("ticks")).hasSize(25);
+        assertThat((List<?>) body.get("ticks")).hasSize(29);
 
         Map<String, Object> spy = tick("SPY");
         assertThat(spy.get("status")).isEqualTo("LIVE");
@@ -101,7 +101,7 @@ class ApiIntegrationTest {
         assertThat(body.get("cache")).isEqualTo("memory");
         assertThat(body).doesNotContainKeys("flow", "dataMode");
         assertThat((List<?>) body.get("providers")).isNotEmpty();
-        assertThat((List<?>) body.get("instruments")).hasSize(25);
+        assertThat((List<?>) body.get("instruments")).hasSize(29);
     }
 
     @Test void simulatedFlowEndpointNoLongerExists() {
@@ -112,11 +112,26 @@ class ApiIntegrationTest {
     @Test void marketsReportEveryExchangeWithReasonAndCalendarStatus() {
         List<Map<String, Object>> markets = rest.getForObject("/api/markets", List.class);
         assertThat(markets).extracting(m -> m.get("exchange"))
-                .contains("NYSE", "B3", "XETRA", "LSE", "TSE", "HKEX", "ASX", "TADAWUL", "JSE", "GLOBAL_24H");
+                .contains("NYSE", "B3", "XETRA", "LSE", "TSE", "HKEX", "ASX", "TADAWUL", "JSE", "GLOBAL_24H", "CRYPTO");
         assertThat(markets).allSatisfy(m -> {
             assertThat(m).containsKeys("open", "reason", "localTime", "holidaysVerified");
             assertThat((String) m.get("reason")).isNotBlank();
         });
+    }
+
+    @Test void cryptoUsesYahooHistoryBeta365AndShowsGapsForTheRest() {
+        Map<String, Object> btc = tick("BTC");
+        assertThat(btc.get("status")).isEqualTo("LIVE");
+        assertThat(btc.get("source")).isEqualTo("Yahoo");
+        assertThat(btc.get("marketOpen")).isEqualTo(true);
+        assertThat(tick("SOL").get("status")).as("sem fixture da Yahoo para SOL").isEqualTo("UNAVAILABLE");
+
+        Map<String, Object> eth = rest.getForObject("/api/assessment/ETH", Map.class);
+        assertThat(eth.get("periodsPerYear")).isEqualTo(365);
+        assertThat(eth.get("beta")).as("beta contra o BTC").isNotNull();
+        Map<String, Object> btcAssessment = rest.getForObject("/api/assessment/BTC", Map.class);
+        assertThat(btcAssessment.get("beta")).as("o BTC é o próprio benchmark").isNull();
+        assertThat(rest.getForObject("/api/assessment/SPY", Map.class).get("periodsPerYear")).isEqualTo(252);
     }
 
     @Test void openApiAndHealthAreUp() {

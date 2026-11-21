@@ -25,8 +25,12 @@ class OpenDayIntegrityTest {
     private static final long NOV20 = 1_795_185_000_000L;
 
     private static LiveMarketData market(String chartJson) {
+        return market(chartJson, "SPY");
+    }
+
+    private static LiveMarketData market(String chartJson, String yahooSymbol) {
         HttpGateway gw = (url, h) -> {
-            if (url.contains("finance.yahoo.com") && url.contains("range=2y")) return chartJson;
+            if (url.contains("chart/" + yahooSymbol + "?") && url.contains("range=2y")) return chartJson;
             throw new IOException("sem rede");
         };
         CandleStore none = new CandleStore() {
@@ -64,6 +68,32 @@ class OpenDayIntegrityTest {
         assertThat(u.candle().time()).isEqualTo(NOV20);
         assertThat(u.candle().close()).isEqualTo(689.81);
         assertThat(at(h.candles(), NOV19).close()).isEqualTo(715.8699951171875);
+    }
+
+    @Test void cryptoBarOpensAtUtcMidnightAndALateQuoteOfTheSameDayDoesNotOpenANewOne() throws IOException {
+        // Fixture real do BTC (barras às 00:00 UTC, barra de hoje com close ao vivo).
+        String btc = resource("/fixtures/yahoo/BTC-USD-2y.json");
+        LiveMarketData d = market(btc.replace("SPY", "BTC"), "BTC-USD");
+        HistoryResult h = d.history("BTC", 500);
+        Candle last = h.candles().get(h.candles().size() - 1);
+        assertThat(last.time() % 86_400_000L).as("barras diárias da Yahoo em UTC começam à meia-noite").isZero();
+
+        // Negócio às 23:30 UTC do mesmo dia da última barra: continua a mesma barra (regressão do corte de 23h).
+        long sameDayLate = last.time() + (23 * 60 + 30) * 60_000L;
+        d.onStreamQuote(new dev.meridianwealth.application.Quote("BTC", 59_000, sameDayLate, "Binance WS"));
+        LiveUpdate same = d.next("BTC").orElseThrow();
+        assertThat(same.newBar()).isFalse();
+        assertThat(same.candle().time()).isEqualTo(last.time());
+        assertThat(same.candle().close()).isEqualTo(59_000);
+
+        // Primeiro negócio do dia seguinte: barra nova às 00:00 UTC, aberta no preço observado.
+        long nextDay = last.time() + 86_400_000L + 90_000L;
+        d.onStreamQuote(new dev.meridianwealth.application.Quote("BTC", 58_500, nextDay, "Binance WS"));
+        LiveUpdate fresh = d.next("BTC").orElseThrow();
+        assertThat(fresh.newBar()).isTrue();
+        assertThat(fresh.candle().time()).isEqualTo(last.time() + 86_400_000L);
+        assertThat(fresh.candle().open()).isEqualTo(58_500);
+        assertThat(d.next("BTC").orElseThrow().newBar()).isFalse();
     }
 
     @Test void quoteFromALaterDayOpensANewBarAtTheObservedPrice() throws IOException {

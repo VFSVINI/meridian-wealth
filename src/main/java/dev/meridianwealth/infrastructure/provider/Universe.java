@@ -2,6 +2,7 @@ package dev.meridianwealth.infrastructure.provider;
 
 import static dev.meridianwealth.domain.Exchange.ASX;
 import static dev.meridianwealth.domain.Exchange.B3;
+import static dev.meridianwealth.domain.Exchange.CRYPTO;
 import static dev.meridianwealth.domain.Exchange.EURONEXT_AMS;
 import static dev.meridianwealth.domain.Exchange.GLOBAL_24H;
 import static dev.meridianwealth.domain.Exchange.HKEX;
@@ -54,6 +55,15 @@ public final class Universe {
             // Oriente Médio e África
             e(Instrument.of("ARAMCO", "Saudi Aramco", TADAWUL, "Ação", "energia", "SAR", null), Symbols.yahoo("2222.SR")),
             e(Instrument.of("NASPERS", "Naspers", JSE, "Ação", "tecnologia", "ZAc", null), Symbols.yahoo("NPN.JO")),
+            // Cripto (24/7): histórico pela Yahoo e cotação por stream; alts usam o BTC como benchmark
+            e(Instrument.of("BTC", "Bitcoin", CRYPTO, "Cripto", "cripto", "USD", null),
+                    Symbols.crypto("BTC-USD", "BTCUSDT", "BTC-USD", "BTC/USD")),
+            e(Instrument.of("ETH", "Ethereum", CRYPTO, "Cripto", "cripto", "USD", "BTC"),
+                    Symbols.crypto("ETH-USD", "ETHUSDT", "ETH-USD", "ETH/USD")),
+            e(Instrument.of("SOL", "Solana", CRYPTO, "Cripto", "cripto", "USD", "BTC"),
+                    Symbols.crypto("SOL-USD", "SOLUSDT", "SOL-USD", "SOL/USD")),
+            e(Instrument.of("XRP", "XRP", CRYPTO, "Cripto", "cripto", "USD", "BTC"),
+                    Symbols.crypto("XRP-USD", "XRPUSDT", "XRP-USD", "XRP/USD")),
             // Global
             e(Instrument.of("EURUSD", "EUR/USD", GLOBAL_24H, "Câmbio", "cambio", "USD", null), Symbols.fx("EURUSD=X", "EUR", "USD")),
             e(Instrument.of("GBPUSD", "GBP/USD", GLOBAL_24H, "Câmbio", "cambio", "USD", null), Symbols.fx("GBPUSD=X", "GBP", "USD")),
