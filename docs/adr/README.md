@@ -11,3 +11,4 @@ ADRs aceitos não são reescritos; uma mudança de rumo gera um ADR novo que sub
 | [004](004-dados-reais-e-procedencia.md) | Dados 100% reais e procedência explícita | Aceito | 2026-11-20 |
 | [005](005-stream-cripto-com-failover.md) | Stream de cripto com failover e anualização por √365 | Aceito | 2026-11-21 |
 | [006](006-taxonomia-e-dados-oficiais-do-bcb.md) | Taxonomia multi-ativo e dados oficiais do BCB | Aceito | 2026-11-21 |
+| [007](007-composicao-curada-e-geolocalizacao.md) | Composição curada e geolocalização conservadora | Aceito | 2026-11-21 |
