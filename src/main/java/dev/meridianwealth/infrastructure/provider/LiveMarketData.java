@@ -47,12 +47,16 @@ public class LiveMarketData implements MarketDataPort {
     private static final Logger log = LoggerFactory.getLogger(LiveMarketData.class);
     private static final int MIN_BARS = 120;
     private static final long FIRST_POLL_DELAY_MS = 20_000;
+    /** Tempo sem preço de stream a partir do qual o polling REST volta a consultar o ativo. */
+    static final long STREAM_GRACE_MS = 30_000;
 
     private static final class Real {
         Quote quote;
         Candle bar;
         boolean pendingNewBar;
         volatile long nextPoll;
+        /** Instante do último preço empurrado por stream (0 se nunca houve): enquanto recente, não se consulta o REST. */
+        volatile long lastPushAt;
         final ZoneId zone;
 
         Real(Quote quote, Candle bar, long nextPoll, ZoneId zone) {
@@ -158,7 +162,9 @@ public class LiveMarketData implements MarketDataPort {
      */
     public void onStreamQuote(Quote q) {
         Real r = real.get(q.symbol());
-        if (r != null) apply(r, q);
+        if (r == null) return;
+        apply(r, q);
+        r.lastPushAt = System.currentTimeMillis();
     }
 
     @Override
@@ -254,7 +260,10 @@ public class LiveMarketData implements MarketDataPort {
     }
 
     private void poll(String symbol, Real r) {
-        r.nextPoll = System.currentTimeMillis() + (marketOpen(symbol) ? pollOpenMs : pollClosedMs);
+        long now = System.currentTimeMillis();
+        r.nextPoll = now + (marketOpen(symbol) ? pollOpenMs : pollClosedMs);
+        // Com o stream entregando preços, consultar o REST só alternaria a fonte exibida (e o selo de atraso).
+        if (now - r.lastPushAt < STREAM_GRACE_MS) return;
         String key = "quote:" + symbol;
         Optional<String> cached = cache.get(key);
         if (cached.isPresent()) {
