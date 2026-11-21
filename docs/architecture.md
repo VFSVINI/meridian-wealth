@@ -17,7 +17,10 @@ Histórico: Yahoo, depois Stooq, depois Frankfurter (câmbio), depois o banco, e
 ## Tempo real
 O `MarketLoop` roda a 1 Hz. Para dados reais, a barra do dia é atualizada no lugar (com o fluxo simulado opcional sobre a última cotação); para ativos simulados, cada tick cria uma barra nova. O lote é serializado uma vez e enviado por WebSocket e SSE. O painel tenta WebSocket e cai para SSE.
 
-## Decisões (ADRs resumidos)
+## Decisões herdadas da base
+
+As decisões formais do MeridianWealth ficam em [`docs/adr/`](adr/README.md). A lista abaixo resume as escolhas da base herdada; a de número 2 (simulador de fallback) é revogada pela regra de dados 100% reais e sai no PR #2.
+
 1. **Resiliência própria em vez de biblioteca.** As quatro peças são pequenas, testáveis com relógio injetado e sem dependência extra. Trade-off: menos recursos que Resilience4j.
 2. **Porta de dados com simulador de fallback.** Preço ao vivo mesmo sem rede ou com limite de API; o modo é sempre exibido.
 3. **Cache compartilhado de cotações.** Várias instâncias reaproveitam a mesma consulta e respeitam os limites dos provedores.
