@@ -159,6 +159,7 @@ class SuitabilityDomainTest {
         missing.remove("INCOME");
         assertThatThrownBy(() -> SuitabilityEngine.evaluate(missing)).hasMessageContaining("sem resposta").hasMessageContaining("INCOME");
         Map<String, String> unknown = answers();
+        unknown.remove("INCOME");  // mantém 9 chaves para chegar à checagem de pergunta desconhecida
         unknown.put("EXTRA", "X");
         assertThatThrownBy(() -> SuitabilityEngine.evaluate(unknown)).hasMessageContaining("desconhecida");
         Map<String, String> invalid = answers();
@@ -225,5 +226,29 @@ class SuitabilityDomainTest {
         assertThatThrownBy(() -> h(AssetType.INDICE, "100")).hasMessageContaining("referência");
         assertThatThrownBy(() -> h(AssetType.ACAO, "0")).hasMessageContaining("positivo");
         assertThatThrownBy(() -> h(AssetType.ACAO, "-5")).hasMessageContaining("positivo");
+    }
+
+    @Test void astronomicalExponentsAreRejectedInstantlyInsteadOfFreezingTheSum() {
+        // medido antes da correção: 1E5000000 levou 7,6 s, 1E100000000 passou de 90 s e 1E999999999 deu 500
+        for (String v : List.of("1E5000000", "1E100000000", "1E999999999", "1E16", "1E-7", "0.0000001")) {
+            long start = System.nanoTime();
+            assertThatThrownBy(() -> h(AssetType.ACAO, v)).as(v).hasMessageContaining("fora do intervalo");
+            assertThat((System.nanoTime() - start) / 1_000_000).as(v + " em ms").isLessThan(500);
+        }
+    }
+
+    @Test void saneScientificAndPlainValuesAreAcceptedAndNormalized() {
+        assertThat(h(AssetType.ACAO, "1E3").valueBrl()).isEqualByComparingTo("1000");
+        assertThat(h(AssetType.ACAO, "1E3").valueBrl().scale()).isGreaterThanOrEqualTo(0);
+        assertThat(h(AssetType.ACAO, "999999999999999").valueBrl()).isEqualByComparingTo("999999999999999");
+        assertThat(h(AssetType.ACAO, "0.000001").valueBrl()).isEqualByComparingTo("0.000001");
+        assertThat(h(AssetType.ACAO, "100.00").valueBrl()).isEqualByComparingTo("100");
+        assertThatThrownBy(() -> h(AssetType.ACAO, "1000000000000000")).hasMessageContaining("fora do intervalo");
+    }
+
+    @Test void moreAnswersThanQuestionsIsRejectedBeforeAnyWork() {
+        Map<String, String> huge = answers();
+        for (int i = 0; i < 1000; i++) huge.put("EXTRA" + i, "X");
+        assertThatThrownBy(() -> SuitabilityEngine.evaluate(huge)).hasMessageContaining("Respostas demais");
     }
 }

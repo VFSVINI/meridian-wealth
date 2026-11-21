@@ -35,6 +35,9 @@ public final class SuitabilityEngine {
     /** @param answers pergunta -> opção escolhida; precisa ter todas as perguntas e só opções existentes */
     public static Result evaluate(Map<String, String> answers) {
         if (answers == null) throw new IllegalArgumentException("Respostas ausentes");
+        if (answers.size() > Questionnaire.QUESTIONS.size()) {
+            throw new IllegalArgumentException("Respostas demais: o questionário tem " + Questionnaire.QUESTIONS.size() + " perguntas");
+        }
         TreeSet<String> unknown = new TreeSet<>(answers.keySet());
         Questionnaire.QUESTIONS.forEach(q -> unknown.remove(q.id()));
         if (!unknown.isEmpty()) throw new IllegalArgumentException("Pergunta desconhecida: " + unknown.first());

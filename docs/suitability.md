@@ -70,7 +70,7 @@ classe é arredondado **uma vez** (2 casas, `HALF_EVEN`) e o desvio sai dos peso
 fecham. Nota = 100 − metade da soma dos desvios absolutos (100 igual à meta, 0 totalmente disjunta). Tolerância de **±5 pontos
 percentuais** por classe (inclusiva). A resposta descreve o desvio: **não diz o que comprar ou vender**.
 
-Posição de índice de referência, valor não positivo, carteira vazia ou mais de 50 posições são erro 400.
+Posição de índice de referência, valor não positivo, carteira vazia, mais de 50 posições, mapa de respostas maior que o questionário ou valor fora de 15 dígitos inteiros e 6 casas decimais são erro 400. O limite de magnitude existe porque notação científica (`1E5000000`) travava a soma por segundos (medido na revisão).
 
 ## Privacidade
 
