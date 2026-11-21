@@ -16,3 +16,7 @@ identidade visual dos sites citados foi copiado: só os princípios abaixo, adap
 | Acessibilidade | Link "Ir para o conteúdo", foco visível dourado, `aria-label` nos controles |
 
 Fica para o item #15: tema completo, painel "Minha Carteira", botão "Continuar com Google" e conferência de contraste (WCAG).
+
+## Protótipo aprovado
+
+A partir de 2026-11-21 a interface segue o protótipo aprovado ([design-prototipo.md](design-prototipo.md), [ADR 012](adr/012-prototipo-visual-como-referencia.md)). As imagens principais estão em `docs/design/`. Os princípios acima continuam valendo; onde divergirem, vale o protótipo.

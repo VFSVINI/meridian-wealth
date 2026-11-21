@@ -6,6 +6,13 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (etapa 1 do item #15, Issue #31)
+- Interface reescrita sobre o protótipo aprovado: tokens do sistema de design nos temas escuro e Ivory (com alternância e preferência lembrada), shell com navbar (marca, busca rápida Ctrl+K, estado ao vivo, tema) e sidebar recolhível por grupos, navegação por rota (`#/pagina`), gaveta do menu no celular, foco visível e `prefers-reduced-motion`.
+- Páginas: Painel inicial (sinais do dia, maiores movimentos e notícias de risco, só com dado real, frescor e fonte), Mercados, Cockpit do ativo, Radar de relatórios, Brasil, Geopolítica e teses, Perfil, Simulador, Composição e Saúde dos dados. Páginas sem backend ficam desabilitadas e indicam o item do roadmap que as entrega.
+- Faixa de simulação listrada, selos de frescor e veredito em formato de pílula e gráfico de preço com as cores do tema.
+- `ShellContractTest`: toda entrada ativa tem página, páginas sem backend não existem, os dois temas definem os mesmos papéis de cor e nenhum dado de exemplo do protótipo entrou na interface.
+- Oito imagens principais do protótipo versionadas, comprimidas, em `docs/design/`.
+
 ## [0.2.0] - 2026-11-21
 
 Milestone 2 — Inteligência Institucional, Composição & Relatórios (itens #6 a #10).
