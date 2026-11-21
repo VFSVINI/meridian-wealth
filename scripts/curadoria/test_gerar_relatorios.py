@@ -45,6 +45,19 @@ class RelatoriosReais(unittest.TestCase):
         self.assertEqual(r["versao"], 2)
         self.assertEqual(r["primeiraEntregaEm"], "2026-05-11")
 
+    def test_menor_versao_na_base_revela_quando_a_entrega_original_falta(self):
+        r = self.relatorios(PETR)
+        self.assertEqual(r["1T2026"]["menorVersaoNaBase"], 1)
+        # mesma base sem a linha da versão 1 do 1T2026: a entrega original deixa de constar
+        sem_v1 = Path(self.tmp.name) / "sem_v1.zip"
+        linhas = (FIXTURES / "itr-2026-indice-recorte.csv").read_bytes().split(b"\n")
+        filtradas = [l for l in linhas if not (b";2026-03-31;1;PETROLEO" in l)]
+        with zipfile.ZipFile(sem_v1, "w") as z:
+            z.writestr("itr_cia_aberta_2026.csv", b"\n".join(filtradas))
+            z.write(FIXTURES / "itr-2026-dre-con-recorte.csv", "itr_cia_aberta_DRE_con_2026.csv")
+        out = {x["rotulo"]: x for x in g.relatorios_da_empresa(PETR, [("ITR", 2026, sem_v1)])}
+        self.assertEqual(out["1T2026"]["menorVersaoNaBase"], 2)
+
     def test_banco_usa_a_conta_de_resultado_com_codigo_diferente(self):
         r = self.relatorios(ITAU)["3T2026"]
         m = {x["codigo"]: x for x in r["metricas"]}

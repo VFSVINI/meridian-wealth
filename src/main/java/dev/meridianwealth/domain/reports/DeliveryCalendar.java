@@ -22,8 +22,9 @@ import java.util.Optional;
  */
 public final class DeliveryCalendar {
     public enum Status {
-        DELIVERED_ON_TIME("Entregue no prazo"),
-        DELIVERED_LATE("Entregue após o prazo"),
+        DELIVERED_ON_TIME("Entregue dentro do prazo máximo legal"),
+        DELIVERED_LATE("Entregue após o prazo máximo legal"),
+        REFILED_ORIGINAL_UNKNOWN("Reentrega: a entrega original não consta da base, pontualidade não verificável"),
         PENDING("Prazo em aberto"),
         NO_RECORD("Sem registro na base consultada"),
         NOT_TRACKED("Entrega não acompanhada nesta fonte");
@@ -39,7 +40,8 @@ public final class DeliveryCalendar {
                         Status status, LocalDate deliveredOn) {}
 
     private static final String RULE_ITR = "ITR: até 45 dias após o fim do trimestre (Resolução CVM 80, art. 31)";
-    private static final String RULE_DFP = "DFP: até 3 meses após o fim do exercício (Resolução CVM 80, art. 30)";
+    private static final String RULE_DFP = "DFP: até 3 meses após o fim do exercício, ou na data de envio das demonstrações financeiras se anterior (Resolução CVM 80, art. 30); "
+            + "o produto conhece só o limite de 3 meses";
     private static final String RULE_FII_MONTHLY = "Informe mensal: até 15 dias após o mês (Anexo Normativo III da Resolução CVM 175)";
     private static final String RULE_FII_QUARTERLY = "Informe trimestral: até 45 dias após o trimestre (Anexo Normativo III da Resolução CVM 175)";
     private static final String RULE_FII_ANNUAL = "Informe anual: até 90 dias após o exercício (Anexo Normativo III da Resolução CVM 175)";
@@ -68,7 +70,7 @@ public final class DeliveryCalendar {
     /** O próximo prazo em aberto (o mais próximo de hoje), se houver. */
     public static Optional<Entry> nextDeadline(List<Entry> entries, LocalDate today) {
         return entries.stream().filter(e -> !e.deadline().isBefore(today) && e.status() != Status.DELIVERED_ON_TIME
-                && e.status() != Status.DELIVERED_LATE).min(Comparator.comparing(Entry::deadline));
+                && e.status() != Status.DELIVERED_LATE && e.status() != Status.REFILED_ORIGINAL_UNKNOWN).min(Comparator.comparing(Entry::deadline));
     }
 
     private static Entry company(IssuerReports issuer, LocalDate end, LocalDate today) {
@@ -83,6 +85,7 @@ public final class DeliveryCalendar {
         Optional<Report> delivered = tracked ? issuer.deliveredFor(periodicity, end) : Optional.empty();
         if (delivered.isPresent()) {
             LocalDate on = delivered.get().deliveredOn();
+            if (!delivered.get().originalInSource()) return new Entry(periodicity, label, end, deadline, rule, Status.REFILED_ORIGINAL_UNKNOWN, on);
             Status s = on.isAfter(deadline) ? Status.DELIVERED_LATE : Status.DELIVERED_ON_TIME;
             return new Entry(periodicity, label, end, deadline, rule, s, on);
         }

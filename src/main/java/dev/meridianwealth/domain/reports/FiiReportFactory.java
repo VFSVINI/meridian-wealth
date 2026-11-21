@@ -16,11 +16,16 @@ import java.util.Objects;
 public final class FiiReportFactory {
     /** Um mês do Informe Mensal como publicado ({@code null} onde a fonte não traz). */
     public record Month(String id, LocalDate periodEnd, LocalDate firstDeliveredOn, LocalDate versionDeliveredOn, int version,
-                        BigDecimal dividendYield, BigDecimal navPerShare) {
+                        BigDecimal dividendYield, BigDecimal navPerShare, boolean originalInSource) {
         public Month {
             Objects.requireNonNull(periodEnd, "periodEnd");
             Objects.requireNonNull(firstDeliveredOn, "firstDeliveredOn");
             Objects.requireNonNull(versionDeliveredOn, "versionDeliveredOn");
+        }
+
+        public Month(String id, LocalDate periodEnd, LocalDate firstDeliveredOn, LocalDate versionDeliveredOn, int version,
+                     BigDecimal dividendYield, BigDecimal navPerShare) {
+            this(id, periodEnd, firstDeliveredOn, versionDeliveredOn, version, dividendYield, navPerShare, true);
         }
     }
 
@@ -45,7 +50,7 @@ public final class FiiReportFactory {
                         m.navPerShare(), label(m), prev == null ? null : prev.navPerShare(), prev == null ? null : label(prev), NAV_BASE));
             }
             out.add(new Report(m.id() == null ? "INF_MENSAL-" + m.periodEnd() : m.id(), ReportPeriodicity.MONTHLY, label(m),
-                    m.periodEnd(), m.firstDeliveredOn(), m.versionDeliveredOn(), m.version(), null, metrics));
+                    m.periodEnd(), m.firstDeliveredOn(), m.versionDeliveredOn(), m.version(), null, metrics, m.originalInSource()));
         }
         return out;
     }

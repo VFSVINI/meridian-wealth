@@ -25,7 +25,7 @@ O enunciado do item cita mensal, bimestral, trimestral (1T a 4T), semestral e an
 - **Bimestral e semestral não existem** como obrigação desses emissores, então **não foram criadas** (o domínio recusaria um prazo sem fonte).
 
 O prazo é o **máximo legal**; a divulgação real pode ser anterior. Quando a fonte registra a entrega, o calendário mostra a data
-e se foi no prazo. A pontualidade usa a **primeira** entrega (uma reentrega posterior não apaga atraso nem cria pontualidade).
+e se foi no prazo. A pontualidade usa a **primeira** entrega (uma reentrega posterior não apaga atraso nem cria pontualidade). Quando a base **não traz a versão 1** (ex.: XPML11 de mai a ago/2026, só a versão 2), a entrega original é desconhecida e o calendário diz "pontualidade não verificável", sem afirmar atraso. Para a DFP o prazo real é o que ocorrer primeiro entre 3 meses e o envio das demonstrações aos acionistas; o produto só conhece os 3 meses e rotula "dentro do prazo máximo legal".
 Entregas que a fonte não acompanha (informe trimestral e anual de FII) aparecem como "entrega não acompanhada nesta fonte".
 
 ## Regra do veredito (código: `ReportAnalyzer`)

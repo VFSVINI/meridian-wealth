@@ -102,4 +102,12 @@ class JsonReportsRepositoryTest {
         var bad = new ObjectMapper().readTree("{\"versaoDoEsquema\":1,\"ativo\":\"X\",\"tipo\":\"EMPRESA\",\"fontes\":[]}");
         assertThatThrownBy(() -> JsonReportsRepository.parse(bad, "x.json")).hasMessageContaining("x.json").hasMessageContaining("Sem fonte");
     }
+
+    @Test void reportsWhoseOriginalDeliveryIsMissingFromTheSourceAreFlagged() {
+        // XPML11: a base só traz a versão 2 (reentrega de 15/10/2026) para jun a ago de 2026
+        assertThat(report("XPML11", "jun/2026").originalInSource()).isFalse();
+        assertThat(report("XPML11", "ago/2026").originalInSource()).isFalse();
+        assertThat(report("XPML11", "out/2026").originalInSource()).isTrue();
+        assertThat(report("PETR4", "3T2026").originalInSource()).isTrue();
+    }
 }
