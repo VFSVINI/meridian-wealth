@@ -16,6 +16,14 @@ class GeoRiskAndHoursTest {
         assertThat(GeoRiskScorer.score("Ceasefire agreement reached after war talks", "t").risk()).isLessThan(0.3);
     }
 
+    /** Manchete real do radar (2026-11-21): um acordo de paz que cita "wars" não pode contar como risco de guerra. */
+    @Test void peaceDeclarationIsTreatedAsDeescalation() {
+        NewsItem n = GeoRiskScorer.score("China, Russia and US agree peace declaration with no mention of Ukraine and Iran wars", "Guardian World");
+        assertThat(n.risk()).isLessThan(0.3);
+        assertThat(n.sentiment()).isPositive();
+        assertThat(GeoRiskScorer.score("Leaders sign peace agreement after war", "t").risk()).isLessThan(0.3);
+    }
+
     @Test void neutralHeadlineIsZeroAndAggregateIsBounded() {
         NewsItem calm = GeoRiskScorer.score("Local bakery wins award", "t");
         assertThat(calm.risk()).isZero();
