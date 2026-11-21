@@ -28,5 +28,11 @@ updates:
       interval: weekly
       day: monday
     labels: [infra]
+    # O projeto fixa o Java 21 (LTS); versões não-LTS do JDK nas imagens são ignoradas.
+    ignore:
+      - dependency-name: "eclipse-temurin"
+        versions: ["22", "23", "24", "25", "26", "27"]
+      - dependency-name: "maven"
+        versions: ["3.9-eclipse-temurin-22", "3.9-eclipse-temurin-23", "3.9-eclipse-temurin-24", "3.9-eclipse-temurin-25", "3.9-eclipse-temurin-26", "3.9-eclipse-temurin-27"]
     commit-message:
       prefix: "build"

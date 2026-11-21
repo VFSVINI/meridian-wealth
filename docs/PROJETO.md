@@ -1,7 +1,8 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR #1 (Issue #1), 2026-11-20.
+> Atualizado em todo PR. Última atualização: PR #2 (Issue #2), 2026-11-20.
+> Numeração: Issues e PRs compartilham a sequência do GitHub; o PR do item #N do roadmap tem número próprio (ex.: item #1 = PR #6).
 
 ## 1. Visão
 
@@ -41,7 +42,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 
 ### Milestone 1 — Fundação Arquitetural & Mercados Globais
 - [x] **#1** Build verde, rebranding `dev.chronosquant` → `dev.meridianwealth`, CI (Checkstyle/Spotless, JaCoCo, Dependabot, CodeQL), governança e ADRs 001–003.
-- [ ] **#2** Remoção total de dados simulados do produto + hexagonal estrita protegida por ArchUnit (dívidas 1 e 2).
+- [x] **#2** Remoção total de dados simulados do produto + hexagonal estrita protegida por ArchUnit (dívidas 1, 2, 4 e 8).
 - [ ] **#3** Bolsas globais, `MarketHours` multi-fuso com feriados, Finnhub WebSocket, brapi.dev, adapter de feed pago, fixtures reais (dívida 7).
 - [ ] **#4** Motor cripto 24/7 (Binance WS com failover Coinbase/Kraken, vol. √365, beta BTC).
 - [ ] **#5** Taxonomia multi-ativo + API do BCB (Selic, CDI, IPCA, PTAX).
@@ -77,27 +78,28 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 
 | ADR | Título | Status |
 |---|---|---|
-| [001](adr/001-arquitetura-hexagonal.md) | Arquitetura hexagonal estrita | Aceito (implementação plena no PR #2) |
+| [001](adr/001-arquitetura-hexagonal.md) | Arquitetura hexagonal estrita | Aceito; implementado e verificado por ArchUnit no PR #2 |
 | [002](adr/002-precisao-financeira.md) | Fronteira `double` × `BigDecimal` | Aceito |
 | [003](adr/003-frontend-sem-build.md) | Frontend sem etapa de build | Aceito |
+| [004](adr/004-dados-reais-e-procedencia.md) | Dados 100% reais e procedência explícita | Aceito (PR #2) |
 
-Decisões menores do PR #1 (no corpo do PR): Maven Wrapper com checksum; piso JaCoCo de 70% (medido 76%); CodeQL `security-extended`; Dependabot agrupado.
+Decisões menores (no corpo dos PRs):
+- PR #1: Maven Wrapper com checksum; piso JaCoCo de 70% (medido 76%); CodeQL `security-extended`; Dependabot agrupado.
+- PR #2: `System.Logger` na `application` (sem SLF4J, ponte JUL do Spring Boot); chave do cache de backtest pela versão dos dados; 503 para ativo sem dado real; fixtures reais da Yahoo nos testes; Dependabot ignora JDK não-LTS nas imagens.
 
 ## 5. Dívidas técnicas abertas
 
 | # | Dívida | Onde | Resolver em |
 |---|---|---|---|
-| 1 | `application` importa Spring (`@Service`, `@Value`, `@Component`) e Jackson (`ObjectMapper` em `MarketService`) | `application/*` | PR #2 |
-| 2 | `web` depende de `infrastructure` (`StreamHub`, `ProviderInfo`, `ProviderStats`) | `web/*` | PR #2 |
-| 3 | `MarketService` com `synchronized` e I/O dentro do lock | `application/MarketService` | PR #14 |
-| 4 | Cache de backtest desserializa record via Jackson sem teste; chave com `currentTimeMillis/30000` gera misses em rajada | `application/MarketService` | PR #14 |
+| 3 | `MarketService` usa um único monitor para todos os ativos (o I/O já saiu do lock no PR #2; falta snapshot imutável ou lock por ativo) | `application/MarketService` | PR #14 |
 | 5 | `ApiRateLimitFilter` usa `getRemoteAddr()` (todos iguais atrás de proxy) | `infrastructure/stream` | PR #11 |
 | 6 | Não há cálculos monetários; motor inteiro em `double` (fronteira definida no ADR 002) | — | PRs #12/#13 |
-| 7 | Parsers dos provedores sem contrato verificado contra respostas reais | `infrastructure/provider` | PR #3 |
-| 8 | Simulador (`SimulatedFlow`, `/api/settings/flow`, modo `simulated`) ainda no produto; `meridianwealth.stream.flow-default` vem `true` no `application.yml` | produto | PR #2 |
+| 7 | Parsers dos provedores sem contrato verificado contra respostas reais (Yahoo já tem fixture real desde o PR #2) | `infrastructure/provider` | PR #3 |
 | 9 | Persistência JDBC com 17% de cobertura (sem banco nos testes) | `infrastructure/persistence` | PR #20 |
+| 10 | Stooq exigiu chave no download CSV (observado em 2026-11-20); o failover segue funcionando, mas a fonte está inútil sem chave | `infrastructure/provider/StooqClient` | PR #3 |
 
 **Resolvidas**
+- PR #2: dívida 1 (`application` sem Spring/Jackson/SLF4J, POJOs ligados em `config`), dívida 2 (portas `TickSink` e `ProviderStatusSource`; `web` sem `infrastructure`), dívida 4 (`JsonBacktestCache` testado e chave pela versão dos dados) e dívida 8 (simulador fora do produto).
 - PR #1 (pós-review): `InMemoryCacheStore` vazava memória (entradas expiradas só eram removidas quando relidas; a chave do backtest inclui parâmetros da query e muda a cada 30 s) e fazia varredura O(n) de todos os contadores a cada requisição da API. Agora há contador atômico por chave, limpeza amortizada, teto de 10 mil entradas e relógio injetável, com testes de concorrência.
 
 ## 6. Como rodar
@@ -120,8 +122,8 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 51 testes, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 74 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
-| Provedores reais (Yahoo, Stooq, Finnhub, FRED) | **Não validado** (PR #3) |
-| Painel no navegador | **Não validado** (PR #2 e Milestone 4) |
+| Provedores reais | Yahoo e Frankfurter **validados ao vivo** no PR #2; Stooq exigiu chave; Finnhub e FRED não testados (sem chave, PR #3) |
+| Painel no navegador | Validado no PR #2 em navegador Chromium (desktop): dados reais, selos, estado sem dado, sem erros de console da aplicação. Larguras 1024/390 px e acessibilidade completa ficam para o Milestone 4 |
