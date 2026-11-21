@@ -247,7 +247,7 @@ public final class Glossary {
         add("selic", Group.BRAZIL, "Meta Selic",
                 "A taxa básica de juros definida pelo Copom do Banco Central. É a meta para a taxa Selic.",
                 "Juros altos favorecem a renda fixa e encarecem o crédito; juros em queda tendem a ajudar a bolsa e os FIIs.",
-                "A tela mostra \"vigente em\" a data da última decisão: a meta vale até a próxima reunião.",
+                "A tela mostra \"vigente em\" com a data de hoje: a série do Banco Central repete o valor vigente para as datas seguintes, então a data não é a da última decisão do Copom nem mede a idade do dado.",
                 "cdi", "ipca");
         add("cdi", Group.BRAZIL, "CDI",
                 "A taxa média dos empréstimos entre bancos, muito próxima da Selic, usada como referência de rendimento da renda fixa.",

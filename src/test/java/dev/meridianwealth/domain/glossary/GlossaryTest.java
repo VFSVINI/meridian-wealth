@@ -99,4 +99,23 @@ class GlossaryTest {
         Arrays.stream(RateSeries.values()).forEach(s -> labels.add(s.label()));
         for (String label : labels) assertThat(idFor(table, label)).as("rótulo sem glossário: " + label).isPresent();
     }
+
+    @Test void selicEntryExplainsTheForwardFilledDateInsteadOfClaimingTheDecisionDate() {
+        // a série 432 repete o valor vigente: "vigente em" é a data de hoje, não a da última decisão do Copom
+        String worry = Glossary.find("selic").orElseThrow().whenToWorry();
+        assertThat(worry).contains("vigente em").contains("data de hoje").contains("não é a da última decisão").contains("nem mede a idade do dado");
+        assertThat(worry).doesNotContain("vale até a próxima reunião");
+        assertThat(RateSeries.SELIC_TARGET.dateLabel()).isEqualTo("vigente em");
+    }
+
+    @Test void theSimulatorIsRenderedOnlyThroughTheGuardThatWaitsForTheUniverseAndTheTaxonomy() throws IOException {
+        String h = html();
+        // renderSimulator() só pode ser chamada de dentro da guarda: senão volta a corrida com o /api/universe
+        Matcher calls = Pattern.compile("renderSimulator\\(\\)").matcher(h);
+        int count = 0;
+        while (calls.find()) count++;
+        assertThat(count).as("definição + chamada da guarda").isEqualTo(2);
+        assertThat(h).contains("function tryRenderSimulator()").contains("SPTYPES.length&&universe.length");
+        assertThat(h.split("tryRenderSimulator\\(\\)", -1).length - 1).as("guarda chamada pelo init e pelo suitability + definição").isGreaterThanOrEqualTo(3);
+    }
 }
