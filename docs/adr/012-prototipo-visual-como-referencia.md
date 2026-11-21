@@ -23,9 +23,7 @@ nem arquivos de design: gráficos, mapas e dados do protótipo são ilustrativos
    alertas) só são construídas quando o item correspondente existir; antes disso não há tela com dado inventado.
 4. **Pilha:** o ADR 003 (frontend sem build) continua valendo. As bibliotecas citadas nas notas (Lightweight Charts, ECharts,
    Leaflet) entram como arquivos estáticos versionados, sem etapa de build. Mudar para uma pilha com build exige um ADR próprio.
-5. **Fontes:** Cormorant Garamond, Figtree e IBM Plex Mono precisam ser servidas pelo próprio projeto (arquivos versionados)
-   quando a política de segurança do item #11 (CSP) for aplicada; até lá, a pilha de fallback do protótipo (Georgia, Segoe UI,
-   monoespaçada do sistema) é obrigatória.
+5. **Fontes:** Cormorant Garamond, Figtree e IBM Plex Mono são servidas pelo próprio projeto (WOFF2 do subconjunto latino, licença SIL OFL 1.1, em `static/fonts/` com os textos de licença), sem CDN em tempo de execução, o que também atende à CSP do item #11. A pilha de fallback do protótipo (Georgia, fonte do sistema) continua declarada.
 
 ## Consequências
 
