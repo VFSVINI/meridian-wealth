@@ -167,7 +167,7 @@ def relatorios_da_empresa(cnpj, zips):
                 "id": f"{categoria}-{ref}",
                 "periodicidade": "TRIMESTRAL" if categoria == "ITR" else "ANUAL",
                 "tipoDeDocumento": categoria,
-                "rotulo": f"{trimestre}T{fim.year}" if categoria == "ITR" else f"Anual {fim.year} (inclui o 4T)",
+                "rotulo": f"{trimestre}T{fim.year}" if categoria == "ITR" else f"Exercício {fim.year} (inclui o 4T)",
                 "fimDoPeriodo": ref,
                 "primeiraEntregaEm": primeira[ref],
                 "versaoEntregueEm": doc["DT_RECEB"],
@@ -260,9 +260,10 @@ def main():
 
     fii_zips = [(a, baixar(f"FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_{a}.zip", cache)) for a in (2025, 2026)]
     for simbolo, cnpj, isin in FIIS:
-        meses, _ = meses_do_fii(cnpj, fii_zips)
+        meses, geral = meses_do_fii(cnpj, fii_zips)
+        nome_fii = geral[max(geral)]["Nome_Fundo_Classe"]
         gravar(simbolo, {
-            "versaoDoEsquema": 1, "ativo": simbolo, "tipo": "FII", "cnpj": cnpj, "codigoIsin": isin,
+            "versaoDoEsquema": 1, "ativo": simbolo, "tipo": "FII", "nome": nome_fii, "cnpj": cnpj, "codigoIsin": isin,
             "fontes": [{"nome": "Dados abertos da CVM: Informe Mensal de FII",
                         "url": "https://dados.cvm.gov.br/dataset/fii-doc-inf_mensal", "tipo": "OFICIAL",
                         "consultadoEm": hoje, "arquivos": {z.name: sha256(z) for _, z in fii_zips}}],

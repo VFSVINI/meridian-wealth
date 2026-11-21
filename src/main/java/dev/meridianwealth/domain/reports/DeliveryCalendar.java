@@ -73,7 +73,7 @@ public final class DeliveryCalendar {
 
     private static Entry company(IssuerReports issuer, LocalDate end, LocalDate today) {
         if (end.getMonthValue() == 12) {
-            return entry(issuer, ReportPeriodicity.ANNUAL, "Anual " + end.getYear() + " (inclui o 4T)", end, end.plusMonths(3), RULE_DFP, today, true);
+            return entry(issuer, ReportPeriodicity.ANNUAL, "Exercício " + end.getYear() + " (inclui o 4T)", end, end.plusMonths(3), RULE_DFP, today, true);
         }
         return entry(issuer, ReportPeriodicity.QUARTERLY, quarterLabel(end), end, end.plusDays(45), RULE_ITR, today, true);
     }
