@@ -56,7 +56,12 @@ canvas{width:100%;height:420px;display:block}
 .kv{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}.kv div{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dotted #1c2837;padding-bottom:3px}
 .kv span:first-child{color:var(--mute)}
 .rx table{font-size:11.5px}.rx td,.rx th{padding:5px 4px;vertical-align:top}.rx th{color:var(--mute);font-weight:500;text-align:left}.rx td.n,.rx th.n{text-align:right;font-family:var(--mono)}.rx a{color:var(--ice)}.rx .gap{color:var(--warn)}.rx .note{margin:6px 0 0;padding-left:16px;color:var(--mute);font-size:11.5px}.rx .src{font-size:11.5px;color:var(--mute);margin-bottom:6px}.rx .scroll{max-height:340px;overflow:auto}
-.vd{display:inline-block;min-width:74px;text-align:center;border:1px solid var(--line);border-radius:3px;padding:1px 6px;font-size:11px;font-weight:600}.vd.POSITIVE{color:var(--up);border-color:var(--up)}.vd.NEGATIVE{color:var(--dn);border-color:var(--dn)}.vd.NEUTRAL{color:var(--ice);border-color:var(--ice)}.vd.NONE{color:var(--mute)}.rx details{border-bottom:1px dotted #1c2837;padding:5px 0}.rx summary{cursor:pointer;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.rx .stale{color:var(--warn);border:1px dashed var(--warn);padding:3px 6px;border-radius:3px;margin-bottom:6px;font-size:11.5px}
+.vd{display:inline-block;min-width:74px;text-align:center;border:1px solid var(--line);border-radius:3px;padding:1px 6px;font-size:11px;font-weight:600}.vd.POSITIVE{color:var(--up);border-color:var(--up)}.vd.NEGATIVE{color:var(--dn);border-color:var(--dn)}.vd.NEUTRAL{color:var(--ice);border-color:var(--ice)}.vd.NONE{color:var(--mute)}.rx details{border-bottom:1px dotted #1c2837;padding:5px 0}.rx summary{cursor:pointer;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.q{border:0;padding:0;margin:0 0 var(--s3)}.q legend{font-weight:600;padding:0;margin-bottom:var(--s1)}.q .ref{color:var(--mute);font-weight:400;font-size:10.5px}
+.q label{display:flex;gap:var(--s2);align-items:flex-start;padding:2px 0;cursor:pointer}.q input{margin-top:3px}
+.tg{display:grid;grid-template-columns:150px 1fr 48px;gap:var(--s1) var(--s2);align-items:center;font-size:11.5px}.tg .b{height:6px;background:#16212e;border-radius:3px;position:relative}.tg .b i{position:absolute;left:0;top:0;bottom:0;background:var(--gold);border-radius:3px}.tg .b u{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--ice)}
+.pf{display:inline-block;font:600 15px var(--serif);color:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:1px 10px}
+.hold{display:flex;gap:var(--s2);margin:var(--s1) 0}.hold select{flex:1;min-width:0}.hold input{width:110px}
+.rx .stale{color:var(--warn);border:1px dashed var(--warn);padding:3px 6px;border-radius:3px;margin-bottom:6px;font-size:11.5px}
 ul.why{list-style:none;margin:0;padding:0}ul.why li{padding:5px 0 5px 10px;border-left:3px solid var(--c);margin-bottom:5px;font-size:12.5px}
 .bar{height:6px;background:#16212e;border-radius:3px;overflow:hidden;margin:3px 0 9px}.bar i{display:block;height:100%}
 .bt{display:flex;gap:8px;align-items:end;flex-wrap:wrap;margin-bottom:8px}.bt label{display:flex;flex-direction:column;gap:3px;color:var(--mute);font-size:11px}.bt input{width:74px}
@@ -125,6 +130,7 @@ button:hover,select:hover,input:hover{border-color:var(--gold)}
     <div class="card"><h2>Microeconomia e força relativa</h2><div class="kv" id="micro"></div></div>
     <div class="card"><h2>Radar macro e geopolítico</h2><div id="macro"></div></div>
     <div class="card"><h2>Juros e inflação (Brasil) <span class="tag" style="color:var(--ice);border-color:var(--ice)">dado oficial</span></h2><div id="br" class="mute" style="font-size:12px">carregando…</div></div>
+    <div class="card rx"><h2>Perfil e carteira modelo <span class="tag" style="color:var(--ice);border-color:var(--ice)">educacional</span></h2><div id="sp" class="mute" style="font-size:12px">carregando…</div></div>
     <div class="card rx"><h2>Raio-X de composição <span class="tag" style="color:var(--ice);border-color:var(--ice)">dado curado</span></h2><div id="rx" class="mute" style="font-size:12px">Selecione um fundo imobiliário.</div></div>
     <div class="card rx"><h2>Radar de relatórios <span class="tag" style="color:var(--ice);border-color:var(--ice)">dado oficial CVM</span></h2><div id="rr" class="mute" style="font-size:12px">Selecione uma ação ou fundo imobiliário brasileiro.</div></div>
     <div class="card"><h2>Histórico de sinais</h2><div id="sigHist" class="mute" style="font-size:12px">—</div></div>
@@ -341,6 +347,74 @@ async function loadReports(sym){
     el.className='';el.style.fontSize='12px';el.innerHTML=h;
   }catch(e){if(sel===sym){el.className='mute';el.textContent='Radar indisponível agora.'}}
 }
+let SPQ=null,SPMP=null,SPTYPES=[],SPPROFILE=null;
+const PCT=v=>f(v,2)+'%';
+function spTargets(mp,cur){
+  const max=Math.max(60,...mp.targets.map(t=>Number(t.percent)),...(cur||[]).map(c=>Number(c.currentPercent)));
+  return '<div class="tg">'+mp.targets.map((t,i)=>{const c=cur?cur[i]:null;
+    return `<span>${esc(t.label)}</span><span class="b"><i style="width:${Number(t.percent)/max*100}%"></i>${c?`<u style="left:calc(${Number(c.currentPercent)/max*100}% - 1px)"></u>`:''}</span><span class="mono">${PCT(t.percent)}</span>`}).join('')+'</div>'
+    +(cur?'<div class="src">Barra dourada: meta do perfil. Marca azul: sua carteira.</div>':'');
+}
+const SHORT={RENDA_FIXA_PUBLICA:'RF pública',RENDA_FIXA_PRIVADA:'RF privada',FUNDOS:'Fundos',RENDA_VARIAVEL:'Renda variável',CRIPTO:'Cripto',CAMBIO_E_COMMODITIES:'Câmbio e commod.'};
+function spRadar(cur){
+  const n=cur.length,R=70,C=100,max=Math.max(20,Math.ceil(Math.max(...cur.map(c=>Math.max(Number(c.currentPercent),Number(c.targetPercent))))/10)*10);
+  const pt=(i,v)=>{const a=-Math.PI/2+i*2*Math.PI/n,r=R*v/max;return [C+r*Math.cos(a),C+r*Math.sin(a)]};
+  const poly=k=>cur.map((c,i)=>pt(i,Number(c[k])).map(x=>x.toFixed(1)).join(',')).join(' ');
+  const axes=cur.map((c,i)=>{const [x,y]=pt(i,max);const [lx,ly]=pt(i,max*1.22);return `<line x1="${C}" y1="${C}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="var(--line)"/><text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" fill="var(--mute)" font-size="7" text-anchor="middle" dominant-baseline="middle">${esc(SHORT[c.category]||c.label)}</text>`}).join('');
+  const ring=[.5,1].map(k=>`<polygon points="${cur.map((c,i)=>pt(i,max*k).map(x=>x.toFixed(1)).join(',')).join(' ')}" fill="none" stroke="var(--line)"/>`).join('');
+  return `<svg viewBox="0 0 200 200" role="img" aria-label="Radar de aderência: meta do perfil contra a carteira" style="width:100%;max-width:300px;display:block;margin:var(--s2) auto">${ring}${axes}<polygon points="${poly('targetPercent')}" fill="rgba(201,169,106,.18)" stroke="var(--gold)" stroke-dasharray="3 2"/><polygon points="${poly('currentPercent')}" fill="rgba(134,182,255,.22)" stroke="var(--ice)"/></svg>
+  <div class="legend" style="justify-content:center"><span style="--c:var(--gold)">Meta do perfil</span><span style="--c:var(--ice)">Sua carteira</span></div>`;
+}
+function spHoldingRow(){
+  return `<div class="hold"><select aria-label="Tipo de ativo">${SPTYPES.map(t=>`<option value="${esc(t.key)}">${esc(t.label)}</option>`).join('')}</select><input type="number" min="0" step="0.01" placeholder="Valor em R$" aria-label="Valor em reais"></div>`;
+}
+function renderSuitability(){
+  const el=$('#sp');if(!SPQ||!SPMP){return}
+  const qs=SPQ.questions.map(q=>`<fieldset class="q"><legend>${esc(q.text)} <span class="ref">${esc(q.dimensionLabel)} · ${esc(q.legalRef)}</span></legend>${q.options.map(o=>`<label><input type="radio" name="q_${esc(q.id)}" value="${esc(o.id)}"> ${esc(o.text)}</label>`).join('')}</fieldset>`).join('');
+  el.className='';el.style.fontSize='12px';
+  el.innerHTML=`<div class="src">Suas respostas e valores não são gravados nem enviados a terceiros: o cálculo acontece nesta aplicação e o resultado some ao recarregar a página.</div>
+  <details><summary><b>Descobrir meu perfil</b> <span class="mute">9 perguntas</span></summary><form id="spForm">${qs}<button type="submit">Calcular perfil</button> <span id="spErr" class="dn"></span></form></details>
+  <div id="spRes"></div>
+  <details style="margin-top:8px"><summary><b>Carteiras modelo</b> <span class="mute">metas por perfil</span></summary>${SPMP.portfolios.map(p=>`<h2 style="margin-top:12px;font-size:13px">${esc(p.profileLabel)}</h2>${spTargets(p)}`).join('')}</details>
+  <div class="src" style="margin-top:8px">${esc(SPQ.disclaimer)} Faixas da nota (0 a 100): ${Object.entries(SPQ.scoreBands).map(([k,v])=>esc(k==='CONSERVATIVE'?'conservador':k==='MODERATE'?'moderado':k==='BOLD'?'arrojado':'agressivo')+' '+esc(v)).join('; ')}. Metas ilustrativas definidas pelo produto, sem fonte externa.</div>`;
+  $('#spForm').addEventListener('submit',async e=>{
+    e.preventDefault();$('#spErr').textContent='';
+    const answers={};SPQ.questions.forEach(q=>{const c=document.querySelector(`input[name="q_${q.id}"]:checked`);if(c)answers[q.id]=c.value});
+    if(Object.keys(answers).length<SPQ.questions.length){$('#spErr').textContent='Responda todas as perguntas.';return}
+    try{
+      const r=await fetch('/api/suitability/evaluate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({answers})});
+      const d=await r.json();if(!r.ok)throw new Error(d.error||'erro');
+      SPPROFILE=d.profile;
+      $('#spRes').innerHTML=`<div style="margin:10px 0"><span class="pf">${esc(d.profileLabel)}</span> <span class="mute">nota ${f(d.score,2)} de 100${d.profile!==d.scoreProfile?' · pela nota seria '+esc(d.scoreProfileLabel):''}</span></div>
+      ${d.appliedCaps.length?'<ul class="note">'+d.appliedCaps.map(c=>'<li>'+esc(c)+'</li>').join('')+'</ul>':''}
+      <div class="src">Meta da carteira modelo ${esc(d.profileLabel)}:</div>${spTargets(d.modelPortfolio)}
+      <div style="margin-top:12px"><b>Aderência da minha carteira</b><div id="spHold">${spHoldingRow()}</div>
+      <button type="button" id="spAdd">+ posição</button> <button type="button" id="spCalc">Calcular aderência</button> <span id="spErr2" class="dn"></span></div><div id="spAd"></div>`;
+      $('#spAdd').onclick=()=>$('#spHold').insertAdjacentHTML('beforeend',spHoldingRow());
+      $('#spCalc').onclick=spAdherence;
+    }catch(err){$('#spErr').textContent=err.message}
+  });
+}
+async function spAdherence(){
+  $('#spErr2').textContent='';
+  const holdings=[...document.querySelectorAll('#spHold .hold')].map(h=>({type:h.querySelector('select').value,valueBrl:h.querySelector('input').value})).filter(h=>h.valueBrl!=='');
+  if(!holdings.length){$('#spErr2').textContent='Informe ao menos uma posição.';return}
+  try{
+    const r=await fetch('/api/suitability/adherence',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({profile:SPPROFILE,holdings})});
+    const d=await r.json();if(!r.ok)throw new Error(d.error||'valor inválido');
+    const ST={WITHIN:'dentro da faixa',ABOVE:'acima da meta',BELOW:'abaixo da meta'};
+    $('#spAd').innerHTML=`<div style="margin:10px 0"><b>Aderência: ${f(d.score,2)} de 100</b> <span class="mute">· ${d.classesOutsideBand} classe(s) fora da faixa de ±${f(d.bandPoints,0)} p.p. · total R$ ${f(d.totalBrl,2)}</span></div>${spRadar(d.classes)}
+    <table><thead><tr><th>Classe</th><th class="n">Atual</th><th class="n">Meta</th><th class="n">Desvio</th></tr></thead><tbody>${d.classes.map(c=>`<tr><td>${esc(c.label)}<div class="mute">${ST[c.status]}</div></td><td class="n">${PCT(c.currentPercent)}</td><td class="n">${PCT(c.targetPercent)}</td><td class="n ${c.status==='WITHIN'?'':'warn'}">${Number(c.deviationPoints)>0?'+':''}${f(c.deviationPoints,2)} p.p.</td></tr>`).join('')}</tbody></table>
+    <div class="src">Mostra só o desvio em relação à meta; não indica o que comprar ou vender. ${esc(d.disclaimer)}</div>`;
+  }catch(err){$('#spErr2').textContent=err.message}
+}
+async function loadSuitability(){
+  try{
+    const [q,m,t]=await Promise.all([j('/api/suitability/questionnaire'),j('/api/suitability/model-portfolios'),j('/api/taxonomy')]);
+    SPQ=q;SPMP=m;SPTYPES=t.filter(x=>x.investable);renderSuitability();
+  }catch(e){$('#sp').textContent='Suitability indisponível agora.'}
+}
+loadSuitability();
 async function loadStatus(){
   const st=await j('/api/status').catch(()=>null);if(!st)return;
   const c={CLOSED:'up',HALF_OPEN:'warn',OPEN:'dn',CONECTADO:'up',RECONECTANDO:'warn',DESLIGADO:'mute'};
