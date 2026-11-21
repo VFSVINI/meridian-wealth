@@ -1,0 +1,278 @@
+{
+  "versaoDoEsquema": 1,
+  "ativo": "ITUB4",
+  "tipo": "EMPRESA",
+  "nome": "Itaú Unibanco Holding S.A.",
+  "cnpj": "60.872.504/0001-23",
+  "fontes": [
+    {
+      "nome": "Dados abertos da CVM: ITR das companhias abertas",
+      "url": "https://dados.cvm.gov.br/dataset/cia_aberta-doc-itr",
+      "tipo": "OFICIAL",
+      "consultadoEm": "2026-11-21",
+      "arquivos": {
+        "itr_cia_aberta_2025.zip": "518d4fc5d452dd109f7d8772c43ce495d9b4ef0d978b9c7270446901ae7cafbc",
+        "itr_cia_aberta_2026.zip": "a578a832671afa859de4e6355d76f4e372814976d6fe61f8d12f14062dfd425f"
+      }
+    },
+    {
+      "nome": "Dados abertos da CVM: DFP das companhias abertas",
+      "url": "https://dados.cvm.gov.br/dataset/cia_aberta-doc-dfp",
+      "tipo": "OFICIAL",
+      "consultadoEm": "2026-11-21",
+      "arquivos": {
+        "dfp_cia_aberta_2025.zip": "6b24bc65a614605e2c1e45ae1fa237ebbe72672467e87f7761cca94f3e6bc040"
+      }
+    }
+  ],
+  "relatorios": [
+    {
+      "id": "ITR-2026-09-30",
+      "periodicidade": "TRIMESTRAL",
+      "tipoDeDocumento": "ITR",
+      "rotulo": "3T2026",
+      "fimDoPeriodo": "2026-09-30",
+      "primeiraEntregaEm": "2026-11-03",
+      "versaoEntregueEm": "2026-11-03",
+      "versao": 1,
+      "link": "https://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=161944",
+      "metricas": [
+        {
+          "codigo": "RECEITA",
+          "contaNaFonte": "3.01",
+          "rotuloNaFonte": "Receitas da Intermediação Financeira",
+          "rotulo": "Receita",
+          "unidade": "BRL",
+          "atual": "110278000000",
+          "periodoAtual": "2026-07-01 a 2026-09-30",
+          "base": "97389000000",
+          "periodoBase": "2025-07-01 a 2025-09-30"
+        },
+        {
+          "codigo": "RESULTADO_LIQUIDO",
+          "contaNaFonte": "3.09",
+          "rotuloNaFonte": "Lucro/Prejuízo Consolidado do Período",
+          "rotulo": "Resultado líquido consolidado",
+          "unidade": "BRL",
+          "atual": "12270000000",
+          "periodoAtual": "2026-07-01 a 2026-09-30",
+          "base": "11600000000",
+          "periodoBase": "2025-07-01 a 2025-09-30"
+        }
+      ]
+    },
+    {
+      "id": "ITR-2026-06-30",
+      "periodicidade": "TRIMESTRAL",
+      "tipoDeDocumento": "ITR",
+      "rotulo": "2T2026",
+      "fimDoPeriodo": "2026-06-30",
+      "primeiraEntregaEm": "2026-08-04",
+      "versaoEntregueEm": "2026-08-04",
+      "versao": 1,
+      "link": "https://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=160139",
+      "metricas": [
+        {
+          "codigo": "RECEITA",
+          "contaNaFonte": "3.01",
+          "rotuloNaFonte": "Receitas da Intermediação Financeira",
+          "rotulo": "Receita",
+          "unidade": "BRL",
+          "atual": "100073000000",
+          "periodoAtual": "2026-04-01 a 2026-06-30",
+          "base": "102761000000",
+          "periodoBase": "2025-04-01 a 2025-06-30"
+        },
+        {
+          "codigo": "RESULTADO_LIQUIDO",
+          "contaNaFonte": "3.09",
+          "rotuloNaFonte": "Lucro/Prejuízo Consolidado do Período",
+          "rotulo": "Resultado líquido consolidado",
+          "unidade": "BRL",
+          "atual": "12324000000",
+          "periodoAtual": "2026-04-01 a 2026-06-30",
+          "base": "11398000000",
+          "periodoBase": "2025-04-01 a 2025-06-30"
+        }
+      ]
+    },
+    {
+      "id": "ITR-2026-03-31",
+      "periodicidade": "TRIMESTRAL",
+      "tipoDeDocumento": "ITR",
+      "rotulo": "1T2026",
+      "fimDoPeriodo": "2026-03-31",
+      "primeiraEntregaEm": "2026-05-05",
+      "versaoEntregueEm": "2026-05-05",
+      "versao": 1,
+      "link": "https://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=156638",
+      "metricas": [
+        {
+          "codigo": "RECEITA",
+          "contaNaFonte": "3.01",
+          "rotuloNaFonte": "Receitas da Intermediação Financeira",
+          "rotulo": "Receita",
+          "unidade": "BRL",
+          "atual": "99045000000",
+          "periodoAtual": "2026-01-01 a 2026-03-31",
+          "base": "97490000000",
+          "periodoBase": "2025-01-01 a 2025-03-31"
+        },
+        {
+          "codigo": "RESULTADO_LIQUIDO",
+          "contaNaFonte": "3.09",
+          "rotuloNaFonte": "Lucro/Prejuízo Consolidado do Período",
+          "rotulo": "Resultado líquido consolidado",
+          "unidade": "BRL",
+          "atual": "11875000000",
+          "periodoAtual": "2026-01-01 a 2026-03-31",
+          "base": "10707000000",
+          "periodoBase": "2025-01-01 a 2025-03-31"
+        }
+      ]
+    },
+    {
+      "id": "DFP-2025-12-31",
+      "periodicidade": "ANUAL",
+      "tipoDeDocumento": "DFP",
+      "rotulo": "Anual 2025 (inclui o 4T)",
+      "fimDoPeriodo": "2025-12-31",
+      "primeiraEntregaEm": "2026-02-04",
+      "versaoEntregueEm": "2026-02-12",
+      "versao": 2,
+      "link": "https://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=154741",
+      "metricas": [
+        {
+          "codigo": "RECEITA",
+          "contaNaFonte": "3.01",
+          "rotuloNaFonte": "Receitas da Intermediação Financeira",
+          "rotulo": "Receita",
+          "unidade": "BRL",
+          "atual": "387118000000",
+          "periodoAtual": "2025-01-01 a 2025-12-31",
+          "base": "335328000000",
+          "periodoBase": "2024-01-01 a 2024-12-31"
+        },
+        {
+          "codigo": "RESULTADO_LIQUIDO",
+          "contaNaFonte": "3.09",
+          "rotuloNaFonte": "Lucro/Prejuízo Consolidado do Período",
+          "rotulo": "Resultado líquido consolidado",
+          "unidade": "BRL",
+          "atual": "45849000000",
+          "periodoAtual": "2025-01-01 a 2025-12-31",
+          "base": "42128000000",
+          "periodoBase": "2024-01-01 a 2024-12-31"
+        }
+      ]
+    },
+    {
+      "id": "ITR-2025-09-30",
+      "periodicidade": "TRIMESTRAL",
+      "tipoDeDocumento": "ITR",
+      "rotulo": "3T2025",
+      "fimDoPeriodo": "2025-09-30",
+      "primeiraEntregaEm": "2025-11-04",
+      "versaoEntregueEm": "2025-11-04",
+      "versao": 1,
+      "link": "https://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=152641",
+      "metricas": [
+        {
+          "codigo": "RECEITA",
+          "contaNaFonte": "3.01",
+          "rotuloNaFonte": "Receitas da Intermediação Financeira",
+          "rotulo": "Receita",
+          "unidade": "BRL",
+          "atual": "97389000000",
+          "periodoAtual": "2025-07-01 a 2025-09-30",
+          "base": "77935000000",
+          "periodoBase": "2024-07-01 a 2024-09-30"
+        },
+        {
+          "codigo": "RESULTADO_LIQUIDO",
+          "contaNaFonte": "3.09",
+          "rotuloNaFonte": "Lucro/Prejuízo Consolidado do Período",
+          "rotulo": "Resultado líquido consolidado",
+          "unidade": "BRL",
+          "atual": "11600000000",
+          "periodoAtual": "2025-07-01 a 2025-09-30",
+          "base": "10595000000",
+          "periodoBase": "2024-07-01 a 2024-09-30"
+        }
+      ]
+    },
+    {
+      "id": "ITR-2025-06-30",
+      "periodicidade": "TRIMESTRAL",
+      "tipoDeDocumento": "ITR",
+      "rotulo": "2T2025",
+      "fimDoPeriodo": "2025-06-30",
+      "primeiraEntregaEm": "2025-08-05",
+      "versaoEntregueEm": "2025-08-05",
+      "versao": 1,
+      "link": "https://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=150600",
+      "metricas": [
+        {
+          "codigo": "RECEITA",
+          "contaNaFonte": "3.01",
+          "rotuloNaFonte": "Receitas da Intermediação Financeira",
+          "rotulo": "Receita",
+          "unidade": "BRL",
+          "atual": "102761000000",
+          "periodoAtual": "2025-04-01 a 2025-06-30",
+          "base": "86189000000",
+          "periodoBase": "2024-04-01 a 2024-06-30"
+        },
+        {
+          "codigo": "RESULTADO_LIQUIDO",
+          "contaNaFonte": "3.09",
+          "rotuloNaFonte": "Lucro/Prejuízo Consolidado do Período",
+          "rotulo": "Resultado líquido consolidado",
+          "unidade": "BRL",
+          "atual": "11398000000",
+          "periodoAtual": "2025-04-01 a 2025-06-30",
+          "base": "10370000000",
+          "periodoBase": "2024-04-01 a 2024-06-30"
+        }
+      ]
+    },
+    {
+      "id": "ITR-2025-03-31",
+      "periodicidade": "TRIMESTRAL",
+      "tipoDeDocumento": "ITR",
+      "rotulo": "1T2025",
+      "fimDoPeriodo": "2025-03-31",
+      "primeiraEntregaEm": "2025-05-08",
+      "versaoEntregueEm": "2025-05-08",
+      "versao": 1,
+      "link": "https://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=147122",
+      "metricas": [
+        {
+          "codigo": "RECEITA",
+          "contaNaFonte": "3.01",
+          "rotuloNaFonte": "Receitas da Intermediação Financeira",
+          "rotulo": "Receita",
+          "unidade": "BRL",
+          "atual": "97490000000",
+          "periodoAtual": "2025-01-01 a 2025-03-31",
+          "base": "79968000000",
+          "periodoBase": "2024-01-01 a 2024-03-31"
+        },
+        {
+          "codigo": "RESULTADO_LIQUIDO",
+          "contaNaFonte": "3.09",
+          "rotuloNaFonte": "Lucro/Prejuízo Consolidado do Período",
+          "rotulo": "Resultado líquido consolidado",
+          "unidade": "BRL",
+          "atual": "10707000000",
+          "periodoAtual": "2025-01-01 a 2025-03-31",
+          "base": "10040000000",
+          "periodoBase": "2024-01-01 a 2024-03-31"
+        }
+      ]
+    }
+  ],
+  "avisos": [
+    "Os valores são os publicados no documento entregue à CVM (versão mais recente de cada período), em reais, convertidos da escala informada. A base de comparação é o mesmo período do ano anterior, do mesmo documento."
+  ]
+}
