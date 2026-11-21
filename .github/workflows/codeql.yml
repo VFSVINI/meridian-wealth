@@ -1,0 +1,35 @@
+name: codeql
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "23 6 * * 1"
+permissions:
+  contents: read
+jobs:
+  analyze:
+    name: Análise estática de segurança (Java)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: java-kotlin
+          build-mode: manual
+          queries: security-extended
+      - name: Compila para o CodeQL
+        run: ./mvnw -B -DskipTests compile
+      - uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:java-kotlin"

@@ -1,0 +1,32 @@
+version: 2
+updates:
+  - package-ecosystem: maven
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    labels: [infra]
+    commit-message:
+      prefix: "build"
+    groups:
+      spring:
+        patterns: ["org.springframework*", "io.spring*"]
+      plugins-qualidade:
+        patterns: ["com.diffplug.spotless*", "com.puppycrawl.tools*", "org.jacoco*", "org.apache.maven.plugins*"]
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    labels: [infra]
+    commit-message:
+      prefix: "ci"
+  - package-ecosystem: docker
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    labels: [infra]
+    commit-message:
+      prefix: "build"
