@@ -61,6 +61,20 @@ canvas{width:100%;height:420px;display:block}
 .tg{display:grid;grid-template-columns:150px 1fr 48px;gap:var(--s1) var(--s2);align-items:center;font-size:11.5px}.tg .b{height:6px;background:#16212e;border-radius:3px;position:relative}.tg .b i{position:absolute;left:0;top:0;bottom:0;background:var(--gold);border-radius:3px}.tg .b u{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--ice)}
 .pf{display:inline-block;font:600 15px var(--serif);color:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:1px 10px}
 .hold{display:flex;gap:var(--s2);margin:var(--s1) 0}.hold select{flex:1;min-width:0}.hold input{width:110px}
+.gl{background:none;border:1px solid var(--line);color:var(--mute);border-radius:50%;width:15px;height:15px;padding:0;margin-left:5px;font:600 10px/13px var(--sans);vertical-align:1px;cursor:help}
+.gl:hover{color:var(--gold);border-color:var(--gold)}
+dialog#gloss{width:min(720px,94vw);max-height:86vh;background:var(--panel);color:var(--text);border:1px solid var(--gold);border-radius:var(--r);padding:0}
+dialog#gloss::backdrop{background:rgba(3,6,10,.72)}
+#gloss .gh{display:flex;gap:var(--s2);align-items:center;padding:var(--s3) var(--s4);border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--panel)}
+#gloss .gh h2{margin:0;border:0;padding:0;flex:1}#gloss .gh input{flex:2;min-width:0}
+#gloss .gb{padding:var(--s2) var(--s4) var(--s4);overflow:auto;max-height:calc(86vh - 60px)}
+#gloss h3{font:600 12px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:var(--s4) 0 var(--s1)}
+#gloss details{border-bottom:1px dotted var(--line);padding:var(--s1) 0}#gloss summary{cursor:pointer;font-weight:600}
+#gloss details.hit{background:rgba(201,169,106,.10)}
+#gloss dl{margin:var(--s2) 0 0}#gloss dt{color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-top:var(--s2)}#gloss dd{margin:2px 0 0}
+#gloss .rel button{margin:2px 4px 0 0;padding:1px 8px;font-size:11px}
+.sim .banner{border:1px solid var(--warn);color:var(--warn);border-radius:3px;padding:3px 8px;margin:var(--s2) 0;font-weight:600;font-size:11.5px}
+.sim td.n{font-family:var(--mono)}.sim .att{color:var(--warn)}.sim li.att::marker{color:var(--warn)}
 .rx .stale{color:var(--warn);border:1px dashed var(--warn);padding:3px 6px;border-radius:3px;margin-bottom:6px;font-size:11.5px}
 ul.why{list-style:none;margin:0;padding:0}ul.why li{padding:5px 0 5px 10px;border-left:3px solid var(--c);margin-bottom:5px;font-size:12.5px}
 .bar{height:6px;background:#16212e;border-radius:3px;overflow:hidden;margin:3px 0 9px}.bar i{display:block;height:100%}
@@ -104,6 +118,7 @@ button:hover,select:hover,input:hover{border-color:var(--gold)}
     <span class="live" id="live"><i></i><span id="liveTxt">conectando</span></span>
     <span class="badge" id="mode" title="Nenhum preço é simulado: cada cotação mostra fonte, horário e atraso">carregando</span>
     <button id="pause">Pausar</button>
+    <button id="glossBtn" type="button" title="Glossário didático das métricas">Glossário</button>
   </div>
 </header>
 <main id="main">
@@ -131,6 +146,7 @@ button:hover,select:hover,input:hover{border-color:var(--gold)}
     <div class="card"><h2>Radar macro e geopolítico</h2><div id="macro"></div></div>
     <div class="card"><h2>Juros e inflação (Brasil) <span class="tag" style="color:var(--ice);border-color:var(--ice)">dado oficial</span></h2><div id="br" class="mute" style="font-size:12px">carregando…</div></div>
     <div class="card rx"><h2>Perfil e carteira modelo <span class="tag" style="color:var(--ice);border-color:var(--ice)">educacional</span></h2><div id="sp" class="mute" style="font-size:12px">carregando…</div></div>
+    <div class="card rx sim"><h2>Simulador de impacto pré-ordem <span class="tag">simulação</span></h2><div id="sm" class="mute" style="font-size:12px">carregando…</div></div>
     <div class="card rx"><h2>Raio-X de composição <span class="tag" style="color:var(--ice);border-color:var(--ice)">dado curado</span></h2><div id="rx" class="mute" style="font-size:12px">Selecione um fundo imobiliário.</div></div>
     <div class="card rx"><h2>Radar de relatórios <span class="tag" style="color:var(--ice);border-color:var(--ice)">dado oficial CVM</span></h2><div id="rr" class="mute" style="font-size:12px">Selecione uma ação ou fundo imobiliário brasileiro.</div></div>
     <div class="card"><h2>Histórico de sinais</h2><div id="sigHist" class="mute" style="font-size:12px">—</div></div>
@@ -145,6 +161,7 @@ button:hover,select:hover,input:hover{border-color:var(--gold)}
     </div>
   </section>
 </main>
+<dialog id="gloss" aria-label="Glossário"><div class="gh"><h2>Glossário</h2><input id="glossQ" type="search" placeholder="Buscar termo" aria-label="Buscar no glossário"><button id="glossX" type="button" aria-label="Fechar">Fechar</button></div><div class="gb" id="glossBody">carregando…</div></dialog>
 <footer>Ferramenta analítica e educacional: não executa ordens e não constitui recomendação financeira. Nenhum preço é simulado: cada cotação mostra fonte, horário e atraso (fontes gratuitas costumam atrasar ~15 min). Backtests são projeções sobre o histórico real, nunca cotações.</footer>
 <script>
 const $=s=>document.querySelector(s);
@@ -274,7 +291,7 @@ async function loadMicro(){
   const fd=m.fundamentals,v=(x,fn)=>x==null?'n/d':fn(x);
   const rows2=[['Setor',m.sector],['Benchmark',m.benchmark],['Força relativa (60)',(m.relStrength>=0?'+':'')+f(m.relStrength*100)+' pp'],['Volume relativo',f(m.relVolume)+'x'],
    ['Valor de mercado',fd?v(fd.marketCap,x=>f(x/1e9,1)+' bi'):'n/d'],['P/L',fd?v(fd.peRatio,x=>f(x,1)):'n/d'],['Margem líquida',fd?v(fd.netMargin,x=>f(x,1)+'%'):'n/d'],['Cresc. receita',fd?v(fd.revenueGrowth,x=>f(x,1)+'%'):'n/d']];
-  $('#micro').innerHTML=rows2.map(([k,x])=>`<div><span>${k}</span><span class="num">${x}</span></div>`).join('')+(fd?'':'<div style="grid-column:1/-1;border:0" class="mute">Fundamentos exigem FINNHUB_API_KEY e ação dos EUA.</div>');
+  $('#micro').innerHTML=rows2.map(([k,x])=>`<div><span>${k}${GLL(k)}</span><span class="num">${x}</span></div>`).join('')+(fd?'':'<div style="grid-column:1/-1;border:0" class="mute">Fundamentos exigem FINNHUB_API_KEY e ação dos EUA.</div>');
 }
 async function loadSignals(){
   const h=await j('/api/signals/'+sel+'?limit=8').catch(()=>[]);
@@ -305,10 +322,10 @@ async function loadComposition(sym){
     let h=d.stale?`<div class="stale">Dado consultado há ${d.dataAgeDays} dias (limite ${d.staleAfterDays}): pode estar desatualizado.</div>`:'';
     h+=`<div class="src"><b>${esc(s.kindLabel)}</b>: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.name)}</a> · dados de ${esc(s.referenceDate||'data não informada')} · consultado em ${esc(s.consultedOn)}</div>`;
     if(d.classification)h+=`<div class="src">Classificação no informe: ${esc(d.classification)}</div>`;
-    if(d.metrics){const m=d.metrics;h+=`<div class="kv"><div><span>ABL publicada</span><span>${dash(m.totalAreaM2,v=>f(v,0)+' m²')}</span></div><div><span>Vacância física</span><span>${dash(m.physicalVacancyPercent,v=>f(v,2)+'%')}</span></div><div><span>Vacância financeira</span><span>${dash(m.financialVacancyPercent,v=>f(v,2)+'%')}</span></div><div><span>Ref. das métricas</span><span>${esc(m.asOf||'—')}</span></div></div>`}
+    if(d.metrics){const m=d.metrics;h+=`<div class="kv"><div><span>ABL publicada${GL('abl')}</span><span>${dash(m.totalAreaM2,v=>f(v,0)+' m²')}</span></div><div><span>Vacância física${GL('vacancy')}</span><span>${dash(m.physicalVacancyPercent,v=>f(v,2)+'%')}</span></div><div><span>Vacância financeira</span><span>${dash(m.financialVacancyPercent,v=>f(v,2)+'%')}</span></div><div><span>Ref. das métricas</span><span>${esc(m.asOf||'—')}</span></div></div>`}
     if(d.assets.length){
       h+=`<div class="src" style="margin-top:8px">${d.listedAssetCount} imóveis listados${d.declaredAssetCount!=null&&d.declaredAssetCount!==d.listedAssetCount?' de '+d.declaredAssetCount+' declarados':''} · ${d.geolocatedCount} com coordenada · ${esc(d.areaLabel||'Área')}: ${f(d.listedAreaM2,0)} m² (soma da lista)</div>`;
-      h+=`<div class="scroll"><table><thead><tr><th>Imóvel</th><th class="n">Área</th><th class="n">Vacância</th><th>Mapa</th></tr></thead><tbody>${d.assets.map(rxAsset).join('')}</tbody></table></div>`;
+      h+=`<div class="scroll"><table><thead><tr><th>Imóvel</th><th class="n">Área</th><th class="n">Vacância${GL('vacancy')}</th><th>Mapa</th></tr></thead><tbody>${d.assets.map(rxAsset).join('')}</tbody></table></div>`;
     }
     if(d.allocations.length){
       h+=`<table style="margin-top:8px"><thead><tr><th>Alocação</th><th class="n">R$</th><th class="n">% do ativo</th></tr></thead><tbody>${d.allocations.map(a=>`<tr><td>${esc(a.label)}</td><td class="n">${f(a.valueBrl,2)}</td><td class="n">${f(a.percentOfAssets,2)}%</td></tr>`).join('')}</tbody></table>`;
@@ -338,12 +355,12 @@ async function loadReports(sym){
     const d=await r.json();if(sel!==sym)return;
     let h=d.stale?`<div class="stale">Dado consultado há ${d.dataAgeDays} dias (limite ${d.staleAfterDays}): pode haver relatório mais novo.</div>`:'';
     const n=d.nextDeadline;
-    h+=n?`<div class="src"><b>Próximo prazo:</b> ${esc(n.periodicityLabel)} ${esc(n.label)} até <b>${esc(n.deadline)}</b> <span class="mute">(prazo máximo legal; a divulgação pode vir antes)</span></div>`:'';
+    h+=n?`<div class="src"><b>Próximo prazo${GL('report-deadline')}:</b> ${esc(n.periodicityLabel)} ${esc(n.label)} até <b>${esc(n.deadline)}</b> <span class="mute">(prazo máximo legal; a divulgação pode vir antes)</span></div>`:'';
     h+='<div class="src">'+d.sources.map(s=>`<b>${esc(s.kindLabel)}</b>: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.name)}</a> · consultado em ${esc(s.consultedOn)}`).join('<br>')+'</div>';
     h+='<div class="scroll">'+d.reports.slice(0,8).map(rrReport).join('')+'</div>';
     h+=`<table style="margin-top:8px"><thead><tr><th>Prazo</th><th>Período</th><th>Situação</th></tr></thead><tbody>${d.calendar.map(c=>`<tr><td>${esc(c.deadline)}</td><td>${esc(c.periodicityLabel)} ${esc(c.label)}<div class="mute">${esc(c.rule)}</div></td><td>${esc(c.statusLabel)}${c.deliveredOn?'<div class="mute">entregue em '+esc(c.deliveredOn)+'</div>':''}</td></tr>`).join('')}</tbody></table>`;
     if(d.notices.length)h+='<ul class="note">'+d.notices.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>';
-    h+=`<div class="src" style="margin-top:8px"><b>Regra do veredito.</b> ${esc(d.rule)} ${esc(d.disclaimer)}</div>`;
+    h+=`<div class="src" style="margin-top:8px"><b>Regra do veredito${GL('verdict')}.</b> ${esc(d.rule)} ${esc(d.disclaimer)}</div>`;
     el.className='';el.style.fontSize='12px';el.innerHTML=h;
   }catch(e){if(sel===sym){el.className='mute';el.textContent='Radar indisponível agora.'}}
 }
@@ -403,18 +420,102 @@ async function spAdherence(){
     const r=await fetch('/api/suitability/adherence',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({profile:SPPROFILE,holdings})});
     const d=await r.json();if(!r.ok)throw new Error(d.error||'valor inválido');
     const ST={WITHIN:'dentro da faixa',ABOVE:'acima da meta',BELOW:'abaixo da meta'};
-    $('#spAd').innerHTML=`<div style="margin:10px 0"><b>Aderência: ${f(d.score,2)} de 100</b> <span class="mute">· ${d.classesOutsideBand} classe(s) fora da faixa de ±${f(d.bandPoints,0)} p.p. · total R$ ${f(d.totalBrl,2)}</span></div>${spRadar(d.classes)}
+    $('#spAd').innerHTML=`<div style="margin:10px 0"><b>Aderência: ${f(d.score,2)} de 100</b>${GL('adherence')} <span class="mute">· ${d.classesOutsideBand} classe(s) fora da faixa de ±${f(d.bandPoints,0)} p.p. · total R$ ${f(d.totalBrl,2)}</span></div>${spRadar(d.classes)}
     <table><thead><tr><th>Classe</th><th class="n">Atual</th><th class="n">Meta</th><th class="n">Desvio</th></tr></thead><tbody>${d.classes.map(c=>`<tr><td>${esc(c.label)}<div class="mute">${ST[c.status]}</div></td><td class="n">${PCT(c.currentPercent)}</td><td class="n">${PCT(c.targetPercent)}</td><td class="n ${c.status==='WITHIN'?'':'warn'}">${Number(c.deviationPoints)>0?'+':''}${f(c.deviationPoints,2)} p.p.</td></tr>`).join('')}</tbody></table>
     <div class="src">Mostra só o desvio em relação à meta; não indica o que comprar ou vender. ${esc(d.disclaimer)}</div>`;
   }catch(err){$('#spErr2').textContent=err.message}
 }
+function smAssetOptions(){
+  const inv=(typeof universe!=='undefined'?universe:[]).filter(x=>x.assetClass!=='Índice');
+  return `<optgroup label="Ativos do painel (volatilidade com dado real)">${inv.map(x=>`<option value="S:${esc(x.symbol)}">${esc(x.symbol)} · ${esc(x.name)}</option>`).join('')}</optgroup>
+  <optgroup label="Por tipo (sem volatilidade)">${SPTYPES.map(t=>`<option value="T:${esc(t.key)}">${esc(t.label)}</option>`).join('')}</optgroup>`;
+}
+function smRow(){return `<div class="hold"><select aria-label="Ativo">${smAssetOptions()}</select><input type="number" min="0" step="0.01" placeholder="Valor em R$" aria-label="Valor em reais"></div>`}
+const smRef=v=>v.startsWith('S:')?{symbol:v.slice(2)}:{type:v.slice(2)};
+function renderSimulator(){
+  const el=$('#sm');if(!SPTYPES.length)return;
+  el.className='';el.style.fontSize='12px';
+  el.innerHTML=`<div class="banner">SIMULAÇÃO${GL('simulation')}: não é cotação nem ordem. A plataforma não executa ordens.</div>
+  <div class="src">Informe sua carteira em reais e uma compra ou venda hipotética. Nada é gravado.</div>
+  <div style="margin-top:8px"><b>Minha carteira</b><div id="smPos">${smRow()}</div><button type="button" id="smAdd">+ posição</button></div>
+  <div style="margin-top:10px"><b>Ordem hipotética</b>
+   <div class="hold"><select id="smSide" aria-label="Compra ou venda"><option value="BUY">Compra</option><option value="SELL">Venda</option></select><select id="smAsset" aria-label="Ativo da ordem">${smAssetOptions()}</select><input id="smAmt" type="number" min="0" step="0.01" placeholder="Valor em R$" aria-label="Valor da ordem"></div>
+   <div class="hold"><select id="smProfile" aria-label="Perfil para a aderência"><option value="">Sem perfil (não calcular aderência)</option><option value="CONSERVATIVE">Perfil CONSERVADOR</option><option value="MODERATE">Perfil MODERADO</option><option value="BOLD">Perfil ARROJADO</option><option value="AGGRESSIVE">Perfil AGRESSIVO</option></select></div>
+   <button type="button" id="smGo">Simular impacto</button> <span id="smErr" class="dn"></span></div><div id="smOut"></div>`;
+  $('#smAdd').onclick=()=>$('#smPos').insertAdjacentHTML('beforeend',smRow());
+  $('#smGo').onclick=runSimulation;
+}
+async function runSimulation(){
+  $('#smErr').textContent='';
+  const positions=[...document.querySelectorAll('#smPos .hold')].map(h=>({...smRef(h.querySelector('select').value),valueBrl:h.querySelector('input').value})).filter(p=>p.valueBrl!=='');
+  const amt=$('#smAmt').value;if(amt===''){$('#smErr').textContent='Informe o valor da ordem.';return}
+  const body={positions,order:{side:$('#smSide').value,...smRef($('#smAsset').value),valueBrl:amt},profile:$('#smProfile').value||null};
+  try{
+    const r=await fetch('/api/impact/pre-order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    const d=await r.json();if(!r.ok)throw new Error(d.error||'dados inválidos');
+    const b=d.before,a=d.after,nf=(v,k=2)=>v==null?'<span class="gap">n/d</span>':f(v,k);
+    const vol=v=>v==null?'<span class="gap">n/d</span>':f(v*100,2)+'%';
+    const row=(label,x,y,fmt)=>`<tr><td>${label}</td><td class="n">${fmt(x)}</td><td class="n">${fmt(y)}</td></tr>`;
+    const ad=(x)=>x?f(x.score,2):'<span class="gap">n/d</span>';
+    $('#smOut').innerHTML=`<div class="banner">${esc(d.label)}</div>
+    <div class="src">${d.side==='BUY'?'Compra':'Venda'} hipotética de R$ ${f(d.orderAmountBrl,2)} em ${esc(d.orderLabel)}</div>
+    <table><thead><tr><th>Métrica</th><th class="n">Antes</th><th class="n">Depois</th></tr></thead><tbody>
+    ${row('Total (R$)',b.totalBrl,a.totalBrl,v=>f(v,2))}
+    ${row('Maior posição'+GL('concentration'),b.largestPercent,a.largestPercent,v=>v==null?'<span class="gap">n/d</span>':f(v,2)+'%')}
+    ${row('HHI'+GL('hhi'),b.hhi,a.hhi,v=>nf(v,2))}
+    ${row('Posições efetivas'+GL('effective-positions'),b.effectivePositions,a.effectivePositions,v=>nf(v,2))}
+    ${row('Volatilidade ponderada'+GL('weighted-volatility'),b.weightedVolatility,a.weightedVolatility,vol)}
+    ${row('Cobertura da volatilidade'+GL('volatility-coverage'),b.volatilityCoverage,a.volatilityCoverage,v=>v==null?'<span class="gap">n/d</span>':f(v,2)+'%')}
+    ${d.adherenceBefore||d.adherenceAfter?row('Aderência ao perfil'+GL('adherence'),d.adherenceBefore,d.adherenceAfter,ad):''}
+    </tbody></table>
+    <ul class="note">${d.findings.map(x=>`<li class="${x.level==='ATTENTION'?'att':''}">${x.level==='ATTENTION'?'<b>Atenção:</b> ':''}${esc(x.text)}</li>`).join('')}</ul>
+    <div class="src"><b>Premissas.</b> ${d.assumptions.map(esc).join(' ')} ${esc(d.disclaimer)}</div>`;
+  }catch(err){$('#smErr').textContent=err.message}
+}
 async function loadSuitability(){
   try{
     const [q,m,t]=await Promise.all([j('/api/suitability/questionnaire'),j('/api/suitability/model-portfolios'),j('/api/taxonomy')]);
-    SPQ=q;SPMP=m;SPTYPES=t.filter(x=>x.investable);renderSuitability();
+    SPQ=q;SPMP=m;SPTYPES=t.filter(x=>x.investable);renderSuitability();renderSimulator();
   }catch(e){$('#sp').textContent='Suitability indisponível agora.'}
 }
 loadSuitability();
+/* Cada rótulo de métrica do painel liga a uma entrada do glossário (GL): a tabela GID mapeia rótulo -> id e é testada contra o glossário. */
+const GID=[[/^Z-Score/,'zscore'],[/^Percentil/,'percentile'],[/^RSI/,'rsi'],[/^MACD/,'macd'],[/^Vol\. anual/,'volatility'],[/^Max drawdown/,'max-drawdown'],
+ [/^Sharpe/,'sharpe'],[/^VaR/,'var95'],[/^ATR/,'atr'],[/^Valor justo/,'fair-value'],[/^Upside/,'upside'],[/^Downside/,'downside'],[/^Risco\/retorno/,'risk-reward'],
+ [/^Expectativa/,'expected-value'],[/^Força relativa/,'relative-strength'],[/^Volume relativo/,'relative-volume'],[/^Beta/,'beta'],[/^Benchmark/,'benchmark'],[/^Setor/,'sector'],
+ [/^P\/L/,'pe-ratio'],[/^Margem líquida/,'net-margin'],[/^Cresc\. receita/,'revenue-growth'],[/^Valor de mercado/,'market-cap'],[/^Regime/,'regime'],
+ [/^Confiança/,'confidence'],[/^Risco$/,'risk'],[/^Exposição/,'suggested-exposure'],[/^Entrada/,'entry-zone'],[/^Invalidação/,'invalidation'],[/^Alvo/,'targets'],
+ [/^VIX/,'vix'],[/^Índice do dólar/,'dollar-index'],[/^Yield 10/,'yield-10y'],[/^Risco geopolítico/,'geo-risk'],[/^Estratégia|^Comprar e segurar|^Operações|^Barras/,'backtest'],
+ [/^Acerto/,'win-rate'],[/Selic/i,'selic'],[/CDI/,'cdi'],[/IPCA/,'ipca'],[/PTAX|dólar/i,'ptax'],[/^Score/,'score'],[/^Sinal/,'signal'],[/^Fase/,'phase'],
+ [/^Maior posição/,'concentration'],[/^HHI/,'hhi'],[/^Posições efetivas/,'effective-positions'],[/^Volatilidade ponderada/,'weighted-volatility'],
+ [/^Cobertura/,'volatility-coverage'],[/^Aderência/,'adherence'],[/^Simulação/,'simulation'],[/^Veredito/,'verdict'],[/^Variação/,'variation'],
+ [/^Dividend yield/,'dividend-yield'],[/^Valor patrimonial/,'nav-per-share'],[/^ABL|^Área/,'abl'],[/^Vacância/,'vacancy'],[/^Prazo/,'report-deadline'],
+ [/^Selo|^Frescor/,'freshness'],[/^Desatualizado/,'stale']];
+const gid=label=>{const t=String(label).replace(/<[^>]*>/g,'').trim();const m=GID.find(([re])=>re.test(t));return m?m[1]:null};
+const GL=id=>id?`<button type="button" class="gl" data-g="${esc(id)}" aria-label="O que é isto? Abrir no glossário" title="O que é, como ler e quando se preocupar">?</button>`:'';
+const GLL=label=>GL(gid(label));
+let GLOSS=null;
+async function loadGloss(){
+  if(GLOSS)return GLOSS;
+  const d=await j('/api/glossary');GLOSS=d;
+  const groups={};d.entries.forEach(e=>{(groups[e.groupLabel]=groups[e.groupLabel]||[]).push(e)});
+  $('#glossBody').innerHTML=Object.entries(groups).map(([g,es])=>`<h3>${esc(g)}</h3>`+es.map(e=>`<details id="g-${esc(e.id)}" data-t="${esc((e.term+' '+e.what+' '+e.howToRead+' '+e.whenToWorry).toLowerCase())}"><summary>${esc(e.term)}</summary>
+    <dl><dt>O que é</dt><dd>${esc(e.what)}</dd><dt>Como ler</dt><dd>${esc(e.howToRead)}</dd><dt>Quando se preocupar</dt><dd>${esc(e.whenToWorry)}</dd></dl>
+    ${e.related.length?`<div class="rel src">Veja também: ${e.related.map(r=>{const t=d.entries.find(x=>x.id===r);return t?`<button type="button" class="gl-rel" data-g="${esc(r)}">${esc(t.term)}</button>`:''}).join('')}</div>`:''}</details>`).join('')).join('')
+    +`<div class="src" style="margin-top:12px">${esc(d.disclaimer)}</div>`;
+  return d;
+}
+async function openGloss(id){
+  const dlg=$('#gloss');
+  try{await loadGloss()}catch(e){$('#glossBody').textContent='Glossário indisponível agora.'}
+  if(!dlg.open)dlg.showModal();
+  $('#glossQ').value='';document.querySelectorAll('#gloss details').forEach(x=>{x.hidden=false;x.classList.remove('hit')});
+  if(id){const el=document.getElementById('g-'+id);if(el){el.open=true;el.classList.add('hit');el.scrollIntoView({block:'center'})}}
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-g]');if(b){e.preventDefault();openGloss(b.dataset.g)}});
+$('#glossBtn').addEventListener('click',()=>openGloss());
+$('#glossX').addEventListener('click',()=>$('#gloss').close());
+$('#glossQ').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();document.querySelectorAll('#gloss details').forEach(x=>{x.hidden=!!q&&!x.dataset.t.includes(q)})});
 async function loadStatus(){
   const st=await j('/api/status').catch(()=>null);if(!st)return;
   const c={CLOSED:'up',HALF_OPEN:'warn',OPEN:'dn',CONECTADO:'up',RECONECTANDO:'warn',DESLIGADO:'mute'};
@@ -429,8 +530,8 @@ async function loadBrazil(){
     ?new Date(i.date+'T12:00:00').toLocaleDateString('pt-BR',{month:'short',year:'numeric'})
     :new Date(i.date+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});
   $('#br').innerHTML=r.items.map(i=>i.status==='UNAVAILABLE'
-    ?`<div style="display:flex;justify-content:space-between;gap:8px;padding:2px 0"><span>${i.label}</span><span class="fresh dn">sem dado</span></div>`
-    :`<div style="display:flex;justify-content:space-between;gap:8px;padding:2px 0;align-items:baseline"><span>${i.label}<span class="src"> · ${i.dateLabel} ${when(i)}</span></span>
+    ?`<div style="display:flex;justify-content:space-between;gap:8px;padding:2px 0"><span>${i.label}${GLL(i.label)}</span><span class="fresh dn">sem dado</span></div>`
+    :`<div style="display:flex;justify-content:space-between;gap:8px;padding:2px 0;align-items:baseline"><span>${i.label}${GLL(i.label)}<span class="src"> · ${i.dateLabel} ${when(i)}</span></span>
       <span class="num">${fmt(i.value)} <span class="src">${i.unit}</span>${i.status==='STALE'?' <span class="fresh dn" title="sem dado novo no prazo esperado ou sem confirmação do Banco Central nas últimas 3 horas">desatualizado</span>':''}</span></div>`).join('')
     +`<div class="src" style="margin-top:6px">Fonte: Banco Central do Brasil (SGS e PTAX), com a data de referência de cada publicação. IPCA mostra o mês de referência.${r.fetchedAt?' Atualizado em '+dt(Date.parse(r.fetchedAt))+'.':''}</div>`;
 }
@@ -459,25 +560,25 @@ function renderDetail(){
   }
   const s=SIG[A.signal];
   const sc=A.score,w=Math.abs(sc)/2,col=sc>=0?'var(--up)':'var(--warn)';
-  $('#timing').innerHTML=`<div class="score"><div><div class="chip ${s[1]}" style="font-size:13px">${s[0]}</div><div class="mute" style="margin-top:6px">${PHASE[A.phase]}</div></div>
-   <div class="big num ${sc>=0?'up':'warn'}">${sc>0?'+':''}${sc}</div></div>
+  $('#timing').innerHTML=`<div class="score"><div><div class="chip ${s[1]}" style="font-size:13px">${s[0]}</div>${GL('signal')}<div class="mute" style="margin-top:6px">${PHASE[A.phase]}${GL('phase')}</div></div>
+   <div class="big num ${sc>=0?'up':'warn'}">${sc>0?'+':''}${sc}</div>${GL('score')}</div>
    <div class="meter"><b style="${sc>=0?'left:50%':'right:50%'};width:${w}%;background:${col}"></b></div>
    <div class="mute" style="display:flex;justify-content:space-between;font-size:11px"><span>realizar / sair</span><span>comprar</span></div>
-   <div class="kv" style="margin-top:10px"><div><span>Regime</span><span>${REGIME[A.regime]}</span></div><div><span>Confiança</span><span class="num">${A.confidence}%</span></div>
-   <div><span>Risco</span><span>${RISK[A.risk]}</span></div><div><span>Exposição sugerida</span><span class="num">${pc(A.suggestedExposure)}</span></div>
-   <div><span>Entrada</span><span class="num">${f(A.entryLow)}–${f(A.entryHigh)}</span></div><div><span>Invalidação</span><span class="num dn">${f(A.invalidation)}</span></div>
-   <div><span>Alvo 1</span><span class="num warn">${f(A.target1)}</span></div><div><span>Alvo 2</span><span class="num warn">${f(A.target2)}</span></div></div>`;
+   <div class="kv" style="margin-top:10px"><div><span>Regime${GL('regime')}</span><span>${REGIME[A.regime]}</span></div><div><span>Confiança${GL('confidence')}</span><span class="num">${A.confidence}%</span></div>
+   <div><span>Risco${GL('risk')}</span><span>${RISK[A.risk]}</span></div><div><span>Exposição sugerida${GL('suggested-exposure')}</span><span class="num">${pc(A.suggestedExposure)}</span></div>
+   <div><span>Entrada${GL('entry-zone')}</span><span class="num">${f(A.entryLow)}–${f(A.entryHigh)}</span></div><div><span>Invalidação${GL('invalidation')}</span><span class="num dn">${f(A.invalidation)}</span></div>
+   <div><span>Alvo 1${GL('targets')}</span><span class="num warn">${f(A.target1)}</span></div><div><span>Alvo 2${GL('targets')}</span><span class="num warn">${f(A.target2)}</span></div></div>`;
   const m=[['Z-Score (50)',f(A.zScore)],['Percentil',f(A.percentile,0)+'%'],['RSI (14)',f(A.rsi,0)],['MACD hist.',f(A.macdHist,3)],[`Vol. anual. (√${A.periodsPerYear})`,pc(A.annVol)],['Max drawdown',pc(A.maxDrawdown)],
    ['Sharpe',f(A.sharpe)],['VaR 95% (1 barra)',pc(A.var95)],['ATR (14)',f(A.atr)],['Valor justo (SMA50)',f(A.fairValue)],['Upside',pc(A.upside)],['Downside',pc(A.downside)],['Risco/retorno',f(A.riskReward)],['Expectativa',pc(A.expectedValue,2)],['Força relativa',(A.relStrength>=0?'+':'')+f(A.relStrength*100)+' pp'],['Volume relativo',f(A.relVolume)+'x']];
   if(A.beta!=null){const bn=(universe.find(x=>x.symbol===sel)||{}).benchmark||'benchmark';m.push([`Beta vs ${bn} (90)`,f(A.beta)])}
-  $('#metrics').innerHTML=m.map(([k,v])=>`<div><span>${k}</span><span class="num">${v}</span></div>`).join('');
+  $('#metrics').innerHTML=m.map(([k,v])=>`<div><span>${k}${GLL(k)}</span><span class="num">${v}</span></div>`).join('');
   $('#why').innerHTML=A.factors.map(x=>`<li style="--c:${SIDE[x.side]}"><b class="mono" style="color:${SIDE[x.side]};font-size:11px">${x.side}</b> ${x.text}</li>`).join('');
 }
 
 function renderMacro(m){
   const row=(k,v,txt,pct,c)=>v==null
-    ?`<div style="display:flex;justify-content:space-between"><span class="mute">${k}</span><span class="mute">sem dado</span></div><div class="bar"></div>`
-    :`<div style="display:flex;justify-content:space-between"><span class="mute">${k}</span><span class="num">${txt}</span></div><div class="bar"><i style="width:${Math.max(0,Math.min(100,pct))}%;background:${c}"></i></div>`;
+    ?`<div style="display:flex;justify-content:space-between"><span class="mute">${k}${GLL(k)}</span><span class="mute">sem dado</span></div><div class="bar"></div>`
+    :`<div style="display:flex;justify-content:space-between"><span class="mute">${k}${GLL(k)}</span><span class="num">${txt}</span></div><div class="bar"><i style="width:${Math.max(0,Math.min(100,pct))}%;background:${c}"></i></div>`;
   const sec=Object.entries(m.sectorImpact||{}).sort((a,b)=>b[1]-a[1]).slice(0,4).map(([k,v])=>`<span class="chip ${v>.5?'dn':'warn'}" style="margin:0 4px 4px 0">${k} ${f(v*100,0)}</span>`).join('');
   const news=(m.news||[]).slice(0,4).map(n=>`<div class="news" style="--c:${n.risk>.5?'var(--dn)':n.risk>0?'var(--warn)':'var(--line)'}">${n.title}<div class="src">${n.source}</div></div>`).join('');
   $('#macro').innerHTML=row('VIX',m.vix,m.vix!=null&&f(m.vix,1),(m.vix-10)/45*100,m.vix>25?'var(--dn)':'var(--ice)')
@@ -499,8 +600,8 @@ $('#bRun').onclick=async()=>{
   const r=await j(`/api/backtest/${sel}?buyScore=${$('#bBuy').value}&sellScore=${$('#bSell').value}&bars=${$('#bBars').value}`).catch(()=>null);
   if(!r){$('#btOut').innerHTML='<span class="mute">Sem dado real suficiente para rodar o backtest deste ativo.</span>';return}
   const t=r.trades.slice(-6).reverse().map(x=>`<tr><td class="n">${x.entryIdx}→${x.exitIdx}</td><td class="n ${x.ret>=0?'up':'dn'}">${pc(x.ret)}</td><td>${x.reason}</td></tr>`).join('');
-  $('#btOut').innerHTML=`<div class="mute" style="font-size:11px;margin-bottom:6px">Projeção sobre o histórico real carregado; não é cotação nem promessa de retorno.</div><div class="kv"><div><span>Estratégia</span><span class="num ${r.strategyReturn>=0?'up':'dn'}">${pc(r.strategyReturn)}</span></div><div><span>Comprar e segurar</span><span class="num">${pc(r.buyHoldReturn)}</span></div>
-   <div><span>Operações</span><span class="num">${r.trades.length}</span></div><div><span>Acerto</span><span class="num">${pc(r.winRate,0)}</span></div><div><span>Max drawdown</span><span class="num">${pc(r.maxDrawdown)}</span></div><div><span>Barras</span><span class="num">${r.evaluatedBars}</span></div></div>
+  $('#btOut').innerHTML=`<div class="mute" style="font-size:11px;margin-bottom:6px">Projeção sobre o histórico real carregado; não é cotação nem promessa de retorno.</div><div class="kv"><div><span>Estratégia${GL('backtest')}</span><span class="num ${r.strategyReturn>=0?'up':'dn'}">${pc(r.strategyReturn)}</span></div><div><span>Comprar e segurar${GL('backtest')}</span><span class="num">${pc(r.buyHoldReturn)}</span></div>
+   <div><span>Operações</span><span class="num">${r.trades.length}</span></div><div><span>Acerto${GL('win-rate')}</span><span class="num">${pc(r.winRate,0)}</span></div><div><span>Max drawdown${GL('max-drawdown')}</span><span class="num">${pc(r.maxDrawdown)}</span></div><div><span>Barras</span><span class="num">${r.evaluatedBars}</span></div></div>
    <table style="margin-top:8px"><thead><tr><th>Barras</th><th style="text-align:right">Retorno</th><th>Saída</th></tr></thead><tbody>${t||'<tr><td colspan="3" class="mute">Nenhuma operação nesta janela.</td></tr>'}</tbody></table>`;
 };
 
