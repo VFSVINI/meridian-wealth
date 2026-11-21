@@ -22,6 +22,7 @@
 - **Camada macro, micro e geopolítica:** VIX, dólar, juros, manchetes pontuadas por palavras-chave com impacto por setor, e fundamentos (Finnhub).
 - **Tempo real:** WebSocket com fallback automático para SSE.
 - **Raio-X de composição:** imóveis (área, vacância, setores dos inquilinos), alocação e localização de fundos imobiliários reais, com fonte, data e "não informado" quando a fonte cala; links para Satélite e Street View ([docs/composicao.md](docs/composicao.md), [ADR 007](docs/adr/007-composicao-curada-e-geolocalizacao.md)).
+- **Radar de relatórios:** prazos de divulgação pela regra da CVM e veredito POSITIVO, NEUTRO ou NEGATIVO de cada relatório entregue, sempre com os números e a regra ([docs/relatorios.md](docs/relatorios.md), [ADR 008](docs/adr/008-radar-de-relatorios-e-veredito-mecanico.md)).
 - **Persistência:** PostgreSQL com Flyway (candles e histórico de sinais) e Redis (cotações, backtests, rate limit da API).
 - **Qualidade:** testes JUnit 5 (unitários e de integração), Checkstyle, Spotless, GitHub Actions, OpenAPI/Swagger.
 
@@ -61,7 +62,7 @@ Swagger: `http://localhost:8080/swagger-ui.html`. Saúde: `/actuator/health`.
 
 ## Endpoints
 
-`GET /api/universe`, `/api/overview`, `/api/candles/{symbol}`, `/api/assessment/{symbol}`, `/api/micro/{symbol}`, `/api/signals/{symbol}`, `/api/backtest/{symbol}?buyScore=35&sellScore=30&bars=600`, `/api/status`, `/api/taxonomy` (tipos de ativo), `/api/brazil/rates` (Selic, CDI, IPCA e PTAX), `/api/composition` (Raio-X de fundos imobiliários), `/api/composition/{symbol}`, `/api/composition/geo`, `/api/markets` (pregão por bolsa, com motivo e feriado), `/api/stream` (SSE), `/ws/stream` (WebSocket).
+`GET /api/universe`, `/api/overview`, `/api/candles/{symbol}`, `/api/assessment/{symbol}`, `/api/micro/{symbol}`, `/api/signals/{symbol}`, `/api/backtest/{symbol}?buyScore=35&sellScore=30&bars=600`, `/api/status`, `/api/taxonomy` (tipos de ativo), `/api/brazil/rates` (Selic, CDI, IPCA e PTAX), `/api/composition` (Raio-X de fundos imobiliários), `/api/composition/{symbol}`, `/api/composition/geo`, `/api/reports` e `/api/reports/{symbol}` (radar de relatórios), `/api/markets` (pregão por bolsa, com motivo e feriado), `/api/stream` (SSE), `/ws/stream` (WebSocket).
 
 Ativo sem dado real responde **503** com `{"error": "Sem dado em tempo real para ...", "status": "UNAVAILABLE"}`. Cada item de `/api/overview` traz `status`, `source`, `quoteTime`, `freshness`, `nextUpdateAt` e `marketOpen`.
 
