@@ -17,7 +17,7 @@ Criptoativos negociam 24 horas por dia, 7 dias por semana, e são a única class
 1. **Três bolsas em ordem de preferência: Binance, Coinbase Exchange, Kraken.** Cada uma é uma `CryptoVenue` com URL, assinatura e parser próprios, validados contra mensagens reais gravadas.
 2. **Failover dirigido por uma máquina de estados (`CryptoStreamManager`, tick de 1 s):**
    - HTTP **451 ou 403** no handshake isola a bolsa por **30 min** e o stream passa à próxima;
-   - falha de rede: backoff de 1 s a 60 s, e **3 falhas seguidas** isolam a bolsa por 5 min;
+   - falha de rede: backoff de 1 s a 60 s, e **3 falhas seguidas** isolam a bolsa por 5 min; o contador só zera quando a conexão entrega o **primeiro preço válido**, não ao abrir (uma bolsa que aceita o handshake e derruba a conexão logo depois continua somando falhas), e o socket de uma conexão derrubada por erro da bolsa é sempre fechado;
    - conexão aberta **sem nenhuma mensagem por 20 s** é derrubada e conta como falha;
    - quando a bolsa preferida volta a ficar disponível, **a nova conexão abre antes de a antiga fechar**, e mensagens tardias da antiga são descartadas.
 3. **Honestidade da fonte:** cada preço sai com o nome da bolsa que o gerou ("Binance WS", "Coinbase WS" ou "Kraken WS"), com selo de tempo real, e o status mostra a bolsa em uso e o motivo de cada isolamento.

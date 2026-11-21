@@ -14,6 +14,7 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 - ADR 005 e fixtures reais de Binance, Coinbase, Kraken, BTC e ETH.
 
 ### Corrigido (item #4)
+- Stream de cripto: o backoff só zera no primeiro preço válido e o socket é fechado quando a bolsa devolve erro (antes, uma bolsa que abria e caía era reconectada a cada segundo, deixando conexões abertas e sem failover).
 - Barra nova abria às 23:30 UTC do mesmo dia para barras que começam à meia-noite UTC (corte fixo de 23 h).
 - Dependabot ignora JDK não-LTS, majors do Spring Boot e o Maven da distribuição do wrapper.
 
