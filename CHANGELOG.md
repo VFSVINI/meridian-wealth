@@ -6,6 +6,16 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+## [0.2.0] - 2026-11-21
+
+Milestone 2 — Inteligência Institucional, Composição & Relatórios (itens #6 a #10).
+
+### Adicionado (item #10 do roadmap)
+- Tradutor geopolítico de carteira (`POST /api/thesis/lens`): cruza a pressão que as manchetes reais do radar macro exercem sobre cada setor com o peso do setor na carteira informada (peso, pressão, contribuição em p.p., manchetes de origem), com limites declarados e sem dado inventado quando o macro está indisponível.
+- Cinco teses institucionais genéricas (`GET /api/thesis`): equilíbrio entre cenários, megatendências, sinais estatísticos e liquidez, macro de juros e câmbio e valor de longo prazo, cada uma com premissas, grupos sensíveis e o que a invalidaria. Nenhuma posição real é atribuída a nenhuma gestora, e o aviso de ilustrativo aparece na API e na tela.
+- Card "Tradutor geopolítico e teses" no painel; entradas "Pressão das manchetes" e "Tese institucional" no glossário.
+- ADR 011 (tradutor e teses) e ADR 012 (protótipo visual como referência obrigatória), `docs/teses.md` e `docs/design-prototipo.md` com a transcrição dos tokens e do shell do protótipo aprovado, e o prompt do Claude Design em `docs/prompt-claude-design.md`.
+
 ### Adicionado (item #9 do roadmap)
 - Simulador de impacto pré-ordem (`POST /api/impact/pre-order`): efeito de uma compra ou venda hipotética na concentração (maior posição, HHI, posições efetivas), no risco (volatilidade ponderada com cobertura declarada, dado real) e na aderência ao perfil, com achados descritivos. Rotulado como simulação, sem cotação, sem rota de ordem; a plataforma não executa ordens.
 - Glossário didático (`GET /api/glossary`): 60 entradas com "o que é", "como ler" e "quando se preocupar", escritas a partir do que o código calcula (o Sharpe do painel não desconta a taxa livre de risco; a expectativa usa uma probabilidade derivada do score).
