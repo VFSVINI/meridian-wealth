@@ -54,6 +54,7 @@ canvas{width:100%;height:420px;display:block}
 .kv{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}.kv div{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dotted #1c2837;padding-bottom:3px}
 .kv span:first-child{color:var(--mute)}
 .rx table{font-size:11.5px}.rx td,.rx th{padding:5px 4px;vertical-align:top}.rx th{color:var(--mute);font-weight:500;text-align:left}.rx td.n,.rx th.n{text-align:right;font-family:var(--mono)}.rx a{color:var(--ice)}.rx .gap{color:var(--warn)}.rx .note{margin:6px 0 0;padding-left:16px;color:var(--mute);font-size:11.5px}.rx .src{font-size:11.5px;color:var(--mute);margin-bottom:6px}.rx .scroll{max-height:340px;overflow:auto}
+.vd{display:inline-block;min-width:74px;text-align:center;border:1px solid var(--line);border-radius:3px;padding:1px 6px;font-size:11px;font-weight:600}.vd.POSITIVE{color:var(--up);border-color:var(--up)}.vd.NEGATIVE{color:var(--dn);border-color:var(--dn)}.vd.NEUTRAL{color:var(--ice);border-color:var(--ice)}.vd.NONE{color:var(--mute)}.rx details{border-bottom:1px dotted #1c2837;padding:5px 0}.rx summary{cursor:pointer;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.rx .stale{color:var(--warn);border:1px dashed var(--warn);padding:3px 6px;border-radius:3px;margin-bottom:6px;font-size:11.5px}
 ul.why{list-style:none;margin:0;padding:0}ul.why li{padding:5px 0 5px 10px;border-left:3px solid var(--c);margin-bottom:5px;font-size:12.5px}
 .bar{height:6px;background:#16212e;border-radius:3px;overflow:hidden;margin:3px 0 9px}.bar i{display:block;height:100%}
 .bt{display:flex;gap:8px;align-items:end;flex-wrap:wrap;margin-bottom:8px}.bt label{display:flex;flex-direction:column;gap:3px;color:var(--mute);font-size:11px}.bt input{width:74px}
@@ -100,6 +101,7 @@ footer{padding:8px 16px;border-top:1px solid var(--line);color:var(--mute);font-
     <div class="card"><h2>Radar macro e geopolítico</h2><div id="macro"></div></div>
     <div class="card"><h2>Juros e inflação (Brasil) <span class="tag" style="color:var(--ice);border-color:var(--ice)">dado oficial</span></h2><div id="br" class="mute" style="font-size:12px">carregando…</div></div>
     <div class="card rx"><h2>Raio-X de composição <span class="tag" style="color:var(--ice);border-color:var(--ice)">dado curado</span></h2><div id="rx" class="mute" style="font-size:12px">Selecione um fundo imobiliário.</div></div>
+    <div class="card rx"><h2>Radar de relatórios <span class="tag" style="color:var(--ice);border-color:var(--ice)">dado oficial CVM</span></h2><div id="rr" class="mute" style="font-size:12px">Selecione uma ação ou fundo imobiliário brasileiro.</div></div>
     <div class="card"><h2>Histórico de sinais</h2><div id="sigHist" class="mute" style="font-size:12px">—</div></div>
     <div class="card"><h2>Backtest analítico <span class="tag">projeção</span></h2>
       <div class="bt">
@@ -231,7 +233,7 @@ async function select(sym){
     else{candles=[];A=null}
   }finally{selecting=false}
   $('#btOut').innerHTML='<span class="mute">Rode o backtest para este ativo.</span>';
-  renderList();renderDetail();draw();loadMicro();loadSignals();loadComposition(sym);
+  renderList();renderDetail();draw();loadMicro();loadSignals();loadComposition(sym);loadReports(sym);
 }
 
 async function loadMicro(){
@@ -269,7 +271,8 @@ async function loadComposition(sym){
     if(!r.ok)throw new Error('composition');
     const d=await r.json();if(sel!==sym)return;
     const s=d.source;
-    let h=`<div class="src"><b>${esc(s.kindLabel)}</b>: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.name)}</a> · dados de ${esc(s.referenceDate||'data não informada')} · consultado em ${esc(s.consultedOn)}</div>`;
+    let h=d.stale?`<div class="stale">Dado consultado há ${d.dataAgeDays} dias (limite ${d.staleAfterDays}): pode estar desatualizado.</div>`:'';
+    h+=`<div class="src"><b>${esc(s.kindLabel)}</b>: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.name)}</a> · dados de ${esc(s.referenceDate||'data não informada')} · consultado em ${esc(s.consultedOn)}</div>`;
     if(d.classification)h+=`<div class="src">Classificação no informe: ${esc(d.classification)}</div>`;
     if(d.metrics){const m=d.metrics;h+=`<div class="kv"><div><span>ABL publicada</span><span>${dash(m.totalAreaM2,v=>f(v,0)+' m²')}</span></div><div><span>Vacância física</span><span>${dash(m.physicalVacancyPercent,v=>f(v,2)+'%')}</span></div><div><span>Vacância financeira</span><span>${dash(m.financialVacancyPercent,v=>f(v,2)+'%')}</span></div><div><span>Ref. das métricas</span><span>${esc(m.asOf||'—')}</span></div></div>`}
     if(d.assets.length){
@@ -283,6 +286,35 @@ async function loadComposition(sym){
     h+=`<div class="src" style="margin-top:8px">${esc(d.attribution)} Coordenadas por via são aproximadas. ${esc(d.disclaimer)}</div>`;
     el.className='';el.style.fontSize='12px';el.innerHTML=h;
   }catch(e){if(sel===sym){el.className='mute';el.textContent='Composição indisponível agora.'}}
+}
+const VD={POSITIVE:'POSITIVO',NEUTRAL:'NEUTRO',NEGATIVE:'NEGATIVO'};
+const MV=(u,v)=>v==null?'<span class="gap">não informado</span>':u==='BRL'?'R$ '+f(v,2):f(v,6);
+function rrReport(r){
+  const vd=r.verdict||'NONE';
+  const sig=r.signals.map(s=>`<li>${esc(s.explanation)}${s.variationPercent==null?'':` <span class="mute">[${esc(s.label)}: ${MV(s.unit,s.current)} (${esc(s.currentPeriod)}) × ${MV(s.unit,s.base)} (${esc(s.basePeriod||'—')})]</span>`}</li>`).join('');
+  const cav=r.caveats.map(c=>'<li>'+esc(c)+'</li>').join('');
+  const link=r.link?` · <a href="${esc(r.link)}" target="_blank" rel="noopener noreferrer">documento na CVM</a>`:'';
+  return `<details><summary><b>${esc(r.label)}</b><span class="vd ${vd}">${esc(r.verdictLabel)}</span><span class="mute">entregue em ${esc(r.firstDeliveredOn)}${r.version>1?' (reentregue, versão '+r.version+')':''}</span></summary>
+    <ul class="note">${sig}${cav}</ul><div class="src">${esc(r.periodicityLabel)} · período até ${esc(r.periodEnd)}${link}</div></details>`;
+}
+async function loadReports(sym){
+  const el=$('#rr');
+  try{
+    const r=await fetch('/api/reports/'+encodeURIComponent(sym));
+    if(sel!==sym)return;
+    if(r.status===404){el.className='mute';el.innerHTML='Sem relatórios para '+esc(sym)+': o radar cobre ações e FIIs brasileiros com dados abertos da CVM (PETR4, VALE3, ITUB4, HGLG11, KNRI11, XPML11, MXRF11). Ativos de outros mercados não têm fonte integrada.';return}
+    if(!r.ok)throw new Error('reports');
+    const d=await r.json();if(sel!==sym)return;
+    let h=d.stale?`<div class="stale">Dado consultado há ${d.dataAgeDays} dias (limite ${d.staleAfterDays}): pode haver relatório mais novo.</div>`:'';
+    const n=d.nextDeadline;
+    h+=n?`<div class="src"><b>Próximo prazo:</b> ${esc(n.periodicityLabel)} ${esc(n.label)} até <b>${esc(n.deadline)}</b> <span class="mute">(prazo máximo legal; a divulgação pode vir antes)</span></div>`:'';
+    h+='<div class="src">'+d.sources.map(s=>`<b>${esc(s.kindLabel)}</b>: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.name)}</a> · consultado em ${esc(s.consultedOn)}`).join('<br>')+'</div>';
+    h+='<div class="scroll">'+d.reports.slice(0,8).map(rrReport).join('')+'</div>';
+    h+=`<table style="margin-top:8px"><thead><tr><th>Prazo</th><th>Período</th><th>Situação</th></tr></thead><tbody>${d.calendar.map(c=>`<tr><td>${esc(c.deadline)}</td><td>${esc(c.periodicityLabel)} ${esc(c.label)}<div class="mute">${esc(c.rule)}</div></td><td>${esc(c.statusLabel)}${c.deliveredOn?'<div class="mute">entregue em '+esc(c.deliveredOn)+'</div>':''}</td></tr>`).join('')}</tbody></table>`;
+    if(d.notices.length)h+='<ul class="note">'+d.notices.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>';
+    h+=`<div class="src" style="margin-top:8px"><b>Regra do veredito.</b> ${esc(d.rule)} ${esc(d.disclaimer)}</div>`;
+    el.className='';el.style.fontSize='12px';el.innerHTML=h;
+  }catch(e){if(sel===sym){el.className='mute';el.textContent='Radar indisponível agora.'}}
 }
 async function loadStatus(){
   const st=await j('/api/status').catch(()=>null);if(!st)return;
