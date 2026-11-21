@@ -48,7 +48,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 - [x] **#5** Taxonomia multi-ativo + API do BCB (Selic, CDI, IPCA, PTAX). Fecha o Milestone 1 (tag v0.1.0).
 
 ### Milestone 2 — Inteligência Institucional, Composição & Relatórios
-- [ ] **#6** Raio-X de composição e geolocalização de ativos reais (dados públicos curados, fonte e data).
+- [x] **#6** Raio-X de composição e geolocalização de ativos reais (dados públicos curados, fonte e data). Ver [composicao.md](composicao.md).
 - [ ] **#7** Radar de relatórios periódicos e balanços com veredito e justificativa.
 - [ ] **#8** Motor de suitability e carteira modelo por perfil.
 - [ ] **#9** Simulador de impacto pré-ordem e glossário didático.
@@ -84,8 +84,10 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [004](adr/004-dados-reais-e-procedencia.md) | Dados 100% reais e procedência explícita | Aceito |
 | [005](adr/005-stream-cripto-com-failover.md) | Stream de cripto com failover e anualização por √365 | Aceito |
 | [006](adr/006-taxonomia-e-dados-oficiais-do-bcb.md) | Taxonomia multi-ativo e dados oficiais do BCB | Aceito |
+| [007](adr/007-composicao-curada-e-geolocalizacao.md) | Composição curada e geolocalização conservadora | Aceito |
 
 Decisões menores (no corpo dos PRs):
+- Item #6: tipo do imóvel só quando a fonte declara; percentuais de receita do HGLG11 somam 70,85% e não são apresentados como 100%; XPML11 vem de terceiros e é rotulado assim; conflito de classificação do MXRF11 (Tijolo × Papéis) é exibido; coordenada por via é "aproximada".
 - Item #5: só atributos definidos pelo produto ou verificados em fonte pública entram na taxonomia (imposto e liquidez ficam de fora); `Rate` em `BigDecimal` e valores como texto exato na API; SGS por janela de datas (o modo "últimos N" traz datas futuras e ordem imprevisível); cada indicador do BCB é independente e mantém o último valor bom; FIIs sem benchmark (o IFIX tem uma barra na Yahoo); PTAX pelo Olinda, não pelo SGS 1.
 - Item #4: três bolsas em ordem (Binance, Coinbase, Kraken) com failover por 451/403, falhas e silêncio; histórico de cripto pela Yahoo (a Binance REST sofre o mesmo bloqueio regional); stream suspende o polling REST por 30 s; regra de barra nova por dia local da bolsa; beta de 90 barras com benchmark alinhado por data; Dependabot ignora JDK não-LTS, Spring Boot major e Maven da distribuição do wrapper.
 - PR #1: Maven Wrapper com checksum; piso JaCoCo de 70% (medido 76%); CodeQL `security-extended`; Dependabot agrupado.
@@ -107,6 +109,11 @@ Decisões menores (no corpo dos PRs):
 | 16 | "Cotação desatualizada" pode aparecer para par ilíquido em canal que só publica a cada negócio (Coinbase e Kraken) mesmo com o stream saudável; a saúde deveria ser medida pela conexão | `domain/Freshness`, `infrastructure/crypto` | quando o universo de cripto crescer |
 | 17 | Nomes oficiais das séries SGS 12, 4389, 433 e 13522 sem página no portal de dados abertos do BCB; semântica confirmada por recomposição aritmética (CDI diário composto, 12 IPCA mensais compostos), não por documentação. A página de documentação do Olinda também não renderiza | `docs/mercados.md` | quando o BCB publicar |
 | 18 | Correspondência produto → sigla do título público (LFT, LTN, NTN-F, NTN-B) sem releitura em página oficial (o Tesouro Direto respondeu 403); os nomes dos produtos foram confirmados nos dados abertos da STN. Notas comerciais e promissórias não constam na lista do FGC (tratadas como sem garantia) | `domain/AssetType` | item #12 |
+
+| 19 | Dado de composição é um retrato (2026-11-21): envelhece e a atualização é manual (rodar o script e revisar o diff) | `scripts/curadoria`, `data/composicao` | deploy do item #21 ou job agendado |
+| 20 | Cobertura de coordenadas: 32 de 72 imóveis listados (24 aproximados por via); HGLG11 6 de 36, pois o informe quase nunca traz cidade ou CEP | `data/composicao` | quando houver fonte pública melhor |
+| 21 | HGLG11: percentuais de receita por imóvel somam 70,85% e o informe não explica o resto; KNRI11 lista 17 de 20 imóveis; XPML11 sem fonte oficial (403) e sem data de referência | `data/composicao` | quando as fontes oficiais forem acessíveis |
+| 22 | Links de Street View dependem de haver imagem no ponto (o Google decide ao abrir); a existência da imagem não foi verificada | `domain/composition/MapLinks` | item #16 (mapa) |
 
 **Resolvidas**
 - Item #5 (pós-review): a Selic meta (SGS 432) é preenchida para a frente com o valor vigente, então sua data é sempre a de hoje; a regra de defasagem por data nunca disparava para ela e, se a coleta falhasse por dias, o painel afirmaria "dado em dia". Agora cada observação guarda quando o sistema a confirmou (`confirmedAt`), qualquer série fica `STALE` após 3 h sem confirmação, a Selic meta não usa a data como idade e a tela diz "vigente em". `refresh()` do BCB passou a ser exclusivo (antes duas rodadas simultâneas disputavam a cota e o retrato) e `Rate.compoundedOver` valida o teto de períodos do `BigDecimal.pow`.
@@ -138,7 +145,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 181 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 199 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
