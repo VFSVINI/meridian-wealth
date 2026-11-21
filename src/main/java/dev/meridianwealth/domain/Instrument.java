@@ -9,6 +9,14 @@ package dev.meridianwealth.domain;
 public record Instrument(String symbol, String name, String region, String assetClass, String sector,
                          Exchange exchange, String currency, String benchmark) {
 
+    /**
+     * Barras por ano para anualizar volatilidade e Sharpe: criptoativos negociam todos os dias do ano
+     * (raiz de 365); os demais ativos têm cerca de 252 pregões (raiz de 252).
+     */
+    public int periodsPerYear() {
+        return exchange == Exchange.CRYPTO ? 365 : 252;
+    }
+
     public static Instrument of(String symbol, String name, Exchange exchange, String assetClass, String sector,
                                 String currency, String benchmark) {
         return new Instrument(symbol, name, exchange.region(), assetClass, sector, exchange, currency, benchmark);

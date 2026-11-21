@@ -12,14 +12,24 @@ import java.util.Locale;
  */
 public final class TimingEngine {
     public static final int MIN_BARS = 120;
-    private static final int PER_YEAR = 252;
+    public static final int DEFAULT_PERIODS_PER_YEAR = 252;
+    public static final int BETA_WINDOW = 90;
 
     public Assessment assess(String symbol, List<Candle> candles, double macroRisk) {
         return assess(symbol, candles, macroRisk, null);
     }
 
-    /** {@code benchmark}: fechamentos do índice de referência para a força relativa (pode ser nulo). */
     public Assessment assess(String symbol, List<Candle> candles, double macroRisk, double[] benchmark) {
+        return assess(symbol, candles, macroRisk, benchmark, DEFAULT_PERIODS_PER_YEAR);
+    }
+
+    /**
+     * {@code benchmark}: fechamentos do índice de referência alinhados às barras do ativo, para força
+     * relativa e beta (pode ser nulo). {@code perYear}: barras por ano para anualizar volatilidade e
+     * Sharpe (252 para ações; 365 para cripto, que negocia todos os dias).
+     */
+    public Assessment assess(String symbol, List<Candle> candles, double macroRisk, double[] benchmark, int perYear) {
+        if (perYear <= 0) throw new IllegalArgumentException("perYear deve ser positivo");
         int n = candles.size();
         if (n < MIN_BARS) throw new IllegalArgumentException("Mínimo de " + MIN_BARS + " barras");
         double[] c = new double[n];
@@ -35,15 +45,16 @@ public final class TimingEngine {
         double atr = Indicators.atr(candles, 14);
         double[] r = Indicators.logReturns(c);
         double[] r60 = Indicators.tail(r, 60), r120 = Indicators.tail(r, 120);
-        double rmsLong = Indicators.rmsVol(r60, PER_YEAR);
-        double ratio = rmsLong == 0 ? 1 : Indicators.rmsVol(Indicators.tail(r, 5), PER_YEAR) / rmsLong;
-        double vol = Indicators.annualizedVol(r60, PER_YEAR);
+        double rmsLong = Indicators.rmsVol(r60, perYear);
+        double ratio = rmsLong == 0 ? 1 : Indicators.rmsVol(Indicators.tail(r, 5), perYear) / rmsLong;
+        double vol = Indicators.annualizedVol(r60, perYear);
         double mdd = Indicators.maxDrawdown(Indicators.tail(c, Math.min(250, n)));
-        double sharpe = Indicators.sharpe(r120, PER_YEAR);
+        double sharpe = Indicators.sharpe(r120, perYear);
         double var95 = Indicators.valueAtRisk(r120, 0.95);
         double ret5 = last / c[n - 6] - 1;
         double rs = Indicators.relativeStrength(c, benchmark, 60);
         double relVol = Indicators.relativeVolume(candles, 20);
+        double betaValue = Indicators.beta(c, benchmark, BETA_WINDOW);
 
         // --- Regime ---
         Regime regime;
@@ -110,7 +121,8 @@ public final class TimingEngine {
                 z, pct, rsi, macd.hist(), vol, mdd, sharpe, var95, atr,
                 sma50, entryLow, entryHigh, invalidation, target1, target2,
                 upside, downside, rr, ev, exposure, rs, relVol,
-                factors(z, pct, rsi, macd, bb, last, regime, knife, ratio, macroRisk, score, rs, relVol, benchmark != null));
+                factors(z, pct, rsi, macd, bb, last, regime, knife, ratio, macroRisk, score, rs, relVol, benchmark != null),
+                Double.isNaN(betaValue) ? null : betaValue, perYear);
     }
 
     private static List<Factor> factors(double z, double pct, double rsi, Indicators.Macd m,

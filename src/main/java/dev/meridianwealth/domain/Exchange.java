@@ -38,7 +38,9 @@ public enum Exchange {
     TADAWUL("Tadawul", "Oriente Médio/África", "Asia/Riyadh", false, sessions(10, 0, 15, 0)),
     JSE("Johannesburgo (JSE)", "Oriente Médio/África", "Africa/Johannesburg", false, sessions(9, 0, 17, 0)),
     /** Câmbio e futuros de commodities: domingo 22:00 UTC a sexta 22:00 UTC, sem feriados. */
-    GLOBAL_24H("Mercado global 24h", "Global", "UTC", true, List.of());
+    GLOBAL_24H("Mercado global 24h", "Global", "UTC", true, List.of()),
+    /** Criptoativos: negociam 24 horas, 7 dias por semana, sem feriados; a barra diária fecha à meia-noite UTC. */
+    CRYPTO("Cripto 24/7", "Cripto", "UTC", true, List.of());
 
     /** Sessão contínua [open, close) no fuso da bolsa. */
     public record Session(LocalTime open, LocalTime close) {}

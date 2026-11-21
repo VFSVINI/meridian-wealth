@@ -17,6 +17,11 @@ public class BacktestService {
     private final TimingEngine engine = new TimingEngine();
 
     public Result run(List<Candle> candles, int buyScore, int sellScore, double macroRisk) {
+        return run(candles, buyScore, sellScore, macroRisk, TimingEngine.DEFAULT_PERIODS_PER_YEAR);
+    }
+
+    /** {@code perYear}: base de anualização do ativo (365 para cripto, 252 para os demais). */
+    public Result run(List<Candle> candles, int buyScore, int sellScore, double macroRisk, int perYear) {
         int n = candles.size(), start = TimingEngine.MIN_BARS;
         if (n <= start + 1) return new Result(List.of(), 0, 0, 0, 0, 0);
         List<Trade> trades = new ArrayList<>();
@@ -26,7 +31,7 @@ public class BacktestService {
         boolean in = false;
         for (int i = start; i < n; i++) {
             double close = candles.get(i).close();
-            Assessment a = engine.assess("BT", candles.subList(0, i + 1), macroRisk);
+            Assessment a = engine.assess("BT", candles.subList(0, i + 1), macroRisk, null, perYear);
             if (in) {
                 String why = close <= stop ? "stop técnico" : a.score() <= -sellScore ? "realização" : null;
                 if (why != null) {
