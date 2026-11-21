@@ -1,4 +1,4 @@
-﻿# MeridianWealth — memória do projeto
+# MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
 > Atualizado em todo PR. Última atualização: PR do item #5 (Issue #5), 2026-11-21.
