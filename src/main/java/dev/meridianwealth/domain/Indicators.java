@@ -147,6 +147,24 @@ public final class Indicators {
         return a - b;
     }
 
+    /**
+     * Beta do ativo contra o benchmark: covariância dos retornos logarítmicos dividida pela variância
+     * dos retornos do benchmark, nas últimas {@code window} barras (séries alinhadas pelo fim). Devolve
+     * {@code NaN} quando não há barras suficientes ou o benchmark não variou.
+     */
+    public static double beta(double[] asset, double[] bench, int window) {
+        if (bench == null || window < 2 || asset.length < window + 1 || bench.length < window + 1) return Double.NaN;
+        double[] ra = logReturns(tail(asset, window + 1));
+        double[] rb = logReturns(tail(bench, window + 1));
+        double ma = Arrays.stream(ra).average().orElse(0), mb = Arrays.stream(rb).average().orElse(0);
+        double cov = 0, var = 0;
+        for (int i = 0; i < ra.length; i++) {
+            cov += (ra[i] - ma) * (rb[i] - mb);
+            var += (rb[i] - mb) * (rb[i] - mb);
+        }
+        return var == 0 ? Double.NaN : cov / var;
+    }
+
     /** Volume da última barra dividido pela média das n barras anteriores (1 quando não há volume). */
     public static double relativeVolume(List<Candle> cs, int n) {
         int sz = cs.size();

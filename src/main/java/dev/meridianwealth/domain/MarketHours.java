@@ -22,6 +22,9 @@ public final class MarketHours {
 
     public static SessionStatus status(Exchange ex, Instant now) {
         ZonedDateTime local = now.atZone(ex.zone());
+        if (ex == Exchange.CRYPTO) {
+            return new SessionStatus(ex, true, "mercado aberto 24/7", null, local, true);
+        }
         if (ex == Exchange.GLOBAL_24H) {
             boolean open = globalOpen(now);
             return new SessionStatus(ex, open, open ? "mercado aberto 24h" : "fim de semana", null, local, true);

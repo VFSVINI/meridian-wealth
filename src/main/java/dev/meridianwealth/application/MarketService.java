@@ -13,12 +13,16 @@ import dev.meridianwealth.domain.Signal;
 import dev.meridianwealth.domain.TimingEngine;
 import java.lang.System.Logger.Level;
 import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.TreeMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -201,7 +205,8 @@ public class MarketService {
     }
 
     private Assessment assess(String symbol, Series s) {
-        return engine.assess(symbol, s.candles, macro.riskFor(s.instrument.sector()), benchmark(s));
+        return engine.assess(symbol, s.candles, macro.riskFor(s.instrument.sector()), benchmark(s),
+                s.instrument.periodsPerYear());
     }
 
     private double[] benchmark(Series s) {
@@ -209,8 +214,30 @@ public class MarketService {
         if (bench == null) return null;
         Series b = series.get(bench);
         if (b == null || b == s || b.candles.isEmpty()) return null;
-        int from = Math.max(0, b.candles.size() - 500);
-        return b.candles.subList(from, b.candles.size()).stream().mapToDouble(Candle::close).toArray();
+        return alignedCloses(s, b);
+    }
+
+    /**
+     * Fechamentos do benchmark alinhados, um a um, às barras do ativo pela data local de cada bolsa.
+     * Dia sem barra no benchmark (feriado de uma das bolsas) herda o último fechamento anterior; datas
+     * anteriores à primeira barra do benchmark usam o primeiro fechamento disponível.
+     */
+    static double[] alignedCloses(Series asset, Series bench) {
+        TreeMap<LocalDate, Double> byDay = new TreeMap<>();
+        ZoneId benchZone = bench.instrument.exchange().zone();
+        for (Candle c : bench.candles) byDay.put(localDate(c.time(), benchZone), c.close());
+        ZoneId assetZone = asset.instrument.exchange().zone();
+        double first = bench.candles.get(0).close();
+        double[] out = new double[asset.candles.size()];
+        for (int i = 0; i < out.length; i++) {
+            Map.Entry<LocalDate, Double> e = byDay.floorEntry(localDate(asset.candles.get(i).time(), assetZone));
+            out[i] = e == null ? first : e.getValue();
+        }
+        return out;
+    }
+
+    private static LocalDate localDate(long epochMillis, ZoneId zone) {
+        return Instant.ofEpochMilli(epochMillis).atZone(zone).toLocalDate();
     }
 
     private static Optional<SignalRecord> signalChange(Series s, Assessment a) {
@@ -265,17 +292,19 @@ public class MarketService {
     public BacktestService.Result backtest(String symbol, int buyScore, int sellScore, int bars) {
         List<Candle> window;
         double risk;
+        int perYear;
         String key;
         synchronized (this) {
             Series s = requireAssessable(symbol);
             int from = Math.max(0, s.candles.size() - bars);
             window = new ArrayList<>(s.candles.subList(from, s.candles.size()));
             risk = macro.riskFor(s.instrument.sector());
+            perYear = s.instrument.periodsPerYear();
             key = backtestKey(symbol, buyScore, sellScore, bars, window, risk);
         }
         Optional<BacktestService.Result> hit = backtestCache.get(key);
         if (hit.isPresent()) return hit.get();
-        BacktestService.Result r = backtests.run(window, buyScore, sellScore, risk);
+        BacktestService.Result r = backtests.run(window, buyScore, sellScore, risk, perYear);
         backtestCache.put(key, r, BACKTEST_TTL);
         return r;
     }
