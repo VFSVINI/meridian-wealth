@@ -101,8 +101,7 @@ public class LiveMarketData implements MarketDataPort {
 
     @Override
     public boolean marketOpen(String symbol) {
-        Instrument ins = Universe.entry(symbol).instrument();
-        return MarketHours.isOpen(ins.region(), ins.assetClass(), Instant.now());
+        return MarketHours.isOpen(Universe.entry(symbol).instrument().exchange(), Instant.now());
     }
 
     /**

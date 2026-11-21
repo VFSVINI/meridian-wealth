@@ -7,6 +7,7 @@ import dev.meridianwealth.application.port.BacktestCache;
 import dev.meridianwealth.application.port.MarketDataPort;
 import dev.meridianwealth.application.port.SignalStore;
 import dev.meridianwealth.domain.Candle;
+import dev.meridianwealth.domain.Exchange;
 import dev.meridianwealth.domain.Freshness;
 import dev.meridianwealth.domain.Instrument;
 import dev.meridianwealth.domain.MacroSnapshot;
@@ -23,9 +24,9 @@ import org.junit.jupiter.api.Test;
 
 class MarketServiceTest {
     private static final List<Instrument> UNIVERSE = List.of(
-            new Instrument("SPY", "S&P 500 ETF", "EUA", "ETF", "amplo"),
-            new Instrument("AAPL", "Apple", "EUA", "Ação", "tecnologia"),
-            new Instrument("MSFT", "Microsoft", "EUA", "Ação", "tecnologia"));
+            Instrument.of("SPY", "S&P 500 ETF", Exchange.NYSE, "ETF", "amplo", "USD", null),
+            Instrument.of("AAPL", "Apple", Exchange.NYSE, "Ação", "tecnologia", "USD", "SPY"),
+            Instrument.of("MSFT", "Microsoft", Exchange.NYSE, "Ação", "tecnologia", "USD", "SPY"));
 
     /** Porta de dados em memória: devolve exatamente o que o teste configurar, nada além. */
     static final class InMemoryMarketData implements MarketDataPort {

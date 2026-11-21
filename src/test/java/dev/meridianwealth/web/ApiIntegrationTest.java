@@ -42,7 +42,7 @@ class ApiIntegrationTest {
     @Test void overviewShowsRealSourcesAndExplicitGaps() {
         Map<?, ?> body = rest.getForObject("/api/overview", Map.class);
         assertThat(body.get("mode")).isEqualTo("PARCIAL");
-        assertThat((List<?>) body.get("ticks")).hasSize(10);
+        assertThat((List<?>) body.get("ticks")).hasSize(25);
 
         Map<String, Object> spy = tick("SPY");
         assertThat(spy.get("status")).isEqualTo("LIVE");
@@ -92,12 +92,22 @@ class ApiIntegrationTest {
         assertThat(body.get("cache")).isEqualTo("memory");
         assertThat(body).doesNotContainKeys("flow", "dataMode");
         assertThat((List<?>) body.get("providers")).isNotEmpty();
-        assertThat((List<?>) body.get("instruments")).hasSize(10);
+        assertThat((List<?>) body.get("instruments")).hasSize(25);
     }
 
     @Test void simulatedFlowEndpointNoLongerExists() {
         ResponseEntity<String> r = rest.postForEntity("/api/settings/flow?enabled=true", null, String.class);
         assertThat(r.getStatusCode().is4xxClientError()).isTrue();
+    }
+
+    @Test void marketsReportEveryExchangeWithReasonAndCalendarStatus() {
+        List<Map<String, Object>> markets = rest.getForObject("/api/markets", List.class);
+        assertThat(markets).extracting(m -> m.get("exchange"))
+                .contains("NYSE", "B3", "XETRA", "LSE", "TSE", "HKEX", "ASX", "TADAWUL", "JSE", "GLOBAL_24H");
+        assertThat(markets).allSatisfy(m -> {
+            assertThat(m).containsKeys("open", "reason", "localTime", "holidaysVerified");
+            assertThat((String) m.get("reason")).isNotBlank();
+        });
     }
 
     @Test void openApiAndHealthAreUp() {

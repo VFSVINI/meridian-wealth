@@ -204,14 +204,12 @@ public class MarketService {
     }
 
     private double[] benchmark(Series s) {
-        Series b = series.get(benchmarkOf(s.instrument));
+        String bench = s.instrument.benchmark();
+        if (bench == null) return null;
+        Series b = series.get(bench);
         if (b == null || b == s || b.candles.isEmpty()) return null;
         int from = Math.max(0, b.candles.size() - 500);
         return b.candles.subList(from, b.candles.size()).stream().mapToDouble(Candle::close).toArray();
-    }
-
-    private static String benchmarkOf(Instrument i) {
-        return "Europa".equals(i.region()) ? "STOXX50" : "SPY";
     }
 
     private static Optional<SignalRecord> signalChange(Series s, Assessment a) {
@@ -241,8 +239,8 @@ public class MarketService {
     public synchronized MicroView micro(String symbol) {
         Series s = requireAssessable(symbol);
         Assessment a = assess(symbol, s);
-        String bench = benchmarkOf(s.instrument);
-        return new MicroView(symbol, s.instrument.sector(), bench.equals(symbol) ? "—" : bench, a.relStrength(),
+        String bench = s.instrument.benchmark();
+        return new MicroView(symbol, s.instrument.sector(), bench == null ? "—" : bench, a.relStrength(),
                 a.relVolume(), fundamentals.fundamentals(symbol).orElse(null));
     }
 

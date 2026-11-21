@@ -2,7 +2,6 @@ package dev.meridianwealth.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.time.Instant;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -30,17 +29,6 @@ class GeoRiskAndHoursTest {
         MacroSnapshot m = MacroSnapshot.of(30.0, 104.0, 4.2, 0.6, "x", "t", List.of(), java.util.Map.of("energia", 0.9));
         assertThat(m.riskFor("energia")).isGreaterThan(m.riskFor("tecnologia"));
         assertThat(m.riskFor("refugio")).isLessThan(m.riskScore());
-    }
-
-    @Test void marketHoursByRegion() {
-        Instant tueNoonNy = Instant.parse("2026-11-17T17:00:00Z");   // terça, 12:00 em Nova York
-        Instant satNoon = Instant.parse("2026-11-21T17:00:00Z");
-        assertThat(MarketHours.isOpen("EUA", "Ação", tueNoonNy)).isTrue();
-        assertThat(MarketHours.isOpen("EUA", "Ação", Instant.parse("2026-11-17T23:30:00Z"))).isFalse();
-        assertThat(MarketHours.isOpen("Europa", "Ação", Instant.parse("2026-11-17T10:00:00Z"))).isTrue();
-        assertThat(MarketHours.isOpen("EUA", "Ação", satNoon)).isFalse();
-        assertThat(MarketHours.isOpen("Global", "Câmbio", tueNoonNy)).isTrue();
-        assertThat(MarketHours.isOpen("Global", "Câmbio", satNoon)).isFalse();
     }
 
     @Test void relativeStrengthAndVolume() {

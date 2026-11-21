@@ -8,11 +8,14 @@ import dev.meridianwealth.application.SignalRecord;
 import dev.meridianwealth.application.TickBatch;
 import dev.meridianwealth.domain.Assessment;
 import dev.meridianwealth.domain.Candle;
+import dev.meridianwealth.domain.Exchange;
+import dev.meridianwealth.domain.MarketHours;
 import dev.meridianwealth.domain.Instrument;
 import dev.meridianwealth.domain.TimingEngine;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -43,6 +46,15 @@ public class MarketController {
 
     @GetMapping("/universe")
     public List<Instrument> universe() { return market.universe(); }
+
+    /** Estado do pregão das bolsas do universo: aberto/fechado, motivo (feriado, fim de semana) e hora local. */
+    @GetMapping("/markets")
+    public List<MarketHours.SessionStatus> markets() {
+        Instant now = Instant.now();
+        return market.universe().stream().map(Instrument::exchange).distinct()
+                .sorted(java.util.Comparator.comparing(Exchange::ordinal))
+                .map(ex -> MarketHours.status(ex, now)).toList();
+    }
 
     @GetMapping("/overview")
     public TickBatch overview() { return market.overview(); }
