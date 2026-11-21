@@ -17,6 +17,15 @@ public record Instrument(String symbol, String name, String region, String asset
         return exchange == Exchange.CRYPTO ? 365 : 252;
     }
 
+    /**
+     * Tipo na taxonomia multi-ativo ({@link AssetType}), a partir da classe textual do cadastro. Uma classe
+     * sem correspondência é erro de cadastro e falha na hora, em vez de virar um tipo adivinhado.
+     */
+    public AssetType type() {
+        return AssetType.fromInstrumentClass(assetClass)
+                .orElseThrow(() -> new IllegalStateException("Classe de ativo sem tipo na taxonomia: " + assetClass));
+    }
+
     public static Instrument of(String symbol, String name, Exchange exchange, String assetClass, String sector,
                                 String currency, String benchmark) {
         return new Instrument(symbol, name, exchange.region(), assetClass, sector, exchange, currency, benchmark);
