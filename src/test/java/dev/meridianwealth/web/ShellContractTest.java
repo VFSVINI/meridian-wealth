@@ -94,6 +94,12 @@ class ShellContractTest {
         assertThat(html).contains("e.key==='Escape'&&document.body.classList.contains('navopen')");
     }
 
+    @Test void searchLabelStaysOnOneLineInMediumWidths() {
+        // sem nowrap o rótulo quebrava em 4 linhas num botão de 36 px (viewport de 920 px)
+        assertThat(html).contains(".search{min-width:0;white-space:nowrap}").contains(".search span{overflow:hidden;text-overflow:ellipsis");
+        assertThat(html).contains("@media(max-width:1100px){.pill.hide-sm,.search kbd{display:none}}");
+    }
+
     @Test void prototypeSampleDataWasNotCopiedIntoTheInterface() {
         assertThat(html).doesNotContain("4.382.917").doesNotContain("Vinícius").doesNotContain("Meridian Score").doesNotContain(">exemplo<");
     }
