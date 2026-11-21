@@ -141,6 +141,9 @@ public class MarketService {
 
     public List<Instrument> universe() { return data.universe(); }
 
+    /** Último radar macro obtido (indisponível quando nenhum provedor respondeu). */
+    public synchronized MacroSnapshot macro() { return macro; }
+
     /** Aplica a última cotação real de cada ativo à barra viva e devolve o lote para o stream. */
     public TickBatch advance() {
         MacroSnapshot m = data.macro();
