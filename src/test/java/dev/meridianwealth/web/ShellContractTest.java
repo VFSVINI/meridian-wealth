@@ -87,6 +87,13 @@ class ShellContractTest {
         assertThat(html).contains("SIMULAÇÃO").contains("TESES ILUSTRATIVAS");
     }
 
+    @Test void closedMobileDrawerIsRemovedFromKeyboardAndScreenReaderOrder() {
+        // transform sozinho só tira a gaveta da tela: o foco continuaria nos links invisíveis
+        assertThat(html).containsPattern("\\.nav\\{position:fixed[^}]*visibility:hidden");
+        assertThat(html).contains("body.navopen .nav{transform:none;visibility:visible");
+        assertThat(html).contains("e.key==='Escape'&&document.body.classList.contains('navopen')");
+    }
+
     @Test void prototypeSampleDataWasNotCopiedIntoTheInterface() {
         assertThat(html).doesNotContain("4.382.917").doesNotContain("Vinícius").doesNotContain("Meridian Score").doesNotContain(">exemplo<");
     }

@@ -148,8 +148,8 @@ footer b{color:var(--text-2);font-weight:500}
 @media(max-width:1180px){.grid2,.grid-home{grid-template-columns:1fr}.grid3,.sig-cards{grid-template-columns:1fr}}
 @media(max-width:900px){
   .shell{grid-template-columns:minmax(0,1fr)}.menu-btn{display:inline-block}.search{max-width:none}.search kbd,.brand .wm small{display:none}.pill.hide-sm{display:none}
-  .nav{position:fixed;left:0;top:var(--top-h);bottom:0;width:min(300px,86vw);z-index:40;transform:translateX(-102%);transition:transform var(--dur) var(--ease);height:auto}
-  body.navopen .nav{transform:none}body.navopen .scrim{display:block;position:fixed;inset:var(--top-h) 0 0 0;background:rgba(5,8,12,.6);z-index:35}
+  .nav{position:fixed;left:0;top:var(--top-h);bottom:0;width:min(300px,86vw);z-index:40;transform:translateX(-102%);visibility:hidden;transition:transform var(--dur) var(--ease),visibility 0s linear var(--dur);height:auto}
+  body.navopen .nav{transform:none;visibility:visible;transition-delay:0s}body.navopen .scrim{display:block;position:fixed;inset:var(--top-h) 0 0 0;background:rgba(5,8,12,.6);z-index:35}
   body.collapsed{--nav-w:248px}body.collapsed .nav .lbl,body.collapsed .nav h3,body.collapsed .nav .tagsm,body.collapsed .nav .real{display:revert}
   .content{padding:var(--s4)}h1{font-size:30px}canvas{height:300px}.kv{grid-template-columns:1fr}.head .sym,.head .px{font-size:22px}
   .card{padding:var(--s3) var(--s4);overflow-x:auto}.rx table{min-width:430px}.top{gap:var(--s2);padding:0 var(--s3)}.brand{min-width:0}.brand .wm{display:none}footer{padding:var(--s4)}
@@ -852,7 +852,9 @@ function route(){
 addEventListener('hashchange',route);
 buildNav();route();
 $('#menuBtn').onclick=()=>{const o=document.body.classList.toggle('navopen');$('#menuBtn').setAttribute('aria-expanded',String(o))};
-$('#scrim').onclick=()=>{document.body.classList.remove('navopen');$('#menuBtn').setAttribute('aria-expanded','false')};
+function closeNav(back){document.body.classList.remove('navopen');$('#menuBtn').setAttribute('aria-expanded','false');if(back)$('#menuBtn').focus()}
+$('#scrim').onclick=()=>closeNav(false);
+addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('navopen'))closeNav(true)});
 try{if(localStorage.getItem('mw-nav')==='collapsed')document.body.classList.add('collapsed')}catch(e){}
 $('#navCollapse').onclick=()=>{const c=document.body.classList.toggle('collapsed');try{localStorage.setItem('mw-nav',c?'collapsed':'open')}catch(e){}requestAnimationFrame(draw)};
 $('#theme').onclick=()=>{const r=document.documentElement,n=r.dataset.theme==='ivory'?'dark':'ivory';r.dataset.theme=n;try{localStorage.setItem('mw-theme',n)}catch(e){}draw()};
