@@ -27,13 +27,23 @@ public class YahooClient implements ProviderStatusSource {
 
     public YahooClient(HttpGateway http) { this.http = http; }
 
+    /** Gráfico diário para cotação (falha rápida no rate limit local). */
     public Chart chart(String symbol, String range) {
-        String url = "https://query1.finance.yahoo.com/v8/finance/chart/"
-                + URLEncoder.encode(symbol, StandardCharsets.UTF_8) + "?range=" + range + "&interval=1d";
-        return executor.call(() -> parseChart(http.get(url, Map.of())));
+        return executor.call(() -> parseChart(http.get(url(symbol, range), Map.of())));
     }
 
-    public List<Candle> history(String symbol) { return chart(symbol, "2y").candles(); }
+    /** Histórico de 2 anos em segundo plano: aguarda o próximo token em vez de descartar a carga. */
+    public Chart historyChart(String symbol) {
+        return executor.callPatiently(() -> parseChart(http.get(url(symbol, "2y"), Map.of())),
+                ResilientExecutor.BACKGROUND_WAIT);
+    }
+
+    public List<Candle> history(String symbol) { return historyChart(symbol).candles(); }
+
+    private static String url(String symbol, String range) {
+        return "https://query1.finance.yahoo.com/v8/finance/chart/"
+                + URLEncoder.encode(symbol, StandardCharsets.UTF_8) + "?range=" + range + "&interval=1d";
+    }
 
     public double lastPrice(String symbol) { return chart(symbol, "5d").price(); }
 

@@ -43,6 +43,14 @@ public final class CircuitBreaker {
         state = State.CLOSED;
     }
 
+    /**
+     * A chamada foi abandonada antes de chegar ao provedor (ex.: rate limit local): não é sucesso
+     * nem falha. Só libera a sondagem do HALF_OPEN para a próxima tentativa.
+     */
+    public synchronized void onAbandoned() {
+        probeInFlight = false;
+    }
+
     public synchronized void onFailure() {
         probeInFlight = false;
         if (state == State.HALF_OPEN || ++failures >= failureThreshold) {

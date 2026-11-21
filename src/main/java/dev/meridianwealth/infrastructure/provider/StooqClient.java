@@ -24,7 +24,7 @@ public class StooqClient implements ProviderStatusSource {
 
     public List<Candle> history(String stooqSymbol) {
         String url = "https://stooq.com/q/d/l/?i=d&s=" + stooqSymbol;
-        return executor.call(() -> parseHistory(http.get(url, Map.of())));
+        return executor.callPatiently(() -> parseHistory(http.get(url, Map.of())), ResilientExecutor.BACKGROUND_WAIT);
     }
 
     public Quote quote(String symbol, String stooqSymbol) {

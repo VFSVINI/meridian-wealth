@@ -99,6 +99,7 @@ Decisões menores (no corpo dos PRs):
 | 10 | Stooq exigiu chave no download CSV (observado em 2026-11-20); o failover segue funcionando, mas a fonte está inútil sem chave | `infrastructure/provider/StooqClient` | PR #3 |
 
 **Resolvidas**
+- PR #2 (pós-review): o rate limiter descartava na hora a carga paralela de históricos da partida (rajada de 5 da Yahoo para 10 ativos), deixando 3 ou 4 ativos sem dado com a fonte no ar; agora históricos aguardam o próximo token (até 20 s, dormindo fora do lock) e os 10 ativos carregam em 7,8 s. Rate limit local também deixou de zerar o circuit breaker.
 - PR #2: dívida 1 (`application` sem Spring/Jackson/SLF4J, POJOs ligados em `config`), dívida 2 (portas `TickSink` e `ProviderStatusSource`; `web` sem `infrastructure`), dívida 4 (`JsonBacktestCache` testado e chave pela versão dos dados) e dívida 8 (simulador fora do produto).
 - PR #1 (pós-review): `InMemoryCacheStore` vazava memória (entradas expiradas só eram removidas quando relidas; a chave do backtest inclui parâmetros da query e muda a cada 30 s) e fazia varredura O(n) de todos os contadores a cada requisição da API. Agora há contador atômico por chave, limpeza amortizada, teto de 10 mil entradas e relógio injetável, com testes de concorrência.
 
@@ -122,7 +123,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 74 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 80 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Yahoo e Frankfurter **validados ao vivo** no PR #2; Stooq exigiu chave; Finnhub e FRED não testados (sem chave, PR #3) |

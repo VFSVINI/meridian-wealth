@@ -122,7 +122,7 @@ public class LiveMarketData implements MarketDataPort {
         List<Source> sources = new ArrayList<>();
         if (sy.yahoo() != null) {
             sources.add(new Source("Yahoo", () -> {
-                YahooClient.Chart c = yahoo.chart(sy.yahoo(), "2y");
+                YahooClient.Chart c = yahoo.historyChart(sy.yahoo());
                 return new Fetched(c.candles(), new Quote(symbol, c.price(), c.tsMillis(), "Yahoo"));
             }));
         }

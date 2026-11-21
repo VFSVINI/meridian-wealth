@@ -30,7 +30,8 @@ public class FrankfurterClient implements ProviderStatusSource {
     public List<Candle> history(String base, String quote) {
         LocalDate end = LocalDate.now(ZoneOffset.UTC);
         String url = "https://api.frankfurter.app/" + end.minusDays(730) + ".." + end + "?from=" + base + "&to=" + quote;
-        return executor.call(() -> parseSeries(http.get(url, Map.of()), quote));
+        return executor.callPatiently(() -> parseSeries(http.get(url, Map.of()), quote),
+                ResilientExecutor.BACKGROUND_WAIT);
     }
 
     public Quote latest(String symbol, String base, String quote) {

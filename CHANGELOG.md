@@ -23,6 +23,7 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 - ADRs 001 (arquitetura hexagonal), 002 (precisão financeira) e 003 (frontend sem etapa de build).
 
 ### Alterado
+- Carga de históricos aguarda o próximo token do rate limiter (até 20 s) em vez de descartar a requisição; rate limit local passa a ser neutro para o circuit breaker.
 - Camada `application` sem Spring, Jackson ou SLF4J; `web` sem dependência de `infrastructure`.
 - Chave do cache de backtest pela versão dos dados (antes expirava a cada 30 s).
 - `/api/status` expõe `channels` (WebSocket e SSE) no lugar de `wsClients`/`sseClients` e não traz mais `dataMode`/`flow`.
