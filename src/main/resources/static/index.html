@@ -188,6 +188,7 @@ function quoteWhen(r){return r.status==='STORED'?'em '+dt(r.quoteTime):r.freshne
 
 async function init(){
   universe=await j('/api/universe');
+  tryRenderSimulator();
   const ov=await j('/api/overview');
   ov.ticks.forEach(t=>rows[t.symbol]={...t,flash:''});
   renderMode(ov);renderMacro(ov.macro);
@@ -432,6 +433,9 @@ function smAssetOptions(){
 }
 function smRow(){return `<div class="hold"><select aria-label="Ativo">${smAssetOptions()}</select><input type="number" min="0" step="0.01" placeholder="Valor em R$" aria-label="Valor em reais"></div>`}
 const smRef=v=>v.startsWith('S:')?{symbol:v.slice(2)}:{type:v.slice(2)};
+/* O simulador precisa do universo (ativos do painel) e da taxonomia: monta uma única vez, quando os dois chegarem, em qualquer ordem. */
+let SMDONE=false;
+function tryRenderSimulator(){if(!SMDONE&&SPTYPES.length&&universe.length){SMDONE=true;renderSimulator()}}
 function renderSimulator(){
   const el=$('#sm');if(!SPTYPES.length)return;
   el.className='';el.style.fontSize='12px';
@@ -475,7 +479,7 @@ async function runSimulation(){
 async function loadSuitability(){
   try{
     const [q,m,t]=await Promise.all([j('/api/suitability/questionnaire'),j('/api/suitability/model-portfolios'),j('/api/taxonomy')]);
-    SPQ=q;SPMP=m;SPTYPES=t.filter(x=>x.investable);renderSuitability();renderSimulator();
+    SPQ=q;SPMP=m;SPTYPES=t.filter(x=>x.investable);renderSuitability();tryRenderSimulator();
   }catch(e){$('#sp').textContent='Suitability indisponível agora.'}
 }
 loadSuitability();
