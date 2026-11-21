@@ -97,6 +97,16 @@ class JsonCompositionRepositoryTest {
                 .isEqualByComparingTo("100.00");
     }
 
+    @Test void areaShareIsRoundedOnceToTwoPlacesAndTheTotalOverloadAgrees() {
+        for (FundComposition f : repo.all()) {
+            BigDecimal total = f.listedAreaM2();
+            for (RealAsset a : f.assets()) {
+                assertThat(f.areaSharePercent(a, total)).isEqualTo(f.areaSharePercent(a));
+                assertThat(f.areaSharePercent(a).scale()).isEqualTo(2);
+            }
+        }
+    }
+
     @Test void unknownFundIsEmptyAndDuplicatesAreRejected() {
         assertThat(repo.find("PETR4")).isEmpty();
         List<FundComposition> two = List.of(repo.find("HGLG11").orElseThrow(), repo.find("HGLG11").orElseThrow());
