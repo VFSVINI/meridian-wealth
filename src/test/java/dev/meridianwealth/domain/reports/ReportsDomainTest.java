@@ -126,8 +126,8 @@ class ReportsDomainTest {
         Report late = new Report("q2", ReportPeriodicity.QUARTERLY, "2T2026", LocalDate.of(2026, 6, 30), LocalDate.of(2026, 8, 20),
                 LocalDate.of(2026, 8, 20), 1, null, List.of());
         List<DeliveryCalendar.Entry> cal = DeliveryCalendar.of(company(List.of(q3, late)), today);
-        assertThat(cal).extracting(DeliveryCalendar.Entry::label).containsExactly("Anual 2026 (inclui o 4T)", "3T2026", "2T2026", "1T2026",
-                "Anual 2025 (inclui o 4T)");
+        assertThat(cal).extracting(DeliveryCalendar.Entry::label).containsExactly("Exercício 2026 (inclui o 4T)", "3T2026", "2T2026", "1T2026",
+                "Exercício 2025 (inclui o 4T)");
         DeliveryCalendar.Entry next = cal.get(0);
         assertThat(next.deadline()).isEqualTo(LocalDate.of(2027, 3, 31));  // 3 meses após 31/12
         assertThat(next.status()).isEqualTo(DeliveryCalendar.Status.PENDING);
@@ -136,7 +136,7 @@ class ReportsDomainTest {
         assertThat(cal.get(2).deadline()).isEqualTo(LocalDate.of(2026, 8, 14));  // 30/06 + 45 dias
         assertThat(cal.get(2).status()).isEqualTo(DeliveryCalendar.Status.DELIVERED_LATE);
         assertThat(cal.get(3).status()).isEqualTo(DeliveryCalendar.Status.NO_RECORD);  // prazo vencido, sem registro na base
-        assertThat(DeliveryCalendar.nextDeadline(cal, today).orElseThrow().label()).isEqualTo("Anual 2026 (inclui o 4T)");
+        assertThat(DeliveryCalendar.nextDeadline(cal, today).orElseThrow().label()).isEqualTo("Exercício 2026 (inclui o 4T)");
     }
 
     @Test void quarterEndsOnTheLastDayOfAQuarterCountsThatQuarterAsClosed() {
