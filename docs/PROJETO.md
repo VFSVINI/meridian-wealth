@@ -97,6 +97,9 @@ Decisões menores do PR #1 (no corpo do PR): Maven Wrapper com checksum; piso Ja
 | 8 | Simulador (`SimulatedFlow`, `/api/settings/flow`, modo `simulated`) ainda no produto; `meridianwealth.stream.flow-default` vem `true` no `application.yml` | produto | PR #2 |
 | 9 | Persistência JDBC com 17% de cobertura (sem banco nos testes) | `infrastructure/persistence` | PR #20 |
 
+**Resolvidas**
+- PR #1 (pós-review): `InMemoryCacheStore` vazava memória (entradas expiradas só eram removidas quando relidas; a chave do backtest inclui parâmetros da query e muda a cada 30 s) e fazia varredura O(n) de todos os contadores a cada requisição da API. Agora há contador atômico por chave, limpeza amortizada, teto de 10 mil entradas e relógio injetável, com testes de concorrência.
+
 ## 6. Como rodar
 
 ```powershell
@@ -117,8 +120,8 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 45 testes, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
-| GitHub Actions (CI, CodeQL) | Pendente da primeira execução no PR #1 |
-| Docker / Compose | **Não validado localmente** (Docker ausente na máquina); validado apenas pelo job `docker` da CI |
+| `mvn verify` (compilação, 51 testes, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
+| Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais (Yahoo, Stooq, Finnhub, FRED) | **Não validado** (PR #3) |
 | Painel no navegador | **Não validado** (PR #2 e Milestone 4) |
