@@ -147,6 +147,7 @@ button:hover,select:hover,input:hover{border-color:var(--gold)}
     <div class="card"><h2>Juros e inflação (Brasil) <span class="tag" style="color:var(--ice);border-color:var(--ice)">dado oficial</span></h2><div id="br" class="mute" style="font-size:12px">carregando…</div></div>
     <div class="card rx"><h2>Perfil e carteira modelo <span class="tag" style="color:var(--ice);border-color:var(--ice)">educacional</span></h2><div id="sp" class="mute" style="font-size:12px">carregando…</div></div>
     <div class="card rx sim"><h2>Simulador de impacto pré-ordem <span class="tag">simulação</span></h2><div id="sm" class="mute" style="font-size:12px">carregando…</div></div>
+    <div class="card rx sim"><h2>Tradutor geopolítico e teses <span class="tag">ilustrativo</span></h2><div id="tz" class="mute" style="font-size:12px">carregando…</div></div>
     <div class="card rx"><h2>Raio-X de composição <span class="tag" style="color:var(--ice);border-color:var(--ice)">dado curado</span></h2><div id="rx" class="mute" style="font-size:12px">Selecione um fundo imobiliário.</div></div>
     <div class="card rx"><h2>Radar de relatórios <span class="tag" style="color:var(--ice);border-color:var(--ice)">dado oficial CVM</span></h2><div id="rr" class="mute" style="font-size:12px">Selecione uma ação ou fundo imobiliário brasileiro.</div></div>
     <div class="card"><h2>Histórico de sinais</h2><div id="sigHist" class="mute" style="font-size:12px">—</div></div>
@@ -188,7 +189,7 @@ function quoteWhen(r){return r.status==='STORED'?'em '+dt(r.quoteTime):r.freshne
 
 async function init(){
   universe=await j('/api/universe');
-  tryRenderSimulator();
+  tryRenderSimulator();tryRenderLens();
   const ov=await j('/api/overview');
   ov.ticks.forEach(t=>rows[t.symbol]={...t,flash:''});
   renderMode(ov);renderMacro(ov.macro);
@@ -476,10 +477,46 @@ async function runSimulation(){
     <div class="src"><b>Premissas.</b> ${d.assumptions.map(esc).join(' ')} ${esc(d.disclaimer)}</div>`;
   }catch(err){$('#smErr').textContent=err.message}
 }
+/* Tradutor geopolítico e teses: lê a carteira informada pelo radar macro real e por cinco lentes genéricas. Nada é gravado. */
+let TZDONE=false;
+function tryRenderLens(){if(!TZDONE&&SPTYPES.length&&universe.length){TZDONE=true;renderLens()}}
+function renderLens(){
+  const el=$('#tz');el.className='';el.style.fontSize='12px';
+  el.innerHTML=`<div class="banner">TESES ILUSTRATIVAS${GL('thesis')}: genéricas, inspiradas no estilo público de cada gestora. Não representam posições reais de nenhuma instituição.</div>
+  <div class="src">Informe sua carteira em reais. Nada é gravado; o setor vem do universo do painel.</div>
+  <div style="margin-top:8px"><b>Minha carteira</b><div id="tzPos">${smRow()}</div><button type="button" id="tzAdd">+ posição</button></div>
+  <div style="margin-top:10px"><button type="button" id="tzGo">Traduzir carteira</button> <span id="tzErr" class="dn"></span></div><div id="tzOut"></div>`;
+  $('#tzAdd').onclick=()=>$('#tzPos').insertAdjacentHTML('beforeend',smRow());
+  $('#tzGo').onclick=runLens;
+}
+async function runLens(){
+  $('#tzErr').textContent='';
+  const positions=[...document.querySelectorAll('#tzPos .hold')].map(h=>({...smRef(h.querySelector('select').value),valueBrl:h.querySelector('input').value})).filter(p=>p.valueBrl!=='');
+  if(!positions.length){$('#tzErr').textContent='Informe ao menos uma posição.';return}
+  try{
+    const r=await fetch('/api/thesis/lens',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({positions})});
+    const d=await r.json();if(!r.ok)throw new Error(d.error||'dados inválidos');
+    const g=d.geopolitics,mc=d.macro,nd='<span class="gap">não informado</span>';
+    const sectorRows=g.sectors.map(s=>`<tr><td>${esc(s.sector)}</td><td class="n">${f(s.exposurePercent,2)}%</td><td class="n">${f(s.pressure,2)}</td><td class="n">${f(s.contributionPoints,2)} p.p.</td></tr>
+      ${s.headlines.map(h=>`<tr><td colspan="4" class="mute">${esc(h.title)} <i>(${esc(h.source)})</i></td></tr>`).join('')}`).join('');
+    $('#tzOut').innerHTML=`<h3 style="margin:12px 0 4px">Exposição ao noticiário${GL('geo-pressure')}</h3>
+    <div class="src">Radar macro: ${mc.available?esc(mc.source):'sem dado agora'} · VIX ${mc.vix==null?nd:f(mc.vix,2)} · Índice do dólar ${mc.dollarIndex==null?nd:f(mc.dollarIndex,2)} · Yield 10 anos EUA ${mc.us10yYield==null?nd:f(mc.us10yYield,2)}</div>
+    <table><thead><tr><th>Setor</th><th class="n">Peso</th><th class="n">Pressão</th><th class="n">Contribuição</th></tr></thead><tbody>${sectorRows||'<tr><td colspan="4" class="mute">Nenhuma posição com setor conhecido.</td></tr>'}</tbody></table>
+    <ul class="note">${g.findings.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+    <div class="src"><b>Limites.</b> ${g.assumptions.map(esc).join(' ')}</div>
+    <h3 style="margin:12px 0 4px">Teses institucionais${GL('thesis')}</h3>
+    ${d.readings.map(x=>`<details class="thesis"><summary><b>${esc(x.thesis.name)}</b> · favorecido ${f(x.favoredPercent,2)}% · prejudicado ${f(x.hurtPercent,2)}% · fora da tese ${f(x.outsideThesisPercent,2)}%</summary>
+      <div class="src">${esc(x.thesis.inspiration)}</div><p>${esc(x.thesis.summary)}</p>
+      <b>Premissas</b><ul class="note">${x.thesis.premises.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>
+      <table><thead><tr><th>Ativos sensíveis</th><th>Efeito</th><th class="n">Peso</th></tr></thead><tbody>${x.sensitivities.map(s=>`<tr><td>${esc(s.label)}<div class="mute">${esc(s.rationale)}${s.holdings.length?' · '+s.holdings.map(esc).join(', '):''}</div></td><td>${esc(s.effect)}</td><td class="n">${f(s.percent,2)}%</td></tr>`).join('')}</tbody></table>
+      <b>O que invalidaria</b><ul class="note">${x.thesis.invalidations.map(p=>`<li>${esc(p)}</li>`).join('')}</ul></details>`).join('')}
+    <div class="src">${esc(d.disclaimer)}</div>`;
+  }catch(err){$('#tzErr').textContent=err.message}
+}
 async function loadSuitability(){
   try{
     const [q,m,t]=await Promise.all([j('/api/suitability/questionnaire'),j('/api/suitability/model-portfolios'),j('/api/taxonomy')]);
-    SPQ=q;SPMP=m;SPTYPES=t.filter(x=>x.investable);renderSuitability();tryRenderSimulator();
+    SPQ=q;SPMP=m;SPTYPES=t.filter(x=>x.investable);renderSuitability();tryRenderSimulator();tryRenderLens();
   }catch(e){$('#sp').textContent='Suitability indisponível agora.'}
 }
 loadSuitability();

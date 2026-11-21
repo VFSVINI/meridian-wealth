@@ -345,6 +345,17 @@ public final class Glossary {
                 "Atraso na entrega de relatório é um sinal de atenção sobre o emissor.",
                 "verdict");
 
+        add("geo-pressure", Group.PORTFOLIO, "Pressão das manchetes",
+                "Quanto as manchetes reais do radar macro pressionam um setor, de 0 a 1: soma o risco das manchetes que citam o setor e divide por 3 (três manchetes fortes saturam em 1). O risco de cada manchete vem da contagem de palavras-chave (guerra, sanção, tarifa, juros, entre outras).",
+                "Compare com o peso do setor na sua carteira: a contribuição (peso x pressão) mostra onde o noticiário mais encosta nela. É contagem de palavras, não análise do conteúdo da notícia.",
+                "Pressão alta num setor onde você tem muito peso merece atenção. Pressão zero não quer dizer setor seguro: só os setores que o radar mapeia (energia, defesa, financeiro, tecnologia, indústria) são medidos.",
+                "geo-risk", "sector", "thesis");
+        add("thesis", Group.PORTFOLIO, "Tese institucional (genérica)",
+                "Uma lente didática inspirada no estilo público de uma gestora, com premissas, grupos de ativos sensíveis e o que invalidaria a tese. Não reproduz nem atribui posições reais de nenhuma instituição.",
+                "A tela mostra quanto da sua carteira cai nos grupos que a tese favoreceria ou prejudicaria se a premissa se confirmar, e quanto fica fora dela. Não é nota nem recomendação.",
+                "Se a premissa não faz sentido para você ou a invalidação já está acontecendo, a lente não serve ao seu caso. Teses são ilustrativas e não foram revisadas pelas gestoras.",
+                "geo-pressure", "concentration");
+
         Set<String> ids = BY_ID.keySet();
         Set<String> missing = new HashSet<>();
         BY_ID.values().forEach(e -> e.related().stream().filter(r -> !ids.contains(r)).forEach(r -> missing.add(e.id() + " -> " + r)));
