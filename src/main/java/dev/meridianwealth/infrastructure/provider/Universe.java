@@ -39,6 +39,11 @@ public final class Universe {
             e(Instrument.of("PETR4", "Petrobras PN", B3, "Ação", "energia", "BRL", "IBOV"), Symbols.b3("PETR4")),
             e(Instrument.of("VALE3", "Vale ON", B3, "Ação", "mineracao", "BRL", "IBOV"), Symbols.b3("VALE3")),
             e(Instrument.of("ITUB4", "Itaú Unibanco PN", B3, "Ação", "financeiro", "BRL", "IBOV"), Symbols.b3("ITUB4")),
+            // Fundos imobiliários (nomes conforme a Yahoo; o IFIX tem uma barra só na Yahoo, então sem benchmark)
+            e(Instrument.of("HGLG11", "CSHG Logística FII", B3, "FII", "imobiliario", "BRL", null), Symbols.yahoo("HGLG11.SA")),
+            e(Instrument.of("KNRI11", "Kinea Renda Imobiliária FII", B3, "FII", "imobiliario", "BRL", null), Symbols.yahoo("KNRI11.SA")),
+            e(Instrument.of("XPML11", "XP Malls FII", B3, "FII", "imobiliario", "BRL", null), Symbols.yahoo("XPML11.SA")),
+            e(Instrument.of("MXRF11", "Maxi Renda FII", B3, "FII", "imobiliario", "BRL", null), Symbols.yahoo("MXRF11.SA")),
             // Europa
             e(Instrument.of("STOXX50", "Euro Stoxx 50", XETRA, "Índice", "amplo", "EUR", null), Symbols.yahoo("^STOXX50E")),
             e(Instrument.of("SAP", "SAP SE", XETRA, "Ação", "tecnologia", "EUR", "STOXX50"), Symbols.yahoo("SAP.DE")),

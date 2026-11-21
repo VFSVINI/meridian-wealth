@@ -43,7 +43,7 @@ class ApiIntegrationTest {
     @Test void overviewShowsRealSourcesAndExplicitGaps() {
         Map<?, ?> body = rest.getForObject("/api/overview", Map.class);
         assertThat(body.get("mode")).isEqualTo("PARCIAL");
-        assertThat((List<?>) body.get("ticks")).hasSize(29);
+        assertThat((List<?>) body.get("ticks")).hasSize(33);
 
         Map<String, Object> spy = tick("SPY");
         assertThat(spy.get("status")).isEqualTo("LIVE");
@@ -102,7 +102,7 @@ class ApiIntegrationTest {
         assertThat(body.get("cache")).isEqualTo("memory");
         assertThat(body).doesNotContainKeys("flow", "dataMode");
         assertThat((List<?>) body.get("providers")).isNotEmpty();
-        assertThat((List<?>) body.get("instruments")).hasSize(29);
+        assertThat((List<?>) body.get("instruments")).hasSize(33);
     }
 
     @Test void simulatedFlowEndpointNoLongerExists() {
@@ -133,6 +133,31 @@ class ApiIntegrationTest {
         Map<String, Object> btcAssessment = rest.getForObject("/api/assessment/BTC", Map.class);
         assertThat(btcAssessment.get("beta")).as("o BTC é o próprio benchmark").isNull();
         assertThat(rest.getForObject("/api/assessment/SPY", Map.class).get("periodsPerYear")).isEqualTo(252);
+    }
+
+    @Test void fiiTradesOnB3AndIsPricedByYahooWithItsClassFromTheTaxonomy() {
+        Map<String, Object> hglg = tick("HGLG11");
+        assertThat(hglg.get("status")).isEqualTo("LIVE");
+        assertThat(hglg.get("source")).isEqualTo("Yahoo");
+        List<Map<String, Object>> universe = rest.getForObject("/api/universe", List.class);
+        Map<String, Object> inst = universe.stream().filter(u -> "HGLG11".equals(u.get("symbol"))).findFirst().orElseThrow();
+        assertThat(inst.get("assetClass")).isEqualTo("FII");
+        assertThat(inst.get("currency")).isEqualTo("BRL");
+        assertThat(tick("KNRI11").get("status")).as("sem fixture, aparece como sem dado").isEqualTo("UNAVAILABLE");
+    }
+
+    @Test void taxonomyEndpointListsEveryTypeWithPortugueseLabels() {
+        List<Map<String, Object>> types = rest.getForObject("/api/taxonomy", List.class);
+        assertThat(types).hasSize(dev.meridianwealth.domain.AssetType.values().length);
+        Map<String, Object> lci = types.stream().filter(t -> "LCI".equals(t.get("key"))).findFirst().orElseThrow();
+        assertThat(lci.get("protection")).isEqualTo("FGC_ATE_LIMITE");
+        assertThat(lci.get("protectionLabel")).isEqualTo("Garantido pelo FGC até o limite");
+        assertThat(lci.get("hasMaturity")).isEqualTo(true);
+        Map<String, Object> cri = types.stream().filter(t -> "CRI".equals(t.get("key"))).findFirst().orElseThrow();
+        assertThat(cri.get("protection")).isEqualTo("SEM_GARANTIA_FGC");
+        Map<String, Object> ntnb = types.stream().filter(t -> "TESOURO_IPCA_JUROS".equals(t.get("key"))).findFirst().orElseThrow();
+        assertThat(ntnb.get("code")).isEqualTo("NTN-B");
+        assertThat(ntnb.get("income")).isEqualTo("CUPOM_SEMESTRAL");
     }
 
     @Test void openApiAndHealthAreUp() {
