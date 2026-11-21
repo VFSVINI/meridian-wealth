@@ -68,7 +68,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 - [x] **#7** Radar de relatórios periódicos e balanços com veredito e justificativa.
 - [x] **#8** Motor de suitability e carteira modelo por perfil.
 - [x] **#9** Simulador de impacto pré-ordem e glossário didático.
-- [ ] **#10** Tradutor geopolítico de carteira e motor de teses institucionais (genéricas, sem posições reais).
+- [x] **#10** Tradutor geopolítico de carteira e motor de teses institucionais (genéricas, sem posições reais). Ver [teses.md](teses.md).
 
 ### Milestone 3 — Segurança Zero-Trust, Concorrência & Resiliência Sênior
 - [ ] **#11** JWT com refresh, hash forte, rate limit por usuário/IP com `X-Forwarded-For` confiável (dívida 5), isolation guard, CORS/CSP, modo demo e **Login com Google** (seção 2.4).
@@ -104,6 +104,8 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [008](adr/008-radar-de-relatorios-e-veredito-mecanico.md) | Radar de relatórios e veredito mecânico | Aceito |
 | [009](adr/009-suitability-por-questionario-e-tetos.md) | Suitability por questionário, tetos e carteira modelo | Aceito |
 | [010](adr/010-impacto-pre-ordem-e-glossario.md) | Impacto pré-ordem e glossário ligado às métricas | Aceito |
+| [011](adr/011-tradutor-geopolitico-e-teses-genericas.md) | Tradutor geopolítico e teses institucionais genéricas | Aceito |
+| [012](adr/012-prototipo-visual-como-referencia.md) | Protótipo visual como referência obrigatória da interface | Aceito |
 
 Decisões menores (no corpo dos PRs):
 - Item #9: nenhuma cotação na simulação (valores em reais do usuário); risco de carteira como limite superior com cobertura declarada; `MoneyBounds` compartilhado; classes nomeadas `Impact` para manter a regra do ArchUnit contra `Simulat`; glossário escrito a partir da leitura do código, com a ligação métrica → entrada testada.
@@ -143,6 +145,9 @@ Decisões menores (no corpo dos PRs):
 
 | 27 | O risco do simulador ignora a correlação entre posições (média ponderada das volatilidades, limite superior); uma matriz de covariância com históricos alinhados daria o risco real | `domain/impact` | PR futuro (item #20 ou antes) |
 | 28 | O conteúdo do glossário não foi revisado por profissional habilitado, e a lista de rótulos do teste de cobertura é espelhada à mão | `domain/glossary`, `GlossaryTest` | revisão antes de uso além do educacional |
+| 29 | A pressão geopolítica é contagem de palavras-chave em manchetes de terceiros e só mede cinco setores; o setor da posição vem do universo do painel | `GeoRiskScorer`, `GeoTranslator` | fonte de eventos estruturada e mapa de exposição por país (item #16) |
+| 30 | As caracterizações das gestoras e os textos das teses são resumos simplificados, sem revisão pelas instituições nem por profissional habilitado | `ThesisCatalog` | revisão antes de uso além do educacional |
+| 31 | O protótipo visual existe só como imagens (fora do repositório, por peso); as cores e medidas vêm de leitura da imagem e as fontes precisam ser servidas pelo projeto antes da CSP | `docs/design-prototipo.md`, ADR 012 | item #15 versiona as imagens comprimidas e as fontes |
 
 **Resolvidas**
 - Item #5 (pós-review): a Selic meta (SGS 432) é preenchida para a frente com o valor vigente, então sua data é sempre a de hoje; a regra de defasagem por data nunca disparava para ela e, se a coleta falhasse por dias, o painel afirmaria "dado em dia". Agora cada observação guarda quando o sistema a confirmou (`confirmedAt`), qualquer série fica `STALE` após 3 h sem confirmação, a Selic meta não usa a data como idade e a tela diz "vigente em". `refresh()` do BCB passou a ser exclusivo (antes duas rodadas simultâneas disputavam a cota e o retrato) e `Rate.compoundedOver` valida o teto de períodos do `BigDecimal.pow`.
@@ -174,7 +179,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 281 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 296 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
