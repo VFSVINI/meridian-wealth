@@ -17,10 +17,16 @@ import java.util.Map;
 import java.util.TreeMap;
 import org.springframework.stereotype.Component;
 
-/** Frankfurter (câmbio do BCE, sem chave): série diária e última taxa. Sem OHLC nem volume. */
+/**
+ * Frankfurter (câmbio do BCE, sem chave): série diária e última taxa. Sem OHLC nem volume.
+ * Endpoint canônico {@code api.frankfurter.dev/v1} (o antigo {@code api.frankfurter.app} responde 301
+ * desde 2026, observado em 2026-11-20).
+ */
 @Component
 public class FrankfurterClient implements ProviderStatusSource {
     private static final ObjectMapper JSON = new ObjectMapper();
+
+    static final String BASE = "https://api.frankfurter.dev/v1/";
 
     private final HttpGateway http;
     private final ResilientExecutor executor = ResilientExecutor.withDefaults("Frankfurter", 5, 2.0);
@@ -29,13 +35,13 @@ public class FrankfurterClient implements ProviderStatusSource {
 
     public List<Candle> history(String base, String quote) {
         LocalDate end = LocalDate.now(ZoneOffset.UTC);
-        String url = "https://api.frankfurter.app/" + end.minusDays(730) + ".." + end + "?from=" + base + "&to=" + quote;
+        String url = BASE + end.minusDays(730) + ".." + end + "?from=" + base + "&to=" + quote;
         return executor.callPatiently(() -> parseSeries(http.get(url, Map.of()), quote),
                 ResilientExecutor.BACKGROUND_WAIT);
     }
 
     public Quote latest(String symbol, String base, String quote) {
-        String url = "https://api.frankfurter.app/latest?from=" + base + "&to=" + quote;
+        String url = BASE + "latest?from=" + base + "&to=" + quote;
         return executor.call(() -> {
             JsonNode n = JSON.readTree(http.get(url, Map.of()));
             double rate = n.path("rates").path(quote).asDouble(Double.NaN);

@@ -52,6 +52,15 @@ class ApiIntegrationTest {
         assertThat(spy.get("candle")).isNotNull();
         assertThat(spy.get("assessment")).isNotNull();
 
+        Map<String, Object> petr = tick("PETR4");
+        assertThat(petr.get("status")).isEqualTo("LIVE");
+        assertThat(petr.get("source")).isEqualTo("brapi");
+
+        Map<String, Object> usdbrl = tick("USDBRL");
+        assertThat(usdbrl.get("source")).as("sem fixture da Yahoo, o câmbio cai no Frankfurter").isEqualTo("Frankfurter");
+        assertThat(usdbrl.get("freshness")).isEqualTo("END_OF_DAY");
+        assertThat(spy).containsKey("stale");
+
         Map<String, Object> msft = tick("MSFT");
         assertThat(msft.get("status")).isEqualTo("UNAVAILABLE");
         assertThat(msft.get("candle")).isNull();

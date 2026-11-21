@@ -195,8 +195,9 @@ public class MarketService {
     private TickBatch.Tick tick(String symbol, Series s, boolean newBar) {
         Candle last = s.candles.isEmpty() ? null : s.candles.get(s.candles.size() - 1);
         Assessment a = s.assessable() ? assess(symbol, s) : null;
+        boolean stale = s.freshness != null && s.freshness.isStale(s.quoteTime, System.currentTimeMillis(), s.open);
         return new TickBatch.Tick(symbol, s.status(), last, a, newBar, s.source, s.quoteTime, s.freshness,
-                s.nextUpdateAt, s.open);
+                s.nextUpdateAt, s.open, stale);
     }
 
     private Assessment assess(String symbol, Series s) {

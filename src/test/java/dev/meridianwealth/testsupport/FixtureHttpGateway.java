@@ -21,6 +21,10 @@ public class FixtureHttpGateway implements HttpGateway {
     private static final Pattern YAHOO_CHART =
             Pattern.compile("query1\\.finance\\.yahoo\\.com/v8/finance/chart/([^?]+)\\?range=([0-9a-z]+)&");
 
+    private static final Pattern BRAPI = Pattern.compile("brapi\\.dev/api/quote/([A-Z0-9]+)\\?range=2y");
+    private static final Pattern FRANKFURTER =
+            Pattern.compile("api\\.frankfurter\\.dev/v1/(latest|\\d{4}-\\d{2}-\\d{2}\\.\\.[0-9-]+)\\?from=([A-Z]{3})&to=([A-Z]{3})");
+
     private final List<String> requested = new CopyOnWriteArrayList<>();
 
     @Override
@@ -31,6 +35,18 @@ public class FixtureHttpGateway implements HttpGateway {
             String body = resource("/fixtures/yahoo/" + m.group(1) + "-" + m.group(2) + ".json");
             if (body != null) return body;
         }
+        Matcher b = BRAPI.matcher(url);
+        if (b.find()) {
+            String body = resource("/fixtures/brapi/" + b.group(1) + "-2y.json");
+            if (body != null) return body;
+        }
+        Matcher f = FRANKFURTER.matcher(url);
+        if (f.find()) {
+            String kind = "latest".equals(f.group(1)) ? "latest" : "2y";
+            String body = resource("/fixtures/frankfurter/" + f.group(2) + "-" + f.group(3) + "-" + kind + ".json");
+            if (body != null) return body;
+        }
+        if (url.contains("stooq.com/q/d/l/")) return resource("/fixtures/stooq/spy.us-bloqueio.html");
         throw new ClientErrorException("HTTP 404 (sem fixture para " + url + ")");
     }
 

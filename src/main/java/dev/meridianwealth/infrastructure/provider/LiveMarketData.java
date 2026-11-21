@@ -68,6 +68,7 @@ public class LiveMarketData implements MarketDataPort {
     private final Duration quoteTtl;
     private final YahooClient yahoo;
     private final StooqClient stooq;
+    private final BrapiClient brapi;
     private final FrankfurterClient frankfurter;
     private final FinnhubClient finnhub;
     private final CandleStore store;
@@ -76,13 +77,14 @@ public class LiveMarketData implements MarketDataPort {
     private final Map<String, Real> real = new ConcurrentHashMap<>();
     private final ExecutorService pool = Executors.newVirtualThreadPerTaskExecutor();
 
-    public LiveMarketData(YahooClient yahoo, StooqClient stooq, FrankfurterClient frankfurter,
+    public LiveMarketData(YahooClient yahoo, StooqClient stooq, BrapiClient brapi, FrankfurterClient frankfurter,
                           FinnhubClient finnhub, CandleStore store, CacheStore cache, LiveMacroData macro,
                           @Value("${meridianwealth.data.poll-open-seconds:30}") long pollOpen,
                           @Value("${meridianwealth.data.poll-closed-seconds:600}") long pollClosed,
                           @Value("${meridianwealth.cache.quote-ttl-seconds:25}") long quoteTtl) {
         this.yahoo = yahoo;
         this.stooq = stooq;
+        this.brapi = brapi;
         this.frankfurter = frankfurter;
         this.finnhub = finnhub;
         this.store = store;
@@ -105,27 +107,28 @@ public class LiveMarketData implements MarketDataPort {
     }
 
     /**
-     * Selo de frescor pela fonte e pelo pregão. Com o pregão fechado a cotação é o fechamento; o
-     * Frankfurter publica só a taxa de referência diária do BCE; o Finnhub é tempo real segundo a
-     * documentação pública (a confirmar na prática no PR #3); Yahoo e Stooq são atrasados.
+     * Selo de frescor pelo atraso nominal da fonte ({@link Provider}) e pelo pregão: com o pregão
+     * fechado, toda cotação é fechamento; o último dado gravado é sempre "gravado". Fonte desconhecida
+     * recebe o selo mais conservador (atrasado).
      */
     static Freshness freshness(String source, boolean open) {
-        if (STORED_SOURCE.equals(source)) return Freshness.STORED;
-        if (!open || "Frankfurter".equals(source)) return Freshness.END_OF_DAY;
-        return "Finnhub".equals(source) ? Freshness.REAL_TIME : Freshness.DELAYED;
+        Freshness nominal = Provider.byLabel(source).map(Provider::nominal).orElse(Freshness.DELAYED);
+        if (nominal == Freshness.STORED) return Freshness.STORED;
+        return open ? nominal : Freshness.END_OF_DAY;
     }
 
     @Override
     public HistoryResult history(String symbol, int bars) {
         Symbols sy = Universe.entry(symbol).symbols();
         List<Source> sources = new ArrayList<>();
+        if (sy.brapi() != null) sources.add(new Source(Provider.BRAPI.label(), () -> new Fetched(brapi.history(sy.brapi()), null)));
         if (sy.yahoo() != null) {
             sources.add(new Source("Yahoo", () -> {
                 YahooClient.Chart c = yahoo.historyChart(sy.yahoo());
                 return new Fetched(c.candles(), new Quote(symbol, c.price(), c.tsMillis(), "Yahoo"));
             }));
         }
-        if (sy.stooq() != null) sources.add(new Source("Stooq", () -> new Fetched(stooq.history(sy.stooq()), null)));
+        if (sy.stooq() != null && stooq.enabled()) sources.add(new Source("Stooq", () -> new Fetched(stooq.history(sy.stooq()), null)));
         if (sy.fxBase() != null) {
             sources.add(new Source("Frankfurter",
                     () -> new Fetched(frankfurter.history(sy.fxBase(), sy.fxQuote()), null)));
@@ -213,7 +216,7 @@ public class LiveMarketData implements MarketDataPort {
         List<Supplier<Quote>> chain = new ArrayList<>();
         if (finnhub.enabled() && sy.finnhub() != null) chain.add(() -> finnhub.quote(symbol, sy.finnhub()));
         if (sy.yahoo() != null) chain.add(() -> yahoo.quote(symbol, sy.yahoo()));
-        if (sy.stooq() != null) chain.add(() -> stooq.quote(symbol, sy.stooq()));
+        if (sy.stooq() != null && stooq.enabled()) chain.add(() -> stooq.quote(symbol, sy.stooq()));
         if (sy.fxBase() != null) chain.add(() -> frankfurter.latest(symbol, sy.fxBase(), sy.fxQuote()));
         for (Supplier<Quote> s : chain) {
             try {

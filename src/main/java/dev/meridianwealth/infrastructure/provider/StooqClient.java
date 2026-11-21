@@ -20,7 +20,18 @@ public class StooqClient implements ProviderStatusSource {
     private final HttpGateway http;
     private final ResilientExecutor executor = ResilientExecutor.withDefaults("Stooq", 3, 1.0);
 
-    public StooqClient(HttpGateway http) { this.http = http; }
+    private final boolean enabled;
+
+    /**
+     * Desligado por padrão: em 2026-11-20 o download CSV passou a exigir verificação por JavaScript
+     * (captcha), inviável para um cliente HTTP. Pode ser religado com {@code MW_STOOQ_ENABLED=true}.
+     */
+    public StooqClient(HttpGateway http, @org.springframework.beans.factory.annotation.Value("${meridianwealth.stooq.enabled:false}") boolean enabled) {
+        this.http = http;
+        this.enabled = enabled;
+    }
+
+    public boolean enabled() { return enabled; }
 
     public List<Candle> history(String stooqSymbol) {
         String url = "https://stooq.com/q/d/l/?i=d&s=" + stooqSymbol;
@@ -35,7 +46,7 @@ public class StooqClient implements ProviderStatusSource {
     static List<Candle> parseHistory(String csv) throws IOException {
         String[] lines = csv.strip().split("\\R");
         if (lines.length < 2 || !lines[0].toLowerCase().startsWith("date")) {
-            throw new IOException("Stooq: formato inesperado (sem dados ou exige chave)");
+            throw new IOException("Stooq: formato inesperado (sem dados, chave ou verificação JavaScript)");
         }
         List<Candle> out = new ArrayList<>();
         for (int i = 1; i < lines.length; i++) {
@@ -59,5 +70,5 @@ public class StooqClient implements ProviderStatusSource {
     }
 
     @Override
-    public ProviderStatus status() { return executor.stats(true); }
+    public ProviderStatus status() { return executor.stats(enabled); }
 }

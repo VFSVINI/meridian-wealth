@@ -48,7 +48,7 @@ class LiveMarketDataTest {
         YahooClient yahoo = new YahooClient(gw);
         FinnhubClient finnhub = new FinnhubClient(gw, "");
         LiveMacroData macro = new LiveMacroData(yahoo, new FredClient(gw, ""), finnhub, new RssNewsClient(gw));
-        return new LiveMarketData(yahoo, new StooqClient(gw), new FrankfurterClient(gw), finnhub, store,
+        return new LiveMarketData(yahoo, new StooqClient(gw, true), new BrapiClient(gw, ""), new FrankfurterClient(gw), finnhub, store,
                 new InMemoryCacheStore(), macro, 30, 600, 25);
     }
 

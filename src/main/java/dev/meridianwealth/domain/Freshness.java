@@ -19,6 +19,22 @@ public enum Freshness {
     private final String label;
     private final String description;
 
+    /**
+     * Idade máxima tolerada com o pregão aberto antes de a cotação ser considerada desatualizada
+     * (o provedor parou de responder). Sem limite para fechamento e dado gravado.
+     */
+    public long maxAgeMillis() {
+        return switch (this) {
+            case REAL_TIME -> 120_000L;
+            case DELAYED -> 1_800_000L;
+            default -> Long.MAX_VALUE;
+        };
+    }
+
+    public boolean isStale(long quoteTime, long now, boolean marketOpen) {
+        return marketOpen && quoteTime > 0 && now - quoteTime > maxAgeMillis();
+    }
+
     Freshness(String label, String description) {
         this.label = label;
         this.description = description;

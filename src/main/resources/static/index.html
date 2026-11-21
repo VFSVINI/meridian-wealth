@@ -120,7 +120,6 @@ const REGIME={UPTREND:'Tendência de alta',DOWNTREND:'Tendência de baixa',RANGE
 const RISK={LOW:'Baixo',MEDIUM:'Moderado',HIGH:'Alto',EXTREME:'Extremo'};
 const SIDE={COMPRA:'var(--up)',VENDA:'var(--warn)',ALERTA:'var(--dn)'};
 const FRESH={REAL_TIME:['tempo real','up'],DELAYED:['~15 min','warn'],END_OF_DAY:['fechamento','ice'],STORED:['último dado real gravado','dn']};
-const STALE_MS={REAL_TIME:120000,DELAYED:1800000};
 let universe=[],rows={},sel=null,candles=[],A=null,es=null,ws=null,paused=false,hover=-1,selecting=false;
 
 Object.entries(SIG).forEach(([k,v])=>$('#sigf').insertAdjacentHTML('beforeend',`<option value="${k}">${v[0]}</option>`));
@@ -130,7 +129,9 @@ const dt=ms=>new Date(ms).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',
 const tm=ms=>new Date(ms).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
 const hasData=r=>r&&r.status!=='UNAVAILABLE'&&r.candle;
 function freshChip(r){const x=FRESH[r.freshness];return x?`<span class="fresh ${x[1]}" title="Atraso da fonte">${x[0]}</span>`:''}
-function isStale(r){const lim=STALE_MS[r.freshness];return r.marketOpen&&lim&&Date.now()-r.quoteTime>lim}
+const isStale=r=>!!r.stale;
+const dayOnly=ms=>new Date(ms).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});
+function quoteWhen(r){return r.status==='STORED'?'em '+dt(r.quoteTime):r.freshness==='END_OF_DAY'?'fechamento de '+dayOnly(r.quoteTime):tm(r.quoteTime)}
 
 async function init(){
   universe=await j('/api/universe');
@@ -195,7 +196,7 @@ function renderList(){
     if(!hasData(r))return `<tr class="row ${u.symbol===sel?'sel':''}" data-s="${u.symbol}"><td><b class="mono">${u.symbol}</b><div class="src"><i class="dot ${r.marketOpen?'on':''}"></i>sem fonte</div></td>
       <td colspan="3" class="mute" style="font-size:12px">sem dado em tempo real</td></tr>`;
     const c=r.candle,chg=c.close/c.open-1,s=r.assessment?SIG[r.assessment.signal]:null;
-    const when=r.status==='STORED'?'em '+dt(r.quoteTime):tm(r.quoteTime);
+    const when=quoteWhen(r);
     return `<tr class="row ${u.symbol===sel?'sel':''}" data-s="${u.symbol}"><td><b class="mono">${u.symbol}</b><div class="src"><i class="dot ${r.marketOpen?'on':''}"></i>${r.source} · ${when}</div><div>${freshChip(r)}${isStale(r)?' <span class="fresh dn">desatualizada</span>':''}</div></td>
     <td class="n ${r.flash}">${f(c.close,c.close<10?4:2)}<div class="src">${u.currency||''}</div></td><td class="n ${chg>=0?'up':'dn'}">${chg>=0?'+':''}${f(chg*100)}%</td>
     <td>${s?`<span class="chip ${s[1]}">${s[0]}</span><div class="num mute" style="font-size:11px">${r.assessment.score>0?'+':''}${r.assessment.score}</div>`:'<span class="mute" style="font-size:11px">dados insuficientes</span>'}</td></tr>`}).join('');
@@ -206,7 +207,7 @@ function renderProv(){
   const r=rows[sel];if(!r){$('#hProv').innerHTML='';return}
   if(!hasData(r)){$('#hProv').innerHTML='<span class="fresh dn">sem dado em tempo real</span><span>nenhum provedor respondeu e não há dado real gravado</span>';return}
   const next=r.nextUpdateAt?Math.max(0,Math.round((r.nextUpdateAt-Date.now())/1000)):null;
-  const when=r.status==='STORED'?`último dado real em <b>${dt(r.quoteTime)}</b>`:`cotação de <b>${tm(r.quoteTime)}</b>`;
+  const when=r.status==='STORED'?`último dado real em <b>${dt(r.quoteTime)}</b>`:r.freshness==='END_OF_DAY'?`<b>${quoteWhen(r)}</b>`:`cotação de <b>${tm(r.quoteTime)}</b>`;
   $('#hProv').innerHTML=`${freshChip(r)}<span>fonte <b>${r.source}</b></span><span>${when}</span>`
    +(r.status==='STORED'?'<span class="dn">sem dado em tempo real</span>':'')
    +(isStale(r)?'<span class="dn">cotação desatualizada: o provedor não respondeu nas últimas consultas</span>':'')
