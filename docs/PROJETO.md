@@ -66,7 +66,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 ### Milestone 2 — Inteligência Institucional, Composição & Relatórios
 - [x] **#6** Raio-X de composição e geolocalização de ativos reais (dados públicos curados, fonte e data). Ver [composicao.md](composicao.md).
 - [x] **#7** Radar de relatórios periódicos e balanços com veredito e justificativa.
-- [ ] **#8** Motor de suitability e carteira modelo por perfil.
+- [x] **#8** Motor de suitability e carteira modelo por perfil.
 - [ ] **#9** Simulador de impacto pré-ordem e glossário didático.
 - [ ] **#10** Tradutor geopolítico de carteira e motor de teses institucionais (genéricas, sem posições reais).
 
@@ -102,8 +102,10 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [006](adr/006-taxonomia-e-dados-oficiais-do-bcb.md) | Taxonomia multi-ativo e dados oficiais do BCB | Aceito |
 | [007](adr/007-composicao-curada-e-geolocalizacao.md) | Composição curada e geolocalização conservadora | Aceito |
 | [008](adr/008-radar-de-relatorios-e-veredito-mecanico.md) | Radar de relatórios e veredito mecânico | Aceito |
+| [009](adr/009-suitability-por-questionario-e-tetos.md) | Suitability por questionário, tetos e carteira modelo | Aceito |
 
 Decisões menores (no corpo dos PRs):
+- Item #8: perguntas ancoradas nas dimensões do art. 3 da Resolução CVM 30 (sem alegar conformidade); tetos de perfil por horizonte curto, necessidade de caixa, falta de reserva e venda em pânico; metas por `AssetCategory` rotuladas como ilustrativas; respostas e carteira não são gravadas nem logadas; aderência só descreve desvio, sem dizer o que comprar ou vender.
 - Item #7: sem bimestral e semestral (sem base regulatória nos emissores cobertos); pontualidade pela primeira entrega e números pela última versão; banco usa a conta 3.09; ações dos EUA sem fonte integrada; refinamento visual inicial por princípios de design ([design.md](design.md)).
 - Item #6: tipo do imóvel só quando a fonte declara; percentuais de receita do HGLG11 somam 70,85% e não são apresentados como 100%; XPML11 vem de terceiros e é rotulado assim; conflito de classificação do MXRF11 (Tijolo × Papéis) é exibido; coordenada por via é "aproximada".
 - Item #5: só atributos definidos pelo produto ou verificados em fonte pública entram na taxonomia (imposto e liquidez ficam de fora); `Rate` em `BigDecimal` e valores como texto exato na API; SGS por janela de datas (o modo "últimos N" traz datas futuras e ordem imprevisível); cada indicador do BCB é independente e mantém o último valor bom; FIIs sem benchmark (o IFIX tem uma barra na Yahoo); PTAX pelo Olinda, não pelo SGS 1.
@@ -133,6 +135,9 @@ Decisões menores (no corpo dos PRs):
 | 22 | Links de Street View dependem de haver imagem no ponto (o Google decide ao abrir); a existência da imagem não foi verificada | `domain/composition/MapLinks` | item #16 (mapa) |
 | 23 | Radar sem fonte para ações dos EUA e outros mercados (SEC/EDGAR não integrado); só 3 companhias e 4 FIIs; o informe trimestral e anual de FII não é acompanhado (só o prazo) | `data/relatorios` | itens #20 e #21 ou PR futuro |
 | 24 | Dividend yield do Informe Mensal sem unidade documentada pela CVM (o veredito compara com o próprio histórico; a tela mostra o valor sem converter) | `domain/reports` | quando a CVM documentar |
+
+| 25 | Pontos, faixas, tetos e metas do suitability são definições do produto, não validadas por profissional habilitado nem por dados históricos | `domain/suitability` | revisão por profissional antes de qualquer uso além do educacional |
+| 26 | O perfil não é guardado entre sessões e a carteira de aderência é digitada à mão (sem conta nem livro de movimentações) | `web/SuitabilityController`, UI | itens #11, #12 e #13 |
 
 **Resolvidas**
 - Item #5 (pós-review): a Selic meta (SGS 432) é preenchida para a frente com o valor vigente, então sua data é sempre a de hoje; a regra de defasagem por data nunca disparava para ela e, se a coleta falhasse por dias, o painel afirmaria "dado em dia". Agora cada observação guarda quando o sistema a confirmou (`confirmedAt`), qualquer série fica `STALE` após 3 h sem confirmação, a Selic meta não usa a data como idade e a tela diz "vigente em". `refresh()` do BCB passou a ser exclusivo (antes duas rodadas simultâneas disputavam a cota e o retrato) e `Rate.compoundedOver` valida o teto de períodos do `BigDecimal.pow`.
@@ -164,7 +169,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 230 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 255 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
