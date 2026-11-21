@@ -67,7 +67,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 - [x] **#6** Raio-X de composição e geolocalização de ativos reais (dados públicos curados, fonte e data). Ver [composicao.md](composicao.md).
 - [x] **#7** Radar de relatórios periódicos e balanços com veredito e justificativa.
 - [x] **#8** Motor de suitability e carteira modelo por perfil.
-- [ ] **#9** Simulador de impacto pré-ordem e glossário didático.
+- [x] **#9** Simulador de impacto pré-ordem e glossário didático.
 - [ ] **#10** Tradutor geopolítico de carteira e motor de teses institucionais (genéricas, sem posições reais).
 
 ### Milestone 3 — Segurança Zero-Trust, Concorrência & Resiliência Sênior
@@ -103,8 +103,10 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [007](adr/007-composicao-curada-e-geolocalizacao.md) | Composição curada e geolocalização conservadora | Aceito |
 | [008](adr/008-radar-de-relatorios-e-veredito-mecanico.md) | Radar de relatórios e veredito mecânico | Aceito |
 | [009](adr/009-suitability-por-questionario-e-tetos.md) | Suitability por questionário, tetos e carteira modelo | Aceito |
+| [010](adr/010-impacto-pre-ordem-e-glossario.md) | Impacto pré-ordem e glossário ligado às métricas | Aceito |
 
 Decisões menores (no corpo dos PRs):
+- Item #9: nenhuma cotação na simulação (valores em reais do usuário); risco de carteira como limite superior com cobertura declarada; `MoneyBounds` compartilhado; classes nomeadas `Impact` para manter a regra do ArchUnit contra `Simulat`; glossário escrito a partir da leitura do código, com a ligação métrica → entrada testada.
 - Item #8: perguntas ancoradas nas dimensões do art. 3 da Resolução CVM 30 (sem alegar conformidade); tetos de perfil por horizonte curto, necessidade de caixa, falta de reserva e venda em pânico; metas por `AssetCategory` rotuladas como ilustrativas; respostas e carteira não são gravadas nem logadas; aderência só descreve desvio, sem dizer o que comprar ou vender.
 - Item #7: sem bimestral e semestral (sem base regulatória nos emissores cobertos); pontualidade pela primeira entrega e números pela última versão; banco usa a conta 3.09; ações dos EUA sem fonte integrada; refinamento visual inicial por princípios de design ([design.md](design.md)).
 - Item #6: tipo do imóvel só quando a fonte declara; percentuais de receita do HGLG11 somam 70,85% e não são apresentados como 100%; XPML11 vem de terceiros e é rotulado assim; conflito de classificação do MXRF11 (Tijolo × Papéis) é exibido; coordenada por via é "aproximada".
@@ -139,6 +141,9 @@ Decisões menores (no corpo dos PRs):
 | 25 | Pontos, faixas, tetos e metas do suitability são definições do produto, não validadas por profissional habilitado nem por dados históricos | `domain/suitability` | revisão por profissional antes de qualquer uso além do educacional |
 | 26 | O perfil não é guardado entre sessões e a carteira de aderência é digitada à mão (sem conta nem livro de movimentações) | `web/SuitabilityController`, UI | itens #11, #12 e #13 |
 
+| 27 | O risco do simulador ignora a correlação entre posições (média ponderada das volatilidades, limite superior); uma matriz de covariância com históricos alinhados daria o risco real | `domain/impact` | PR futuro (item #20 ou antes) |
+| 28 | O conteúdo do glossário não foi revisado por profissional habilitado, e a lista de rótulos do teste de cobertura é espelhada à mão | `domain/glossary`, `GlossaryTest` | revisão antes de uso além do educacional |
+
 **Resolvidas**
 - Item #5 (pós-review): a Selic meta (SGS 432) é preenchida para a frente com o valor vigente, então sua data é sempre a de hoje; a regra de defasagem por data nunca disparava para ela e, se a coleta falhasse por dias, o painel afirmaria "dado em dia". Agora cada observação guarda quando o sistema a confirmou (`confirmedAt`), qualquer série fica `STALE` após 3 h sem confirmação, a Selic meta não usa a data como idade e a tela diz "vigente em". `refresh()` do BCB passou a ser exclusivo (antes duas rodadas simultâneas disputavam a cota e o retrato) e `Rate.compoundedOver` valida o teto de períodos do `BigDecimal.pow`.
 - Item #5: dívida 15 (PRs incompatíveis do Dependabot: #6 fechado à mão, #9 e #12 fechados pelo próprio Dependabot após a nova configuração).
@@ -169,7 +174,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 255 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 279 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
