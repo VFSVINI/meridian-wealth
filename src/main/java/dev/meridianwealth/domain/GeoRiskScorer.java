@@ -44,7 +44,8 @@ public final class GeoRiskScorer {
             new Rule("coup", 0.7, List.of("energia")),
             new Rule("terror", 0.7, List.of("defesa")));
 
-    private static final List<String> DEESCALATION = List.of("ceasefire", "peace deal", "truce", "de-escalat", "agreement reached");
+    private static final List<String> DEESCALATION = List.of("ceasefire", "peace deal", "peace declaration", "peace agreement", "peace accord", "truce", "de-escalat",
+            "agreement reached");
 
     public static NewsItem score(String title, String source) {
         String t = title.toLowerCase(Locale.ROOT);
