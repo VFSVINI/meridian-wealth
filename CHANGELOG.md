@@ -6,6 +6,16 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #8 do roadmap)
+- Motor de suitability: questionário de 9 perguntas cobrindo as dimensões do art. 3 da Resolução CVM 30 (objetivos, situação financeira e conhecimento), nota de 0 a 100 e perfil CONSERVADOR, MODERADO, ARROJADO ou AGRESSIVO, com tetos de perfil explicados (horizonte curto, necessidade de caixa, sem reserva, venda em pânico).
+- Carteira modelo por perfil com metas por classe de ativo (soma 100, testada), rotuladas como ilustrativas.
+- Aderência da carteira ao perfil: peso e desvio por classe, nota, faixa de ±5 pontos percentuais e radar; descreve o desvio sem dizer o que comprar ou vender.
+- `GET /api/suitability/questionnaire`, `POST /api/suitability/evaluate`, `GET /api/suitability/model-portfolios` e `POST /api/suitability/adherence`; card "Perfil e carteira modelo" no painel. Respostas e carteira não são gravadas nem logadas.
+- ADR 009 e `docs/suitability.md`, com o aviso de que o questionário não substitui a análise de um profissional habilitado.
+
+### Corrigido (item #8)
+- O índice de ADRs (`docs/adr/README.md`) não listava o ADR 008 do item #7.
+
 ### Adicionado (item #7 do roadmap)
 - Radar de relatórios com dados abertos da CVM: ITR e DFP de PETR4, VALE3 e ITUB4 (receita e resultado líquido contra o mesmo período do ano anterior) e Informe Mensal de HGLG11, KNRI11, XPML11 e MXRF11 (dividend yield e valor patrimonial da cota).
 - Veredito POSITIVO, NEUTRO ou NEGATIVO calculado no domínio, com os números, a base, o limiar e a regra em cada sinal; prejuízo nunca é POSITIVO e, sem base de comparação, não há veredito.
