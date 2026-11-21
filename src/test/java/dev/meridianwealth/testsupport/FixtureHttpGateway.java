@@ -25,6 +25,8 @@ public class FixtureHttpGateway implements HttpGateway {
     private static final Pattern FRANKFURTER =
             Pattern.compile("api\\.frankfurter\\.dev/v1/(latest|\\d{4}-\\d{2}-\\d{2}\\.\\.[0-9-]+)\\?from=([A-Z]{3})&to=([A-Z]{3})");
 
+    private static final Pattern BCB_SGS = Pattern.compile("api\\.bcb\\.gov\\.br/dados/serie/bcdata\\.sgs\\.(\\d+)/dados");
+
     private final List<String> requested = new CopyOnWriteArrayList<>();
 
     @Override
@@ -45,6 +47,14 @@ public class FixtureHttpGateway implements HttpGateway {
             String kind = "latest".equals(f.group(1)) ? "latest" : "2y";
             String body = resource("/fixtures/frankfurter/" + f.group(2) + "-" + f.group(3) + "-" + kind + ".json");
             if (body != null) return body;
+        }
+        Matcher sgs = BCB_SGS.matcher(url);
+        if (sgs.find()) {
+            String body = resource("/fixtures/bcb/sgs-" + sgs.group(1) + ".json");
+            if (body != null) return body;
+        }
+        if (url.contains("olinda.bcb.gov.br/olinda/servico/PTAX") && url.contains("CotacaoDolarPeriodo")) {
+            return resource("/fixtures/bcb/ptax-periodo.json");
         }
         if (url.contains("stooq.com/q/d/l/")) return resource("/fixtures/stooq/spy.us-bloqueio.html");
         throw new ClientErrorException("HTTP 404 (sem fixture para " + url + ")");
