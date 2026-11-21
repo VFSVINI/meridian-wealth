@@ -1,0 +1,4033 @@
+{
+ "Alameda Euvaldo Luz, 41098, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-BA",
+    "city": "Salvador",
+    "country": "Brasil",
+    "country_code": "br",
+    "district": "Salvador",
+    "neighbourhood": "Horto Bela Vista",
+    "postcode": "41098-010",
+    "region": "Região Nordeste",
+    "road": "Alameda Euvaldo Luz",
+    "state": "Bahia",
+    "suburb": "Pernambués"
+   },
+   "addresstype": "tertiary",
+   "boundingbox": [
+    "-12.9695182",
+    "-12.9688742",
+    "-38.4750856",
+    "-38.4726003"
+   ],
+   "category": "highway",
+   "display_name": "Alameda Euvaldo Luz, Horto Bela Vista, Pernambués, Salvador, Bahia, Região Nordeste, 41098-010, Brasil",
+   "importance": 0.05340149767299913,
+   "lat": "-12.9688854",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-38.4726785",
+   "name": "Alameda Euvaldo Luz",
+   "osm_id": 288233599,
+   "osm_type": "way",
+   "place_id": 428314696,
+   "place_rank": 26,
+   "type": "tertiary"
+  }
+ ],
+ "Alameda Xingu, 06455-911, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Barueri",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "06465-110",
+    "quarter": "Jardim Santa Cecília",
+    "region": "Região Sudeste",
+    "road": "Alameda Xingu",
+    "state": "São Paulo",
+    "suburb": "Alphaville"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-23.5053646",
+    "-23.5051738",
+    "-46.8497083",
+    "-46.8473755"
+   ],
+   "category": "highway",
+   "display_name": "Alameda Xingu, Jardim Santa Cecília, Alphaville, Barueri, São Paulo, Região Sudeste, 06465-110, Brasil",
+   "importance": 0.053396501869230145,
+   "lat": "-23.5052934",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.8485395",
+   "name": "Alameda Xingu",
+   "osm_id": 1531709441,
+   "osm_type": "way",
+   "place_id": 421538766,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Barueri",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "06455-030",
+    "quarter": "Jardim Santa Cecília",
+    "region": "Região Sudeste",
+    "road": "Alameda Xingu",
+    "state": "São Paulo",
+    "suburb": "Alphaville"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-23.5051738",
+    "-23.5043605",
+    "-46.8590699",
+    "-46.8497083"
+   ],
+   "category": "highway",
+   "display_name": "Alameda Xingu, Jardim Santa Cecília, Alphaville, Barueri, São Paulo, Região Sudeste, 06455-030, Brasil",
+   "importance": 0.053396501869230145,
+   "lat": "-23.5047763",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.8543900",
+   "name": "Alameda Xingu",
+   "osm_id": 248878620,
+   "osm_type": "way",
+   "place_id": 9023652,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-PA",
+    "city": "Belém",
+    "city_district": "Outeiro",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "66843-400",
+    "region": "Região Norte",
+    "road": "Alameda Xingu",
+    "state": "Pará",
+    "suburb": "São João do Outeiro"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-1.2546011",
+    "-1.2539702",
+    "-48.4626377",
+    "-48.4619315"
+   ],
+   "category": "highway",
+   "display_name": "Alameda Xingu, São João do Outeiro, Outeiro, Belém, Pará, Região Norte, 66843-400, Brasil",
+   "importance": 0.053399382772564244,
+   "lat": "-1.2542856",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-48.4622846",
+   "name": "Alameda Xingu",
+   "osm_id": 394690526,
+   "osm_type": "way",
+   "place_id": 13031288,
+   "place_rank": 26,
+   "type": "residential"
+  }
+ ],
+ "Av. Guido Caloi, 1.935, São Paulo, SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "04757-000",
+    "region": "Região Sudeste",
+    "road": "Avenida Guido Caloi",
+    "state": "São Paulo",
+    "suburb": "Jardim São Luís"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-23.6563960",
+    "-23.6558300",
+    "-46.7243550",
+    "-46.7242264"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Guido Caloi, Jardim São Luís, São Paulo, Região Sudeste, 04757-000, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.6561177",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.7242693",
+   "name": "Avenida Guido Caloi",
+   "osm_id": 322463703,
+   "osm_type": "way",
+   "place_id": 9015995,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "05818-270",
+    "region": "Região Sudeste",
+    "road": "Avenida Guido Caloi",
+    "state": "São Paulo",
+    "suburb": "Jardim São Luís"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-23.6576047",
+    "-23.6570889",
+    "-46.7247315",
+    "-46.7245966"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Guido Caloi, Jardim São Luís, São Paulo, Região Sudeste, 05818-270, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.6573468",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.7246640",
+   "name": "Avenida Guido Caloi",
+   "osm_id": 971021491,
+   "osm_type": "way",
+   "place_id": 9028461,
+   "place_rank": 26,
+   "type": "secondary"
+  }
+ ],
+ "Avenida Brasil, 3.464, Rio Claro, SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Rio Claro",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "13505-146",
+    "quarter": "Vila Martins",
+    "region": "Região Sudeste",
+    "road": "Avenida Brasil",
+    "state": "São Paulo",
+    "suburb": "Bela Vista"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-22.3891148",
+    "-22.3882251",
+    "-47.5587464",
+    "-47.5585378"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Brasil, Vila Martins, Bela Vista, Rio Claro, São Paulo, Região Sudeste, 13505-146, Brasil",
+   "importance": 0.05339298924238953,
+   "lat": "-22.3886699",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-47.5586421",
+   "name": "Avenida Brasil",
+   "osm_id": 1161582819,
+   "osm_type": "way",
+   "place_id": 9498497,
+   "place_rank": 26,
+   "type": "residential"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Rio Claro",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "13505-600",
+    "quarter": "Loteamento Prisma Empresarial",
+    "region": "Região Sudeste",
+    "road": "Avenida Brasil",
+    "state": "São Paulo",
+    "suburb": "Distrito Indústrial"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-22.3543631",
+    "-22.3478923",
+    "-47.5501208",
+    "-47.5486084"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Brasil, Loteamento Prisma Empresarial, Distrito Indústrial, Rio Claro, São Paulo, Região Sudeste, 13505-600, Brasil",
+   "importance": 0.05339298924238953,
+   "lat": "-22.3511282",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-47.5493655",
+   "name": "Avenida Brasil",
+   "osm_id": 171503635,
+   "osm_type": "way",
+   "place_id": 9531135,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Rio Claro",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "13505-150",
+    "quarter": "Vila Martins",
+    "region": "Região Sudeste",
+    "road": "Avenida Brasil",
+    "state": "São Paulo",
+    "suburb": "Bela Vista"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-22.3882251",
+    "-22.3862573",
+    "-47.5585378",
+    "-47.5580140"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Brasil, Vila Martins, Bela Vista, Rio Claro, São Paulo, Região Sudeste, 13505-150, Brasil",
+   "importance": 0.05339298924238953,
+   "lat": "-22.3872308",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-47.5583047",
+   "name": "Avenida Brasil",
+   "osm_id": 1161582820,
+   "osm_type": "way",
+   "place_id": 9475121,
+   "place_rank": 26,
+   "type": "residential"
+  }
+ ],
+ "Avenida Caminho de Goiás, 100, Jundiaí - SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Jundiaí",
+    "country": "Brasil",
+    "country_code": "br",
+    "neighbourhood": "Núcleo Residencial Água Doce",
+    "postcode": "13214-890",
+    "region": "Região Sudeste",
+    "road": "Avenida Caminho de Goiás",
+    "state": "São Paulo",
+    "suburb": "Água Doce"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-23.1353724",
+    "-23.1293614",
+    "-46.9497184",
+    "-46.9450521"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Caminho de Goiás, Núcleo Residencial Água Doce, Água Doce, Jundiaí, São Paulo, Região Sudeste, 13214-890, Brasil",
+   "importance": 0.05339746318760964,
+   "lat": "-23.1315248",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.9462368",
+   "name": "Avenida Caminho de Goiás",
+   "osm_id": 346415274,
+   "osm_type": "way",
+   "place_id": 8616141,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Jundiaí",
+    "country": "Brasil",
+    "country_code": "br",
+    "neighbourhood": "Núcleo Residencial Água Doce",
+    "postcode": "13214-730",
+    "region": "Região Sudeste",
+    "road": "Avenida Caminho de Goiás",
+    "state": "São Paulo",
+    "suburb": "Água Doce"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-23.1372514",
+    "-23.1353724",
+    "-46.9450521",
+    "-46.9438872"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Caminho de Goiás, Núcleo Residencial Água Doce, Água Doce, Jundiaí, São Paulo, Região Sudeste, 13214-730, Brasil",
+   "importance": 0.05339746318760964,
+   "lat": "-23.1363710",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.9445815",
+   "name": "Avenida Caminho de Goiás",
+   "osm_id": 915197319,
+   "osm_type": "way",
+   "place_id": 8628608,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Jundiaí",
+    "country": "Brasil",
+    "country_code": "br",
+    "neighbourhood": "Sítio Fernandes (Pedra Branca)",
+    "postcode": "13214-890",
+    "region": "Região Sudeste",
+    "road": "Avenida Caminho de Goiás",
+    "state": "São Paulo",
+    "suburb": "Traviú"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-23.1293614",
+    "-23.1290943",
+    "-46.9511367",
+    "-46.9497184"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Caminho de Goiás, Sítio Fernandes (Pedra Branca), Traviú, Jundiaí, São Paulo, Região Sudeste, 13214-890, Brasil",
+   "importance": 0.05339746318760964,
+   "lat": "-23.1292138",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.9504250",
+   "name": "Avenida Caminho de Goiás",
+   "osm_id": 992009434,
+   "osm_type": "way",
+   "place_id": 8624657,
+   "place_rank": 26,
+   "type": "secondary"
+  }
+ ],
+ "Avenida Coronel Teixeira, 69037, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-AM",
+    "city": "Manaus",
+    "city_district": "Manaus",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "69000-000",
+    "region": "Região Norte",
+    "road": "Avenida Coronel Teixeira",
+    "state": "Amazonas",
+    "suburb": "Lírio do Vale"
+   },
+   "addresstype": "trunk",
+   "boundingbox": [
+    "-3.0849849",
+    "-3.0826662",
+    "-60.0749436",
+    "-60.0735601"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Coronel Teixeira, Lírio do Vale, Manaus, Amazonas, Região Norte, 69000-000, Brasil",
+   "importance": 0.053400563820859046,
+   "lat": "-3.0838779",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-60.0743470",
+   "name": "Avenida Coronel Teixeira",
+   "osm_id": 806201628,
+   "osm_type": "way",
+   "place_id": 12804185,
+   "place_rank": 26,
+   "type": "trunk"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-AM",
+    "city": "Manaus",
+    "city_district": "Manaus",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "69000-000",
+    "quarter": "Conjunto Coophasa",
+    "region": "Região Norte",
+    "road": "Avenida Coronel Teixeira",
+    "state": "Amazonas",
+    "suburb": "Nova Esperança"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-3.0894019",
+    "-3.0887410",
+    "-60.0609544",
+    "-60.0593204"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Coronel Teixeira, Conjunto Coophasa, Nova Esperança, Manaus, Amazonas, Região Norte, 69000-000, Brasil",
+   "importance": 0.053400563820859046,
+   "lat": "-3.0890739",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-60.0601384",
+   "name": "Avenida Coronel Teixeira",
+   "osm_id": 48602635,
+   "osm_type": "way",
+   "place_id": 12933451,
+   "place_rank": 26,
+   "type": "primary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-AM",
+    "city": "Manaus",
+    "city_district": "Manaus",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "69000-000",
+    "quarter": "Conjunto Parque Ayapuá",
+    "region": "Região Norte",
+    "residential": "Conjunto Parque Ayapuá",
+    "road": "Avenida Coronel Teixeira",
+    "state": "Amazonas",
+    "suburb": "Compensa"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-3.0893990",
+    "-3.0892686",
+    "-60.0602123",
+    "-60.0599974"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Coronel Teixeira, Conjunto Parque Ayapuá, Compensa, Manaus, Amazonas, Região Norte, 69000-000, Brasil",
+   "importance": 0.053400563820859046,
+   "lat": "-3.0893331",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-60.0601053",
+   "name": "Avenida Coronel Teixeira",
+   "osm_id": 499678881,
+   "osm_type": "way",
+   "place_id": 12791185,
+   "place_rank": 26,
+   "type": "residential"
+  }
+ ],
+ "Avenida Higienopolis, 01238-001, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "city_district": "Consolação",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "01238-001",
+    "region": "Região Sudeste",
+    "road": "Avenida Higienópolis",
+    "state": "São Paulo",
+    "suburb": "Higienópolis"
+   },
+   "addresstype": "tertiary",
+   "boundingbox": [
+    "-23.5436045",
+    "-23.5422511",
+    "-46.6589744",
+    "-46.6566485"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Higienópolis, Higienópolis, Consolação, São Paulo, Região Sudeste, 01238-001, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.5429668",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6578336",
+   "name": "Avenida Higienópolis",
+   "osm_id": 424426359,
+   "osm_type": "way",
+   "place_id": 8913473,
+   "place_rank": 26,
+   "type": "tertiary"
+  }
+ ],
+ "Avenida Juscelino Kubitschek, 1830, São Paulo - Sp, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "04543-903",
+    "region": "Região Sudeste",
+    "road": "Avenida Presidente Juscelino Kubitschek",
+    "state": "São Paulo",
+    "suburb": "Vila Olímpia"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-23.5875071",
+    "-23.5862079",
+    "-46.6747123",
+    "-46.6729307"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Presidente Juscelino Kubitschek, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04543-903, Brasil",
+   "importance": 0.4348490150141181,
+   "lat": "-23.5867921",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6738673",
+   "name": "Avenida Presidente Juscelino Kubitschek",
+   "osm_id": 325320426,
+   "osm_type": "way",
+   "place_id": 8907655,
+   "place_rank": 26,
+   "type": "primary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "04538-060",
+    "region": "Região Sudeste",
+    "road": "Avenida Presidente Juscelino Kubitschek",
+    "state": "São Paulo",
+    "suburb": "Vila Olímpia"
+   },
+   "addresstype": "trunk",
+   "boundingbox": [
+    "-23.5903372",
+    "-23.5897778",
+    "-46.6804355",
+    "-46.6783957"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Presidente Juscelino Kubitschek, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04538-060, Brasil",
+   "importance": 0.4348490150141181,
+   "lat": "-23.5900575",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6794156",
+   "name": "Avenida Presidente Juscelino Kubitschek",
+   "osm_id": 764637917,
+   "osm_type": "way",
+   "place_id": 8906306,
+   "place_rank": 26,
+   "type": "trunk"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "04530-030",
+    "region": "Região Sudeste",
+    "road": "Avenida Presidente Juscelino Kubitschek",
+    "state": "São Paulo",
+    "suburb": "Vila Olímpia"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-23.5863777",
+    "-23.5859532",
+    "-46.6737346",
+    "-46.6730152"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Presidente Juscelino Kubitschek, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04530-030, Brasil",
+   "importance": 0.4348490150141181,
+   "lat": "-23.5861617",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6733771",
+   "name": "Avenida Presidente Juscelino Kubitschek",
+   "osm_id": 917608563,
+   "osm_type": "way",
+   "place_id": 8894870,
+   "place_rank": 26,
+   "type": "primary"
+  }
+ ],
+ "Avenida Luiz Eduardo Toledo Prado, 14027-250, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Ribeirão Preto",
+    "city_district": "Bonfim Paulista",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "14027-250",
+    "region": "Região Sudeste",
+    "road": "Avenida Luiz Eduardo Toledo Prado",
+    "state": "São Paulo",
+    "suburb": "Vila do Golf"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-21.2467338",
+    "-21.2309528",
+    "-47.8416047",
+    "-47.8320002"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Luiz Eduardo Toledo Prado, Vila do Golf, Bonfim Paulista, Ribeirão Preto, São Paulo, Região Sudeste, 14027-250, Brasil",
+   "importance": 0.05339904402227814,
+   "lat": "-21.2374737",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-47.8409891",
+   "name": "Avenida Luiz Eduardo Toledo Prado",
+   "osm_id": 230609374,
+   "osm_type": "way",
+   "place_id": 9697082,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Ribeirão Preto",
+    "city_district": "Bonfim Paulista",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "14027-250",
+    "region": "Região Sudeste",
+    "road": "Avenida Luiz Eduardo Toledo Prado",
+    "state": "São Paulo",
+    "suburb": "Residencial Alphaville 1"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-21.2509951",
+    "-21.2505236",
+    "-47.8302697",
+    "-47.8296466"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Luiz Eduardo Toledo Prado, Residencial Alphaville 1, Bonfim Paulista, Ribeirão Preto, São Paulo, Região Sudeste, 14027-250, Brasil",
+   "importance": 0.05339904402227814,
+   "lat": "-21.2507594",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-47.8299581",
+   "name": "Avenida Luiz Eduardo Toledo Prado",
+   "osm_id": 845774008,
+   "osm_type": "way",
+   "place_id": 9626026,
+   "place_rank": 26,
+   "type": "secondary"
+  }
+ ],
+ "Avenida Magalhaes De Castro 12000, 05676, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "05501-050",
+    "region": "Região Sudeste",
+    "road": "Marginal Pinheiros (Expressa)",
+    "state": "São Paulo",
+    "suburb": "Caxingui"
+   },
+   "addresstype": "motorway",
+   "boundingbox": [
+    "-23.5721345",
+    "-23.5696309",
+    "-46.7034241",
+    "-46.7015357"
+   ],
+   "category": "highway",
+   "display_name": "Marginal Pinheiros (Expressa), Caxingui, Butantã, São Paulo, Região Sudeste, 05501-050, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.5709381",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.7025529",
+   "name": "Marginal Pinheiros (Expressa)",
+   "osm_id": 278712398,
+   "osm_type": "way",
+   "place_id": 8989127,
+   "place_rank": 26,
+   "type": "motorway"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "01454-080",
+    "region": "Região Sudeste",
+    "road": "Marginal Pinheiros (Expressa)",
+    "state": "São Paulo",
+    "suburb": "Cidade Jardim"
+   },
+   "addresstype": "motorway",
+   "boundingbox": [
+    "-23.5863445",
+    "-23.5838827",
+    "-46.6931739",
+    "-46.6921051"
+   ],
+   "category": "highway",
+   "display_name": "Marginal Pinheiros (Expressa), Cidade Jardim, Morumbi, São Paulo, Região Sudeste, 01454-080, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.5850762",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6925447",
+   "name": "Marginal Pinheiros (Expressa)",
+   "osm_id": 96085740,
+   "osm_type": "way",
+   "place_id": 8956624,
+   "place_rank": 26,
+   "type": "motorway"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "05501-050",
+    "region": "Região Sudeste",
+    "road": "Marginal Pinheiros (Local)",
+    "state": "São Paulo",
+    "suburb": "Caxingui"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-23.5718306",
+    "-23.5704877",
+    "-46.7029919",
+    "-46.7020748"
+   ],
+   "category": "highway",
+   "display_name": "Marginal Pinheiros (Local), Caxingui, Butantã, São Paulo, Região Sudeste, 05501-050, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.5711509",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.7025212",
+   "name": "Marginal Pinheiros (Local)",
+   "osm_id": 278712402,
+   "osm_type": "way",
+   "place_id": 8958983,
+   "place_rank": 26,
+   "type": "secondary"
+  }
+ ],
+ "Avenida Maracana, 20511-000, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Rio de Janeiro",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "20511-001",
+    "quarter": "Muda",
+    "region": "Região Sudeste",
+    "road": "Avenida Maracanã",
+    "state": "Rio de Janeiro",
+    "suburb": "Tijuca"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-22.9282304",
+    "-22.9265317",
+    "-43.2398489",
+    "-43.2382215"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Maracanã, Muda, Tijuca, Rio de Janeiro, Região Sudeste, 20511-001, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.9273737",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.2390432",
+   "name": "Avenida Maracanã",
+   "osm_id": 699088454,
+   "osm_type": "way",
+   "place_id": 10595697,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Rio de Janeiro",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "20510-060",
+    "quarter": "Muda",
+    "region": "Região Sudeste",
+    "road": "Avenida Maracanã",
+    "state": "Rio de Janeiro",
+    "suburb": "Tijuca"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-22.9307369",
+    "-22.9282304",
+    "-43.2422211",
+    "-43.2398489"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Maracanã, Muda, Tijuca, Rio de Janeiro, Região Sudeste, 20510-060, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.9294833",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.2410344",
+   "name": "Avenida Maracanã",
+   "osm_id": 327344047,
+   "osm_type": "way",
+   "place_id": 10532412,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Rio de Janeiro",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "20540-145",
+    "quarter": "Muda",
+    "region": "Região Sudeste",
+    "road": "Avenida Maracanã",
+    "state": "Rio de Janeiro",
+    "suburb": "Tijuca"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-22.9265317",
+    "-22.9246122",
+    "-43.2382215",
+    "-43.2365591"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Maracanã, Muda, Tijuca, Rio de Janeiro, Região Sudeste, 20540-145, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.9256003",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.2373537",
+   "name": "Avenida Maracanã",
+   "osm_id": 209334185,
+   "osm_type": "way",
+   "place_id": 10580938,
+   "place_rank": 26,
+   "type": "secondary"
+  }
+ ],
+ "Avenida Nove De Julho, 13208-056, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Jundiaí",
+    "country": "Brasil",
+    "country_code": "br",
+    "neighbourhood": "Vila Loyola",
+    "postcode": "13208-056",
+    "quarter": "Jardim Petrópolis",
+    "region": "Região Sudeste",
+    "road": "Avenida Nove de Julho",
+    "state": "São Paulo",
+    "suburb": "Anhangabaú"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-23.1997539",
+    "-23.1969918",
+    "-46.8916615",
+    "-46.8897350"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Nove de Julho, Vila Loyola, Jardim Petrópolis, Anhangabaú, Jundiaí, São Paulo, Região Sudeste, 13208-056, Brasil",
+   "importance": 0.05339746318760964,
+   "lat": "-23.1985055",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.8905613",
+   "name": "Avenida Nove de Julho",
+   "osm_id": 298648366,
+   "osm_type": "way",
+   "place_id": 8584919,
+   "place_rank": 26,
+   "type": "primary"
+  }
+ ],
+ "Avenida Parque B, 347, Betim, MG, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-MG",
+    "city": "Betim",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "347",
+    "neighbourhood": "Regional Citrolândia",
+    "postcode": "32631-075",
+    "region": "Região Sudeste",
+    "road": "Avenida Parque B",
+    "state": "Minas Gerais"
+   },
+   "addresstype": "building",
+   "boundingbox": [
+    "-19.9806486",
+    "-19.9786399",
+    "-44.2672598",
+    "-44.2646185"
+   ],
+   "category": "building",
+   "display_name": "347, Avenida Parque B, Regional Citrolândia, Betim, Minas Gerais, Região Sudeste, 32631-075, Brasil",
+   "importance": 6.322804608220061e-05,
+   "lat": "-19.9796445",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-44.2659391",
+   "name": "",
+   "osm_id": 1350505742,
+   "osm_type": "way",
+   "place_id": 11091940,
+   "place_rank": 30,
+   "type": "industrial"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-MG",
+    "building": "HGLG Alimentacao Betim",
+    "city": "Betim",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "347",
+    "neighbourhood": "Regional Citrolândia",
+    "postcode": "32631-075",
+    "region": "Região Sudeste",
+    "road": "Avenida Parque B",
+    "state": "Minas Gerais"
+   },
+   "addresstype": "building",
+   "boundingbox": [
+    "-19.9820350",
+    "-19.9810364",
+    "-44.2670191",
+    "-44.2665381"
+   ],
+   "category": "building",
+   "display_name": "HGLG Alimentacao Betim, 347, Avenida Parque B, Regional Citrolândia, Betim, Minas Gerais, Região Sudeste, 32631-075, Brasil",
+   "importance": 6.322804608220061e-05,
+   "lat": "-19.9814176",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-44.2668762",
+   "name": "HGLG Alimentacao Betim",
+   "osm_id": 1350505743,
+   "osm_type": "way",
+   "place_id": 11080044,
+   "place_rank": 30,
+   "type": "yes"
+  }
+ ],
+ "Avenida Paulista, 01310-000, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "city_district": "Vila Mariana",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "01310-000",
+    "region": "Região Sudeste",
+    "road": "Avenida Paulista",
+    "state": "São Paulo",
+    "suburb": "Paraíso"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-23.5696367",
+    "-23.5679449",
+    "-46.6487460",
+    "-46.6465333"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Paulista, Paraíso, Vila Mariana, São Paulo, Região Sudeste, 01310-000, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.5687921",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6476406",
+   "name": "Avenida Paulista",
+   "osm_id": 261785599,
+   "osm_type": "way",
+   "place_id": 8892726,
+   "place_rank": 26,
+   "type": "primary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "01310-000",
+    "region": "Região Sudeste",
+    "road": "Avenida Paulista",
+    "state": "São Paulo",
+    "suburb": "Morro dos Ingleses"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-23.5695251",
+    "-23.5688562",
+    "-46.6473144",
+    "-46.6464382"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Paulista, Morro dos Ingleses, Bela Vista, São Paulo, Região Sudeste, 01310-000, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.5691912",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6468767",
+   "name": "Avenida Paulista",
+   "osm_id": 241318604,
+   "osm_type": "way",
+   "place_id": 8886445,
+   "place_rank": 26,
+   "type": "primary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "city_district": "Consolação",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "01414-000",
+    "region": "Região Sudeste",
+    "road": "Avenida Paulista",
+    "state": "São Paulo",
+    "suburb": "Consolação"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-23.5572500",
+    "-23.5571529",
+    "-46.6610923",
+    "-46.6609860"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Paulista, Consolação, São Paulo, Região Sudeste, 01414-000, Brasil",
+   "importance": 0.4933856251432005,
+   "lat": "-23.5572014",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6610391",
+   "name": "Avenida Paulista",
+   "osm_id": 842289310,
+   "osm_type": "way",
+   "place_id": 8909817,
+   "place_rank": 26,
+   "type": "primary"
+  }
+ ],
+ "Avenida Paulista, 2.421, Bela Vista – São Paulo, SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "01311-941",
+    "region": "Região Sudeste",
+    "road": "Avenida Paulista",
+    "state": "São Paulo",
+    "suburb": "Morro dos Ingleses"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-23.5674049",
+    "-23.5660909",
+    "-46.6507843",
+    "-46.6492149"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Paulista, Morro dos Ingleses, Bela Vista, São Paulo, Região Sudeste, 01311-941, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.5667506",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6500019",
+   "name": "Avenida Paulista",
+   "osm_id": 231341013,
+   "osm_type": "way",
+   "place_id": 8816080,
+   "place_rank": 26,
+   "type": "primary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "01327-902",
+    "region": "Região Sudeste",
+    "road": "Avenida Paulista",
+    "state": "São Paulo",
+    "suburb": "Morro dos Ingleses"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-23.5712522",
+    "-23.5702640",
+    "-46.6454738",
+    "-46.6442094"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Paulista, Morro dos Ingleses, Bela Vista, São Paulo, Região Sudeste, 01327-902, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.5707488",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6448342",
+   "name": "Avenida Paulista",
+   "osm_id": 28725760,
+   "osm_type": "way",
+   "place_id": 8792546,
+   "place_rank": 26,
+   "type": "primary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "01418-102",
+    "region": "Região Sudeste",
+    "road": "Avenida Paulista",
+    "state": "São Paulo",
+    "suburb": "Morro dos Ingleses"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-23.5608463",
+    "-23.5606618",
+    "-46.6572492",
+    "-46.6570468"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Paulista, Morro dos Ingleses, Bela Vista, São Paulo, Região Sudeste, 01418-102, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.5607540",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6571480",
+   "name": "Avenida Paulista",
+   "osm_id": 1313067012,
+   "osm_type": "way",
+   "place_id": 8876037,
+   "place_rank": 26,
+   "type": "primary"
+  }
+ ],
+ "Avenida Paulo Gracindo, 38411-145, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-MG",
+    "city": "Uberlândia",
+    "city_district": "Setor Sul",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "38411-145",
+    "region": "Região Sudeste",
+    "road": "Avenida Paulo Gracindo",
+    "state": "Minas Gerais",
+    "suburb": "Gávea"
+   },
+   "addresstype": "tertiary",
+   "boundingbox": [
+    "-18.9560400",
+    "-18.9552659",
+    "-48.2812026",
+    "-48.2741335"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Paulo Gracindo, Gávea, Setor Sul, Uberlândia, Minas Gerais, Região Sudeste, 38411-145, Brasil",
+   "importance": 0.05339833142595556,
+   "lat": "-18.9556599",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-48.2776805",
+   "name": "Avenida Paulo Gracindo",
+   "osm_id": 166891120,
+   "osm_type": "way",
+   "place_id": 11602474,
+   "place_rank": 26,
+   "type": "tertiary"
+  }
+ ],
+ "Avenida Praia De Belas, 90110-970, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RS",
+    "city": "Porto Alegre",
+    "country": "Brasil",
+    "country_code": "br",
+    "municipality": "Porto Alegre",
+    "postcode": "90110-001",
+    "region": "Região Sul",
+    "road": "Avenida Praia de Belas",
+    "state": "Rio Grande do Sul",
+    "suburb": "Menino Deus"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-30.0513348",
+    "-30.0502251",
+    "-51.2281967",
+    "-51.2279948"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Praia de Belas, Menino Deus, Porto Alegre, Rio Grande do Sul, Região Sul, 90110-001, Brasil",
+   "importance": 0.05340665522240021,
+   "lat": "-30.0507801",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-51.2280947",
+   "name": "Avenida Praia de Belas",
+   "osm_id": 1467358529,
+   "osm_type": "way",
+   "place_id": 8380179,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RS",
+    "city": "Porto Alegre",
+    "country": "Brasil",
+    "country_code": "br",
+    "municipality": "Porto Alegre",
+    "postcode": "90110-000",
+    "region": "Região Sul",
+    "road": "Avenida Praia de Belas",
+    "state": "Rio Grande do Sul",
+    "suburb": "Praia de Belas"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-30.0469738",
+    "-30.0459466",
+    "-51.2274485",
+    "-51.2273404"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Praia de Belas, Praia de Belas, Porto Alegre, Rio Grande do Sul, Região Sul, 90110-000, Brasil",
+   "importance": 0.05340665522240021,
+   "lat": "-30.0464613",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-51.2273822",
+   "name": "Avenida Praia de Belas",
+   "osm_id": 1288440210,
+   "osm_type": "way",
+   "place_id": 8369724,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RS",
+    "city": "Porto Alegre",
+    "country": "Brasil",
+    "country_code": "br",
+    "municipality": "Porto Alegre",
+    "postcode": "90110-903",
+    "region": "Região Sul",
+    "road": "Avenida Praia de Belas",
+    "state": "Rio Grande do Sul",
+    "suburb": "Menino Deus"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-30.0479974",
+    "-30.0476835",
+    "-51.2276069",
+    "-51.2275769"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Praia de Belas, Menino Deus, Porto Alegre, Rio Grande do Sul, Região Sul, 90110-903, Brasil",
+   "importance": 0.05340665522240021,
+   "lat": "-30.0478404",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-51.2275919",
+   "name": "Avenida Praia de Belas",
+   "osm_id": 930398533,
+   "osm_type": "way",
+   "place_id": 8400334,
+   "place_rank": 26,
+   "type": "secondary"
+  }
+ ],
+ "Avenida Presidente Juscelino Kubitscheck de Oliveira, 15093-340, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São José do Rio Preto",
+    "country": "Brasil",
+    "country_code": "br",
+    "neighbourhood": "Jardim Paulistano",
+    "postcode": "15093-340",
+    "region": "Região Sudeste",
+    "road": "Avenida Presidente Juscelino Kubitscheck de Oliveira",
+    "state": "São Paulo",
+    "suburb": "Região HB"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-20.8659223",
+    "-20.8656817",
+    "-49.4126013",
+    "-49.4122311"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Presidente Juscelino Kubitscheck de Oliveira, Jardim Paulistano, Região HB, São José do Rio Preto, São Paulo, Região Sudeste, 15093-340, Brasil",
+   "importance": 0.05339768596932933,
+   "lat": "-20.8658020",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-49.4124162",
+   "name": "Avenida Presidente Juscelino Kubitscheck de Oliveira",
+   "osm_id": 706526832,
+   "osm_type": "way",
+   "place_id": 11780224,
+   "place_rank": 26,
+   "type": "primary"
+  }
+ ],
+ "Avenida Prof. Álvaro Rodrigues, 352, Botafogo – Rio de Janeiro, RJ, Brasil": [],
+ "Avenida Prof. Álvaro Rodrigues, 352, Rio de Janeiro, RJ, Brasil": [],
+ "Avenida SN 1, 280, Duque de Caxias, RJ, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Duque de Caxias",
+    "country": "Brasil",
+    "country_code": "br",
+    "municipality": "Duque de Caxias",
+    "postcode": "25085-220",
+    "quarter": "Vila Operária",
+    "region": "Região Sudeste",
+    "residential": "Vila do Mineiro",
+    "road": "Avenida Brasil",
+    "state": "Rio de Janeiro",
+    "suburb": "Vila São Luiz"
+   },
+   "addresstype": "tertiary",
+   "boundingbox": [
+    "-22.7835705",
+    "-22.7799303",
+    "-43.2905895",
+    "-43.2866751"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Brasil, Vila do Mineiro, Vila Operária, Vila São Luiz, Duque de Caxias, Rio de Janeiro, Região Sudeste, 25085-220, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.7814972",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.2884060",
+   "name": "Avenida Brasil",
+   "osm_id": 69991839,
+   "osm_type": "way",
+   "place_id": 10546581,
+   "place_rank": 26,
+   "type": "tertiary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Duque de Caxias",
+    "country": "Brasil",
+    "country_code": "br",
+    "municipality": "Duque de Caxias",
+    "postcode": "25065-100",
+    "quarter": "Itatiaia",
+    "region": "Região Sudeste",
+    "road": "Avenida General Manoel Rabelo",
+    "state": "Rio de Janeiro",
+    "suburb": "Vila São Luiz"
+   },
+   "addresstype": "tertiary",
+   "boundingbox": [
+    "-22.7770515",
+    "-22.7745942",
+    "-43.2965705",
+    "-43.2965047"
+   ],
+   "category": "highway",
+   "display_name": "Avenida General Manoel Rabelo, Itatiaia, Vila São Luiz, Duque de Caxias, Rio de Janeiro, Região Sudeste, 25065-100, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.7758233",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.2965295",
+   "name": "Avenida General Manoel Rabelo",
+   "osm_id": 609623594,
+   "osm_type": "way",
+   "place_id": 10490836,
+   "place_rank": 26,
+   "type": "tertiary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Duque de Caxias",
+    "country": "Brasil",
+    "country_code": "br",
+    "municipality": "Duque de Caxias",
+    "postcode": "25070-170",
+    "quarter": "Itatiaia",
+    "region": "Região Sudeste",
+    "road": "Avenida Duque de Caxias",
+    "state": "Rio de Janeiro",
+    "suburb": "Vila São Luiz"
+   },
+   "addresstype": "tertiary",
+   "boundingbox": [
+    "-22.7808020",
+    "-22.7807191",
+    "-43.3008692",
+    "-43.3006696"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Duque de Caxias, Itatiaia, Vila São Luiz, Duque de Caxias, Rio de Janeiro, Região Sudeste, 25070-170, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.7807799",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.3007813",
+   "name": "Avenida Duque de Caxias",
+   "osm_id": 793705241,
+   "osm_type": "way",
+   "place_id": 10448149,
+   "place_rank": 26,
+   "type": "tertiary"
+  }
+ ],
+ "Avenida SN 1, 280, Parque Duque, Duque de Caxias - RJ, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Duque de Caxias",
+    "country": "Brasil",
+    "country_code": "br",
+    "municipality": "Duque de Caxias",
+    "neighbourhood": "Parque das Missões",
+    "postcode": "21011-000",
+    "quarter": "Parque Duque",
+    "region": "Região Sudeste",
+    "road": "Avenida 3",
+    "state": "Rio de Janeiro",
+    "suburb": "Jardim 25 de Agosto"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-22.8046908",
+    "-22.8046043",
+    "-43.2859973",
+    "-43.2788019"
+   ],
+   "category": "highway",
+   "display_name": "Avenida 3, Parque das Missões, Parque Duque, Jardim 25 de Agosto, Duque de Caxias, Rio de Janeiro, Região Sudeste, 21011-000, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.8046476",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.2823996",
+   "name": "Avenida 3",
+   "osm_id": 70121642,
+   "osm_type": "way",
+   "place_id": 10372064,
+   "place_rank": 26,
+   "type": "residential"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Duque de Caxias",
+    "country": "Brasil",
+    "country_code": "br",
+    "municipality": "Duque de Caxias",
+    "neighbourhood": "Parque das Missões",
+    "postcode": "21011-000",
+    "quarter": "Parque Duque",
+    "region": "Região Sudeste",
+    "road": "Avenida 2",
+    "state": "Rio de Janeiro",
+    "suburb": "Jardim 25 de Agosto"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-22.8055325",
+    "-22.8054468",
+    "-43.2860054",
+    "-43.2791826"
+   ],
+   "category": "highway",
+   "display_name": "Avenida 2, Parque das Missões, Parque Duque, Jardim 25 de Agosto, Duque de Caxias, Rio de Janeiro, Região Sudeste, 21011-000, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.8054897",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.2825940",
+   "name": "Avenida 2",
+   "osm_id": 70121656,
+   "osm_type": "way",
+   "place_id": 10323893,
+   "place_rank": 26,
+   "type": "residential"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Duque de Caxias",
+    "country": "Brasil",
+    "country_code": "br",
+    "municipality": "Duque de Caxias",
+    "neighbourhood": "Parque das Missões",
+    "postcode": "25085-240",
+    "quarter": "Parque Duque",
+    "region": "Região Sudeste",
+    "road": "Avenida 4",
+    "state": "Rio de Janeiro",
+    "suburb": "Parque Sarapuí"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-22.8043209",
+    "-22.8042936",
+    "-43.2859938",
+    "-43.2828598"
+   ],
+   "category": "highway",
+   "display_name": "Avenida 4, Parque das Missões, Parque Duque, Parque Sarapuí, Duque de Caxias, Rio de Janeiro, Região Sudeste, 25085-240, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.8042973",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.2844272",
+   "name": "Avenida 4",
+   "osm_id": 849993431,
+   "osm_type": "way",
+   "place_id": 10372591,
+   "place_rank": 26,
+   "type": "residential"
+  }
+ ],
+ "Avenida Senador Salgado Filho 2234, 59064, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RN",
+    "city": "Natal",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "2234",
+    "neighbourhood": "Alto da Candelária",
+    "postcode": "59064-900",
+    "region": "Região Nordeste",
+    "road": "Avenida Senador Salgado Filho",
+    "shop": "Natal Shopping Center",
+    "state": "Rio Grande do Norte",
+    "suburb": "Candelária"
+   },
+   "addresstype": "shop",
+   "boundingbox": [
+    "-5.8431494",
+    "-5.8410361",
+    "-35.2129872",
+    "-35.2103274"
+   ],
+   "category": "shop",
+   "display_name": "Natal Shopping Center, 2234, Avenida Senador Salgado Filho, Alto da Candelária, Candelária, Natal, Rio Grande do Norte, Região Nordeste, 59064-900, Brasil",
+   "importance": 6.501182574192443e-05,
+   "lat": "-5.8423595",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-35.2118896",
+   "name": "Natal Shopping Center",
+   "osm_id": 8280248,
+   "osm_type": "relation",
+   "place_id": 13930828,
+   "place_rank": 30,
+   "type": "mall"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RN",
+    "city": "Natal",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "2234",
+    "neighbourhood": "Alto da Candelária",
+    "postcode": "59064-900",
+    "region": "Região Nordeste",
+    "road": "Avenida Senador Salgado Filho",
+    "state": "Rio Grande do Norte",
+    "suburb": "Candelária"
+   },
+   "addresstype": "amenity",
+   "boundingbox": [
+    "-5.8416157",
+    "-5.8415157",
+    "-35.2119214",
+    "-35.2118214"
+   ],
+   "category": "amenity",
+   "display_name": "2234, Avenida Senador Salgado Filho, Alto da Candelária, Candelária, Natal, Rio Grande do Norte, Região Nordeste, 59064-900, Brasil",
+   "importance": 6.501182574192443e-05,
+   "lat": "-5.8415657",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-35.2118714",
+   "name": "",
+   "osm_id": 501152467,
+   "osm_type": "node",
+   "place_id": 13930756,
+   "place_rank": 30,
+   "type": "telephone"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RN",
+    "city": "Natal",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "2234",
+    "neighbourhood": "Alto da Candelária",
+    "postcode": "59064-900",
+    "region": "Região Nordeste",
+    "road": "Avenida Senador Salgado Filho",
+    "state": "Rio Grande do Norte",
+    "suburb": "Candelária"
+   },
+   "addresstype": "amenity",
+   "boundingbox": [
+    "-5.8415809",
+    "-5.8414809",
+    "-35.2118380",
+    "-35.2117380"
+   ],
+   "category": "amenity",
+   "display_name": "2234, Avenida Senador Salgado Filho, Alto da Candelária, Candelária, Natal, Rio Grande do Norte, Região Nordeste, 59064-900, Brasil",
+   "importance": 6.501182574192443e-05,
+   "lat": "-5.8415309",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-35.2117880",
+   "name": "",
+   "osm_id": 1088289973,
+   "osm_type": "node",
+   "place_id": 13955358,
+   "place_rank": 30,
+   "type": "toilets"
+  }
+ ],
+ "Avenida Sete de Setembro, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Niterói",
+    "country": "Brasil",
+    "country_code": "br",
+    "municipality": "Niterói",
+    "postcode": "24230-252",
+    "quarter": "Jardim Icaraí",
+    "region": "Região Sudeste",
+    "road": "Avenida Sete de Setembro",
+    "state": "Rio de Janeiro",
+    "suburb": "Icaraí"
+   },
+   "addresstype": "tertiary",
+   "boundingbox": [
+    "-22.9067107",
+    "-22.9038667",
+    "-43.1031344",
+    "-43.1000565"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Sete de Setembro, Jardim Icaraí, Icaraí, Niterói, Rio de Janeiro, Região Sudeste, 24230-252, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.9052982",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.1015871",
+   "name": "Avenida Sete de Setembro",
+   "osm_id": 123755771,
+   "osm_type": "way",
+   "place_id": 10506742,
+   "place_rank": 26,
+   "type": "tertiary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Niterói",
+    "country": "Brasil",
+    "country_code": "br",
+    "municipality": "Niterói",
+    "postcode": "24230-250",
+    "quarter": "Jardim Icaraí",
+    "region": "Região Sudeste",
+    "road": "Avenida Sete de Setembro",
+    "state": "Rio de Janeiro",
+    "suburb": "Icaraí"
+   },
+   "addresstype": "tertiary",
+   "boundingbox": [
+    "-22.9084431",
+    "-22.9067107",
+    "-43.1050090",
+    "-43.1031344"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Sete de Setembro, Jardim Icaraí, Icaraí, Niterói, Rio de Janeiro, Região Sudeste, 24230-250, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.9075877",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.1040619",
+   "name": "Avenida Sete de Setembro",
+   "osm_id": 123755777,
+   "osm_type": "way",
+   "place_id": 10493171,
+   "place_rank": 26,
+   "type": "tertiary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Niterói",
+    "country": "Brasil",
+    "country_code": "br",
+    "municipality": "Niterói",
+    "postcode": "24230-340",
+    "region": "Região Sudeste",
+    "road": "Avenida Sete de Setembro",
+    "state": "Rio de Janeiro",
+    "suburb": "Santa Rosa"
+   },
+   "addresstype": "tertiary",
+   "boundingbox": [
+    "-22.9038667",
+    "-22.9024784",
+    "-43.1000565",
+    "-43.0985436"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Sete de Setembro, Santa Rosa, Niterói, Rio de Janeiro, Região Sudeste, 24230-340, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.9031702",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.0993022",
+   "name": "Avenida Sete de Setembro",
+   "osm_id": 785121992,
+   "osm_type": "way",
+   "place_id": 10505467,
+   "place_rank": 26,
+   "type": "tertiary"
+  }
+ ],
+ "Avenida Sete de Setembro, Curitiba, PR, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-PR",
+    "city": "Curitiba",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "80230-901",
+    "region": "Região Sul",
+    "road": "Avenida Sete de Setembro",
+    "state": "Paraná",
+    "suburb": "Centro"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-25.4388465",
+    "-25.4382377",
+    "-49.2700333",
+    "-49.2684560"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Sete de Setembro, Centro, Curitiba, Paraná, Região Sul, 80230-901, Brasil",
+   "importance": 0.05340385519188216,
+   "lat": "-25.4385427",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-49.2692444",
+   "name": "Avenida Sete de Setembro",
+   "osm_id": 670931443,
+   "osm_type": "way",
+   "place_id": 6846678,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-PR",
+    "city": "Curitiba",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "80250-130",
+    "region": "Região Sul",
+    "road": "Avenida Sete de Setembro",
+    "state": "Paraná",
+    "suburb": "Rebouças"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-25.4414693",
+    "-25.4409597",
+    "-49.2764454",
+    "-49.2751162"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Sete de Setembro, Rebouças, Curitiba, Paraná, Região Sul, 80250-130, Brasil",
+   "importance": 0.05340385519188216,
+   "lat": "-25.4412144",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-49.2757808",
+   "name": "Avenida Sete de Setembro",
+   "osm_id": 231101471,
+   "osm_type": "way",
+   "place_id": 6823175,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-PR",
+    "city": "Curitiba",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "80010-190",
+    "region": "Região Sul",
+    "road": "Avenida Sete de Setembro",
+    "state": "Paraná",
+    "suburb": "Centro"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-25.4368286",
+    "-25.4363879",
+    "-49.2647973",
+    "-49.2636272"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Sete de Setembro, Centro, Curitiba, Paraná, Região Sul, 80010-190, Brasil",
+   "importance": 0.05340385519188216,
+   "lat": "-25.4366082",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-49.2642123",
+   "name": "Avenida Sete de Setembro",
+   "osm_id": 56235264,
+   "osm_type": "way",
+   "place_id": 6963180,
+   "place_rank": 26,
+   "type": "secondary"
+  }
+ ],
+ "Avenida Tancredo Neves, 41820-975, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-PR",
+    "city": "Foz do Iguaçu",
+    "country": "Brasil",
+    "country_code": "br",
+    "hamlet": "Cortezia Miguel Otávio Botzen",
+    "postcode": "85870-576",
+    "region": "Região Sul",
+    "road": "Avenida Tancredo Neves",
+    "state": "Paraná",
+    "village": "Porto Belo"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-25.4690868",
+    "-25.4519616",
+    "-54.5848212",
+    "-54.5832097"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Tancredo Neves, Cortezia Miguel Otávio Botzen, Porto Belo, Foz do Iguaçu, Paraná, Região Sul, 85870-576, Brasil",
+   "importance": 0.33359242145229745,
+   "lat": "-25.4606146",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-54.5834349",
+   "name": "Avenida Tancredo Neves",
+   "osm_id": 437818131,
+   "osm_type": "way",
+   "place_id": 6503456,
+   "place_rank": 26,
+   "type": "primary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-PR",
+    "city": "Foz do Iguaçu",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "85870-020",
+    "region": "Região Sul",
+    "road": "Avenida Tancredo Neves",
+    "state": "Paraná"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-25.4470179",
+    "-25.4462128",
+    "-54.5854058",
+    "-54.5852409"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Tancredo Neves, Foz do Iguaçu, Paraná, Região Sul, 85870-020, Brasil",
+   "importance": 0.33359242145229745,
+   "lat": "-25.4466065",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-54.5852813",
+   "name": "Avenida Tancredo Neves",
+   "osm_id": 383944737,
+   "osm_type": "way",
+   "place_id": 6526585,
+   "place_rank": 26,
+   "type": "primary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-PR",
+    "city": "Foz do Iguaçu",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "85867-150",
+    "region": "Região Sul",
+    "road": "Avenida Tancredo Neves",
+    "state": "Paraná",
+    "village": "Porto Belo"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-25.4787720",
+    "-25.4786446",
+    "-54.5836943",
+    "-54.5836293"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Tancredo Neves, Porto Belo, Foz do Iguaçu, Paraná, Região Sul, 85867-150, Brasil",
+   "importance": 0.33359242145229745,
+   "lat": "-25.4787083",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-54.5836618",
+   "name": "Avenida Tancredo Neves",
+   "osm_id": 933800237,
+   "osm_type": "way",
+   "place_id": 6524176,
+   "place_rank": 26,
+   "type": "primary"
+  }
+ ],
+ "Avenida Vicente De Carvalho, 21210-623, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Rio de Janeiro",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "21210-623",
+    "region": "Região Sudeste",
+    "road": "Avenida Vicente de Carvalho",
+    "state": "Rio de Janeiro",
+    "suburb": "Vila Kosmos"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-22.8502172",
+    "-22.8473955",
+    "-43.3085760",
+    "-43.3050142"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Vicente de Carvalho, Vila Kosmos, Rio de Janeiro, Região Sudeste, 21210-623, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.8488011",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.3068036",
+   "name": "Avenida Vicente de Carvalho",
+   "osm_id": 326105480,
+   "osm_type": "way",
+   "place_id": 10451494,
+   "place_rank": 26,
+   "type": "primary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Rio de Janeiro",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "21210-623",
+    "region": "Região Sudeste",
+    "residential": "Conjunto do IPASE da Vila da Penha",
+    "road": "Avenida Vicente de Carvalho",
+    "state": "Rio de Janeiro",
+    "suburb": "Vila Kosmos"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-22.8479153",
+    "-22.8475564",
+    "-43.3056542",
+    "-43.3049049"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Vicente de Carvalho, Conjunto do IPASE da Vila da Penha, Vila Kosmos, Rio de Janeiro, Região Sudeste, 21210-623, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.8477517",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.3052727",
+   "name": "Avenida Vicente de Carvalho",
+   "osm_id": 731172593,
+   "osm_type": "way",
+   "place_id": 10447311,
+   "place_rank": 26,
+   "type": "residential"
+  }
+ ],
+ "Avenida Vilarinho, 31744-050, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-MG",
+    "city": "Belo Horizonte",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "31660-050",
+    "region": "Região Sudeste",
+    "residential": "Vila Sesc",
+    "road": "Avenida Vilarinho",
+    "state": "Minas Gerais",
+    "suburb": "Mantiqueira",
+    "village": "Venda Nova"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-19.8034107",
+    "-19.8010365",
+    "-43.9897441",
+    "-43.9724022"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Vilarinho, Vila Sesc, Mantiqueira, Venda Nova, Belo Horizonte, Minas Gerais, Região Sudeste, 31660-050, Brasil",
+   "importance": 0.05340586785687034,
+   "lat": "-19.8020782",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.9814050",
+   "name": "Avenida Vilarinho",
+   "osm_id": 498295032,
+   "osm_type": "way",
+   "place_id": 10820534,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-MG",
+    "city": "Belo Horizonte",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "31744-054",
+    "region": "Região Sudeste",
+    "road": "Avenida Vilarinho",
+    "state": "Minas Gerais",
+    "suburb": "Venda Nova",
+    "village": "Venda Nova"
+   },
+   "addresstype": "trunk",
+   "boundingbox": [
+    "-19.8195167",
+    "-19.8188773",
+    "-43.9526412",
+    "-43.9524208"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Vilarinho, Venda Nova, Belo Horizonte, Minas Gerais, Região Sudeste, 31744-054, Brasil",
+   "importance": 0.05340586785687034,
+   "lat": "-19.8191996",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.9525195",
+   "name": "Avenida Vilarinho",
+   "osm_id": 638330572,
+   "osm_type": "way",
+   "place_id": 10834330,
+   "place_rank": 26,
+   "type": "trunk"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-MG",
+    "city": "Belo Horizonte",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "31744-007",
+    "region": "Região Sudeste",
+    "road": "Avenida Vilarinho",
+    "state": "Minas Gerais",
+    "suburb": "Vila Clóris",
+    "village": "Venda Nova"
+   },
+   "addresstype": "trunk",
+   "boundingbox": [
+    "-19.8221536",
+    "-19.8218685",
+    "-43.9461949",
+    "-43.9457698"
+   ],
+   "category": "highway",
+   "display_name": "Avenida Vilarinho, Vila Clóris, Venda Nova, Belo Horizonte, Minas Gerais, Região Sudeste, 31744-007, Brasil",
+   "importance": 0.05340586785687034,
+   "lat": "-19.8219988",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.9459745",
+   "name": "Avenida Vilarinho",
+   "osm_id": 514603661,
+   "osm_type": "way",
+   "place_id": 10898647,
+   "place_rank": 26,
+   "type": "trunk"
+  }
+ ],
+ "Avenida das Indústrias, Vinhedo, SP, Brasil": [],
+ "Avenida das Indústrias, s/n, CPI 5000, Vinhedo, SP, Brasil": [],
+ "Avenida das Nações Unidas, 14171, São Paulo, SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "amenity": "Starbucks",
+    "city": "São Paulo",
+    "city_district": "Santo Amaro",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "14171",
+    "postcode": "04794-000",
+    "region": "Região Sudeste",
+    "road": "Avenida das Nações Unidas",
+    "state": "São Paulo",
+    "suburb": "Chácara Santo Antônio"
+   },
+   "addresstype": "amenity",
+   "boundingbox": [
+    "-23.6229949",
+    "-23.6228949",
+    "-46.7013482",
+    "-46.7012482"
+   ],
+   "category": "amenity",
+   "display_name": "Starbucks, 14171, Avenida das Nações Unidas, Chácara Santo Antônio, Santo Amaro, São Paulo, Região Sudeste, 04794-000, Brasil",
+   "importance": 7.861829556720863e-05,
+   "lat": "-23.6229449",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.7012982",
+   "name": "Starbucks",
+   "osm_id": 3544917488,
+   "osm_type": "node",
+   "place_id": 8950402,
+   "place_rank": 30,
+   "type": "cafe"
+  }
+ ],
+ "Avenida dos Andradas, 3000, Bairro Santa Efigênia, na cidade de Belo Horizonte, Estado de Minas Gerais, Brasil": [],
+ "Avenida dos Andradas, 3000, Belo Horizonte, MG, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-MG",
+    "city": "Belo Horizonte",
+    "city_district": "Regional Leste",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "3000",
+    "postcode": "30110-014",
+    "region": "Região Sudeste",
+    "road": "Avenida dos Andradas",
+    "shop": "Boulevard Shopping",
+    "state": "Minas Gerais",
+    "suburb": "Santa Efigênia"
+   },
+   "addresstype": "shop",
+   "boundingbox": [
+    "-19.9215496",
+    "-19.9199675",
+    "-43.9212477",
+    "-43.9193239"
+   ],
+   "category": "shop",
+   "display_name": "Boulevard Shopping, 3000, Avenida dos Andradas, Santa Efigênia, Regional Leste, Belo Horizonte, Minas Gerais, Região Sudeste, 30110-014, Brasil",
+   "importance": 7.253452353699576e-05,
+   "lat": "-19.9206961",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.9202377",
+   "name": "Boulevard Shopping",
+   "osm_id": 89435468,
+   "osm_type": "way",
+   "place_id": 10950785,
+   "place_rank": 30,
+   "type": "mall"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-MG",
+    "city": "Belo Horizonte",
+    "city_district": "Regional Leste",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "3000",
+    "office": "Google",
+    "postcode": "30110-014",
+    "region": "Região Sudeste",
+    "road": "Avenida dos Andradas",
+    "state": "Minas Gerais",
+    "suburb": "Santa Efigênia"
+   },
+   "addresstype": "office",
+   "boundingbox": [
+    "-19.9202997",
+    "-19.9201997",
+    "-43.9211477",
+    "-43.9210477"
+   ],
+   "category": "office",
+   "display_name": "Google, 3000, Avenida dos Andradas, Santa Efigênia, Regional Leste, Belo Horizonte, Minas Gerais, Região Sudeste, 30110-014, Brasil",
+   "importance": 7.253452353699576e-05,
+   "lat": "-19.9202497",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.9210977",
+   "name": "Google",
+   "osm_id": 5984294067,
+   "osm_type": "node",
+   "place_id": 10915218,
+   "place_rank": 30,
+   "type": "company"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-MG",
+    "city": "Belo Horizonte",
+    "city_district": "Regional Leste",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "3000",
+    "office": "Sigga Mobile Tecnologies",
+    "postcode": "30110-014",
+    "region": "Região Sudeste",
+    "road": "Avenida dos Andradas",
+    "state": "Minas Gerais",
+    "suburb": "Santa Efigênia"
+   },
+   "addresstype": "office",
+   "boundingbox": [
+    "-19.9206432",
+    "-19.9205432",
+    "-43.9212870",
+    "-43.9211870"
+   ],
+   "category": "office",
+   "display_name": "Sigga Mobile Tecnologies, 3000, Avenida dos Andradas, Santa Efigênia, Regional Leste, Belo Horizonte, Minas Gerais, Região Sudeste, 30110-014, Brasil",
+   "importance": 7.253452353699576e-05,
+   "lat": "-19.9205932",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.9212370",
+   "name": "Sigga Mobile Tecnologies",
+   "osm_id": 5125489212,
+   "osm_type": "node",
+   "place_id": 10956582,
+   "place_rank": 30,
+   "type": "it"
+  }
+ ],
+ "Estrada Joaquim Bueno Neto, 9835, Itupeva, SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "13294-140",
+    "region": "Região Sudeste",
+    "road": "Estrada Joaquim Bueno Neto",
+    "state": "São Paulo",
+    "town": "Itupeva"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-23.1065923",
+    "-23.1062880",
+    "-47.0100431",
+    "-47.0096075"
+   ],
+   "category": "highway",
+   "display_name": "Estrada Joaquim Bueno Neto, Itupeva, São Paulo, Região Sudeste, 13294-140, Brasil",
+   "importance": 0.05339178072785531,
+   "lat": "-23.1064413",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-47.0098261",
+   "name": "Estrada Joaquim Bueno Neto",
+   "osm_id": 885492891,
+   "osm_type": "way",
+   "place_id": 8536714,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "13212-461",
+    "region": "Região Sudeste",
+    "road": "Estrada Joaquim Bueno Neto",
+    "state": "São Paulo",
+    "town": "Itupeva"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-23.1248415",
+    "-23.1229700",
+    "-47.0062325",
+    "-47.0046010"
+   ],
+   "category": "highway",
+   "display_name": "Estrada Joaquim Bueno Neto, Itupeva, São Paulo, Região Sudeste, 13212-461, Brasil",
+   "importance": 0.05339178072785531,
+   "lat": "-23.1236898",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-47.0051421",
+   "name": "Estrada Joaquim Bueno Neto",
+   "osm_id": 610646729,
+   "osm_type": "way",
+   "place_id": 8541929,
+   "place_rank": 26,
+   "type": "secondary"
+  }
+ ],
+ "Estrada Municipal José Geraldo Aparecido e Rua Josepha Gomes de Souza, Extrema, MG, Brasil": [],
+ "Estrada da Lama Preta, 2.805, Santa Cruz, Rio de Janeiro, RJ, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Rio de Janeiro",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "23575-450",
+    "region": "Região Sudeste",
+    "road": "Estrada da Lama Preta",
+    "state": "Rio de Janeiro",
+    "suburb": "Santa Cruz"
+   },
+   "addresstype": "unclassified",
+   "boundingbox": [
+    "-22.8832564",
+    "-22.8695799",
+    "-43.6657626",
+    "-43.6513895"
+   ],
+   "category": "highway",
+   "display_name": "Estrada da Lama Preta, Santa Cruz, Rio de Janeiro, Região Sudeste, 23575-450, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.8735939",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.6621413",
+   "name": "Estrada da Lama Preta",
+   "osm_id": 255865899,
+   "osm_type": "way",
+   "place_id": 10364501,
+   "place_rank": 26,
+   "type": "unclassified"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Rio de Janeiro",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "23066-070",
+    "region": "Região Sudeste",
+    "road": "Estrada da Lama Preta",
+    "state": "Rio de Janeiro",
+    "suburb": "Santa Cruz"
+   },
+   "addresstype": "tertiary",
+   "boundingbox": [
+    "-22.8852709",
+    "-22.8783172",
+    "-43.6491819",
+    "-43.6479653"
+   ],
+   "category": "highway",
+   "display_name": "Estrada da Lama Preta, Santa Cruz, Rio de Janeiro, Região Sudeste, 23066-070, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.8818802",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.6483612",
+   "name": "Estrada da Lama Preta",
+   "osm_id": 1366212742,
+   "osm_type": "way",
+   "place_id": 10397161,
+   "place_rank": 26,
+   "type": "tertiary"
+  }
+ ],
+ "Estrada do Pedregoso, 900, Freguesia de Campo Grande, RJ, Brasil": [],
+ "Praca Leonor Kaupa, 04151-100, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "04151-100",
+    "region": "Região Sudeste",
+    "road": "Praça Leonor Kaupa",
+    "state": "São Paulo",
+    "suburb": "Vila Santo Estéfano"
+   },
+   "addresstype": "tertiary",
+   "boundingbox": [
+    "-23.6201124",
+    "-23.6193271",
+    "-46.6275973",
+    "-46.6274286"
+   ],
+   "category": "highway",
+   "display_name": "Praça Leonor Kaupa, Vila Santo Estéfano, Cursino, São Paulo, Região Sudeste, 04151-100, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.6197072",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6275555",
+   "name": "Praça Leonor Kaupa",
+   "osm_id": 661278318,
+   "osm_type": "way",
+   "place_id": 8913795,
+   "place_rank": 26,
+   "type": "tertiary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "04151-100",
+    "region": "Região Sudeste",
+    "road": "Praça Leonor Kaupa",
+    "state": "São Paulo",
+    "suburb": "Vila Santo Estéfano"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-23.6210577",
+    "-23.6208768",
+    "-46.6270909",
+    "-46.6266673"
+   ],
+   "category": "highway",
+   "display_name": "Praça Leonor Kaupa, Vila Santo Estéfano, Cursino, São Paulo, Região Sudeste, 04151-100, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.6209329",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6268636",
+   "name": "Praça Leonor Kaupa",
+   "osm_id": 141562405,
+   "osm_type": "way",
+   "place_id": 8914345,
+   "place_rank": 26,
+   "type": "residential"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "04151-100",
+    "region": "Região Sudeste",
+    "road": "Rua Frei Rolim",
+    "state": "São Paulo",
+    "suburb": "Vila Santo Estéfano"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-23.6208454",
+    "-23.6205694",
+    "-46.6277962",
+    "-46.6273521"
+   ],
+   "category": "highway",
+   "display_name": "Rua Frei Rolim, Vila Santo Estéfano, Cursino, São Paulo, Região Sudeste, 04151-100, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.6207008",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6275701",
+   "name": "Rua Frei Rolim",
+   "osm_id": 39124857,
+   "osm_type": "way",
+   "place_id": 8948943,
+   "place_rank": 26,
+   "type": "residential"
+  }
+ ],
+ "Rodovia Anhanguera, 317.5, Ribeirão Preto - SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Ribeirão Preto",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "14077-020",
+    "region": "Região Sudeste",
+    "road": "Rodovia Anhanguera",
+    "state": "São Paulo",
+    "suburb": "Quintino 1"
+   },
+   "addresstype": "motorway",
+   "boundingbox": [
+    "-21.1163574",
+    "-21.1134809",
+    "-47.7795770",
+    "-47.7775006"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Anhanguera, Quintino 1, Ribeirão Preto, São Paulo, Região Sudeste, 14077-020, Brasil",
+   "importance": 0.43728576240816325,
+   "lat": "-21.1149191",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-47.7785388",
+   "name": "Rodovia Anhanguera",
+   "osm_id": 974796703,
+   "osm_type": "way",
+   "place_id": 9700985,
+   "place_rank": 26,
+   "type": "motorway"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Ribeirão Preto",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "14077-020",
+    "region": "Região Sudeste",
+    "road": "Rodovia Anhanguera",
+    "state": "São Paulo",
+    "suburb": "Avelino Alves Palma"
+   },
+   "addresstype": "motorway",
+   "boundingbox": [
+    "-21.1123702",
+    "-21.1099893",
+    "-47.7823192",
+    "-47.7805950"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Anhanguera, Avelino Alves Palma, Ribeirão Preto, São Paulo, Região Sudeste, 14077-020, Brasil",
+   "importance": 0.43728576240816325,
+   "lat": "-21.1111798",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-47.7814571",
+   "name": "Rodovia Anhanguera",
+   "osm_id": 973584679,
+   "osm_type": "way",
+   "place_id": 9688290,
+   "place_rank": 26,
+   "type": "motorway"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Ribeirão Preto",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "14072-055",
+    "region": "Região Sudeste",
+    "road": "Rodovia Anhanguera",
+    "state": "São Paulo",
+    "suburb": "Distrito Industrial"
+   },
+   "addresstype": "motorway",
+   "boundingbox": [
+    "-21.0958167",
+    "-21.0936785",
+    "-47.7940120",
+    "-47.7924924"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Anhanguera, Distrito Industrial, Ribeirão Preto, São Paulo, Região Sudeste, 14072-055, Brasil",
+   "importance": 0.43728576240816325,
+   "lat": "-21.0947476",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-47.7932522",
+   "name": "Rodovia Anhanguera",
+   "osm_id": 189775744,
+   "osm_type": "way",
+   "place_id": 9688586,
+   "place_rank": 26,
+   "type": "motorway"
+  }
+ ],
+ "Rodovia Anhanguera, km 31.775, Cajamar, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "07776-603",
+    "region": "Região Sudeste",
+    "road": "Rodovia Comunicador Silvio Santos",
+    "state": "São Paulo",
+    "suburb": "Jordanésia",
+    "town": "Cajamar"
+   },
+   "addresstype": "motorway",
+   "boundingbox": [
+    "-23.3475714",
+    "-23.3439686",
+    "-46.8450768",
+    "-46.8393262"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Comunicador Silvio Santos, Jordanésia, Cajamar, São Paulo, Região Sudeste, 07776-603, Brasil",
+   "importance": 0.43728576240816325,
+   "lat": "-23.3454526",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.8424578",
+   "name": "Rodovia Comunicador Silvio Santos",
+   "osm_id": 711898481,
+   "osm_type": "way",
+   "place_id": 8741605,
+   "place_rank": 26,
+   "type": "motorway"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "07753-060",
+    "region": "Região Sudeste",
+    "road": "Rodovia Comunicador Silvio Santos",
+    "state": "São Paulo",
+    "suburb": "Guaturinho",
+    "town": "Cajamar"
+   },
+   "addresstype": "motorway",
+   "boundingbox": [
+    "-23.4025476",
+    "-23.3475714",
+    "-46.8484591",
+    "-46.8353793"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Comunicador Silvio Santos, Guaturinho, Cajamar, São Paulo, Região Sudeste, 07753-060, Brasil",
+   "importance": 0.43728576240816325,
+   "lat": "-23.3748167",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.8413775",
+   "name": "Rodovia Comunicador Silvio Santos",
+   "osm_id": 356304493,
+   "osm_type": "way",
+   "place_id": 8560891,
+   "place_rank": 26,
+   "type": "motorway"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city_district": "Polvilho",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "07790-440",
+    "quarter": "Jardim Planalto",
+    "region": "Região Sudeste",
+    "road": "Rodovia Comunicador Silvio Santos",
+    "state": "São Paulo",
+    "suburb": "Centro",
+    "town": "Cajamar"
+   },
+   "addresstype": "motorway",
+   "boundingbox": [
+    "-23.4038152",
+    "-23.4032873",
+    "-46.8357047",
+    "-46.8352538"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Comunicador Silvio Santos, Jardim Planalto, Centro, Polvilho, Cajamar, São Paulo, Região Sudeste, 07790-440, Brasil",
+   "importance": 0.43728576240816325,
+   "lat": "-23.4035512",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.8354792",
+   "name": "Rodovia Comunicador Silvio Santos",
+   "osm_id": 685509032,
+   "osm_type": "way",
+   "place_id": 8547226,
+   "place_rank": 26,
+   "type": "motorway"
+  }
+ ],
+ "Rodovia Anhanguera, km 31.775, Cidade de Cajamar, Brasil": [],
+ "Rodovia BR 101, 5225, Cabo de Santo Agostinho, PE, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-PE",
+    "city": "Jaboatão dos Guararapes",
+    "city_district": "Jaboatão dos Guararapes",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "54340-080",
+    "region": "Região Nordeste",
+    "residential": "Vila Santa Fé - Tieta - Coquinho - Lagoa das Graças - Distrito In",
+    "road": "Antiga BR-101",
+    "state": "Pernambuco",
+    "suburb": "Prazeres"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-8.2228789",
+    "-8.1863982",
+    "-34.9663737",
+    "-34.9531470"
+   ],
+   "category": "highway",
+   "display_name": "Antiga BR-101, Vila Santa Fé - Tieta - Coquinho - Lagoa das Graças - Distrito In, Prazeres, Jaboatão dos Guararapes, Pernambuco, Região Nordeste, 54340-080, Brasil",
+   "importance": 0.0533891973754482,
+   "lat": "-8.2041666",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-34.9611184",
+   "name": "Antiga BR-101",
+   "osm_id": 791161111,
+   "osm_type": "way",
+   "place_id": 14919230,
+   "place_rank": 26,
+   "type": "primary"
+  }
+ ],
+ "Rodovia BR-381, Betim, MG, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-MG",
+    "city": "Betim",
+    "country": "Brasil",
+    "country_code": "br",
+    "neighbourhood": "Regional Teresópolis",
+    "postcode": "32681-354",
+    "region": "Região Sudeste",
+    "road": "Marginal Rodovia Fernão Dias",
+    "state": "Minas Gerais"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-19.9554030",
+    "-19.9551329",
+    "-44.1168940",
+    "-44.1130465"
+   ],
+   "category": "highway",
+   "display_name": "Marginal Rodovia Fernão Dias, Regional Teresópolis, Betim, Minas Gerais, Região Sudeste, 32681-354, Brasil",
+   "importance": 0.05339656137941554,
+   "lat": "-19.9552643",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-44.1149700",
+   "name": "Marginal Rodovia Fernão Dias",
+   "osm_id": 250528592,
+   "osm_type": "way",
+   "place_id": 11046916,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-MG",
+    "city": "Betim",
+    "country": "Brasil",
+    "country_code": "br",
+    "neighbourhood": "Regional Teresópolis",
+    "postcode": "32684-296",
+    "region": "Região Sudeste",
+    "road": "Marginal Rodovia Fernão Dias",
+    "state": "Minas Gerais"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-19.9559907",
+    "-19.9558450",
+    "-44.1071603",
+    "-44.1042970"
+   ],
+   "category": "highway",
+   "display_name": "Marginal Rodovia Fernão Dias, Regional Teresópolis, Betim, Minas Gerais, Região Sudeste, 32684-296, Brasil",
+   "importance": 0.05339656137941554,
+   "lat": "-19.9558818",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-44.1057270",
+   "name": "Marginal Rodovia Fernão Dias",
+   "osm_id": 497075114,
+   "osm_type": "way",
+   "place_id": 10946322,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-MG",
+    "city": "Betim",
+    "country": "Brasil",
+    "country_code": "br",
+    "neighbourhood": "Regional Alterosas",
+    "postcode": "32676-100",
+    "region": "Região Sudeste",
+    "road": "Marginal Rodovia Fernão Dias",
+    "state": "Minas Gerais"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-19.9557676",
+    "-19.9555990",
+    "-44.1473142",
+    "-44.1455038"
+   ],
+   "category": "highway",
+   "display_name": "Marginal Rodovia Fernão Dias, Regional Alterosas, Betim, Minas Gerais, Região Sudeste, 32676-100, Brasil",
+   "importance": 0.05339656137941554,
+   "lat": "-19.9556933",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-44.1464036",
+   "name": "Marginal Rodovia Fernão Dias",
+   "osm_id": 1546866977,
+   "osm_type": "way",
+   "place_id": 424596130,
+   "place_rank": 26,
+   "type": "secondary"
+  }
+ ],
+ "Rodovia BR-381, s/n, km 483, Pista Norte, Jardim Piemonte, Betim, MG, Brasil": [],
+ "Rodovia Castelo Branco, 18132, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city_district": "Boituva",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "18555-012",
+    "quarter": "Cidade Jardim",
+    "region": "Região Sudeste",
+    "road": "Rodovia Presidente Castelo Branco",
+    "state": "São Paulo",
+    "suburb": "Vila dos Ipês",
+    "town": "Boituva"
+   },
+   "addresstype": "motorway",
+   "boundingbox": [
+    "-23.2976064",
+    "-23.2940705",
+    "-47.7039866",
+    "-47.6783672"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Presidente Castelo Branco, Cidade Jardim, Vila dos Ipês, Boituva, São Paulo, Região Sudeste, 18555-012, Brasil",
+   "importance": 0.427519450901518,
+   "lat": "-23.2943178",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-47.6909924",
+   "name": "Rodovia Presidente Castelo Branco",
+   "osm_id": 273477617,
+   "osm_type": "way",
+   "place_id": 8517598,
+   "place_rank": 26,
+   "type": "motorway"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "country": "Brasil",
+    "country_code": "br",
+    "region": "Região Sudeste",
+    "road": "Rodovia Presidente Castelo Branco",
+    "state": "São Paulo",
+    "village": "Iaras"
+   },
+   "addresstype": "motorway",
+   "boundingbox": [
+    "-22.9097567",
+    "-22.8761833",
+    "-49.1435270",
+    "-49.0963933"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Presidente Castelo Branco, Iaras, São Paulo, Região Sudeste, Brasil",
+   "importance": 0.427519450901518,
+   "lat": "-22.8932866",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-49.1201804",
+   "name": "Rodovia Presidente Castelo Branco",
+   "osm_id": 640006063,
+   "osm_type": "way",
+   "place_id": 11993617,
+   "place_rank": 26,
+   "type": "motorway"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "country": "Brasil",
+    "country_code": "br",
+    "hamlet": "Clarínia",
+    "region": "Região Sudeste",
+    "road": "Rodovia Presidente Castelo Branco",
+    "state": "São Paulo",
+    "town": "Santa Cruz do Rio Pardo"
+   },
+   "addresstype": "motorway",
+   "boundingbox": [
+    "-22.7333305",
+    "-22.7320576",
+    "-49.4618340",
+    "-49.4589959"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Presidente Castelo Branco, Clarínia, Santa Cruz do Rio Pardo, São Paulo, Região Sudeste, Brasil",
+   "importance": 0.427519450901518,
+   "lat": "-22.7326967",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-49.4604161",
+   "name": "Rodovia Presidente Castelo Branco",
+   "osm_id": 168725572,
+   "osm_type": "way",
+   "place_id": 11993889,
+   "place_rank": 26,
+   "type": "motorway"
+  }
+ ],
+ "Rodovia Eng. Thales de Lorena Peixoto Júnio, Km 9.5, São Carlos, SP, Brasil": [],
+ "Rodovia Eng. Thales de Lorena Peixoto Júnio, São Carlos, SP, Brasil": [],
+ "Rodovia Fernão Dias, km 863, Pouso Alegre, MG, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-MG",
+    "amenity": "Posto Fernandão",
+    "city": "Pouso Alegre",
+    "city_district": "Quadrante Nordeste",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "km 850",
+    "postcode": "03755-664",
+    "region": "Região Sudeste",
+    "road": "Rodovia Fernão Dias",
+    "state": "Minas Gerais"
+   },
+   "addresstype": "amenity",
+   "boundingbox": [
+    "-22.2397140",
+    "-22.2396140",
+    "-45.8815574",
+    "-45.8814574"
+   ],
+   "category": "amenity",
+   "display_name": "Posto Fernandão, km 850, Rodovia Fernão Dias, Quadrante Nordeste, Pouso Alegre, Minas Gerais, Região Sudeste, 03755-664, Brasil",
+   "importance": 6.295338368806009e-05,
+   "lat": "-22.2396640",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-45.8815074",
+   "name": "Posto Fernandão",
+   "osm_id": 4159274235,
+   "osm_type": "node",
+   "place_id": 9337490,
+   "place_rank": 30,
+   "type": "fuel"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-MG",
+    "city": "Pouso Alegre",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "37560-260",
+    "region": "Região Sudeste",
+    "road": "Rodovia Fernão Dias",
+    "state": "Minas Gerais"
+   },
+   "addresstype": "motorway",
+   "boundingbox": [
+    "-22.2755212",
+    "-22.2738906",
+    "-45.8937568",
+    "-45.8933377"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Fernão Dias, Pouso Alegre, Minas Gerais, Região Sudeste, 37560-260, Brasil",
+   "importance": 0.0533962867170214,
+   "lat": "-22.2747059",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-45.8935472",
+   "name": "Rodovia Fernão Dias",
+   "osm_id": 545080831,
+   "osm_type": "way",
+   "place_id": 9308516,
+   "place_rank": 26,
+   "type": "motorway"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-MG",
+    "city": "Pouso Alegre",
+    "country": "Brasil",
+    "country_code": "br",
+    "neighbourhood": "Cruz Alta",
+    "region": "Região Sudeste",
+    "road": "Rodovia Fernão Dias",
+    "state": "Minas Gerais"
+   },
+   "addresstype": "motorway",
+   "boundingbox": [
+    "-22.3979559",
+    "-22.3850204",
+    "-45.9607301",
+    "-45.9508920"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Fernão Dias, Cruz Alta, Pouso Alegre, Minas Gerais, Região Sudeste, Brasil",
+   "importance": 0.0533962867170214,
+   "lat": "-22.3917566",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-45.9554514",
+   "name": "Rodovia Fernão Dias",
+   "osm_id": 544918050,
+   "osm_type": "way",
+   "place_id": 9280405,
+   "place_rank": 26,
+   "type": "motorway"
+  }
+ ],
+ "Rodovia Mogi-Dutra, 11.100 , Mogi das Cruzes, SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Mogi das Cruzes",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "08771-200",
+    "region": "Região Sudeste",
+    "road": "Rodovia Pedro Eroles",
+    "state": "São Paulo",
+    "suburb": "Jardim Aracy"
+   },
+   "addresstype": "trunk",
+   "boundingbox": [
+    "-23.5055947",
+    "-23.4653442",
+    "-46.2448325",
+    "-46.2168951"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Pedro Eroles, Jardim Aracy, Mogi das Cruzes, São Paulo, Região Sudeste, 08771-200, Brasil",
+   "importance": 0.05339666208896006,
+   "lat": "-23.4885003",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.2316579",
+   "name": "Rodovia Pedro Eroles",
+   "osm_id": 31852276,
+   "osm_type": "way",
+   "place_id": 8670897,
+   "place_rank": 26,
+   "type": "trunk"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Mogi das Cruzes",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "08771-200",
+    "region": "Região Sudeste",
+    "road": "Rodovia Pedro Eroles",
+    "state": "São Paulo",
+    "suburb": "Condominio Aruã Brisas"
+   },
+   "addresstype": "trunk",
+   "boundingbox": [
+    "-23.4912302",
+    "-23.4653475",
+    "-46.2449265",
+    "-46.2282526"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Pedro Eroles, Condominio Aruã Brisas, Mogi das Cruzes, São Paulo, Região Sudeste, 08771-200, Brasil",
+   "importance": 0.05339666208896006,
+   "lat": "-23.4789517",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.2351058",
+   "name": "Rodovia Pedro Eroles",
+   "osm_id": 840108542,
+   "osm_type": "way",
+   "place_id": 8674357,
+   "place_rank": 26,
+   "type": "trunk"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Mogi das Cruzes",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "08770-450",
+    "region": "Região Sudeste",
+    "road": "Rodovia Pedro Eroles",
+    "state": "São Paulo",
+    "suburb": "Jardim Aracy"
+   },
+   "addresstype": "trunk",
+   "boundingbox": [
+    "-23.5078893",
+    "-23.4912302",
+    "-46.2282526",
+    "-46.2083455"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Pedro Eroles, Jardim Aracy, Mogi das Cruzes, São Paulo, Região Sudeste, 08770-450, Brasil",
+   "importance": 0.05339666208896006,
+   "lat": "-23.5036090",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.2233011",
+   "name": "Rodovia Pedro Eroles",
+   "osm_id": 499739815,
+   "osm_type": "way",
+   "place_id": 8682143,
+   "place_rank": 26,
+   "type": "trunk"
+  }
+ ],
+ "Rodovia Mogi-Dutra, Mogi das Cruzes, SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Mogi das Cruzes",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "08771-200",
+    "region": "Região Sudeste",
+    "road": "Rodovia Pedro Eroles",
+    "state": "São Paulo",
+    "suburb": "Jardim Aracy"
+   },
+   "addresstype": "trunk",
+   "boundingbox": [
+    "-23.5055947",
+    "-23.4653442",
+    "-46.2448325",
+    "-46.2168951"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Pedro Eroles, Jardim Aracy, Mogi das Cruzes, São Paulo, Região Sudeste, 08771-200, Brasil",
+   "importance": 0.05339666208896006,
+   "lat": "-23.4885003",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.2316579",
+   "name": "Rodovia Pedro Eroles",
+   "osm_id": 31852276,
+   "osm_type": "way",
+   "place_id": 8806921,
+   "place_rank": 26,
+   "type": "trunk"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Mogi das Cruzes",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "08771-200",
+    "region": "Região Sudeste",
+    "road": "Rodovia Pedro Eroles",
+    "state": "São Paulo",
+    "suburb": "Condominio Aruã Brisas"
+   },
+   "addresstype": "trunk",
+   "boundingbox": [
+    "-23.4912302",
+    "-23.4653475",
+    "-46.2449265",
+    "-46.2282526"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Pedro Eroles, Condominio Aruã Brisas, Mogi das Cruzes, São Paulo, Região Sudeste, 08771-200, Brasil",
+   "importance": 0.05339666208896006,
+   "lat": "-23.4789517",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.2351058",
+   "name": "Rodovia Pedro Eroles",
+   "osm_id": 840108542,
+   "osm_type": "way",
+   "place_id": 8715709,
+   "place_rank": 26,
+   "type": "trunk"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Mogi das Cruzes",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "08770-450",
+    "region": "Região Sudeste",
+    "road": "Rodovia Pedro Eroles",
+    "state": "São Paulo",
+    "suburb": "Jardim Aracy"
+   },
+   "addresstype": "trunk",
+   "boundingbox": [
+    "-23.5078893",
+    "-23.4912302",
+    "-46.2282526",
+    "-46.2083455"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Pedro Eroles, Jardim Aracy, Mogi das Cruzes, São Paulo, Região Sudeste, 08770-450, Brasil",
+   "importance": 0.05339666208896006,
+   "lat": "-23.5036090",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.2233011",
+   "name": "Rodovia Pedro Eroles",
+   "osm_id": 499739815,
+   "osm_type": "way",
+   "place_id": 8816814,
+   "place_rank": 26,
+   "type": "trunk"
+  }
+ ],
+ "Rodovia SP 101, Hortolândia, SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "Hortolândia",
+    "city_district": "Hortolândia",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "13185-320",
+    "quarter": "Chácara Nova Boa Vista",
+    "region": "Região Sudeste",
+    "road": "Rodovia Jornalista Francisco Aguirre Proença",
+    "state": "São Paulo",
+    "suburb": "Jardim Rosolem"
+   },
+   "addresstype": "trunk",
+   "boundingbox": [
+    "-22.8985420",
+    "-22.8853275",
+    "-47.1940977",
+    "-47.1561133"
+   ],
+   "category": "highway",
+   "display_name": "Rodovia Jornalista Francisco Aguirre Proença, Chácara Nova Boa Vista, Jardim Rosolem, Hortolândia, São Paulo, Região Sudeste, 13185-320, Brasil",
+   "importance": 0.0533940421149004,
+   "lat": "-22.8923105",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-47.1747898",
+   "name": "Rodovia Jornalista Francisco Aguirre Proença",
+   "osm_id": 156648482,
+   "osm_type": "way",
+   "place_id": 9498874,
+   "place_rank": 26,
+   "type": "trunk"
+  }
+ ],
+ "Rodovia SP 101, Km 9,5, Hortolândia , SP, Brasil": [],
+ "Rua Ambrósio Molina, 1090/1100, São José dos Campos, SP, Brasil": [],
+ "Rua Ambrósio Molina, São José dos Campos, SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "country": "Brasil",
+    "country_code": "br",
+    "municipality": "São José dos Campos",
+    "postcode": "12247-080",
+    "region": "Região Sudeste",
+    "residential": "Eugênio de Melo",
+    "road": "Rua Ambrósio Molina",
+    "state": "São Paulo",
+    "suburb": "Jardim Ipê",
+    "village": "Eugênio de Melo"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-23.1476853",
+    "-23.1400742",
+    "-45.7860703",
+    "-45.7797299"
+   ],
+   "category": "highway",
+   "display_name": "Rua Ambrósio Molina, Eugênio de Melo, Jardim Ipê, Eugênio de Melo, São José dos Campos, São Paulo, Região Sudeste, 12247-080, Brasil",
+   "importance": 0.05339819714656287,
+   "lat": "-23.1438732",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-45.7828927",
+   "name": "Rua Ambrósio Molina",
+   "osm_id": 732691157,
+   "osm_type": "way",
+   "place_id": 9145119,
+   "place_rank": 26,
+   "type": "secondary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "country": "Brasil",
+    "country_code": "br",
+    "municipality": "São José dos Campos",
+    "postcode": "12247-200",
+    "region": "Região Sudeste",
+    "residential": "Eugênio de Melo",
+    "road": "Rua Ambrósio Molina",
+    "state": "São Paulo",
+    "suburb": "Jardim Itapuã",
+    "village": "Eugênio de Melo"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-23.1400742",
+    "-23.1388094",
+    "-45.7871676",
+    "-45.7860703"
+   ],
+   "category": "highway",
+   "display_name": "Rua Ambrósio Molina, Eugênio de Melo, Jardim Itapuã, Eugênio de Melo, São José dos Campos, São Paulo, Região Sudeste, 12247-200, Brasil",
+   "importance": 0.05339819714656287,
+   "lat": "-23.1394435",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-45.7866215",
+   "name": "Rua Ambrósio Molina",
+   "osm_id": 134563527,
+   "osm_type": "way",
+   "place_id": 9141740,
+   "place_rank": 26,
+   "type": "secondary"
+  }
+ ],
+ "Rua Atílio Biscuola, 1831, Louveira , SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "building": "Bloco 100",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "1831",
+    "postcode": "13290-000",
+    "region": "Região Sudeste",
+    "road": "Rua Atílio Biscuola",
+    "state": "São Paulo",
+    "suburb": "Colina da Bela Vista",
+    "town": "Louveira"
+   },
+   "addresstype": "building",
+   "boundingbox": [
+    "-23.0865285",
+    "-23.0831034",
+    "-46.9705275",
+    "-46.9685043"
+   ],
+   "category": "building",
+   "display_name": "Bloco 100, 1831, Rua Atílio Biscuola, Colina da Bela Vista, Louveira, São Paulo, Região Sudeste, 13290-000, Brasil",
+   "importance": 5.834668497744743e-05,
+   "lat": "-23.0848143",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.9695949",
+   "name": "Bloco 100",
+   "osm_id": 684179046,
+   "osm_type": "way",
+   "place_id": 8700340,
+   "place_rank": 30,
+   "type": "warehouse"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "1831",
+    "postcode": "13290-000",
+    "region": "Região Sudeste",
+    "road": "Rua Atílio Biscuola",
+    "state": "São Paulo",
+    "suburb": "Colina da Bela Vista",
+    "town": "Louveira"
+   },
+   "addresstype": "place",
+   "boundingbox": [
+    "-23.0869596",
+    "-23.0868596",
+    "-46.9689952",
+    "-46.9688952"
+   ],
+   "category": "place",
+   "display_name": "1831, Rua Atílio Biscuola, Colina da Bela Vista, Louveira, São Paulo, Região Sudeste, 13290-000, Brasil",
+   "importance": 5.834668497744743e-05,
+   "lat": "-23.0869096",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.9689452",
+   "name": "",
+   "osm_id": 6410174754,
+   "osm_type": "node",
+   "place_id": 8683704,
+   "place_rank": 30,
+   "type": "house"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "1831",
+    "man_made": "Renovigi",
+    "postcode": "13290-000",
+    "region": "Região Sudeste",
+    "road": "Rua Atílio Biscuola",
+    "state": "São Paulo",
+    "suburb": "Colina da Bela Vista",
+    "town": "Louveira"
+   },
+   "addresstype": "man_made",
+   "boundingbox": [
+    "-23.0867745",
+    "-23.0866745",
+    "-46.9684159",
+    "-46.9683159"
+   ],
+   "category": "man_made",
+   "display_name": "Renovigi, 1831, Rua Atílio Biscuola, Colina da Bela Vista, Louveira, São Paulo, Região Sudeste, 13290-000, Brasil",
+   "importance": 5.834668497744743e-05,
+   "lat": "-23.0867245",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.9683659",
+   "name": "Renovigi",
+   "osm_id": 6410174755,
+   "osm_type": "node",
+   "place_id": 8694870,
+   "place_rank": 30,
+   "type": "works"
+  }
+ ],
+ "Rua Buenos Aires, 15, Centro – Rio de Janeiro, RJ, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Rio de Janeiro",
+    "country": "Brasil",
+    "country_code": "br",
+    "neighbourhood": "Saara",
+    "postcode": "20051-020",
+    "quarter": "Castelo",
+    "region": "Região Sudeste",
+    "road": "Rua Buenos Aires",
+    "state": "Rio de Janeiro",
+    "suburb": "Centro"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-22.9045387",
+    "-22.9034656",
+    "-43.1831946",
+    "-43.1805022"
+   ],
+   "category": "highway",
+   "display_name": "Rua Buenos Aires, Saara, Castelo, Centro, Rio de Janeiro, Região Sudeste, 20051-020, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.9040152",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.1818432",
+   "name": "Rua Buenos Aires",
+   "osm_id": 263565285,
+   "osm_type": "way",
+   "place_id": 10519238,
+   "place_rank": 26,
+   "type": "residential"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Rio de Janeiro",
+    "country": "Brasil",
+    "country_code": "br",
+    "neighbourhood": "Saara",
+    "postcode": "20211-351",
+    "region": "Região Sudeste",
+    "road": "Rua Buenos Aires",
+    "state": "Rio de Janeiro",
+    "suburb": "Centro"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-22.9061203",
+    "-22.9057322",
+    "-43.1871836",
+    "-43.1861972"
+   ],
+   "category": "highway",
+   "display_name": "Rua Buenos Aires, Saara, Centro, Rio de Janeiro, Região Sudeste, 20211-351, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.9059253",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.1866908",
+   "name": "Rua Buenos Aires",
+   "osm_id": 438665724,
+   "osm_type": "way",
+   "place_id": 10506941,
+   "place_rank": 26,
+   "type": "residential"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Rio de Janeiro",
+    "country": "Brasil",
+    "country_code": "br",
+    "neighbourhood": "Saara",
+    "postcode": "20060-002",
+    "region": "Região Sudeste",
+    "road": "Rua Buenos Aires",
+    "state": "Rio de Janeiro",
+    "suburb": "Centro"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-22.9057322",
+    "-22.9045387",
+    "-43.1861972",
+    "-43.1831946"
+   ],
+   "category": "highway",
+   "display_name": "Rua Buenos Aires, Saara, Centro, Rio de Janeiro, Região Sudeste, 20060-002, Brasil",
+   "importance": 0.05341485999847406,
+   "lat": "-22.9051364",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.1846955",
+   "name": "Rua Buenos Aires",
+   "osm_id": 203429174,
+   "osm_type": "way",
+   "place_id": 10477418,
+   "place_rank": 26,
+   "type": "residential"
+  }
+ ],
+ "Rua Diogo Moreira, 184 - Pinheiros, São Paulo - SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "building": "Edifício Diogo Moreira",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "184",
+    "postcode": "05423-010",
+    "region": "Região Sudeste",
+    "road": "Rua Diogo Moreira",
+    "state": "São Paulo",
+    "suburb": "Vila Madalena"
+   },
+   "addresstype": "building",
+   "boundingbox": [
+    "-23.5702819",
+    "-23.5699172",
+    "-46.6937096",
+    "-46.6932854"
+   ],
+   "category": "building",
+   "display_name": "Edifício Diogo Moreira, 184, Rua Diogo Moreira, Vila Madalena, Pinheiros, São Paulo, Região Sudeste, 05423-010, Brasil",
+   "importance": 7.861829556720863e-05,
+   "lat": "-23.5701198",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6934690",
+   "name": "Edifício Diogo Moreira",
+   "osm_id": 696686994,
+   "osm_type": "way",
+   "place_id": 8958000,
+   "place_rank": 30,
+   "type": "yes"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "184",
+    "postcode": "05423-010",
+    "region": "Região Sudeste",
+    "road": "Rua Diogo Moreira",
+    "state": "São Paulo",
+    "suburb": "Vila Madalena"
+   },
+   "addresstype": "place",
+   "boundingbox": [
+    "-23.5702964",
+    "-23.5701964",
+    "-46.6932782",
+    "-46.6931782"
+   ],
+   "category": "place",
+   "display_name": "184, Rua Diogo Moreira, Vila Madalena, Pinheiros, São Paulo, Região Sudeste, 05423-010, Brasil",
+   "importance": 7.861829556720863e-05,
+   "lat": "-23.5702464",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6932282",
+   "name": "",
+   "osm_id": 6542587100,
+   "osm_type": "node",
+   "place_id": 8958348,
+   "place_rank": 30,
+   "type": "house"
+  }
+ ],
+ "Rua Gomes de Carvalho, 1.195, Vila Olímpia – São Paulo, SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "04551-060",
+    "region": "Região Sudeste",
+    "road": "Rua Gomes de Carvalho",
+    "state": "São Paulo",
+    "suburb": "Vila Olímpia"
+   },
+   "addresstype": "tertiary",
+   "boundingbox": [
+    "-23.5947664",
+    "-23.5947061",
+    "-46.6901210",
+    "-46.6898255"
+   ],
+   "category": "highway",
+   "display_name": "Rua Gomes de Carvalho, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04551-060, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.5947196",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6899700",
+   "name": "Rua Gomes de Carvalho",
+   "osm_id": 345567795,
+   "osm_type": "way",
+   "place_id": 8912478,
+   "place_rank": 26,
+   "type": "tertiary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "04551-060",
+    "region": "Região Sudeste",
+    "road": "Rua Gomes de Carvalho",
+    "state": "São Paulo",
+    "suburb": "Vila Olímpia"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-23.5940070",
+    "-23.5938742",
+    "-46.6912483",
+    "-46.6911429"
+   ],
+   "category": "highway",
+   "display_name": "Rua Gomes de Carvalho, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04551-060, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.5939406",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6911956",
+   "name": "Rua Gomes de Carvalho",
+   "osm_id": 1391873926,
+   "osm_type": "way",
+   "place_id": 8912584,
+   "place_rank": 26,
+   "type": "residential"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "04550-004",
+    "region": "Região Sudeste",
+    "road": "Rua Gomes de Carvalho",
+    "state": "São Paulo",
+    "suburb": "Vila Olímpia"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-23.6000980",
+    "-23.5961808",
+    "-46.6870303",
+    "-46.6787649"
+   ],
+   "category": "highway",
+   "display_name": "Rua Gomes de Carvalho, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04550-004, Brasil",
+   "importance": 0.05341195162890055,
+   "lat": "-23.5981538",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6829066",
+   "name": "Rua Gomes de Carvalho",
+   "osm_id": 234368022,
+   "osm_type": "way",
+   "place_id": 8929604,
+   "place_rank": 26,
+   "type": "residential"
+  }
+ ],
+ "Rua Humaitá, 275, Humaitá, Rio de Janeiro, RJ, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-RJ",
+    "city": "Rio de Janeiro",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "275",
+    "office": "CASV - Centro de Atendimento ao Solicitante de Visto",
+    "postcode": "22261-001",
+    "region": "Região Sudeste",
+    "road": "Rua Humaitá",
+    "state": "Rio de Janeiro",
+    "suburb": "Humaitá"
+   },
+   "addresstype": "office",
+   "boundingbox": [
+    "-22.9605746",
+    "-22.9604746",
+    "-43.2026079",
+    "-43.2025079"
+   ],
+   "category": "office",
+   "display_name": "CASV - Centro de Atendimento ao Solicitante de Visto, 275, Rua Humaitá, Humaitá, Rio de Janeiro, Região Sudeste, 22261-001, Brasil",
+   "importance": 8.152666514071897e-05,
+   "lat": "-22.9605246",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-43.2025579",
+   "name": "CASV - Centro de Atendimento ao Solicitante de Visto",
+   "osm_id": 3853784842,
+   "osm_type": "node",
+   "place_id": 10537274,
+   "place_rank": 30,
+   "type": "government"
+  }
+ ],
+ "Rua Iguaçu, 291/383, Blumenau, SC, Brasil": [],
+ "Rua Iguaçu, Blumenau, SC, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SC",
+    "city": "Blumenau",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "89030-030",
+    "region": "Região Sul",
+    "road": "Rua Iguaçu",
+    "state": "Santa Catarina",
+    "suburb": "Itoupava Seca"
+   },
+   "addresstype": "primary",
+   "boundingbox": [
+    "-26.9005172",
+    "-26.8991026",
+    "-49.0793274",
+    "-49.0778588"
+   ],
+   "category": "highway",
+   "display_name": "Rua Iguaçu, Itoupava Seca, Blumenau, Santa Catarina, Região Sul, 89030-030, Brasil",
+   "importance": 0.05339440070191497,
+   "lat": "-26.8997511",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-49.0786992",
+   "name": "Rua Iguaçu",
+   "osm_id": 54019217,
+   "osm_type": "way",
+   "place_id": 7488286,
+   "place_rank": 26,
+   "type": "primary"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SC",
+    "city": "Blumenau",
+    "country": "Brasil",
+    "country_code": "br",
+    "postcode": "89030-030",
+    "region": "Região Sul",
+    "road": "Rua Iguaçu",
+    "state": "Santa Catarina",
+    "suburb": "Itoupava Seca"
+   },
+   "addresstype": "residential",
+   "boundingbox": [
+    "-26.9015767",
+    "-26.9003312",
+    "-49.0810268",
+    "-49.0794289"
+   ],
+   "category": "highway",
+   "display_name": "Rua Iguaçu, Itoupava Seca, Blumenau, Santa Catarina, Região Sul, 89030-030, Brasil",
+   "importance": 0.05339440070191497,
+   "lat": "-26.9009580",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-49.0802247",
+   "name": "Rua Iguaçu",
+   "osm_id": 60252550,
+   "osm_type": "way",
+   "place_id": 7476595,
+   "place_rank": 26,
+   "type": "residential"
+  }
+ ],
+ "Rua Joaquim Floriano, 913, Itaim – São Paulo, SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "913",
+    "postcode": "04532-002",
+    "region": "Região Sudeste",
+    "road": "Rua Joaquim Floriano",
+    "state": "São Paulo",
+    "suburb": "Vila Olímpia"
+   },
+   "addresstype": "place",
+   "boundingbox": [
+    "-23.5857785",
+    "-23.5856784",
+    "-46.6788182",
+    "-46.6787182"
+   ],
+   "category": "place",
+   "display_name": "913, Rua Joaquim Floriano, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04532-002, Brasil",
+   "importance": 9.99999999995449e-06,
+   "lat": "-23.5857285",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6787682",
+   "name": "",
+   "osm_id": 1060313627,
+   "osm_type": "way",
+   "place_id": 381617500,
+   "place_rank": 30,
+   "type": "house"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "913",
+    "postcode": "04532-002",
+    "region": "Região Sudeste",
+    "road": "Rua Joaquim Floriano",
+    "state": "São Paulo",
+    "suburb": "Vila Olímpia"
+   },
+   "addresstype": "place",
+   "boundingbox": [
+    "-23.5857151",
+    "-23.5856151",
+    "-46.6785851",
+    "-46.6784851"
+   ],
+   "category": "place",
+   "display_name": "913, Rua Joaquim Floriano, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04532-002, Brasil",
+   "importance": 9.99999999995449e-06,
+   "lat": "-23.5856651",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6785351",
+   "name": "",
+   "osm_id": 1060313627,
+   "osm_type": "way",
+   "place_id": 381617501,
+   "place_rank": 30,
+   "type": "house"
+  },
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "913",
+    "postcode": "04532-002",
+    "region": "Região Sudeste",
+    "road": "Rua Joaquim Floriano",
+    "state": "São Paulo",
+    "suburb": "Vila Olímpia"
+   },
+   "addresstype": "place",
+   "boundingbox": [
+    "-23.5857040",
+    "-23.5856040",
+    "-46.6785440",
+    "-46.6784440"
+   ],
+   "category": "place",
+   "display_name": "913, Rua Joaquim Floriano, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04532-002, Brasil",
+   "importance": 9.99999999995449e-06,
+   "lat": "-23.5856540",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6784940",
+   "name": "",
+   "osm_id": 1060313627,
+   "osm_type": "way",
+   "place_id": 381617502,
+   "place_rank": 30,
+   "type": "house"
+  }
+ ],
+ "Rua Tobias Bueno de Oliveira, 701, Monte Mor, SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "country": "Brasil",
+    "country_code": "br",
+    "municipality": "Monte Mor",
+    "postcode": "13190-307",
+    "region": "Região Sudeste",
+    "road": "Rua Tobias Bueno de Oliveira",
+    "state": "São Paulo",
+    "town": "Monte Mor"
+   },
+   "addresstype": "secondary",
+   "boundingbox": [
+    "-22.9533025",
+    "-22.9499630",
+    "-47.3019541",
+    "-47.2999412"
+   ],
+   "category": "highway",
+   "display_name": "Rua Tobias Bueno de Oliveira, Monte Mor, São Paulo, Região Sudeste, 13190-307, Brasil",
+   "importance": 0.053392073701075723,
+   "lat": "-22.9516742",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-47.3010254",
+   "name": "Rua Tobias Bueno de Oliveira",
+   "osm_id": 252218442,
+   "osm_type": "way",
+   "place_id": 9539815,
+   "place_rank": 26,
+   "type": "secondary"
+  }
+ ],
+ "Rua da Harmonia – Parque Industrial de Betim, Betim - MG, Brasil": [],
+ "Rua da Harmonia – Parque Industrial de Betim, Betim, MG, Brasil": [],
+ "Rua do Níquel, 205 – Parque Industrial – Itaquaquecetuba – SP, Brasil": [],
+ "Rua do Níquel, Itaquaquecetuba, SP, Brasil": [],
+ "Rua dos Pinheiros, 701, São Paulo, SP, Brasil": [
+  {
+   "address": {
+    "ISO3166-2-lvl4": "BR-SP",
+    "city": "São Paulo",
+    "country": "Brasil",
+    "country_code": "br",
+    "house_number": "701",
+    "postcode": "05422-011",
+    "region": "Região Sudeste",
+    "road": "Rua dos Pinheiros",
+    "state": "São Paulo",
+    "suburb": "Jardim Europa"
+   },
+   "addresstype": "place",
+   "boundingbox": [
+    "-23.5665496",
+    "-23.5664496",
+    "-46.6847068",
+    "-46.6846068"
+   ],
+   "category": "place",
+   "display_name": "701, Rua dos Pinheiros, Jardim Europa, Pinheiros, São Paulo, Região Sudeste, 05422-011, Brasil",
+   "importance": 7.861829556720863e-05,
+   "lat": "-23.5664996",
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "lon": "-46.6846568",
+   "name": "",
+   "osm_id": 5578970432,
+   "osm_type": "node",
+   "place_id": 8889074,
+   "place_rank": 30,
+   "type": "house"
+  }
+ ]
+}

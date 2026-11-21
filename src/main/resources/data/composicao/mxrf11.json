@@ -1,0 +1,67 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "MXRF11",
+  "nomeDoFundo": "Maxi Renda FII",
+  "fonte": {
+    "nome": "Informe Mensal de FII (Anexo 39-I, CVM), via B3/FNET",
+    "url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=1388005&cvm=true",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-10",
+    "consultadoEm": "2026-11-21",
+    "sha256DoTextoExtraido": "01001208bfb03b2537f4968f54cbb0e80358c9f1e3f74946c7dc88b0bbd7cfbf"
+  },
+  "resumoDaGeocodificacao": null,
+  "cnpj": "97.521.225/0001-25",
+  "classificacaoNoInforme": "Tijolo; Subclassificação: Renda; Gestão: Ativa; Segmento de Atuação: Logística",
+  "alocacoes": [
+    {
+      "codigo": "10.16",
+      "rotulo": "CRI (Certificados de Recebíveis Imobiliários)",
+      "valorReais": "3741838231.84",
+      "percentualDoAtivoCalculado": "69.53"
+    },
+    {
+      "codigo": "10.8",
+      "rotulo": "FII (cotas de outros fundos imobiliários)",
+      "valorReais": "692115016.40",
+      "percentualDoAtivoCalculado": "12.86"
+    },
+    {
+      "codigo": "10.x",
+      "rotulo": "Ações de sociedades de propósito exclusivo em FII",
+      "valorReais": "268940901.40",
+      "percentualDoAtivoCalculado": "5.00"
+    },
+    {
+      "codigo": "10.1",
+      "rotulo": "Direitos reais sobre bens imóveis",
+      "valorReais": "287878537.64",
+      "percentualDoAtivoCalculado": "5.35"
+    },
+    {
+      "codigo": "9",
+      "rotulo": "Necessidades de liquidez",
+      "valorReais": "370738333.34",
+      "percentualDoAtivoCalculado": "6.89"
+    },
+    {
+      "codigo": "11",
+      "rotulo": "Valores a receber",
+      "valorReais": "20170342.33",
+      "percentualDoAtivoCalculado": "0.37"
+    }
+  ],
+  "totais": {
+    "ativoTotalReais": "5381681362.95",
+    "patrimonioLiquidoReais": "5197799914.65",
+    "somaDosItensReais": "5381681362.95",
+    "diferencaParaOAtivoReais": "0.00",
+    "imoveisParaVendaAcabadosReais": "287878537.64"
+  },
+  "avisos": [
+    "Os percentuais são calculados sobre o ativo total; o documento publica só valores em reais.",
+    "O Informe não lista as posições individuais (emissores de CRI, outros FIIs) nem detalha os imóveis; os R$ em 'Imóveis para Venda Acabados' não têm localização publicada.",
+    "Sites de terceiros classificam o fundo como 'Papéis' e 'Híbrido'; o Informe oficial o classifica como 'Tijolo'."
+  ],
+  "ativos": []
+}
