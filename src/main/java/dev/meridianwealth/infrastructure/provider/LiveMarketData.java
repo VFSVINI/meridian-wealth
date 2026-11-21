@@ -14,6 +14,10 @@ import dev.meridianwealth.domain.MacroSnapshot;
 import dev.meridianwealth.domain.MarketHours;
 import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +46,6 @@ public class LiveMarketData implements MarketDataPort {
     static final String STORED_SOURCE = "Banco";
     private static final Logger log = LoggerFactory.getLogger(LiveMarketData.class);
     private static final int MIN_BARS = 120;
-    private static final long NEW_BAR_GAP_MS = 23L * 3_600_000L;
     private static final long FIRST_POLL_DELAY_MS = 20_000;
 
     private static final class Real {
@@ -50,11 +53,32 @@ public class LiveMarketData implements MarketDataPort {
         Candle bar;
         boolean pendingNewBar;
         volatile long nextPoll;
+        final ZoneId zone;
 
-        Real(Quote quote, Candle bar, long nextPoll) {
+        Real(Quote quote, Candle bar, long nextPoll, ZoneId zone) {
             this.quote = quote;
             this.bar = bar;
             this.nextPoll = nextPoll;
+            this.zone = zone;
+        }
+
+        /** Cotação de um dia local posterior ao da barra corrente: a próxima atualização abre barra nova. */
+        boolean startsNewDay(long quoteTime) {
+            return quoteTime > bar.time() && !localDate(bar.time()).equals(localDate(quoteTime));
+        }
+
+        /**
+         * Horário da barra nova. Séries em UTC (cripto e câmbio) usam a meia-noite UTC do dia da cotação,
+         * a mesma convenção das barras diárias dos provedores; as demais usam o horário da cotação.
+         */
+        long newBarTime(long quoteTime) {
+            return ZoneOffset.UTC.equals(zone) || "UTC".equals(zone.getId())
+                    ? Instant.ofEpochMilli(quoteTime).truncatedTo(ChronoUnit.DAYS).toEpochMilli()
+                    : quoteTime;
+        }
+
+        private LocalDate localDate(long epochMillis) {
+            return Instant.ofEpochMilli(epochMillis).atZone(zone).toLocalDate();
         }
     }
 
@@ -177,9 +201,10 @@ public class LiveMarketData implements MarketDataPort {
                                       boolean persist) {
         Candle last = candles.get(candles.size() - 1);
         Quote q = lastQuote != null ? lastQuote : new Quote(symbol, last.close(), last.time(), source);
-        Real fresh = new Real(q, last, System.currentTimeMillis() + FIRST_POLL_DELAY_MS);
-        // Cotação de um dia posterior à última barra: abre barra nova em vez de reescrever a barra anterior.
-        if (q.tsMillis() - last.time() >= NEW_BAR_GAP_MS) fresh.pendingNewBar = true;
+        Real fresh = new Real(q, last, System.currentTimeMillis() + FIRST_POLL_DELAY_MS,
+                Universe.entry(symbol).instrument().exchange().zone());
+        // Cotação de um dia local posterior à última barra: abre barra nova em vez de reescrever a anterior.
+        if (fresh.startsNewDay(q.tsMillis())) fresh.pendingNewBar = true;
         real.put(symbol, fresh);
         if (persist) {
             try {
@@ -205,7 +230,7 @@ public class LiveMarketData implements MarketDataPort {
             boolean newBar = false;
             if (r.pendingNewBar) {
                 // Abertura = primeiro preço real observado no dia (nunca o fechamento anterior).
-                r.bar = new Candle(q.tsMillis(), q.price(), q.price(), q.price(), q.price(), 0);
+                r.bar = new Candle(r.newBarTime(q.tsMillis()), q.price(), q.price(), q.price(), q.price(), 0);
                 r.pendingNewBar = false;
                 newBar = true;
             }
@@ -271,7 +296,7 @@ public class LiveMarketData implements MarketDataPort {
         synchronized (r) {
             boolean upgradeFromStored = STORED_SOURCE.equals(r.quote.source());
             if (!upgradeFromStored && q.tsMillis() < r.quote.tsMillis()) return;
-            if (q.tsMillis() - r.bar.time() >= NEW_BAR_GAP_MS) r.pendingNewBar = true;
+            if (r.startsNewDay(q.tsMillis())) r.pendingNewBar = true;
             r.quote = q;
         }
     }
