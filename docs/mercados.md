@@ -74,6 +74,11 @@ Selic, CDI, IPCA e PTAX, lidos do Banco Central e exibidos como o BCB publicou, 
 
 Os conjuntos 11 (Selic diária), 1 (dólar livre, venda), 10813 (dólar livre, compra), 4189 e 4390 (Selic acumulada) existem no portal, mas não são usados. Em 2026-11-19 os valores do SGS 1 e 10813 coincidiram com o PTAX (5,8889 e 5,8883), mas a fonte oficial da PTAX é o Olinda.
 
+### Como ler a data de cada indicador
+
+- **Meta Selic (432): "vigente em".** A série é preenchida para a frente com o valor vigente (em 2026-11-21 ia até 09/12/2026, todos 13,75). O CDI (12) não tem datas futuras. Por isso a data da Selic meta não mede a idade do dado, e a tela mostra "vigente em 20/11".
+- **Situação (`OK`, `STALE`, `UNAVAILABLE`):** `STALE` quando o sistema não confirma o valor há mais de **3 horas** (seis ciclos de 30 minutos sem sucesso, para todas as séries) ou, nas séries cuja data é de publicação, quando o BCB não publicou nada novo em 5 dias (diárias) ou 75 dias (IPCA mensal, com referência no 1º dia do mês). Os limites de 3 horas, 5 e 75 dias são regras de projeto, não do BCB.
+
 ### Contrato observado da API (2026-11-20 e 21)
 
 - **Janela de datas:** `dataInicial` e `dataFinal` em `dd/MM/aaaa`. A consulta sem filtro é limitada e a janela máxima é de 10 anos (página oficial do recurso JSON do SGS).

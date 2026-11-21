@@ -109,6 +109,7 @@ Decisões menores (no corpo dos PRs):
 | 18 | Correspondência produto → sigla do título público (LFT, LTN, NTN-F, NTN-B) sem releitura em página oficial (o Tesouro Direto respondeu 403); os nomes dos produtos foram confirmados nos dados abertos da STN. Notas comerciais e promissórias não constam na lista do FGC (tratadas como sem garantia) | `domain/AssetType` | item #12 |
 
 **Resolvidas**
+- Item #5 (pós-review): a Selic meta (SGS 432) é preenchida para a frente com o valor vigente, então sua data é sempre a de hoje; a regra de defasagem por data nunca disparava para ela e, se a coleta falhasse por dias, o painel afirmaria "dado em dia". Agora cada observação guarda quando o sistema a confirmou (`confirmedAt`), qualquer série fica `STALE` após 3 h sem confirmação, a Selic meta não usa a data como idade e a tela diz "vigente em". `refresh()` do BCB passou a ser exclusivo (antes duas rodadas simultâneas disputavam a cota e o retrato) e `Rate.compoundedOver` valida o teto de períodos do `BigDecimal.pow`.
 - Item #5: dívida 15 (PRs incompatíveis do Dependabot: #6 fechado à mão, #9 e #12 fechados pelo próprio Dependabot após a nova configuração).
 - Item #4 (pós-review): o stream de cripto zerava o backoff ao abrir a conexão (e não ao provar que ela funciona) e deixava o socket aberto quando a bolsa devolvia erro; uma bolsa que aceitava o handshake e derrubava a conexão era martelada a cada segundo, acumulando WebSockets abertos, sem nunca fazer failover. Agora as falhas só zeram no primeiro preço válido, o socket é fechado quando a perda é decidida pelo cliente e três falhas seguidas isolam a bolsa por 5 min.
 - PR #3 (pós-review): com o dia em andamento, a Yahoo manda a barra corrente com close nulo; o parser a descartava e a cotação de hoje era gravada sobre a barra de ontem (SPY 19/11 aparecia com 689,81 em vez de 715,87). Agora a barra do dia usa os OHLC reais com o close do meta, cotação de dia posterior abre barra nova e a abertura é o primeiro preço observado.
@@ -137,7 +138,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 134 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 181 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |

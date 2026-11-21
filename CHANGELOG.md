@@ -19,6 +19,8 @@ Milestone 1: Fundação Arquitetural & Mercados Globais.
 - ADR 006 e fixtures reais do BCB e do HGLG11.
 
 ### Corrigido (item #5)
+- A Selic meta, preenchida para a frente pelo SGS, nunca ficava desatualizada e exibia a data de hoje como se fosse de publicação: cada observação agora guarda a última confirmação, qualquer série fica desatualizada após 3 horas sem confirmação e a tela diz "vigente em".
+- A atualização dos indicadores do BCB passou a ser exclusiva (rodadas simultâneas disputavam a cota e o retrato).
 - O Jackson apagava zeros à direita dos decimais do BCB (o PTAX saía `5.8889` em vez de `5.88890`).
 - A nota promissória deixou de ter forma de renda presumida.
 - Os PRs do Dependabot incompatíveis com o projeto (Temurin 26, Spring Boot 4 e Maven 3.10) foram fechados.
