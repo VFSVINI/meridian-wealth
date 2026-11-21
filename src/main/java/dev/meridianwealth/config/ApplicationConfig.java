@@ -2,6 +2,8 @@ package dev.meridianwealth.config;
 
 import dev.meridianwealth.application.BacktestService;
 import dev.meridianwealth.application.BrazilRatesService;
+import dev.meridianwealth.application.CompositionService;
+import dev.meridianwealth.application.port.CompositionPort;
 import dev.meridianwealth.application.MarketService;
 import dev.meridianwealth.application.StatusService;
 import dev.meridianwealth.application.StreamService;
@@ -48,6 +50,9 @@ public class ApplicationConfig {
     BrazilRatesService brazilRatesService(BrazilRatesPort rates, Clock brasiliaClock) {
         return new BrazilRatesService(rates, brasiliaClock);
     }
+
+    @Bean
+    CompositionService compositionService(CompositionPort composition) { return new CompositionService(composition); }
 
     @Bean
     StatusService statusService(CacheStore cache, StreamService stream, List<ProviderStatusSource> providers,

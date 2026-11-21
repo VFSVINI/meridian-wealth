@@ -43,6 +43,31 @@ class ApiIntegrationTest {
                 .filter(t -> symbol.equals(t.get("symbol"))).findFirst().orElseThrow();
     }
 
+    @Test void compositionServesSourceDateAndExplicitGaps() {
+        Map<?, ?> knri = rest.getForObject("/api/composition/knri11", Map.class);
+        assertThat(knri.get("symbol")).isEqualTo("KNRI11");
+        assertThat(((Map<?, ?>) knri.get("source")).get("kind")).isEqualTo("OFFICIAL");
+        assertThat(knri.get("declaredAssetCount")).isEqualTo(20);
+        assertThat(knri.get("listedAssetCount")).isEqualTo(17);
+        List<Map<String, Object>> assets = (List<Map<String, Object>>) knri.get("assets");
+        Map<String, Object> without = assets.stream().filter(a -> a.get("coordinates") == null).findFirst().orElseThrow();
+        assertThat((String) without.get("noCoordinatesReason")).isNotBlank();
+        Map<String, Object> with = assets.stream().filter(a -> a.get("coordinates") != null).findFirst().orElseThrow();
+        assertThat((String) ((Map<?, ?>) with.get("coordinates")).get("satelliteUrl")).contains("basemap=satellite");
+        assertThat((String) knri.get("attribution")).contains("OpenStreetMap");
+    }
+
+    @Test void compositionGeoListsOnlyValidatedPoints() {
+        Map<?, ?> geo = rest.getForObject("/api/composition/geo", Map.class);
+        assertThat((List<?>) geo.get("points")).hasSize(32);
+    }
+
+    @Test void compositionWithoutCuratedDataIs404() {
+        var response = rest.getForEntity("/api/composition/PETR4", Map.class);
+        assertThat(response.getStatusCode().value()).isEqualTo(404);
+        assertThat((String) response.getBody().get("error")).contains("Sem composição publicada");
+    }
+
     @Test void overviewShowsRealSourcesAndExplicitGaps() {
         Map<?, ?> body = rest.getForObject("/api/overview", Map.class);
         assertThat(body.get("mode")).isEqualTo("PARCIAL");
