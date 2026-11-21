@@ -1,7 +1,6 @@
 package dev.meridianwealth.application;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.meridianwealth.application.port.CacheStore;
+import dev.meridianwealth.application.port.BacktestCache;
 import dev.meridianwealth.application.port.FundamentalsPort;
 import dev.meridianwealth.application.port.MarketDataPort;
 import dev.meridianwealth.application.port.SignalStore;
@@ -12,6 +11,7 @@ import dev.meridianwealth.domain.Instrument;
 import dev.meridianwealth.domain.MacroSnapshot;
 import dev.meridianwealth.domain.Signal;
 import dev.meridianwealth.domain.TimingEngine;
+import java.lang.System.Logger.Level;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -22,9 +22,6 @@ import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
 /**
  * Estado de mercado por ativo, construído apenas com dados reais.
@@ -32,10 +29,14 @@ import org.springframework.stereotype.Service;
  * <p>Cada ativo começa {@link DataStatus#UNAVAILABLE} e só passa a ter preço quando um provedor
  * (ou o banco, com o último dado real gravado) devolve histórico. Nenhum valor é interpolado ou
  * animado: a barra viva reflete exatamente a última cotação recebida.
+ *
+ * <p>POJO sem framework (ADR 001): dependências chegam por construtor e a composição é feita em
+ * {@code dev.meridianwealth.config}. Leitura e escrita de estado ficam sob o monitor do objeto;
+ * I/O (histórico, banco, cache, backtest) acontece fora dele.
  */
-@Service
 public class MarketService {
-    private static final Logger log = LoggerFactory.getLogger(MarketService.class);
+    private static final System.Logger LOG = System.getLogger(MarketService.class.getName());
+    private static final Duration BACKTEST_TTL = Duration.ofMinutes(10);
     private static final int HISTORY_BARS = 500;
     private static final int MAX_BARS = 1500;
 
@@ -65,30 +66,31 @@ public class MarketService {
 
     private final MarketDataPort data;
     private final SignalStore signals;
-    private final CacheStore cache;
-    private final ObjectMapper mapper;
+    private final BacktestCache backtestCache;
     private final FundamentalsPort fundamentals;
     private final BacktestService backtests;
     private final TimingEngine engine = new TimingEngine();
     private final Map<String, Series> series = new LinkedHashMap<>();
     private MacroSnapshot macro = MacroSnapshot.unavailable();
 
-    public MarketService(MarketDataPort data, SignalStore signals, CacheStore cache, ObjectMapper mapper,
+    /** Cria o serviço com todos os ativos em {@link DataStatus#UNAVAILABLE}; chame {@link #loadHistories()}. */
+    public MarketService(MarketDataPort data, SignalStore signals, BacktestCache backtestCache,
                          FundamentalsPort fundamentals, BacktestService backtests) {
         this.data = data;
         this.signals = signals;
-        this.cache = cache;
-        this.mapper = mapper;
+        this.backtestCache = backtestCache;
         this.fundamentals = fundamentals;
         this.backtests = backtests;
         for (Instrument i : data.universe()) series.put(i.symbol(), new Series(i));
-        loadHistories();
-        this.macro = data.macro();
     }
 
     /** Busca o histórico real de todos os ativos em paralelo (I/O fora do lock). */
     public void loadHistories() {
         fetchAndInstall(List.copyOf(series.keySet()));
+        MacroSnapshot m = data.macro();
+        synchronized (this) {
+            macro = m;
+        }
     }
 
     /** Tenta de novo os ativos que continuam sem dado real (provedor fora do ar na partida, por exemplo). */
@@ -117,7 +119,7 @@ public class MarketService {
         synchronized (this) {
             results.forEach((symbol, h) -> {
                 if (!h.available()) {
-                    log.warn("{}: sem dado em tempo real e sem dado gravado", symbol);
+                    LOG.log(Level.WARNING, "{0}: sem dado em tempo real e sem dado gravado", symbol);
                     return;
                 }
                 Series s = series.get(symbol);
@@ -127,7 +129,7 @@ public class MarketService {
                 s.freshness = h.freshness();
                 s.quoteTime = h.quoteTime();
                 s.open = data.marketOpen(symbol);
-                log.info("{}: {} barras reais via {} ({})", symbol, h.candles().size(), h.source(),
+                LOG.log(Level.INFO, "{0}: {1} barras reais via {2} ({3})", symbol, h.candles().size(), h.source(),
                         h.freshness().label());
             });
         }
@@ -223,7 +225,7 @@ public class MarketService {
         try {
             signals.save(r);
         } catch (RuntimeException e) {
-            log.warn("Banco: gravação do sinal de {} falhou ({})", r.symbol(), e.getMessage());
+            LOG.log(Level.WARNING, "Banco: gravação do sinal de {0} falhou ({1})", r.symbol(), e.getMessage());
         }
     }
 
@@ -270,24 +272,26 @@ public class MarketService {
             int from = Math.max(0, s.candles.size() - bars);
             window = new ArrayList<>(s.candles.subList(from, s.candles.size()));
             risk = macro.riskFor(s.instrument.sector());
-            key = "bt:" + symbol + ":" + buyScore + ":" + sellScore + ":" + bars + ":" + s.candles.size()
-                    + ":" + System.currentTimeMillis() / 30_000;
+            key = backtestKey(symbol, buyScore, sellScore, bars, window, risk);
         }
-        Optional<String> hit = cache.get(key);
-        if (hit.isPresent()) {
-            try {
-                return mapper.readValue(hit.get(), BacktestService.Result.class);
-            } catch (Exception e) {
-                log.debug("Cache de backtest inválido: {}", e.getMessage());
-            }
-        }
+        Optional<BacktestService.Result> hit = backtestCache.get(key);
+        if (hit.isPresent()) return hit.get();
         BacktestService.Result r = backtests.run(window, buyScore, sellScore, risk);
-        try {
-            cache.put(key, mapper.writeValueAsString(r), Duration.ofSeconds(60));
-        } catch (Exception e) {
-            log.debug("Falha ao cachear backtest: {}", e.getMessage());
-        }
+        backtestCache.put(key, r, BACKTEST_TTL);
         return r;
+    }
+
+    /**
+     * Chave pela versão dos dados (dívida 4): parâmetros + tamanho da janela + horário e valor exato
+     * da última barra + risco macro aplicado. Muda somente quando o resultado pode mudar, em vez de
+     * expirar a cada 30 s e gerar recomputações em rajada.
+     */
+    static String backtestKey(String symbol, int buyScore, int sellScore, int bars, List<Candle> window,
+                              double risk) {
+        Candle last = window.get(window.size() - 1);
+        return "bt:" + symbol + ":" + buyScore + ":" + sellScore + ":" + bars + ":" + window.size() + ":"
+                + last.time() + ":" + Long.toHexString(Double.doubleToLongBits(last.close())) + ":"
+                + Long.toHexString(Double.doubleToLongBits(risk));
     }
 
     private Series require(String symbol) {

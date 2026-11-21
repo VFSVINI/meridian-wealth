@@ -4,7 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.meridianwealth.application.Quote;
 import dev.meridianwealth.domain.Fundamentals;
-import dev.meridianwealth.infrastructure.resilience.ProviderStats;
+import dev.meridianwealth.application.ProviderStatus;
+import dev.meridianwealth.application.port.ProviderStatusSource;
 import dev.meridianwealth.infrastructure.resilience.ResilientExecutor;
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 /** Finnhub (plano gratuito, 60 req/min, exige chave): cotação, fundamentos e notícias gerais. */
 @Component
-public class FinnhubClient implements ProviderInfo {
+public class FinnhubClient implements ProviderStatusSource {
     private static final ObjectMapper JSON = new ObjectMapper();
     private static final String BASE = "https://finnhub.io/api/v1";
 
@@ -88,5 +89,5 @@ public class FinnhubClient implements ProviderInfo {
     }
 
     @Override
-    public ProviderStats stats() { return executor.stats(enabled()); }
+    public ProviderStatus status() { return executor.stats(enabled()); }
 }

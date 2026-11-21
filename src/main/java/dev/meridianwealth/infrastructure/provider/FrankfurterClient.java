@@ -4,7 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.meridianwealth.application.Quote;
 import dev.meridianwealth.domain.Candle;
-import dev.meridianwealth.infrastructure.resilience.ProviderStats;
+import dev.meridianwealth.application.ProviderStatus;
+import dev.meridianwealth.application.port.ProviderStatusSource;
 import dev.meridianwealth.infrastructure.resilience.ResilientExecutor;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Component;
 
 /** Frankfurter (câmbio do BCE, sem chave): série diária e última taxa. Sem OHLC nem volume. */
 @Component
-public class FrankfurterClient implements ProviderInfo {
+public class FrankfurterClient implements ProviderStatusSource {
     private static final ObjectMapper JSON = new ObjectMapper();
 
     private final HttpGateway http;
@@ -61,5 +62,5 @@ public class FrankfurterClient implements ProviderInfo {
     }
 
     @Override
-    public ProviderStats stats() { return executor.stats(true); }
+    public ProviderStatus status() { return executor.stats(true); }
 }

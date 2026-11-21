@@ -1,5 +1,6 @@
 package dev.meridianwealth.infrastructure.resilience;
 
+import dev.meridianwealth.application.ProviderStatus;
 import java.time.Duration;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ThreadLocalRandom;
@@ -76,8 +77,8 @@ public final class ResilientExecutor {
         throw new ProviderException(name, last == null ? new IllegalStateException("interrompido") : last);
     }
 
-    public ProviderStats stats(boolean enabled) {
-        return new ProviderStats(name, enabled, breaker.state().name(), ok.get(), failed.get(), shorted.get(), limited.get());
+    public ProviderStatus stats(boolean enabled) {
+        return new ProviderStatus(name, enabled, breaker.state().name(), ok.get(), failed.get(), shorted.get(), limited.get());
     }
 
     public String name() { return name; }

@@ -1,6 +1,7 @@
 package dev.meridianwealth.infrastructure.provider;
 
-import dev.meridianwealth.infrastructure.resilience.ProviderStats;
+import dev.meridianwealth.application.ProviderStatus;
+import dev.meridianwealth.application.port.ProviderStatusSource;
 import dev.meridianwealth.infrastructure.resilience.ResilientExecutor;
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
@@ -17,7 +18,7 @@ import org.w3c.dom.NodeList;
 
 /** Manchetes de feeds RSS públicos (mundo e economia) para o índice de risco geopolítico. */
 @Component
-public class RssNewsClient implements ProviderInfo {
+public class RssNewsClient implements ProviderStatusSource {
     private static final Logger log = LoggerFactory.getLogger(RssNewsClient.class);
     private static final Map<String, String> FEEDS = Map.of(
             "BBC World", "https://feeds.bbci.co.uk/news/world/rss.xml",
@@ -56,5 +57,5 @@ public class RssNewsClient implements ProviderInfo {
     }
 
     @Override
-    public ProviderStats stats() { return executor.stats(true); }
+    public ProviderStatus status() { return executor.stats(true); }
 }

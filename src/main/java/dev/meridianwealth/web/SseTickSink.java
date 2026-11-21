@@ -1,8 +1,9 @@
-package dev.meridianwealth.infrastructure.stream;
+package dev.meridianwealth.web;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.meridianwealth.application.TickBatch;
+import dev.meridianwealth.application.port.TickSink;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import org.slf4j.Logger;
@@ -10,19 +11,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
-/** Publica cada lote por SSE e WebSocket. O JSON é serializado uma vez e reaproveitado. */
+/** Canal SSE do stream ({@code /api/stream}), usado pelo painel quando o WebSocket não conecta. */
 @Component
-public class StreamHub {
-    private static final Logger log = LoggerFactory.getLogger(StreamHub.class);
+public class SseTickSink implements TickSink {
+    private static final Logger log = LoggerFactory.getLogger(SseTickSink.class);
 
     private final List<SseEmitter> emitters = new CopyOnWriteArrayList<>();
-    private final StreamWebSocketHandler ws;
     private final ObjectMapper mapper;
 
-    public StreamHub(StreamWebSocketHandler ws, ObjectMapper mapper) {
-        this.ws = ws;
-        this.mapper = mapper;
-    }
+    public SseTickSink(ObjectMapper mapper) { this.mapper = mapper; }
 
     public SseEmitter subscribe() {
         SseEmitter e = new SseEmitter(0L);
@@ -34,7 +31,12 @@ public class StreamHub {
         return e;
     }
 
+    @Override
+    public String channel() { return "SSE"; }
+
+    @Override
     public void publish(TickBatch batch) {
+        if (emitters.isEmpty()) return;
         String json;
         try {
             json = mapper.writeValueAsString(batch);
@@ -42,7 +44,6 @@ public class StreamHub {
             log.error("Falha ao serializar o lote de ticks", ex);
             return;
         }
-        ws.broadcast(json);
         for (SseEmitter e : emitters) {
             try {
                 e.send(SseEmitter.event().name("tick").data(json));
@@ -52,7 +53,6 @@ public class StreamHub {
         }
     }
 
-    public int sseClients() { return emitters.size(); }
-
-    public int wsClients() { return ws.connections(); }
+    @Override
+    public int clients() { return emitters.size(); }
 }

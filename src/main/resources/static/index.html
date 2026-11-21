@@ -245,7 +245,7 @@ async function loadStatus(){
   const st=await j('/api/status').catch(()=>null);if(!st)return;
   const c={CLOSED:'up',HALF_OPEN:'warn',OPEN:'dn'};
   $('#status').innerHTML=st.providers.map(p=>`<div style="display:flex;justify-content:space-between"><span>${p.name}${p.enabled?'':' (sem chave)'}</span><span class="${p.enabled?c[p.circuit]:'mute'}">${p.circuit}</span><span class="num mute">${p.successes}/${p.failures}</span></div>`).join('')
-   +`<div style="margin-top:6px">Cache: <b>${st.cache}</b> · Banco: <b>${st.persistence?'ligado':'desligado'}</b></div><div>Conexões: WS ${st.wsClients} · SSE ${st.sseClients}</div>`;
+   +`<div style="margin-top:6px">Cache: <b>${st.cache}</b> · Banco: <b>${st.persistence?'ligado':'desligado'}</b></div><div>Conexões: ${(st.channels||[]).map(c=>c.name+' '+c.clients).join(' · ')}</div>`;
 }
 setInterval(loadStatus,10000);setInterval(()=>{if(sel&&!paused){loadMicro();loadSignals()}},30000);
 

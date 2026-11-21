@@ -10,7 +10,6 @@ import dev.meridianwealth.domain.Assessment;
 import dev.meridianwealth.domain.Candle;
 import dev.meridianwealth.domain.Instrument;
 import dev.meridianwealth.domain.TimingEngine;
-import dev.meridianwealth.infrastructure.stream.StreamHub;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -35,11 +34,11 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 @Validated
 public class MarketController {
     private final MarketService market;
-    private final StreamHub hub;
+    private final SseTickSink sse;
 
-    public MarketController(MarketService market, StreamHub hub) {
+    public MarketController(MarketService market, SseTickSink sse) {
         this.market = market;
-        this.hub = hub;
+        this.sse = sse;
     }
 
     @GetMapping("/universe")
@@ -73,7 +72,7 @@ public class MarketController {
     }
 
     @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public SseEmitter stream() { return hub.subscribe(); }
+    public SseEmitter stream() { return sse.subscribe(); }
 
     @RestControllerAdvice
     static class Errors {

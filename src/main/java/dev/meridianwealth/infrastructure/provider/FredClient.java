@@ -2,7 +2,8 @@ package dev.meridianwealth.infrastructure.provider;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.meridianwealth.infrastructure.resilience.ProviderStats;
+import dev.meridianwealth.application.ProviderStatus;
+import dev.meridianwealth.application.port.ProviderStatusSource;
 import dev.meridianwealth.infrastructure.resilience.ResilientExecutor;
 import java.io.IOException;
 import java.util.Map;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 /** FRED (St. Louis Fed, chave gratuita): último valor de séries macro como DGS10. */
 @Component
-public class FredClient implements ProviderInfo {
+public class FredClient implements ProviderStatusSource {
     private static final ObjectMapper JSON = new ObjectMapper();
 
     private final HttpGateway http;
@@ -40,5 +41,5 @@ public class FredClient implements ProviderInfo {
     }
 
     @Override
-    public ProviderStats stats() { return executor.stats(enabled()); }
+    public ProviderStatus status() { return executor.stats(enabled()); }
 }

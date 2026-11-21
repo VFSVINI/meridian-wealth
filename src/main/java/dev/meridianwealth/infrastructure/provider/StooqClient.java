@@ -2,7 +2,8 @@ package dev.meridianwealth.infrastructure.provider;
 
 import dev.meridianwealth.application.Quote;
 import dev.meridianwealth.domain.Candle;
-import dev.meridianwealth.infrastructure.resilience.ProviderStats;
+import dev.meridianwealth.application.ProviderStatus;
+import dev.meridianwealth.application.port.ProviderStatusSource;
 import dev.meridianwealth.infrastructure.resilience.ResilientExecutor;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 /** Stooq (CSV público): histórico diário e cotação atrasada. Pode exigir captcha/chave em alguns períodos. */
 @Component
-public class StooqClient implements ProviderInfo {
+public class StooqClient implements ProviderStatusSource {
     private final HttpGateway http;
     private final ResilientExecutor executor = ResilientExecutor.withDefaults("Stooq", 3, 1.0);
 
@@ -58,5 +59,5 @@ public class StooqClient implements ProviderInfo {
     }
 
     @Override
-    public ProviderStats stats() { return executor.stats(true); }
+    public ProviderStatus status() { return executor.stats(true); }
 }

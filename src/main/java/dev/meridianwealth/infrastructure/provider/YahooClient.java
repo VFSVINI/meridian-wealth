@@ -4,7 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.meridianwealth.application.Quote;
 import dev.meridianwealth.domain.Candle;
-import dev.meridianwealth.infrastructure.resilience.ProviderStats;
+import dev.meridianwealth.application.ProviderStatus;
+import dev.meridianwealth.application.port.ProviderStatusSource;
 import dev.meridianwealth.infrastructure.resilience.ResilientExecutor;
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 /** Yahoo Finance (endpoint público de gráfico): histórico diário, cotação atrasada, VIX, dólar e juros. */
 @Component
-public class YahooClient implements ProviderInfo {
+public class YahooClient implements ProviderStatusSource {
     public record Chart(List<Candle> candles, double price, long tsMillis) {}
 
     private static final ObjectMapper JSON = new ObjectMapper();
@@ -69,5 +70,5 @@ public class YahooClient implements ProviderInfo {
     }
 
     @Override
-    public ProviderStats stats() { return executor.stats(true); }
+    public ProviderStatus status() { return executor.stats(true); }
 }

@@ -7,10 +7,8 @@ import dev.meridianwealth.domain.Signal;
 import dev.meridianwealth.domain.TimingEngine;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.stereotype.Service;
 
 /** Backtest analítico: entra quando score ≥ buyScore, sai no stop técnico ou quando score ≤ -sellScore. */
-@Service
 public class BacktestService {
     public record Trade(int entryIdx, int exitIdx, double entry, double exit, double ret, String reason) {}
     public record Result(List<Trade> trades, double strategyReturn, double buyHoldReturn,
