@@ -1,0 +1,341 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "KNRI11",
+  "nomeDoFundo": "Kinea Renda Imobiliária FII",
+  "fonte": {
+    "nome": "Página do fundo no site da gestora (Kinea Investimentos)",
+    "url": "https://www.kinea.com.br/fundos/fundo-imobiliario-kinea-renda-knri11/",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-10",
+    "consultadoEm": "2026-11-21",
+    "sha256DoTextoExtraido": "04208ddcd1e77652336d4d79fae834fc743c156e170460eb3645e054b6425635"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 11,
+    "semCoordenadas": 6
+  },
+  "rotuloDaArea": "Área Bruta Locável",
+  "quantidadeDeAtivosDeclarada": 20,
+  "metricasDoFundo": {
+    "ablTotalM2": "765508",
+    "ablTotalPublicada": "765.508 m²",
+    "vacanciaFisicaPercentual": "3.91",
+    "vacanciaFinanceiraPercentual": "5.14",
+    "referenciaDasMetricas": "2026-11-18"
+  },
+  "avisos": [
+    "A página lista 17 dos 20 imóveis declarados; os demais ficam atrás de 'Mostrar mais ativos' e não constam desta lista.",
+    "A página não informa os inquilinos por imóvel nem a participação do fundo (exceto no Biosquare, fora desta lista)."
+  ],
+  "ativos": [
+    {
+      "nome": "Biosquare São Paulo",
+      "enderecoPublicado": "Rua dos Pinheiros, 701, São Paulo, SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": "EDIFICIO_COMERCIAL",
+      "tipoPublicado": "Edifício comercial",
+      "areaM2": "41930",
+      "areaPublicada": "41.930 m²",
+      "id": "knri11-biosquare-sao-paulo",
+      "coordenadas": {
+        "lat": "-23.566500",
+        "lng": "-46.684657",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "701, Rua dos Pinheiros, Jardim Europa, Pinheiros, São Paulo, Região Sudeste, 05422-011, Brasil",
+        "osm": "node/5578970432",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Rua dos Pinheiros, 701, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Boulevard Corporate Tower",
+      "enderecoPublicado": "Avenida dos Andradas, 3000, Bairro Santa Efigênia, na cidade de Belo Horizonte, Estado de Minas Gerais",
+      "cidade": "Belo Horizonte",
+      "uf": "MG",
+      "tipo": "EDIFICIO_COMERCIAL",
+      "tipoPublicado": "Edifício comercial",
+      "areaM2": "20461.18",
+      "areaPublicada": "20.461,18 m²",
+      "id": "knri11-boulevard-corporate-tower",
+      "coordenadas": {
+        "lat": "-19.920696",
+        "lng": "-43.920238",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Boulevard Shopping, 3000, Avenida dos Andradas, Santa Efigênia, Regional Leste, Belo Horizonte, Minas Gerais, Região Sudeste, 30110-014, Brasil",
+        "osm": "way/89435468",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Avenida dos Andradas, 3000, Belo Horizonte, MG, Brasil"
+      }
+    },
+    {
+      "nome": "Centro de Distribuição Cabreúva",
+      "enderecoPublicado": "Rodovia Dom Gabriel Paulino Couto, km 82 (sentido Itú)",
+      "cidade": null,
+      "uf": null,
+      "tipo": "GALPAO_LOGISTICO",
+      "tipoPublicado": "Galpão logístico",
+      "areaM2": "178730.34",
+      "areaPublicada": "178.730,34 m²",
+      "id": "knri11-centro-de-distribuicao-cabreuva",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Centro de Distribuição Global Jundiaí",
+      "enderecoPublicado": "Avenida Caminho de Goiás, 100, Jundiaí - SP",
+      "cidade": "Jundiaí",
+      "uf": "SP",
+      "tipo": "GALPAO_LOGISTICO",
+      "tipoPublicado": "Galpão logístico",
+      "areaM2": "41468",
+      "areaPublicada": "41.468 m²",
+      "id": "knri11-centro-de-distribuicao-global-jundiai",
+      "coordenadas": {
+        "lat": "-23.131525",
+        "lng": "-46.946237",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Caminho de Goiás, Núcleo Residencial Água Doce, Água Doce, Jundiaí, São Paulo, Região Sudeste, 13214-890, Brasil",
+        "osm": "way/346415274",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Avenida Caminho de Goiás, 100, Jundiaí - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Centro de Distribuição Itaquaquecetuba",
+      "enderecoPublicado": "Rua do Níquel, 205 – Parque Industrial – Itaquaquecetuba – SP.",
+      "cidade": "Itaquaquecetuba",
+      "uf": "SP",
+      "tipo": "GALPAO_LOGISTICO",
+      "tipoPublicado": "Galpão logístico",
+      "areaM2": "30698",
+      "areaPublicada": "30.698 m²",
+      "id": "knri11-centro-de-distribuicao-itaquaquecetuba",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Centro de Distribuição Mogi das Cruzes",
+      "enderecoPublicado": "Rodovia Mogi-Dutra, 11.100 (km 41,4), Mogi das Cruzes, SP",
+      "cidade": "Mogi das Cruzes",
+      "uf": "SP",
+      "tipo": "GALPAO_LOGISTICO",
+      "tipoPublicado": "Galpão logístico",
+      "areaM2": "69113",
+      "areaPublicada": "69.113 m²",
+      "id": "knri11-centro-de-distribuicao-mogi-das-cruzes",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Centro de Distribuição Pouso Alegre",
+      "enderecoPublicado": "Rodovia Fernão Dias, km 863, Pouso Alegre, MG",
+      "cidade": "Pouso Alegre",
+      "uf": "MG",
+      "tipo": "GALPAO_LOGISTICO",
+      "tipoPublicado": "Galpão logístico",
+      "areaM2": "87750",
+      "areaPublicada": "87.750 m²",
+      "id": "knri11-centro-de-distribuicao-pouso-alegre",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "Centro de Distribuição Santa Cruz",
+      "enderecoPublicado": "Estrada da Lama Preta, 2.805, Santa Cruz, Rio de Janeiro, RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": "GALPAO_LOGISTICO",
+      "tipoPublicado": "Galpão logístico",
+      "areaM2": "64860",
+      "areaPublicada": "64.860 m²",
+      "id": "knri11-centro-de-distribuicao-santa-cruz",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "Ed. São Luiz (Torre IV)",
+      "enderecoPublicado": "Avenida Juscelino Kubitschek, 1830, São Paulo - Sp",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": "EDIFICIO_COMERCIAL",
+      "tipoPublicado": "Edifício comercial",
+      "areaM2": "11354",
+      "areaPublicada": "11.354 m²",
+      "id": "knri11-ed-sao-luiz-torre-iv",
+      "coordenadas": {
+        "lat": "-23.586792",
+        "lng": "-46.673867",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Presidente Juscelino Kubitschek, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04543-903, Brasil",
+        "osm": "way/325320426",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Avenida Juscelino Kubitschek, 1830, São Paulo - Sp, Brasil"
+      }
+    },
+    {
+      "nome": "Edifício Bela Paulista",
+      "enderecoPublicado": "Avenida Paulista, 2.421, Bela Vista – São Paulo, SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": "EDIFICIO_COMERCIAL",
+      "tipoPublicado": "Edifício comercial",
+      "areaM2": "6521",
+      "areaPublicada": "6.521 m²",
+      "id": "knri11-edificio-bela-paulista",
+      "coordenadas": {
+        "lat": "-23.566751",
+        "lng": "-46.650002",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Paulista, Morro dos Ingleses, Bela Vista, São Paulo, Região Sudeste, 01311-941, Brasil",
+        "osm": "way/231341013",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Avenida Paulista, 2.421, Bela Vista – São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edifício Botafogo Trade Center",
+      "enderecoPublicado": "Avenida Prof. Álvaro Rodrigues, 352, Botafogo – Rio de Janeiro, RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": "EDIFICIO_COMERCIAL",
+      "tipoPublicado": "Edifício comercial",
+      "areaM2": "8083",
+      "areaPublicada": "8.083 m²",
+      "id": "knri11-edificio-botafogo-trade-center",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Edifício Buenos Aires Corporate",
+      "enderecoPublicado": "Rua Buenos Aires, 15, Centro – Rio de Janeiro, RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": "EDIFICIO_COMERCIAL",
+      "tipoPublicado": "Edifício comercial",
+      "areaM2": "6886.88",
+      "areaPublicada": "6.886,88 m²",
+      "id": "knri11-edificio-buenos-aires-corporate",
+      "coordenadas": {
+        "lat": "-22.904015",
+        "lng": "-43.181843",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Buenos Aires, Saara, Castelo, Centro, Rio de Janeiro, Região Sudeste, 20051-020, Brasil",
+        "osm": "way/263565285",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Rua Buenos Aires, 15, Centro – Rio de Janeiro, RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Edifício Diogo Moreira",
+      "enderecoPublicado": "Rua Diogo Moreira, 184 - Pinheiros, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": "EDIFICIO_COMERCIAL",
+      "tipoPublicado": "Edifício comercial",
+      "areaM2": "12104.57",
+      "areaPublicada": "12.104,57 m²",
+      "id": "knri11-edificio-diogo-moreira",
+      "coordenadas": {
+        "lat": "-23.570120",
+        "lng": "-46.693469",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Edifício Diogo Moreira, 184, Rua Diogo Moreira, Vila Madalena, Pinheiros, São Paulo, Região Sudeste, 05423-010, Brasil",
+        "osm": "way/696686994",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Rua Diogo Moreira, 184 - Pinheiros, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edifício Joaquim Floriano",
+      "enderecoPublicado": "Rua Joaquim Floriano, 913, Itaim – São Paulo, SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": "EDIFICIO_COMERCIAL",
+      "tipoPublicado": "Edifício comercial",
+      "areaM2": "3898.63",
+      "areaPublicada": "3.898.63 m²",
+      "id": "knri11-edificio-joaquim-floriano",
+      "coordenadas": {
+        "lat": "-23.585728",
+        "lng": "-46.678768",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "913, Rua Joaquim Floriano, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04532-002, Brasil",
+        "osm": "way/1060313627",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Rua Joaquim Floriano, 913, Itaim – São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edifício Lagoa Corporate",
+      "enderecoPublicado": "Rua Humaitá, 275, Humaitá, Rio de Janeiro, RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": "EDIFICIO_COMERCIAL",
+      "tipoPublicado": "Edifício comercial",
+      "areaM2": "11687",
+      "areaPublicada": "11.687 m²",
+      "id": "knri11-edificio-lagoa-corporate",
+      "coordenadas": {
+        "lat": "-22.960525",
+        "lng": "-43.202558",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "CASV - Centro de Atendimento ao Solicitante de Visto, 275, Rua Humaitá, Humaitá, Rio de Janeiro, Região Sudeste, 22261-001, Brasil",
+        "osm": "node/3853784842",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Rua Humaitá, 275, Humaitá, Rio de Janeiro, RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Edifício Madison",
+      "enderecoPublicado": "Rua Gomes de Carvalho, 1.195, Vila Olímpia – São Paulo, SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": "EDIFICIO_COMERCIAL",
+      "tipoPublicado": "Edifício comercial",
+      "areaM2": "8329.32",
+      "areaPublicada": "8.329,32 m²",
+      "id": "knri11-edificio-madison",
+      "coordenadas": {
+        "lat": "-23.594720",
+        "lng": "-46.689970",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Gomes de Carvalho, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04551-060, Brasil",
+        "osm": "way/345567795",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Rua Gomes de Carvalho, 1.195, Vila Olímpia – São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Rochaverá Corporate Towers",
+      "enderecoPublicado": "Avenida das Nações Unidas, 14171, São Paulo, SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": "EDIFICIO_COMERCIAL",
+      "tipoPublicado": "Edifício comercial",
+      "areaM2": "56734",
+      "areaPublicada": "56.734 m²",
+      "id": "knri11-rochavera-corporate-towers",
+      "coordenadas": {
+        "lat": "-23.622945",
+        "lng": "-46.701298",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Starbucks, 14171, Avenida das Nações Unidas, Chácara Santo Antônio, Santo Amaro, São Paulo, Região Sudeste, 04794-000, Brasil",
+        "osm": "node/3544917488",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Avenida das Nações Unidas, 14171, São Paulo, SP, Brasil"
+      }
+    }
+  ]
+}

@@ -1,0 +1,922 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "HGLG11",
+  "nomeDoFundo": "Pátria Log - Fundo De Investimento Imobiliário - Responsabilidade Limitada",
+  "fonte": {
+    "nome": "Informe Trimestral de FII (Anexo 39-II, CVM), via B3/FNET",
+    "url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=1382074&cvm=true",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-21",
+    "sha256DoTextoExtraido": "71f86a03cfecbb9d53f1366c4bc73641fe6a8772c3ee7c80977c0dd44ad5fc32"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 6,
+    "semCoordenadas": 30
+  },
+  "cnpj": "11.728.688/0001-47",
+  "rotuloDaArea": "Área (m2)",
+  "avisos": [
+    "O documento não informa tipo de imóvel, nome dos inquilinos nem participação do fundo; traz só os setores dos inquilinos acima de 10% da receita de cada imóvel.",
+    "O documento não define 'ABL': o campo publicado é 'Área (m2)'.",
+    "O mesmo Informe registra, na seção 2.2.2 (alienações do trimestre), a venda do HGLG Itapevi I em 30/07/2026 (34.286,00 m²); ele não consta da carteira atual."
+  ],
+  "ativos": [
+    {
+      "nome": "Betim",
+      "enderecoPublicado": "Avenida Parque B, 347, Betim, MG",
+      "cidade": "Betim",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "62587.38",
+      "areaPublicada": "62.587,38",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.1624",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "27.7174"
+        },
+        {
+          "setor": "Varejista",
+          "percentualDaReceitaDoImovel": "72.2826"
+        }
+      ],
+      "id": "hglg11-betim",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "CLE",
+      "enderecoPublicado": "Rua José Semião Rodrigues Agostinho, nº 1.370, Água Espraiada, Embu das Artes",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "66520",
+      "areaPublicada": "66.520,00",
+      "vacanciaPercentual": "8.8900",
+      "percentualDaReceitaDoFundo": "2.2741",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Indústria",
+          "percentualDaReceitaDoImovel": "10.3974"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "39.7925"
+        },
+        {
+          "setor": "E-commerce",
+          "percentualDaReceitaDoImovel": "18.0213"
+        },
+        {
+          "setor": "Farmacêutica",
+          "percentualDaReceitaDoImovel": "21.8197"
+        }
+      ],
+      "id": "hglg11-cle",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "DCB",
+      "enderecoPublicado": "Avenida Piracema, nº 155, quadra 5, lotes 9 a 16 e 17 (parte), Tamboré, Barueri",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "90484.02",
+      "areaPublicada": "90.484,02",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.4302",
+      "setoresDosInquilinos": [
+        {
+          "setor": "E-commerce",
+          "percentualDaReceitaDoImovel": "83.2437"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "16.7563"
+        }
+      ],
+      "id": "hglg11-dcb",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "DCC",
+      "enderecoPublicado": "Rodovia Anhanguera, km 31.775, Cidade de Cajamar",
+      "cidade": "Cajamar",
+      "uf": null,
+      "tipo": null,
+      "areaM2": "102708.28",
+      "areaPublicada": "102.708,28",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.4555",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "19.7061"
+        },
+        {
+          "setor": "E-commerce",
+          "percentualDaReceitaDoImovel": "63.0391"
+        },
+        {
+          "setor": "Gestão Empresarial",
+          "percentualDaReceitaDoImovel": "10.9832"
+        }
+      ],
+      "id": "hglg11-dcc",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "DCR",
+      "enderecoPublicado": "Av. Hélio Ossamu Daikuara, nº 1.445, Jardim Vista Alegre, Embu das Artes",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "77587.20",
+      "areaPublicada": "77.587,20",
+      "vacanciaPercentual": "13.5300",
+      "percentualDaReceitaDoFundo": "3.0841",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "17.0027"
+        },
+        {
+          "setor": "E-commerce",
+          "percentualDaReceitaDoImovel": "82.9973"
+        }
+      ],
+      "id": "hglg11-dcr",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Blumenau",
+      "enderecoPublicado": "Rua Iguaçu, 291/383, Blumenau, SC",
+      "cidade": "Blumenau",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "65824.77",
+      "areaPublicada": "65.824,77",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.1130",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Saúde",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hglg11-blumenau",
+      "coordenadas": {
+        "lat": "-26.899751",
+        "lng": "-49.078699",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Iguaçu, Itoupava Seca, Blumenau, Santa Catarina, Região Sul, 89030-030, Brasil",
+        "osm": "way/54019217",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Rua Iguaçu, Blumenau, SC, Brasil"
+      }
+    },
+    {
+      "nome": "Campo Grande",
+      "enderecoPublicado": "Estrada do Pedregoso, 900, Freguesia de Campo Grande, RJ",
+      "cidade": "Freguesia de Campo Grande",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "16532",
+      "areaPublicada": "16.532,00",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6623",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Siderurgia",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hglg11-campo-grande",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "CONE G06",
+      "enderecoPublicado": "Rodovia BR 101, 5225, Cabo de Santo Agostinho, PE",
+      "cidade": "Cabo de Santo Agostinho",
+      "uf": "PE",
+      "tipo": null,
+      "areaM2": "19467.69",
+      "areaPublicada": "19.467,69",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.4838",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Armazém",
+          "percentualDaReceitaDoImovel": "22.0435"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "55.7963"
+        },
+        {
+          "setor": "Energia",
+          "percentualDaReceitaDoImovel": "22.1603"
+        }
+      ],
+      "id": "hglg11-cone-g06",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "HGLG Embu",
+      "enderecoPublicado": "Estrada Santa Clara, nº 150, Bairro Maria Imaculada",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "39475",
+      "areaPublicada": "39.475,00",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.3190",
+      "setoresDosInquilinos": [
+        {
+          "setor": "\"-\"",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hglg11-hglg-embu",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Extrema",
+      "enderecoPublicado": "Estrada Municipal José Geraldo Aparecido e Rua Josepha Gomes de Souza, Extrema, MG",
+      "cidade": "Extrema",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "34100.63",
+      "areaPublicada": "34.100,63",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.4592",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Automotivo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hglg11-extrema",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "HGLG Extrema II Fernão Dias",
+      "enderecoPublicado": "Rua Maria Margarida Pinto Dona Belinha, nº 742, pavilhão B, módulo 3, Bairro dos Pires",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "57437.15",
+      "areaPublicada": "57.437,15",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.3529",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejista",
+          "percentualDaReceitaDoImovel": "14.5759"
+        },
+        {
+          "setor": "E-commerce",
+          "percentualDaReceitaDoImovel": "76.5607"
+        }
+      ],
+      "id": "hglg11-hglg-extrema-ii-fernao-dias",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "HGLG Extrema III Privalia",
+      "enderecoPublicado": "Estrada Municipal Benedito Steffani, n° 359, Bairro dos Pessegueiros",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "26773.55",
+      "areaPublicada": "26.773,55",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.1869",
+      "setoresDosInquilinos": [
+        {
+          "setor": "E-commerce",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hglg11-hglg-extrema-iii-privalia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "HGLG Goiânia",
+      "enderecoPublicado": "Rodovia BR 153, Km 5,5",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "78222.73",
+      "areaPublicada": "78.222,73",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.7645",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "65.5499"
+        },
+        {
+          "setor": "E-commerce",
+          "percentualDaReceitaDoImovel": "10.7350"
+        }
+      ],
+      "id": "hglg11-hglg-goiania",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "HGLG Guarulhos",
+      "enderecoPublicado": "Estr. Velha Guarulhos São Miguel, 1814 - Cumbica",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "105638",
+      "areaPublicada": "105.638,00",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.1825",
+      "setoresDosInquilinos": [
+        {
+          "setor": "\"-\"",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hglg11-hglg-guarulhos",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Itupeva",
+      "enderecoPublicado": "Estrada Joaquim Bueno Neto, 9835, Itupeva, SP",
+      "cidade": "Itupeva",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "58671.52",
+      "areaPublicada": "58.671,52",
+      "vacanciaPercentual": "7.2600",
+      "percentualDaReceitaDoFundo": "1.8896",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Tecnologia",
+          "percentualDaReceitaDoImovel": "15.6987"
+        },
+        {
+          "setor": "Engenharia e Eletrônica",
+          "percentualDaReceitaDoImovel": "48.1113"
+        },
+        {
+          "setor": "Automotivo",
+          "percentualDaReceitaDoImovel": "36.1900"
+        }
+      ],
+      "id": "hglg11-itupeva",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "Itupeva G200",
+      "enderecoPublicado": "Estrada Joaquim Bueno Neto, 9835, Itupeva, SP",
+      "cidade": "Itupeva",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "89976.04",
+      "areaPublicada": "89.976,04",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.1277",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Automotivo",
+          "percentualDaReceitaDoImovel": "68.6063"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "31.3937"
+        }
+      ],
+      "id": "hglg11-itupeva-g200",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "Itupeva G300",
+      "enderecoPublicado": "Estrada Joaquim Bueno Neto, 9835, Itupeva, SP",
+      "cidade": "Itupeva",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "69743.60",
+      "areaPublicada": "69.743,60",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.5632",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "60.7243"
+        },
+        {
+          "setor": "Farmacêutica",
+          "percentualDaReceitaDoImovel": "39.2757"
+        }
+      ],
+      "id": "hglg11-itupeva-g300",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "Louveira",
+      "enderecoPublicado": "Rua Atílio Biscuola, 1831, Louveira , SP",
+      "cidade": "Louveira",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "55201.51",
+      "areaPublicada": "55.201,51",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.0324",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bebidas",
+          "percentualDaReceitaDoImovel": "86.0709"
+        }
+      ],
+      "id": "hglg11-louveira",
+      "coordenadas": {
+        "lat": "-23.084814",
+        "lng": "-46.969595",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Bloco 100, 1831, Rua Atílio Biscuola, Colina da Bela Vista, Louveira, São Paulo, Região Sudeste, 13290-000, Brasil",
+        "osm": "way/684179046",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Rua Atílio Biscuola, 1831, Louveira , SP, Brasil"
+      }
+    },
+    {
+      "nome": "Monte Mor",
+      "enderecoPublicado": "Rua Tobias Bueno de Oliveira, 701, Monte Mor, SP",
+      "cidade": "Monte Mor",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "24696.38",
+      "areaPublicada": "24.696,38",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.8601",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Embalagens",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hglg11-monte-mor",
+      "coordenadas": {
+        "lat": "-22.951674",
+        "lng": "-47.301025",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Tobias Bueno de Oliveira, Monte Mor, São Paulo, Região Sudeste, 13190-307, Brasil",
+        "osm": "way/252218442",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Rua Tobias Bueno de Oliveira, 701, Monte Mor, SP, Brasil"
+      }
+    },
+    {
+      "nome": "HGLG Osasco",
+      "enderecoPublicado": "Avenida Dr. Kenkiri Sakamoto, 1.679",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "24022.12",
+      "areaPublicada": "24.022,12",
+      "vacanciaPercentual": "24.5000",
+      "percentualDaReceitaDoFundo": "0.9277",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "14.5534"
+        },
+        {
+          "setor": "Tecnologia",
+          "percentualDaReceitaDoImovel": "32.5877"
+        },
+        {
+          "setor": "Varejista",
+          "percentualDaReceitaDoImovel": "47.3315"
+        }
+      ],
+      "id": "hglg11-hglg-osasco",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "HGLG Parque Novo Mundo",
+      "enderecoPublicado": "R Sargento Rodoval Cabral Trindade, S/N.",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "34297",
+      "areaPublicada": "34.297,00",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.7449",
+      "setoresDosInquilinos": [
+        {
+          "setor": "\"-\"",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hglg11-hglg-parque-novo-mundo",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Ribeirão Preto",
+      "enderecoPublicado": "Rodovia Anhanguera, 317.5, Ribeirão Preto - SP",
+      "cidade": "Ribeirão Preto",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "59871.86",
+      "areaPublicada": "59.871,86",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.6774",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Embalagens",
+          "percentualDaReceitaDoImovel": "15.6127"
+        },
+        {
+          "setor": "Varejo digital",
+          "percentualDaReceitaDoImovel": "33.3332"
+        },
+        {
+          "setor": "Farmacêutica",
+          "percentualDaReceitaDoImovel": "42.0501"
+        }
+      ],
+      "id": "hglg11-ribeirao-preto",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "Rio Claro",
+      "enderecoPublicado": "Avenida Brasil, 3.464, Rio Claro, SP",
+      "cidade": "Rio Claro",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "11491.64",
+      "areaPublicada": "11.491,64",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.3374",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Materiais Diversos",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hglg11-rio-claro",
+      "coordenadas": {
+        "lat": "-22.388670",
+        "lng": "-47.558642",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Brasil, Vila Martins, Bela Vista, Rio Claro, São Paulo, Região Sudeste, 13505-146, Brasil",
+        "osm": "way/1161582819",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Avenida Brasil, 3.464, Rio Claro, SP, Brasil"
+      }
+    },
+    {
+      "nome": "São Carlos",
+      "enderecoPublicado": "Rodovia Eng. Thales de Lorena Peixoto Júnio, Km 9.5, São Carlos, SP",
+      "cidade": "São Carlos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "79642.19",
+      "areaPublicada": "79.642,19",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.6980",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Eletrôdomésticos",
+          "percentualDaReceitaDoImovel": "94.1088"
+        }
+      ],
+      "id": "hglg11-sao-carlos",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "São José dos Campos",
+      "enderecoPublicado": "Rua Ambrósio Molina, 1090/1100, São José dos Campos, SP",
+      "cidade": "São José dos Campos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "72487.36",
+      "areaPublicada": "72.487,36",
+      "vacanciaPercentual": "25.4100",
+      "percentualDaReceitaDoFundo": "1.9777",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Telecom",
+          "percentualDaReceitaDoImovel": "80.8060"
+        }
+      ],
+      "id": "hglg11-sao-jose-dos-campos",
+      "coordenadas": {
+        "lat": "-23.143873",
+        "lng": "-45.782893",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Ambrósio Molina, Eugênio de Melo, Jardim Ipê, Eugênio de Melo, São José dos Campos, São Paulo, Região Sudeste, 12247-080, Brasil",
+        "osm": "way/732691157",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Rua Ambrósio Molina, São José dos Campos, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Vinhedo",
+      "enderecoPublicado": "Avenida das Indústrias, s/n, CPI 5000, Vinhedo, SP",
+      "cidade": "Vinhedo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "132352.72",
+      "areaPublicada": "132.352,72",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.1730",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Automotivo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hglg11-vinhedo",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Master Labs",
+      "enderecoPublicado": "Av. Guido Caloi, 1.935, São Paulo, SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "14337",
+      "areaPublicada": "14.337,00",
+      "vacanciaPercentual": "14.9200",
+      "percentualDaReceitaDoFundo": "1.0809",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Saúde",
+          "percentualDaReceitaDoImovel": "97.8770"
+        }
+      ],
+      "id": "hglg11-master-labs",
+      "coordenadas": {
+        "lat": "-23.656118",
+        "lng": "-46.724269",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Guido Caloi, Jardim São Luís, São Paulo, Região Sudeste, 04757-000, Brasil",
+        "osm": "way/322463703",
+        "geocodificadoEm": "2026-11-21",
+        "consulta": "Av. Guido Caloi, 1.935, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "TechTown",
+      "enderecoPublicado": "Rodovia SP 101, Km 9,5, Hortolândia , SP",
+      "cidade": "Hortolândia",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "8760.40",
+      "areaPublicada": "8.760,40",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.4307",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Telecom",
+          "percentualDaReceitaDoImovel": "40.4168"
+        },
+        {
+          "setor": "Farmacêutica",
+          "percentualDaReceitaDoImovel": "32.0976"
+        },
+        {
+          "setor": "Agrícola",
+          "percentualDaReceitaDoImovel": "27.4855"
+        }
+      ],
+      "id": "hglg11-techtown",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Syslog",
+      "enderecoPublicado": "Parque Duque, Duque de Caxias - RJ, 25085-009",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "27946.44",
+      "areaPublicada": "27.946,44",
+      "vacanciaPercentual": "9.8200",
+      "percentualDaReceitaDoFundo": "0.6292",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Concessionária de Água e Esgoto",
+          "percentualDaReceitaDoImovel": "19.9857"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "29.0568"
+        },
+        {
+          "setor": "Atacadista",
+          "percentualDaReceitaDoImovel": "16.8668"
+        },
+        {
+          "setor": "Pet",
+          "percentualDaReceitaDoImovel": "14.6346"
+        }
+      ],
+      "id": "hglg11-syslog",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Torino",
+      "enderecoPublicado": "Rodovia BR-381, s/n, km 483, Pista Norte, Jardim Piemonte, Betim, MG",
+      "cidade": "Betim",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "66403.84",
+      "areaPublicada": "66.403,84",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.2783",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Transporte",
+          "percentualDaReceitaDoImovel": "13.7301"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "51.3536"
+        },
+        {
+          "setor": "Distribuidora",
+          "percentualDaReceitaDoImovel": "15.6535"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "10.9131"
+        }
+      ],
+      "id": "hglg11-torino",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Washington Luiz",
+      "enderecoPublicado": "Avenida SN 1, 280, Parque Duque, Duque de Caxias - RJ",
+      "cidade": "Duque de Caxias",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "24501.55",
+      "areaPublicada": "24.501,55",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6654",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Supermercado",
+          "percentualDaReceitaDoImovel": "67.2233"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "16.8799"
+        }
+      ],
+      "id": "hglg11-washington-luiz",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Betim BTS - Meli",
+      "enderecoPublicado": "Rua da Harmonia – Parque Industrial de Betim, Betim - MG",
+      "cidade": "Betim",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "95730",
+      "areaPublicada": "95.730,00",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.6619",
+      "setoresDosInquilinos": [
+        {
+          "setor": "E-commerce",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hglg11-betim-bts-meli",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "CONE G03",
+      "enderecoPublicado": "Rodovia BR 101, 5225, Cabo de Santo Agostinho, PE",
+      "cidade": "Cabo de Santo Agostinho",
+      "uf": "PE",
+      "tipo": null,
+      "areaM2": "58932.36",
+      "areaPublicada": "58.932,36",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.4102",
+      "setoresDosInquilinos": [
+        {
+          "setor": "E-commerce",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hglg11-cone-g03",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Bralog - CLCR",
+      "enderecoPublicado": "-",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "48964.11",
+      "areaPublicada": "48.964,11",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.1554",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejista",
+          "percentualDaReceitaDoImovel": "79.4951"
+        }
+      ],
+      "id": "hglg11-bralog-clcr",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "HGLG Betim Business Park",
+      "enderecoPublicado": "Rodovia Fernão Dias, BR 381, 499,3, Fazenda Serrinha - Gleba B",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "35331.18",
+      "areaPublicada": "35.331,18",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.4070",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Química",
+          "percentualDaReceitaDoImovel": "68.6193"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "23.7194"
+        }
+      ],
+      "id": "hglg11-hglg-betim-business-park",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "HGLG Porto Canoa LOG",
+      "enderecoPublicado": "Avenida CIVIT I, nº 1795, Barro Branco",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "95023.11",
+      "areaPublicada": "95.023,11",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.1945",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejista",
+          "percentualDaReceitaDoImovel": "42.9103"
+        },
+        {
+          "setor": "Engenharia e Eletrônica",
+          "percentualDaReceitaDoImovel": "20.7160"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "36.3737"
+        }
+      ],
+      "id": "hglg11-hglg-porto-canoa-log",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}
