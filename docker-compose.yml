@@ -2,13 +2,13 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_DB: chronosquant
-      POSTGRES_USER: chronos
-      POSTGRES_PASSWORD: chronos
+      POSTGRES_DB: meridianwealth
+      POSTGRES_USER: meridian
+      POSTGRES_PASSWORD: meridian
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U chronos -d chronosquant"]
+      test: ["CMD-SHELL", "pg_isready -U meridian -d meridianwealth"]
       interval: 5s
       timeout: 3s
       retries: 10
@@ -19,9 +19,9 @@ services:
       interval: 5s
       timeout: 3s
       retries: 10
-  chronosquant:
+  meridianwealth:
     build: .
-    image: chronosquant:0.2.0
+    image: meridian-wealth:0.1.0
     ports:
       - "8080:8080"
     depends_on:
@@ -30,13 +30,13 @@ services:
       redis:
         condition: service_healthy
     environment:
-      CQ_EXCLUDE_AUTOCONFIG: ""
-      CQ_PERSISTENCE: "true"
-      CQ_CACHE_TYPE: redis
-      CQ_DATA_MODE: ${CQ_DATA_MODE:-auto}
-      DB_URL: jdbc:postgresql://postgres:5432/chronosquant
-      DB_USER: chronos
-      DB_PASSWORD: chronos
+      MW_EXCLUDE_AUTOCONFIG: ""
+      MW_PERSISTENCE: "true"
+      MW_CACHE_TYPE: redis
+      MW_DATA_MODE: ${MW_DATA_MODE:-auto}
+      DB_URL: jdbc:postgresql://postgres:5432/meridianwealth
+      DB_USER: meridian
+      DB_PASSWORD: meridian
       REDIS_HOST: redis
       FINNHUB_API_KEY: ${FINNHUB_API_KEY:-}
       FRED_API_KEY: ${FRED_API_KEY:-}

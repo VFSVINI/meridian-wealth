@@ -1,6 +1,6 @@
 spring:
   application:
-    name: chronosquant
+    name: meridianwealth
   threads:
     virtual:
       enabled: true
@@ -8,13 +8,13 @@ spring:
     scheduling:
       pool:
         size: 4
-  # Sem Docker: Postgres e Redis ficam fora. No Compose, CQ_EXCLUDE_AUTOCONFIG vazio liga ambos.
+  # Sem Docker: Postgres e Redis ficam fora. No Compose, MW_EXCLUDE_AUTOCONFIG vazio liga ambos.
   autoconfigure:
-    exclude: ${CQ_EXCLUDE_AUTOCONFIG:org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration,org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration,org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration,org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration,org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration}
+    exclude: ${MW_EXCLUDE_AUTOCONFIG:org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration,org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration,org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration,org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration,org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration}
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/chronosquant}
-    username: ${DB_USER:chronos}
-    password: ${DB_PASSWORD:chronos}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/meridianwealth}
+    username: ${DB_USER:meridian}
+    password: ${DB_PASSWORD:meridian}
   data:
     redis:
       host: ${REDIS_HOST:localhost}
@@ -26,9 +26,9 @@ management:
     web:
       exposure:
         include: health,info,metrics
-chronosquant:
+meridianwealth:
   data:
-    mode: ${CQ_DATA_MODE:auto}          # auto = provedores reais com fallback simulado | simulated
+    mode: ${MW_DATA_MODE:auto}          # auto = provedores reais com fallback simulado | simulated
     history-bars: 500
     poll-open-seconds: 30
     poll-closed-seconds: 600
@@ -39,9 +39,9 @@ chronosquant:
   stream:
     flow-default: true
   cache:
-    type: ${CQ_CACHE_TYPE:memory}        # memory | redis
+    type: ${MW_CACHE_TYPE:memory}        # memory | redis
     quote-ttl-seconds: 25
   persistence:
-    enabled: ${CQ_PERSISTENCE:false}
+    enabled: ${MW_PERSISTENCE:false}
   rate-limit:
     api-per-minute: 300

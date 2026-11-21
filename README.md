@@ -1,6 +1,6 @@
-# ChronosQuant
+# MeridianWealth
 
-Cockpit analítico em Java 21 que mostra, em tempo real, **quando comprar na baixa, quando manter a tendência e quando realizar lucro na alta**, com cada sinal explicado por fórmulas e gatilhos. Não executa ordens.
+Plataforma analítica em Java 21 que mostra, em tempo real, **quando comprar na baixa, quando manter a tendência e quando realizar lucro na alta**, com cada sinal explicado por fórmulas e gatilhos. Não executa ordens.
 
 > **Aviso legal:** ferramenta de análise quantitativa e educacional. Não constitui recomendação financeira regulada e não executa ordens.
 
@@ -24,7 +24,7 @@ docker compose up --build         # app + PostgreSQL + Redis em http://localhost
 # sem Docker (Java 21 + Maven): sem Postgres/Redis, cache em memória
 mvn verify
 mvn spring-boot:run
-CQ_DATA_MODE=simulated mvn spring-boot:run     # modo offline
+MW_DATA_MODE=simulated mvn spring-boot:run     # modo offline
 ```
 
 Swagger: `http://localhost:8080/swagger-ui.html`. Saúde: `/actuator/health`.
@@ -33,12 +33,12 @@ Swagger: `http://localhost:8080/swagger-ui.html`. Saúde: `/actuator/health`.
 
 | Variável | Padrão | Uso |
 |---|---|---|
-| `CQ_DATA_MODE` | `auto` | `auto` = provedores reais com fallback; `simulated` = só simulador |
+| `MW_DATA_MODE` | `auto` | `auto` = provedores reais com fallback; `simulated` = só simulador |
 | `FINNHUB_API_KEY` | vazio | cotações Finnhub, fundamentos e notícias |
 | `FRED_API_KEY` | vazio | juros de 10 anos via FRED (senão usa Yahoo `^TNX`) |
-| `CQ_CACHE_TYPE` | `memory` | `redis` no Compose |
-| `CQ_PERSISTENCE` | `false` | `true` grava candles e sinais no PostgreSQL |
-| `CQ_EXCLUDE_AUTOCONFIG` | lista JDBC/Flyway/Redis | vazio no Compose para ligar banco e Redis |
+| `MW_CACHE_TYPE` | `memory` | `redis` no Compose |
+| `MW_PERSISTENCE` | `false` | `true` grava candles e sinais no PostgreSQL |
+| `MW_EXCLUDE_AUTOCONFIG` | lista JDBC/Flyway/Redis | vazio no Compose para ligar banco e Redis |
 | `DB_URL`, `DB_USER`, `DB_PASSWORD`, `REDIS_HOST`, `REDIS_PORT` | locais | conexões |
 
 ## Endpoints

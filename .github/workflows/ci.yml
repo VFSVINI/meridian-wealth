@@ -16,8 +16,8 @@ jobs:
       - name: Build, testes, Checkstyle e Spotless
         run: mvn -B verify
         env:
-          CQ_DATA_MODE: simulated
+          MW_DATA_MODE: simulated
       - name: Valida o Compose
         run: docker compose config -q
       - name: Build da imagem
-        run: docker build -t chronosquant:ci .
+        run: docker build -t meridian-wealth:ci .

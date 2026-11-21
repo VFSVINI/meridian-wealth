@@ -21,6 +21,6 @@ O `MarketLoop` roda a 1 Hz. Para dados reais, a barra do dia é atualizada no lu
 1. **Resiliência própria em vez de biblioteca.** As quatro peças são pequenas, testáveis com relógio injetado e sem dependência extra. Trade-off: menos recursos que Resilience4j.
 2. **Porta de dados com simulador de fallback.** Preço ao vivo mesmo sem rede ou com limite de API; o modo é sempre exibido.
 3. **Cache compartilhado de cotações.** Várias instâncias reaproveitam a mesma consulta e respeitam os limites dos provedores.
-4. **Postgres e Redis opcionais.** Sem Docker o app roda com cache em memória e sem banco; `CQ_EXCLUDE_AUTOCONFIG` liga ambos no Compose.
+4. **Postgres e Redis opcionais.** Sem Docker o app roda com cache em memória e sem banco; `MW_EXCLUDE_AUTOCONFIG` liga ambos no Compose.
 5. **Motor em domínio puro.** Testes sem Spring; o backtest reaproveita o mesmo motor do painel.
 6. **Sinais gravados só quando mudam.** Evita 1 linha por segundo por ativo.
