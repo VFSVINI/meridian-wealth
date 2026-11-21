@@ -11,7 +11,8 @@
 
 ## O que o sistema faz
 
-- **Bolsas globais:** 25 ativos de EUA, Brasil (B3), Europa, Ásia, Oceania, Oriente Médio/África e mercado global, com calendário de pregão por bolsa (fuso, sessões, feriados oficiais conferidos para NYSE, B3 e Xetra). Detalhes em [`docs/mercados.md`](docs/mercados.md).
+- **Cripto 24/7:** BTC, ETH, SOL e XRP com preço por WebSocket (Binance, com failover automático para Coinbase e Kraken se houver bloqueio regional HTTP 451), volatilidade anualizada por √365 e beta contra o BTC. Bolsa em uso e motivo de cada isolamento aparecem no status ([ADR 005](docs/adr/005-stream-cripto-com-failover.md)).
+- **Bolsas globais:** 29 ativos (25 de bolsas e 4 cripto) de EUA, Brasil (B3), Europa, Ásia, Oceania, Oriente Médio/África e mercado global, com calendário de pregão por bolsa (fuso, sessões, feriados oficiais conferidos para NYSE, B3 e Xetra). Detalhes em [`docs/mercados.md`](docs/mercados.md).
 - **Dados reais gratuitos com failover:** Yahoo Finance, brapi.dev (B3), Frankfurter (BCE), Finnhub REST e WebSocket (com chave), FRED (com chave) e feeds RSS; Stooq desligado (passou a exigir verificação JavaScript); adapter plugável para feed pago, desligado. Cada provedor tem rate limiter, circuit breaker, retry com backoff exponencial e jitter, e cache (Redis ou memória). Se tudo falhar, usa o último dado real gravado no banco (rotulado) e, sem ele, mostra o ativo como sem dado e tenta de novo a cada 2 minutos.
 - **Polling inteligente:** a cada 30 s com pregão aberto e a cada 10 min com pregão fechado (EUA, Europa, câmbio e commodities), com cotações compartilhadas via cache.
 - **Procedência em cada cotação:** selo de atraso (tempo real, ~15 min, fechamento, último dado real gravado), horário da cotação na origem, contagem até a próxima atualização e aviso de cotação desatualizada. O pulso visual só aparece quando chega uma cotação nova.
@@ -45,6 +46,7 @@ Swagger: `http://localhost:8080/swagger-ui.html`. Saúde: `/actuator/health`.
 | `FINNHUB_API_KEY` | vazio | cotações Finnhub, fundamentos e notícias |
 | `FRED_API_KEY` | vazio | juros de 10 anos via FRED (senão usa Yahoo `^TNX`) |
 | `MW_BRAPI_TOKEN` | vazio | brapi.dev: sem token só PETR4, VALE3, ITUB4 e MGLU3 |
+| `MW_CRYPTO_STREAM` | `true` | stream de cripto (Binance, com failover Coinbase e Kraken; sem chave) |
 | `MW_FINNHUB_WS` | `true` | WebSocket de negócios da Finnhub (só conecta com `FINNHUB_API_KEY`) |
 | `MW_STOOQ_ENABLED` | `false` | religa o Stooq (exige verificação JavaScript desde 2026-11) |
 | `MW_PAID_FEED`, `MW_PAID_FEED_KEY`, `MW_PAID_FEED_FRESHNESS` | `none`, vazio, `DELAYED` | feed pago plugável (`twelvedata`); o selo declara o atraso do plano |
@@ -92,6 +94,9 @@ Comportamento e latência observados em 2026-11-20 (sexta-feira, após o fechame
 | Yahoo (chart v8) | todas as regiões | 0,16–0,36 s | ~15 min | respondeu para os 25 ativos |
 | brapi.dev | histórico da B3 | 0,34–0,38 s | barra diária | sem token: PETR4, VALE3, ITUB4; horário de cotação não confiável em feriado |
 | Frankfurter (BCE) | câmbio (failover) | 0,16–0,74 s | referência diária | endpoint novo `api.frankfurter.dev/v1` |
+| Binance WS | cripto | handshake 1,85 s; 1 msg/s por par | tempo real (1 s) | respondeu daqui, sem bloqueio |
+| Coinbase WS | cripto (failover) | handshake 1,70 s; ~136 ms entre msgs | tempo real | respondeu daqui |
+| Kraken WS | cripto (failover) | handshake 1,42 s; ~405 ms entre msgs | tempo real | respondeu daqui |
 | Stooq | desligado | — | — | exige verificação JavaScript |
 | Finnhub REST/WS | EUA (com chave) | não medido | tempo real (documentação) | não validado: sem chave |
 

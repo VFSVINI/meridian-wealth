@@ -15,5 +15,10 @@ para não depender de rede e para validar os parsers contra o contrato verdadeir
 | `frankfurter/USD-BRL-2y.json`, `frankfurter/USD-BRL-latest.json` | `https://api.frankfurter.dev/v1/...?from=USD&to=BRL` | 2026-11-20 |
 | `stooq/spy.us-bloqueio.html` | `https://stooq.com/q/d/l/?i=d&s=spy.us` (página de verificação JavaScript) | 2026-11-20 |
 
+| `yahoo/BTC-USD-2y.json`, `yahoo/ETH-USD-2y.json` | `query1.finance.yahoo.com/v8/finance/chart/<símbolo>?range=2y&interval=1d` | 2026-11-21 |
+| `crypto/binance-miniticker.jsonl` | mensagens reais do `wss://stream.binance.com:9443/stream?streams=btcusdt@miniTicker/ethusdt@miniTicker` | 2026-11-21 |
+| `crypto/coinbase-ticker.jsonl` | mensagens reais do `wss://ws-feed.exchange.coinbase.com` (canal `ticker`, BTC-USD e ETH-USD) | 2026-11-21 |
+| `crypto/kraken-ticker.jsonl` | mensagens reais do `wss://ws.kraken.com/v2` (canal `ticker`, BTC/USD e ETH/USD) | 2026-11-21 |
+
 Finnhub, FRED e RSS não têm fixture gravada (sem chave ou sem necessidade); os testes usam o formato da documentação pública e dizem isso.
 URLs sem fixture respondem HTTP 404 no `FixtureHttpGateway`, o que exercita o estado "sem dado em tempo real".

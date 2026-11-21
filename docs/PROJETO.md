@@ -1,8 +1,8 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR #3 (Issue #3), 2026-11-20.
-> Numeração: Issues e PRs compartilham a sequência do GitHub; o PR do item #N do roadmap tem número próprio (ex.: item #1 = PR #6).
+> Atualizado em todo PR. Última atualização: PR do item #4 (Issue #4), 2026-11-21.
+> Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
 
@@ -44,7 +44,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 - [x] **#1** Build verde, rebranding `dev.chronosquant` → `dev.meridianwealth`, CI (Checkstyle/Spotless, JaCoCo, Dependabot, CodeQL), governança e ADRs 001–003.
 - [x] **#2** Remoção total de dados simulados do produto + hexagonal estrita protegida por ArchUnit (dívidas 1, 2, 4 e 8).
 - [x] **#3** Bolsas globais (25 ativos), calendário multi-fuso com feriados oficiais, Finnhub WebSocket, brapi.dev, adapter de feed pago, fixtures reais (dívidas 7 e 10).
-- [ ] **#4** Motor cripto 24/7 (Binance WS com failover Coinbase/Kraken, vol. √365, beta BTC).
+- [x] **#4** Motor cripto 24/7 (Binance WS com failover Coinbase/Kraken, vol. √365, beta BTC).
 - [ ] **#5** Taxonomia multi-ativo + API do BCB (Selic, CDI, IPCA, PTAX).
 
 ### Milestone 2 — Inteligência Institucional, Composição & Relatórios
@@ -81,9 +81,11 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [001](adr/001-arquitetura-hexagonal.md) | Arquitetura hexagonal estrita | Aceito; implementado e verificado por ArchUnit no PR #2 |
 | [002](adr/002-precisao-financeira.md) | Fronteira `double` × `BigDecimal` | Aceito |
 | [003](adr/003-frontend-sem-build.md) | Frontend sem etapa de build | Aceito |
-| [004](adr/004-dados-reais-e-procedencia.md) | Dados 100% reais e procedência explícita | Aceito (PR #2) |
+| [004](adr/004-dados-reais-e-procedencia.md) | Dados 100% reais e procedência explícita | Aceito |
+| [005](adr/005-stream-cripto-com-failover.md) | Stream de cripto com failover e anualização por √365 | Aceito |
 
 Decisões menores (no corpo dos PRs):
+- Item #4: três bolsas em ordem (Binance, Coinbase, Kraken) com failover por 451/403, falhas e silêncio; histórico de cripto pela Yahoo (a Binance REST sofre o mesmo bloqueio regional); stream suspende o polling REST por 30 s; regra de barra nova por dia local da bolsa; beta de 90 barras com benchmark alinhado por data; Dependabot ignora JDK não-LTS, Spring Boot major e Maven da distribuição do wrapper.
 - PR #1: Maven Wrapper com checksum; piso JaCoCo de 70% (medido 76%); CodeQL `security-extended`; Dependabot agrupado.
 - PR #3: calendário por regra conferido contra páginas oficiais (bolsas sem fonte verificada ficam marcadas, sem datas adivinhadas); brapi só para histórico (horário de cotação não confiável em feriado); Stooq desligado por padrão; Frankfurter no endpoint `.dev/v1`; feed pago com selo declarado pelo plano.
 - PR #2: `System.Logger` na `application` (sem SLF4J, ponte JUL do Spring Boot); chave do cache de backtest pela versão dos dados; 503 para ativo sem dado real; fixtures reais da Yahoo nos testes; Dependabot ignora JDK não-LTS nas imagens.
@@ -98,6 +100,9 @@ Decisões menores (no corpo dos PRs):
 | 9 | Persistência JDBC com 17% de cobertura (sem banco nos testes) | `infrastructure/persistence` | PR #20 |
 | 11 | Finnhub REST e WebSocket sem validação ao vivo (sem chave); FRED idem | `infrastructure/provider` | quando houver chave |
 | 12 | Calendários de feriados não verificados: Euronext, Tóquio, Hong Kong, ASX, Tadawul, JSE | `domain/Exchange` | PR futuro |
+| 13 | Failover do stream de cripto validado só com recusas simuladas; o HTTP 451 real da Binance não foi observado (as três bolsas responderam do Brasil) | `infrastructure/crypto` | deploy do item #21 |
+| 14 | Degrau de preço ao trocar de bolsa no stream (Binance em USDT; Coinbase e Kraken em USD) | `infrastructure/crypto` | documentado no ADR 005 |
+| 15 | PRs do Dependabot incompatíveis com decisões do projeto (Temurin 26, Spring Boot 4, Maven 3.10) abertos aguardando fechamento manual; a config já os ignora daqui para frente | GitHub | no merge do item #4 |
 
 **Resolvidas**
 - PR #3 (pós-review): com o dia em andamento, a Yahoo manda a barra corrente com close nulo; o parser a descartava e a cotação de hoje era gravada sobre a barra de ontem (SPY 19/11 aparecia com 689,81 em vez de 715,87). Agora a barra do dia usa os OHLC reais com o close do meta, cotação de dia posterior abre barra nova e a abertura é o primeiro preço observado.
@@ -126,8 +131,8 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 104 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 130 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
-| Provedores reais | PR #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
+| Provedores reais | Item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
 | Painel no navegador | Validado no PR #2 em navegador Chromium (desktop): dados reais, selos, estado sem dado, sem erros de console da aplicação. Larguras 1024/390 px e acessibilidade completa ficam para o Milestone 4 |
