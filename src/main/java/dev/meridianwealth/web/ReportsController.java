@@ -73,25 +73,28 @@ public class ReportsController {
 
     public record RadarView(String symbol, String name, String cnpj, String kind, String kindLabel, List<SourceView> sources,
                             LocalDate today, CalendarView nextDeadline, List<CalendarView> calendar, List<ReportView> reports,
-                            List<String> notices, String rule, String disclaimer) {
+                            List<String> notices, String rule, String disclaimer, long dataAgeDays, int staleAfterDays,
+                            boolean stale) {
         static RadarView of(Radar r) {
             var i = r.issuer();
             return new RadarView(i.symbol(), i.name(), i.cnpj(), i.kind().name(), i.kind().label(),
                     i.sources().stream().map(SourceView::of).toList(), r.today(), CalendarView.of(r.nextDeadline()),
                     r.calendar().stream().map(CalendarView::of).toList(), r.reports().stream().map(ReportView::of).toList(),
-                    i.notices(), ReportAnalyzer.ruleText(), DISCLAIMER);
+                    i.notices(), ReportAnalyzer.ruleText(), DISCLAIMER, r.age().days(), r.age().staleAfterDays(),
+                    r.age().stale());
         }
     }
 
     /** Resumo por ativo: o relatório mais novo com seu veredito e o próximo prazo. */
     public record SummaryView(String symbol, String name, String kindLabel, String latestLabel, LocalDate latestPeriodEnd,
-                              String latestVerdict, String latestVerdictLabel, CalendarView nextDeadline) {
+                              String latestVerdict, String latestVerdictLabel, CalendarView nextDeadline,
+                              boolean stale) {
         static SummaryView of(Radar r) {
             var latest = r.reports().stream().findFirst().map(ReportView::of).orElse(null);
             var i = r.issuer();
             return new SummaryView(i.symbol(), i.name(), i.kind().label(), latest == null ? null : latest.label(),
                     latest == null ? null : latest.periodEnd(), latest == null ? null : latest.verdict(),
-                    latest == null ? null : latest.verdictLabel(), CalendarView.of(r.nextDeadline()));
+                    latest == null ? null : latest.verdictLabel(), CalendarView.of(r.nextDeadline()), r.age().stale());
         }
     }
 

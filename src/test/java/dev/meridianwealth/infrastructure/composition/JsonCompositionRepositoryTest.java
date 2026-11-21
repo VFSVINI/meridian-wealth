@@ -118,4 +118,12 @@ class JsonCompositionRepositoryTest {
                 + "\"fonte\":{\"nome\":\"n\",\"url\":\"http://inseguro\",\"tipo\":\"OFICIAL\",\"consultadoEm\":\"2026-11-21\"}}");
         assertThatThrownBy(() -> JsonCompositionRepository.parse(bad, "x11.json")).hasMessageContaining("x11.json");
     }
+
+    @Test void compositionGoesStaleAfterAQuarterPlusTheFilingDeadline() {
+        FundComposition f = repo.find("HGLG11").orElseThrow();
+        java.time.LocalDate consulted = f.source().consultedOn();
+        assertThat(f.age(consulted.plusDays(135)).stale()).isFalse();
+        assertThat(f.age(consulted.plusDays(136)).stale()).isTrue();
+        assertThat(f.age(consulted).days()).isZero();
+    }
 }

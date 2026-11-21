@@ -55,6 +55,9 @@ class ApiIntegrationTest {
         Map<String, Object> with = assets.stream().filter(a -> a.get("coordinates") != null).findFirst().orElseThrow();
         assertThat((String) ((Map<?, ?>) with.get("coordinates")).get("satelliteUrl")).contains("basemap=satellite");
         assertThat((String) knri.get("attribution")).contains("OpenStreetMap");
+        assertThat(knri.get("staleAfterDays")).isEqualTo(135);
+        assertThat(knri.get("dataAgeDays")).isNotNull();
+        assertThat(knri.get("stale")).isNotNull();
     }
 
     @Test void compositionGeoListsOnlyValidatedPoints() {
@@ -84,6 +87,9 @@ class ApiIntegrationTest {
         List<Map<String, Object>> calendar = (List<Map<String, Object>>) petr.get("calendar");
         assertThat(calendar).isNotEmpty().allSatisfy(c -> assertThat((String) c.get("rule")).contains("Resolução CVM"));
         assertThat(petr.get("nextDeadline")).isNotNull();
+        assertThat(petr.get("staleAfterDays")).isEqualTo(45);
+        assertThat(petr.get("dataAgeDays")).isNotNull();
+        assertThat(petr.get("stale")).isNotNull();
     }
 
     @Test void reportsSummaryListsEveryCuratedIssuer() {

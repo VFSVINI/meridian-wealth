@@ -1,6 +1,7 @@
 package dev.meridianwealth.application;
 
 import dev.meridianwealth.application.port.ReportsPort;
+import dev.meridianwealth.domain.DataAge;
 import dev.meridianwealth.domain.reports.DeliveryCalendar;
 import dev.meridianwealth.domain.reports.IssuerReports;
 import dev.meridianwealth.domain.reports.Report;
@@ -17,7 +18,7 @@ public class ReportsService {
 
     /** Radar de um emissor na data {@code today}: relatórios com veredito e calendário de prazos. */
     public record Radar(IssuerReports issuer, List<ReportView> reports, List<DeliveryCalendar.Entry> calendar,
-                        DeliveryCalendar.Entry nextDeadline, LocalDate today) {}
+                        DeliveryCalendar.Entry nextDeadline, LocalDate today, DataAge age) {}
 
     private final ReportsPort port;
     private final Clock clock;
@@ -37,6 +38,6 @@ public class ReportsService {
         LocalDate today = LocalDate.now(clock);
         List<ReportView> views = issuer.reports().stream().map(r -> new ReportView(r, ReportAnalyzer.assess(r))).toList();
         List<DeliveryCalendar.Entry> calendar = DeliveryCalendar.of(issuer, today);
-        return new Radar(issuer, views, calendar, DeliveryCalendar.nextDeadline(calendar, today).orElse(null), today);
+        return new Radar(issuer, views, calendar, DeliveryCalendar.nextDeadline(calendar, today).orElse(null), today, issuer.age(today));
     }
 }

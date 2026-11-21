@@ -54,7 +54,9 @@ public class ApplicationConfig {
     }
 
     @Bean
-    CompositionService compositionService(CompositionPort composition) { return new CompositionService(composition); }
+    CompositionService compositionService(CompositionPort composition, Clock brasiliaClock) {
+        return new CompositionService(composition, brasiliaClock);
+    }
 
     @Bean
     ReportsService reportsService(ReportsPort reports, Clock brasiliaClock) { return new ReportsService(reports, brasiliaClock); }
