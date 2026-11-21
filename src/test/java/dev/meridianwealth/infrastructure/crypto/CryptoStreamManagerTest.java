@@ -62,6 +62,11 @@ class CryptoStreamManagerTest {
         final List<String> attempts = new ArrayList<>();
         final Map<String, WebSocket.Listener> listeners = new HashMap<>();
         final Map<String, FakeSocket> sockets = new HashMap<>();
+        final List<FakeSocket> created = new ArrayList<>();
+
+        long openSockets() {
+            return created.stream().filter(w -> !w.closed && !w.aborted).count();
+        }
 
         @Override public CompletableFuture<WebSocket> connect(URI uri, WebSocket.Listener listener) {
             String host = uri.getHost();
@@ -76,7 +81,17 @@ class CryptoStreamManagerTest {
             FakeSocket ws = new FakeSocket();
             listeners.put(host, listener);
             sockets.put(host, ws);
+            created.add(ws);
             listener.onOpen(ws);
+            if ("flap".equals(b)) {
+                ws.closed = true;
+                listener.onClose(ws, 1008, "excesso de conexões");
+            } else if ("subscription-error".equals(b)) {
+                String error = host.equals(BINANCE)
+                        ? "{\"code\":2,\"msg\":\"Invalid request\"}"
+                        : "{\"type\":\"error\",\"message\":\"Failed to subscribe\",\"reason\":\"BTC-XXX is not a valid product\"}";
+                listener.onText(ws, error, true);
+            }
             return CompletableFuture.completedFuture(ws);
         }
 
@@ -273,6 +288,57 @@ class CryptoStreamManagerTest {
         net.send(BINANCE, "{\"code\":2,\"msg\":\"Invalid request\"}");
         assertThat(manager.activeVenue()).isNull();
         assertThat(manager.status().failures()).isEqualTo(1);
+    }
+
+    @Test void aVenueThatOpensAndDiesAtOnceIsBackedOffThenIsolatedInsteadOfHammeredEverySecond() {
+        net.behavior.put(BINANCE, "flap");
+        tick(0);
+        tick(1_100);
+        tick(2_100);
+        assertThat(net.attempts).containsExactly(BINANCE, BINANCE, BINANCE);
+
+        tick(0);
+        assertThat(net.attempts).as("na terceira falha seguida a bolsa é isolada e o stream segue para a próxima")
+                .containsExactly(BINANCE, BINANCE, BINANCE, COINBASE);
+        assertThat(manager.activeVenue()).isEqualTo(CryptoVenue.COINBASE);
+
+        advanceWithTraffic(2 * MIN, COINBASE);
+        assertThat(net.attempts).as("sem reconexões a cada segundo").hasSize(4);
+        assertThat(manager.status().detail()).contains("Binance: isolada: 3 falhas seguidas");
+    }
+
+    @Test void providerErrorClosesTheSocketInsteadOfLeavingItOpen() {
+        net.behavior.put(BINANCE, "subscription-error");
+        tick(0);
+        FakeSocket first = net.sockets.get(BINANCE);
+        assertThat(manager.activeVenue()).isNull();
+        assertThat(first.closed).as("o socket da conexão derrubada precisa ser fechado").isTrue();
+        assertThat(manager.status().failures()).isEqualTo(1);
+    }
+
+    @Test void repeatedProviderErrorsNeverAccumulateOpenSockets() {
+        net.behavior.put(BINANCE, "subscription-error");
+        for (int i = 0; i < 12; i++) tick(i < 3 ? 2_100 : 0);
+        assertThat(net.attempts.stream().filter(h -> h.equals(BINANCE)).count()).isEqualTo(3);
+        assertThat(net.openSockets()).as("no máximo a conexão ativa fica aberta").isLessThanOrEqualTo(1);
+        assertThat(manager.activeVenue()).isEqualTo(CryptoVenue.COINBASE);
+    }
+
+    @Test void theFirstValidPriceProvesTheConnectionAndResetsTheBackoff() {
+        net.behavior.put(BINANCE, "net");
+        tick(0);
+        tick(1_100);
+        assertThat(net.attempts).hasSize(2);
+        net.behavior.put(BINANCE, "ok");
+        tick(2_100);
+        assertThat(manager.activeVenue()).isEqualTo(CryptoVenue.BINANCE);
+
+        net.send(BINANCE, "{\"stream\":\"btcusdt@miniTicker\",\"data\":{\"e\":\"24hrMiniTicker\",\"E\":1795225436018,\"s\":\"BTCUSDT\",\"c\":\"59008.11\"}}");
+        net.listeners.get(BINANCE).onClose(net.sockets.get(BINANCE), 1006, "");
+        tick(1_100);
+        assertThat(net.attempts).as("a conexão provou que funciona: o backoff recomeça em 1 s, sem isolamento")
+                .hasSize(4);
+        assertThat(manager.activeVenue()).isEqualTo(CryptoVenue.BINANCE);
     }
 
     @Test void disabledManagerNeverConnects() {
