@@ -31,8 +31,8 @@ nem arquivos de design: gráficos, mapas e dados do protótipo são ilustrativos
 
 - **Positivas:** uma única fonte de verdade visual; critério de aceite objetivo para os itens #15 a #17.
 - **Negativas:** o protótipo existe só como imagem, então valores exatos de cor e medida vêm de leitura da imagem (a página
-  "Sistema de design" lista os tokens em texto e é a referência para eles); as imagens ficam fora do repositório (peso) até serem
-  versionadas comprimidas no item #15.
+  "Sistema de design" lista os tokens em texto e é a referência para eles); as 8 imagens principais estão versionadas comprimidas em `docs/design/` e as
+  demais ficam fora do repositório (peso).
 
 ## Alternativas rejeitadas
 

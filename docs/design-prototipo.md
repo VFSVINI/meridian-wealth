@@ -4,7 +4,7 @@ Referência da interface (ver [ADR 012](adr/012-prototipo-visual-como-referencia
 partir de [prompt-claude-design.md](prompt-claude-design.md) e aprovado pelo responsável do produto. **A interface deve segui-lo
 à risca**, com a ressalva do ADR 012: dado de exemplo do protótipo vira dado real com fonte, horário e atraso, ou "não informado".
 
-O material recebido é um conjunto de 28 imagens (PNG), sem código. Esta página transcreve em texto o que dá para fixar; os
+O material recebido é um conjunto de 28 imagens (PNG), sem código; as 8 principais (sistema de design, painel inicial, mercados, cockpit, estados, mobile, marca e notas de implementação) estão versionadas, comprimidas, em [design/](design/). Esta página transcreve em texto o que dá para fixar; os
 valores abaixo foram lidos da página "Sistema de design" do protótipo e **devem ser conferidos contra a imagem** ao implementar
 (o item #15 versiona as imagens comprimidas em `docs/design/`).
 
@@ -82,9 +82,9 @@ dourado (24 e 32 px); 65 ícones de traço de 1,5 px mascarados com `currentColo
 
 | Item | Páginas do protótipo |
 |---|---|
-| #10 (este PR) | Geopolítica e teses, no card atual; o shell completo vem no #15 |
+| #10 e etapa 1 do #15 (Issue #31) | Sistema de design, shell, Painel inicial, Mercados, Cockpit, Radar, Brasil, Geopolítica e teses, Perfil, Simulador, Composição e Saúde dos dados |
 | #12 e #13 | Minha Carteira, livro de movimentações |
-| #15 | Sistema de design, shell, Painel inicial, Perfil, Minha Carteira, Entrada e onboarding (com "Continuar com Google"), Configurações, estados, mobile |
+| #15 (etapa 2) | Minha Carteira, Entrada e onboarding (com "Continuar com Google"), Configurações |
 | #16 | Mapa de imóveis, Composição |
 | #17 | Mercados, Cockpit do ativo |
 | #18 e #19 | Monte Carlo, correlação e concentração |

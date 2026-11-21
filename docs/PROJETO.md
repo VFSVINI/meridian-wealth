@@ -78,6 +78,8 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 
 ### Milestone 4 — Interface Dark Luxury, Mapas & Home Broker
 - [ ] **#15** Protótipo visual + painel "Minha Carteira" (ECharts, montador de perfil) e botão **"Continuar com Google"** na tela de login e cadastro (seção 2.4).
+  - [x] Etapa 1 (Issue #31, feita antes do #11): sistema de design, shell (navbar, sidebar, busca Ctrl+K, tema escuro e Ivory) e as páginas que já têm backend. Ver [design-prototipo.md](design-prototipo.md).
+  - [ ] Etapa 2: Minha Carteira, montador de perfil, ECharts e botão "Continuar com Google" (depende dos itens #11 e #12).
 - [ ] **#16** Mapa interativo de ativos reais (Leaflet, dark tiles, satélite/Street View).
 - [ ] **#17** Shopping financeiro multi-classe e cockpit home broker (Lightweight Charts, paleta de comandos).
 
@@ -147,7 +149,8 @@ Decisões menores (no corpo dos PRs):
 | 28 | O conteúdo do glossário não foi revisado por profissional habilitado, e a lista de rótulos do teste de cobertura é espelhada à mão | `domain/glossary`, `GlossaryTest` | revisão antes de uso além do educacional |
 | 29 | A pressão geopolítica é contagem de palavras-chave em manchetes de terceiros e só mede cinco setores; o setor da posição vem do universo do painel | `GeoRiskScorer`, `GeoTranslator` | fonte de eventos estruturada e mapa de exposição por país (item #16) |
 | 30 | As caracterizações das gestoras e os textos das teses são resumos simplificados, sem revisão pelas instituições nem por profissional habilitado | `ThesisCatalog` | revisão antes de uso além do educacional |
-| 31 | O protótipo visual existe só como imagens (fora do repositório, por peso); as cores e medidas vêm de leitura da imagem e as fontes precisam ser servidas pelo projeto antes da CSP | `docs/design-prototipo.md`, ADR 012 | item #15 versiona as imagens comprimidas e as fontes |
+| 31 | As fontes do protótipo (Cormorant Garamond, Figtree, IBM Plex Mono) ainda não são servidas pelo projeto: a interface usa a pilha de fallback (Georgia, fonte do sistema); as 8 imagens principais do protótipo estão versionadas comprimidas em `docs/design/`, as outras 20 ficam fora | `index.html`, `docs/design/`, ADR 012 | servir as fontes como arquivos versionados (licença OFL) antes da CSP do item #11 |
+| 32 | Controles do protótipo sem backend ficam de fora: alternância BRL/USD, modo privacidade, central de alertas e menu do usuário; páginas sem dado real ficam desabilitadas na sidebar | `index.html` (NAV) | itens #11, #12, #15, #16, #18, #19 e Milestone 6 |
 
 **Resolvidas**
 - Item #5 (pós-review): a Selic meta (SGS 432) é preenchida para a frente com o valor vigente, então sua data é sempre a de hoje; a regra de defasagem por data nunca disparava para ela e, se a coleta falhasse por dias, o painel afirmaria "dado em dia". Agora cada observação guarda quando o sistema a confirmou (`confirmedAt`), qualquer série fica `STALE` após 3 h sem confirmação, a Selic meta não usa a data como idade e a tela diz "vigente em". `refresh()` do BCB passou a ser exclusivo (antes duas rodadas simultâneas disputavam a cota e o retrato) e `Rate.compoundedOver` valida o teto de períodos do `BigDecimal.pow`.
@@ -179,7 +182,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 297 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 302 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
