@@ -42,17 +42,14 @@ public class SecurityHeadersFilter extends OncePerRequestFilter {
         res.setHeader("Referrer-Policy", "no-referrer");
         res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
         res.setHeader("Permissions-Policy", "geolocation=(), microphone=(), camera=(), payment=()");
-        String uri = req.getRequestURI();
+        String uri = RequestPaths.dispatchPath(req);
         if (uri.startsWith("/api/auth/") || uri.startsWith("/api/me")) res.setHeader("Cache-Control", "no-store");
         if (isHttps(req)) res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
         if (!uri.startsWith("/swagger-ui") && !uri.startsWith("/v3/api-docs")) res.setHeader("Content-Security-Policy", csp(req));
         chain.doFilter(req, res);
     }
 
-    private boolean isHttps(HttpServletRequest req) {
-        if (req.isSecure()) return true;
-        return "https".equalsIgnoreCase(req.getHeader("X-Forwarded-Proto")) && ips.isTrusted(req.getRemoteAddr());
-    }
+    private boolean isHttps(HttpServletRequest req) { return ips.isHttps(req); }
 
     String csp(HttpServletRequest req) {
         String host = req.getHeader("Host");
