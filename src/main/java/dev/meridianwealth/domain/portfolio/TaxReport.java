@@ -6,9 +6,11 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -91,6 +93,8 @@ public final class TaxReport {
         holdings.sort(Comparator.comparing(Holding::group).thenComparing(Holding::label));
 
         record Key(int month, String group) {}
+        Set<String> buyDays = new HashSet<>();
+        for (LedgerEntry e : entries) if (e.type() == EntryType.BUY) buyDays.add(e.asset().key() + "|" + e.tradeDate());
         Map<Key, List<LedgerEntry>> sales = new TreeMap<>(Comparator.comparingInt(Key::month).thenComparing(Key::group));
         for (LedgerEntry e : entries) {
             if (e.type() == EntryType.SELL && e.tradeDate().getYear() == year) {
@@ -110,7 +114,7 @@ public final class TaxReport {
                 else gross = gross.add(g);
                 if (s.realizedPnlBrl() == null) withoutBrl++;
                 else result = result.add(s.realizedPnlBrl());
-                if (entries.stream().anyMatch(o -> o.type() == EntryType.BUY && o.asset().key().equals(s.asset().key()) && o.tradeDate().equals(s.tradeDate()))) dayTrades++;
+                if (buyDays.contains(s.asset().key() + "|" + s.tradeDate())) dayTrades++;
             }
             BigDecimal grossRounded = gross.setScale(2, RoundingMode.HALF_EVEN);
             Boolean within = "ACOES".equals(kv.getKey().group()) && grossKnown ? grossRounded.compareTo(STOCK_MONTHLY_SALES_LIMIT_BRL) <= 0 : null;

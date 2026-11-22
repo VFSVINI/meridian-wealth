@@ -457,6 +457,41 @@ abstract class PortfolioApiScenarios {
         assertThat(y2025).as("antes da primeira operação não havia nada em 31/12").isEmpty();
     }
 
+    @Autowired
+    dev.meridianwealth.infrastructure.provider.HttpGateway gateway;
+
+    long ptaxCalls() {
+        return ((dev.meridianwealth.testsupport.FixtureHttpGateway) gateway).requested().stream().filter(u -> u.contains("CotacaoDolarPeriodo")).count();
+    }
+
+    @Test void invalidDollarOperationsAreRefusedBeforeAnyExchangeRateLookupAndKeepTheirOwnError() {
+        String t = newUserToken();
+        String id = idOf(open(t, Map.of("type", "CRIPTO_ATIVO", "label", "Cripto validação", "currency", "USD", "quantity", "10", "averagePrice", "100", "fxRate", "5.00")));
+        long before = ptaxCalls();
+        Http.Reply tooMuch = sell(t, id, Map.of("quantity", "9999", "unitPrice", "100", "tradeDate", LocalDate.now().toString()));
+        assertThat(tooMuch.status()).as("erro do usuário, não 503 de câmbio").isEqualTo(400);
+        assertThat((String) tooMuch.get("error")).contains("passa da quantidade");
+        assertThat(buy(t, id, Map.of("quantity", "-1", "unitPrice", "100")).status()).isEqualTo(400);
+        assertThat(buy(t, id, Map.of("quantity", "1", "unitPrice", "100", "fees", "-1")).status()).isEqualTo(400);
+        assertThat(sell(t, id, Map.of("quantity", "1", "unitPrice", "1", "fees", "50")).status()).isEqualTo(400);
+        assertThat(http.put("/api/me/portfolio/positions/" + id, bearer(t), Map.of("quantity", "0", "averagePrice", "1", "expectedVersion", 0)).status()).isEqualTo(400);
+        assertThat(open(t, Map.of("type", "CRIPTO_ATIVO", "label", "Cripto inválida", "currency", "USD", "quantity", "0", "averagePrice", "1")).status()).isEqualTo(400);
+        assertThat(ptaxCalls()).as("nenhum pedido inválido gastou uma consulta ao Banco Central").isEqualTo(before);
+    }
+
+    @Test void importingManyDollarTradesOnTheSameDaysConsultsTheCentralBankOncePerDate() {
+        String t = newUserToken();
+        String yesterday = LocalDate.now().minusDays(1).toString();
+        String id = idOf(open(t, Map.of("type", "CRIPTO_ATIVO", "label", "Cripto importação", "currency", "USD", "quantity", "1", "averagePrice", "100", "tradeDate", yesterday)));
+        long before = ptaxCalls();
+        for (int i = 0; i < 14; i++) {
+            Http.Reply r = buy(t, id, Map.of("quantity", "1", "unitPrice", "100", "tradeDate", yesterday));
+            assertThat(r.status()).as("compra %d", i + 1).isEqualTo(200);
+            assertThat(r.obj("entry").get("fxSource")).isEqualTo("PTAX");
+        }
+        assertThat(ptaxCalls() - before).as("14 compras na mesma data: nenhuma consulta nova (já estava em cache pela abertura)").isZero();
+    }
+
     @Test void invalidInputIsRefusedWithClearErrors() {
         String t = newUserToken();
         assertThat(open(t, Map.of("symbol", "NAOEXISTE", "quantity", "1", "averagePrice", "1")).status()).isEqualTo(400);

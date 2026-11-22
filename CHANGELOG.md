@@ -16,6 +16,8 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 - `GET /api/me/portfolio/transactions` com filtros por ativo e datas e paginação; ADR 015.
 
 ### Corrigido (item #13)
+- Uma importação de histórico em dólar falhava com "PTAX indisponível" mesmo com o Banco Central no ar (a consulta interativa dividia o balde de 8 fichas das consultas de fundo e não esperava; 14 compras em 1,2 s deram 8 x 200 e 6 x 503), e uma venda inválida em dólar virava 503 em vez de 400 porque o câmbio era buscado antes de validar. Agora a operação é validada antes do câmbio, o PTAX de datas passadas fica em cache por data e a consulta interativa espera até 5 s por uma ficha (achado do code review; 14 compras: 14 x 200, venda inválida: 400 imediato).
+- O relatório de IR deixou de varrer a lista inteira de entradas a cada venda para achar a compra do mesmo dia.
 - O hash do conteúdo da requisição montava a string de `1E999999999` (um gigabyte) antes de validar a magnitude e derrubava o servidor por falta de memória; a ordem de grandeza passou a ser conferida antes.
 
 ### Adicionado (item #12 do roadmap)
