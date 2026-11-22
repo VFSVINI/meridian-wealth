@@ -6,6 +6,7 @@ import dev.meridianwealth.application.auth.AuthService;
 import dev.meridianwealth.domain.auth.PasswordPolicy;
 import java.time.Instant;
 import java.util.Map;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,7 +26,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-    public record ConfigView(boolean googleLoginEnabled, boolean demoEnabled, boolean registrationEnabled, int passwordMinLength, String passwordHint) {}
+    public record ConfigView(boolean googleLoginEnabled, String googleClientId, boolean demoEnabled, boolean registrationEnabled, int passwordMinLength, String passwordHint) {}
 
     public record RegisterRequest(String email, String password, String displayName) {}
 
@@ -44,13 +45,19 @@ public class AuthController {
     }
 
     private final AuthService auth;
+    private final String googleClientId;
 
-    public AuthController(AuthService auth) { this.auth = auth; }
+    public AuthController(AuthService auth, @Value("${meridianwealth.google.client-id:}") String googleClientId) {
+        this.auth = auth;
+        this.googleClientId = googleClientId == null ? "" : googleClientId.trim();
+    }
 
     /** Público: diz ao cliente o que este ambiente oferece (o botão do Google some ou fica desabilitado sem a chave). */
     @GetMapping("/config")
     public ConfigView config() {
-        return new ConfigView(auth.googleEnabled(), auth.settings().demoEnabled(), auth.settings().registrationEnabled(), PasswordPolicy.MIN_LENGTH,
+        boolean google = auth.googleEnabled();
+        // o ID do cliente OAuth é público por natureza (o navegador o envia ao Google); o segredo nunca passa por aqui
+        return new ConfigView(google, google && !googleClientId.isEmpty() ? googleClientId : null, auth.settings().demoEnabled(), auth.settings().registrationEnabled(), PasswordPolicy.MIN_LENGTH,
                 "Pelo menos " + PasswordPolicy.MIN_LENGTH + " caracteres; frases longas são melhores que símbolos.");
     }
 
