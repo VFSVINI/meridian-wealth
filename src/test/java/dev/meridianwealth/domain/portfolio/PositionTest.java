@@ -122,6 +122,27 @@ class PositionTest {
         assertThat(v.costBasisBrl()).isEqualByComparingTo("1050.00");
     }
 
+    @Test void reaisAreRoundedOnceFromTheExactAmountNotTwice() {
+        // 1 a US$ 1.234,565: o custo exato é 1.234,565 (HALF_EVEN em 2 casas: 1.234,56). Câmbio 5,0: o valor em reais exato é 6.172,825 -> 6.172,82.
+        // Arredondar o custo em dólar e depois converter daria 1.234,56 x 5 = 6.172,80: dois centavos de erro.
+        Position p = Position.open(USER, new AssetRef(null, AssetType.CRIPTO_ATIVO, "Bitcoin"), d("1"), d("1234.565"), Currency.USD, T0);
+        FxRate fx = new FxRate(d("5.0"), LocalDate.parse("2026-11-20"), "PTAX (venda)", false);
+        PositionValuation.Result v = PositionValuation.value(p, null, fx);
+        assertThat(v.costBasis()).as("na moeda da posição: 2 casas").isEqualByComparingTo("1234.56");
+        assertThat(v.costBasisBrl()).isEqualByComparingTo("6172.82");
+        assertThat(v.currentValueBrl()).isEqualByComparingTo("6172.82");
+        MarketPrice price = new MarketPrice(d("1234.565"), Currency.USD, "yahoo", T1, "fechamento", false);
+        assertThat(PositionValuation.value(p, price, fx).currentValueBrl()).as("com cotação").isEqualByComparingTo("6172.82");
+    }
+
+    @Test void reaisOfABrlPositionAlwaysComeWithTwoDecimals() {
+        Position p = Position.open(USER, new AssetRef("PETR4", AssetType.ACAO, "PETR4"), d("3"), d("0.333333"), Currency.BRL, T0);
+        PositionValuation.Result v = PositionValuation.value(p, new MarketPrice(d("0.3333335"), Currency.BRL, "brapi", T1, "fechamento", false), null);
+        assertThat(v.costBasisBrl()).isEqualTo(d("1.00"));
+        assertThat(v.currentValueBrl()).as("3 x 0,3333335 = 1,0000005 -> 1,00").isEqualTo(d("1.00"));
+        assertThat(v.currentValueBrl().scale()).isEqualTo(2);
+    }
+
     @Test void withoutAQuoteThePositionIsValuedAtCostAndNothingIsInvented() {
         PositionValuation.Result v = PositionValuation.value(petr("100", "10.50"), null, null);
         assertThat(v.basis()).isEqualTo(Basis.COST);

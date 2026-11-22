@@ -78,8 +78,11 @@ public record Position(UUID id, UUID userId, AssetRef asset, BigDecimal quantity
         return new Position(id, userId, asset, quantity, averagePrice, currency, createdAt, updatedAt, newVersion);
     }
 
-    /** Custo total na moeda da posição (quantidade x preço médio), com 2 casas. */
-    public BigDecimal costBasis() { return quantity.multiply(averagePrice).setScale(2, RoundingMode.HALF_EVEN); }
+    /** Custo total exato (quantidade x preço médio), sem arredondar: é de onde saem as conversões, que arredondam uma única vez. */
+    public BigDecimal exactCost() { return quantity.multiply(averagePrice); }
+
+    /** Custo total na moeda da posição, com 2 casas (para exibição). */
+    public BigDecimal costBasis() { return exactCost().setScale(2, RoundingMode.HALF_EVEN); }
 
     /** Resultado não realizado em percentual do custo, com 2 casas. */
     static BigDecimal percentOf(BigDecimal part, BigDecimal base) {
