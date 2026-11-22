@@ -27,6 +27,7 @@
 - **Simulador pré-ordem e glossário:** efeito de uma compra ou venda hipotética na concentração, no risco e na aderência (sem cotação e sem enviar ordem), e um glossário que explica cada métrica do painel ([docs/simulador-e-glossario.md](docs/simulador-e-glossario.md), [ADR 010](docs/adr/010-impacto-pre-ordem-e-glossario.md)).
 - **Tradutor geopolítico e teses genéricas:** cruza a pressão das manchetes reais por setor com o peso do setor na carteira e lê a carteira por cinco lentes ilustrativas, sem atribuir posições a nenhuma gestora ([docs/teses.md](docs/teses.md), [ADR 011](docs/adr/011-tradutor-geopolitico-e-teses-genericas.md)).
 - **Protótipo visual:** a interface segue o protótipo aprovado ([docs/design-prototipo.md](docs/design-prototipo.md), [ADR 012](docs/adr/012-prototipo-visual-como-referencia.md)); a adoção ocorre nos itens #15 a #17.
+- **Segurança e login:** JWT de 15 minutos com refresh token rotativo e detecção de reuso, senha com BCrypt, **Login com Google** (ID token validado no servidor, desligado sem `MW_GOOGLE_CLIENT_ID`), modo demonstração, rate limit por usuário e por IP real (`X-Forwarded-For` só de proxy confiável), CORS e CSP restritivos ([docs/seguranca.md](docs/seguranca.md), [ADR 013](docs/adr/013-autenticacao-jwt-google-e-defesas-de-borda.md)). Contas e sessões ficam em memória até o item #12.
 - **Persistência:** PostgreSQL com Flyway (candles e histórico de sinais) e Redis (cotações, backtests, rate limit da API).
 - **Qualidade:** testes JUnit 5 (unitários e de integração), Checkstyle, Spotless, GitHub Actions, OpenAPI/Swagger.
 
@@ -60,11 +61,18 @@ Swagger: `http://localhost:8080/swagger-ui.html`. Saúde: `/actuator/health`.
 | `MW_STOOQ_ENABLED` | `false` | religa o Stooq (exige verificação JavaScript desde 2026-11) |
 | `MW_PAID_FEED`, `MW_PAID_FEED_KEY`, `MW_PAID_FEED_FRESHNESS` | `none`, vazio, `DELAYED` | feed pago plugável (`twelvedata`); o selo declara o atraso do plano |
 | `MW_CACHE_TYPE` | `memory` | `redis` no Compose |
+| `MW_JWT_SECRET` | aleatório por partida | segredo do JWT (mínimo 32 caracteres); defina em produção |
+| `MW_GOOGLE_CLIENT_ID` | vazio | liga o Login com Google (vazio = desligado, a aplicação sobe normalmente) |
+| `MW_TRUSTED_PROXIES` | vazio | proxies cujo `X-Forwarded-For` vale (IPs ou CIDR); vazio = ignorar o cabeçalho |
+| `MW_CORS_ORIGINS` | vazio | origens CORS exatas; vazio = só a própria origem |
+| `MW_DEMO_MODE`, `MW_REGISTRATION` | `true`, `true` | sessão de demonstração e cadastro por senha |
 | `MW_PERSISTENCE` | `false` | `true` grava candles e sinais no PostgreSQL |
 | `MW_EXCLUDE_AUTOCONFIG` | lista JDBC/Flyway/Redis | vazio no Compose para ligar banco e Redis |
 | `DB_URL`, `DB_USER`, `DB_PASSWORD`, `REDIS_HOST`, `REDIS_PORT` | locais | conexões |
 
 ## Endpoints
+
+**Autenticação:** `GET /api/auth/config`, `POST /api/auth/register|login|refresh|logout|google|demo` e, com login, `GET /api/me` e `GET`/`PUT /api/me/profile` ([docs/seguranca.md](docs/seguranca.md)).
 
 `GET /api/universe`, `/api/overview`, `/api/candles/{symbol}`, `/api/assessment/{symbol}`, `/api/micro/{symbol}`, `/api/signals/{symbol}`, `/api/backtest/{symbol}?buyScore=35&sellScore=30&bars=600`, `/api/status`, `/api/taxonomy` (tipos de ativo), `/api/brazil/rates` (Selic, CDI, IPCA e PTAX), `/api/composition` (Raio-X de fundos imobiliários), `/api/composition/{symbol}`, `/api/composition/geo`, `/api/reports` e `/api/reports/{symbol}` (radar de relatórios), `/api/suitability/*` (questionário, perfil, carteiras modelo e aderência), `/api/impact/pre-order` (simulação de impacto), `/api/glossary` e `/api/glossary/{id}`, `/api/markets` (pregão por bolsa, com motivo e feriado), `/api/stream` (SSE), `/ws/stream` (WebSocket).
 
@@ -122,6 +130,7 @@ Comportamento e latência observados em 2026-11-20 (sexta-feira, após o fechame
 
 - [`docs/PROJETO.md`](docs/PROJETO.md): visão, regras, roadmap, decisões, dívidas e como rodar.
 - [`docs/mercados.md`](docs/mercados.md): bolsas, calendários, fontes com latência medida e indicadores do BCB.
+- [`docs/seguranca.md`](docs/seguranca.md): autenticação, Login com Google (passo a passo do Google Cloud Console para `localhost` e Hugging Face Spaces), variáveis e proxies.
 - [`docs/taxonomia.md`](docs/taxonomia.md): tipos de ativo, atributos e o que foi verificado.
 - [`docs/adr/`](docs/adr/): decisões de arquitetura (hexagonal, precisão financeira, frontend sem build, dados reais e procedência).
 - [`CONTRIBUTING.md`](CONTRIBUTING.md), [`SECURITY.md`](SECURITY.md) e [`CHANGELOG.md`](CHANGELOG.md).

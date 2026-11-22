@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR do item #5 (Issue #5), 2026-11-21.
+> Atualizado em todo PR. Última atualização: PR do item #11 (Issue #25), 2026-11-21.
 > Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
@@ -71,7 +71,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 - [x] **#10** Tradutor geopolítico de carteira e motor de teses institucionais (genéricas, sem posições reais). Ver [teses.md](teses.md).
 
 ### Milestone 3 — Segurança Zero-Trust, Concorrência & Resiliência Sênior
-- [ ] **#11** JWT com refresh, hash forte, rate limit por usuário/IP com `X-Forwarded-For` confiável (dívida 5), isolation guard, CORS/CSP, modo demo e **Login com Google** (seção 2.4).
+- [x] **#11** JWT com refresh, hash forte, rate limit por usuário/IP com `X-Forwarded-For` confiável (dívida 5), isolation guard, CORS/CSP, modo demo e **Login com Google** (seção 2.4). Ver [seguranca.md](seguranca.md).
 - [ ] **#12** Persistência multi-ativo (`V2__users_and_portfolio.sql`), preço médio ponderado, BRL/USD, `@Version`.
 - [ ] **#13** Livro de movimentações (`V3__portfolio_transactions.sql`), `Idempotency-Key`, domain events, IR.
 - [ ] **#14** Observabilidade e FinOps (Correlation-ID, Micrometer por provedor, health checks); dívidas 3 e 4.
@@ -108,6 +108,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [010](adr/010-impacto-pre-ordem-e-glossario.md) | Impacto pré-ordem e glossário ligado às métricas | Aceito |
 | [011](adr/011-tradutor-geopolitico-e-teses-genericas.md) | Tradutor geopolítico e teses institucionais genéricas | Aceito |
 | [012](adr/012-prototipo-visual-como-referencia.md) | Protótipo visual como referência obrigatória da interface | Aceito |
+| [013](adr/013-autenticacao-jwt-google-e-defesas-de-borda.md) | Autenticação por JWT, Login com Google e defesas de borda | Aceito |
 
 Decisões menores (no corpo dos PRs):
 - Item #9: nenhuma cotação na simulação (valores em reais do usuário); risco de carteira como limite superior com cobertura declarada; `MoneyBounds` compartilhado; classes nomeadas `Impact` para manter a regra do ArchUnit contra `Simulat`; glossário escrito a partir da leitura do código, com a ligação métrica → entrada testada.
@@ -125,7 +126,6 @@ Decisões menores (no corpo dos PRs):
 | # | Dívida | Onde | Resolver em |
 |---|---|---|---|
 | 3 | `MarketService` usa um único monitor para todos os ativos (o I/O já saiu do lock no PR #2; falta snapshot imutável ou lock por ativo) | `application/MarketService` | PR #14 |
-| 5 | `ApiRateLimitFilter` usa `getRemoteAddr()` (todos iguais atrás de proxy) | `infrastructure/stream` | PR #11 |
 | 6 | Não há cálculos monetários; motor inteiro em `double` (fronteira definida no ADR 002) | — | PRs #12/#13 |
 | 9 | Persistência JDBC com 17% de cobertura (sem banco nos testes) | `infrastructure/persistence` | PR #20 |
 | 11 | Finnhub REST e WebSocket sem validação ao vivo (sem chave); FRED idem | `infrastructure/provider` | quando houver chave |
@@ -150,8 +150,11 @@ Decisões menores (no corpo dos PRs):
 | 29 | A pressão geopolítica é contagem de palavras-chave em manchetes de terceiros e só mede cinco setores; o setor da posição vem do universo do painel | `GeoRiskScorer`, `GeoTranslator` | fonte de eventos estruturada e mapa de exposição por país (item #16) |
 | 30 | As caracterizações das gestoras e os textos das teses são resumos simplificados, sem revisão pelas instituições nem por profissional habilitado | `ThesisCatalog` | revisão antes de uso além do educacional |
 | 32 | Controles do protótipo sem backend ficam de fora: alternância BRL/USD, modo privacidade, central de alertas e menu do usuário; páginas sem dado real ficam desabilitadas na sidebar | `index.html` (NAV) | itens #11, #12, #15, #16, #18, #19 e Milestone 6 |
+| 33 | Contas e refresh tokens ficam em memória: um reinício apaga as contas e encerra as sessões; falta a migração de usuários e o adaptador JDBC das portas `UserStore` e `RefreshTokenStore` | `infrastructure/security` | item #12 (`V2__users_and_portfolio.sql`) |
+| 34 | O refresh token trafega no corpo da resposta e fica no armazenamento do navegador (um cookie `HttpOnly` com `SameSite` o protegeria melhor de XSS); o ID token do Google não leva `nonce`; as travas de login valem por instância | `AuthController`, `GoogleIdTokenVerifier`, `LoginAttemptLimiter` | item #15 (cliente de login) e item #14 |
 
 **Resolvidas**
+- Dívida 5 (item #11, Issue #25): o `ApiRateLimitFilter` usava `getRemoteAddr()`; agora conta pelo IP real (`X-Forwarded-For` só de proxy confiável, lido da direita para a esquerda) e por usuário autenticado, com limite menor nas rotas de autenticação. Testes de integração com e sem proxy confiável.
 - Dívida 31 (Issue #33): as fontes do protótipo (Cormorant Garamond, Figtree e IBM Plex Mono, SIL OFL 1.1) são servidas pelo projeto como WOFF2 do subconjunto latino em `static/fonts/`, com as licenças ao lado, sem CDN; `FontsContractTest` trava isso. As 20 imagens do protótipo que não estão em `docs/design/` seguem fora do repositório.
 - Item #5 (pós-review): a Selic meta (SGS 432) é preenchida para a frente com o valor vigente, então sua data é sempre a de hoje; a regra de defasagem por data nunca disparava para ela e, se a coleta falhasse por dias, o painel afirmaria "dado em dia". Agora cada observação guarda quando o sistema a confirmou (`confirmedAt`), qualquer série fica `STALE` após 3 h sem confirmação, a Selic meta não usa a data como idade e a tela diz "vigente em". `refresh()` do BCB passou a ser exclusivo (antes duas rodadas simultâneas disputavam a cota e o retrato) e `Rate.compoundedOver` valida o teto de períodos do `BigDecimal.pow`.
 - Item #5: dívida 15 (PRs incompatíveis do Dependabot: #6 fechado à mão, #9 e #12 fechados pelo próprio Dependabot após a nova configuração).
@@ -176,13 +179,15 @@ Decisões menores (no corpo dos PRs):
 docker compose up --build
 ```
 
+Segurança: `MW_JWT_SECRET` (segredo do JWT) e `MW_GOOGLE_CLIENT_ID` (Login com Google) são opcionais em desenvolvimento e obrigatórios na prática em produção; ver [seguranca.md](seguranca.md). Sem elas, a aplicação sobe com segredo aleatório por partida e sem Login com Google.
+
 Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site/jacoco/index.html`.
 
 ## 7. Estado da validação
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 308 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 398 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
