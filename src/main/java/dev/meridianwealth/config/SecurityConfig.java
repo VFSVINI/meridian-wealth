@@ -12,8 +12,6 @@ import dev.meridianwealth.infrastructure.security.BcryptPasswordHasher;
 import dev.meridianwealth.infrastructure.security.ClientIpResolver;
 import dev.meridianwealth.infrastructure.security.GoogleIdTokenVerifier;
 import dev.meridianwealth.infrastructure.security.GoogleJwksSource;
-import dev.meridianwealth.infrastructure.security.InMemoryRefreshTokenStore;
-import dev.meridianwealth.infrastructure.security.InMemoryUserStore;
 import dev.meridianwealth.infrastructure.security.JwtTokenService;
 import java.nio.charset.StandardCharsets;
 import java.time.Clock;
@@ -78,12 +76,6 @@ public class SecurityConfig implements WebMvcConfigurer {
 
     @Bean
     PasswordHasher passwordHasher(@Value("${meridianwealth.security.bcrypt-strength:12}") int strength) { return new BcryptPasswordHasher(strength); }
-
-    @Bean
-    UserStore userStore() { return new InMemoryUserStore(); }
-
-    @Bean
-    RefreshTokenStore refreshTokenStore() { return new InMemoryRefreshTokenStore(); }
 
     @Bean
     GoogleIdentityVerifier googleIdentityVerifier(@Value("${meridianwealth.google.client-id:}") String clientId, HttpGateway http) {
