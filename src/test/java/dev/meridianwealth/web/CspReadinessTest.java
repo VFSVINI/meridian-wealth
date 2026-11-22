@@ -39,6 +39,8 @@ class CspReadinessTest {
         assertThat(auth).contains("'X-Session-Mode':'cookie'").contains("navigator.locks.request('mw-refresh'").contains("new BroadcastChannel('mw-auth')");
         assertThat(auth).as("nenhum token no localStorage").doesNotContain("localStorage.setItem(SESSION_KEY").doesNotContain("accessToken:d.accessToken,accessExpiresAt:d.accessExpiresAt,refreshToken");
         assertThat(auth).doesNotContainPattern("localStorage\\.setItem\\([^)]*(accessToken|refreshToken)");
+        assertThat(auth).as("só o 401 da renovação encerra a sessão; rede fora do ar ou 5xx a mantêm").contains("e.definitive=true").contains("if(e&&e.definitive)")
+                .doesNotContain("if(r.status===401&&SESS)saveSess(null)");
         String all = StaticPage.whole();
         assertThat(all).as("o código do navegador nunca lê nem guarda refreshToken").doesNotContain("d.refreshToken").doesNotContain("SESS.refreshToken");
     }

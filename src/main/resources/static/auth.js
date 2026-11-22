@@ -26,9 +26,11 @@ function refreshSession(){
   if(!refreshing){
     refreshing=withLock(async()=>{
       const r=await fetch('/api/auth/refresh',{method:'POST',headers:JSON_H});
-      if(!r.ok)throw new Error('refresh');
+      // só o 401 do servidor diz que a sessão acabou; rede fora do ar, 5xx e 429 são transitórios e o cookie segue válido
+      if(r.status===401){const e=new Error('refresh');e.definitive=true;throw e}
+      if(!r.ok)throw new Error('transient');
       applySession(await r.json(),false);return true;
-    }).catch(()=>{if(SESS)saveSess(null);else mark(false);return false}).finally(()=>{refreshing=null});
+    }).catch(e=>{if(e&&e.definitive){if(SESS)saveSess(null);else mark(false)}return false}).finally(()=>{refreshing=null});
   }
   return refreshing;
 }
@@ -36,8 +38,10 @@ function refreshSession(){
 async function api(url,opts={}){
   const call=()=>fetch(url,{...opts,headers:{...(opts.headers||{}),...(SESS?{Authorization:'Bearer '+SESS.accessToken}:{})}});
   let r=await call();
-  if(r.status===401&&SESS&&await refreshSession())r=await call();
-  if(r.status===401&&SESS)saveSess(null);
+  if(r.status===401&&SESS){
+    if(await refreshSession())r=await call();
+    else if(SESS&&SESS.demo)saveSess(null); // a demonstração não renova: vencida, acabou. Nos outros casos a renovação já encerrou a sessão (401) ou foi transitória (mantém)
+  }
   return r;
 }
 const isLogged=()=>!!SESS;
