@@ -21,7 +21,7 @@ class FontsContractTest {
 
     @BeforeAll
     static void load() throws IOException {
-        html = new String(read("/static/index.html"), StandardCharsets.UTF_8);
+        html = dev.meridianwealth.testsupport.StaticPage.whole();
     }
 
     private static byte[] read(String path) throws IOException {

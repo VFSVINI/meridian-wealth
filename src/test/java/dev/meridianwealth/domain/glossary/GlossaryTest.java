@@ -4,8 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.meridianwealth.domain.RateSeries;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,9 +16,7 @@ import org.junit.jupiter.api.Test;
 /** O glossário é completo, consistente e ligado a cada métrica do painel (critério de aceite do item #9). */
 class GlossaryTest {
     private static String html() throws IOException {
-        try (InputStream in = GlossaryTest.class.getResourceAsStream("/static/index.html")) {
-            return new String(in.readAllBytes(), StandardCharsets.UTF_8);
-        }
+        return dev.meridianwealth.testsupport.StaticPage.whole();
     }
 
     /** Tabela GID do painel: padrão do rótulo -> id do glossário, lida do próprio index.html. */
