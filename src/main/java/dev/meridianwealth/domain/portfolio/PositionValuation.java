@@ -42,17 +42,20 @@ public final class PositionValuation {
      */
     public static Result value(Position p, MarketPrice price, FxRate fx) {
         MarketPrice usable = price != null && price.currency() == p.currency() ? price : null;
-        BigDecimal cost = p.costBasis();
-        BigDecimal market = usable == null ? null : p.quantity().multiply(usable.price()).setScale(2, RoundingMode.HALF_EVEN);
+        // as contas partem dos valores exatos e arredondam uma única vez, na moeda de destino (arredondar em dólar e converter erra centavos)
+        BigDecimal exactCost = p.exactCost();
+        BigDecimal exactMarket = usable == null ? null : p.quantity().multiply(usable.price());
+        BigDecimal cost = exactCost.setScale(2, RoundingMode.HALF_EVEN);
+        BigDecimal market = exactMarket == null ? null : exactMarket.setScale(2, RoundingMode.HALF_EVEN);
         BigDecimal pnl = market == null ? null : market.subtract(cost);
         BigDecimal pct = pnl == null || cost.signum() == 0 ? null : Position.percentOf(pnl, cost);
-        BigDecimal costBrl = brl(p.currency(), cost, fx);
-        BigDecimal currentBrl = brl(p.currency(), market != null ? market : cost, fx);
+        BigDecimal costBrl = brl(p.currency(), exactCost, fx);
+        BigDecimal currentBrl = brl(p.currency(), exactMarket != null ? exactMarket : exactCost, fx);
         return new Result(p, usable, usable == null ? Basis.COST : Basis.MARKET, cost, market, pnl, pct, costBrl, currentBrl);
     }
 
     private static BigDecimal brl(Currency c, BigDecimal amount, FxRate fx) {
-        if (c == Currency.BRL) return amount;
+        if (c == Currency.BRL) return amount.setScale(2, RoundingMode.HALF_EVEN);
         return fx == null ? null : fx.toBrl(c, amount);
     }
 }
