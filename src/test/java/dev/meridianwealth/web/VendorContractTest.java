@@ -63,6 +63,15 @@ class VendorContractTest {
         }
     }
 
+    @Test void lightweightChartsIsServedLocallyWithItsLicenseAndTheTradingViewAttribution() throws Exception {
+        byte[] js = read("/static/vendor/lightweight-charts.standalone.production.js");
+        assertThat(HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(js))).isEqualTo("c7dda807d662a95b3d257119ed315cec669e3bdf5aaece75c480a39307f23540");
+        assertThat(new String(js, 0, 300, StandardCharsets.UTF_8)).contains("Lightweight Charts").contains("v4.2.3").contains("Apache License 2.0");
+        assertThat(new String(read("/static/vendor/LICENSE-lightweight-charts.txt"), StandardCharsets.UTF_8)).contains("Apache License").contains("Version 2.0");
+        String page = dev.meridianwealth.testsupport.StaticPage.file("index.html");
+        assertThat(page).as("a licença pede atribuição à TradingView, com o link").contains("TradingView").contains("https://www.tradingview.com/");
+    }
+
     @Test void theInterfaceNeverReachesForTheLibraryOnAnExternalHost() throws IOException {
         String all = dev.meridianwealth.testsupport.StaticPage.whole();
         assertThat(all).contains("/vendor/echarts.min.js").doesNotContain("cdn.jsdelivr").doesNotContain("echarts.apache.org");
