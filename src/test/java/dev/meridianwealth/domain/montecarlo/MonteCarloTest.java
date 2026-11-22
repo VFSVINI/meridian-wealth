@@ -143,4 +143,46 @@ class MonteCarloTest {
         assertThat(AlignedReturns.of(Map.of("A", new TreeMap<>(Map.of(1L, 1.0)), "B", new TreeMap<>(Map.of(2L, 1.0))))).as("sem datas em comum").isNull();
         assertThatThrownBy(() -> AlignedReturns.of(Map.of("A", new TreeMap<>(Map.of(1L, 1.0, 2L, 0.0))))).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test void quantileInterpolatesBetweenNeighboursAndShareCountsTiesAtOrAbove() {
+        double[] s = {1, 2, 3, 4, 5};
+        assertThat(MonteCarlo.quantile(s, 0.0)).isEqualTo(1);
+        assertThat(MonteCarlo.quantile(s, 0.5)).isEqualTo(3);
+        assertThat(MonteCarlo.quantile(s, 0.25)).isEqualTo(2);
+        assertThat(MonteCarlo.quantile(s, 0.1)).isCloseTo(1.4, within(1e-12));
+        assertThat(MonteCarlo.quantile(s, 0.95)).isCloseTo(4.8, within(1e-12));
+        assertThat(MonteCarlo.quantile(s, 1.0)).isEqualTo(5);
+        double[] ties = {1, 2, 2, 2, 3};
+        assertThat(MonteCarlo.shareAtOrAbove(ties, 2)).as("os empates entram").isEqualTo(4.0 / 5);
+        assertThat(MonteCarlo.shareAtOrAbove(ties, 2.5)).isEqualTo(1.0 / 5);
+        assertThat(MonteCarlo.shareAtOrAbove(ties, 0)).isEqualTo(1.0);
+        assertThat(MonteCarlo.shareAtOrAbove(ties, 3)).isEqualTo(1.0 / 5);
+        assertThat(MonteCarlo.shareAtOrAbove(ties, 4)).isZero();
+    }
+
+    @Test void aMonthNeverLosesMoreThanEverythingAndTheContributionStillComesIn() {
+        MonteCarlo.ReturnModel catastrophe = rnd -> -5.0;
+        Result r = MonteCarlo.run(new Params(1_000, 100, 3, null, 1), catastrophe);
+        for (double[] level : r.percentiles()) {
+            assertThat(level[1]).isEqualTo(100);
+            assertThat(level[3]).isEqualTo(100);
+        }
+        assertThat(r.probabilityBelowInvested()).isEqualTo(1.0);
+        Result total = MonteCarlo.run(new Params(1_000, 0, 2, null, 1), rnd -> -1.0);
+        assertThat(total.percentiles()[2][1]).as("perda de 100% zera, nunca fica negativo").isZero();
+    }
+
+    @Test void theHistogramSpansFromTheMinimumToThe99thPercentileAndCountsLandInTheRightBins() {
+        Result flat = MonteCarlo.run(new Params(1_000, 0, 6, null, 1), rnd -> 0.0);
+        assertThat(flat.histogramEdges()[0]).isEqualTo(1_000);
+        assertThat(flat.histogramEdges()[MonteCarlo.BINS]).as("sem dispersão, a faixa abre 1 real").isEqualTo(1_001);
+        assertThat(flat.histogramCounts()[0]).isEqualTo(MonteCarlo.PATHS);
+        Result two = MonteCarlo.run(new Params(1_000, 0, 1, null, 3), rnd -> rnd.nextBoolean() ? 1.0 : 0.0);
+        assertThat(two.histogramEdges()[0]).isEqualTo(1_000);
+        assertThat(two.histogramEdges()[MonteCarlo.BINS]).isEqualTo(2_000);
+        assertThat(two.histogramCounts()[0] + two.histogramCounts()[MonteCarlo.BINS - 1]).as("tudo cai nas duas pontas").isEqualTo(MonteCarlo.PATHS);
+        assertThat(two.histogramCounts()[0]).isBetween(2_300, 2_700);
+        assertThat(two.mean()).isCloseTo(1_500, within(30.0));
+        assertThat(two.probabilityBelowInvested()).as("o que não dobra termina no investido, não abaixo").isZero();
+    }
 }

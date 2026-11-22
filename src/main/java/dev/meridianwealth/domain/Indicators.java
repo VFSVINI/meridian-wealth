@@ -162,8 +162,12 @@ public final class Indicators {
             cov += (ra[i] - ma) * (rb[i] - mb);
             var += (rb[i] - mb) * (rb[i] - mb);
         }
-        return var == 0 ? Double.NaN : cov / var;
+        // benchmark praticamente parado (variância de arredondamento): o beta explodiria para um número sem sentido; sem variância não há beta
+        return var < MIN_BENCHMARK_VARIANCE ? Double.NaN : cov / var;
     }
+
+    /** Variância mínima (da soma dos desvios ao quadrado) para o beta fazer sentido: abaixo disso o benchmark não se mexeu. */
+    static final double MIN_BENCHMARK_VARIANCE = 1e-12;
 
     /** Volume da última barra dividido pela média das n barras anteriores (1 quando não há volume). */
     public static double relativeVolume(List<Candle> cs, int n) {

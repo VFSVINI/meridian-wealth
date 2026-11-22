@@ -125,4 +125,41 @@ class CorrelationTest {
     @Test void tooLittleSharedHistoryIsRefusedForPortfolioRisk() {
         assertThatThrownBy(() -> Correlation.portfolioRisk(aligned(new double[] {0.01}), new double[] {1.0})).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test void annualVolatilityIsTheSampleStandardDeviationTimesTheRootOf252() {
+        assertThat(Correlation.annualVol(new double[] {0.01, -0.01, 0.01, -0.01})).isCloseTo(Math.sqrt(4e-4 / 3) * Math.sqrt(252), within(1e-12));
+        assertThat(Correlation.annualVol(new double[] {0.02, 0.02, 0.02})).isZero();
+        assertThat(Correlation.annualVol(new double[] {0.03, 0.01})).isCloseTo(Math.sqrt(2e-4) * Math.sqrt(252), within(1e-12));
+    }
+
+    @Test void theMinimumOfSixtyReturnsIsExactAndTinyButRealVariationStillCorrelates() {
+        Map<String, TreeMap<Long, Double>> sixty = new LinkedHashMap<>();
+        sixty.put("A", closes(0, noise(21, Correlation.MIN_DAYS, 0.02)));
+        sixty.put("B", closes(0, noise(22, Correlation.MIN_DAYS, 0.02)));
+        Matrix ok = Correlation.pairwise(sixty);
+        assertThat(ok.days()[0][1]).isEqualTo(60);
+        assertThat(ok.values()[0][1]).as("60 retornos já valem").isNotNull();
+        assertThat(ok.values()[0][0]).isEqualTo(1.0);
+        Map<String, TreeMap<Long, Double>> fiftyNine = new LinkedHashMap<>();
+        fiftyNine.put("A", closes(0, noise(21, Correlation.MIN_DAYS - 1, 0.02)));
+        fiftyNine.put("B", closes(0, noise(22, Correlation.MIN_DAYS - 1, 0.02)));
+        Matrix no = Correlation.pairwise(fiftyNine);
+        assertThat(no.days()[0][1]).isEqualTo(59);
+        assertThat(no.values()[0][1]).as("59 retornos não valem").isNull();
+        assertThat(no.values()[0][0]).as("nem a diagonal").isNull();
+        double[] tiny = {1e-6, 0, 1e-6, 0, 1e-6, 0};
+        assertThat(Correlation.pearson(tiny, tiny)).as("variação minúscula mas real ainda correlaciona").isCloseTo(1.0, within(1e-12));
+        assertThat(Correlation.pearson(new double[] {1, 2}, new double[] {3, 5})).as("dois pontos distintos são perfeitamente correlacionados").isCloseTo(1.0, within(1e-12));
+        assertThat(Correlation.pearson(new double[] {1, 2, 3}, new double[] {1, 2})).as("tamanhos diferentes").isNull();
+    }
+
+    @Test void portfolioRiskNeedsAtLeastTwoSharedReturnsAndExactlyTheWindowIsUsed() {
+        double[] two = {0.02, -0.01};
+        assertThat(Correlation.portfolioRisk(aligned(two), new double[] {1.0}).days()).isEqualTo(2);
+        assertThatThrownBy(() -> Correlation.portfolioRisk(aligned(new double[] {0.02}), new double[] {1.0})).isInstanceOf(IllegalArgumentException.class);
+        PortfolioRisk longHistory = Correlation.portfolioRisk(aligned(noise(31, 400, 0.02)), new double[] {1.0});
+        assertThat(longHistory.days()).isEqualTo(Correlation.WINDOW);
+        assertThat(longHistory.diversificationBenefit()).isCloseTo(0, within(1e-12));
+        assertThat(longHistory.portfolioVolatility()).isEqualTo(longHistory.weightedAverageVolatility());
+    }
 }
