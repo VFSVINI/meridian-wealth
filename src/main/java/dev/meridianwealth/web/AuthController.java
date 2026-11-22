@@ -80,7 +80,7 @@ public class AuthController {
     public SessionView demo() { return SessionView.of(auth.demo()); }
 
     /** Converte as falhas de autenticação em respostas com status e código estáveis (nunca com detalhe interno). */
-    @RestControllerAdvice(assignableTypes = {AuthController.class, MeController.class, PortfolioController.class})
+    @RestControllerAdvice(assignableTypes = {AuthController.class, MeController.class, PortfolioController.class, TaxController.class})
     static class Errors {
         @ExceptionHandler(AuthException.class)
         ResponseEntity<Map<String, String>> auth(AuthException e) {
