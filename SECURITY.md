@@ -23,5 +23,5 @@ Respondemos em até 7 dias e combinamos a divulgação após a correção.
 ## Problemas conhecidos (abertos)
 
 - Sem `MW_PERSISTENCE=true` (execução sem Docker), contas, sessões e carteira ficam em memória e um reinício as apaga; com a persistência ligada (Docker Compose) ficam no PostgreSQL.
-- O refresh token trafega no corpo da resposta (não em cookie `HttpOnly`) e o ID token do Google não leva `nonce`; a CSP restritiva é a mitigação de XSS.
-- As travas de tentativa de login valem por instância; o contador de rate limit usa o Redis no Compose.
+- O ID token do Google não leva `nonce` e as travas de tentativa de login valem por instância (dívida 43). O refresh token do navegador vive num cookie `HttpOnly` e nenhum token fica no armazenamento do navegador.
+- O contador de rate limit usa o Redis no Compose. A auditoria completa está em [docs/seguranca-checklist.md](docs/seguranca-checklist.md) e o roteiro de incidentes em [docs/resposta-a-incidentes.md](docs/resposta-a-incidentes.md).
