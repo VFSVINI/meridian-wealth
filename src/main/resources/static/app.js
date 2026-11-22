@@ -539,13 +539,13 @@ const IC={home:'M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',mercad
  simulador:'M5 8h14M5 16h14M9 4l-4 4 4 4M15 12l4 4-4 4',mapa:'M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11zM12 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
  composicao:'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5',montecarlo:'M3 17c4-8 6-8 9-4s6 0 9-8',correlacao:'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z',stress:'M13 2L4 14h7l-1 8 9-12h-7z',
  glossario:'M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM5 17a3 3 0 0 1 3-3h11',alertas:'M6 17V11a6 6 0 1 1 12 0v6l2 2H4zM10 21h4',config:'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19 12l2-1-2-4-2 .5-1.5-1L15 4h-4l-.5 2.5-1.5 1-2-.5-2 4 2 1v2l-2 1 2 4 2-.5 1.5 1L11 20h4l.5-2.5 1.5-1 2 .5 2-4-2-1z',
- saude:'M3 12h4l3-8 4 16 3-8h4'};
+ saude:'M3 12h4l3-8 4 16 3-8h4',privacidade:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4'};
 const NAV=[['VISÃO GERAL',[['home','Painel inicial'],['mercados','Mercados']]],
  ['ANÁLISE',[['cockpit','Cockpit do ativo'],['radar','Radar de relatórios'],['brasil','Brasil: juros e inflação'],['geo','Geopolítica e teses']]],
  ['PATRIMÔNIO',[['carteira','Minha Carteira'],['perfil','Perfil e carteira modelo'],['simulador','Simulador pré-ordem'],['mapa','Mapa de ativos reais','item #16'],['composicao','Composição (Raio-X)']]],
  ['RISCO',[['montecarlo','Monte Carlo','item #18'],['correlacao','Correlação e concentração','item #19'],['stress','Stress testing','sob pedido']]],
  ['APRENDER',[['glossario','Glossário']]],
- ['CONTA',[['alertas','Alertas','sob pedido'],['config','Configurações','item #11 e #15'],['saude','Saúde dos dados']]]];
+ ['CONTA',[['alertas','Alertas','sob pedido'],['config','Configurações','item #11 e #15'],['saude','Saúde dos dados'],['privacidade','Privacidade e termos']]]];
 const icon=id=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${IC[id]||''}"/></svg>`;
 const PAGES=new Set([...document.querySelectorAll('.page')].map(p=>p.dataset.page));
 function buildNav(){
