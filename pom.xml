@@ -20,6 +20,9 @@
     <archunit.version>1.3.0</archunit.version>
     <!-- O PostgreSQL embutido dos testes (zonky) exige o commons-lang3 mais novo que o gerenciado pelo Spring Boot 3.3. -->
     <commons-lang3.version>3.18.0</commons-lang3.version>
+    <!-- Testcontainers: a 1.21.4 é a última da série 1.x e negocia a versão da API com Docker recente (a 1.19 gerenciada pelo Spring Boot 3.3 não). -->
+    <testcontainers.version>1.21.4</testcontainers.version>
+    <pitest.version>1.30.2</pitest.version>
     <!-- Piso de cobertura de linhas; sobe a cada milestone (ver docs/PROJETO.md). -->
     <jacoco.minimum.line>0.70</jacoco.minimum.line>
     <!-- Preenchido pelo JaCoCo; o valor vazio permite rodar sem o agente. -->
@@ -41,6 +44,8 @@
     <dependency><groupId>org.springdoc</groupId><artifactId>springdoc-openapi-starter-webmvc-ui</artifactId><version>2.6.0</version></dependency>
     <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-test</artifactId><scope>test</scope></dependency>
     <dependency><groupId>io.zonky.test</groupId><artifactId>embedded-postgres</artifactId><version>2.2.3</version><scope>test</scope></dependency>
+    <dependency><groupId>org.testcontainers</groupId><artifactId>postgresql</artifactId><scope>test</scope></dependency>
+    <dependency><groupId>org.testcontainers</groupId><artifactId>junit-jupiter</artifactId><scope>test</scope></dependency>
     <dependency><groupId>com.tngtech.archunit</groupId><artifactId>archunit-junit5</artifactId><version>${archunit.version}</version><scope>test</scope></dependency>
   </dependencies>
   <build>
@@ -52,6 +57,24 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
           <argLine>@{argLine} -XX:+EnableDynamicAgentLoading -Dfile.encoding=UTF-8</argLine>
+        </configuration>
+      </plugin>
+      <!-- Teste de mutação (PIT) sobre o domínio: mvn -B test-compile org.pitest:pitest-maven:mutationCoverage. Fora do verify: leva alguns minutos e roda num job próprio da CI. -->
+      <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>${pitest.version}</version>
+        <dependencies>
+          <dependency><groupId>org.pitest</groupId><artifactId>pitest-junit5-plugin</artifactId><version>1.2.3</version></dependency>
+        </dependencies>
+        <configuration>
+          <targetClasses><param>dev.meridianwealth.domain.*</param></targetClasses>
+          <targetTests><param>dev.meridianwealth.domain.*</param></targetTests>
+          <threads>4</threads>
+          <outputFormats><param>HTML</param><param>XML</param></outputFormats>
+          <timestampedReports>false</timestampedReports>
+          <mutationThreshold>0</mutationThreshold>
+          <jvmArgs><jvmArg>-XX:+EnableDynamicAgentLoading</jvmArg><jvmArg>-Dfile.encoding=UTF-8</jvmArg></jvmArgs>
         </configuration>
       </plugin>
       <plugin>
