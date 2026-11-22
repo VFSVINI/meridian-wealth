@@ -38,6 +38,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class BcbClient implements ProviderStatusSource {
+    /** Quanto uma consulta interativa (a requisição de um usuário) espera por uma ficha do limitador. */
+    public static final java.time.Duration INTERACTIVE_WAIT = java.time.Duration.ofSeconds(5);
+
     /** Uma observação de série: data de referência e valor. */
     public record Point(LocalDate date, BigDecimal value) {}
 
@@ -92,12 +95,13 @@ public class BcbClient implements ProviderStatusSource {
     }
 
     /**
-     * PTAX do último dia útil até {@code date} (janela de {@code lookbackDays}), para uso interativo: não espera ficha do limitador
-     * (falha rápido, e quem chama trata a falta do dado), diferente das consultas de fundo.
+     * PTAX do último dia útil até {@code date} (janela de {@code lookbackDays}), para uso interativo: espera até
+     * {@link #INTERACTIVE_WAIT} por uma ficha do limitador (uma importação de histórico passa das fichas do balde em um segundo) em vez de
+     * falhar na hora, e por isso não compete com a espera longa das consultas de fundo.
      */
     public Ptax ptaxOnOrBefore(LocalDate date, int lookbackDays) {
         String url = ptaxUrl(date.minusDays(lookbackDays), date);
-        return executor.call(() -> parsePtax(http.get(url, Map.of())));
+        return executor.callPatiently(() -> parsePtax(http.get(url, Map.of())), INTERACTIVE_WAIT);
     }
 
     static List<Point> parseSeries(String json, LocalDate until) throws IOException {

@@ -188,8 +188,9 @@ public final class PortfolioService {
         if (positions.countByUser(who.userId()) >= MAX_POSITIONS) throw new PortfolioException(Code.LIMIT_REACHED, "Limite de " + MAX_POSITIONS + " posições por carteira atingido");
         LocalDate date = tradeDate(r.tradeDate());
         checkOrder(who, asset.key(), date);
-        Fx fx = fx(currency, date, r.fxRate());
         Instant now = clock.instant();
+        attempt(() -> Position.open(who.userId(), asset, r.quantity(), r.averagePrice(), currency, null, now)); // valida antes de consultar o câmbio
+        Fx fx = fx(currency, date, r.fxRate());
         Position p = attempt(() -> Position.open(who.userId(), asset, r.quantity(), r.averagePrice(), currency, fx == null ? null : fx.rate(), now));
         LedgerEntry entry = entry(who, p.id(), asset, EntryType.OPENING, date, p.quantity(), p.averagePrice(), BigDecimal.ZERO, currency, fx, p, null, null, 0, key, key == null ? null : hash, now);
         return finish(ledger.commit(new Change(Op.OPEN, p, p.id(), 0, entry)), who, key, hash);
@@ -205,8 +206,9 @@ public final class PortfolioService {
         Position current = load(who, r.id(), r.expectedVersion());
         LocalDate date = tradeDate(r.tradeDate());
         checkOrder(who, current.asset().key(), date);
-        Fx fx = fx(current.currency(), date, r.fxRate());
         Instant now = clock.instant();
+        attempt(() -> current.purchase(r.quantity(), r.unitPrice(), fees, null, now)); // valida antes de consultar o câmbio: o erro do usuário vence e nada é gasto à toa
+        Fx fx = fx(current.currency(), date, r.fxRate());
         Position next = attempt(() -> current.purchase(r.quantity(), r.unitPrice(), fees, fx == null ? null : fx.rate(), now));
         long after = current.version() + 1;
         LedgerEntry entry = entry(who, current.id(), current.asset(), EntryType.BUY, date, r.quantity(), r.unitPrice(), fees, current.currency(), fx, next.withVersion(after),
@@ -224,8 +226,9 @@ public final class PortfolioService {
         Position current = load(who, r.id(), r.expectedVersion());
         LocalDate date = tradeDate(r.tradeDate());
         checkOrder(who, current.asset().key(), date);
-        Fx fx = fx(current.currency(), date, r.fxRate());
         Instant now = clock.instant();
+        attempt(() -> current.sale(r.quantity(), r.unitPrice(), fees, null, now)); // valida antes de consultar o câmbio
+        Fx fx = fx(current.currency(), date, r.fxRate());
         Position.SaleOutcome out = attempt(() -> current.sale(r.quantity(), r.unitPrice(), fees, fx == null ? null : fx.rate(), now));
         boolean closed = out.remaining().isEmpty();
         long after = closed ? current.version() : current.version() + 1;
@@ -247,8 +250,9 @@ public final class PortfolioService {
         Position current = load(who, r.id(), r.expectedVersion());
         LocalDate date = tradeDate(r.tradeDate());
         checkOrder(who, current.asset().key(), date);
-        Fx fx = fx(current.currency(), date, r.fxRate());
         Instant now = clock.instant();
+        attempt(() -> current.declare(r.quantity(), r.averagePrice(), null, now)); // valida antes de consultar o câmbio
+        Fx fx = fx(current.currency(), date, r.fxRate());
         Position next = attempt(() -> current.declare(r.quantity(), r.averagePrice(), fx == null ? null : fx.rate(), now));
         long after = current.version() + 1;
         LedgerEntry entry = entry(who, current.id(), current.asset(), EntryType.ADJUSTMENT, date, next.quantity(), next.averagePrice(), BigDecimal.ZERO, current.currency(), fx,
