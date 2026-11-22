@@ -18,10 +18,14 @@ import dev.meridianwealth.application.port.FundamentalsPort;
 import dev.meridianwealth.application.port.MarketDataPort;
 import dev.meridianwealth.application.port.EventPublisher;
 import dev.meridianwealth.application.port.FxHistoryPort;
+import dev.meridianwealth.application.auth.AuthService;
 import dev.meridianwealth.application.port.PortfolioLedger;
 import dev.meridianwealth.application.port.PositionStore;
 import dev.meridianwealth.application.port.ProviderStatusSource;
+import dev.meridianwealth.application.port.RefreshTokenStore;
+import dev.meridianwealth.application.port.UserStore;
 import dev.meridianwealth.application.portfolio.PortfolioService;
+import dev.meridianwealth.application.privacy.DataSubjectService;
 import dev.meridianwealth.application.port.SignalStore;
 import dev.meridianwealth.application.port.TickSink;
 import dev.meridianwealth.infrastructure.events.InProcessEventBus;
@@ -88,6 +92,12 @@ public class ApplicationConfig {
     PortfolioService portfolioService(PositionStore positions, PortfolioLedger ledger, MarketService market, BrazilRatesService rates, FxHistoryPort fxHistory,
                                       EventPublisher events, Clock brasiliaClock) {
         return new PortfolioService(positions, ledger, market, rates, fxHistory, events, brasiliaClock);
+    }
+
+    @Bean
+    DataSubjectService dataSubjectService(AuthService auth, UserStore users, RefreshTokenStore refreshTokens, PositionStore positions, PortfolioLedger ledger,
+                                          Clock brasiliaClock) {
+        return new DataSubjectService(auth, users, refreshTokens, positions, ledger, brasiliaClock);
     }
 
     @Bean

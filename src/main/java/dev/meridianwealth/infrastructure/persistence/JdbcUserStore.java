@@ -36,6 +36,9 @@ public class JdbcUserStore implements UserStore {
     }
 
     @Override
+    public void delete(UUID id) { jdbc.update("DELETE FROM users WHERE id = ?", id); }
+
+    @Override
     public Optional<UserAccount> findById(UUID id) { return one("SELECT " + COLUMNS + " FROM users WHERE id = ?", id); }
 
     @Override

@@ -20,6 +20,13 @@ public class InMemoryPortfolioLedger implements PortfolioLedger {
     public InMemoryPortfolioLedger(InMemoryPositionStore positions) { this.positions = positions; }
 
     @Override
+    public synchronized int deleteAllOf(UUID userId) {
+        int before = entries.size();
+        entries.removeIf(e -> e.userId().equals(userId));
+        return before - entries.size();
+    }
+
+    @Override
     public synchronized Commit commit(Change change) {
         LedgerEntry e = change.entry();
         Optional<LedgerEntry> existing = findByKey(e.userId(), e.idempotencyKey());

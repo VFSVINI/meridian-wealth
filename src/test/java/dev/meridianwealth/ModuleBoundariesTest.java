@@ -36,7 +36,8 @@ class ModuleBoundariesTest {
     /** Módulos da camada de aplicação com subpacote próprio. */
     private static final Map<String, Set<String>> APPLICATION = Map.of(
             "auth", Set.of(),
-            "portfolio", Set.of("auth"));
+            "portfolio", Set.of("auth"),
+            "privacy", Set.of("auth"));
 
     private static void check(String layer, Map<String, Set<String>> modules) {
         for (Map.Entry<String, Set<String>> m : modules.entrySet()) {

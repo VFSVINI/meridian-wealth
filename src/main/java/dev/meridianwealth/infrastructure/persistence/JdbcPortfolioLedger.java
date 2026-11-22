@@ -115,6 +115,9 @@ public class JdbcPortfolioLedger implements PortfolioLedger {
     }
 
     @Override
+    public int deleteAllOf(UUID userId) { return jdbc.update("DELETE FROM ledger_entries WHERE user_id = ?", userId); }
+
+    @Override
     public Optional<LedgerEntry> findByKey(UUID userId, String idempotencyKey) {
         if (idempotencyKey == null) return Optional.empty();
         return jdbc.query("SELECT " + COLUMNS + " FROM ledger_entries WHERE user_id = ? AND idempotency_key = ?", MAPPER, userId, idempotencyKey).stream().findFirst();

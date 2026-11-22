@@ -65,6 +65,9 @@ public class JdbcPositionStore implements PositionStore {
     }
 
     @Override
+    public int deleteAllOf(UUID userId) { return jdbc.update("DELETE FROM positions WHERE user_id = ?", userId); }
+
+    @Override
     public boolean delete(UUID id, UUID userId, long expectedVersion) {
         return jdbc.update("DELETE FROM positions WHERE id = ? AND user_id = ? AND version = ?", id, userId, expectedVersion) == 1;
     }

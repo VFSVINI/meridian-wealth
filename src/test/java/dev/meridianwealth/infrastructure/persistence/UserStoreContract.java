@@ -47,6 +47,20 @@ abstract class UserStoreContract {
         assertThat(store().countPermanent()).isEqualTo(2);
     }
 
+    @Test void deleteRemovesTheAccountFromEveryKeyAndFreesTheEmailAndSubject() {
+        UserAccount g = google("bia@exemplo.com", "sub-del");
+        UserAccount keep = password("keep@exemplo.com");
+        store().createIfAbsent(g);
+        store().createIfAbsent(keep);
+        store().delete(g.id());
+        assertThat(store().findById(g.id())).isEmpty();
+        assertThat(store().findByEmail("bia@exemplo.com")).isEmpty();
+        assertThat(store().findByGoogleSubject("sub-del")).isEmpty();
+        assertThat(store().findById(keep.id())).as("as outras contas ficam").isPresent();
+        assertThat(store().createIfAbsent(google("bia@exemplo.com", "sub-del"))).as("e-mail e sub voltam a ficar livres").isTrue();
+        store().delete(UUID.randomUUID()); // conta inexistente: nada acontece
+    }
+
     @Test void emailAndGoogleSubjectAreUnique() {
         assertThat(store().createIfAbsent(password("ana@exemplo.com"))).isTrue();
         assertThat(store().createIfAbsent(password("ana@exemplo.com"))).isFalse();

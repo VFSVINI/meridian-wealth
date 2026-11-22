@@ -76,6 +76,23 @@ abstract class PortfolioLedgerContract {
         assertThat(ledger().lastTradeDate(u, "OUTRO")).isEmpty();
     }
 
+    @Test void deleteAllOfErasesOnlyThatUsersPositionsAndLedger() {
+        UUID a = newUser();
+        UUID b = newUser();
+        Position pa = open(a, "PETR4", "k-a");
+        buy(a, pa, null, "2026-03-02");
+        open(a, "VALE3", null);
+        open(b, "PETR4", "k-b");
+        assertThat(ledger().deleteAllOf(a)).isEqualTo(3);
+        assertThat(positions().deleteAllOf(a)).isEqualTo(2);
+        assertThat(ledger().all(a)).isEmpty();
+        assertThat(positions().findByUser(a)).isEmpty();
+        assertThat(ledger().findByKey(a, "k-a")).as("a chave de idempotência some junto").isEmpty();
+        assertThat(ledger().all(b)).as("o outro usuário não é tocado").hasSize(1);
+        assertThat(positions().findByUser(b)).hasSize(1);
+        assertThat(ledger().deleteAllOf(a)).isZero();
+    }
+
     @Test void filtersAndPaginationScopeTheListingToTheUser() {
         UUID a = newUser();
         UUID b = newUser();

@@ -47,6 +47,13 @@ public class InMemoryPositionStore implements PositionStore {
     }
 
     @Override
+    public synchronized int deleteAllOf(UUID userId) {
+        int before = byId.size();
+        byId.values().removeIf(p -> p.userId().equals(userId));
+        return before - byId.size();
+    }
+
+    @Override
     public synchronized boolean delete(UUID id, UUID userId, long expectedVersion) {
         Position current = byId.get(id);
         if (current == null || !current.userId().equals(userId) || current.version() != expectedVersion) return false;

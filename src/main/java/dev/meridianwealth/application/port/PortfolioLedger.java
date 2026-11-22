@@ -45,6 +45,9 @@ public interface PortfolioLedger {
     /** Todas as entradas do usuário em ordem de gravação (limitadas por segurança). */
     List<LedgerEntry> all(UUID userId);
 
+    /** Apaga todo o livro do usuário (eliminação da conta, única exceção ao "só acrescenta"); devolve quantas entradas saíram. */
+    int deleteAllOf(UUID userId);
+
     /** Data da última operação do ativo, para impedir lançamentos fora de ordem. */
     Optional<LocalDate> lastTradeDate(UUID userId, String assetKey);
 }
