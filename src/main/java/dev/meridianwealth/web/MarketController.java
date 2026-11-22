@@ -90,7 +90,7 @@ public class MarketController {
     static class Errors {
         @ExceptionHandler(NoSuchElementException.class)
         @ResponseStatus(HttpStatus.NOT_FOUND)
-        Map<String, String> notFound(NoSuchElementException e) { return Map.of("error", "Ativo desconhecido: " + e.getMessage()); }
+        Map<String, String> notFound(NoSuchElementException e) { return Map.of("error", "Ativo desconhecido"); }
 
         @ExceptionHandler(DataUnavailableException.class)
         @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)

@@ -25,6 +25,12 @@ logging:
     level: "%5p [%X{correlationId:-}]"
 server:
   port: 8080
+# Documentação da API (Swagger e /v3/api-docs) lista todas as rotas: fora do ar por padrão (MW_API_DOCS=true liga, para desenvolvimento)
+springdoc:
+  api-docs:
+    enabled: ${MW_API_DOCS:false}
+  swagger-ui:
+    enabled: ${MW_API_DOCS:false}
 management:
   endpoints:
     web:

@@ -72,6 +72,31 @@ class LiveBrazilRatesTest {
         assertThat(rates.current().get(RateSeries.IPCA_MONTHLY)).isPresent();
     }
 
+    @Test void aMissingSeriesIsRetriedSoonButACompleteSnapshotIsLeftAlone() {
+        AtomicBoolean cdiDown = new AtomicBoolean(true);
+        java.util.concurrent.atomic.AtomicInteger calls = new java.util.concurrent.atomic.AtomicInteger();
+        FixtureHttpGateway fixtures = new FixtureHttpGateway();
+        HttpGateway gw = (url, h) -> {
+            calls.incrementAndGet();
+            if (url.contains("sgs.4389/") && cdiDown.get()) throw new IOException("resposta inesperada");
+            return fixtures.get(url, h);
+        };
+        LiveBrazilRates rates = live(gw, true);
+        rates.retryMissing();
+        assertThat(rates.current().get(RateSeries.CDI_ANNUAL)).as("a falha na partida deixa a série vazia").isEmpty();
+        assertThat(rates.hasMissingSeries()).isTrue();
+
+        cdiDown.set(false);
+        rates.retryMissing();
+        assertThat(rates.current().get(RateSeries.CDI_ANNUAL)).as("a repetição antecipada preenche sem esperar 30 minutos").isPresent();
+        assertThat(rates.hasMissingSeries()).isFalse();
+
+        int before = calls.get();
+        rates.retryMissing();
+        assertThat(calls.get()).as("com tudo em dia a repetição não consome cota do Banco Central").isEqualTo(before);
+        assertThat(live(gw, false).hasMissingSeries()).isTrue();
+    }
+
     @Test void aLaterOutageKeepsTheLastGoodValue() {
         AtomicBoolean down = new AtomicBoolean();
         FixtureHttpGateway fixtures = new FixtureHttpGateway();
