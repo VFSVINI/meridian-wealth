@@ -96,6 +96,8 @@ class AuthApiIntegrationTest {
         Http.Reply r = http.get("/api/auth/config");
         assertThat(r.status()).isEqualTo(200);
         assertThat(r.get("googleLoginEnabled")).isEqualTo(true);
+        assertThat(r.get("googleClientId")).as("o ID do cliente é público; o segredo nunca sai do servidor").isEqualTo(CLIENT_ID);
+        assertThat(r.body()).doesNotContain("secret");
         assertThat(r.get("demoEnabled")).isEqualTo(true);
         assertThat(r.get("registrationEnabled")).isEqualTo(true);
         assertThat(r.get("passwordMinLength")).isEqualTo(12);
@@ -282,6 +284,8 @@ class AuthApiIntegrationTest {
         assertThat(csp).contains("default-src 'self'").contains("script-src 'self'").contains("frame-ancestors 'none'").contains("object-src 'none'")
                 .contains("base-uri 'none'").contains("connect-src 'self' ws://localhost:" + port).doesNotContain("unsafe-eval");
         assertThat(csp).as("script embutido continua proibido").doesNotContain("script-src 'self' 'unsafe-inline'");
+        assertThat(csp).as("com o Google configurado, só o script e o frame do Identity Services são liberados").contains("script-src 'self' https://accounts.google.com/gsi/client;")
+                .contains("frame-src https://accounts.google.com/gsi/").doesNotContain("https://accounts.google.com ").doesNotContain("*");
         assertThat(page.header("X-Content-Type-Options")).isEqualTo("nosniff");
         assertThat(page.header("X-Frame-Options")).isEqualTo("DENY");
         assertThat(page.header("Referrer-Policy")).isEqualTo("no-referrer");
