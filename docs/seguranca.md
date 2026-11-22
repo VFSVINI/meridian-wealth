@@ -39,6 +39,7 @@ trazem `error` (texto em português) e `code` (estável): `INVALID_INPUT` 400; `
 | `MW_CORS_ORIGINS` | vazio | origens exatas permitidas, separadas por vírgula; vazio = só a própria origem |
 | `MW_DEMO_MODE` | `true` | liga a sessão de demonstração |
 | `MW_REGISTRATION` | `true` | permite cadastro por senha |
+| `MW_METRICS_TOKEN` | vazio | Bearer das métricas (`/actuator/prometheus`, `/actuator/metrics`), mínimo 24 caracteres; vazio = 404. Comparação em tempo constante. `health` e `info` seguem públicos, sem detalhes (os detalhes do grupo `dependencies` não trazem dado de usuário) |
 | `MW_BCRYPT_STRENGTH` | `12` | custo do BCrypt (4 a 16) |
 
 Nenhum segredo vai para o repositório: `.env` está no `.gitignore` e `.env.example` só traz nomes.

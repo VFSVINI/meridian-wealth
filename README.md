@@ -48,7 +48,7 @@ docker compose up --build         # app + PostgreSQL + Redis em http://localhost
 
 No PowerShell, use `.\mvnw.cmd` no lugar de `./mvnw`.
 
-Swagger: `http://localhost:8080/swagger-ui.html`. Saúde: `/actuator/health`.
+Swagger: `http://localhost:8080/swagger-ui.html`. Saúde: `/actuator/health` (grupos `liveness`, `readiness` e `dependencies`). Métricas Prometheus e Correlation-ID: [docs/observabilidade.md](docs/observabilidade.md); `/actuator/prometheus` só existe com `MW_METRICS_TOKEN`.
 
 ## Variáveis de ambiente
 
@@ -68,6 +68,7 @@ Swagger: `http://localhost:8080/swagger-ui.html`. Saúde: `/actuator/health`.
 | `MW_TRUSTED_PROXIES` | vazio | proxies cujo `X-Forwarded-For` vale (IPs ou CIDR); vazio = ignorar o cabeçalho |
 | `MW_CORS_ORIGINS` | vazio | origens CORS exatas; vazio = só a própria origem |
 | `MW_DEMO_MODE`, `MW_REGISTRATION` | `true`, `true` | sessão de demonstração e cadastro por senha |
+| `MW_METRICS_TOKEN` | vazio | Bearer das métricas Prometheus (mínimo 24 caracteres); vazio = `/actuator/prometheus` e `/actuator/metrics` respondem 404 |
 | `MW_PERSISTENCE` | `false` | `true` grava candles e sinais no PostgreSQL |
 | `MW_EXCLUDE_AUTOCONFIG` | lista JDBC/Flyway/Redis | vazio no Compose para ligar banco e Redis |
 | `DB_URL`, `DB_USER`, `DB_PASSWORD`, `REDIS_HOST`, `REDIS_PORT` | locais | conexões |
