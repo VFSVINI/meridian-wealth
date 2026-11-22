@@ -49,7 +49,7 @@ class CspReadinessTest {
         // sem agrupar, 21 dos 32 imóveis ficavam cobertos por outro marcador no zoom inicial (medido no navegador)
         String map = StaticPage.file("mapa.js");
         assertThat(map).contains("function clusterGroups(").contains("MP_CLUSTER_PX").contains("MP.map.on('zoomend'").contains("mpin cluster");
-        assertThat(map).as("o Leaflet é lido de window.L: o identificador L pertence ao gráfico de preço").contains("const LF=window.L").doesNotContainPattern("[^A-Za-z.]L\.(map|marker|geoJSON|divIcon)\(");
+        assertThat(map).as("o Leaflet é lido de window.L: o identificador L pertence ao gráfico de preço").contains("const LF=window.L").doesNotContainPattern("[^A-Za-z.]L\\.(map|marker|geoJSON|divIcon)\\(");
     }
 
     @Test void externalLinksOpenedInANewTabNeverGiveTheOpenerBack() throws IOException {
