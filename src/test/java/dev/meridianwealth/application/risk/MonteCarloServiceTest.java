@@ -108,6 +108,38 @@ class MonteCarloServiceTest {
         assertThat(o.coverage().get(1).reason()).contains("curto demais").contains("120");
     }
 
+    @Test void whenEverySimulationSlotIsBusyTheNextRequestIsRefusedInsteadOfPilingUpCpu() throws Exception {
+        // uma vaga só e espera curta: a segunda chamada, enquanto a primeira roda, recebe a recusa
+        MonteCarloService one = new MonteCarloService(who -> List.of(), (s, l) -> List.of(), 1, 150);
+        java.util.concurrent.CountDownLatch inside = new java.util.concurrent.CountDownLatch(1), release = new java.util.concurrent.CountDownLatch(1);
+        java.util.concurrent.ExecutorService pool = java.util.concurrent.Executors.newSingleThreadExecutor();
+        // ocupa a vaga com um modelo lento chamando a rota paramétrica por dentro do semáforo
+        java.util.concurrent.Future<?> first = pool.submit(() -> {
+            try {
+                var f = MonteCarloService.class.getDeclaredMethod("simulate", dev.meridianwealth.domain.montecarlo.MonteCarlo.Params.class, dev.meridianwealth.domain.montecarlo.MonteCarlo.ReturnModel.class);
+                f.setAccessible(true);
+                f.invoke(one, new dev.meridianwealth.domain.montecarlo.MonteCarlo.Params(1000, 0, 12, null, 1), (dev.meridianwealth.domain.montecarlo.MonteCarlo.ReturnModel) rnd -> {
+                    inside.countDown();
+                    try {
+                        release.await();
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                    return 0.0;
+                });
+            } catch (ReflectiveOperationException e) {
+                throw new IllegalStateException(e);
+            }
+        });
+        assertThat(inside.await(5, java.util.concurrent.TimeUnit.SECONDS)).isTrue();
+        assertThatThrownBy(() -> one.parametric(new Request(new BigDecimal("1000"), null, 1, new BigDecimal("5"), new BigDecimal("10"), null, 1L))).isInstanceOf(MonteCarloBusyException.class)
+                .hasMessageContaining("Tente de novo");
+        release.countDown();
+        first.get(10, java.util.concurrent.TimeUnit.SECONDS);
+        pool.shutdown();
+        assertThat(one.parametric(new Request(new BigDecimal("1000"), null, 1, new BigDecimal("5"), new BigDecimal("10"), null, 1L)).result()).as("liberada a vaga, volta a funcionar").isNotNull();
+    }
+
     @Test void withoutAnyUsableHistoryItRefusesInsteadOfInventingReturns() {
         MonteCarloService none = service(List.of(h("T:LCI:x", null, "BRL", "5000")), Map.of());
         assertThatThrownBy(() -> none.fromPortfolio(WHO, req("0", 5, null, null))).isInstanceOf(MonteCarloException.class).hasMessageContaining("premissas manuais");

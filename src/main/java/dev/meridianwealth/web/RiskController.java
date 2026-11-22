@@ -1,6 +1,7 @@
 package dev.meridianwealth.web;
 
 import dev.meridianwealth.application.auth.AuthPrincipal;
+import dev.meridianwealth.application.risk.MonteCarloBusyException;
 import dev.meridianwealth.application.risk.MonteCarloException;
 import dev.meridianwealth.application.risk.MonteCarloService;
 import dev.meridianwealth.domain.montecarlo.MonteCarlo;
@@ -97,6 +98,11 @@ public class RiskController {
         @ExceptionHandler(IllegalArgumentException.class)
         ResponseEntity<Map<String, String>> invalid(IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", e.getMessage(), "code", "INVALID_INPUT"));
+        }
+
+        @ExceptionHandler(MonteCarloBusyException.class)
+        ResponseEntity<Map<String, String>> busy(MonteCarloBusyException e) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).header("Retry-After", "5").body(Map.of("error", e.getMessage(), "code", "BUSY"));
         }
 
         @ExceptionHandler(MonteCarloException.class)

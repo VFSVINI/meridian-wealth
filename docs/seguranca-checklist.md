@@ -87,7 +87,7 @@ Legenda: ✅ feito e testado · ⚠️ parcial ou dívida declarada · ➖ não 
 | IDOR/BOLA | ✅ | O dono vem do token; posição ou entrada de outro usuário é 404; testado nos dois modos de persistência |
 | SSRF | ✅ | Nenhuma rota recebe URL, host ou endereço de retorno; os clientes de provedor usam hosts fixos (`InjectionSurfaceTest`) |
 | Senhas em texto puro | ✅ | BCrypt; senha nunca em resposta nem em log |
-| Abuso de requisições (DoS) | ⚠️ | Rate limit, corpo de 64 KB, limite de 200 posições, circuit breakers. **Sem WAF nem proteção de rede**: isso é do deploy |
+| Abuso de requisições (DoS) | ⚠️ | Rate limit geral, limite próprio e baixo para o cálculo pesado (Monte Carlo, 10 por minuto) com teto de 4 simulações simultâneas, corpo de 64 KB, limite de 200 posições, circuit breakers. **Sem WAF nem proteção de rede**: isso é do deploy |
 | Enumeração e rotas administrativas | ⚠️ / ✅ | Login responde igual para e-mail ou senha errados, com custo de hash igual. O cadastro revela e-mail já usado (inerente a qualquer cadastro; limitado por rate limit). Swagger e `/v3/api-docs` fora do ar por padrão; actuator só `health`, `info` e métricas com token |
 | Mensagens de erro que vazam dados | ✅ | Sem stack trace, sem `path`, sem eco da entrada (`AuthApiIntegrationTest`) |
 
