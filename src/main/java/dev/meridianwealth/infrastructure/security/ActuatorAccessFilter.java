@@ -12,6 +12,7 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.web.util.UrlPathHelper;
 
 /**
  * Fecha as métricas do actuator ({@code /actuator/metrics} e {@code /actuator/prometheus}): mostram memória, consumo de cada provedor e
@@ -23,6 +24,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Order(Ordered.HIGHEST_PRECEDENCE + 15)
 public class ActuatorAccessFilter extends OncePerRequestFilter {
     public static final int MIN_TOKEN_LENGTH = 24;
+    private static final UrlPathHelper PATHS = new UrlPathHelper();
     private final byte[] token;
 
     public ActuatorAccessFilter(@Value("${meridianwealth.observability.metrics-token:}") String token) {
@@ -37,7 +39,13 @@ public class ActuatorAccessFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected boolean shouldNotFilter(HttpServletRequest request) { return !guarded(request.getRequestURI()); }
+    protected boolean shouldNotFilter(HttpServletRequest request) { return !guarded(dispatchPath(request)); }
+
+    /**
+     * O caminho que o Spring de fato despacha: decodificado e sem parâmetros de caminho. {@code getRequestURI()} é o texto cru, e
+     * {@code /actuator/prometheus;x=1} ou {@code /actuator/%70rometheus} chegam ao mesmo endpoint sem casar com a comparação literal.
+     */
+    static String dispatchPath(HttpServletRequest request) { return PATHS.getPathWithinApplication(request); }
 
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws ServletException, IOException {
