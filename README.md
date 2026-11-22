@@ -28,6 +28,7 @@
 - **Tradutor geopolítico e teses genéricas:** cruza a pressão das manchetes reais por setor com o peso do setor na carteira e lê a carteira por cinco lentes ilustrativas, sem atribuir posições a nenhuma gestora ([docs/teses.md](docs/teses.md), [ADR 011](docs/adr/011-tradutor-geopolitico-e-teses-genericas.md)).
 - **Protótipo visual:** a interface segue o protótipo aprovado ([docs/design-prototipo.md](docs/design-prototipo.md), [ADR 012](docs/adr/012-prototipo-visual-como-referencia.md)); a adoção ocorre nos itens #15 a #17.
 - **Segurança e login:** JWT de 15 minutos com refresh token rotativo e detecção de reuso, senha com BCrypt, **Login com Google** (ID token validado no servidor, desligado sem `MW_GOOGLE_CLIENT_ID`), modo demonstração, rate limit por usuário e por IP real (`X-Forwarded-For` só de proxy confiável), CORS e CSP restritivos ([docs/seguranca.md](docs/seguranca.md), [ADR 013](docs/adr/013-autenticacao-jwt-google-e-defesas-de-borda.md)). Contas, sessões e carteira ficam no PostgreSQL com `MW_PERSISTENCE=true` e em memória sem ela.
+- **Livro de movimentações e apoio ao IR:** cada compra, venda, ajuste e baixa vira uma entrada imutável do livro (a posição é a dobra do livro, atualizada na mesma transação), com taxas no custo, **resultado realizado** em moeda da posição e em reais, **custo em reais ao câmbio de cada compra** (PTAX do Banco Central), `Idempotency-Key` (repetir não aplica duas vezes), eventos de domínio e um relatório de apoio ao imposto de renda com a base legal citada e o que não é apurado dito às claras ([docs/carteira.md](docs/carteira.md), [ADR 015](docs/adr/015-livro-de-movimentacoes-idempotencia-e-apoio-ao-ir.md)).
 - **Carteira persistida:** posições multi-ativo em BRL e USD com **preço médio ponderado** exato (`BigDecimal`), bloqueio otimista por versão (409 em conflito, nenhuma atualização se perde), valorização com cotação e PTAX reais (fonte, horário e atraso) e "não informado" onde não há dado ([docs/carteira.md](docs/carteira.md), [ADR 014](docs/adr/014-carteira-persistida-preco-medio-e-bloqueio-otimista.md)).
 - **Persistência:** PostgreSQL com Flyway (candles e histórico de sinais) e Redis (cotações, backtests, rate limit da API).
 - **Qualidade:** testes JUnit 5 (unitários e de integração), Checkstyle, Spotless, GitHub Actions, OpenAPI/Swagger.
@@ -72,6 +73,8 @@ Swagger: `http://localhost:8080/swagger-ui.html`. Saúde: `/actuator/health`.
 | `DB_URL`, `DB_USER`, `DB_PASSWORD`, `REDIS_HOST`, `REDIS_PORT` | locais | conexões |
 
 ## Endpoints
+
+**Livro e IR (com login):** `GET /api/me/portfolio/transactions` e `GET /api/me/tax/report?year=`; as escritas da carteira aceitam `Idempotency-Key`.
 
 **Carteira (com login):** `GET /api/me/portfolio`, `POST /api/me/portfolio/positions` e `.../positions/{id}/purchases|sales`, `PUT`/`DELETE .../positions/{id}` ([docs/carteira.md](docs/carteira.md)).
 
