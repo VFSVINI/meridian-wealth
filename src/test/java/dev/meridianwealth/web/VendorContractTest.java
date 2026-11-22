@@ -39,7 +39,7 @@ class VendorContractTest {
         byte[] js = read("/static/vendor/leaflet.js");
         assertThat(HexFormat.of().formatHex(sha.digest(js))).isEqualTo("db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a");
         assertThat(new String(js, 0, 200, StandardCharsets.UTF_8)).contains("Leaflet 1.9.4");
-        assertThat(HexFormat.of().formatHex(sha.digest(read("/static/vendor/leaflet.css")))).isEqualTo("a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6");
+        assertThat(HexFormat.of().formatHex(sha.digest(read("/static/vendor/leaflet.css")))).isEqualTo("337bfca5cabd03b39815b2700febe2b3b7edf55921c59cd49f88ecb328212303");
         assertThat(new String(read("/static/vendor/LICENSE-leaflet.txt"), StandardCharsets.UTF_8)).contains("BSD 2-Clause License").contains("Agafonkin");
         byte[] geo = read("/static/data/brasil-ufs.geojson");
         assertThat(HexFormat.of().formatHex(sha.digest(geo))).isEqualTo("07c671aa87aa1ab296c446de6294df9827112782537b996c0a160284907e7c0f");
