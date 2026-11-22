@@ -1,6 +1,7 @@
 package dev.meridianwealth.web;
 
 import dev.meridianwealth.application.auth.AuthPrincipal;
+import dev.meridianwealth.application.risk.CorrelationService;
 import dev.meridianwealth.application.risk.MonteCarloBusyException;
 import dev.meridianwealth.application.risk.MonteCarloException;
 import dev.meridianwealth.application.risk.MonteCarloService;
@@ -14,6 +15,7 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -52,9 +54,51 @@ public class RiskController {
                                  List<BigDecimal> goalProbabilityByYearPercent, BigDecimal probabilityBelowInvestedPercent, BigDecimal totalInvested, BigDecimal mean,
                                  List<CoverageView> coverage, BigDecimal coveredPercent, StatisticsView statistics, List<String> assumptions, String disclaimer) {}
 
-    private final MonteCarloService service;
+    public record MatrixDto(List<String> keys, List<String> labels, List<List<BigDecimal>> values, List<List<Integer>> days) {}
 
-    public RiskController(MonteCarloService service) { this.service = service; }
+    public record RiskDto(int days, BigDecimal portfolioVolatilityPercent, BigDecimal weightedAverageVolatilityPercent, BigDecimal diversificationBenefitPercent, BigDecimal coveredPercent,
+                          List<String> assets) {}
+
+    public record ConcentrationDto(List<String> categories, List<String> categoryLabels, List<String> riskLevels, List<List<BigDecimal>> cells, BigDecimal assetHhi, BigDecimal classHhi,
+                                   BigDecimal effectivePositions, BigDecimal largestPositionPercent, List<CorrelationService.Position> topPositions) {}
+
+    public record CorrelationView(String kind, MatrixDto assets, MatrixDto classes, RiskDto risk, ConcentrationDto concentration, List<CorrelationService.Excluded> excluded, int window,
+                                  int minDays, BigDecimal totalBrl, List<String> notes, String disclaimer) {}
+
+    private final MonteCarloService service;
+    private final CorrelationService correlation;
+
+    public RiskController(MonteCarloService service, CorrelationService correlation) {
+        this.service = service;
+        this.correlation = correlation;
+    }
+
+    /** Correlação, risco com diversificação e concentração da carteira salva do próprio usuário: tudo sobre retornos reais; célula sem dado fica nula. */
+    @GetMapping("/me/risk/correlation")
+    public CorrelationView correlation(@RequestAttribute(AuthPrincipal.REQUEST_ATTRIBUTE) AuthPrincipal who) { return correlationView(correlation.analyze(who)); }
+
+    private static BigDecimal r2(double v) { return BigDecimal.valueOf(v).setScale(2, RoundingMode.HALF_EVEN); }
+
+    private static BigDecimal r3(double v) { return BigDecimal.valueOf(v).setScale(3, RoundingMode.HALF_EVEN); }
+
+    private static MatrixDto matrix(CorrelationService.MatrixView m) {
+        if (m == null) return null;
+        List<List<BigDecimal>> values = new ArrayList<>();
+        for (List<Double> row : m.values()) values.add(row.stream().map(v -> v == null ? null : r2(v)).toList());
+        return new MatrixDto(m.keys(), m.labels(), values, m.days());
+    }
+
+    static CorrelationView correlationView(CorrelationService.Output o) {
+        CorrelationService.Concentration c = o.concentration();
+        List<List<BigDecimal>> cells = new ArrayList<>();
+        for (List<Double> row : c.cells()) cells.add(row.stream().map(RiskController::r2).toList());
+        CorrelationService.RiskView r = o.risk();
+        return new CorrelationView("ANALYSIS", matrix(o.assets()), matrix(o.classes()),
+                r == null ? null : new RiskDto(r.days(), r2(r.portfolioVolatilityPercent()), r2(r.weightedAverageVolatilityPercent()), r2(r.diversificationBenefitPercent()), r2(r.coveredPercent()), r.assets()),
+                new ConcentrationDto(c.categories(), c.categoryLabels(), c.riskLevels(), cells, r3(c.assetHhi()), r3(c.classHhi()), r2(c.effectivePositions()), r2(c.largestPositionPercent()), c.topPositions()),
+                o.excluded(), o.window(), o.minDays(), r2(o.totalBrl()), o.notes(),
+                "Ferramenta analítica e educacional. Correlação mede movimento conjunto no passado e pode mudar em crises; não é recomendação de investimento.");
+    }
 
     @PostMapping("/risk/monte-carlo")
     public ProjectionView parametric(@RequestBody MonteCarloRequest r) { return view(service.parametric(r.toService())); }

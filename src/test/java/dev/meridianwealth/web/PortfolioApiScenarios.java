@@ -140,6 +140,33 @@ abstract class PortfolioApiScenarios {
         assertThat(http.post("/api/me/risk/monte-carlo", bearer(newUserToken()), Map.of("horizonYears", 5)).status()).as("o outro usuário tem a carteira dele, vazia").isEqualTo(422);
     }
 
+    @Test void correlationAndConcentrationOverTheSavedPortfolioWithRealHistory() {
+        assertThat(http.get("/api/me/risk/correlation").status()).as("exige login").isEqualTo(401);
+        String token = newUserToken();
+        assertThat(http.get("/api/me/risk/correlation", bearer(token)).status()).as("carteira vazia").isEqualTo(422);
+        assertThat(open(token, Map.of("symbol", "PETR4", "quantity", "100", "averagePrice", "30", "tradeDate", "2026-11-10")).status()).isEqualTo(201);
+        assertThat(open(token, Map.of("symbol", "SPY", "quantity", "5", "averagePrice", "500", "tradeDate", "2026-11-10", "fxRate", "5.00")).status()).isEqualTo(201);
+        assertThat(open(token, typed("LCI do titular", "1", "10000")).status()).isEqualTo(201);
+        Http.Reply r = http.get("/api/me/risk/correlation", bearer(token));
+        assertThat(r.status()).isEqualTo(200);
+        assertThat(r.get("kind")).isEqualTo("ANALYSIS");
+        Map<String, Object> assets = r.obj("assets");
+        assertThat((List<?>) assets.get("keys")).hasSize(2);
+        List<List<Object>> values = (List<List<Object>>) assets.get("values");
+        assertThat(((Number) values.get(0).get(0)).doubleValue()).isEqualTo(1.0);
+        assertThat(((Number) values.get(0).get(1)).doubleValue()).isBetween(-1.0, 1.0);
+        assertThat(values.get(0).get(1)).as("simétrica").isEqualTo(values.get(1).get(0));
+        assertThat(((Number) r.obj("risk").get("diversificationBenefitPercent")).doubleValue()).isGreaterThanOrEqualTo(0);
+        assertThat(((Number) r.obj("risk").get("portfolioVolatilityPercent")).doubleValue()).isLessThanOrEqualTo(((Number) r.obj("risk").get("weightedAverageVolatilityPercent")).doubleValue());
+        List<Map<String, Object>> excluded = (List<Map<String, Object>>) r.json().get("excluded");
+        assertThat(excluded).extracting(e -> e.get("reason").toString()).anyMatch(x -> x.contains("não é negociado em mercado"));
+        Map<String, Object> conc = r.obj("concentration");
+        assertThat((List<Object>) conc.get("riskLevels")).containsExactly("LOW", "MEDIUM", "HIGH", "EXTREME", "UNRATED");
+        double sum = ((List<List<Number>>) conc.get("cells")).stream().flatMap(List::stream).mapToDouble(Number::doubleValue).sum();
+        assertThat(sum).as("o mapa de concentração soma 100% do patrimônio").isBetween(99.9, 100.1);
+        assertThat(r.body()).doesNotContain("passwordHash").doesNotContain(PASSWORD);
+    }
+
     String idOf(Http.Reply operation) { return (String) operation.obj("position").get("id"); }
 
     String path(String id, String op) { return "/api/me/portfolio/positions/" + id + "/" + op; }
