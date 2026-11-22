@@ -23,18 +23,18 @@ class CspReadinessTest {
         Matcher m = Pattern.compile("(?:src|href)=\"([^\"]+)\"").matcher(html);
         while (m.find()) refs.add(m.group(1));
         assertThat(refs).isNotEmpty().allSatisfy(r -> assertThat(r).as("referência externa: " + r).matches("^(/|#).*"));
-        assertThat(html).contains("<script src=\"/theme.js\">").contains("<script src=\"/app.js\">").contains("<link rel=\"stylesheet\" href=\"/app.css\">");
+        assertThat(html).contains("<script src=\"/theme.js\">").contains("<script src=\"/app.js\">").contains("<script src=\"/auth.js\">").contains("<script src=\"/carteira.js\">").contains("<script src=\"/vendor/echarts.min.js\">").contains("<link rel=\"stylesheet\" href=\"/app.css\">");
     }
 
     @Test void theScriptDoesNotBuildCodeAtRuntimeNorGenerateInlineHandlers() throws IOException {
-        String js = StaticPage.file("app.js") + StaticPage.file("theme.js");
+        String js = StaticPage.file("app.js") + StaticPage.file("theme.js") + StaticPage.file("auth.js") + StaticPage.file("carteira.js");
         assertThat(js).doesNotContain("eval(").doesNotContain("new Function(").doesNotContain("document.write(").doesNotContain("javascript:");
         assertThat(js).doesNotContainPattern("set(Timeout|Interval)\\(\\s*[\"'`]");
         assertThat(js).as("marcação gerada com manipulador de evento seria bloqueada pela CSP").doesNotContainPattern("(?i)\\son(click|change|input|submit|load|error|focus|blur|keydown)=[\"']");
     }
 
     @Test void externalLinksOpenedInANewTabNeverGiveTheOpenerBack() throws IOException {
-        String all = StaticPage.file("app.js") + StaticPage.file("index.html");
+        String all = StaticPage.file("app.js") + StaticPage.file("carteira.js") + StaticPage.file("index.html");
         Matcher m = Pattern.compile("<a [^>]*target=\"_blank\"[^>]*>").matcher(all);
         int found = 0;
         while (m.find()) {
@@ -45,7 +45,10 @@ class CspReadinessTest {
     }
 
     @Test void thereAreNoThirdPartyScriptsStylesFontsOrImagesAnywhere() throws IOException {
-        String all = StaticPage.whole();
+        // única exceção: o script do Google Identity Services, carregado só quando há MW_GOOGLE_CLIENT_ID (a CSP o libera só nesse caso)
+        String gis = "https://accounts.google.com/gsi/client";
+        assertThat(StaticPage.file("auth.js")).contains(gis);
+        String all = StaticPage.whole().replace(gis, "");
         assertThat(all).doesNotContainPattern("(?i)(src|url\\()\\s*=?\\s*[\"']?https?://");
         assertThat(all).doesNotContain("googleapis.com").doesNotContain("cdnjs").doesNotContain("unpkg.com").doesNotContain("jsdelivr");
     }

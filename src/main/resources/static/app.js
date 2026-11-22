@@ -225,10 +225,12 @@ function renderSuitability(){
   const qs=SPQ.questions.map(q=>`<fieldset class="q"><legend>${esc(q.text)} <span class="ref">${esc(q.dimensionLabel)} · ${esc(q.legalRef)}</span></legend>${q.options.map(o=>`<label><input type="radio" name="q_${esc(q.id)}" value="${esc(o.id)}"> ${esc(o.text)}</label>`).join('')}</fieldset>`).join('');
   el.className='';el.style.fontSize='12px';
   el.innerHTML=`<div class="src">Suas respostas e valores não são gravados nem enviados a terceiros: o cálculo acontece nesta aplicação e o resultado some ao recarregar a página.</div>
+  <div class="banner-info" id="spBanner" hidden>Sua conta ainda não tem perfil de investidor. Responda o questionário e salve o resultado para ver a aderência da sua carteira.</div>
   <details><summary><b>Descobrir meu perfil</b> <span class="mute">9 perguntas</span></summary><form id="spForm">${qs}<button type="submit">Calcular perfil</button> <span id="spErr" class="dn"></span></form></details>
   <div id="spRes"></div>
   <details style="margin-top:8px"><summary><b>Carteiras modelo</b> <span class="mute">metas por perfil</span></summary>${SPMP.portfolios.map(p=>`<h2 style="margin-top:12px;font-size:13px">${esc(p.profileLabel)}</h2>${spTargets(p)}`).join('')}</details>
   <div class="src" style="margin-top:8px">${esc(SPQ.disclaimer)} Faixas da nota (0 a 100): ${Object.entries(SPQ.scoreBands).map(([k,v])=>esc(k==='CONSERVATIVE'?'conservador':k==='MODERATE'?'moderado':k==='BOLD'?'arrojado':'agressivo')+' '+esc(v)).join('; ')}. Metas ilustrativas definidas pelo produto, sem fonte externa.</div>`;
+  if(typeof profileBanner==='function')profileBanner();
   $('#spForm').addEventListener('submit',async e=>{
     e.preventDefault();$('#spErr').textContent='';
     const answers={};SPQ.questions.forEach(q=>{const c=document.querySelector(`input[name="q_${q.id}"]:checked`);if(c)answers[q.id]=c.value});
@@ -239,10 +241,11 @@ function renderSuitability(){
       SPPROFILE=d.profile;
       $('#spRes').innerHTML=`<div style="margin:10px 0"><span class="pf">${esc(d.profileLabel)}</span> <span class="mute">nota ${f(d.score,2)} de 100${d.profile!==d.scoreProfile?' · pela nota seria '+esc(d.scoreProfileLabel):''}</span></div>
       ${d.appliedCaps.length?'<ul class="note">'+d.appliedCaps.map(c=>'<li>'+esc(c)+'</li>').join('')+'</ul>':''}
-      <div class="src">Meta da carteira modelo ${esc(d.profileLabel)}:</div>${spTargets(d.modelPortfolio)}
+      <div id="spSave" style="margin:10px 0"></div><div class="src">Meta da carteira modelo ${esc(d.profileLabel)}:</div>${spTargets(d.modelPortfolio)}
       <div style="margin-top:12px"><b>Aderência da minha carteira</b><div id="spHold">${spHoldingRow()}</div>
       <button type="button" id="spAdd">+ posição</button> <button type="button" id="spCalc">Calcular aderência</button> <span id="spErr2" class="dn"></span></div><div id="spAd"></div>`;
       $('#spAdd').onclick=()=>$('#spHold').insertAdjacentHTML('beforeend',spHoldingRow());
+      offerSaveProfile(SPPROFILE);
       $('#spCalc').onclick=spAdherence;
     }catch(err){$('#spErr').textContent=err.message}
   });
@@ -539,7 +542,7 @@ const IC={home:'M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',mercad
  saude:'M3 12h4l3-8 4 16 3-8h4'};
 const NAV=[['VISÃO GERAL',[['home','Painel inicial'],['mercados','Mercados']]],
  ['ANÁLISE',[['cockpit','Cockpit do ativo'],['radar','Radar de relatórios'],['brasil','Brasil: juros e inflação'],['geo','Geopolítica e teses']]],
- ['PATRIMÔNIO',[['carteira','Minha Carteira','item #12 e #15'],['perfil','Perfil e carteira modelo'],['simulador','Simulador pré-ordem'],['mapa','Mapa de ativos reais','item #16'],['composicao','Composição (Raio-X)']]],
+ ['PATRIMÔNIO',[['carteira','Minha Carteira'],['perfil','Perfil e carteira modelo'],['simulador','Simulador pré-ordem'],['mapa','Mapa de ativos reais','item #16'],['composicao','Composição (Raio-X)']]],
  ['RISCO',[['montecarlo','Monte Carlo','item #18'],['correlacao','Correlação e concentração','item #19'],['stress','Stress testing','sob pedido']]],
  ['APRENDER',[['glossario','Glossário']]],
  ['CONTA',[['alertas','Alertas','sob pedido'],['config','Configurações','item #11 e #15'],['saude','Saúde dos dados']]]];
