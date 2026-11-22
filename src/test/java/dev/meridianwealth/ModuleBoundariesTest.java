@@ -26,6 +26,7 @@ class ModuleBoundariesTest {
     private static final Map<String, Set<String>> DOMAIN = Map.of(
             "auth", Set.of("suitability"),
             "composition", Set.of(),
+            "correlation", Set.of("montecarlo"),
             "glossary", Set.of(),
             "montecarlo", Set.of(),
             "impact", Set.of("suitability"),
