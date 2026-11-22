@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR do item #13 (Issue #38), 2026-11-21.
+> Atualizado em todo PR. Última atualização: PR do item #14 (Issue #40), 2026-11-21.
 > Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
@@ -74,7 +74,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 - [x] **#11** JWT com refresh, hash forte, rate limit por usuário/IP com `X-Forwarded-For` confiável (dívida 5), isolation guard, CORS/CSP, modo demo e **Login com Google** (seção 2.4). Ver [seguranca.md](seguranca.md).
 - [x] **#12** Persistência multi-ativo (`V2__users_and_portfolio.sql`), preço médio ponderado, BRL/USD, `@Version`. Ver [carteira.md](carteira.md).
 - [x] **#13** Livro de movimentações (`V3__portfolio_transactions.sql`), `Idempotency-Key`, domain events, IR. Ver [carteira.md](carteira.md).
-- [ ] **#14** Observabilidade e FinOps (Correlation-ID, Micrometer por provedor, health checks); dívidas 3 e 4.
+- [x] **#14** Observabilidade e FinOps (Correlation-ID, métricas Prometheus por provedor e por cache, health checks em grupos, métricas atrás de token), leituras do mercado sem monitor compartilhado (dívida 3) e fronteiras entre módulos verificadas por ArchUnit. Ver [observabilidade.md](observabilidade.md) e o ADR 016.
 
 ### Milestone 4 — Interface Dark Luxury, Mapas & Home Broker
 - [ ] **#15** Protótipo visual + painel "Minha Carteira" (ECharts, montador de perfil) e botão **"Continuar com Google"** na tela de login e cadastro (seção 2.4).
@@ -111,8 +111,10 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [013](adr/013-autenticacao-jwt-google-e-defesas-de-borda.md) | Autenticação por JWT, Login com Google e defesas de borda | Aceito |
 | [014](adr/014-carteira-persistida-preco-medio-e-bloqueio-otimista.md) | Carteira persistida, preço médio ponderado e bloqueio otimista | Aceito |
 | [015](adr/015-livro-de-movimentacoes-idempotencia-e-apoio-ao-ir.md) | Livro de movimentações, idempotência e apoio ao imposto de renda | Aceito |
+| [016](adr/016-monolito-modular-e-observabilidade.md) | Monólito modular com fronteiras verificadas e observabilidade por provedor | Aceito |
 
 Decisões menores (no corpo dos PRs):
+- Item #14: microsserviços só por gatilho medido (carga, cadência, isolamento, infraestrutura), com a ingestão de mercado como candidata e carteira + livro sempre juntos; `liveness` e `readiness` sem provedor externo e `DEGRADED` em grupo à parte; `X-Correlation-Id` só no formato `[A-Za-z0-9._-]{8,64}`; métricas por provedor lidas do `ProviderStatus` existente; `/actuator/metrics` e `/actuator/prometheus` somem (404) sem `MW_METRICS_TOKEN`.
 - Item #9: nenhuma cotação na simulação (valores em reais do usuário); risco de carteira como limite superior com cobertura declarada; `MoneyBounds` compartilhado; classes nomeadas `Impact` para manter a regra do ArchUnit contra `Simulat`; glossário escrito a partir da leitura do código, com a ligação métrica → entrada testada.
 - Item #8: perguntas ancoradas nas dimensões do art. 3 da Resolução CVM 30 (sem alegar conformidade); tetos de perfil por horizonte curto, necessidade de caixa, falta de reserva e venda em pânico; metas por `AssetCategory` rotuladas como ilustrativas; respostas e carteira não são gravadas nem logadas; aderência só descreve desvio, sem dizer o que comprar ou vender.
 - Item #7: sem bimestral e semestral (sem base regulatória nos emissores cobertos); pontualidade pela primeira entrega e números pela última versão; banco usa a conta 3.09; ações dos EUA sem fonte integrada; refinamento visual inicial por princípios de design ([design.md](design.md)).
@@ -127,7 +129,6 @@ Decisões menores (no corpo dos PRs):
 
 | # | Dívida | Onde | Resolver em |
 |---|---|---|---|
-| 3 | `MarketService` usa um único monitor para todos os ativos (o I/O já saiu do lock no PR #2; falta snapshot imutável ou lock por ativo) | `application/MarketService` | PR #14 |
 | 9 | Persistência JDBC com 17% de cobertura (sem banco nos testes) | `infrastructure/persistence` | PR #20 |
 | 11 | Finnhub REST e WebSocket sem validação ao vivo (sem chave); FRED idem | `infrastructure/provider` | quando houver chave |
 | 12 | Calendários de feriados não verificados: Euronext, Tóquio, Hong Kong, ASX, Tadawul, JSE | `domain/Exchange` | PR futuro |
@@ -156,8 +157,10 @@ Decisões menores (no corpo dos PRs):
 | 37 | O apoio ao IR não calcula imposto devido, DARF nem compensação de prejuízos: a base legal da compensação e do ganho de capital em FII, ETF, cripto e ativos no exterior não foi confirmada em fonte oficial (só os arts. 2º e 3º da Lei 11.033/2004 foram lidos, e o Planalto ainda anota a MP 1.303/2025 com vigência encerrada) | `domain/portfolio/TaxReport` | item #25 (sob pedido), com a base legal confirmada |
 | 38 | O livro é cronológico por ativo (operação anterior à última do ativo é recusada) e não há importação em lote; os eventos de domínio são em processo e voláteis (sem outbox) | `PortfolioService`, `InProcessEventBus` | item #14 (observabilidade) e importação no Milestone 6 |
 | 39 | Posições em dólar abertas antes do livro (item #12) ficam com o custo em reais "não informado" até um ajuste com câmbio | migração V3, `Position` | ajuste manual do usuário |
+| 40 | Se uma série do Banco Central falha na partida (visto uma vez ao vivo: CDI anualizado, SGS 4389, "resposta inesperada", com o serviço respondendo normalmente minutos depois), ela fica "indisponível" até a próxima atualização, 30 minutos depois; o health `officialRates` mostra `DEGRADED` nesse intervalo | `LiveBrazilRates` | repetir mais cedo a série sem valor (item futuro) |
 
 **Resolvidas**
+- Dívidas 3 e 4 (item #14, Issue #40): o `MarketService` tem um escritor único e publica um mapa imutável de visões, e as leituras não esperam a atualização (teste: leituras abaixo de 100 ms durante uma atualização de mais de 250 ms, que falha no código anterior); a dívida 4 (`JsonBacktestCache`) já tinha sido resolvida no PR #2.
 - Dívida 35 (item #13, Issue #38): o custo em reais de posição em dólar usa o câmbio de cada compra (PTAX do Banco Central da data ou o câmbio da nota informado pelo usuário), guardado no livro de movimentações; o resultado em reais passou a existir e inclui a variação cambial.
 - Dívidas 6 e 33 (item #12, Issue #36): o cálculo monetário da carteira é todo em `BigDecimal` (preço médio, custo, valorização, câmbio), com `NUMERIC` no banco; contas, sessões e perfil têm adaptadores JDBC (V2) com a rotação do refresh atômica no banco, testados contra um PostgreSQL de verdade. O motor de mercado segue em `double` por decisão do ADR 002.
 - Dívida 5 (item #11, Issue #25): o `ApiRateLimitFilter` usava `getRemoteAddr()`; agora conta pelo IP real (`X-Forwarded-For` só de proxy confiável, lido da direita para a esquerda) e por usuário autenticado, com limite menor nas rotas de autenticação. Testes de integração com e sem proxy confiável.
@@ -193,7 +196,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 534 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 555 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |

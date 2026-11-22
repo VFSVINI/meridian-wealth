@@ -6,6 +6,20 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+## [0.3.0] - 2026-11-21
+
+Milestone 3 — Segurança, Persistência & Carteira. Reúne os itens #11 a #14 abaixo: autenticação por JWT com Login com Google e defesas de borda, carteira persistida com preço médio ponderado e bloqueio otimista, livro de movimentações com `Idempotency-Key` e apoio ao imposto de renda, e observabilidade com fronteiras de módulo verificadas.
+
+### Adicionado (item #14 do roadmap)
+- **Correlation-ID:** cada requisição recebe um identificador (aceita `X-Correlation-Id` só no formato `[A-Za-z0-9._-]{8,64}`, contra injeção em log; senão gera um UUID), devolvido no cabeçalho e presente em toda linha de log; uma linha por requisição de `/api/**` com método, caminho, status e duração.
+- **Métricas Prometheus por provedor e por cache** (`/actuator/prometheus`): chamadas por resultado (sucesso, falha, circuito aberto, limite local), estado do circuito, provedor habilitado, latência por tentativa e acertos/erros do cache, para acompanhar o consumo das cotas gratuitas. Lidas do mesmo `ProviderStatus` da tela de status.
+- **Health em grupos:** `liveness` e `readiness` sem dependência de provedor externo; grupo `dependencies` (ativos com cotação ao vivo, indicadores do Banco Central em dia, circuitos abertos) com o estado `DEGRADED` (HTTP 200).
+- **Métricas fechadas por token:** `/actuator/metrics` e `/actuator/prometheus` respondem 404 sem `MW_METRICS_TOKEN` e exigem `Authorization: Bearer` com ele (comparação em tempo constante; token com menos de 24 caracteres impede a partida).
+- **Fronteiras entre módulos verificadas** (ArchUnit, `ModuleBoundariesTest`): cada módulo de negócio declara de quais pode depender, sem ciclos, e o núcleo compartilhado e os serviços de mercado não conhecem a carteira. ADR 016: monólito modular, com os gatilhos medidos para extrair um serviço. `docs/observabilidade.md` com as consultas PromQL.
+
+### Alterado (item #14)
+- `MarketService` com escritor único e mapa imutável de visões: as leituras (visão geral, candles, avaliação, sinais, backtest) não esperam mais a atualização de mercado. Fecha a dívida 3 (a 4 já estava resolvida no PR #2). Teste: leituras abaixo de 100 ms durante uma atualização de mais de 250 ms (falha no código anterior).
+
 ### Adicionado (item #13 do roadmap)
 - **Livro de movimentações** (`V3__portfolio_transactions.sql`): `ledger_entries` só acrescenta (gatilho bloqueia UPDATE), com abertura, compra, venda, ajuste manual e baixa. A posição é a dobra do livro e muda **na mesma transação** que grava a entrada; falha em qualquer das duas desfaz as duas. A migração preenche o livro das posições do item #12.
 - **Taxas, resultado realizado e cronologia:** as taxas entram no custo da compra e abatem a venda; cada venda registra o resultado realizado na moeda da posição e em reais; a data da operação não pode estar no futuro nem antes da última do ativo.
