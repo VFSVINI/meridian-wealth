@@ -3,7 +3,6 @@ package dev.meridianwealth.web;
 import dev.meridianwealth.application.auth.AuthPrincipal;
 import dev.meridianwealth.application.portfolio.PortfolioService;
 import dev.meridianwealth.domain.portfolio.TaxReport;
-import java.time.LocalDate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +20,9 @@ public class TaxController {
 
     public TaxController(PortfolioService portfolio) { this.portfolio = portfolio; }
 
-    /** @param year ano-calendário; sem ele, o ano corrente */
+    /** @param year ano-calendário; sem ele, o ano corrente em Brasília (quem decide é o serviço, para a virada do ano não depender do fuso do servidor) */
     @GetMapping("/report")
     public TaxReport.Result report(@RequestAttribute(AuthPrincipal.REQUEST_ATTRIBUTE) AuthPrincipal who, @RequestParam(required = false) Integer year) {
-        return portfolio.taxReport(who, year == null ? LocalDate.now().getYear() : year);
+        return portfolio.taxReport(who, year);
     }
 }
