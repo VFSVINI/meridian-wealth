@@ -6,6 +6,19 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+## [0.4.0] - 2026-11-22
+
+Milestone 4 — Interface Dark Luxury, Mapas & Home Broker. Reúne a interface do protótipo aprovado (entrada, Minha Carteira, mapa de ativos reais, cockpit e shopping financeiro) e a camada de segurança e LGPD que a acompanhou.
+
+### Adicionado (item #17 do roadmap)
+- **Cockpit com TradingView Lightweight Charts 4.2.3** (servido pelo projeto, licença Apache 2.0 e SHA-256 travado): candles, volume, SMA50, bandas de Bollinger (calculadas sobre os candles reais), zona de entrada, zona de realização, alvos e invalidação do motor como linhas de preço, atualização por tick só na última barra, períodos 1M, 3M, 6M e 1A, camadas ligáveis, **inspetor do candle**, **"Ver como tabela"** (últimas 30 barras) e **"Exportar imagem"**. Atribuição à TradingView por texto e link (o logotipo embutido injeta `<style>` e a CSP o bloqueia).
+- **Boleta de simulação:** "Simular compra ou venda" leva ao simulador pré-ordem com o ativo escolhido. A plataforma não executa ordens.
+- **"Usar minha carteira salva"** no simulador pré-ordem e no tradutor geopolítico: preenche as linhas com as posições reais em reais e diz quantas ficaram de fora por falta de valor em reais. Fecha a dívida 26.
+- **Shopping financeiro** (`#/shopping`): os tipos de ativo da taxonomia lado a lado (indexador, rendimento, proteção do FGC, fonte do preço), com a referência oficial do Banco Central de cada indexador (Selic, CDI, IPCA) e atalhos para simular e para a carteira. **Sem ofertas de emissores**, e a tela diz isso: nenhuma taxa de produto é inventada. ADR 019.
+
+### Corrigido (item #17)
+- A página **Mercados ficou sem lista desde o item #16**: o `mapa.js` declarava `renderList`, o mesmo nome de uma função do `app.js`, e a segunda definição sobrescrevia a primeira em silêncio (erro `Cannot read properties of null` no console). As funções do mapa ganharam o prefixo `mp` e um teste agora derruba o `verify` se dois scripts declararem o mesmo nome global.
+
 ### Adicionado (item #16 do roadmap)
 - **Mapa de ativos reais** (`#/mapa`) com **Leaflet 1.9.4** servido pelo projeto e **sem mapa-base de terceiros**: contorno dos 27 estados do IBGE (dado público, local), marcadores só para imóveis com coordenada e a precisão à vista (localizado × aproximado por via), filtros por fundo, UF e tipo, lista com os imóveis sem coordenada e o motivo, estados pintados pela quantidade de imóveis e comparação de fundos. Nenhuma requisição a domínio de terceiros (verificado na rede), CSP inalterada, atribuição ao OpenStreetMap pelas coordenadas.
 - **Agrupamento de marcadores** por proximidade em pixels (marcador numerado que amplia ao clicar, sem biblioteca): sem ele, 21 dos 32 imóveis ficavam cobertos por outro marcador no zoom inicial (achado do code review, medido no navegador); com ele, nenhum marcador fica coberto em nenhum zoom testado e a soma dos grupos e dos individuais é sempre 32.

@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR do item #16 (Issue #45), 2026-11-22.
+> Atualizado em todo PR. Última atualização: PR do item #17 (Issue #47), 2026-11-22. Milestone 4 concluído (v0.4.0).
 > Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
@@ -84,7 +84,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
   - [x] Etapa 1 (Issue #31, feita antes do #11): sistema de design, shell (navbar, sidebar, busca Ctrl+K, tema escuro e Ivory) e as páginas que já têm backend. Ver [design-prototipo.md](design-prototipo.md).
   - [x] Etapa 2 (Issue #26): entrada (senha, Google e demonstração), menu da conta, Minha Carteira (patrimônio, alocação em treemap, aderência com radar, posições, operações, livro, ganho ou perda por posição) com ECharts servido localmente, e "salvar como meu perfil" (montador de perfil). Ver [carteira.md](carteira.md) e o ADR 017.
 - [x] **#16** Mapa de ativos reais (`#/mapa`): Leaflet servido pelo projeto, **sem mapa-base de terceiros** (contorno dos estados do IBGE), marcadores com a precisão à vista, filtros, lista com os imóveis sem coordenada e o motivo, comparação de fundos. Ver [composicao.md](composicao.md) e o ADR 018.
-- [ ] **#17** Shopping financeiro multi-classe e cockpit home broker (Lightweight Charts, paleta de comandos).
+- [x] **#17** Cockpit com Lightweight Charts (candles, volume, SMA50, Bollinger, níveis do motor, inspetor, tabela, exportar imagem), boleta de simulação (sem ordens), "usar minha carteira salva" no simulador e no tradutor, e **Shopping financeiro** (`#/shopping`, catálogo dos tipos com as referências oficiais do Banco Central, sem ofertas inventadas). Paleta Ctrl+K já existia. Ver o ADR 019.
 
 ### Milestone 5 — Risco Quantitativo, Testes de Concorrência & Cloud
 - [ ] **#18** Monte Carlo multi-classe e cone patrimonial (rotulado como projeção).
@@ -117,8 +117,10 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [016](adr/016-monolito-modular-e-observabilidade.md) | Monólito modular com fronteiras verificadas e observabilidade por provedor | Aceito |
 | [017](adr/017-interface-da-carteira-sessao-no-cliente-e-echarts-local.md) | Interface da carteira: sessão no cliente, ECharts local e Google na CSP | Aceito |
 | [018](adr/018-mapa-sem-mapa-base-de-terceiros.md) | Mapa de ativos reais com Leaflet e sem mapa-base de terceiros | Aceito |
+| [019](adr/019-cockpit-com-lightweight-charts-e-shopping-sem-ofertas-inventadas.md) | Cockpit com Lightweight Charts e shopping financeiro sem ofertas inventadas | Aceito |
 
 Decisões menores (no corpo dos PRs):
+- Item #17: o logotipo da TradingView fica desligado porque injeta `<style>` e a CSP o bloqueia (crédito por texto e link); o shopping só mostra a referência oficial de cada indexador e diz que a taxa do produto não existe; nomes globais dos scripts passam a ser únicos por teste (a colisão `renderList` do mapa quebrou a lista de Mercados e foi corrigida aqui).
 - Item #16: o mapa não tem tiles (privacidade e CSP fechada), o estado é pintado pela contagem de imóveis do dado curado, painéis de exemplo do protótipo sem fonte ficaram de fora e a vacância do fundo inteiro só aparece quando a fonte a publica ("do fundo"); o `L` global do `app.js` obrigou a ler o Leaflet de `window.L`.
 - Camada de segurança: o refresh em cookie só vale com o cabeçalho `X-Session-Mode: cookie` (clientes de API seguem recebendo no corpo); renovação entre abas por Web Lock; o aceite dos termos é exigido na tela, não na API; o texto de privacidade e termos é informativo e pede revisão jurídica; a documentação da API sai do ar por padrão (`MW_API_DOCS=true` liga).
 - Item #15 (etapa 2): decimais saem do formulário como texto exato (nunca por `double`); a mesma `Idempotency-Key` vale até a operação dar certo; "por corretora" e "do aporte ao saldo" do protótipo não existem (o modelo não guarda corretora nem aportes: sem dado, sem gráfico); sem "Importar extrato" (Milestone 6) e sem alternância BRL/USD; o avatar do Google não é carregado (inicial do nome), então a CSP não libera imagens externas.
@@ -152,13 +154,12 @@ Decisões menores (no corpo dos PRs):
 | 24 | Dividend yield do Informe Mensal sem unidade documentada pela CVM (o veredito compara com o próprio histórico; a tela mostra o valor sem converter) | `domain/reports` | quando a CVM documentar |
 
 | 25 | Pontos, faixas, tetos e metas do suitability são definições do produto, não validadas por profissional habilitado nem por dados históricos | `domain/suitability` | revisão por profissional antes de qualquer uso além do educacional |
-| 26 | O simulador pré-ordem e o tradutor geopolítico ainda pedem a carteira digitada à mão; só a aderência da Minha Carteira lê a carteira e o perfil salvos | UI | item #17 |
 
 | 27 | O risco do simulador ignora a correlação entre posições (média ponderada das volatilidades, limite superior); uma matriz de covariância com históricos alinhados daria o risco real | `domain/impact` | PR futuro (item #20 ou antes) |
 | 28 | O conteúdo do glossário não foi revisado por profissional habilitado, e a lista de rótulos do teste de cobertura é espelhada à mão | `domain/glossary`, `GlossaryTest` | revisão antes de uso além do educacional |
 | 29 | A pressão geopolítica é contagem de palavras-chave em manchetes de terceiros e só mede cinco setores; o setor da posição vem do universo do painel | `GeoRiskScorer`, `GeoTranslator` | fonte de eventos estruturada e mapa de exposição por país (PR futuro; o mapa do item #16 só cobre imóveis) |
 | 30 | As caracterizações das gestoras e os textos das teses são resumos simplificados, sem revisão pelas instituições nem por profissional habilitado | `ThesisCatalog` | revisão antes de uso além do educacional |
-| 32 | Controles do protótipo sem backend ficam de fora: alternância BRL/USD, modo privacidade e central de alertas (o menu do usuário passou a existir no item #15); páginas sem dado real ficam desabilitadas na sidebar | `index.html` (NAV) | itens #18, #19 e Milestone 6 |
+| 32 | Controles do protótipo sem backend ficam de fora: alternância BRL/USD, modo privacidade, central de alertas, "Fixar" e "Comparar" do cockpit e as seções Técnico, Macro e Backtest em abas (o menu do usuário passou a existir no item #15); páginas sem dado real ficam desabilitadas na sidebar | `index.html` (NAV) | itens #18, #19 e Milestone 6 |
 | 36 | Os testes de persistência usam um PostgreSQL embutido (`zonky`), que baixa um binário e exige `commons-lang3` mais novo que o do Spring Boot 3.3; a suíte de contratos não depende dele | `pom.xml`, `testsupport/PostgresDb` | item #20 (Testcontainers) |
 | 37 | O apoio ao IR não calcula imposto devido, DARF nem compensação de prejuízos: a base legal da compensação e do ganho de capital em FII, ETF, cripto e ativos no exterior não foi confirmada em fonte oficial (só os arts. 2º e 3º da Lei 11.033/2004 foram lidos, e o Planalto ainda anota a MP 1.303/2025 com vigência encerrada) | `domain/portfolio/TaxReport` | item #25 (sob pedido), com a base legal confirmada |
 | 38 | O livro é cronológico por ativo (operação anterior à última do ativo é recusada) e não há importação em lote; os eventos de domínio são em processo e voláteis (sem outbox) | `PortfolioService`, `InProcessEventBus` | item #14 (observabilidade) e importação no Milestone 6 |
@@ -168,6 +169,7 @@ Decisões menores (no corpo dos PRs):
 | 43 | Pendências da auditoria de segurança ([seguranca-checklist.md](seguranca-checklist.md)): criptografia em repouso e backups (deploy), aceite dos termos gravado com data e versão (hoje só a caixa na tela), correção do nome da conta, expurgo de contas inativas, arquivo `LICENSE` (decisão do dono do projeto), alertas de monitoramento, CAPTCHA, teste de invasão externo, `nonce` do login com Google e travas de login compartilhadas entre instâncias | `docs/seguranca-checklist.md` | item #21 (deploy) e PRs futuros |
 
 **Resolvidas**
+- Dívida 26 (item #17, Issue #47): o simulador pré-ordem e o tradutor geopolítico têm "Usar minha carteira salva", que preenche as linhas com as posições reais em reais.
 - Dívida 9 (item #12): a persistência JDBC tem testes contra um PostgreSQL de verdade, com contratos que rodam também na versão em memória.
 - Dívidas 34 e 42 (parte, Issue #43): o refresh token saiu do corpo e do `localStorage` para um cookie `HttpOnly`, `SameSite=Strict`, `Secure` sob HTTPS, e nenhum token fica no armazenamento do navegador; o que resta (`nonce` do Google e travas de login por instância) está na dívida 43.
 - Dívida 40 (Issue #43): uma série do Banco Central sem valor é repetida a cada 2 minutos até aparecer (antes esperava 30), sem consumir cota quando tudo está em dia.
@@ -208,7 +210,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 585 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 588 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |

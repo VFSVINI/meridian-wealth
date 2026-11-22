@@ -23,3 +23,4 @@ ADRs aceitos não são reescritos; uma mudança de rumo gera um ADR novo que sub
 | [016](016-monolito-modular-e-observabilidade.md) | Monólito modular com fronteiras verificadas e observabilidade por provedor | Aceito | 2026-11-21 |
 | [017](017-interface-da-carteira-sessao-no-cliente-e-echarts-local.md) | Interface da carteira: sessão no cliente, ECharts local e Google na CSP | Aceito | 2026-11-22 |
 | [018](018-mapa-sem-mapa-base-de-terceiros.md) | Mapa de ativos reais com Leaflet e sem mapa-base de terceiros | Aceito | 2026-11-22 |
+| [019](019-cockpit-com-lightweight-charts-e-shopping-sem-ofertas-inventadas.md) | Cockpit com Lightweight Charts e shopping financeiro sem ofertas inventadas | Aceito | 2026-11-22 |
