@@ -6,6 +6,15 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #19 do roadmap)
+- **Correlação e concentração** (`#/correlacao`, `GET /api/me/risk/correlation`, com login): matriz de **correlação de Pearson** entre os ativos e entre as classes da carteira salva, sobre os últimos 252 retornos diários reais, **par a par** (cada par usa as datas que os dois têm); par com menos de 60 pregões em comum, ou série que não varia, fica **"n/d"** (nunca zero), com o número de pregões no título da célula; o número aparece em toda célula com dado.
+- **Risco da carteira com a correlação:** volatilidade anualizada sobre os retornos alinhados, ao lado da média ponderada das volatilidades individuais (o limite superior que o simulador usa) e o **benefício da diversificação**, com a cobertura do patrimônio dita (resolve a essência da dívida 27 para a carteira salva).
+- **Mapa de concentração:** peso de cada classe em cada faixa de risco do motor (baixo, moderado, alto, extremo, sem classificação), HHI por posição e por classe, posições efetivas e as cinco maiores posições; ativos sem histórico ficam fora da correlação com o motivo e dentro da concentração pelo valor. ADR 021.
+- Testes de propriedade (correlação de uma série com ela mesma é 1 e com a oposta é -1, simétrica e limitada, diversificação nunca negativa, par curto vira "n/d") e cenário de ponta a ponta com candles reais gravados.
+
+### Corrigido (item #19)
+- Motivo mais claro quando um ativo não tem dado real de mercado agora (antes dizia "histórico curto: 0 pregões").
+
 ### Corrigido (item #18)
 - A rota pública do Monte Carlo deixava **um único IP saturar a CPU dentro do limite geral**: cada simulação custa cerca de 0,3 s, e 50 requisições em paralelo de um só cliente passaram todas (4,4 s de servidor ocupado). As rotas de cálculo pesado (`/api/risk/**` e `/api/me/risk/**`) ganharam um limite próprio (padrão 10 por minuto, por IP ou por usuário, `meridianwealth.rate-limit.heavy-per-minute`) e o serviço tem um teto de 4 simulações simultâneas, com 503 e `Retry-After` quando está cheio (achado do code review, medido no app real).
 
