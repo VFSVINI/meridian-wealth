@@ -6,6 +6,7 @@ import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.dao.PessimisticLockingFailureException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -34,8 +35,23 @@ public class JdbcRefreshTokenStore implements RefreshTokenStore {
                 Timestamp.from(e.expiresAt()));
     }
 
+    /** Tentativas da rotação quando o PostgreSQL derruba uma das transações por deadlock (as perdedoras de uma corrida pelo mesmo token). */
+    static final int ROTATE_ATTEMPTS = 3;
+
     @Override
     public Rotation rotate(String presentedHash, String nextHash, Instant nextExpiresAt, Instant now) {
+        for (int attempt = 1;; attempt++) {
+            try {
+                return rotateOnce(presentedHash, nextHash, nextExpiresAt, now);
+            } catch (PessimisticLockingFailureException e) {
+                // duas rotações do mesmo token disputando a revogação da família travam linhas em ordens opostas e o banco aborta uma delas ("deadlock
+                // detected"): é a perdedora de uma corrida legítima, não um erro. Refazer a transação já a encontra com a família revogada (Invalid)
+                if (attempt >= ROTATE_ATTEMPTS) throw e;
+            }
+        }
+    }
+
+    private Rotation rotateOnce(String presentedHash, String nextHash, Instant nextExpiresAt, Instant now) {
         return tx.execute(status -> {
             List<Entry> consumed = jdbc.query("UPDATE refresh_tokens SET used = TRUE WHERE token_hash = ? AND used = FALSE AND expires_at > ? "
                     + "RETURNING token_hash, family_id, user_id, expires_at", (rs, i) -> new Entry(rs.getString(1).trim(), rs.getString(2),
