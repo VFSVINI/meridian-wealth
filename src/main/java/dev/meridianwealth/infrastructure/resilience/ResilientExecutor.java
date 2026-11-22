@@ -22,6 +22,8 @@ public final class ResilientExecutor {
     private final AtomicLong failed = new AtomicLong();
     private final AtomicLong shorted = new AtomicLong();
     private final AtomicLong limited = new AtomicLong();
+    private final AtomicLong attempts = new AtomicLong();
+    private final AtomicLong callNanos = new AtomicLong();
 
     public ResilientExecutor(String name, CircuitBreaker breaker, TokenBucketRateLimiter limiter,
                              RetryPolicy retry, Sleeper sleeper) {
@@ -79,15 +81,19 @@ public final class ResilientExecutor {
                 breaker.onAbandoned();
                 throw new RateLimitedException(name);
             }
+            long started = System.nanoTime();
             try {
-                T result = action.call();
+                attempts.incrementAndGet();
+                T result = timed(action, started);
                 breaker.onSuccess();
                 ok.incrementAndGet();
                 return result;
             } catch (ClientErrorException e) {
+                callNanos.addAndGet(System.nanoTime() - started);
                 breaker.onSuccess();
                 throw e;
             } catch (Exception e) {
+                callNanos.addAndGet(System.nanoTime() - started);
                 last = e;
                 if (attempt < retry.maxAttempts()) {
                     try {
@@ -104,8 +110,15 @@ public final class ResilientExecutor {
         throw new ProviderException(name, last == null ? new IllegalStateException("interrompido") : last);
     }
 
+    /** Executa a ação e soma o tempo gasto (só quando ela devolve; a falha soma no {@code catch}). */
+    private <T> T timed(Callable<T> action, long started) throws Exception {
+        T result = action.call();
+        callNanos.addAndGet(System.nanoTime() - started);
+        return result;
+    }
+
     public ProviderStatus stats(boolean enabled) {
-        return new ProviderStatus(name, enabled, breaker.state().name(), ok.get(), failed.get(), shorted.get(), limited.get());
+        return new ProviderStatus(name, enabled, breaker.state().name(), ok.get(), failed.get(), shorted.get(), limited.get(), null, attempts.get(), callNanos.get());
     }
 
     public String name() { return name; }

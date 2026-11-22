@@ -3,6 +3,7 @@ package dev.meridianwealth.infrastructure.resilience;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import dev.meridianwealth.application.ProviderStatus;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +67,20 @@ class ResilienceTest {
         assertThat(r).isEqualTo("ok");
         assertThat(calls.get()).isEqualTo(3);
         assertThat(sleeps).containsExactly(100L, 200L);
+    }
+
+    @Test void countsEveryAttemptAndTheTimeSpentInThem() {
+        AtomicInteger calls = new AtomicInteger();
+        ResilientExecutor ex = executor(new ArrayList<>(), 4);
+        ex.call(() -> {
+            Thread.sleep(5);
+            if (calls.incrementAndGet() < 3) throw new java.io.IOException("HTTP 503");
+            return "ok";
+        });
+        ProviderStatus s = ex.stats(true);
+        assertThat(s.attempts()).as("três tentativas saíram, inclusive as repetidas").isEqualTo(3);
+        assertThat(s.callNanos()).as("o tempo das falhas também conta").isGreaterThanOrEqualTo(3 * 5_000_000L);
+        assertThat(s.successes()).isEqualTo(1);
     }
 
     @Test void clientErrorIsNotRetried() {
