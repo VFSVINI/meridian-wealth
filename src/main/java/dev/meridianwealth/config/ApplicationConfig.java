@@ -16,7 +16,9 @@ import dev.meridianwealth.application.port.BrazilRatesPort;
 import dev.meridianwealth.application.port.CacheStore;
 import dev.meridianwealth.application.port.FundamentalsPort;
 import dev.meridianwealth.application.port.MarketDataPort;
+import dev.meridianwealth.application.port.PositionStore;
 import dev.meridianwealth.application.port.ProviderStatusSource;
+import dev.meridianwealth.application.portfolio.PortfolioService;
 import dev.meridianwealth.application.port.SignalStore;
 import dev.meridianwealth.application.port.TickSink;
 import java.time.Clock;
@@ -68,6 +70,11 @@ public class ApplicationConfig {
 
     @Bean
     ThesisService thesisService(MarketService market) { return new ThesisService(market); }
+
+    @Bean
+    PortfolioService portfolioService(PositionStore positions, MarketService market, BrazilRatesService rates, Clock utcClock) {
+        return new PortfolioService(positions, market, rates, utcClock);
+    }
 
     @Bean
     StatusService statusService(CacheStore cache, StreamService stream, List<ProviderStatusSource> providers,
