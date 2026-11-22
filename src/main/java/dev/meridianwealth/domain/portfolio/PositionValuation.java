@@ -10,9 +10,9 @@ import java.time.LocalDate;
  * (PTAX). Nada é estimado: sem cotação, a posição fica avaliada só pelo custo ({@link Basis#COST}) e o valor de mercado e o
  * resultado ficam nulos ("não informado"); sem PTAX, os valores em reais de posições em dólar ficam nulos.
  *
- * <p>O resultado não realizado é na <b>moeda da posição</b>. O custo em reais de uma posição em dólar usa o PTAX de hoje, não o
- * câmbio da compra (que a plataforma não tem antes do livro de movimentações), então não se calcula resultado em reais: ele
- * misturaria variação cambial com variação de preço.
+ * <p>O resultado não realizado vem em duas medidas: na <b>moeda da posição</b> (só variação de preço) e em <b>reais</b>, que é o valor de
+ * hoje ao PTAX de hoje menos o custo ao câmbio de cada compra (guardado no livro), e por isso inclui a variação cambial. O resultado em
+ * reais só existe com cotação, PTAX e custo em reais registrado; posição herdada sem câmbio de compra fica "não informado".
  */
 public final class PositionValuation {
     public enum Basis { MARKET, COST }
@@ -31,8 +31,13 @@ public final class PositionValuation {
         }
     }
 
+    /**
+     * @param unrealizedPnlBrl valor atual em reais (câmbio de hoje) menos o custo em reais (câmbio de cada compra): inclui a variação
+     *     cambial, e só existe com cotação, PTAX de hoje e custo em reais registrado
+     */
     public record Result(Position position, MarketPrice price, Basis basis, BigDecimal costBasis, BigDecimal marketValue, BigDecimal unrealizedPnl,
-                         BigDecimal unrealizedPnlPercent, BigDecimal costBasisBrl, BigDecimal currentValueBrl) {}
+                         BigDecimal unrealizedPnlPercent, BigDecimal costBasisBrl, BigDecimal currentValueBrl, BigDecimal unrealizedPnlBrl,
+                         BigDecimal unrealizedPnlPercentBrl) {}
 
     private PositionValuation() {}
 
@@ -49,13 +54,23 @@ public final class PositionValuation {
         BigDecimal market = exactMarket == null ? null : exactMarket.setScale(2, RoundingMode.HALF_EVEN);
         BigDecimal pnl = market == null ? null : market.subtract(cost);
         BigDecimal pct = pnl == null || cost.signum() == 0 ? null : Position.percentOf(pnl, cost);
-        BigDecimal costBrl = brl(p.currency(), exactCost, fx);
-        BigDecimal currentBrl = brl(p.currency(), exactMarket != null ? exactMarket : exactCost, fx);
-        return new Result(p, usable, usable == null ? Basis.COST : Basis.MARKET, cost, market, pnl, pct, costBrl, currentBrl);
+        // custo em reais: ao câmbio de cada compra (guardado na posição), nunca ao câmbio de hoje
+        BigDecimal exactCostBrl = p.exactCostBrl();
+        BigDecimal costBrl = exactCostBrl == null ? null : exactCostBrl.setScale(2, RoundingMode.HALF_EVEN);
+        BigDecimal exactCurrentBrl = brlExact(p.currency(), exactMarket != null ? exactMarket : exactCost, fx);
+        BigDecimal currentBrl = exactCurrentBrl == null ? null : exactCurrentBrl.setScale(2, RoundingMode.HALF_EVEN);
+        BigDecimal pnlBrl = null;
+        BigDecimal pctBrl = null;
+        if (exactMarket != null && exactCurrentBrl != null && exactCostBrl != null) {
+            pnlBrl = exactCurrentBrl.subtract(exactCostBrl).setScale(2, RoundingMode.HALF_EVEN);
+            pctBrl = exactCostBrl.signum() == 0 ? null : exactCurrentBrl.subtract(exactCostBrl).multiply(java.math.BigDecimal.valueOf(100)).divide(exactCostBrl, 2, RoundingMode.HALF_EVEN);
+        }
+        return new Result(p, usable, usable == null ? Basis.COST : Basis.MARKET, cost, market, pnl, pct, costBrl, currentBrl, pnlBrl, pctBrl);
     }
 
-    private static BigDecimal brl(Currency c, BigDecimal amount, FxRate fx) {
-        if (c == Currency.BRL) return amount.setScale(2, RoundingMode.HALF_EVEN);
-        return fx == null ? null : fx.toBrl(c, amount);
+    /** Valor exato em reais (sem arredondar): quem chama arredonda uma só vez. */
+    private static BigDecimal brlExact(Currency c, BigDecimal amount, FxRate fx) {
+        if (c == Currency.BRL) return amount;
+        return fx == null ? null : amount.multiply(fx.brlPerUsd());
     }
 }
