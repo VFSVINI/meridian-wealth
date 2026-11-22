@@ -8,6 +8,7 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ### Adicionado (item #16 do roadmap)
 - **Mapa de ativos reais** (`#/mapa`) com **Leaflet 1.9.4** servido pelo projeto e **sem mapa-base de terceiros**: contorno dos 27 estados do IBGE (dado público, local), marcadores só para imóveis com coordenada e a precisão à vista (localizado × aproximado por via), filtros por fundo, UF e tipo, lista com os imóveis sem coordenada e o motivo, estados pintados pela quantidade de imóveis e comparação de fundos. Nenhuma requisição a domínio de terceiros (verificado na rede), CSP inalterada, atribuição ao OpenStreetMap pelas coordenadas.
+- **Agrupamento de marcadores** por proximidade em pixels (marcador numerado que amplia ao clicar, sem biblioteca): sem ele, 21 dos 32 imóveis ficavam cobertos por outro marcador no zoom inicial (achado do code review, medido no navegador); com ele, nenhum marcador fica coberto em nenhum zoom testado e a soma dos grupos e dos individuais é sempre 32.
 - Testes de contrato do Leaflet, da licença e do contorno (27 estados, SHA-256) e de que toda coordenada publicada cai dentro do Brasil. ADR 018.
 
 ### Segurança (Issue #43)

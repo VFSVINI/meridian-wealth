@@ -45,6 +45,13 @@ class CspReadinessTest {
         assertThat(all).as("o código do navegador nunca lê nem guarda refreshToken").doesNotContain("d.refreshToken").doesNotContain("SESS.refreshToken");
     }
 
+    @Test void theMapGroupsNearbyPinsSoNoPropertyHidesBehindAnother() throws IOException {
+        // sem agrupar, 21 dos 32 imóveis ficavam cobertos por outro marcador no zoom inicial (medido no navegador)
+        String map = StaticPage.file("mapa.js");
+        assertThat(map).contains("function clusterGroups(").contains("MP_CLUSTER_PX").contains("MP.map.on('zoomend'").contains("mpin cluster");
+        assertThat(map).as("o Leaflet é lido de window.L: o identificador L pertence ao gráfico de preço").contains("const LF=window.L").doesNotContainPattern("[^A-Za-z.]L\.(map|marker|geoJSON|divIcon)\(");
+    }
+
     @Test void externalLinksOpenedInANewTabNeverGiveTheOpenerBack() throws IOException {
         String all = StaticPage.file("app.js") + StaticPage.file("carteira.js") + StaticPage.file("mapa.js") + StaticPage.file("index.html");
         Matcher m = Pattern.compile("<a [^>]*target=\"_blank\"[^>]*>").matcher(all);
