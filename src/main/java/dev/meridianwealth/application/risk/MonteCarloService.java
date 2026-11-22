@@ -29,7 +29,10 @@ public final class MonteCarloService {
     public static final int BLOCK_DAYS = 21;
 
     /** Uma posição da carteira valorizada em reais, como a fonte de carteira a entrega. */
-    public record Holding(String assetKey, String label, String symbol, String currency, BigDecimal valueBrl) {}
+    public record Holding(String assetKey, String label, String symbol, String currency, BigDecimal valueBrl, String category, String categoryLabel, String risk) {
+        /** Sem classe nem risco (o Monte Carlo não precisa deles). */
+        public Holding(String assetKey, String label, String symbol, String currency, BigDecimal valueBrl) { this(assetKey, label, symbol, currency, valueBrl, null, null, null); }
+    }
 
     /** Porta de leitura da carteira do usuário (a ligação com o {@code PortfolioService} fica na configuração). */
     public interface PortfolioSource {
@@ -172,7 +175,7 @@ public final class MonteCarloService {
     }
 
     /** Alinha os ativos com histórico; enquanto a janela em comum for curta demais, tira o ativo de menor histórico e anota o motivo. */
-    private static AlignedReturns align(Map<String, TreeMap<Long, Double>> closes, Map<String, String> why) {
+    static AlignedReturns align(Map<String, TreeMap<Long, Double>> closes, Map<String, String> why) {
         Map<String, TreeMap<Long, Double>> work = new LinkedHashMap<>(closes);
         while (!work.isEmpty()) {
             AlignedReturns a = AlignedReturns.of(work);
