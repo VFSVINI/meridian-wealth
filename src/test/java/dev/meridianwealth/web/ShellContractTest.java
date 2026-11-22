@@ -125,6 +125,7 @@ class ShellContractTest {
         assertThat(html).contains("Correlação e concentração").contains("Só retornos reais");
         String js = dev.meridianwealth.testsupport.StaticPage.file("correlacao.js");
         assertThat(js).as("célula sem dado é cinza e escrita n/d; o número aparece em toda célula com dado").contains("n/d").contains("não informado").contains("Valores numéricos em todas as células");
+        assertThat(js).as("toda célula, com ou sem dado, diz de quantos pregões vem (title e aria-label), e o aviso visível explica").contains("calculada sobre ${days} pregões em comum").contains("aria-label=\"${tip}\"").contains("crCell(v,m.days[i][j])").contains("a estimativa é frágil");
         assertThat(js).doesNotContain("v==null?0").doesNotContain("||0)").doesNotContain("?? 0");
     }
 

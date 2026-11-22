@@ -22,17 +22,17 @@ async function crLoad(){
   finally{CR.loading=false}
 }
 /* cor da célula de correlação: verde para positiva, vermelha para negativa, intensidade pelo módulo; sem dado = cinza */
-function crCell(v){
-  if(v==null)return `<td class="crcell nd" title="não informado: menos de ${CR.data.minDays} pregões em comum"><span class="gap">n/d</span></td>`;
-  const n=Number(v),a=Math.round(Math.abs(n)*70),col=n>=0?'var(--up)':'var(--down)';
-  return `<td class="crcell num" style="background:color-mix(in srgb,${col} ${a}%,var(--panel-2))">${f(n,2)}</td>`;
+function crCell(v,days){
+  if(v==null)return `<td class="crcell nd" title="não informado: ${days} pregões em comum (mínimo ${CR.data.minDays})" aria-label="não informado: ${days} pregões em comum, abaixo do mínimo de ${CR.data.minDays}"><span class="gap">n/d</span></td>`;
+  const n=Number(v),a=Math.round(Math.abs(n)*70),col=n>=0?'var(--up)':'var(--down)',tip=`${f(n,2)}, calculada sobre ${days} pregões em comum${days<120?' (poucos: estimativa frágil)':''}`;
+  return `<td class="crcell num${days<120?' few':''}" title="${tip}" aria-label="${tip}" style="background:color-mix(in srgb,${col} ${a}%,var(--panel-2))">${f(n,2)}</td>`;
 }
 function crMatrix(m,title,note){
   if(!m)return `<p class="mute">${esc(note)}</p>`;
   const head=m.labels.map(l=>`<th class="crh"><span title="${esc(l)}">${esc(l.length>16?l.slice(0,15)+'…':l)}</span></th>`).join('');
-  const rows=m.labels.map((l,i)=>`<tr><th scope="row" class="crr" title="${esc(l)}">${esc(l.length>22?l.slice(0,21)+'…':l)}</th>${m.values[i].map(crCell).join('')}</tr>`).join('');
+  const rows=m.labels.map((l,i)=>`<tr><th scope="row" class="crr" title="${esc(l)}">${esc(l.length>22?l.slice(0,21)+'…':l)}</th>${m.values[i].map((v,j)=>crCell(v,m.days[i][j])).join('')}</tr>`).join('');
   return `<div class="scroll"><table class="crtbl" aria-label="${esc(title)}"><thead><tr><th></th>${head}</tr></thead><tbody>${rows}</tbody></table></div>
-    <div class="crlegend src"><span>−1</span><i class="neg"></i><i></i><i class="pos"></i><span>+1</span><span class="mute">Valores numéricos em todas as células; cinza = não informado.</span></div>`;
+    <div class="crlegend src"><span>−1</span><i class="neg"></i><i></i><i class="pos"></i><span>+1</span><span class="mute">Valores numéricos em todas as células; cinza = não informado. O número de pregões de cada par está no texto da célula (passe o cursor ou use o leitor de tela); com menos de 120 a estimativa é frágil e a célula ganha um traço pontilhado.</span></div>`;
 }
 function crRender(){
   const d=CR.data,r=d.risk;
