@@ -18,3 +18,4 @@ ADRs aceitos não são reescritos; uma mudança de rumo gera um ADR novo que sub
 | [011](011-tradutor-geopolitico-e-teses-genericas.md) | Tradutor geopolítico e teses institucionais genéricas | Aceito | 2026-11-21 |
 | [012](012-prototipo-visual-como-referencia.md) | Protótipo visual como referência obrigatória da interface | Aceito | 2026-11-21 |
 | [013](013-autenticacao-jwt-google-e-defesas-de-borda.md) | Autenticação por JWT, Login com Google e defesas de borda | Aceito | 2026-11-21 |
+| [014](014-carteira-persistida-preco-medio-e-bloqueio-otimista.md) | Carteira persistida, preço médio ponderado e bloqueio otimista | Aceito | 2026-11-21 |

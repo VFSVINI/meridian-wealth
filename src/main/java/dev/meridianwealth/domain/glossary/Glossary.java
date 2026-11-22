@@ -304,6 +304,11 @@ public final class Glossary {
                 "100: igual à meta. Cada classe tem tolerância de 5 pontos percentuais.",
                 "Aderência caindo depois de uma ordem simulada significa que ela afasta a carteira do perfil.",
                 "concentration");
+        add("average-price", Group.PORTFOLIO, "Preço médio ponderado",
+                "O custo médio por unidade de uma posição: o custo total pago (quantidade x preço de cada compra) dividido pela quantidade total. Comprar 10 a R$ 1.000 e mais 10 a R$ 1.100 dá 20 a R$ 1.050.",
+                "A venda reduz a quantidade e mantém o preço médio. Compare o preço médio com o preço atual para ver o resultado não realizado na moeda da posição. Corretagem e taxas só entram se você as somar ao preço informado.",
+                "Um preço médio muito diferente do que a corretora mostra costuma indicar compra não registrada ou taxa fora da conta. Posição em dólar: o custo em reais usa o câmbio de hoje, não o da compra.",
+                "concentration", "adherence");
         add("simulation", Group.PORTFOLIO, "Simulação pré-ordem",
                 "O cálculo do efeito de uma compra ou venda hipotética na concentração, no risco e na aderência, sobre valores em reais informados por você.",
                 "É uma simulação: não é cotação, não é ordem e a plataforma não executa ordens. Não inclui custos, impostos nem preço de execução.",

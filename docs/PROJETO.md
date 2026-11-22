@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR do item #11 (Issue #25), 2026-11-21.
+> Atualizado em todo PR. Última atualização: PR do item #12 (Issue #36), 2026-11-21.
 > Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
@@ -72,7 +72,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 
 ### Milestone 3 — Segurança Zero-Trust, Concorrência & Resiliência Sênior
 - [x] **#11** JWT com refresh, hash forte, rate limit por usuário/IP com `X-Forwarded-For` confiável (dívida 5), isolation guard, CORS/CSP, modo demo e **Login com Google** (seção 2.4). Ver [seguranca.md](seguranca.md).
-- [ ] **#12** Persistência multi-ativo (`V2__users_and_portfolio.sql`), preço médio ponderado, BRL/USD, `@Version`.
+- [x] **#12** Persistência multi-ativo (`V2__users_and_portfolio.sql`), preço médio ponderado, BRL/USD, `@Version`. Ver [carteira.md](carteira.md).
 - [ ] **#13** Livro de movimentações (`V3__portfolio_transactions.sql`), `Idempotency-Key`, domain events, IR.
 - [ ] **#14** Observabilidade e FinOps (Correlation-ID, Micrometer por provedor, health checks); dívidas 3 e 4.
 
@@ -109,6 +109,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [011](adr/011-tradutor-geopolitico-e-teses-genericas.md) | Tradutor geopolítico e teses institucionais genéricas | Aceito |
 | [012](adr/012-prototipo-visual-como-referencia.md) | Protótipo visual como referência obrigatória da interface | Aceito |
 | [013](adr/013-autenticacao-jwt-google-e-defesas-de-borda.md) | Autenticação por JWT, Login com Google e defesas de borda | Aceito |
+| [014](adr/014-carteira-persistida-preco-medio-e-bloqueio-otimista.md) | Carteira persistida, preço médio ponderado e bloqueio otimista | Aceito |
 
 Decisões menores (no corpo dos PRs):
 - Item #9: nenhuma cotação na simulação (valores em reais do usuário); risco de carteira como limite superior com cobertura declarada; `MoneyBounds` compartilhado; classes nomeadas `Impact` para manter a regra do ArchUnit contra `Simulat`; glossário escrito a partir da leitura do código, com a ligação métrica → entrada testada.
@@ -126,7 +127,6 @@ Decisões menores (no corpo dos PRs):
 | # | Dívida | Onde | Resolver em |
 |---|---|---|---|
 | 3 | `MarketService` usa um único monitor para todos os ativos (o I/O já saiu do lock no PR #2; falta snapshot imutável ou lock por ativo) | `application/MarketService` | PR #14 |
-| 6 | Não há cálculos monetários; motor inteiro em `double` (fronteira definida no ADR 002) | — | PRs #12/#13 |
 | 9 | Persistência JDBC com 17% de cobertura (sem banco nos testes) | `infrastructure/persistence` | PR #20 |
 | 11 | Finnhub REST e WebSocket sem validação ao vivo (sem chave); FRED idem | `infrastructure/provider` | quando houver chave |
 | 12 | Calendários de feriados não verificados: Euronext, Tóquio, Hong Kong, ASX, Tadawul, JSE | `domain/Exchange` | PR futuro |
@@ -143,17 +143,19 @@ Decisões menores (no corpo dos PRs):
 | 24 | Dividend yield do Informe Mensal sem unidade documentada pela CVM (o veredito compara com o próprio histórico; a tela mostra o valor sem converter) | `domain/reports` | quando a CVM documentar |
 
 | 25 | Pontos, faixas, tetos e metas do suitability são definições do produto, não validadas por profissional habilitado nem por dados históricos | `domain/suitability` | revisão por profissional antes de qualquer uso além do educacional |
-| 26 | O perfil não é guardado entre sessões e a carteira de aderência é digitada à mão (sem conta nem livro de movimentações) | `web/SuitabilityController`, UI | itens #11, #12 e #13 |
+| 26 | A carteira de aderência e a do simulador ainda são digitadas à mão na tela: elas ainda não leem a carteira salva (`GET /api/me/portfolio`) nem o perfil salvo | UI | item #15 (etapa 2) |
 
 | 27 | O risco do simulador ignora a correlação entre posições (média ponderada das volatilidades, limite superior); uma matriz de covariância com históricos alinhados daria o risco real | `domain/impact` | PR futuro (item #20 ou antes) |
 | 28 | O conteúdo do glossário não foi revisado por profissional habilitado, e a lista de rótulos do teste de cobertura é espelhada à mão | `domain/glossary`, `GlossaryTest` | revisão antes de uso além do educacional |
 | 29 | A pressão geopolítica é contagem de palavras-chave em manchetes de terceiros e só mede cinco setores; o setor da posição vem do universo do painel | `GeoRiskScorer`, `GeoTranslator` | fonte de eventos estruturada e mapa de exposição por país (item #16) |
 | 30 | As caracterizações das gestoras e os textos das teses são resumos simplificados, sem revisão pelas instituições nem por profissional habilitado | `ThesisCatalog` | revisão antes de uso além do educacional |
 | 32 | Controles do protótipo sem backend ficam de fora: alternância BRL/USD, modo privacidade, central de alertas e menu do usuário; páginas sem dado real ficam desabilitadas na sidebar | `index.html` (NAV) | itens #11, #12, #15, #16, #18, #19 e Milestone 6 |
-| 33 | Contas e refresh tokens ficam em memória: um reinício apaga as contas e encerra as sessões; falta a migração de usuários e o adaptador JDBC das portas `UserStore` e `RefreshTokenStore` | `infrastructure/security` | item #12 (`V2__users_and_portfolio.sql`) |
 | 34 | O refresh token trafega no corpo da resposta e fica no armazenamento do navegador (um cookie `HttpOnly` com `SameSite` o protegeria melhor de XSS); o ID token do Google não leva `nonce`; as travas de login valem por instância | `AuthController`, `GoogleIdTokenVerifier`, `LoginAttemptLimiter` | item #15 (cliente de login) e item #14 |
+| 35 | O custo em reais de posição em dólar usa o PTAX de hoje, não o câmbio da compra, por isso não há resultado em reais; o preço médio não inclui corretagem nem taxas por conta própria; não há histórico de compras e vendas | `PositionValuation`, `Position` | item #13 (livro de movimentações com o câmbio de cada compra) |
+| 36 | Os testes de persistência usam um PostgreSQL embutido (`zonky`), que baixa um binário e exige `commons-lang3` mais novo que o do Spring Boot 3.3; a suíte de contratos não depende dele | `pom.xml`, `testsupport/PostgresDb` | item #20 (Testcontainers) |
 
 **Resolvidas**
+- Dívidas 6 e 33 (item #12, Issue #36): o cálculo monetário da carteira é todo em `BigDecimal` (preço médio, custo, valorização, câmbio), com `NUMERIC` no banco; contas, sessões e perfil têm adaptadores JDBC (V2) com a rotação do refresh atômica no banco, testados contra um PostgreSQL de verdade. O motor de mercado segue em `double` por decisão do ADR 002.
 - Dívida 5 (item #11, Issue #25): o `ApiRateLimitFilter` usava `getRemoteAddr()`; agora conta pelo IP real (`X-Forwarded-For` só de proxy confiável, lido da direita para a esquerda) e por usuário autenticado, com limite menor nas rotas de autenticação. Testes de integração com e sem proxy confiável.
 - Dívida 31 (Issue #33): as fontes do protótipo (Cormorant Garamond, Figtree e IBM Plex Mono, SIL OFL 1.1) são servidas pelo projeto como WOFF2 do subconjunto latino em `static/fonts/`, com as licenças ao lado, sem CDN; `FontsContractTest` trava isso. As 20 imagens do protótipo que não estão em `docs/design/` seguem fora do repositório.
 - Item #5 (pós-review): a Selic meta (SGS 432) é preenchida para a frente com o valor vigente, então sua data é sempre a de hoje; a regra de defasagem por data nunca disparava para ela e, se a coleta falhasse por dias, o painel afirmaria "dado em dia". Agora cada observação guarda quando o sistema a confirmou (`confirmedAt`), qualquer série fica `STALE` após 3 h sem confirmação, a Selic meta não usa a data como idade e a tela diz "vigente em". `refresh()` do BCB passou a ser exclusivo (antes duas rodadas simultâneas disputavam a cota e o retrato) e `Rate.compoundedOver` valida o teto de períodos do `BigDecimal.pow`.
@@ -187,7 +189,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 400 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 469 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |

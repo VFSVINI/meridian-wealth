@@ -66,8 +66,8 @@ NAT por causa de um atacante.
 - **Positivas:** autorização única para senha, Google e demonstração; reuso de refresh token detectado; o IP do cliente deixa de
   ser forjável; a promessa "a aplicação sobe sem nenhuma variável do Google" é testada.
 - **Negativas:**
-  - Contas e refresh tokens ficam **em memória** até a migração de usuários do item #12: um reinício apaga as contas e encerra
-    as sessões.
+  - Contas e refresh tokens ficam **em memória** sem `MW_PERSISTENCE=true`: um reinício apaga as contas e encerra as sessões.
+    Com a persistência ligada, o item #12 (ADR 014) os grava no PostgreSQL.
   - O refresh token trafega no corpo da resposta e fica no armazenamento do navegador; um cookie `HttpOnly` com `SameSite` o
     protegeria melhor de XSS, e a CSP restritiva é a mitigação atual.
   - O ID token do Google não leva `nonce`, então um token válido roubado pode ser reapresentado até expirar (cerca de 1 hora).

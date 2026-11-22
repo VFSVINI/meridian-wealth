@@ -69,5 +69,5 @@ rate limit. Não liste redes que clientes externos possam alcançar diretamente.
 
 ## Limites conhecidos
 
-Ver as consequências negativas do ADR 013: contas e sessões em memória até o item #12, refresh token no corpo da resposta (não em
+Ver as consequências negativas do ADR 013: contas e sessões em memória sem `MW_PERSISTENCE=true` (com ela, ficam no PostgreSQL desde o item #12), refresh token no corpo da resposta (não em
 cookie `HttpOnly`), ID token sem `nonce` e travas por instância.
