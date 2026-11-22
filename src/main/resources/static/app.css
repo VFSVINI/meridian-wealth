@@ -211,5 +211,10 @@ button.mpitem:hover{border-color:var(--gold)}.mpitem .mphead{display:flex;justif
 #insp .kv.one{margin-top:var(--s2)}
 .shtbl td,.shtbl th{vertical-align:top}.shtbl .acts button{margin-left:0;margin-right:4px}
 @media(max-width:900px){.lwc{height:320px}}
+/* item #18: Monte Carlo */
+.mc-grid{display:grid;grid-template-columns:minmax(260px,320px) minmax(0,1fr);gap:var(--s4);align-items:start}.mc-grid form label{display:flex;flex-direction:column;gap:4px;margin:var(--s3) 0;color:var(--text-3);font-size:12px}.mc-grid form input{color:var(--text);width:100%}.mc-grid form input[type=range]{padding:0;accent-color:var(--gold)}
+.grid2c{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4)}.mckpi{display:flex;flex-direction:column;gap:2px;margin-bottom:var(--s3)}.mckpi .big{font-size:40px;line-height:1.1}
+details>summary{cursor:pointer;color:var(--text-2);margin-top:var(--s2)}
+@media(max-width:1180px){.mc-grid,.grid2c{grid-template-columns:1fr}}
 @media(max-width:1180px){.ct-top{grid-template-columns:1fr}.un{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}

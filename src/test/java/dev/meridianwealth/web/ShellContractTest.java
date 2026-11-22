@@ -56,7 +56,7 @@ class ShellContractTest {
 
     @Test void unavailableEntriesNameTheRoadmapItemThatDeliversThem() {
         List<NavEntry> soon = nav().stream().filter(e -> e.soon() != null).toList();
-        assertThat(soon).extracting(NavEntry::id).contains("montecarlo", "correlacao", "stress", "alertas", "config");
+        assertThat(soon).extracting(NavEntry::id).contains("correlacao", "stress", "alertas", "config");
         assertThat(soon).allSatisfy(e -> assertThat(e.soon()).matches("item #\\d+( e #\\d+)?|sob pedido"));
     }
 
@@ -112,6 +112,13 @@ class ShellContractTest {
         assertThat(cockpit).as("eixo, inspetor e tabela mostram o mesmo dia: tempo deslocado pelo fuso do navegador e formatado em UTC").contains("getTimezoneOffset()").contains("const ckWhen").doesNotContain("d.toLocaleString").doesNotContain("new Date(c.t*1000).toLocaleString");
         assertThat(dev.meridianwealth.testsupport.StaticPage.file("app.js")).as("o gráfico em canvas saiu do app.js").doesNotContain("getContext('2d')").doesNotContain("function draw()");
         assertThat(html).as("alternativa em tabela e exportação do gráfico").contains("Ver como tabela").contains("Exportar imagem").contains("Simular compra ou venda");
+    }
+
+    @Test void theMonteCarloPageIsAlwaysLabeledAProjectionAndOffersTheTableAlternative() throws IOException {
+        assertThat(html).contains("Monte Carlo e metas").contains("PROJEÇÃO: não é cotação nem promessa de retorno").contains("Premissas manuais").contains("Minha carteira");
+        assertThat(html).as("o gráfico tem a tabela equivalente").contains("id=\"mcTable\"").contains("Ver como tabela");
+        String mc = dev.meridianwealth.testsupport.StaticPage.file("montecarlo.js");
+        assertThat(mc).as("só o rótulo de projeção do servidor; a tela nunca chama de cotação").contains("d.label").contains("parada no valor atual").doesNotContainIgnoringCase("cotação de");
     }
 
     @Test void prototypeSampleDataWasNotCopiedIntoTheInterface() {

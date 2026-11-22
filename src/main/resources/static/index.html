@@ -150,6 +150,31 @@
       <p class="src">Contorno dos estados: Malha Municipal do IBGE (qualidade mínima, dado público). Coordenadas dos imóveis obtidas pela geocodificação do OpenStreetMap Nominatim, © colaboradores do OpenStreetMap (ODbL); o mapa não carrega mapa-base nem recursos de terceiros. Ferramenta analítica e educacional.</p>
     </section>
 
+    <section class="page" data-page="montecarlo" hidden>
+      <div class="ph"><p class="eyebrow">Risco</p><h1>Monte Carlo e metas <span class="tag">projeção</span></h1><p class="lede">O cone patrimonial e a chance de bater uma meta, a partir das premissas ao lado ou dos retornos reais da sua carteira. É projeção: não é cotação e não promete retorno.</p></div>
+      <div class="banner-info" id="mcLabel">PROJEÇÃO: não é cotação nem promessa de retorno. A plataforma não executa ordens.</div>
+      <div class="mc-grid">
+        <div class="card">
+          <h2>Parâmetros</h2>
+          <div class="tabs" role="tablist" aria-label="Origem dos retornos"><button type="button" role="tab" data-mcm="manual" aria-selected="true">Premissas manuais</button><button type="button" role="tab" data-mcm="portfolio" aria-selected="false">Minha carteira</button></div>
+          <form id="mcForm" novalidate></form>
+        </div>
+        <div id="mcResult" hidden>
+          <div class="card gold"><h2>Cone patrimonial · percentis 5, 25, 50, 75 e 95 <span class="tag">projeção</span></h2>
+            <div id="mcKpi"></div>
+            <div id="mcCone" class="echart" style="height:360px" role="img" aria-label="Cone patrimonial: percentis 5, 25, 50, 75 e 95 do patrimônio projetado ao longo dos anos. A tabela abaixo traz os mesmos números."></div>
+            <details><summary>Ver como tabela</summary><div id="mcTable"></div></details>
+          </div>
+          <div class="grid2c">
+            <div class="card"><h2>Distribuição do patrimônio final <span class="tag">projeção</span></h2><div id="mcHist" class="echart" style="height:240px" role="img" aria-label="Histograma do patrimônio final das trajetórias simuladas"></div></div>
+            <div class="card" id="mcGoalCard"><h2>Probabilidade de estar na meta, ano a ano <span class="tag">projeção</span></h2><div id="mcGoal" class="echart" style="height:240px" role="img" aria-label="Probabilidade de estar na meta ou acima ao fim de cada ano"></div></div>
+          </div>
+          <div class="card" id="mcCoverage" hidden></div>
+          <div class="card"><h2>Premissas desta projeção</h2><ul class="note" id="mcAssume"></ul><div class="src" id="mcNote"></div></div>
+        </div>
+      </div>
+    </section>
+
     <section class="page" data-page="shopping" hidden>
       <div class="ph"><p class="eyebrow">Patrimônio</p><h1>Shopping financeiro</h1><p class="lede">Os tipos de ativo que a plataforma conhece, lado a lado, com o que cada um é (indexador, rendimento, proteção, de onde vem o preço) e as referências oficiais do Banco Central. Para comparar o que cada classe oferece antes de simular.</p></div>
       <div class="banner-info">Este é um catálogo de tipos e de referências oficiais. <b>A plataforma não tem ofertas de emissores</b> (taxas de CDB, LCI, debêntures etc.) nem executa ordens: nenhuma taxa de produto é mostrada porque nenhuma é inventada.</div>
@@ -233,6 +258,7 @@
 <script src="/carteira.js"></script>
 <script src="/mapa.js"></script>
 <script src="/shopping.js"></script>
+<script src="/montecarlo.js"></script>
 <script src="/cockpit.js"></script>
 </body>
 </html>
