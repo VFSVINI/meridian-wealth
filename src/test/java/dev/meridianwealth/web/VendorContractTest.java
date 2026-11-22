@@ -34,6 +34,35 @@ class VendorContractTest {
         assertThat(new String(read("/static/vendor/NOTICE-echarts.txt"), StandardCharsets.UTF_8)).contains("Apache ECharts").contains("Apache Software Foundation");
     }
 
+    @Test void leafletAndTheStatesOutlineAreServedLocallyAtPinnedChecksums() throws Exception {
+        MessageDigest sha = MessageDigest.getInstance("SHA-256");
+        byte[] js = read("/static/vendor/leaflet.js");
+        assertThat(HexFormat.of().formatHex(sha.digest(js))).isEqualTo("db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a");
+        assertThat(new String(js, 0, 200, StandardCharsets.UTF_8)).contains("Leaflet 1.9.4");
+        assertThat(HexFormat.of().formatHex(sha.digest(read("/static/vendor/leaflet.css")))).isEqualTo("a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6");
+        assertThat(new String(read("/static/vendor/LICENSE-leaflet.txt"), StandardCharsets.UTF_8)).contains("BSD 2-Clause License").contains("Agafonkin");
+        byte[] geo = read("/static/data/brasil-ufs.geojson");
+        assertThat(HexFormat.of().formatHex(sha.digest(geo))).isEqualTo("07c671aa87aa1ab296c446de6294df9827112782537b996c0a160284907e7c0f");
+    }
+
+    @Test void theOutlineHasExactlyTheTwentySevenStatesOfIbgeAndEveryPublishedCoordinateFallsInsideBrazil() throws Exception {
+        com.fasterxml.jackson.databind.ObjectMapper json = new com.fasterxml.jackson.databind.ObjectMapper();
+        com.fasterxml.jackson.databind.JsonNode g = json.readTree(read("/static/data/brasil-ufs.geojson"));
+        java.util.Set<String> codes = new java.util.TreeSet<>();
+        g.get("features").forEach(f -> codes.add(f.get("properties").get("codarea").asText()));
+        assertThat(codes).containsExactly("11", "12", "13", "14", "15", "16", "17", "21", "22", "23", "24", "25", "26", "27", "28", "29", "31", "32", "33", "35", "41", "42", "43", "50", "51", "52", "53");
+        // as coordenadas curadas (item #6) ficam dentro do retângulo do Brasil: um erro de geocodificação não vira marcador no oceano
+        for (String fund : new String[] {"hglg11", "knri11", "xpml11", "mxrf11"}) {
+            com.fasterxml.jackson.databind.JsonNode d = json.readTree(read("/data/composicao/" + fund + ".json"));
+            for (com.fasterxml.jackson.databind.JsonNode a : d.get("ativos")) {
+                com.fasterxml.jackson.databind.JsonNode c = a.get("coordenadas");
+                if (c == null || c.isNull()) continue;
+                assertThat(c.get("lat").asDouble()).as(fund + " " + a.get("id")).isBetween(-34.0, 6.0);
+                assertThat(c.get("lng").asDouble()).as(fund + " " + a.get("id")).isBetween(-74.5, -32.0);
+            }
+        }
+    }
+
     @Test void theInterfaceNeverReachesForTheLibraryOnAnExternalHost() throws IOException {
         String all = dev.meridianwealth.testsupport.StaticPage.whole();
         assertThat(all).contains("/vendor/echarts.min.js").doesNotContain("cdn.jsdelivr").doesNotContain("echarts.apache.org");
