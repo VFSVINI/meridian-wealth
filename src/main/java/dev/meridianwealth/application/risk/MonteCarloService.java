@@ -54,12 +54,39 @@ public final class MonteCarloService {
     /** Estatísticas dos retornos reais usados: janela, dias em comum e retorno e volatilidade anualizados da parte com histórico. */
     public record Statistics(int commonDays, LocalDate from, LocalDate to, double annualReturn, double annualVolatility) {}
 
+    /** Simulações ao mesmo tempo e quanto cada requisição espera por uma vaga: a CPU é finita, e uma rota pública não pode ser usada para esgotá-la. */
+    public static final int MAX_CONCURRENT = 4;
+    public static final long WAIT_MILLIS = 3_000;
+
     private final PortfolioSource portfolio;
     private final HistorySource history;
+    private final java.util.concurrent.Semaphore slots;
+    private final long waitMillis;
 
-    public MonteCarloService(PortfolioSource portfolio, HistorySource history) {
+    public MonteCarloService(PortfolioSource portfolio, HistorySource history) { this(portfolio, history, MAX_CONCURRENT, WAIT_MILLIS); }
+
+    public MonteCarloService(PortfolioSource portfolio, HistorySource history, int maxConcurrent, long waitMillis) {
         this.portfolio = portfolio;
         this.history = history;
+        this.slots = new java.util.concurrent.Semaphore(maxConcurrent, true);
+        this.waitMillis = waitMillis;
+    }
+
+    /** Roda a simulação dentro do teto de simultaneidade; sem vaga a tempo, recusa com uma mensagem clara (503) em vez de empilhar CPU. */
+    private MonteCarlo.Result simulate(MonteCarlo.Params p, MonteCarlo.ReturnModel model) {
+        boolean got;
+        try {
+            got = slots.tryAcquire(waitMillis, java.util.concurrent.TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new MonteCarloBusyException();
+        }
+        if (!got) throw new MonteCarloBusyException();
+        try {
+            return MonteCarlo.run(p, model);
+        } finally {
+            slots.release();
+        }
     }
 
     public Output parametric(Request r) {
@@ -69,7 +96,7 @@ public final class MonteCarloService {
         double sigma = percent(r.volatilityPercent(), "Volatilidade", 0, 200);
         int months = months(r.horizonYears());
         MonteCarlo.Params p = new MonteCarlo.Params(initial.doubleValue(), monthly.doubleValue(), months, goal(r.goal()), seed(r, "P", initial.doubleValue(), monthly.doubleValue(), months, mu, sigma));
-        MonteCarlo.Result res = MonteCarlo.run(p, new MonteCarlo.ParametricModel(mu, sigma));
+        MonteCarlo.Result res = simulate(p, new MonteCarlo.ParametricModel(mu, sigma));
         return new Output(true, LABEL, res, p.initial(), p.monthlyContribution(), months, p.goal(), p.seed(), mu, sigma, List.of(), null, null,
                 List.of("Premissas informadas por você: retorno esperado de " + pct(mu) + " ao ano e volatilidade de " + pct(sigma) + " ao ano, constantes no horizonte.",
                         "Retornos log-normais mensais; o aporte entra no fim de cada mês e rende a partir do seguinte.", COMMON_1, COMMON_2, COMMON_3));
@@ -139,7 +166,7 @@ public final class MonteCarloService {
         assumptions.addAll(List.of(COMMON_1, COMMON_2, COMMON_3));
         MonteCarlo.Params p = new MonteCarlo.Params(total, monthly.doubleValue(), months, goal(r.goal()),
                 r.seed() != null ? r.seed() : Objects.hash(who.userId(), months, monthly.doubleValue(), aligned.days(), Math.round(total)));
-        MonteCarlo.Result res = MonteCarlo.run(p, new MonteCarlo.BootstrapModel(weights, aligned.returns(), BLOCK_DAYS));
+        MonteCarlo.Result res = simulate(p, new MonteCarlo.BootstrapModel(weights, aligned.returns(), BLOCK_DAYS));
         return new Output(false, LABEL, res, total, p.monthlyContribution(), months, p.goal(), p.seed(), stats.annualReturn(), stats.annualVolatility(), coverage,
                 coveredValue / total * 100, stats, assumptions);
     }

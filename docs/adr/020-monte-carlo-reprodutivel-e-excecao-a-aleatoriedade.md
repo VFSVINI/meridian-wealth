@@ -20,7 +20,8 @@ A diferença que justifica a exceção: o Monte Carlo não gera **preço** nenhu
 4. **Nada é estimado para tapar a falta:** posição sem histórico real (renda fixa, fundos, ativo sem cotação, histórico curto ou sem datas em comum) fica **parada** no valor atual, sem render, e a saída lista cada posição com o tratamento e o motivo, mais a cobertura em percentual do patrimônio. Sem nenhum ativo com histórico suficiente, a rota recusa (422) e manda usar as premissas manuais.
 5. **Honestidade sobre os limites**, escritos na saída: valores nominais, em reais, sem impostos, custos nem inflação; ativos em dólar entram pelo retorno na moeda do ativo (o câmbio não entra); o histórico passado não garante o futuro; os percentis resumem trajetórias simuladas, não o que vai acontecer.
 6. **Estatística em `double`, dinheiro em `BigDecimal`:** o motor usa `double` (como o motor de mercado, ADR 002); as entradas em reais passam por `MoneyBounds` antes de qualquer conta (notação científica não vira negação de serviço) e a resposta arredonda para 2 casas.
-7. **Fronteiras de módulo:** `domain.montecarlo` sem dependências; `application.risk` depende só de `auth` e `portfolio`.
+7. **Cálculo pesado é recurso escasso:** uma simulação custa cerca de 0,3 s de CPU e a rota paramétrica é pública. As rotas de risco têm um limite próprio (10 por minuto, por IP ou usuário) além do geral, e o serviço limita a 4 simulações simultâneas (503 com `Retry-After` quando cheio).
+8. **Fronteiras de módulo:** `domain.montecarlo` sem dependências; `application.risk` depende só de `auth` e `portfolio`.
 
 ## Consequências
 

@@ -6,6 +6,9 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Corrigido (item #18)
+- A rota pública do Monte Carlo deixava **um único IP saturar a CPU dentro do limite geral**: cada simulação custa cerca de 0,3 s, e 50 requisições em paralelo de um só cliente passaram todas (4,4 s de servidor ocupado). As rotas de cálculo pesado (`/api/risk/**` e `/api/me/risk/**`) ganharam um limite próprio (padrão 10 por minuto, por IP ou por usuário, `meridianwealth.rate-limit.heavy-per-minute`) e o serviço tem um teto de 4 simulações simultâneas, com 503 e `Retry-After` quando está cheio (achado do code review, medido no app real).
+
 ### Adicionado (item #18 do roadmap)
 - **Monte Carlo e metas** (`#/montecarlo`, rotulado **projeção** em toda a cadeia): cone patrimonial (percentis 5, 25, 50, 75 e 95 por mês), probabilidade de estar na meta no fim e ano a ano, probabilidade de terminar abaixo do que foi investido, distribuição do patrimônio final e tabela equivalente ao gráfico.
 - **Dois modos:** premissas manuais (retorno esperado e volatilidade anuais, log-normal; `POST /api/risk/monte-carlo`, pública) e **minha carteira** (`POST /api/me/risk/monte-carlo`, com login): reamostragem por blocos de 21 pregões de retornos **reais alinhados por data**, o que preserva a correlação entre os ativos; pesos fixos pelo valor atual em reais, rebalanceados todo mês.
