@@ -1,8 +1,8 @@
 name: dependency-review
 # Revisão de dependências em todo PR: bloqueia a entrada de dependência com vulnerabilidade conhecida de severidade alta ou crítica.
 # (Complementa o Dependabot, que propõe as atualizações, e o CodeQL, que analisa o código.)
-# Exige o "Dependency graph" ligado nas configurações do repositório (Settings > Code security). Enquanto estiver desligado, a etapa
-# reporta o erro sem bloquear o PR (continue-on-error); depois de ligar, remova essa linha para a revisão passar a bloquear.
+# Exige o "Dependency graph" ligado nas configurações do repositório (Settings > Code security). Enquanto estiver desligado, a revisão fica
+# pulada: para ativá-la, ligue o Dependency graph e crie a variável de repositório DEPENDENCY_GRAPH com o valor true (Settings > Variables).
 on:
   pull_request:
 permissions:
@@ -12,7 +12,7 @@ jobs:
     name: Revisão de dependências
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    continue-on-error: true
+    if: vars.DEPENDENCY_GRAPH == 'true'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/dependency-review-action@v4
