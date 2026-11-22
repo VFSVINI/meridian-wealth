@@ -52,6 +52,16 @@ class ArchitectureTest {
             .resideOutsideOfPackage("dev.meridianwealth.infrastructure.resilience..")
             .should().dependOnClassesThat().haveFullyQualifiedName("java.util.Random")
             .orShould().dependOnClassesThat().haveFullyQualifiedName("java.util.concurrent.ThreadLocalRandom")
-            .orShould().dependOnClassesThat().haveFullyQualifiedName("java.util.SplittableRandom")
-            .because("aleatoriedade no produto só no jitter do retry; nunca para gerar preços (ADR 004)");
+            .because("aleatoriedade sem semente só no jitter do retry; nunca para gerar preços (ADR 004)");
+
+    @ArchTest
+    static final ArchRule seededRandomnessOnlyForRetryJitterAndMonteCarlo = noClasses().that()
+            .resideOutsideOfPackages("dev.meridianwealth.infrastructure.resilience..", "dev.meridianwealth.domain.montecarlo..")
+            .should().dependOnClassesThat().haveFullyQualifiedName("java.util.SplittableRandom")
+            .because("o único sorteio com semente explícita fora do jitter é o do Monte Carlo, que gera cenários rotulados e nunca preços (ADR 020)");
+
+    @ArchTest
+    static final ArchRule monteCarloIsPureDomain = classes().that().resideInAPackage("dev.meridianwealth.domain.montecarlo..")
+            .should().onlyDependOnClassesThat().resideInAnyPackage("dev.meridianwealth.domain.montecarlo..", "java..")
+            .because("o motor de projeção é puro e reprodutível: só JDK e ele mesmo (ADR 020)");
 }
