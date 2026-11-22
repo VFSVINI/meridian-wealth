@@ -82,6 +82,9 @@ abstract class PortfolioApiScenarios {
 
     Http.Reply sell(String t, String id, Map<String, Object> body) { return http.post(path(id, "sales"), bearer(t), body); }
 
+    /** O serviço conta as datas em Brasília; a JVM da CI roda em UTC, então "hoje" nos testes também é o de Brasília. */
+    static LocalDate brasilia() { return LocalDate.now(java.time.ZoneId.of("America/Sao_Paulo")); }
+
     static BigDecimal num(Object o) { return new BigDecimal(String.valueOf(o)); }
 
     @SuppressWarnings("unchecked")
@@ -294,8 +297,8 @@ abstract class PortfolioApiScenarios {
 
     @Test void theLedgerIsChronologicalPerAssetAndRefusesTheFuture() {
         String t = newUserToken();
-        String today = LocalDate.now().toString();
-        String tomorrow = LocalDate.now().plusDays(1).toString();
+        String today = brasilia().toString();
+        String tomorrow = brasilia().plusDays(1).toString();
         Http.Reply opened = open(t, typedOn("LCI", "LCI Datas", "10", "100", "2026-03-10"));
         assertThat(opened.status()).isEqualTo(201);
         String id = idOf(opened);
@@ -448,7 +451,7 @@ abstract class PortfolioApiScenarios {
         List<String> notComputed = (List<String>) r.get("notComputed");
         assertThat(notComputed.toString()).contains("Compensação de prejuízos").contains("Day trade").contains("DARF");
         assertThat(http.get("/api/me/tax/report?year=1999", bearer(t)).status()).isEqualTo(400);
-        assertThat(http.get("/api/me/tax/report?year=" + (LocalDate.now().getYear() + 1), bearer(t)).status()).isEqualTo(400);
+        assertThat(http.get("/api/me/tax/report?year=" + (brasilia().getYear() + 1), bearer(t)).status()).isEqualTo(400);
         assertThat(http.get("/api/me/tax/report?year=abc", bearer(t)).status()).isEqualTo(400);
         assertThat(http.get("/api/me/tax/report", bearer(t)).status()).as("sem ano: o corrente").isEqualTo(200);
         assertThat(http.get("/api/me/tax/report?year=2026").status()).isEqualTo(401);
@@ -468,7 +471,7 @@ abstract class PortfolioApiScenarios {
         String t = newUserToken();
         String id = idOf(open(t, Map.of("type", "CRIPTO_ATIVO", "label", "Cripto validação", "currency", "USD", "quantity", "10", "averagePrice", "100", "fxRate", "5.00")));
         long before = ptaxCalls();
-        Http.Reply tooMuch = sell(t, id, Map.of("quantity", "9999", "unitPrice", "100", "tradeDate", LocalDate.now().toString()));
+        Http.Reply tooMuch = sell(t, id, Map.of("quantity", "9999", "unitPrice", "100", "tradeDate", brasilia().toString()));
         assertThat(tooMuch.status()).as("erro do usuário, não 503 de câmbio").isEqualTo(400);
         assertThat((String) tooMuch.get("error")).contains("passa da quantidade");
         assertThat(buy(t, id, Map.of("quantity", "-1", "unitPrice", "100")).status()).isEqualTo(400);
@@ -481,7 +484,7 @@ abstract class PortfolioApiScenarios {
 
     @Test void importingManyDollarTradesOnTheSameDaysConsultsTheCentralBankOncePerDate() {
         String t = newUserToken();
-        String yesterday = LocalDate.now().minusDays(1).toString();
+        String yesterday = brasilia().minusDays(1).toString();
         String id = idOf(open(t, Map.of("type", "CRIPTO_ATIVO", "label", "Cripto importação", "currency", "USD", "quantity", "1", "averagePrice", "100", "tradeDate", yesterday)));
         long before = ptaxCalls();
         for (int i = 0; i < 14; i++) {

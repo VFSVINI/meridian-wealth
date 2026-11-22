@@ -149,8 +149,9 @@ public final class PortfolioService {
     }
 
     /** Apoio ao imposto de renda de um ano (ver {@link TaxReport}). */
-    public TaxReport.Result taxReport(AuthPrincipal who, int year) {
+    public TaxReport.Result taxReport(AuthPrincipal who, Integer requestedYear) {
         int current = LocalDate.now(clock).getYear();
+        int year = requestedYear == null ? current : requestedYear;
         if (year < 2000 || year > current) throw new PortfolioException(Code.INVALID_INPUT, "O ano precisa estar entre 2000 e " + current);
         return TaxReport.build(ledger.all(who.userId()), year);
     }
