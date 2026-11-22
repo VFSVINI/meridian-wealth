@@ -6,6 +6,19 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Segurança (Issue #43)
+- **Auditoria pelas listas de requisitos** (40 requisitos, 20 medidas e os erros comuns), com sonda no app real, em [docs/seguranca-checklist.md](docs/seguranca-checklist.md); roteiro de incidentes em [docs/resposta-a-incidentes.md](docs/resposta-a-incidentes.md).
+- **Refresh token em cookie `HttpOnly`**, `SameSite=Strict`, restrito a `/api/auth` e `Secure` sob HTTPS; nenhum token no armazenamento do navegador (o access token fica só na memória da aba); renovação entre abas por Web Lock e login e logout propagados por BroadcastChannel. Clientes de API seguem recebendo o refresh no corpo. Fecha as dívidas 34 e 42 (parte).
+- **HTTPS forçado** (`MW_FORCE_HTTPS`, 308 com host validado) e cookie `Secure` atrás de proxy confiável.
+- **LGPD:** página de privacidade e termos de uso, aceite no cadastro, **exportação** dos dados (`GET /api/me/export`) e **eliminação** da conta (`POST /api/me/erase`, com o e-mail digitado como confirmação), testadas em memória e no PostgreSQL.
+- **Varreduras que quebram o `verify`:** segredos versionados, SQL só parametrizado, nenhuma rota que receba URL (SSRF); revisão de dependências em todo PR.
+- **Banco Central:** uma série que falhou na partida é repetida a cada 2 minutos até aparecer (dívida 40).
+
+### Corrigido (Issue #43)
+- Swagger e `/v3/api-docs` estavam abertos a qualquer pessoa e listavam todas as rotas: agora desligados por padrão (`MW_API_DOCS=true` liga).
+- O corpo de erro devolvia a URL pedida e uma mensagem repetia a entrada do usuário: removidos.
+- Os filtros de limite, autenticação, tamanho e cabeçalhos decidiam pelo texto cru da URL (`/api/%61uth/login` caía no limite geral): passaram a usar o caminho que o Spring despacha.
+
 ### Adicionado (item #15, etapa 2)
 - **Entrada na interface:** diálogo com abas Entrar e Criar conta, **Continuar com Google** (botão oficial do Google Identity Services quando `MW_GOOGLE_CLIENT_ID` está definido; desabilitado com aviso claro quando não está; carregando e erro tratados) e sessão de demonstração; menu da conta com sair; renovação do token por refresh em uma chamada só, compartilhada.
 - **Minha Carteira** (`#/carteira`): patrimônio, alocação (treemap), aderência ao perfil com radar, posições, compra, venda, ajuste, baixa e abertura pelos formulários da tela, livro com filtro e ganho ou perda por posição. Só dado real, "não informado" quando falta dado, tema escuro e Ivory, sem rolagem horizontal em 375 px.
