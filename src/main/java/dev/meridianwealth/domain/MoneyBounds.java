@@ -15,6 +15,14 @@ public final class MoneyBounds {
 
     private MoneyBounds() {}
 
+    /** Como {@link #requirePositive(BigDecimal, String, int)}, mas aceita zero (por exemplo, taxas e corretagem). */
+    public static BigDecimal requireNonNegative(BigDecimal value, String label, int maxDecimals) {
+        Objects.requireNonNull(value, label);
+        if (value.signum() < 0) throw new IllegalArgumentException("O valor de " + label + " não pode ser negativo");
+        if (value.signum() == 0) return BigDecimal.ZERO.setScale(0);
+        return requirePositive(value, label, maxDecimals);
+    }
+
     /** Valida (positivo e dentro dos limites) e devolve o valor com escala não negativa. */
     public static BigDecimal requirePositive(BigDecimal value, String label) { return requirePositive(value, label, MAX_DECIMAL_PLACES); }
 
