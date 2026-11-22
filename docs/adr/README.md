@@ -20,3 +20,4 @@ ADRs aceitos não são reescritos; uma mudança de rumo gera um ADR novo que sub
 | [013](013-autenticacao-jwt-google-e-defesas-de-borda.md) | Autenticação por JWT, Login com Google e defesas de borda | Aceito | 2026-11-21 |
 | [014](014-carteira-persistida-preco-medio-e-bloqueio-otimista.md) | Carteira persistida, preço médio ponderado e bloqueio otimista | Aceito | 2026-11-21 |
 | [015](015-livro-de-movimentacoes-idempotencia-e-apoio-ao-ir.md) | Livro de movimentações, idempotência e apoio ao imposto de renda | Aceito | 2026-11-21 |
+| [016](016-monolito-modular-e-observabilidade.md) | Monólito modular com fronteiras verificadas e observabilidade por provedor | Aceito | 2026-11-21 |
