@@ -140,6 +140,44 @@
       <div class="card rx"><h2>Raio-X <span class="tag info">dado curado</span></h2><div id="rx" class="mute" style="font-size:12.5px">Selecione um fundo imobiliário.</div></div>
     </section>
 
+    <section class="page" data-page="privacidade" hidden>
+      <div class="ph"><p class="eyebrow">Conta</p><h1>Privacidade e termos de uso</h1><p class="lede">O que o MeridianWealth guarda de você, por quê, por quanto tempo e como exercer seus direitos. Texto informativo escrito para este projeto; não substitui orientação jurídica.</p></div>
+      <div class="grid2">
+        <div>
+          <div class="card legal"><h2>Política de privacidade</h2>
+            <h3>O que guardamos</h3>
+            <p>Só o que você informa: e-mail e nome da conta, o perfil de investidor que você salvar, as posições e as movimentações que você registrar na Minha Carteira. No login com Google recebemos o identificador, o e-mail verificado e o nome da sua conta Google; a foto não é carregada. A senha é guardada apenas como hash irreversível (BCrypt). Não há rastreadores, anúncios nem ferramentas de análise de uso.</p>
+            <h3>Para que usamos (finalidade) e base legal</h3>
+            <p>Para manter sua conta, valorizar sua carteira com cotações reais e calcular a aderência ao perfil: execução do serviço que você pediu ao criar a conta (LGPD, art. 7º, V). Não usamos seus dados para outra finalidade, não os vendemos e não os compartilhamos para marketing.</p>
+            <h3>Com quem compartilhamos</h3>
+            <p>Com ninguém, exceto: (a) o Google, se você escolher entrar com ele; (b) provedores de cotação e o Banco Central, que recebem apenas símbolos de ativos e datas, nunca dado pessoal seu.</p>
+            <h3>Minimização, segurança e cookies</h3>
+            <p>Coletamos o mínimo necessário. A conexão deve ser HTTPS; o acesso a cada conta é isolado por usuário; os dados do navegador se resumem a um cookie essencial de sessão (HttpOnly, SameSite=Strict, sem uso fora do login) e a preferências de tema e menu. Como não há cookie de rastreamento, não há banner de consentimento de cookies.</p>
+            <h3>Por quanto tempo (retenção)</h3>
+            <p>Enquanto a conta existir. A sessão de demonstração dura 60 minutos e some sozinha. Ao excluir a conta, tudo é apagado de imediato (conta, posições, movimentações e sessões); registros técnicos de operação não guardam dados da sua carteira.</p>
+            <h3>Seus direitos (LGPD, art. 18)</h3>
+            <p>Confirmação e acesso, correção, portabilidade, eliminação, informação sobre compartilhamento e revogação: use os botões ao lado para <b>exportar</b> tudo em JSON e para <b>excluir a conta</b>; para qualquer outro pedido, abra uma Issue no repositório do projeto.</p>
+            <h3>Incidentes e mudanças</h3>
+            <p>Em caso de incidente de segurança que possa causar risco relevante, os titulares afetados e a ANPD serão comunicados conforme o art. 48 da LGPD. Mudanças neste texto são registradas no histórico do repositório.</p>
+          </div>
+          <div class="card legal"><h2>Termos de uso</h2>
+            <p><b>Ferramenta analítica e educacional.</b> O MeridianWealth não executa ordens, não recomenda investimentos e não é consultoria nem análise de valores mobiliários. Sinais, notas, simulações, teses e o apoio ao imposto de renda são leituras mecânicas e ilustrativas; decisões e declarações são suas.</p>
+            <p><b>Dados de terceiros.</b> Cotações e indicadores vêm de provedores gratuitos, com atraso e sujeitos a falhas; cada número mostra fonte, horário e atraso, e o que falta aparece como "não informado". A carteira é um registro seu e não substitui extrato de corretora.</p>
+            <p><b>Uso aceitável.</b> Não tente contornar limites, acessar dados de outras contas ou sobrecarregar o serviço. Contas podem ser limitadas ou removidas em caso de abuso.</p>
+            <p><b>Sem garantias.</b> O serviço é oferecido como está, sem garantia de disponibilidade ou de ausência de erros, e sem responsabilidade por perdas decorrentes do uso das informações.</p>
+          </div>
+        </div>
+        <div>
+          <div class="card" id="pvActions"><h2>Meus dados</h2><div id="pvBody" class="mute">Entre para exportar ou excluir seus dados.</div></div>
+          <div class="card"><h2>Segurança em resumo</h2><ul class="note">
+            <li>Senha com BCrypt; sessão por token de 15 minutos e renovação em cookie HttpOnly.</li>
+            <li>Limite de tentativas de login, limite de requisições e corpo máximo por requisição.</li>
+            <li>CSP restritiva, sem script de terceiros; cabeçalhos de segurança e HTTPS forçado quando configurado.</li>
+            <li>Carteira isolada por usuário e escrita idempotente.</li></ul></div>
+        </div>
+      </div>
+    </section>
+
     <section class="page" data-page="saude" hidden>
       <div class="ph"><p class="eyebrow">Conta</p><h1>Saúde dos dados</h1><p class="lede">Estado de cada provedor de dados: circuito, sucessos e falhas, cache e conexões do stream.</p></div>
       <div class="card" style="max-width:760px"><h2>Status da ingestão</h2><div id="status" class="mute" style="font-size:13px">carregando…</div></div>

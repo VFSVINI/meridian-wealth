@@ -182,5 +182,9 @@ dialog .db p{margin:var(--s1) 0}
 .legendlist{list-style:none;margin:var(--s2) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 16px;font-size:12px;color:var(--text-2)}.legendlist li{display:flex;align-items:center;gap:6px}.legendlist i{width:10px;height:10px;border-radius:2px}.legendlist b{color:var(--text);font-weight:500}
 .acts{white-space:nowrap;text-align:right}.acts button{padding:3px 9px;font-size:12px;margin-left:4px}.scroll{overflow-x:auto}
 .chips{display:inline-flex;gap:6px;flex-wrap:wrap;margin-left:auto;text-transform:none;letter-spacing:0}.fchip{padding:2px 12px;border-radius:999px;font-size:12px;background:transparent;color:var(--text-2)}.fchip[aria-pressed="true"]{border-color:var(--gold);color:var(--gold)}
+.legal h3{font:600 15px var(--sans);margin:var(--s4) 0 var(--s1);color:var(--text)}.legal p{margin:0 0 var(--s2);color:var(--text-2);max-width:72ch}
+.chk{flex-direction:row!important;align-items:flex-start;gap:var(--s2)!important;color:var(--text-2)!important;font-size:12.5px!important}.chk input{width:auto!important;margin-top:3px}
+.blk{display:flex;flex-direction:column;gap:4px;margin:var(--s2) 0;color:var(--text-3);font-size:12px}.blk input{width:100%}
+button.danger{border-color:var(--down);color:var(--down)}button.danger:hover{background:color-mix(in srgb,var(--down) 12%,transparent)}
 @media(max-width:1180px){.ct-top{grid-template-columns:1fr}.un{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}

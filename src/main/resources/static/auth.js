@@ -115,6 +115,7 @@ function renderLogin(){
       <label>E-mail <input id="lEmail" type="email" autocomplete="email" maxlength="254" required></label>
       <label>Senha <input id="lPass" type="password" autocomplete="${up?'new-password':'current-password'}" maxlength="128" required aria-describedby="lHint"></label>
       <p class="src" id="lHint">${up&&c?esc(c.passwordHint):'&nbsp;'}</p>
+      ${up?'<label class="chk"><input id="lTerms" type="checkbox"> <span>Li e aceito os <a href="#/privacidade" id="lTermsLink" target="_self">termos de uso e a política de privacidade</a></span></label>':''}
       <p class="dn" id="lErr" role="alert"></p>
       <button type="submit" class="primary" id="lGo">${up?'Criar conta':'Entrar'}</button>
     </form>
@@ -123,6 +124,7 @@ function renderLogin(){
   $('#tabIn').onclick=()=>{LTAB='in';renderLogin()};
   if($('#tabUp'))$('#tabUp').onclick=()=>{LTAB='up';renderLogin()};
   $('#loginForm').addEventListener('submit',submitLogin);
+  if($('#lTermsLink'))$('#lTermsLink').onclick=()=>closeLogin();
   if($('#lDemo'))$('#lDemo').onclick=startDemo;
   if($('#gRetry'))$('#gRetry').onclick=()=>{GSTATE='loading';renderLogin();initGoogle()};
   if(GSTATE==='on')mountGoogle();
@@ -155,6 +157,7 @@ async function submitLogin(e){
   const email=$('#lEmail').value.trim(),password=$('#lPass').value,up=LTAB==='up';
   if(!email||!password){err.textContent='Informe e-mail e senha.';return}
   if(up&&!$('#lName').value.trim()){err.textContent='Informe seu nome.';return}
+  if(up&&!$('#lTerms').checked){err.textContent='Para criar a conta, aceite os termos de uso e a política de privacidade.';return}
   go2.disabled=true;go2.textContent=up?'Criando…':'Entrando…';
   try{
     const d=await postAuth(up?'/api/auth/register':'/api/auth/login',up?{email,password,displayName:$('#lName').value.trim()}:{email,password});
@@ -210,3 +213,37 @@ $('#login').addEventListener('close',()=>{if(lastFocus&&lastFocus.focus)try{last
 renderUser();profileBanner();
 /* sessão guardada: confirma no servidor (e renova se preciso) para não mostrar uma conta que já expirou */
 bootSession();
+
+/* ---------- direitos do titular (LGPD, art. 18): exportar e excluir ---------- */
+function renderMyData(){
+  const el=$('#pvBody');if(!el)return;
+  if(!SESS){el.className='mute';el.innerHTML='Entre para exportar ou excluir seus dados. <button type="button" class="linkish" id="pvLogin">Entrar</button>';$('#pvLogin').onclick=openLogin;return}
+  el.className='';
+  el.innerHTML=`<p class="src">Conta: <b>${esc(SESS.user.email)}</b>${SESS.demo?' (demonstração: some sozinha em 60 minutos)':''}</p>
+    <h3 class="sub">Exportar</h3><p class="src">Baixe tudo que guardamos de você em JSON (conta, perfil, posições e livro). Não inclui senha nem tokens.</p>
+    <button type="button" id="pvExport">Baixar meus dados</button> <span id="pvExpMsg" class="src" role="status"></span>
+    <h3 class="sub">Excluir a conta</h3><p class="src">Apaga a conta, as posições, o livro e as sessões, agora e sem volta. ${SESS.demo?'':'Digite o e-mail da conta para confirmar.'}</p>
+    ${SESS.demo?'':'<label class="blk">E-mail da conta <input id="pvEmail" type="email" autocomplete="off"></label>'}
+    <button type="button" class="danger" id="pvErase">Excluir minha conta</button> <span id="pvEraseMsg" class="dn" role="alert"></span>`;
+  $('#pvExport').onclick=async()=>{
+    const m=$('#pvExpMsg');m.textContent='Preparando…';
+    try{
+      const r=await api('/api/me/export');if(!r.ok)throw new Error(await errText(r,'Não foi possível exportar agora.'));
+      const url=URL.createObjectURL(await r.blob()),a=document.createElement('a');a.href=url;a.download='meridianwealth-meus-dados.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+      m.className='up';m.textContent='Arquivo baixado.';
+    }catch(x){m.className='dn';m.textContent=x.message}
+  };
+  $('#pvErase').onclick=async()=>{
+    const m=$('#pvEraseMsg');m.textContent='';
+    const email=SESS.demo?'':($('#pvEmail').value||'').trim();
+    if(!SESS.demo&&!email){m.textContent='Digite o e-mail da conta.';return}
+    if(!confirm('Excluir a conta e todos os dados, sem volta?'))return;
+    try{
+      const r=await api('/api/me/erase',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({confirmEmail:email})});
+      if(!r.ok)throw new Error(await errText(r,'Não foi possível excluir agora.'));
+      await logout();go('home');
+    }catch(x){m.textContent=x.message}
+  };
+}
+document.addEventListener('mw-auth',renderMyData);
+renderMyData();

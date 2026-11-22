@@ -96,6 +96,13 @@ class ShellContractTest {
         assertThat(html).contains("@media(max-width:1100px){.pill.hide-sm,.search kbd{display:none}}");
     }
 
+    @Test void thePrivacyPageCoversTheLgpdBasicsAndOffersTheDataSubjectActions() {
+        assertThat(html).contains("Política de privacidade").contains("Termos de uso").contains("LGPD, art. 18").contains("base legal").contains("retenção")
+                .contains("Baixar meus dados").contains("Excluir minha conta").contains("art. 48");
+        assertThat(html).as("o cadastro só segue com o aceite dos termos").contains("id=\"lTerms\"").contains("aceite os termos de uso");
+        assertThat(html).as("nenhum rastreador, anúncio ou análise de uso é prometido sem existir").doesNotContain("google-analytics").doesNotContain("gtag(");
+    }
+
     @Test void prototypeSampleDataWasNotCopiedIntoTheInterface() {
         assertThat(html).doesNotContain("4.382.917").doesNotContain("Vinícius").doesNotContain("Meridian Score").doesNotContain(">exemplo<");
     }
