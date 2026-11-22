@@ -1,6 +1,11 @@
 spring:
   application:
     name: meridianwealth
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          no-cache: true        # o navegador sempre revalida (Last-Modified): um deploy novo nunca deixa JS e CSS antigos presos no cache do usuário
   threads:
     virtual:
       enabled: true

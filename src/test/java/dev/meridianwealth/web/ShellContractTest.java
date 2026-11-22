@@ -109,6 +109,7 @@ class ShellContractTest {
         assertThat(shopping).as("o catálogo só cita a referência oficial do indexador").contains("a plataforma não a tem").doesNotContain("% a.a. ao ano").doesNotContainPattern("(?i)cdb\\s+\\d|taxa de \\d");
         String cockpit = dev.meridianwealth.testsupport.StaticPage.file("cockpit.js");
         assertThat(cockpit).contains("LightweightCharts").contains("createChart(").contains("takeScreenshot()").contains("subscribeCrosshairMove");
+        assertThat(cockpit).as("eixo, inspetor e tabela mostram o mesmo dia: tempo deslocado pelo fuso do navegador e formatado em UTC").contains("getTimezoneOffset()").contains("const ckWhen").doesNotContain("d.toLocaleString").doesNotContain("new Date(c.t*1000).toLocaleString");
         assertThat(dev.meridianwealth.testsupport.StaticPage.file("app.js")).as("o gráfico em canvas saiu do app.js").doesNotContain("getContext('2d')").doesNotContain("function draw()");
         assertThat(html).as("alternativa em tabela e exportação do gráfico").contains("Ver como tabela").contains("Exportar imagem").contains("Simular compra ou venda");
     }

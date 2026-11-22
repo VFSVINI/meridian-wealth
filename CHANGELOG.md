@@ -17,6 +17,8 @@ Milestone 4 — Interface Dark Luxury, Mapas & Home Broker. Reúne a interface d
 - **Shopping financeiro** (`#/shopping`): os tipos de ativo da taxonomia lado a lado (indexador, rendimento, proteção do FGC, fonte do preço), com a referência oficial do Banco Central de cada indexador (Selic, CDI, IPCA) e atalhos para simular e para a carteira. **Sem ofertas de emissores**, e a tela diz isso: nenhuma taxa de produto é inventada. ADR 019.
 
 ### Corrigido (item #17)
+- O eixo do gráfico (UTC) e o inspetor do candle (fuso do navegador) mostravam **dias diferentes** para os mercados da Ásia (HSI e Nikkei: 20/11 no eixo, 19/11 no inspetor). O tempo de cada barra passou a ser deslocado pelo fuso do navegador e formatado em UTC no gráfico, no inspetor e na tabela (achado do code review, medido no app real).
+- Os arquivos estáticos (JS, CSS, HTML) agora são sempre revalidados pelo navegador (`Cache-Control: no-cache`): um deploy novo não deixa script antigo preso no cache (aconteceu na validação deste PR).
 - A página **Mercados ficou sem lista desde o item #16**: o `mapa.js` declarava `renderList`, o mesmo nome de uma função do `app.js`, e a segunda definição sobrescrevia a primeira em silêncio (erro `Cannot read properties of null` no console). As funções do mapa ganharam o prefixo `mp` e um teste agora derruba o `verify` se dois scripts declararem o mesmo nome global.
 
 ### Adicionado (item #16 do roadmap)
