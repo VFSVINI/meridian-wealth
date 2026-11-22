@@ -49,3 +49,10 @@ Projeção patrimonial, **sempre rotulada projeção**, com 5.000 trajetórias m
 
 Saídas: percentis 5, 25, 50, 75 e 95 por mês (interpolação linear entre ordens), histograma de 30 faixas do patrimônio final (até o percentil 99), probabilidade de estar na meta (no fim e no fim de cada ano) e probabilidade de terminar abaixo do investido. O gerador é um `SplittableRandom` com semente explícita: mesma entrada, mesma saída (ADR 020). Limites: valores nominais em reais, sem impostos, custos nem inflação; o passado não garante o futuro; ativos em dólar sem o efeito do câmbio.
 
+## Correlação e risco da carteira (item #19)
+
+- **Correlação de Pearson** `rho = cov(a, b) / (sd(a) sd(b))` sobre os últimos 252 retornos diários, par a par, nas datas em que os dois ativos têm fechamento (o retorno cobre o intervalo quando um feriado separa duas datas em comum). Com menos de 60 pregões em comum, ou série sem variação, o valor é `null` ("n/d"): nunca zero.
+- **Matriz de classes:** a série da classe é o retorno diário médio dos ativos dela, ponderado pelo valor atual em reais, sobre as datas que todos os ativos da classe têm; vira um índice (base 100) e entra na mesma conta par a par.
+- **Risco da carteira:** volatilidade anualizada `sd(retorno diário da carteira) x raiz(252)` com pesos fixos, contra `soma(peso x volatilidade individual)`. A diferença é o benefício da diversificação, sempre maior ou igual a zero e nula quando a correlação é 1.
+- **Concentração:** HHI `soma(peso²)` por posição e por classe; posições efetivas `1 / HHI`; mapa classe x faixa de risco do motor de timing, em percentual do patrimônio total.
+
