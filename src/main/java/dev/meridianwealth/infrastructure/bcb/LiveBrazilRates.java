@@ -50,6 +50,23 @@ public class LiveBrazilRates implements BrazilRatesPort {
     @Override
     public BrazilRates current() { return current; }
 
+    /**
+     * Uma série que falhou na partida ficaria "indisponível" até a próxima rodada completa (30 min depois). Enquanto faltar algum
+     * indicador, repete a rodada a cada 2 minutos; com tudo em dia, não faz nada (dívida 40).
+     */
+    @Scheduled(fixedDelay = 120_000, initialDelay = 90_000)
+    public void retryMissing() {
+        if (enabled && hasMissingSeries()) refresh();
+    }
+
+    boolean hasMissingSeries() {
+        BrazilRates now = current;
+        for (RateSeries s : RateSeries.values()) {
+            if (now.get(s).isEmpty()) return true;
+        }
+        return false;
+    }
+
     /** Exclusivo: duas rodadas simultâneas disputariam a cota do BCB e sobrescreveriam o mesmo retrato. */
     @Scheduled(fixedDelay = 1_800_000, initialDelay = 5_000)
     public synchronized void refresh() {

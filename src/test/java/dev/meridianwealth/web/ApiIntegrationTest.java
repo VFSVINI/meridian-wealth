@@ -21,7 +21,7 @@ import org.springframework.http.ResponseEntity;
  * não têm fixture (HTTP 404) e precisam aparecer como "sem dado em tempo real", nunca simulados.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-        properties = "meridianwealth.crypto.stream.enabled=false")
+        properties = {"meridianwealth.crypto.stream.enabled=false", "springdoc.api-docs.enabled=true"})
 class ApiIntegrationTest {
     @TestConfiguration
     static class Fixtures {
