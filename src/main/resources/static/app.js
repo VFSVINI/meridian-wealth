@@ -7,7 +7,7 @@ const REGIME={UPTREND:'Tendência de alta',DOWNTREND:'Tendência de baixa',RANGE
 const RISK={LOW:'Baixo',MEDIUM:'Moderado',HIGH:'Alto',EXTREME:'Extremo'};
 const SIDE={COMPRA:'var(--up)',VENDA:'var(--warn)',ALERTA:'var(--dn)'};
 const FRESH={REAL_TIME:['tempo real','up'],DELAYED:['~15 min','warn'],END_OF_DAY:['fechamento','ice'],STORED:['último dado real gravado','dn']};
-let universe=[],rows={},sel=null,candles=[],A=null,es=null,ws=null,paused=false,hover=-1,selecting=false;
+let universe=[],rows={},sel=null,candles=[],A=null,es=null,ws=null,paused=false,selecting=false;
 
 Object.entries(SIG).forEach(([k,v])=>$('#sigf').insertAdjacentHTML('beforeend',`<option value="${k}">${v[0]}</option>`));
 
@@ -278,7 +278,7 @@ function renderSimulator(){
   el.className='';el.style.fontSize='12px';
   el.innerHTML=`<div class="banner">SIMULAÇÃO${GL('simulation')}: não é cotação nem ordem. A plataforma não executa ordens.</div>
   <div class="src">Informe sua carteira em reais e uma compra ou venda hipotética. Nada é gravado.</div>
-  <div style="margin-top:8px"><b>Minha carteira</b><div id="smPos">${smRow()}</div><button type="button" id="smAdd">+ posição</button></div>
+  <div style="margin-top:8px"><b>Minha carteira</b><div id="smPos">${smRow()}</div><button type="button" id="smAdd">+ posição</button> <button type="button" data-saved="smPos">Usar minha carteira salva</button> <span class="src" data-savedmsg="smPos" role="status"></span></div>
   <div style="margin-top:10px"><b>Ordem hipotética</b>
    <div class="hold"><select id="smSide" aria-label="Compra ou venda"><option value="BUY">Compra</option><option value="SELL">Venda</option></select><select id="smAsset" aria-label="Ativo da ordem">${smAssetOptions()}</select><input id="smAmt" type="number" min="0" step="0.01" placeholder="Valor em R$" aria-label="Valor da ordem"></div>
    <div class="hold"><select id="smProfile" aria-label="Perfil para a aderência"><option value="">Sem perfil (não calcular aderência)</option><option value="CONSERVATIVE">Perfil CONSERVADOR</option><option value="MODERATE">Perfil MODERADO</option><option value="BOLD">Perfil ARROJADO</option><option value="AGGRESSIVE">Perfil AGRESSIVO</option></select></div>
@@ -320,7 +320,7 @@ function renderLens(){
   const el=$('#tz');el.className='';el.style.fontSize='12px';
   el.innerHTML=`<div class="banner">TESES ILUSTRATIVAS${GL('thesis')}: genéricas, inspiradas no estilo público de cada gestora. Não representam posições reais de nenhuma instituição.</div>
   <div class="src">Informe sua carteira em reais. Nada é gravado; o setor vem do universo do painel.</div>
-  <div style="margin-top:8px"><b>Minha carteira</b><div id="tzPos">${smRow()}</div><button type="button" id="tzAdd">+ posição</button></div>
+  <div style="margin-top:8px"><b>Minha carteira</b><div id="tzPos">${smRow()}</div><button type="button" id="tzAdd">+ posição</button> <button type="button" data-saved="tzPos">Usar minha carteira salva</button> <span class="src" data-savedmsg="tzPos" role="status"></span></div>
   <div style="margin-top:10px"><button type="button" id="tzGo">Traduzir carteira</button> <span id="tzErr" class="dn"></span></div><div id="tzOut"></div>`;
   $('#tzAdd').onclick=()=>$('#tzPos').insertAdjacentHTML('beforeend',smRow());
   $('#tzGo').onclick=runLens;
@@ -483,45 +483,7 @@ $('#bRun').onclick=async()=>{
    <table style="margin-top:8px"><thead><tr><th>Barras</th><th style="text-align:right">Retorno</th><th>Saída</th></tr></thead><tbody>${t||'<tr><td colspan="3" class="mute">Nenhuma operação nesta janela.</td></tr>'}</tbody></table>`;
 };
 
-/* ---------- gráfico ---------- */
-const cv=$('#chart'),ctx=cv.getContext('2d');let L={};
-function draw(){
-  if(!candles.length){ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,cv.width,cv.height);L={};return}
-  const cs=getComputedStyle(document.documentElement),K=n=>cs.getPropertyValue(n).trim();
-  const dpr=devicePixelRatio||1,W=cv.clientWidth,H=cv.clientHeight;if(!W)return;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
-  const N=Math.min(candles.length,160),view=candles.slice(-N),cl=candles.map(c=>c.close),off=candles.length-N;
-  const bb=view.map((_,i)=>{const e=off+i+1;if(e<20)return null;const w=cl.slice(e-20,e),m=w.reduce((a,b)=>a+b)/20,sd=Math.sqrt(w.reduce((a,b)=>a+(b-m)**2,0)/19);return{m,u:m+2*sd,l:m-2*sd}});
-  let lo=Infinity,hi=-Infinity;view.forEach((c,i)=>{lo=Math.min(lo,c.low,bb[i]?bb[i].l:Infinity);hi=Math.max(hi,c.high,bb[i]?bb[i].u:-Infinity)});
-  if(A){lo=Math.min(lo,A.invalidation);hi=Math.max(hi,A.target2)}
-  const pad=(hi-lo)*.04;lo-=pad;hi+=pad;
-  const pl=8,pr=66,pt=12,pb=22,pw=W-pl-pr,ph=H-pt-pb,x=i=>pl+i*pw/(N-1),y=v=>pt+(hi-v)/(hi-lo)*ph;
-  L={pl,pw,N,view,bb,x};
-  ctx.font='11px "IBM Plex Mono",ui-monospace,Menlo,monospace';ctx.textBaseline='middle';
-  for(let k=0;k<=4;k++){const v=lo+(hi-lo)*k/4,yy=y(v);ctx.strokeStyle=K('--line');ctx.beginPath();ctx.moveTo(pl,yy);ctx.lineTo(W-pr,yy);ctx.stroke();ctx.fillStyle=K('--text-3');ctx.fillText(f(v,v<10?4:2),W-pr+6,yy)}
-  for(let i=0;i<N;i+=30){ctx.fillStyle=K('--text-3');ctx.fillText(new Date(view[i].time).toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}),x(i),H-9)}
-  if(A){
-    const band=(a,b,c)=>{ctx.fillStyle=c;ctx.fillRect(pl,y(b),pw,y(a)-y(b))};
-    if(A.score>=20&&A.signal!=='HIGH_RISK_WAIT')band(A.entryLow,A.entryHigh,'rgba(55,199,160,.16)');
-    if(A.signal==='TAKE_PROFIT_WINDOW'||A.signal==='SELL_EXIT_SETUP')band(A.price-A.atr,A.price+A.atr,'rgba(228,168,58,.16)');
-    const line=(v,c,t)=>{ctx.strokeStyle=c;ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(pl,y(v));ctx.lineTo(W-pr,y(v));ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=c;ctx.fillText(t,pl+4,y(v)-7)};
-    line(A.invalidation,K('--down'),'Invalidação');line(A.target1,K('--warn'),'Alvo 1');line(A.target2,K('--warn'),'Alvo 2');
-  }
-  ctx.beginPath();let st=false;bb.forEach((b,i)=>{if(!b)return;st?ctx.lineTo(x(i),y(b.u)):ctx.moveTo(x(i),y(b.u));st=true});
-  for(let i=N-1;i>=0;i--)if(bb[i])ctx.lineTo(x(i),y(bb[i].l));ctx.closePath();ctx.fillStyle='rgba(143,187,234,.10)';ctx.fill();
-  ['u','l'].forEach(k=>{ctx.beginPath();let s2=false;bb.forEach((b,i)=>{if(!b)return;s2?ctx.lineTo(x(i),y(b[k])):ctx.moveTo(x(i),y(b[k]));s2=true});ctx.strokeStyle='rgba(143,187,234,.55)';ctx.lineWidth=1;ctx.stroke()});
-  ctx.beginPath();view.forEach((c,i)=>i?ctx.lineTo(x(i),y(c.close)):ctx.moveTo(x(i),y(c.close)));ctx.strokeStyle=K('--text');ctx.lineWidth=1.6;ctx.stroke();ctx.lineWidth=1;
-  const lc=view[N-1];ctx.fillStyle=K('--gold');ctx.beginPath();ctx.arc(x(N-1),y(lc.close),3.5,0,7);ctx.fill();
-  if(hover>=0&&hover<N){ctx.strokeStyle=K('--text-3');ctx.beginPath();ctx.moveTo(x(hover),pt);ctx.lineTo(x(hover),pt+ph);ctx.stroke()}
-}
-cv.addEventListener('mousemove',e=>{
-  if(!L.N)return;const r=cv.getBoundingClientRect(),i=Math.round((e.clientX-r.left-L.pl)/(L.pw/(L.N-1)));
-  if(i<0||i>=L.N){hover=-1;$('#tip').style.display='none';draw();return}
-  hover=i;const c=L.view[i],b=L.bb[i],tip=$('#tip');
-  tip.innerHTML=`${new Date(c.time).toLocaleDateString('pt-BR')}<br>A ${f(c.open)} · M ${f(c.high)} · m ${f(c.low)} · F ${f(c.close)}${b?`<br>Bollinger ${f(b.l)} / ${f(b.m)} / ${f(b.u)}`:''}`;
-  tip.style.display='block';tip.style.left=Math.min(e.clientX-r.left+12,r.width-230)+'px';tip.style.top='12px';draw();
-});
-cv.addEventListener('mouseleave',()=>{hover=-1;$('#tip').style.display='none';draw()});
-addEventListener('resize',draw);
+/* O gráfico do cockpit (Lightweight Charts) está em cockpit.js; draw() é definido lá. */
 
 /* ---------- relógio de mercados (estado calculado no servidor, com feriados oficiais) ---------- */
 const EXS={NYSE:'NYSE',B3:'B3',XETRA:'Xetra',LSE:'LSE',EURONEXT_AMS:'Euronext',TSE:'Tóquio',HKEX:'HK',ASX:'ASX',TADAWUL:'Tadawul',JSE:'JSE',GLOBAL_24H:'FX',CRYPTO:'Cripto'};
@@ -539,10 +501,10 @@ const IC={home:'M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',mercad
  simulador:'M5 8h14M5 16h14M9 4l-4 4 4 4M15 12l4 4-4 4',mapa:'M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11zM12 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
  composicao:'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5',montecarlo:'M3 17c4-8 6-8 9-4s6 0 9-8',correlacao:'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z',stress:'M13 2L4 14h7l-1 8 9-12h-7z',
  glossario:'M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM5 17a3 3 0 0 1 3-3h11',alertas:'M6 17V11a6 6 0 1 1 12 0v6l2 2H4zM10 21h4',config:'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19 12l2-1-2-4-2 .5-1.5-1L15 4h-4l-.5 2.5-1.5 1-2-.5-2 4 2 1v2l-2 1 2 4 2-.5 1.5 1L11 20h4l.5-2.5 1.5-1 2 .5 2-4-2-1z',
- saude:'M3 12h4l3-8 4 16 3-8h4',privacidade:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4'};
+ saude:'M3 12h4l3-8 4 16 3-8h4',shopping:'M4 7h16l-1.5 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8zM8 7a4 4 0 0 1 8 0',privacidade:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4'};
 const NAV=[['VISÃO GERAL',[['home','Painel inicial'],['mercados','Mercados']]],
  ['ANÁLISE',[['cockpit','Cockpit do ativo'],['radar','Radar de relatórios'],['brasil','Brasil: juros e inflação'],['geo','Geopolítica e teses']]],
- ['PATRIMÔNIO',[['carteira','Minha Carteira'],['perfil','Perfil e carteira modelo'],['simulador','Simulador pré-ordem'],['mapa','Mapa de ativos reais'],['composicao','Composição (Raio-X)']]],
+ ['PATRIMÔNIO',[['carteira','Minha Carteira'],['shopping','Shopping financeiro'],['perfil','Perfil e carteira modelo'],['simulador','Simulador pré-ordem'],['mapa','Mapa de ativos reais'],['composicao','Composição (Raio-X)']]],
  ['RISCO',[['montecarlo','Monte Carlo','item #18'],['correlacao','Correlação e concentração','item #19'],['stress','Stress testing','sob pedido']]],
  ['APRENDER',[['glossario','Glossário']]],
  ['CONTA',[['alertas','Alertas','sob pedido'],['config','Configurações','item #11 e #15'],['saude','Saúde dos dados'],['privacidade','Privacidade e termos']]]];
@@ -563,7 +525,7 @@ function route(){
   document.querySelectorAll('#nav a[data-nav]').forEach(a=>{if(a.dataset.nav===id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
   document.title=(PAGE_TITLE[id]||'Painel')+' · MeridianWealth';
   document.body.classList.remove('navopen');$('#menuBtn').setAttribute('aria-expanded','false');
-  window.scrollTo(0,0);if(id==='cockpit')requestAnimationFrame(draw);
+  window.scrollTo(0,0);if(id==='cockpit')requestAnimationFrame(()=>draw());
 }
 addEventListener('hashchange',route);
 buildNav();route();

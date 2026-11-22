@@ -247,3 +247,24 @@ addEventListener('resize',()=>Object.values(CT.charts).forEach(c=>c.resize()));
 new MutationObserver(()=>{if(CT.sum)renderCarteira()}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 new ResizeObserver(()=>Object.values(CT.charts).forEach(c=>c.resize())).observe(document.body);
 onCarteiraRoute();
+
+/* "Usar minha carteira salva" no simulador e no tradutor (dívida 26): preenche as linhas com as posições reais, valorizadas em reais; posição sem valor em reais fica de fora e a tela diz quantas */
+document.addEventListener('click',async e=>{
+  const b=e.target.closest('button[data-saved]');if(!b)return;
+  const box=document.getElementById(b.dataset.saved),msg=document.querySelector('[data-savedmsg="'+b.dataset.saved+'"]');
+  if(!isLogged()){openLogin();return}
+  msg.textContent='Carregando…';
+  try{
+    const r=await api('/api/me/portfolio');if(!r.ok)throw new Error('portfolio');
+    const s=await r.json(),usable=s.positions.filter(l=>l.currentValueBrl!=null&&Number(l.currentValueBrl)>0);
+    if(!usable.length){msg.textContent='Sua carteira não tem posição com valor em reais.';return}
+    box.innerHTML=usable.map(()=>smRow()).join('');
+    [...box.querySelectorAll('.hold')].forEach((row,i)=>{
+      const p=usable[i].position,sel=row.querySelector('select'),want=p.symbol&&[...sel.options].some(o=>o.value==='S:'+p.symbol)?'S:'+p.symbol:'T:'+p.type;
+      if([...sel.options].some(o=>o.value===want))sel.value=want;
+      row.querySelector('input').value=Number(usable[i].currentValueBrl).toFixed(2);
+    });
+    const skipped=s.positions.length-usable.length;
+    msg.textContent=`${usable.length} posição(ões) da sua carteira, em reais${skipped?`; ${skipped} sem valor em reais ficaram de fora`:''}. Nada é gravado.`;
+  }catch(x){msg.textContent='Não foi possível carregar a carteira agora.'}
+});

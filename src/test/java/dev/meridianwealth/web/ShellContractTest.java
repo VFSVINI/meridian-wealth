@@ -103,6 +103,16 @@ class ShellContractTest {
         assertThat(html).as("nenhum rastreador, anúncio ou análise de uso é prometido sem existir").doesNotContain("google-analytics").doesNotContain("gtag(");
     }
 
+    @Test void theShoppingPageNeverShowsInventedProductRatesAndTheCockpitUsesTheLocalChartLibrary() throws IOException {
+        assertThat(html).contains("A plataforma não tem ofertas de emissores").contains("nenhuma taxa de produto é mostrada porque nenhuma é inventada");
+        String shopping = dev.meridianwealth.testsupport.StaticPage.file("shopping.js");
+        assertThat(shopping).as("o catálogo só cita a referência oficial do indexador").contains("a plataforma não a tem").doesNotContain("% a.a. ao ano").doesNotContainPattern("(?i)cdb\\s+\\d|taxa de \\d");
+        String cockpit = dev.meridianwealth.testsupport.StaticPage.file("cockpit.js");
+        assertThat(cockpit).contains("LightweightCharts").contains("createChart(").contains("takeScreenshot()").contains("subscribeCrosshairMove");
+        assertThat(dev.meridianwealth.testsupport.StaticPage.file("app.js")).as("o gráfico em canvas saiu do app.js").doesNotContain("getContext('2d')").doesNotContain("function draw()");
+        assertThat(html).as("alternativa em tabela e exportação do gráfico").contains("Ver como tabela").contains("Exportar imagem").contains("Simular compra ou venda");
+    }
+
     @Test void prototypeSampleDataWasNotCopiedIntoTheInterface() {
         assertThat(html).doesNotContain("4.382.917").doesNotContain("Vinícius").doesNotContain("Meridian Score").doesNotContain(">exemplo<");
     }
