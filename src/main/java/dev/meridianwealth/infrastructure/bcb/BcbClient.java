@@ -91,6 +91,15 @@ public class BcbClient implements ProviderStatusSource {
         return executor.callPatiently(() -> parsePtax(http.get(url, Map.of())), ResilientExecutor.BACKGROUND_WAIT);
     }
 
+    /**
+     * PTAX do último dia útil até {@code date} (janela de {@code lookbackDays}), para uso interativo: não espera ficha do limitador
+     * (falha rápido, e quem chama trata a falta do dado), diferente das consultas de fundo.
+     */
+    public Ptax ptaxOnOrBefore(LocalDate date, int lookbackDays) {
+        String url = ptaxUrl(date.minusDays(lookbackDays), date);
+        return executor.call(() -> parsePtax(http.get(url, Map.of())));
+    }
+
     static List<Point> parseSeries(String json, LocalDate until) throws IOException {
         JsonNode root = JSON.readTree(json);
         if (root == null || !root.isArray()) throw new IOException("BCB: " + errorText(root));

@@ -16,11 +16,17 @@ import dev.meridianwealth.application.port.BrazilRatesPort;
 import dev.meridianwealth.application.port.CacheStore;
 import dev.meridianwealth.application.port.FundamentalsPort;
 import dev.meridianwealth.application.port.MarketDataPort;
+import dev.meridianwealth.application.port.EventPublisher;
+import dev.meridianwealth.application.port.FxHistoryPort;
+import dev.meridianwealth.application.port.PortfolioLedger;
 import dev.meridianwealth.application.port.PositionStore;
 import dev.meridianwealth.application.port.ProviderStatusSource;
 import dev.meridianwealth.application.portfolio.PortfolioService;
 import dev.meridianwealth.application.port.SignalStore;
 import dev.meridianwealth.application.port.TickSink;
+import dev.meridianwealth.infrastructure.events.InProcessEventBus;
+import dev.meridianwealth.infrastructure.events.PortfolioEventMetrics;
+import io.micrometer.core.instrument.MeterRegistry;
 import java.time.Clock;
 import java.time.ZoneId;
 import java.util.List;
@@ -72,8 +78,16 @@ public class ApplicationConfig {
     ThesisService thesisService(MarketService market) { return new ThesisService(market); }
 
     @Bean
-    PortfolioService portfolioService(PositionStore positions, MarketService market, BrazilRatesService rates, Clock utcClock) {
-        return new PortfolioService(positions, market, rates, utcClock);
+    InProcessEventBus eventBus(MeterRegistry metrics) {
+        InProcessEventBus bus = new InProcessEventBus();
+        bus.subscribe(new PortfolioEventMetrics(metrics));
+        return bus;
+    }
+
+    @Bean
+    PortfolioService portfolioService(PositionStore positions, PortfolioLedger ledger, MarketService market, BrazilRatesService rates, FxHistoryPort fxHistory,
+                                      EventPublisher events, Clock brasiliaClock) {
+        return new PortfolioService(positions, ledger, market, rates, fxHistory, events, brasiliaClock);
     }
 
     @Bean
