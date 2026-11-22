@@ -4,6 +4,8 @@
    Gráfico © TradingView, Inc. (https://www.tradingview.com/), Apache License 2.0. */
 const LW=window.LightweightCharts;
 const CK={chart:null,candle:null,volume:null,bbU:null,bbL:null,bbM:null,sma:null,lines:[],sym:null,key:null,sig:'',range:'6M',show:{bb:true,sma:true,zones:true},byTime:new Map()};
+/* formata um tempo já deslocado (ver ckBars): o valor é a hora local do navegador escrita como se fosse UTC */
+const ckWhen=(t,o)=>new Date(t*1000).toLocaleString('pt-BR',{timeZone:'UTC',...o});
 const CK_DAYS={'1M':31,'3M':92,'6M':183,'1A':366};
 function ckColors(){
   const cs=getComputedStyle(document.documentElement),K=n=>cs.getPropertyValue(n).trim();
@@ -43,7 +45,10 @@ function smaSeries(cs,n=50){
 }
 function ckBars(){
   const out=[];let last=-1;
-  candles.forEach(c=>{const t=Math.floor(c.time/1000);if(t>last){out.push({...c,t});last=t}});
+  // O eixo do Lightweight Charts é em UTC. Para o gráfico, o inspetor e a tabela mostrarem o MESMO dia e a mesma hora (a do fuso do navegador), o tempo
+  // de cada barra é deslocado pelo desvio do fuso e tudo é formatado com timeZone UTC (ckWhen). Sem isso, um candle de Tóquio ou Hong Kong aparecia
+  // em 20/11 no eixo e em 19/11 no inspetor.
+  candles.forEach(c=>{const t=Math.floor(c.time/1000)-new Date(c.time).getTimezoneOffset()*60;if(t>last){out.push({...c,t});last=t}});
   return out;
 }
 function applyTheme(){
@@ -104,9 +109,9 @@ function inspect(time){
   CK.hovering=time!=null;
   const bars=CK.bars||[];if(!bars.length){el.innerHTML='<div class="mute">Sem dado real para este ativo.</div>';return}
   const c=time!=null?bars.find(b=>b.t===time):bars[bars.length-1];if(!c){return}
-  const b=CK.byTime.get(c.t),d=new Date(c.t*1000),p=c.close<10?4:2;
+  const b=CK.byTime.get(c.t),p=c.close<10?4:2;
   const row=(k,v,cls='')=>`<div><span>${k}</span><span class="num ${cls}">${v}</span></div>`;
-  el.innerHTML=`<div class="src">${esc(d.toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}))}${time==null?' (última barra)':''}</div><div class="kv one">
+  el.innerHTML=`<div class="src">${esc(ckWhen(c.t,{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}))}${time==null?' (última barra)':''}</div><div class="kv one">
     ${row('Abertura',f(c.open,p))}${row('Máxima',f(c.high,p))}${row('Mínima',f(c.low,p))}${row('Fechamento',f(c.close,p),c.close>=c.open?'up':'dn')}${row('Volume',c.volume?f(c.volume,0):'<span class="gap">não informado</span>')}
     ${row('Banda superior',b?f(b.u,p):'<span class="gap">n/d</span>')}${row('Banda inferior',b?f(b.l,p):'<span class="gap">n/d</span>')}</div>`;
 }
@@ -115,7 +120,7 @@ function renderTable(){
   const wrap=document.getElementById('ckTable');if(!wrap||wrap.hidden)return;
   const bars=(CK.bars||[]).slice(-30).reverse();
   wrap.innerHTML=bars.length?`<div class="scroll"><table><thead><tr><th>Data</th><th class="n">Abertura</th><th class="n">Máxima</th><th class="n">Mínima</th><th class="n">Fechamento</th><th class="n">Volume</th></tr></thead><tbody>${bars.map(c=>{const p=c.close<10?4:2;
-    return `<tr><td class="num">${esc(new Date(c.t*1000).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'}))}</td><td class="n">${f(c.open,p)}</td><td class="n">${f(c.high,p)}</td><td class="n">${f(c.low,p)}</td><td class="n ${c.close>=c.open?'up':'dn'}">${f(c.close,p)}</td><td class="n">${c.volume?f(c.volume,0):'—'}</td></tr>`}).join('')}</tbody></table></div><div class="src">Últimas 30 barras.</div>`:'<div class="mute">Sem dado real.</div>';
+    return `<tr><td class="num">${esc(ckWhen(c.t,{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'}))}</td><td class="n">${f(c.open,p)}</td><td class="n">${f(c.high,p)}</td><td class="n">${f(c.low,p)}</td><td class="n ${c.close>=c.open?'up':'dn'}">${f(c.close,p)}</td><td class="n">${c.volume?f(c.volume,0):'—'}</td></tr>`}).join('')}</tbody></table></div><div class="src">Últimas 30 barras.</div>`:'<div class="mute">Sem dado real.</div>';
 }
 document.addEventListener('click',e=>{
   const r=e.target.closest('button[data-ckr]');

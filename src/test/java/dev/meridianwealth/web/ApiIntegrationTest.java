@@ -388,6 +388,15 @@ class ApiIntegrationTest {
                 .isSubsetOf("OK", "STALE").doesNotContain("UNAVAILABLE");
     }
 
+    @Test void staticFilesAreAlwaysRevalidatedSoANewDeployNeverLeavesStaleScriptsInTheBrowser() {
+        for (String path : new String[] {"/app.js", "/cockpit.js", "/app.css", "/index.html"}) {
+            var r = rest.getForEntity(path, String.class);
+            assertThat(r.getStatusCode()).as(path).isEqualTo(HttpStatus.OK);
+            assertThat(r.getHeaders().getCacheControl()).as(path).contains("no-cache");
+            assertThat(r.getHeaders().getETag() != null || r.getHeaders().getLastModified() > 0).as(path + " tem validador (Last-Modified ou ETag) para a revalidação").isTrue();
+        }
+    }
+
     @Test void openApiAndHealthAreUp() {
         assertThat(rest.getForEntity("/v3/api-docs", String.class).getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(rest.getForEntity("/actuator/health", String.class).getStatusCode()).isEqualTo(HttpStatus.OK);
