@@ -53,4 +53,25 @@ meridianwealth:
   persistence:
     enabled: ${MW_PERSISTENCE:false}
   rate-limit:
-    api-per-minute: 300
+    api-per-minute: 300        # anônimo, por IP real do cliente
+    user-per-minute: 600       # autenticado, por usuário
+    demo-per-minute: 120       # sessão de demonstração, por sessão
+    auth-per-minute: 20        # rotas /api/auth/*, por IP (segura força bruta)
+  security:
+    jwt-secret: ${MW_JWT_SECRET:}                   # mínimo 32 caracteres; vazio = segredo aleatório a cada partida
+    bcrypt-strength: ${MW_BCRYPT_STRENGTH:12}
+    trusted-proxies: ${MW_TRUSTED_PROXIES:}         # IPs ou CIDR de proxies cujo X-Forwarded-For vale (vazio = ignorar o cabeçalho)
+    cors-allowed-origins: ${MW_CORS_ORIGINS:}       # origens exatas separadas por vírgula (vazio = só a própria origem)
+  auth:
+    access-ttl-minutes: 15
+    refresh-ttl-days: 7
+    demo-ttl-minutes: 60
+    max-users: 10000
+    max-demo-users: 500
+    demo-enabled: ${MW_DEMO_MODE:true}
+    registration-enabled: ${MW_REGISTRATION:true}
+    login-max-failures: 5            # por e-mail
+    login-max-failures-per-ip: 50    # por IP (bem mais folgado: NAT e proxy fazem muita gente dividir um IP)
+    login-window-minutes: 15
+  google:
+    client-id: ${MW_GOOGLE_CLIENT_ID:}              # vazio = Login com Google desligado (a aplicação sobe normalmente)
