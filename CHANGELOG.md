@@ -13,6 +13,7 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 - Testes de propriedade (correlação de uma série com ela mesma é 1 e com a oposta é -1, simétrica e limitada, diversificação nunca negativa, par curto vira "n/d") e cenário de ponta a ponta com candles reais gravados.
 
 ### Corrigido (item #19)
+- A matriz de correlação não mostrava de quantos pregões vinha cada célula, ao contrário do que a documentação afirmava: agora toda célula, com ou sem dado, traz o valor e os pregões usados no `title` e no `aria-label`, uma linha visível explica, e a célula com menos de 120 pregões ganha um traço pontilhado (achado do code review, medido no app real: 0 de 169 células tinham o dado).
 - Motivo mais claro quando um ativo não tem dado real de mercado agora (antes dizia "histórico curto: 0 pregões").
 
 ### Corrigido (item #18)
