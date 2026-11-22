@@ -2,8 +2,12 @@ package dev.meridianwealth.web;
 
 import dev.meridianwealth.application.auth.AuthPrincipal;
 import dev.meridianwealth.application.auth.AuthService;
+import dev.meridianwealth.application.privacy.DataSubjectService;
 import dev.meridianwealth.domain.suitability.InvestorProfile;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,9 +26,27 @@ public class MeController {
 
     public record ProfileView(InvestorProfile profile, boolean needsSuitability) {}
 
-    private final AuthService auth;
+    public record EraseRequest(String confirmEmail) {}
 
-    public MeController(AuthService auth) { this.auth = auth; }
+    private final AuthService auth;
+    private final DataSubjectService dataSubject;
+
+    public MeController(AuthService auth, DataSubjectService dataSubject) {
+        this.auth = auth;
+        this.dataSubject = dataSubject;
+    }
+
+    /** Acesso e portabilidade (LGPD, art. 18): tudo que a plataforma guarda do próprio usuário, como arquivo JSON para baixar. */
+    @GetMapping("/export")
+    public ResponseEntity<DataSubjectService.Export> export(@RequestAttribute(AuthPrincipal.REQUEST_ATTRIBUTE) AuthPrincipal who) {
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"meridianwealth-meus-dados.json\"").body(dataSubject.export(who));
+    }
+
+    /** Eliminação (LGPD, art. 18, VI): apaga a conta e tudo que ela possui; exige o e-mail da conta digitado. Sem volta. */
+    @PostMapping("/erase")
+    public DataSubjectService.Erasure erase(@RequestAttribute(AuthPrincipal.REQUEST_ATTRIBUTE) AuthPrincipal who, @RequestBody EraseRequest r) {
+        return dataSubject.erase(who, r.confirmEmail());
+    }
 
     @GetMapping
     public AuthService.UserView me(@RequestAttribute(AuthPrincipal.REQUEST_ATTRIBUTE) AuthPrincipal who) { return auth.me(who); }

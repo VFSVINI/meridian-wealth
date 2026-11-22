@@ -27,4 +27,7 @@ public interface PositionStore {
 
     /** Remove a posição se a versão ainda for a esperada; falso se mudou ou não existe. */
     boolean delete(UUID id, UUID userId, long expectedVersion);
+
+    /** Remove todas as posições do usuário (eliminação da conta); devolve quantas saíram. */
+    int deleteAllOf(UUID userId);
 }

@@ -51,6 +51,14 @@ public class InMemoryUserStore implements UserStore {
     }
 
     @Override
+    public synchronized void delete(UUID id) {
+        UserAccount u = byId.remove(id);
+        if (u == null) return;
+        byEmail.remove(u.email());
+        if (u.googleSubject() != null) byGoogleSubject.remove(u.googleSubject());
+    }
+
+    @Override
     public synchronized int countPermanent() { return (int) byId.values().stream().filter(u -> u.provider() != AuthProvider.DEMO).count(); }
 
     @Override

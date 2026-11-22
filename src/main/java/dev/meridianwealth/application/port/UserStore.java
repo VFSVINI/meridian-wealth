@@ -26,4 +26,7 @@ public interface UserStore {
     int purgeDemoBefore(Instant cutoff);
 
     int countDemo();
+
+    /** Exclui a conta (direito de eliminação, LGPD art. 18, VI). No banco, as tabelas filhas caem em cascata. */
+    void delete(UUID id);
 }

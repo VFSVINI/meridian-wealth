@@ -70,6 +70,42 @@ abstract class PortfolioApiScenarios {
         return Map.of("type", type, "label", label, "quantity", qty, "averagePrice", price, "tradeDate", date);
     }
 
+    @Test void exportBringsEverythingTheUserHasAndNothingSecretAndEraseWipesItAllOnlyWithTheConfirmedEmail() {
+        String email = "lgpd-" + UUID.randomUUID().toString().substring(0, 8) + "@exemplo.com";
+        Http.Reply reg = http.post("/api/auth/register", Map.of("email", email, "password", PASSWORD, "displayName", "Titular"));
+        String token = (String) reg.get("accessToken");
+        String refresh = (String) reg.get("refreshToken");
+        Http.Reply op = open(token, typed("LCI do titular", "1", "1000"), "k-lgpd");
+        assertThat(op.status()).isEqualTo(201);
+        String other = newUserToken();
+        open(other, typed("LCI de outra pessoa", "1", "5000"));
+
+        assertThat(http.get("/api/me/export").status()).as("sem token").isEqualTo(401);
+        Http.Reply export = http.get("/api/me/export", bearer(token));
+        assertThat(export.status()).isEqualTo(200);
+        assertThat(export.header("Content-Disposition")).contains("attachment").contains(".json");
+        assertThat(export.obj("account").get("email")).isEqualTo(email);
+        assertThat((List<?>) export.json().get("positions")).hasSize(1);
+        assertThat((List<?>) export.json().get("ledger")).hasSize(1);
+        assertThat(export.body()).as("nada de outra pessoa").doesNotContain("de outra pessoa");
+        assertThat(export.body()).as("nem segredo").doesNotContain(PASSWORD).doesNotContain("passwordHash").doesNotContain("$2").doesNotContain(refresh);
+
+        assertThat(http.post("/api/me/erase", bearer(token), Map.of("confirmEmail", "outro@exemplo.com")).status()).as("e-mail errado").isEqualTo(400);
+        assertThat(http.post("/api/me/erase", bearer(token), Map.of()).status()).as("sem confirmação").isEqualTo(400);
+        assertThat(http.get("/api/me", bearer(token)).status()).as("nada foi apagado ainda").isEqualTo(200);
+
+        Http.Reply erase = http.post("/api/me/erase", bearer(token), Map.of("confirmEmail", email.toUpperCase()));
+        assertThat(erase.status()).isEqualTo(200);
+        assertThat(erase.get("positions")).isEqualTo(1);
+        assertThat(erase.get("ledgerEntries")).isEqualTo(1);
+        assertThat(http.get("/api/me", bearer(token)).status()).as("a conta não existe mais").isEqualTo(401);
+        assertThat(http.post("/api/auth/refresh", Map.of("refreshToken", refresh)).status()).as("as sessões caíram").isEqualTo(401);
+        assertThat(http.post("/api/auth/login", Map.of("email", email, "password", PASSWORD)).status()).isEqualTo(401);
+        assertThat(http.get("/api/me/portfolio", bearer(other)).status()).isEqualTo(200);
+        assertThat(http.get("/api/me/portfolio", bearer(other)).json().get("positions").toString()).as("o outro titular segue intacto").contains("de outra pessoa");
+        assertThat(http.post("/api/auth/register", Map.of("email", email, "password", PASSWORD, "displayName", "De novo")).status()).as("o e-mail volta a ficar livre").isEqualTo(201);
+    }
+
     String idOf(Http.Reply operation) { return (String) operation.obj("position").get("id"); }
 
     String path(String id, String op) { return "/api/me/portfolio/positions/" + id + "/" + op; }
