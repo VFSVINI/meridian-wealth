@@ -6,6 +6,7 @@
 <title>MeridianWealth · inteligência patrimonial</title>
 <meta name="color-scheme" content="dark light">
 <script src="/theme.js"></script>
+<link rel="stylesheet" href="/vendor/leaflet.css">
 <link rel="stylesheet" href="/app.css">
 </head>
 <body>
@@ -124,6 +125,25 @@
       </div>
     </section>
 
+    <section class="page" data-page="mapa" hidden>
+      <div class="ph"><p class="eyebrow">Patrimônio</p><h1>Mapa de ativos reais</h1><p class="lede">Os imóveis dos fundos imobiliários com dado curado, com a precisão de cada coordenada à vista. Imóveis sem coordenada ficam na lista e explicam o motivo: nenhuma posição é inventada.</p></div>
+      <p id="mpMsg" class="dn" role="status"></p>
+      <div class="mp-grid">
+        <div>
+          <div class="card" id="mpFilters"><h2>Filtros</h2><span class="skel"></span></div>
+          <div class="card" id="mpLegend"></div>
+        </div>
+        <div>
+          <div class="mapwrap"><div id="mpMap" role="region" aria-label="Mapa dos imóveis dos fundos sobre o contorno dos estados do Brasil"></div></div>
+          <p class="src" id="mpCount" aria-live="polite"></p>
+          <div class="src" id="mpSrc"></div>
+        </div>
+        <div class="card" id="mpList"><h2>Imóveis</h2><span class="skel"></span></div>
+      </div>
+      <div class="card" id="mpCompare"></div>
+      <p class="src">Contorno dos estados: Malha Municipal do IBGE (qualidade mínima, dado público). Coordenadas dos imóveis obtidas pela geocodificação do OpenStreetMap Nominatim, © colaboradores do OpenStreetMap (ODbL); o mapa não carrega mapa-base nem recursos de terceiros. Ferramenta analítica e educacional.</p>
+    </section>
+
     <section class="page" data-page="perfil" hidden>
       <div class="ph"><p class="eyebrow">Patrimônio</p><h1>Perfil e carteira modelo</h1><p class="lede">Questionário de suitability e a carteira modelo do seu perfil. Nada é gravado: o resultado some ao recarregar.</p></div>
       <div class="card rx" style="max-width:860px"><h2>Perfil de investidor <span class="tag info">educacional</span></h2><div id="sp" class="mute" style="font-size:12.5px">carregando…</div></div>
@@ -192,8 +212,10 @@
 <dialog id="op" aria-labelledby="opTitle"><form id="opForm" novalidate><div class="dh"><h2 id="opTitle">Operação</h2><button type="button" class="ghost" id="opX" aria-label="Fechar">Fechar</button></div><div class="db" id="opBody"></div><div class="db"><p class="dn" id="opErr" role="alert"></p><button type="submit" class="primary" id="opGo">Salvar</button></div></form></dialog>
 <dialog id="pal" aria-label="Busca rápida"><input id="palQ" type="search" placeholder="Buscar ativo, página ou ação" aria-label="Buscar ativo, página ou ação" autocomplete="off"><ul id="palList"></ul></dialog>
 <script src="/vendor/echarts.min.js"></script>
+<script src="/vendor/leaflet.js"></script>
 <script src="/app.js"></script>
 <script src="/auth.js"></script>
 <script src="/carteira.js"></script>
+<script src="/mapa.js"></script>
 </body>
 </html>
