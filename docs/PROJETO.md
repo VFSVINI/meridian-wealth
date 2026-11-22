@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR da camada de segurança (Issue #43), 2026-11-22.
+> Atualizado em todo PR. Última atualização: PR do item #16 (Issue #45), 2026-11-22.
 > Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
@@ -83,7 +83,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 - [x] **#15** Protótipo visual + painel "Minha Carteira" (ECharts, montador de perfil) e botão **"Continuar com Google"** na tela de login e cadastro (seção 2.4).
   - [x] Etapa 1 (Issue #31, feita antes do #11): sistema de design, shell (navbar, sidebar, busca Ctrl+K, tema escuro e Ivory) e as páginas que já têm backend. Ver [design-prototipo.md](design-prototipo.md).
   - [x] Etapa 2 (Issue #26): entrada (senha, Google e demonstração), menu da conta, Minha Carteira (patrimônio, alocação em treemap, aderência com radar, posições, operações, livro, ganho ou perda por posição) com ECharts servido localmente, e "salvar como meu perfil" (montador de perfil). Ver [carteira.md](carteira.md) e o ADR 017.
-- [ ] **#16** Mapa interativo de ativos reais (Leaflet, dark tiles, satélite/Street View).
+- [x] **#16** Mapa de ativos reais (`#/mapa`): Leaflet servido pelo projeto, **sem mapa-base de terceiros** (contorno dos estados do IBGE), marcadores com a precisão à vista, filtros, lista com os imóveis sem coordenada e o motivo, comparação de fundos. Ver [composicao.md](composicao.md) e o ADR 018.
 - [ ] **#17** Shopping financeiro multi-classe e cockpit home broker (Lightweight Charts, paleta de comandos).
 
 ### Milestone 5 — Risco Quantitativo, Testes de Concorrência & Cloud
@@ -116,8 +116,10 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [015](adr/015-livro-de-movimentacoes-idempotencia-e-apoio-ao-ir.md) | Livro de movimentações, idempotência e apoio ao imposto de renda | Aceito |
 | [016](adr/016-monolito-modular-e-observabilidade.md) | Monólito modular com fronteiras verificadas e observabilidade por provedor | Aceito |
 | [017](adr/017-interface-da-carteira-sessao-no-cliente-e-echarts-local.md) | Interface da carteira: sessão no cliente, ECharts local e Google na CSP | Aceito |
+| [018](adr/018-mapa-sem-mapa-base-de-terceiros.md) | Mapa de ativos reais com Leaflet e sem mapa-base de terceiros | Aceito |
 
 Decisões menores (no corpo dos PRs):
+- Item #16: o mapa não tem tiles (privacidade e CSP fechada), o estado é pintado pela contagem de imóveis do dado curado, painéis de exemplo do protótipo sem fonte ficaram de fora e a vacância do fundo inteiro só aparece quando a fonte a publica ("do fundo"); o `L` global do `app.js` obrigou a ler o Leaflet de `window.L`.
 - Camada de segurança: o refresh em cookie só vale com o cabeçalho `X-Session-Mode: cookie` (clientes de API seguem recebendo no corpo); renovação entre abas por Web Lock; o aceite dos termos é exigido na tela, não na API; o texto de privacidade e termos é informativo e pede revisão jurídica; a documentação da API sai do ar por padrão (`MW_API_DOCS=true` liga).
 - Item #15 (etapa 2): decimais saem do formulário como texto exato (nunca por `double`); a mesma `Idempotency-Key` vale até a operação dar certo; "por corretora" e "do aporte ao saldo" do protótipo não existem (o modelo não guarda corretora nem aportes: sem dado, sem gráfico); sem "Importar extrato" (Milestone 6) e sem alternância BRL/USD; o avatar do Google não é carregado (inicial do nome), então a CSP não libera imagens externas.
 - Item #14: microsserviços só por gatilho medido (carga, cadência, isolamento, infraestrutura), com a ingestão de mercado como candidata e carteira + livro sempre juntos; `liveness` e `readiness` sem provedor externo e `DEGRADED` em grupo à parte; `X-Correlation-Id` só no formato `[A-Za-z0-9._-]{8,64}`; métricas por provedor lidas do `ProviderStatus` existente; `/actuator/metrics` e `/actuator/prometheus` somem (404) sem `MW_METRICS_TOKEN`.
@@ -145,7 +147,7 @@ Decisões menores (no corpo dos PRs):
 | 19 | Dado de composição é um retrato (2026-11-21): envelhece e a atualização é manual (rodar o script e revisar o diff) | `scripts/curadoria`, `data/composicao` | deploy do item #21 ou job agendado |
 | 20 | Cobertura de coordenadas: 32 de 72 imóveis listados (24 aproximados por via); HGLG11 6 de 36, pois o informe quase nunca traz cidade ou CEP | `data/composicao` | quando houver fonte pública melhor |
 | 21 | HGLG11: percentuais de receita por imóvel somam 70,85% e o informe não explica o resto; KNRI11 lista 17 de 20 imóveis; XPML11 sem fonte oficial (403) e sem data de referência | `data/composicao` | quando as fontes oficiais forem acessíveis |
-| 22 | Links de Street View dependem de haver imagem no ponto (o Google decide ao abrir); a existência da imagem não foi verificada | `domain/composition/MapLinks` | item #16 (mapa) |
+| 22 | Links de Street View dependem de haver imagem no ponto (o Google decide ao abrir); a existência da imagem não foi verificada | `domain/composition/MapLinks` | sem prazo (o Google decide ao abrir) |
 | 23 | Radar sem fonte para ações dos EUA e outros mercados (SEC/EDGAR não integrado); só 3 companhias e 4 FIIs; o informe trimestral e anual de FII não é acompanhado (só o prazo) | `data/relatorios` | itens #20 e #21 ou PR futuro |
 | 24 | Dividend yield do Informe Mensal sem unidade documentada pela CVM (o veredito compara com o próprio histórico; a tela mostra o valor sem converter) | `domain/reports` | quando a CVM documentar |
 
@@ -154,9 +156,9 @@ Decisões menores (no corpo dos PRs):
 
 | 27 | O risco do simulador ignora a correlação entre posições (média ponderada das volatilidades, limite superior); uma matriz de covariância com históricos alinhados daria o risco real | `domain/impact` | PR futuro (item #20 ou antes) |
 | 28 | O conteúdo do glossário não foi revisado por profissional habilitado, e a lista de rótulos do teste de cobertura é espelhada à mão | `domain/glossary`, `GlossaryTest` | revisão antes de uso além do educacional |
-| 29 | A pressão geopolítica é contagem de palavras-chave em manchetes de terceiros e só mede cinco setores; o setor da posição vem do universo do painel | `GeoRiskScorer`, `GeoTranslator` | fonte de eventos estruturada e mapa de exposição por país (item #16) |
+| 29 | A pressão geopolítica é contagem de palavras-chave em manchetes de terceiros e só mede cinco setores; o setor da posição vem do universo do painel | `GeoRiskScorer`, `GeoTranslator` | fonte de eventos estruturada e mapa de exposição por país (PR futuro; o mapa do item #16 só cobre imóveis) |
 | 30 | As caracterizações das gestoras e os textos das teses são resumos simplificados, sem revisão pelas instituições nem por profissional habilitado | `ThesisCatalog` | revisão antes de uso além do educacional |
-| 32 | Controles do protótipo sem backend ficam de fora: alternância BRL/USD, modo privacidade e central de alertas (o menu do usuário passou a existir no item #15); páginas sem dado real ficam desabilitadas na sidebar | `index.html` (NAV) | itens #11, #12, #15, #16, #18, #19 e Milestone 6 |
+| 32 | Controles do protótipo sem backend ficam de fora: alternância BRL/USD, modo privacidade e central de alertas (o menu do usuário passou a existir no item #15); páginas sem dado real ficam desabilitadas na sidebar | `index.html` (NAV) | itens #18, #19 e Milestone 6 |
 | 36 | Os testes de persistência usam um PostgreSQL embutido (`zonky`), que baixa um binário e exige `commons-lang3` mais novo que o do Spring Boot 3.3; a suíte de contratos não depende dele | `pom.xml`, `testsupport/PostgresDb` | item #20 (Testcontainers) |
 | 37 | O apoio ao IR não calcula imposto devido, DARF nem compensação de prejuízos: a base legal da compensação e do ganho de capital em FII, ETF, cripto e ativos no exterior não foi confirmada em fonte oficial (só os arts. 2º e 3º da Lei 11.033/2004 foram lidos, e o Planalto ainda anota a MP 1.303/2025 com vigência encerrada) | `domain/portfolio/TaxReport` | item #25 (sob pedido), com a base legal confirmada |
 | 38 | O livro é cronológico por ativo (operação anterior à última do ativo é recusada) e não há importação em lote; os eventos de domínio são em processo e voláteis (sem outbox) | `PortfolioService`, `InProcessEventBus` | item #14 (observabilidade) e importação no Milestone 6 |
@@ -206,7 +208,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 582 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 584 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |

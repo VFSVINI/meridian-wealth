@@ -6,6 +6,10 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #16 do roadmap)
+- **Mapa de ativos reais** (`#/mapa`) com **Leaflet 1.9.4** servido pelo projeto e **sem mapa-base de terceiros**: contorno dos 27 estados do IBGE (dado público, local), marcadores só para imóveis com coordenada e a precisão à vista (localizado × aproximado por via), filtros por fundo, UF e tipo, lista com os imóveis sem coordenada e o motivo, estados pintados pela quantidade de imóveis e comparação de fundos. Nenhuma requisição a domínio de terceiros (verificado na rede), CSP inalterada, atribuição ao OpenStreetMap pelas coordenadas.
+- Testes de contrato do Leaflet, da licença e do contorno (27 estados, SHA-256) e de que toda coordenada publicada cai dentro do Brasil. ADR 018.
+
 ### Segurança (Issue #43)
 - **Auditoria pelas listas de requisitos** (40 requisitos, 20 medidas e os erros comuns), com sonda no app real, em [docs/seguranca-checklist.md](docs/seguranca-checklist.md); roteiro de incidentes em [docs/resposta-a-incidentes.md](docs/resposta-a-incidentes.md).
 - **Refresh token em cookie `HttpOnly`**, `SameSite=Strict`, restrito a `/api/auth` e `Secure` sob HTTPS; nenhum token no armazenamento do navegador (o access token fica só na memória da aba); renovação entre abas por Web Lock e login e logout propagados por BroadcastChannel. Clientes de API seguem recebendo o refresh no corpo. Fecha as dívidas 34 e 42 (parte).
