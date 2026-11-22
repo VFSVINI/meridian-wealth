@@ -20,6 +20,8 @@ public final class MonteCarlo {
     public static final int PATHS = 5000;
     public static final int MAX_MONTHS = 40 * 12;
     public static final int BINS = 30;
+    /** Teto do que o cálculo representa (R$ 100 quintilhões): premissas que o ultrapassam são recusadas em vez de virarem infinito ou NaN. */
+    public static final double MAX_VALUE = 1e20;
     public static final double[] LEVELS = {0.05, 0.25, 0.50, 0.75, 0.95};
 
     /** Retorno de um mês (por exemplo 0,012 = +1,2%), sorteado com o gerador recebido. */
@@ -70,6 +72,7 @@ public final class MonteCarlo {
                 double r = model.nextMonthlyReturn(random);
                 if (r < -1) r = -1; // um mês não perde mais que tudo
                 value[i] = Math.max(0, value[i] * (1 + r)) + p.monthlyContribution();
+                if (!(value[i] <= MAX_VALUE)) throw new IllegalArgumentException("As premissas levam o patrimônio além do que o cálculo representa: reduza o retorno, a volatilidade ou o horizonte");
             }
             record0(value, pct, m, p.goal(), goalByYear, m % 12 == 0 ? m / 12 : -1);
         }
@@ -86,6 +89,7 @@ public final class MonteCarlo {
     private static Result summarize(Params p, double[] value, double[][] pct, double[] goalByYear) {
         double[] s = value.clone();
         Arrays.sort(s);
+        if (!(s[0] >= 0 && s[s.length - 1] <= MAX_VALUE)) throw new IllegalArgumentException("Resultado fora do intervalo que o cálculo representa");
         double invested = p.initial() + p.monthlyContribution() * p.months();
         double lo = s[0], hi = quantile(s, 0.99);
         if (hi <= lo) hi = lo + 1;

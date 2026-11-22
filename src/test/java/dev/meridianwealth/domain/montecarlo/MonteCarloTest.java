@@ -112,6 +112,12 @@ class MonteCarloTest {
         assertThat(spread).isLessThan(spreadAlone * 0.2 + 1e-9);
     }
 
+    @Test void premisesThatBlowTheValueBeyondWhatIsRepresentableAreRefusedNotTurnedIntoInfinity() {
+        assertThatThrownBy(() -> MonteCarlo.run(new Params(9e14, 1e9, 480, null, 1), new ParametricModel(0.99, 1.99))).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("além do que o cálculo representa");
+        Result ok = MonteCarlo.run(new Params(9e14, 1e9, 480, null, 1), new ParametricModel(0.05, 0.1));
+        assertThat(ok.percentiles()[4][480]).isFinite().isLessThan(MonteCarlo.MAX_VALUE);
+    }
+
     @Test void invalidInputsAreRefused() {
         assertThatThrownBy(() -> new Params(-1, 0, 12, null, 1)).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new Params(0, 0, 12, null, 1)).hasMessageContaining("patrimônio inicial ou um aporte");
