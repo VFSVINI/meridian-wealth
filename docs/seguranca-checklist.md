@@ -19,7 +19,7 @@ Legenda: ✅ feito e testado · ⚠️ parcial ou dívida declarada · ➖ não 
 | 7 | XSS / CSRF | ✅ | CSP sem script e estilo embutidos, `esc()` em toda marcação dinâmica, `nosniff`; cookie `SameSite=Strict` mais cabeçalho `X-Session-Mode`; o access token vai em `Authorization`, nunca em cookie |
 | 8 | Rate limiting | ✅ | Por IP real e por usuário, mais apertado nas rotas de autenticação, mais trava de tentativas por e-mail e IP (`RateLimitIntegrationTest`) |
 | 9 | Proteção de APIs | ✅ | Autenticação, limites, corpo máximo de 64 KB, CORS por origem exata, cabeçalhos; todo filtro decide pelo caminho despachado (`RequestPaths`) |
-| 10 | Auditoria de dependências | ✅ | Dependabot semanal, CodeQL `security-extended`, revisão de dependências em todo PR (`dependency-review.yml`) |
+| 10 | Auditoria de dependências | ✅ | Dependabot semanal, CodeQL `security-extended`, revisão de dependências em todo PR (`dependency-review.yml`; **só passa a bloquear depois que o "Dependency graph" for ligado nas configurações do repositório**, hoje reporta sem bloquear) |
 | 11 | Política de privacidade | ✅ | Página `#/privacidade` |
 | 12 | Bases legais | ✅ | Declaradas na política (LGPD, art. 7º, V) |
 | 13 | Minimização de dados | ✅ | Só e-mail, nome, perfil, posições e livro; sem foto do Google, sem rastreadores |
