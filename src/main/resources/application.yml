@@ -19,13 +19,37 @@ spring:
     redis:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
+logging:
+  pattern:
+    # o identificador de correlação de cada requisição aparece em todo log dela (ver CorrelationIdFilter)
+    level: "%5p [%X{correlationId:-}]"
 server:
   port: 8080
 management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics
+        # metrics e prometheus ficam atrás de MW_METRICS_TOKEN (ActuatorAccessFilter); sem o token respondem 404
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: never
+      probes:
+        enabled: true
+      status:
+        order: DOWN,OUT_OF_SERVICE,DEGRADED,UP,UNKNOWN
+        http-mapping:
+          DEGRADED: 200
+      group:
+        # liveness e readiness NÃO dependem de provedor externo: a queda de um provedor não pode reiniciar o contêiner
+        liveness:
+          include: livenessState
+        readiness:
+          include: readinessState
+        # a situação dos dados e dos provedores fica num grupo à parte, que nunca derruba o readiness
+        dependencies:
+          include: marketData,officialRates,providers
+          show-details: always
 meridianwealth:
   data:
     history-bars: 500
@@ -52,8 +76,11 @@ meridianwealth:
     quote-ttl-seconds: 25
   persistence:
     enabled: ${MW_PERSISTENCE:false}
+  observability:
+    access-log: true                          # uma linha por requisição de /api (método, caminho, status e duração)
+    metrics-token: ${MW_METRICS_TOKEN:}       # mínimo 24 caracteres; vazio = /actuator/metrics e /actuator/prometheus não existem (404)
   rate-limit:
-    api-per-minute: 300        # anônimo, por IP real do cliente
+    api-per-minute: 300       # anônimo, por IP real do cliente
     user-per-minute: 600       # autenticado, por usuário
     demo-per-minute: 120       # sessão de demonstração, por sessão
     auth-per-minute: 20        # rotas /api/auth/*, por IP (segura força bruta)
