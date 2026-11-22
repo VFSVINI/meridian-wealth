@@ -39,6 +39,11 @@ services:
       REDIS_HOST: redis
       FINNHUB_API_KEY: ${FINNHUB_API_KEY:-}
       FRED_API_KEY: ${FRED_API_KEY:-}
+      MW_JWT_SECRET: ${MW_JWT_SECRET:-}
+      MW_GOOGLE_CLIENT_ID: ${MW_GOOGLE_CLIENT_ID:-}
+      MW_TRUSTED_PROXIES: ${MW_TRUSTED_PROXIES:-}
+      MW_CORS_ORIGINS: ${MW_CORS_ORIGINS:-}
+      MW_DEMO_MODE: ${MW_DEMO_MODE:-true}
     restart: unless-stopped
 volumes:
   pgdata:
