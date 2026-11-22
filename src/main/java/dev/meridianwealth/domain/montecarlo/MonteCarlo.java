@@ -92,6 +92,7 @@ public final class MonteCarlo {
         if (!(s[0] >= 0 && s[s.length - 1] <= MAX_VALUE)) throw new IllegalArgumentException("Resultado fora do intervalo que o cálculo representa");
         double invested = p.initial() + p.monthlyContribution() * p.months();
         double lo = s[0], hi = quantile(s, 0.99);
+        if (!(lo >= 0 && lo <= MAX_VALUE && hi >= 0 && hi <= MAX_VALUE)) throw new IllegalArgumentException("Resultado fora do intervalo que o cálculo representa");
         if (hi <= lo) hi = lo + 1;
         double[] edges = new double[BINS + 1];
         for (int b = 0; b <= BINS; b++) edges[b] = lo + (hi - lo) * b / BINS;
