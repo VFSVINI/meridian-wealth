@@ -33,11 +33,14 @@ class CspReadinessTest {
         assertThat(js).as("marcação gerada com manipulador de evento seria bloqueada pela CSP").doesNotContainPattern("(?i)\\son(click|change|input|submit|load|error|focus|blur|keydown)=[\"']");
     }
 
-    @Test void theSessionIsSharedAcrossTabsSoARotatedRefreshTokenIsNeverReused() throws IOException {
-        // o refresh gira a cada uso e o servidor derruba a família inteira ao ver um antigo: duas abas com cópias diferentes se deslogavam
+    @Test void noTokenIsEverPlacedInBrowserStorageAndTabsRenewOneAtATime() throws IOException {
+        // o refresh token vive só num cookie HttpOnly; o access token, só na memória da aba (a demonstração, só em sessionStorage)
         String auth = StaticPage.file("auth.js");
-        assertThat(auth).contains("addEventListener('storage'").contains("function adoptStored()");
-        assertThat(auth.indexOf("adoptStored();\n  if(!SESS||!SESS.refreshToken)return false;")).as("renovar começa pela sessão mais nova do armazenamento").isPositive();
+        assertThat(auth).contains("'X-Session-Mode':'cookie'").contains("navigator.locks.request('mw-refresh'").contains("new BroadcastChannel('mw-auth')");
+        assertThat(auth).as("nenhum token no localStorage").doesNotContain("localStorage.setItem(SESSION_KEY").doesNotContain("accessToken:d.accessToken,accessExpiresAt:d.accessExpiresAt,refreshToken");
+        assertThat(auth).doesNotContainPattern("localStorage\\.setItem\\([^)]*(accessToken|refreshToken)");
+        String all = StaticPage.whole();
+        assertThat(all).as("o código do navegador nunca lê nem guarda refreshToken").doesNotContain("d.refreshToken").doesNotContain("SESS.refreshToken");
     }
 
     @Test void externalLinksOpenedInANewTabNeverGiveTheOpenerBack() throws IOException {

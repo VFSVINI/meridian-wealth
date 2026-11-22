@@ -1,31 +1,34 @@
 /* Sessão e login (item #15). Fala com /api/auth: senha, Google (ID token do Google Identity Services, validado no servidor) e demonstração.
-   Depende de app.js (helpers $, esc, go). O refresh token fica no armazenamento local (dívida 34 do PROJETO.md); a CSP estrita é a defesa contra XSS. */
-const SESSION_KEY='mw-session';
+   Depende de app.js (helpers $, esc, go).
+   Nenhum token fica no armazenamento do navegador: o access token vive só na memória da aba e o refresh token está num cookie HttpOnly
+   (SameSite=Strict, restrito a /api/auth) que JavaScript nenhum consegue ler, nem um injetado por XSS. O cabeçalho X-Session-Mode liga o modo
+   cookie no servidor. Abas diferentes dividem o cookie: o refresh gira a cada uso e um refresh antigo derruba a família inteira, então as
+   renovações passam por um Web Lock (uma aba por vez) e login e logout são avisados às outras abas por BroadcastChannel. */
+const DEMO_KEY='mw-demo',HAS_KEY='mw-has-session';
+const JSON_H={'Content-Type':'application/json','X-Session-Mode':'cookie'};
 let SESS=null,AUTHCFG=null,GSTATE='loading',GERR='',refreshing=null,lastFocus=null;
-try{SESS=JSON.parse(localStorage.getItem(SESSION_KEY)||'null')}catch(e){SESS=null}
+const chan=typeof BroadcastChannel==='function'?new BroadcastChannel('mw-auth'):null;
+const withLock=fn=>navigator.locks&&navigator.locks.request?navigator.locks.request('mw-refresh',fn):fn();
+function mark(on){try{if(on)localStorage.setItem(HAS_KEY,'1');else localStorage.removeItem(HAS_KEY)}catch(e){}}
+function hasMark(){try{return localStorage.getItem(HAS_KEY)==='1'}catch(e){return false}}
 function saveSess(s){
   SESS=s;
-  try{if(s)localStorage.setItem(SESSION_KEY,JSON.stringify(s));else localStorage.removeItem(SESSION_KEY)}catch(e){}
+  try{if(s&&s.demo)sessionStorage.setItem(DEMO_KEY,JSON.stringify(s));else sessionStorage.removeItem(DEMO_KEY)}catch(e){}
+  if(!s||s.demo)mark(false);else mark(true);
   renderUser();document.dispatchEvent(new CustomEvent('mw-auth'));
 }
-function applySession(d){saveSess({accessToken:d.accessToken,accessExpiresAt:d.accessExpiresAt,refreshToken:d.refreshToken||null,user:d.user,demo:!!d.demo})}
-/* Outra aba pode ter renovado: o refresh gira a cada uso e usar um antigo derruba a família inteira (detecção de reuso). Antes de renovar,
-   e ao receber um 401, adota-se a sessão mais nova do armazenamento; o evento "storage" mantém as abas em sincronia, inclusive no logout. */
-function adoptStored(){
-  let s=null;
-  try{s=JSON.parse(localStorage.getItem(SESSION_KEY)||'null')}catch(e){return false}
-  const same=(!s&&!SESS)||(s&&SESS&&s.accessToken===SESS.accessToken&&s.refreshToken===SESS.refreshToken);
-  if(same)return false;
-  SESS=s;renderUser();document.dispatchEvent(new CustomEvent('mw-auth'));return true;
+function applySession(d,announce=true){
+  saveSess({accessToken:d.accessToken,accessExpiresAt:d.accessExpiresAt,user:d.user,demo:!!d.demo});
+  if(announce&&chan)chan.postMessage('login');
 }
-addEventListener('storage',e=>{if(e.key===SESSION_KEY||e.key===null)adoptStored()});
-async function refreshSession(){
-  adoptStored();
-  if(!SESS||!SESS.refreshToken)return false;
+function refreshSession(){
+  if(SESS&&SESS.demo)return Promise.resolve(false); // a demonstração não renova
   if(!refreshing){
-    refreshing=fetch('/api/auth/refresh',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({refreshToken:SESS.refreshToken})})
-      .then(async r=>{if(!r.ok)throw new Error('refresh');applySession(await r.json());return true})
-      .catch(()=>{saveSess(null);return false}).finally(()=>{refreshing=null});
+    refreshing=withLock(async()=>{
+      const r=await fetch('/api/auth/refresh',{method:'POST',headers:JSON_H});
+      if(!r.ok)throw new Error('refresh');
+      applySession(await r.json(),false);return true;
+    }).catch(()=>{if(SESS)saveSess(null);else mark(false);return false}).finally(()=>{refreshing=null});
   }
   return refreshing;
 }
@@ -33,15 +36,22 @@ async function refreshSession(){
 async function api(url,opts={}){
   const call=()=>fetch(url,{...opts,headers:{...(opts.headers||{}),...(SESS?{Authorization:'Bearer '+SESS.accessToken}:{})}});
   let r=await call();
-  if(r.status===401&&SESS){
-    const before=SESS&&SESS.accessToken;
-    if(adoptStored()&&SESS&&SESS.accessToken!==before)r=await call(); // outra aba já renovou: usa o token novo, sem gastar o refresh
-    if(r.status===401&&SESS&&await refreshSession())r=await call();
-  }
+  if(r.status===401&&SESS&&await refreshSession())r=await call();
   if(r.status===401&&SESS)saveSess(null);
   return r;
 }
 const isLogged=()=>!!SESS;
+/* ao abrir a página: sessão de demonstração da própria aba, ou, se já houve login neste navegador, uma renovação pelo cookie */
+async function bootSession(){
+  let demo=null;
+  try{demo=JSON.parse(sessionStorage.getItem(DEMO_KEY)||'null')}catch(e){}
+  if(demo&&Date.parse(demo.accessExpiresAt)>Date.now()){SESS=demo;renderUser();document.dispatchEvent(new CustomEvent('mw-auth'));return}
+  if(hasMark())await refreshSession();
+}
+if(chan)chan.onmessage=e=>{
+  if(e.data==='logout'&&SESS){SESS=null;try{sessionStorage.removeItem(DEMO_KEY)}catch(x){}renderUser();document.dispatchEvent(new CustomEvent('mw-auth'))}
+  else if(e.data==='login'&&!SESS)refreshSession();
+};
 async function errText(r,fallback){try{const d=await r.json();return d.error||fallback}catch(e){return fallback}}
 
 /* ---------- botão da barra e menu do usuário ---------- */
@@ -68,10 +78,10 @@ function toggleUserMenu(){
   }else{m.hidden=true;b.setAttribute('aria-expanded','false')}
 }
 async function logout(){
-  const rt=SESS&&SESS.refreshToken;
+  const cookieSession=SESS&&!SESS.demo;
   saveSess(null);$('#userMenu').hidden=true;
-  if(rt)fetch('/api/auth/logout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({refreshToken:rt})}).catch(()=>{});
-  if(location.hash.startsWith('#/carteira'))renderUser();
+  if(chan)chan.postMessage('logout');
+  if(cookieSession)fetch('/api/auth/logout',{method:'POST',headers:JSON_H}).catch(()=>{});
 }
 document.addEventListener('click',e=>{const m=$('#userMenu');if(m&&!m.hidden&&!e.target.closest('#userMenu')&&!e.target.closest('#userBtn')){m.hidden=true;$('#userBtn').setAttribute('aria-expanded','false')}});
 addEventListener('keydown',e=>{const m=$('#userMenu');if(e.key==='Escape'&&m&&!m.hidden){m.hidden=true;$('#userBtn').setAttribute('aria-expanded','false');$('#userBtn').focus()}});
@@ -136,7 +146,7 @@ async function afterLogin(d){
   if(!location.hash||location.hash==='#/home'||location.hash==='#/')go('carteira');
 }
 async function postAuth(path,body){
-  const r=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});
+  const r=await fetch(path,{method:'POST',headers:JSON_H,body:body?JSON.stringify(body):undefined});
   if(!r.ok)throw new Error(r.status===429?'Muitas tentativas. Aguarde alguns minutos e tente de novo.':await errText(r,'Não foi possível concluir. Tente de novo.'));
   return r.json();
 }
@@ -199,4 +209,4 @@ $('#login').addEventListener('click',e=>{if(e.target===$('#login'))closeLogin()}
 $('#login').addEventListener('close',()=>{if(lastFocus&&lastFocus.focus)try{lastFocus.focus()}catch(e){}});
 renderUser();profileBanner();
 /* sessão guardada: confirma no servidor (e renova se preciso) para não mostrar uma conta que já expirou */
-if(SESS){api('/api/me').then(async r=>{if(r.ok){const u=await r.json();SESS={...SESS,user:u};saveSess(SESS)}}).catch(()=>{})}
+bootSession();
