@@ -205,5 +205,11 @@ button.danger{border-color:var(--down);color:var(--down)}button.danger:hover{bac
 button.mpitem:hover{border-color:var(--gold)}.mpitem .mphead{display:flex;justify-content:space-between;gap:8px}
 #mpFilters .chips{margin-left:0;margin-bottom:var(--s1)}
 @media(max-width:1180px){.mp-grid{grid-template-columns:1fr}#mpMap{height:420px}.mplist{max-height:none}}
+/* item #17: cockpit (Lightweight Charts) e shopping financeiro */
+.lwc{height:440px;width:100%}.ck-bar{display:flex;justify-content:space-between;gap:var(--s3);flex-wrap:wrap;margin-bottom:var(--s2)}.ck-bar .chips{margin-left:0}
+.ck-tools{display:flex;gap:var(--s2);flex-wrap:wrap;margin:var(--s3) 0}#ckTable{margin:var(--s2) 0}
+#insp .kv.one{margin-top:var(--s2)}
+.shtbl td,.shtbl th{vertical-align:top}.shtbl .acts button{margin-left:0;margin-right:4px}
+@media(max-width:900px){.lwc{height:320px}}
 @media(max-width:1180px){.ct-top{grid-template-columns:1fr}.un{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}

@@ -66,9 +66,14 @@
         <div>
           <div class="head"><span class="sym" id="hSym">—</span><span class="mute" id="hName"></span><span class="px" id="hPx"></span><span class="num" id="hChg"></span></div>
           <div class="prov" id="hProv" aria-live="polite"></div>
-          <div class="chartwrap"><canvas id="chart" role="img" aria-label="Gráfico de preço com Bollinger, zonas de entrada e realização"></canvas><div id="tip"></div>
+          <div class="ck-bar"><div class="chips" role="group" aria-label="Período do gráfico"><button type="button" class="fchip" data-ckr="1M" aria-pressed="false">1M</button><button type="button" class="fchip" data-ckr="3M" aria-pressed="false">3M</button><button type="button" class="fchip" data-ckr="6M" aria-pressed="true">6M</button><button type="button" class="fchip" data-ckr="1A" aria-pressed="false">1A</button></div>
+            <div class="chips" role="group" aria-label="Camadas do gráfico"><button type="button" class="fchip" data-ckt="bb" aria-pressed="true">Bollinger</button><button type="button" class="fchip" data-ckt="sma" aria-pressed="true">SMA50</button><button type="button" class="fchip" data-ckt="zones" aria-pressed="true">Zonas e níveis</button></div></div>
+          <div class="chartwrap"><div id="chart" class="lwc" role="img" aria-label="Gráfico de candles com volume, média de 50 barras, bandas de Bollinger e os níveis do motor de timing. Use a tabela abaixo para ler os preços."></div>
             <div class="empty" id="empty" hidden><strong>Sem dado em tempo real</strong><span id="emptyTxt"></span></div></div>
-          <div class="legend"><span style="--c:var(--info)">Bollinger (20, 2σ)</span><span style="--c:var(--up)">Zona de entrada</span><span style="--c:var(--warn)">Zona de realização e alvos</span><span style="--c:var(--down)">Invalidação</span></div>
+          <div class="legend"><span style="--c:var(--up)">Zona de entrada</span><span style="--c:var(--warn)">Realização e alvos</span><span style="--c:var(--down)">Invalidação</span><span style="--c:var(--gold)">Valor justo (SMA50)</span><span style="--c:var(--info)">Bollinger (20, 2σ), tracejado</span></div>
+          <div class="ck-tools"><button type="button" id="ckTableBtn" aria-expanded="false" aria-controls="ckTable">Ver como tabela</button><button type="button" id="ckExport">Exportar imagem</button><button type="button" class="primary" id="ckSim">Simular compra ou venda</button></div>
+          <div id="ckTable" hidden></div>
+          <div class="src">Gráfico © <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView</a> (Lightweight Charts, Apache 2.0). Bollinger e SMA50 calculadas aqui sobre os candles reais. Nada aqui é ordem: a plataforma não executa ordens.</div>
           <div class="card" style="margin-top:var(--s4)"><h2>Por que este sinal e este momento</h2><ul class="why" id="why"></ul></div>
           <div class="card"><h2>Backtest analítico <span class="tag">projeção</span></h2>
             <div class="bt">
@@ -82,6 +87,7 @@
         </div>
         <div>
           <div class="card gold" id="timing"></div>
+          <div class="card"><h2>Inspetor do candle</h2><div id="insp" aria-live="off"><span class="mute">Passe o cursor sobre o gráfico.</span></div></div>
           <div class="card"><h2>Métricas quantitativas e risco</h2><div class="kv" id="metrics"></div></div>
           <div class="card"><h2>Microeconomia e força relativa</h2><div class="kv" id="micro"></div></div>
           <div class="card"><h2>Histórico de sinais</h2><div id="sigHist" class="mute" style="font-size:12.5px">—</div></div>
@@ -142,6 +148,14 @@
       </div>
       <div class="card" id="mpCompare"></div>
       <p class="src">Contorno dos estados: Malha Municipal do IBGE (qualidade mínima, dado público). Coordenadas dos imóveis obtidas pela geocodificação do OpenStreetMap Nominatim, © colaboradores do OpenStreetMap (ODbL); o mapa não carrega mapa-base nem recursos de terceiros. Ferramenta analítica e educacional.</p>
+    </section>
+
+    <section class="page" data-page="shopping" hidden>
+      <div class="ph"><p class="eyebrow">Patrimônio</p><h1>Shopping financeiro</h1><p class="lede">Os tipos de ativo que a plataforma conhece, lado a lado, com o que cada um é (indexador, rendimento, proteção, de onde vem o preço) e as referências oficiais do Banco Central. Para comparar o que cada classe oferece antes de simular.</p></div>
+      <div class="banner-info">Este é um catálogo de tipos e de referências oficiais. <b>A plataforma não tem ofertas de emissores</b> (taxas de CDB, LCI, debêntures etc.) nem executa ordens: nenhuma taxa de produto é mostrada porque nenhuma é inventada.</div>
+      <div class="card" id="shRefs"><h2>Referências oficiais agora <span class="tag info">Banco Central</span></h2><span class="skel"></span></div>
+      <div class="card"><div class="filters"><div class="chips" id="shCats" role="group" aria-label="Classe"></div><input id="shQ" type="search" placeholder="Filtrar por nome ou código" aria-label="Filtrar tipos de ativo"></div><div id="shTable" class="scroll"></div>
+        <div class="src" id="shNote"></div></div>
     </section>
 
     <section class="page" data-page="perfil" hidden>
@@ -213,9 +227,12 @@
 <dialog id="pal" aria-label="Busca rápida"><input id="palQ" type="search" placeholder="Buscar ativo, página ou ação" aria-label="Buscar ativo, página ou ação" autocomplete="off"><ul id="palList"></ul></dialog>
 <script src="/vendor/echarts.min.js"></script>
 <script src="/vendor/leaflet.js"></script>
+<script src="/vendor/lightweight-charts.standalone.production.js"></script>
 <script src="/app.js"></script>
 <script src="/auth.js"></script>
 <script src="/carteira.js"></script>
 <script src="/mapa.js"></script>
+<script src="/shopping.js"></script>
+<script src="/cockpit.js"></script>
 </body>
 </html>
