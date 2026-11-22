@@ -9,6 +9,10 @@ inquilinos, alocação) e **onde ficam** os imóveis (coordenadas, com links par
 
 `#/mapa` mostra os imóveis curados sobre o contorno dos 27 estados do IBGE, com Leaflet servido pelo projeto e **sem mapa-base de terceiros** (nenhuma requisição sai do servidor; decisão no [ADR 018](adr/018-mapa-sem-mapa-base-de-terceiros.md)). Marcadores só para imóveis **com coordenada**, agrupados por proximidade em pixels (o número é a quantidade de imóveis do grupo; clicar amplia até separá-los), com a precisão visível (anel cheio = endereço localizado; tracejado = posição aproximada por via); imóveis sem coordenada ficam na lista lateral com o motivo. Filtros por fundo, UF e tipo; cada estado é pintado pela quantidade de imóveis listados; a tabela compara os fundos (ABL listada, vacância média ponderada pela ABL só dos imóveis que informam, imóveis, com coordenada). Os dados vêm de `GET /api/composition`; o contorno, de `static/data/brasil-ufs.geojson` (Malha Municipal do IBGE, qualidade mínima, SHA-256 travado em teste).
 
+## Cockpit e shopping (item #17)
+
+O cockpit do ativo usa o TradingView Lightweight Charts (ADR 019); o **Shopping financeiro** (`#/shopping`) compara os tipos de ativo da taxonomia com as referências oficiais do Banco Central e **não mostra taxa de produto**, porque a plataforma não tem ofertas de emissores.
+
 ## Regra de ouro: nada é inventado
 
 Cada dado vem de uma **fonte identificável, com data**. O que a fonte não publica aparece como **"não informado"**, com o
