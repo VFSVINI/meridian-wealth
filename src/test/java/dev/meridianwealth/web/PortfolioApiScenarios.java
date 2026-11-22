@@ -106,6 +106,40 @@ abstract class PortfolioApiScenarios {
         assertThat(http.post("/api/auth/register", Map.of("email", email, "password", PASSWORD, "displayName", "De novo")).status()).as("o e-mail volta a ficar livre").isEqualTo(201);
     }
 
+    @Test void monteCarloOverThePublicAssumptionsAndOverTheSavedPortfolioWithRealHistory() {
+        Http.Reply open = http.post("/api/risk/monte-carlo", Map.of("initial", "100000", "monthlyContribution", "1000", "horizonYears", 10, "expectedReturnPercent", "10", "volatilityPercent", "15", "goal", "300000", "seed", 7));
+        assertThat(open.status()).as("as premissas manuais não exigem login").isEqualTo(200);
+        assertThat(open.get("kind")).isEqualTo("PROJECTION");
+        assertThat((String) open.get("label")).startsWith("PROJEÇÃO");
+        assertThat(open.get("mode")).isEqualTo("PARAMETRIC");
+        assertThat((List<?>) open.json().get("points")).hasSize(121);
+        assertThat(open.get("disclaimer").toString()).contains("não é promessa de retorno");
+        Http.Reply again = http.post("/api/risk/monte-carlo", Map.of("initial", "100000", "monthlyContribution", "1000", "horizonYears", 10, "expectedReturnPercent", "10", "volatilityPercent", "15", "goal", "300000", "seed", 7));
+        assertThat(again.body()).as("mesma semente, mesma projeção").isEqualTo(open.body());
+        assertThat(http.post("/api/risk/monte-carlo", Map.of("initial", "100000", "horizonYears", 99, "expectedReturnPercent", "10", "volatilityPercent", "15")).status()).isEqualTo(400);
+        assertThat(http.post("/api/risk/monte-carlo", Map.of("initial", "1E5000000", "horizonYears", 5, "expectedReturnPercent", "10", "volatilityPercent", "15")).status()).as("notação científica absurda").isEqualTo(400);
+        assertThat(http.post("/api/risk/monte-carlo", Map.of("horizonYears", 5, "expectedReturnPercent", "10", "volatilityPercent", "15")).status()).as("sem inicial nem aporte").isEqualTo(400);
+
+        assertThat(http.post("/api/me/risk/monte-carlo", Map.of("horizonYears", 5)).status()).as("a carteira exige login").isEqualTo(401);
+        String token = newUserToken();
+        Http.Reply empty = http.post("/api/me/risk/monte-carlo", bearer(token), Map.of("horizonYears", 5));
+        assertThat(empty.status()).as("carteira vazia: recusa, não inventa").isEqualTo(422);
+        assertThat(empty.get("code")).isEqualTo("INSUFFICIENT_HISTORY");
+        assertThat(open(token, Map.of("symbol", "PETR4", "quantity", "100", "averagePrice", "30", "tradeDate", "2026-11-10")).status()).isEqualTo(201);
+        assertThat(open(token, typed("LCI do titular", "1", "10000")).status()).isEqualTo(201);
+        Http.Reply mc = http.post("/api/me/risk/monte-carlo", bearer(token), Map.of("monthlyContribution", "500", "horizonYears", 5, "goal", "60000"));
+        assertThat(mc.status()).isEqualTo(200);
+        assertThat(mc.get("mode")).isEqualTo("PORTFOLIO_BOOTSTRAP");
+        List<Map<String, Object>> coverage = (List<Map<String, Object>>) mc.json().get("coverage");
+        assertThat(coverage).extracting(c -> c.get("treatment")).containsExactlyInAnyOrder("HISTORICO", "CONSTANTE");
+        assertThat(coverage).filteredOn(c -> "CONSTANTE".equals(c.get("treatment"))).extracting(c -> c.get("reason").toString()).allMatch(r -> r.contains("não é negociado em mercado"));
+        assertThat(mc.obj("statistics").get("commonDays")).isNotNull();
+        assertThat(((Number) mc.get("coveredPercent")).doubleValue()).isBetween(1.0, 99.0);
+        assertThat((List<?>) mc.json().get("points")).hasSize(61);
+        assertThat(mc.body()).as("nada de outro usuário nem de segredo").doesNotContain("passwordHash").doesNotContain(PASSWORD);
+        assertThat(http.post("/api/me/risk/monte-carlo", bearer(newUserToken()), Map.of("horizonYears", 5)).status()).as("o outro usuário tem a carteira dele, vazia").isEqualTo(422);
+    }
+
     String idOf(Http.Reply operation) { return (String) operation.obj("position").get("id"); }
 
     String path(String id, String op) { return "/api/me/portfolio/positions/" + id + "/" + op; }
