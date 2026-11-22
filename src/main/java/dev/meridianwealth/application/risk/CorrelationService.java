@@ -73,7 +73,8 @@ public final class CorrelationService {
             for (Candle c : bars) {
                 if (c.close() > 0) byDay.put(Math.floorDiv(c.time(), 86_400_000L), c.close());
             }
-            if (byDay.size() <= Correlation.MIN_DAYS) why.put(h.assetKey(), "Histórico curto: " + byDay.size() + " pregões (mínimo " + (Correlation.MIN_DAYS + 1) + ").");
+            if (byDay.isEmpty()) why.put(h.assetKey(), "Sem dado real de mercado agora.");
+            else if (byDay.size() <= Correlation.MIN_DAYS) why.put(h.assetKey(), "Histórico curto: " + byDay.size() + " pregões (mínimo " + (Correlation.MIN_DAYS + 1) + ").");
             else closes.put(h.assetKey(), byDay);
         }
         Map<String, Holding> byKey = new LinkedHashMap<>();

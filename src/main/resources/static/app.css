@@ -216,5 +216,9 @@ button.mpitem:hover{border-color:var(--gold)}.mpitem .mphead{display:flex;justif
 .grid2c{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4)}.mckpi{display:flex;flex-direction:column;gap:2px;margin-bottom:var(--s3)}.mckpi .big{font-size:40px;line-height:1.1}
 details>summary{cursor:pointer;color:var(--text-2);margin-top:var(--s2)}
 @media(max-width:1180px){.mc-grid,.grid2c{grid-template-columns:1fr}}
+/* item #19: correlação e concentração */
+.crtbl{border-collapse:separate;border-spacing:2px;width:auto;min-width:0}.crtbl th,.crtbl td{padding:6px 8px;border:0}.crh{font:600 10px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);text-align:center;max-width:90px}
+.crr{font:500 12px var(--sans);text-align:left;color:var(--text-2);white-space:nowrap;padding-right:var(--s3)}.crcell{text-align:center;min-width:56px;border-radius:4px;font-size:12.5px}.crcell.nd,.crcell.zero{background:var(--panel-2)}
+.crlegend{display:flex;align-items:center;gap:6px;margin-top:var(--s2);flex-wrap:wrap}.crlegend i{width:26px;height:10px;border-radius:2px;background:var(--panel-2);display:inline-block}.crlegend i.neg{background:var(--down)}.crlegend i.pos{background:var(--up)}
 @media(max-width:1180px){.ct-top{grid-template-columns:1fr}.un{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}

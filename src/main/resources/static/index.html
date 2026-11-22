@@ -150,6 +150,19 @@
       <p class="src">Contorno dos estados: Malha Municipal do IBGE (qualidade mínima, dado público). Coordenadas dos imóveis obtidas pela geocodificação do OpenStreetMap Nominatim, © colaboradores do OpenStreetMap (ODbL); o mapa não carrega mapa-base nem recursos de terceiros. Ferramenta analítica e educacional.</p>
     </section>
 
+    <section class="page" data-page="correlacao" hidden>
+      <div class="ph"><p class="eyebrow">Risco</p><h1>Correlação e concentração</h1><p class="lede">Como os ativos e as classes da sua carteira se movem juntos, quanto isso reduz o risco e onde o patrimônio está concentrado. Só retornos reais, com a janela e a cobertura à vista.</p></div>
+      <p id="crMsg" class="dn" role="status"></p>
+      <div class="card" id="crGate" hidden></div>
+      <div id="crBody" hidden>
+        <div class="grid2c"><div class="card gold" id="crRisk"></div><div class="card" id="crExcl" hidden></div></div>
+        <div class="card" id="crClasses"></div>
+        <div class="card" id="crAssets"></div>
+        <div class="card" id="crConc"></div>
+        <div class="card"><h2>Como ler</h2><ul class="note" id="crNotes"></ul><div class="src" id="crDisc"></div></div>
+      </div>
+    </section>
+
     <section class="page" data-page="montecarlo" hidden>
       <div class="ph"><p class="eyebrow">Risco</p><h1>Monte Carlo e metas <span class="tag">projeção</span></h1><p class="lede">O cone patrimonial e a chance de bater uma meta, a partir das premissas ao lado ou dos retornos reais da sua carteira. É projeção: não é cotação e não promete retorno.</p></div>
       <div class="banner-info" id="mcLabel">PROJEÇÃO: não é cotação nem promessa de retorno. A plataforma não executa ordens.</div>
@@ -259,6 +272,7 @@
 <script src="/mapa.js"></script>
 <script src="/shopping.js"></script>
 <script src="/montecarlo.js"></script>
+<script src="/correlacao.js"></script>
 <script src="/cockpit.js"></script>
 </body>
 </html>
