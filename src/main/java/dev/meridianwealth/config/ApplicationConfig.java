@@ -26,6 +26,7 @@ import dev.meridianwealth.application.port.RefreshTokenStore;
 import dev.meridianwealth.application.port.UserStore;
 import dev.meridianwealth.application.portfolio.PortfolioService;
 import dev.meridianwealth.application.privacy.DataSubjectService;
+import dev.meridianwealth.application.risk.MonteCarloService;
 import dev.meridianwealth.application.port.SignalStore;
 import dev.meridianwealth.application.port.TickSink;
 import dev.meridianwealth.infrastructure.events.InProcessEventBus;
@@ -92,6 +93,12 @@ public class ApplicationConfig {
     PortfolioService portfolioService(PositionStore positions, PortfolioLedger ledger, MarketService market, BrazilRatesService rates, FxHistoryPort fxHistory,
                                       EventPublisher events, Clock brasiliaClock) {
         return new PortfolioService(positions, ledger, market, rates, fxHistory, events, brasiliaClock);
+    }
+
+    @Bean
+    MonteCarloService monteCarloService(PortfolioService portfolio, MarketService market) {
+        return new MonteCarloService(who -> portfolio.list(who).lines().stream().map(l -> new MonteCarloService.Holding(l.assetKey(), l.valuation().position().asset().label(), l.symbol(),
+                l.valuation().position().currency().name(), l.valuation().currentValueBrl())).toList(), market::candles);
     }
 
     @Bean

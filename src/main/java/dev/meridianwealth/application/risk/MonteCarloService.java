@@ -2,6 +2,7 @@ package dev.meridianwealth.application.risk;
 
 import dev.meridianwealth.application.auth.AuthPrincipal;
 import dev.meridianwealth.domain.Candle;
+import dev.meridianwealth.domain.MoneyBounds;
 import dev.meridianwealth.domain.montecarlo.AlignedReturns;
 import dev.meridianwealth.domain.montecarlo.MonteCarlo;
 import java.math.BigDecimal;
@@ -62,8 +63,8 @@ public final class MonteCarloService {
     }
 
     public Output parametric(Request r) {
-        BigDecimal initial = nz(r.initial());
-        BigDecimal monthly = nz(r.monthlyContribution());
+        BigDecimal initial = nz(r.initial(), "patrimônio inicial");
+        BigDecimal monthly = nz(r.monthlyContribution(), "aporte mensal");
         double mu = percent(r.expectedReturnPercent(), "Retorno esperado", -50, 100);
         double sigma = percent(r.volatilityPercent(), "Volatilidade", 0, 200);
         int months = months(r.horizonYears());
@@ -79,7 +80,7 @@ public final class MonteCarloService {
         if (all.isEmpty()) throw new MonteCarloException("A carteira não tem posição com valor em reais para projetar. Registre posições na Minha Carteira ou use as premissas manuais.");
         BigDecimal totalBd = all.stream().map(Holding::valueBrl).reduce(BigDecimal.ZERO, BigDecimal::add);
         double total = totalBd.doubleValue();
-        BigDecimal monthly = nz(r.monthlyContribution());
+        BigDecimal monthly = nz(r.monthlyContribution(), "aporte mensal");
         int months = months(r.horizonYears());
 
         Map<String, TreeMap<Long, Double>> closes = new LinkedHashMap<>();
@@ -175,9 +176,10 @@ public final class MonteCarloService {
     private static final String COMMON_2 = "5.000 trajetórias; os percentis resumem as trajetórias simuladas, não o que vai acontecer.";
     private static final String COMMON_3 = "O resultado é reprodutível: a mesma entrada e a mesma semente dão a mesma projeção.";
 
-    private static BigDecimal nz(BigDecimal v) { return v == null ? BigDecimal.ZERO : v; }
+    /** Valor em reais opcional (nulo = zero), com a ordem de grandeza checada antes de qualquer conta (notação científica não vira negação de serviço). */
+    private static BigDecimal nz(BigDecimal v, String label) { return v == null ? BigDecimal.ZERO : MoneyBounds.requireNonNegative(v, label, 2); }
 
-    private static Double goal(BigDecimal g) { return g == null ? null : g.doubleValue(); }
+    private static Double goal(BigDecimal g) { return g == null ? null : MoneyBounds.requireNonNegative(g, "meta", 2).doubleValue(); }
 
     private static int months(int years) {
         if (years < 1 || years > 40) throw new IllegalArgumentException("O horizonte vai de 1 a 40 anos");
@@ -186,6 +188,7 @@ public final class MonteCarloService {
 
     private static double percent(BigDecimal v, String name, double min, double max) {
         if (v == null) throw new IllegalArgumentException(name + ": informe o valor em percentual ao ano");
+        if ((long) v.precision() - v.scale() > 6) throw new IllegalArgumentException(name + " fora do intervalo aceito");
         double d = v.doubleValue();
         if (d < min || d > max) throw new IllegalArgumentException(name + " precisa estar entre " + (int) min + "% e " + (int) max + "% ao ano");
         return d / 100;
