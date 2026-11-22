@@ -32,7 +32,7 @@ abstract class PositionStoreContract {
     static BigDecimal d(String v) { return new BigDecimal(v); }
 
     static Position position(UUID user, String symbol, String qty, String price, Instant created) {
-        return Position.open(user, new AssetRef(symbol, AssetType.ACAO, symbol + " teste"), d(qty), d(price), Currency.BRL, created);
+        return Position.open(user, new AssetRef(symbol, AssetType.ACAO, symbol + " teste"), d(qty), d(price), Currency.BRL, null, created);
     }
 
     @Test void insertIsUniquePerUserAndAssetButNotAcrossUsers() {
@@ -43,10 +43,10 @@ abstract class PositionStoreContract {
         assertThat(store().insertIfAbsent(position(b, "PETR4", "5", "31", T0))).as("outro usuário pode ter o mesmo ativo").isTrue();
         assertThat(store().countByUser(a)).isEqualTo(1);
         assertThat(store().findByUser(a).get(0).quantity()).isEqualByComparingTo("10");
-        Position typed = Position.open(a, new AssetRef(null, AssetType.LCI, "LCI Banco A"), d("1"), d("10000"), Currency.BRL, T0);
+        Position typed = Position.open(a, new AssetRef(null, AssetType.LCI, "LCI Banco A"), d("1"), d("10000"), Currency.BRL, null, T0);
         assertThat(store().insertIfAbsent(typed)).isTrue();
-        assertThat(store().insertIfAbsent(Position.open(a, new AssetRef(null, AssetType.LCI, "lci  banco a"), d("1"), d("5"), Currency.BRL, T0))).isFalse();
-        assertThat(store().insertIfAbsent(Position.open(a, new AssetRef(null, AssetType.LCI, "LCI Banco B"), d("1"), d("5"), Currency.BRL, T0))).isTrue();
+        assertThat(store().insertIfAbsent(Position.open(a, new AssetRef(null, AssetType.LCI, "lci  banco a"), d("1"), d("5"), Currency.BRL, null, T0))).isFalse();
+        assertThat(store().insertIfAbsent(Position.open(a, new AssetRef(null, AssetType.LCI, "LCI Banco B"), d("1"), d("5"), Currency.BRL, null, T0))).isTrue();
         assertThat(store().countByUser(a)).isEqualTo(3);
     }
 
@@ -58,8 +58,8 @@ abstract class PositionStoreContract {
         assertThat(store().find(pa.id(), a)).isPresent();
         assertThat(store().find(pa.id(), b)).as("B não encontra a posição de A").isEmpty();
         assertThat(store().findByUser(b)).isEmpty();
-        assertThat(store().update(pa.declare(d("1"), d("1"), T0), 0)).isPresent();
-        Position asB = new Position(pa.id(), b, pa.asset(), d("77"), d("77"), Currency.BRL, T0, T0, 1);
+        assertThat(store().update(pa.declare(d("1"), d("1"), null, T0), 0)).isPresent();
+        Position asB = new Position(pa.id(), b, pa.asset(), d("77"), d("77"), d("77"), Currency.BRL, T0, T0, 1);
         assertThat(store().update(asB, 1)).as("atualizar com o id de A e o dono B não altera nada").isEmpty();
         assertThat(store().delete(pa.id(), b, 1)).as("B não apaga a posição de A").isFalse();
         assertThat(store().find(pa.id(), a).orElseThrow().quantity()).isEqualByComparingTo("1");
@@ -70,15 +70,15 @@ abstract class PositionStoreContract {
         Position p = position(u, "ITUB4", "100", "30", T0);
         store().insertIfAbsent(p);
         assertThat(store().find(p.id(), u).orElseThrow().version()).isZero();
-        Position first = store().update(p.purchase(d("50"), d("33"), T0.plusSeconds(60)), 0).orElseThrow();
+        Position first = store().update(p.purchase(d("50"), d("33"), BigDecimal.ZERO, null, T0.plusSeconds(60)), 0).orElseThrow();
         assertThat(first.version()).isEqualTo(1);
         assertThat(first.quantity()).isEqualByComparingTo("150");
         assertThat(first.averagePrice()).isEqualByComparingTo("31.000000");
-        assertThat(store().update(p.purchase(d("1"), d("1"), T0), 0)).as("versão antiga").isEmpty();
+        assertThat(store().update(p.purchase(d("1"), d("1"), BigDecimal.ZERO, null, T0), 0)).as("versão antiga").isEmpty();
         Position stored = store().find(p.id(), u).orElseThrow();
         assertThat(stored.version()).isEqualTo(1);
         assertThat(stored.updatedAt()).isEqualTo(T0.plusSeconds(60));
-        assertThat(store().update(stored.declare(d("7"), d("8"), T0), 1).orElseThrow().version()).isEqualTo(2);
+        assertThat(store().update(stored.declare(d("7"), d("8"), null, T0), 1).orElseThrow().version()).isEqualTo(2);
         assertThat(store().update(position(u, "X", "1", "1", T0), 0)).as("posição que não existe").isEmpty();
     }
 
@@ -108,7 +108,7 @@ abstract class PositionStoreContract {
                     int n = i;
                     fs.add(pool.submit(() -> {
                         go.await();
-                        Optional<Position> r = store().update(p.declare(d(String.valueOf(200 + n)), d("10"), T0), 0);
+                        Optional<Position> r = store().update(p.declare(d(String.valueOf(200 + n)), d("10"), null, T0), 0);
                         if (r.isPresent()) {
                             wins.incrementAndGet();
                             synchronized (winners) { winners.add(r.get()); }

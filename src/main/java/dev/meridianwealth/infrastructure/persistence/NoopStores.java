@@ -2,7 +2,7 @@ package dev.meridianwealth.infrastructure.persistence;
 
 import dev.meridianwealth.application.SignalRecord;
 import dev.meridianwealth.application.port.CandleStore;
-import dev.meridianwealth.application.port.PositionStore;
+import dev.meridianwealth.application.port.PortfolioLedger;
 import dev.meridianwealth.application.port.RefreshTokenStore;
 import dev.meridianwealth.application.port.SignalStore;
 import dev.meridianwealth.application.port.UserStore;
@@ -37,7 +37,10 @@ public class NoopStores {
     RefreshTokenStore refreshTokenStore() { return new InMemoryRefreshTokenStore(); }
 
     @Bean
-    PositionStore positionStore() { return new InMemoryPositionStore(); }
+    InMemoryPositionStore positionStore() { return new InMemoryPositionStore(); }
+
+    @Bean
+    PortfolioLedger portfolioLedger(InMemoryPositionStore positions) { return new InMemoryPortfolioLedger(positions); }
 
     @Bean
     SignalStore signalStore() {

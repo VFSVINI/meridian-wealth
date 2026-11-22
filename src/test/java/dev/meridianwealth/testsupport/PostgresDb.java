@@ -42,10 +42,18 @@ public final class PostgresDb {
         return pg.getJdbcUrl("postgres", "postgres");
     }
 
+    /** Cria um banco vazio e separado no mesmo PostgreSQL embutido (sem migrações), para testar migrações em isolamento. */
+    public static DataSource newDatabase(String name) {
+        dataSource();
+        new JdbcTemplate(ds).execute("DROP DATABASE IF EXISTS " + name);
+        new JdbcTemplate(ds).execute("CREATE DATABASE " + name);
+        return pg.getDatabase("postgres", name);
+    }
+
     public static JdbcTemplate jdbc() { return new JdbcTemplate(dataSource()); }
 
     /** Esvazia as tabelas de dados de usuário (e as que dependem delas) entre testes. */
     public static void reset() {
-        jdbc().execute("TRUNCATE TABLE refresh_tokens, positions, users CASCADE");
+        jdbc().execute("TRUNCATE TABLE ledger_entries, refresh_tokens, positions, users CASCADE");
     }
 }
