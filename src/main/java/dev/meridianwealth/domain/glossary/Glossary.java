@@ -309,6 +309,11 @@ public final class Glossary {
                 "A venda reduz a quantidade e mantém o preço médio. Compare o preço médio com o preço atual para ver o resultado não realizado na moeda da posição. Corretagem e taxas só entram se você as somar ao preço informado.",
                 "Um preço médio muito diferente do que a corretora mostra costuma indicar compra não registrada ou taxa fora da conta. Posição em dólar: o custo em reais usa o câmbio de hoje, não o da compra.",
                 "concentration", "adherence");
+        add("realized-result", Group.PORTFOLIO, "Resultado realizado",
+                "O ganho ou a perda de uma venda já concretizada: o valor líquido da venda (quantidade x preço menos taxas) menos o custo médio da quantidade vendida.",
+                "Em posição em dólar aparece em duas medidas: na moeda da posição (só variação de preço) e em reais (inclui a variação cambial entre a compra e a venda). Não é o imposto devido.",
+                "Uma venda sem câmbio registrado não tem resultado em reais. Para o imposto de renda, confira a regra vigente: a plataforma só apoia, não apura o imposto.",
+                "average-price", "concentration");
         add("simulation", Group.PORTFOLIO, "Simulação pré-ordem",
                 "O cálculo do efeito de uma compra ou venda hipotética na concentração, no risco e na aderência, sobre valores em reais informados por você.",
                 "É uma simulação: não é cotação, não é ordem e a plataforma não executa ordens. Não inclui custos, impostos nem preço de execução.",

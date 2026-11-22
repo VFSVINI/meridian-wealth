@@ -6,6 +6,18 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #13 do roadmap)
+- **Livro de movimentações** (`V3__portfolio_transactions.sql`): `ledger_entries` só acrescenta (gatilho bloqueia UPDATE), com abertura, compra, venda, ajuste manual e baixa. A posição é a dobra do livro e muda **na mesma transação** que grava a entrada; falha em qualquer das duas desfaz as duas. A migração preenche o livro das posições do item #12.
+- **Taxas, resultado realizado e cronologia:** as taxas entram no custo da compra e abatem a venda; cada venda registra o resultado realizado na moeda da posição e em reais; a data da operação não pode estar no futuro nem antes da última do ativo.
+- **Custo em reais ao câmbio de cada compra** (PTAX do Banco Central do último dia útil até a data, ou o câmbio da nota informado): o resultado não realizado em reais passa a existir e inclui a variação cambial. Fecha a dívida 35. Sem câmbio, a operação em dólar é recusada; posição herdada sem câmbio fica "não informado".
+- **`Idempotency-Key`** em todas as escritas: repetir devolve a mesma entrada sem aplicar de novo (`Idempotent-Replay: true`), a mesma chave com outro conteúdo é 422 e duplicatas simultâneas aplicam uma só vez (índice único por usuário e chave, sem tabela extra).
+- **Eventos de domínio** (posição aberta, compra, venda, ajuste, baixa) publicados depois do commit e nunca numa repetição, por um barramento em processo com assinantes isolados e um contador Micrometer por tipo.
+- **Apoio ao IR** (`GET /api/me/tax/report?year=`): posição e custo em reais em 31/12, resultado realizado por mês e classe, vendas de ações da B3 no mês contra o limite de R$ 20.000,00 e sinalização de possível day trade. Base legal lida no Planalto em 2026-11-21 (Lei 11.033/2004, art. 3º, I; art. 2º, I e II; art. 3º, III e § 1º) com a ressalva da MP 1.303/2025; **não calcula imposto devido, DARF nem compensação de prejuízos** e lista tudo que não apura.
+- `GET /api/me/portfolio/transactions` com filtros por ativo e datas e paginação; ADR 015.
+
+### Corrigido (item #13)
+- O hash do conteúdo da requisição montava a string de `1E999999999` (um gigabyte) antes de validar a magnitude e derrubava o servidor por falta de memória; a ordem de grandeza passou a ser conferida antes.
+
 ### Adicionado (item #12 do roadmap)
 - **Carteira persistida** sob `/api/me/portfolio` (login): abrir posição, compra, venda, substituição manual, exclusão e listagem valorizada. Multi-ativo: ativo do painel por símbolo, ativo sem cotação (Tesouro, LCI, CRI, fundos, cripto guardada) por tipo e rótulo; até 200 posições por carteira.
 - **Preço médio ponderado** exato em `BigDecimal` (compra: `(q·pm + q'·p) / (q + q')` com 6 casas HALF_EVEN; venda mantém o preço médio e zerar fecha a posição), com limites de magnitude contra notação científica.
