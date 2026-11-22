@@ -22,6 +22,6 @@ Respondemos em até 7 dias e combinamos a divulgação após a correção.
 
 ## Problemas conhecidos (abertos)
 
-- Contas e sessões ficam em memória até a migração de usuários (item #12): um reinício as apaga.
+- Sem `MW_PERSISTENCE=true` (execução sem Docker), contas, sessões e carteira ficam em memória e um reinício as apaga; com a persistência ligada (Docker Compose) ficam no PostgreSQL.
 - O refresh token trafega no corpo da resposta (não em cookie `HttpOnly`) e o ID token do Google não leva `nonce`; a CSP restritiva é a mitigação de XSS.
 - As travas de tentativa de login valem por instância; o contador de rate limit usa o Redis no Compose.

@@ -6,6 +6,15 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #12 do roadmap)
+- **Carteira persistida** sob `/api/me/portfolio` (login): abrir posição, compra, venda, substituição manual, exclusão e listagem valorizada. Multi-ativo: ativo do painel por símbolo, ativo sem cotação (Tesouro, LCI, CRI, fundos, cripto guardada) por tipo e rótulo; até 200 posições por carteira.
+- **Preço médio ponderado** exato em `BigDecimal` (compra: `(q·pm + q'·p) / (q + q')` com 6 casas HALF_EVEN; venda mantém o preço médio e zerar fecha a posição), com limites de magnitude contra notação científica.
+- **`@Version` (bloqueio otimista)**: toda escrita é condicionada à versão lida; escritas concorrentes sobre a mesma versão resultam em exatamente uma vencedora e um 409 `VERSION_CONFLICT` (testado com 8 threads no banco e 10 requisições paralelas na API: nenhuma compra aceita se perde).
+- **BRL e USD**: valorização com cotação real (fonte, horário e selo de frescor) e **PTAX do Banco Central** (data e fonte); sem cotação a posição é avaliada pelo custo e o resultado fica "não informado"; sem PTAX o valor em reais de posição em dólar fica "não informado". Ativo cotado em outra moeda é recusado com explicação.
+- **Migração `V2__users_and_portfolio.sql`** (`users`, `refresh_tokens`, `positions`) com `NUMERIC`, `CHECK`, únicos, chaves estrangeiras em cascata e índices; adaptadores JDBC de `UserStore`, `RefreshTokenStore` e `PositionStore` (a rotação do refresh é atômica no banco: um `UPDATE ... RETURNING` consome o token), escolhidos por `MW_PERSISTENCE`; o perfil de investidor passa a persistir. Os adaptadores em memória seguem para a execução sem Docker.
+- **Testes contra PostgreSQL de verdade** (binário embutido, sem Docker): um contrato por porta roda contra a versão em memória e a JDBC; a aplicação inteira sobe com a persistência ligada e os cenários da carteira valem nos dois modos.
+- Entrada de glossário "Preço médio ponderado"; ADR 014 e `docs/carteira.md`. Fecha as dívidas 6 e 33.
+
 ### Adicionado (item #11 do roadmap)
 - Autenticação própria: cadastro e login por senha (BCrypt, política de senha no estilo NIST, trava de tentativas por e-mail e por IP), access token JWT HS256 de 15 minutos e refresh token opaco de 7 dias com **rotação e detecção de reuso** (token reusado derruba a família inteira; troca atômica, testada sob concorrência), logout e `GET /api/auth/config`.
 - **Login com Google** (`POST /api/auth/google`): o servidor valida o ID token (assinatura RS256 pelas chaves públicas do Google, `iss`, `aud` igual a `MW_GOOGLE_CLIENT_ID`, `exp`, `sub`, e-mail e `email_verified`) e emite o mesmo JWT interno e refresh token; provisionamento automático da conta; conflito explícito (409) quando o e-mail já existe em outro provedor, **sem vincular em silêncio**; desligado e com aviso claro quando não há `MW_GOOGLE_CLIENT_ID` (a aplicação sobe e os testes passam sem nenhuma variável do Google).
