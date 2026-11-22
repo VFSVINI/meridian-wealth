@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR do item #18 (Issue #49), 2026-11-22. Milestone 4 concluído (v0.4.0).
+> Atualizado em todo PR. Última atualização: PR do item #19 (Issue #51), 2026-11-22. Milestone 4 concluído (v0.4.0).
 > Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
@@ -88,7 +88,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 
 ### Milestone 5 — Risco Quantitativo, Testes de Concorrência & Cloud
 - [x] **#18** Monte Carlo e metas (`#/montecarlo`): cone patrimonial (percentis 5, 25, 50, 75 e 95), probabilidade de bater a meta e distribuição do patrimônio final, por premissas manuais ou pela carteira salva (reamostragem de retornos **reais** alinhados por data, que preserva a correlação). Sempre rotulado projeção; determinístico por semente. Ver o ADR 020.
-- [ ] **#19** Matriz de correlação e heatmap de concentração.
+- [x] **#19** Correlação e concentração (`#/correlacao`): matriz de correlação de Pearson entre ativos e entre classes (retornos reais, par a par, 252 pregões, célula sem dado fica "n/d"), risco da carteira com a correlação contra a média ponderada (benefício da diversificação) e mapa de concentração por faixa de risco. Ver o ADR 021.
 - [ ] **#20** Testcontainers, testes de concorrência/idempotência, PIT.
 - [ ] **#21** Deploy cloud gratuito (Neon + Hugging Face Spaces, porta 7860), runbook e README executivo.
 
@@ -119,8 +119,10 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [018](adr/018-mapa-sem-mapa-base-de-terceiros.md) | Mapa de ativos reais com Leaflet e sem mapa-base de terceiros | Aceito |
 | [019](adr/019-cockpit-com-lightweight-charts-e-shopping-sem-ofertas-inventadas.md) | Cockpit com Lightweight Charts e shopping financeiro sem ofertas inventadas | Aceito |
 | [020](adr/020-monte-carlo-reprodutivel-e-excecao-a-aleatoriedade.md) | Monte Carlo reprodutível e a exceção estreita à regra de aleatoriedade | Aceito |
+| [021](adr/021-correlacao-par-a-par-e-celula-sem-dado.md) | Correlação par a par, célula sem dado e risco da carteira com diversificação | Aceito |
 
 Decisões menores (no corpo dos PRs):
+- Item #19: correlação par a par (um ativo curto só apaga as próprias células), piso de 60 pregões, célula sem dado é `null` e vira "n/d", nunca zero; classe sem histórico em comum fica fora da matriz de classes e a tela diz; ativos sem faixa de risco do motor vão para a coluna "sem classificação" do mapa de concentração.
 - Item #18: `SplittableRandom` com semente explícita só em `domain.montecarlo` (as outras fontes de aleatoriedade seguem proibidas); posição sem histórico real fica parada no valor atual, nunca preenchida com a Selic ou o CDI; ativos em dólar entram pelo retorno na moeda do ativo (o câmbio não entra); a semente padrão sai da própria entrada, então reabrir a tela mostra o mesmo cone.
 - Item #17: o logotipo da TradingView fica desligado porque injeta `<style>` e a CSP o bloqueia (crédito por texto e link); o shopping só mostra a referência oficial de cada indexador e diz que a taxa do produto não existe; nomes globais dos scripts passam a ser únicos por teste (a colisão `renderList` do mapa quebrou a lista de Mercados e foi corrigida aqui).
 - Item #16: o mapa não tem tiles (privacidade e CSP fechada), o estado é pintado pela contagem de imóveis do dado curado, painéis de exemplo do protótipo sem fonte ficaram de fora e a vacância do fundo inteiro só aparece quando a fonte a publica ("do fundo"); o `L` global do `app.js` obrigou a ler o Leaflet de `window.L`.
@@ -157,7 +159,7 @@ Decisões menores (no corpo dos PRs):
 
 | 25 | Pontos, faixas, tetos e metas do suitability são definições do produto, não validadas por profissional habilitado nem por dados históricos | `domain/suitability` | revisão por profissional antes de qualquer uso além do educacional |
 
-| 27 | O risco do **simulador pré-ordem** ainda ignora a correlação entre posições (média ponderada das volatilidades, limite superior); o Monte Carlo do item #18 já a preserva por reamostragem de retornos reais alinhados, e o item #19 traz a matriz de correlação | `domain/impact` | item #19 |
+| 27 | O risco do **simulador pré-ordem** (carteira digitada) ainda usa a média ponderada das volatilidades, limite superior, e ignora a correlação; para a carteira salva, a tela de Correlação e concentração (item #19) e o Monte Carlo (item #18) já usam a correlação real | `domain/impact` | PR futuro (levar a covariância ao simulador) |
 | 28 | O conteúdo do glossário não foi revisado por profissional habilitado, e a lista de rótulos do teste de cobertura é espelhada à mão | `domain/glossary`, `GlossaryTest` | revisão antes de uso além do educacional |
 | 29 | A pressão geopolítica é contagem de palavras-chave em manchetes de terceiros e só mede cinco setores; o setor da posição vem do universo do painel | `GeoRiskScorer`, `GeoTranslator` | fonte de eventos estruturada e mapa de exposição por país (PR futuro; o mapa do item #16 só cobre imóveis) |
 | 30 | As caracterizações das gestoras e os textos das teses são resumos simplificados, sem revisão pelas instituições nem por profissional habilitado | `ThesisCatalog` | revisão antes de uso além do educacional |
@@ -212,7 +214,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 618 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 633 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
