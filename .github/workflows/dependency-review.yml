@@ -1,0 +1,18 @@
+name: dependency-review
+# Revisão de dependências em todo PR: bloqueia a entrada de dependência com vulnerabilidade conhecida de severidade alta ou crítica.
+# (Complementa o Dependabot, que propõe as atualizações, e o CodeQL, que analisa o código.)
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  review:
+    name: Revisão de dependências
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+          comment-summary-in-pr: never
