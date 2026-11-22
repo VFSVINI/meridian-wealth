@@ -62,6 +62,8 @@ Nenhum segredo vai para o repositório: `.env` está no `.gitignore` e `.env.exa
 
 Sem a variável, tudo funciona normalmente e o endpoint de config diz que o Google não está configurado.
 
+**Cliente (item #15).** `GET /api/auth/config` devolve `googleClientId` (público por natureza) só quando o Google está configurado. Nesse caso o navegador carrega o script do Google Identity Services e a CSP libera exatamente `script-src https://accounts.google.com/gsi/client`, `style-src .../gsi/style`, `connect-src` e `frame-src https://accounts.google.com/gsi/` (nada de curinga, nada de imagem externa). Sem a variável a CSP não menciona o Google e o botão aparece desabilitado com o aviso. O token de acesso e o refresh ficam no `localStorage` do navegador (dívidas 34 e 42).
+
 ## Atrás de proxy (Hugging Face Spaces, nginx, Cloudflare)
 
 Liste o IP ou a faixa do proxy em `MW_TRUSTED_PROXIES`; sem isso, todos os clientes aparecem com o IP do proxy e dividem um balde de

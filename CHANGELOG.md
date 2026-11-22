@@ -6,6 +6,12 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #15, etapa 2)
+- **Entrada na interface:** diálogo com abas Entrar e Criar conta, **Continuar com Google** (botão oficial do Google Identity Services quando `MW_GOOGLE_CLIENT_ID` está definido; desabilitado com aviso claro quando não está; carregando e erro tratados) e sessão de demonstração; menu da conta com sair; renovação do token por refresh em uma chamada só, compartilhada.
+- **Minha Carteira** (`#/carteira`): patrimônio, alocação (treemap), aderência ao perfil com radar, posições, compra, venda, ajuste, baixa e abertura pelos formulários da tela, livro com filtro e ganho ou perda por posição. Só dado real, "não informado" quando falta dado, tema escuro e Ivory, sem rolagem horizontal em 375 px.
+- **Montador de perfil:** o questionário de suitability passa a oferecer "Salvar como meu perfil"; contas sem perfil recebem um aviso e, depois do primeiro cadastro, são levadas ao questionário.
+- **Apache ECharts 5.5.1** servido pelo projeto (`/vendor`, com licença e NOTICE; SHA-256 travado em teste), sem CDN. `GET /api/auth/config` passa a informar `googleClientId`; a CSP libera o domínio do Google Identity Services **só** quando o Google está configurado. ADR 017.
+
 ## [0.3.0] - 2026-11-21
 
 Milestone 3 — Segurança, Persistência & Carteira. Reúne os itens #11 a #14 abaixo: autenticação por JWT com Login com Google e defesas de borda, carteira persistida com preço médio ponderado e bloqueio otimista, livro de movimentações com `Idempotency-Key` e apoio ao imposto de renda, e observabilidade com fronteiras de módulo verificadas.
