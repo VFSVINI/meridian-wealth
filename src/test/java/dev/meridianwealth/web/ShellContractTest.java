@@ -3,8 +3,6 @@ package dev.meridianwealth.web;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -22,9 +20,7 @@ class ShellContractTest {
 
     @BeforeAll
     static void load() throws IOException {
-        try (InputStream in = ShellContractTest.class.getResourceAsStream("/static/index.html")) {
-            html = new String(in.readAllBytes(), StandardCharsets.UTF_8);
-        }
+        html = dev.meridianwealth.testsupport.StaticPage.whole();
     }
 
     private record NavEntry(String id, String soon) {}
