@@ -56,7 +56,7 @@ class ShellContractTest {
 
     @Test void unavailableEntriesNameTheRoadmapItemThatDeliversThem() {
         List<NavEntry> soon = nav().stream().filter(e -> e.soon() != null).toList();
-        assertThat(soon).extracting(NavEntry::id).contains("correlacao", "stress", "alertas", "config");
+        assertThat(soon).extracting(NavEntry::id).contains("stress", "alertas", "config");
         assertThat(soon).allSatisfy(e -> assertThat(e.soon()).matches("item #\\d+( e #\\d+)?|sob pedido"));
     }
 
@@ -119,6 +119,13 @@ class ShellContractTest {
         assertThat(html).as("o gráfico tem a tabela equivalente").contains("id=\"mcTable\"").contains("Ver como tabela");
         String mc = dev.meridianwealth.testsupport.StaticPage.file("montecarlo.js");
         assertThat(mc).as("só o rótulo de projeção do servidor; a tela nunca chama de cotação").contains("d.label").contains("parada no valor atual").doesNotContainIgnoringCase("cotação de");
+    }
+
+    @Test void theCorrelationPageNeverTurnsMissingDataIntoZeroAndShowsTheNumberInEveryCell() throws IOException {
+        assertThat(html).contains("Correlação e concentração").contains("Só retornos reais");
+        String js = dev.meridianwealth.testsupport.StaticPage.file("correlacao.js");
+        assertThat(js).as("célula sem dado é cinza e escrita n/d; o número aparece em toda célula com dado").contains("n/d").contains("não informado").contains("Valores numéricos em todas as células");
+        assertThat(js).doesNotContain("v==null?0").doesNotContain("||0)").doesNotContain("?? 0");
     }
 
     @Test void prototypeSampleDataWasNotCopiedIntoTheInterface() {

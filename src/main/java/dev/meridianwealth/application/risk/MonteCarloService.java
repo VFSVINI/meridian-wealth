@@ -131,7 +131,8 @@ public final class MonteCarloService {
             for (Candle c : bars) {
                 if (c.close() > 0) byDay.put(Math.floorDiv(c.time(), 86_400_000L), c.close());
             }
-            if (byDay.size() < MIN_BARS) why.put(h.assetKey(), "Histórico curto: " + byDay.size() + " pregões (mínimo " + MIN_BARS + ").");
+            if (byDay.isEmpty()) why.put(h.assetKey(), "Sem dado real de mercado agora.");
+            else if (byDay.size() < MIN_BARS) why.put(h.assetKey(), "Histórico curto: " + byDay.size() + " pregões (mínimo " + MIN_BARS + ").");
             else closes.put(h.assetKey(), byDay);
         }
         AlignedReturns aligned = align(closes, why);
