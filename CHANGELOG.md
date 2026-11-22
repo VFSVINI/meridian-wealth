@@ -6,6 +6,13 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #18 do roadmap)
+- **Monte Carlo e metas** (`#/montecarlo`, rotulado **projeção** em toda a cadeia): cone patrimonial (percentis 5, 25, 50, 75 e 95 por mês), probabilidade de estar na meta no fim e ano a ano, probabilidade de terminar abaixo do que foi investido, distribuição do patrimônio final e tabela equivalente ao gráfico.
+- **Dois modos:** premissas manuais (retorno esperado e volatilidade anuais, log-normal; `POST /api/risk/monte-carlo`, pública) e **minha carteira** (`POST /api/me/risk/monte-carlo`, com login): reamostragem por blocos de 21 pregões de retornos **reais alinhados por data**, o que preserva a correlação entre os ativos; pesos fixos pelo valor atual em reais, rebalanceados todo mês.
+- **Cobertura explícita:** posição sem histórico real (renda fixa, fundos, ativo sem cotação, histórico curto ou sem datas em comum) fica parada no valor atual e a saída diz qual, por quê e quanto do patrimônio isso é; sem histórico suficiente, a rota recusa (422) e não estima nada. Ativos em dólar entram pelo retorno na moeda do ativo (o câmbio não entra, e a tela diz isso).
+- **Reprodutível:** `SplittableRandom` com semente explícita; a mesma entrada dá a mesma projeção. **ADR 020** abre a exceção estreita à regra de aleatoriedade do ADR 004 (só em `domain.montecarlo`, com três regras ArchUnit).
+- Testes de propriedade (determinismo, percentis que não se cruzam, volatilidade zero igual à fórmula fechada, meta certa e impossível, correlação preservada, alinhamento por data) e cenário de ponta a ponta com candles reais gravados.
+
 ## [0.4.0] - 2026-11-22
 
 Milestone 4 — Interface Dark Luxury, Mapas & Home Broker. Reúne a interface do protótipo aprovado (entrada, Minha Carteira, mapa de ativos reais, cockpit e shopping financeiro) e a camada de segurança e LGPD que a acompanhou.
