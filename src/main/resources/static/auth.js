@@ -9,7 +9,18 @@ function saveSess(s){
   renderUser();document.dispatchEvent(new CustomEvent('mw-auth'));
 }
 function applySession(d){saveSess({accessToken:d.accessToken,accessExpiresAt:d.accessExpiresAt,refreshToken:d.refreshToken||null,user:d.user,demo:!!d.demo})}
+/* Outra aba pode ter renovado: o refresh gira a cada uso e usar um antigo derruba a família inteira (detecção de reuso). Antes de renovar,
+   e ao receber um 401, adota-se a sessão mais nova do armazenamento; o evento "storage" mantém as abas em sincronia, inclusive no logout. */
+function adoptStored(){
+  let s=null;
+  try{s=JSON.parse(localStorage.getItem(SESSION_KEY)||'null')}catch(e){return false}
+  const same=(!s&&!SESS)||(s&&SESS&&s.accessToken===SESS.accessToken&&s.refreshToken===SESS.refreshToken);
+  if(same)return false;
+  SESS=s;renderUser();document.dispatchEvent(new CustomEvent('mw-auth'));return true;
+}
+addEventListener('storage',e=>{if(e.key===SESSION_KEY||e.key===null)adoptStored()});
 async function refreshSession(){
+  adoptStored();
   if(!SESS||!SESS.refreshToken)return false;
   if(!refreshing){
     refreshing=fetch('/api/auth/refresh',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({refreshToken:SESS.refreshToken})})
@@ -22,7 +33,11 @@ async function refreshSession(){
 async function api(url,opts={}){
   const call=()=>fetch(url,{...opts,headers:{...(opts.headers||{}),...(SESS?{Authorization:'Bearer '+SESS.accessToken}:{})}});
   let r=await call();
-  if(r.status===401&&SESS&&await refreshSession())r=await call();
+  if(r.status===401&&SESS){
+    const before=SESS&&SESS.accessToken;
+    if(adoptStored()&&SESS&&SESS.accessToken!==before)r=await call(); // outra aba já renovou: usa o token novo, sem gastar o refresh
+    if(r.status===401&&SESS&&await refreshSession())r=await call();
+  }
   if(r.status===401&&SESS)saveSess(null);
   return r;
 }

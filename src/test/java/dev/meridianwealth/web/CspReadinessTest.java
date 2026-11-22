@@ -33,6 +33,13 @@ class CspReadinessTest {
         assertThat(js).as("marcação gerada com manipulador de evento seria bloqueada pela CSP").doesNotContainPattern("(?i)\\son(click|change|input|submit|load|error|focus|blur|keydown)=[\"']");
     }
 
+    @Test void theSessionIsSharedAcrossTabsSoARotatedRefreshTokenIsNeverReused() throws IOException {
+        // o refresh gira a cada uso e o servidor derruba a família inteira ao ver um antigo: duas abas com cópias diferentes se deslogavam
+        String auth = StaticPage.file("auth.js");
+        assertThat(auth).contains("addEventListener('storage'").contains("function adoptStored()");
+        assertThat(auth.indexOf("adoptStored();\n  if(!SESS||!SESS.refreshToken)return false;")).as("renovar começa pela sessão mais nova do armazenamento").isPositive();
+    }
+
     @Test void externalLinksOpenedInANewTabNeverGiveTheOpenerBack() throws IOException {
         String all = StaticPage.file("app.js") + StaticPage.file("carteira.js") + StaticPage.file("index.html");
         Matcher m = Pattern.compile("<a [^>]*target=\"_blank\"[^>]*>").matcher(all);
