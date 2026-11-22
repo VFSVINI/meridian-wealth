@@ -25,11 +25,11 @@ class CspReadinessTest {
         Matcher m = Pattern.compile("<(?:script|link|img|iframe|source)\\b[^>]*?\\b(?:src|href)=\"([^\"]+)\"").matcher(html);
         while (m.find()) refs.add(m.group(1));
         assertThat(refs).isNotEmpty().allSatisfy(r -> assertThat(r).as("referência externa: " + r).matches("^(/|#).*"));
-        assertThat(html).contains("<script src=\"/theme.js\">").contains("<script src=\"/app.js\">").contains("<script src=\"/auth.js\">").contains("<script src=\"/carteira.js\">").contains("<script src=\"/vendor/echarts.min.js\">").contains("<script src=\"/vendor/leaflet.js\">").contains("<script src=\"/mapa.js\">").contains("<script src=\"/shopping.js\">").contains("<script src=\"/cockpit.js\">").contains("<script src=\"/vendor/lightweight-charts.standalone.production.js\">").contains("<link rel=\"stylesheet\" href=\"/app.css\">");
+        assertThat(html).contains("<script src=\"/theme.js\">").contains("<script src=\"/app.js\">").contains("<script src=\"/auth.js\">").contains("<script src=\"/carteira.js\">").contains("<script src=\"/vendor/echarts.min.js\">").contains("<script src=\"/vendor/leaflet.js\">").contains("<script src=\"/mapa.js\">").contains("<script src=\"/shopping.js\">").contains("<script src=\"/cockpit.js\">").contains("<script src=\"/montecarlo.js\">").contains("<script src=\"/vendor/lightweight-charts.standalone.production.js\">").contains("<link rel=\"stylesheet\" href=\"/app.css\">");
     }
 
     @Test void theScriptDoesNotBuildCodeAtRuntimeNorGenerateInlineHandlers() throws IOException {
-        String js = StaticPage.file("app.js") + StaticPage.file("theme.js") + StaticPage.file("auth.js") + StaticPage.file("carteira.js") + StaticPage.file("mapa.js") + StaticPage.file("shopping.js") + StaticPage.file("cockpit.js");
+        String js = StaticPage.file("app.js") + StaticPage.file("theme.js") + StaticPage.file("auth.js") + StaticPage.file("carteira.js") + StaticPage.file("mapa.js") + StaticPage.file("shopping.js") + StaticPage.file("cockpit.js") + StaticPage.file("montecarlo.js");
         assertThat(js).doesNotContain("eval(").doesNotContain("new Function(").doesNotContain("document.write(").doesNotContain("javascript:");
         assertThat(js).doesNotContainPattern("set(Timeout|Interval)\\(\\s*[\"'`]");
         assertThat(js).as("marcação gerada com manipulador de evento seria bloqueada pela CSP").doesNotContainPattern("(?i)\\son(click|change|input|submit|load|error|focus|blur|keydown)=[\"']");
@@ -60,7 +60,7 @@ class CspReadinessTest {
         java.util.Map<String, String> owner = new java.util.HashMap<>();
         List<String> clashes = new ArrayList<>();
         Pattern decl = Pattern.compile("^(?:async\\s+)?function\\s+([A-Za-z_$][\\w$]*)|^(?:const|let|var)\\s+([A-Za-z_$][\\w$]*)", Pattern.MULTILINE);
-        for (String file : List.of("theme.js", "app.js", "auth.js", "carteira.js", "mapa.js", "shopping.js", "cockpit.js")) {
+        for (String file : List.of("theme.js", "app.js", "auth.js", "carteira.js", "mapa.js", "shopping.js", "cockpit.js", "montecarlo.js")) {
             Matcher m = decl.matcher(StaticPage.file(file));
             while (m.find()) {
                 String name = m.group(1) != null ? m.group(1) : m.group(2);
@@ -72,7 +72,7 @@ class CspReadinessTest {
     }
 
     @Test void externalLinksOpenedInANewTabNeverGiveTheOpenerBack() throws IOException {
-        String all = StaticPage.file("app.js") + StaticPage.file("carteira.js") + StaticPage.file("mapa.js") + StaticPage.file("shopping.js") + StaticPage.file("cockpit.js") + StaticPage.file("index.html");
+        String all = StaticPage.file("app.js") + StaticPage.file("carteira.js") + StaticPage.file("mapa.js") + StaticPage.file("shopping.js") + StaticPage.file("cockpit.js") + StaticPage.file("montecarlo.js") + StaticPage.file("index.html");
         Matcher m = Pattern.compile("<a [^>]*target=\"_blank\"[^>]*>").matcher(all);
         int found = 0;
         while (m.find()) {
