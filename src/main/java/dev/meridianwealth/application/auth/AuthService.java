@@ -107,6 +107,12 @@ public final class AuthService {
         if (emailLimiter.blocked(emailKey) || ipLimiter.blocked(ipKey)) {
             throw new AuthException(Code.TOO_MANY_ATTEMPTS, "Muitas tentativas. Aguarde alguns minutos e tente de novo");
         }
+        if (password != null && password.length() > PasswordPolicy.MAX_BYTES) {
+            // nenhuma conta pode ter uma senha maior que o limite do cadastro: nem lê o hash, e a tentativa conta como falha
+            emailLimiter.recordFailure(emailKey);
+            ipLimiter.recordFailure(ipKey);
+            throw invalidCredentials();
+        }
         Optional<UserAccount> found = users.findByEmail(email).filter(u -> u.provider() == AuthProvider.PASSWORD);
         String hash = found.map(UserAccount::passwordHash).orElse(dummyHash);
         boolean ok = password != null && hasher.matches(password, hash) && found.isPresent();

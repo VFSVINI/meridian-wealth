@@ -127,6 +127,15 @@ class AuthServiceTest {
         }
     }
 
+    @Test void aPasswordLargerThanTheSignupLimitIsRefusedWithoutHashingIt() {
+        auth.register("ana@exemplo.com", PASSWORD, "Ana");
+        int before = hashChecks.get();
+        assertThat(code(() -> auth.login("ana@exemplo.com", "x".repeat(5_000_000), "ip"))).isEqualTo(Code.INVALID_CREDENTIALS);
+        assertThat(hashChecks.get()).as("não gasta hash com senha que nenhuma conta pode ter").isEqualTo(before);
+        for (int i = 0; i < 4; i++) code(() -> auth.login("ana@exemplo.com", "y".repeat(100), "ip"));
+        assertThat(code(() -> auth.login("ana@exemplo.com", PASSWORD, "ip2"))).as("conta como tentativa falha").isEqualTo(Code.TOO_MANY_ATTEMPTS);
+    }
+
     @Test void repeatedWrongPasswordsLockTheAccountEvenForTheRightPasswordUntilTheWindowPasses() {
         auth.register("ana@exemplo.com", PASSWORD, "Ana");
         for (int i = 0; i < 5; i++) assertThat(code(() -> auth.login("ana@exemplo.com", "errada errada errada", "ip" + System.nanoTime()))).isEqualTo(Code.INVALID_CREDENTIALS);

@@ -55,7 +55,10 @@ NAT por causa de um atacante.
     `style`; ele não permite executar script. Além disso: `nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: no-referrer`,
     `Permissions-Policy`, HSTS quando a conexão é HTTPS (direta ou por proxy confiável) e `Cache-Control: no-store` nas rotas de
     autenticação. O Swagger fica fora da CSP porque usa script embutido.
-13. **CORS e WebSocket:** sem `MW_CORS_ORIGINS`, só a própria origem; com a lista, só as origens exatas, sem curinga (o `*` falha
+13. **Corpo de requisição limitado:** `POST`/`PUT` em `/api/**` com mais de 64 KB recebem 413 antes de qualquer leitura (sem
+    `Content-Length`, o fluxo é limitado byte a byte), e o login recusa de imediato senha acima de 72 bytes, que nenhuma conta pode
+    ter. Sem isso, as rotas públicas alocavam dezenas de megabytes por requisição de quem não fez login (achado do code review).
+14. **CORS e WebSocket:** sem `MW_CORS_ORIGINS`, só a própria origem; com a lista, só as origens exatas, sem curinga (o `*` falha
     na partida) e sem credenciais. O WebSocket do stream deixou de aceitar qualquer origem.
 
 ## Consequências
@@ -69,6 +72,9 @@ NAT por causa de um atacante.
     protegeria melhor de XSS, e a CSP restritiva é a mitigação atual.
   - O ID token do Google não leva `nonce`, então um token válido roubado pode ser reapresentado até expirar (cerca de 1 hora).
   - As travas de tentativa e o contador de rate limit em memória valem por instância (o contador usa o Redis no Compose).
+  - O cadastro responde 409 quando o e-mail já existe, o que revela que ele está cadastrado; é uma escolha de UX (a pessoa
+    precisa saber para entrar), mitigada pelo limite por IP. Os tetos globais de contas e de sessões de demonstração podem ser
+    enchidos por um único IP ao longo do tempo; a persistência e a verificação de e-mail (item #12) reduzem o caso das contas.
 
 ## Alternativas rejeitadas
 
