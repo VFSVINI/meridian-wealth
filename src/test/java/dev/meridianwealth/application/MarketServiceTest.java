@@ -39,7 +39,19 @@ class MarketServiceTest {
             return histories.getOrDefault(symbol, HistoryResult.empty());
         }
 
-        @Override public Optional<LiveUpdate> next(String symbol) { return Optional.ofNullable(updates.get(symbol)); }
+        /** Atraso artificial de {@code next()}, para simular uma atualização lenta. */
+        volatile long nextDelayMillis;
+
+        @Override public Optional<LiveUpdate> next(String symbol) {
+            if (nextDelayMillis > 0) {
+                try {
+                    Thread.sleep(nextDelayMillis);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+            return Optional.ofNullable(updates.get(symbol));
+        }
 
         @Override public boolean marketOpen(String symbol) { return true; }
 
@@ -108,6 +120,51 @@ class MarketServiceTest {
         assertThat(tick(b, "AAPL").status()).isEqualTo(DataStatus.STORED);
         assertThat(tick(b, "AAPL").freshness()).isEqualTo(Freshness.STORED);
         assertThat(tick(b, "MSFT").status()).isEqualTo(DataStatus.UNAVAILABLE);
+    }
+
+    @Test void readsNeverWaitForASlowUpdate() throws Exception {
+        data.histories.put("SPY", real(1, "Yahoo", Freshness.DELAYED));
+        data.histories.put("AAPL", real(2, "Yahoo", Freshness.DELAYED));
+        service.loadHistories();
+        data.nextDelayMillis = 150; // duas séries com barras: a atualização leva cerca de 300 ms
+        long[] advanceMillis = new long[1];
+        Thread writer = new Thread(() -> {
+            long t0 = System.nanoTime();
+            service.advance();
+            advanceMillis[0] = (System.nanoTime() - t0) / 1_000_000;
+        });
+        writer.start();
+        Thread.sleep(40);
+        long worst = 0;
+        int reads = 0;
+        while (writer.isAlive()) {
+            long t0 = System.nanoTime();
+            service.overview();
+            service.candles("SPY", 50);
+            service.assessment("SPY");
+            service.micro("AAPL");
+            service.sources();
+            service.macro();
+            worst = Math.max(worst, System.nanoTime() - t0);
+            reads++;
+        }
+        writer.join();
+        assertThat(advanceMillis[0]).as("a atualização realmente foi lenta").isGreaterThanOrEqualTo(250);
+        assertThat(reads).as("houve leituras durante a atualização").isGreaterThan(5);
+        assertThat(worst / 1_000_000).as("nenhuma leitura esperou a atualização lenta (antes: o monitor único as segurava por ~300 ms)").isLessThan(100);
+    }
+
+    @Test void aPublishedSnapshotNeverChangesUnderTheReader() {
+        data.histories.put("SPY", real(1, "Yahoo", Freshness.DELAYED));
+        service.loadHistories();
+        List<Candle> before = service.candles("SPY", 1000);
+        Candle last = data.histories.get("SPY").candles().get(299);
+        Candle next = new Candle(last.time() + 86_400_000L, last.close(), last.close() + 2, last.close() - 1, last.close() + 1, last.volume());
+        data.updates.put("SPY", new LiveUpdate(next, true, new QuoteMeta("Finnhub", next.time(), Freshness.REAL_TIME, next.time() + 30_000L), true));
+        service.advance();
+        assertThat(before).as("a lista já entregue não mudou").hasSize(300);
+        assertThat(service.candles("SPY", 1000)).hasSize(301);
+        assertThat(service.overview().ticks().get(0).candle().time()).isEqualTo(next.time());
     }
 
     @Test void tooFewRealBarsAreInsufficientNotPadded() {
