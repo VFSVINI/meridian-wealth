@@ -41,9 +41,10 @@ public class AuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws ServletException, IOException {
         req.setAttribute(AuthPrincipal.CLIENT_IP_ATTRIBUTE, ips.resolve(req.getRemoteAddr(), req.getHeader("X-Forwarded-For")));
+        req.setAttribute(AuthPrincipal.HTTPS_ATTRIBUTE, ips.isHttps(req));
         Optional<AuthPrincipal> principal = bearer(req).flatMap(t -> tokens.verifyAccess(t, clock.instant()));
         principal.ifPresent(p -> req.setAttribute(AuthPrincipal.REQUEST_ATTRIBUTE, p));
-        if (principal.isEmpty() && isProtected(req.getRequestURI())) {
+        if (principal.isEmpty() && isProtected(RequestPaths.dispatchPath(req))) {
             res.setStatus(401);
             res.setHeader("WWW-Authenticate", "Bearer");
             res.setContentType("application/json");
