@@ -152,6 +152,22 @@ class AuthApiIntegrationTest {
         assertThat(http.post("/api/auth/login", "{nao e json").status()).isEqualTo(400);
     }
 
+    @Test void oversizedBodiesAreRefusedBeforeBeingReadOnPublicRoutes() {
+        String huge = "{\"email\":\"a@exemplo.com\",\"password\":\"" + "a".repeat(1_000_000) + "\"}";
+        Http.Reply r = http.post("/api/auth/login", huge);
+        assertThat(r.status()).isEqualTo(413);
+        assertThat(r.get("code")).isEqualTo("BODY_TOO_LARGE");
+        assertThat(http.post("/api/auth/register", huge).status()).isEqualTo(413);
+        assertThat(http.post("/api/impact/pre-order", huge).status()).isEqualTo(413);
+        assertThat(http.put("/api/me/profile", null, huge).status()).as("o filtro vem antes da autenticação").isEqualTo(413);
+        String okSize = "{\"email\":\"a@exemplo.com\",\"password\":\"" + "a".repeat(20_000) + "\"}";
+        assertThat(http.post("/api/auth/login", okSize).status()).as("20 KB ainda passa pelo filtro (e a senha longa é recusada)").isEqualTo(401);
+        // sem Content-Length (chunked), o fluxo é limitado byte a byte
+        Http.Reply chunked = http.postChunked("/api/auth/login", huge);
+        assertThat(chunked.status()).isIn(400, 413);
+        assertThat(http.get("/api/universe").status()).as("GET não é afetado").isEqualTo(200);
+    }
+
     @Test void repeatedWrongPasswordsReturn429WithRetryAfter() {
         String email = email();
         register(email);

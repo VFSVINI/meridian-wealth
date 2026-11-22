@@ -59,6 +59,21 @@ public final class Http {
         }
     }
 
+    /** POST com corpo em fluxo, o que faz o cliente enviar {@code Transfer-Encoding: chunked} (sem Content-Length). */
+    public Reply postChunked(String path, String body) {
+        try {
+            HttpRequest r = HttpRequest.newBuilder(URI.create(base + path)).header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofInputStream(() -> new java.io.ByteArrayInputStream(body.getBytes(java.nio.charset.StandardCharsets.UTF_8)))).build();
+            HttpResponse<String> resp = client.send(r, HttpResponse.BodyHandlers.ofString());
+            return new Reply(resp.statusCode(), resp.headers().map(), resp.body());
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException(e);
+        }
+    }
+
     public Reply get(String path) { return send("GET", path, null, null); }
 
     public Reply get(String path, Map<String, String> headers) { return send("GET", path, headers, null); }

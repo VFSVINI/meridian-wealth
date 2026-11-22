@@ -13,6 +13,7 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 - Rotas do usuário sob `/api/me` (conta e perfil de investidor), protegidas pelo filtro de autenticação e com **isolamento entre usuários por construção** (o dono vem do token, nunca de parâmetro) e `IsolationGuard`.
 - **Rate limit por usuário e por IP real** (dívida 5 resolvida): `X-Forwarded-For` só vale vindo de proxy listado em `MW_TRUSTED_PROXIES`, lido da direita para a esquerda; limite menor nas rotas `/api/auth/*`; resposta 429 com `Retry-After`.
 - **CSP restritiva** (sem script nem estilo embutidos: a interface passou a ser servida em `index.html`, `app.css`, `app.js` e `theme.js`), `nosniff`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, HSTS atrás de HTTPS, **CORS** só para origens exatas configuradas (sem curinga) e WebSocket do stream limitado à própria origem.
+- **Corpo de requisição limitado a 64 KB** em `POST`/`PUT` de `/api/**` (413 antes de ler; fluxo limitado quando não há `Content-Length`) e login que recusa de imediato senha acima de 72 bytes: antes, as rotas públicas de autenticação alocavam dezenas de megabytes por requisição de quem não fez login (achado do code review; 6 requisições de 15 MB em paralelo passaram de +140 MB de memória para nenhuma alocação relevante).
 - ADR 013, `docs/seguranca.md` (com o passo a passo do Google Cloud Console para `localhost` e Hugging Face Spaces), `.env.example`, `README.md` e `SECURITY.md` atualizados; nenhum segredo no repositório.
 
 ### Adicionado (dívida 31, Issue #33)
