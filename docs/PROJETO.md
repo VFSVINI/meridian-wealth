@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR do item #14 (Issue #40), 2026-11-21.
+> Atualizado em todo PR. Última atualização: PR do item #15, etapa 2 (Issue #26), 2026-11-22.
 > Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
@@ -77,9 +77,9 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 - [x] **#14** Observabilidade e FinOps (Correlation-ID, métricas Prometheus por provedor e por cache, health checks em grupos, métricas atrás de token), leituras do mercado sem monitor compartilhado (dívida 3) e fronteiras entre módulos verificadas por ArchUnit. Ver [observabilidade.md](observabilidade.md) e o ADR 016.
 
 ### Milestone 4 — Interface Dark Luxury, Mapas & Home Broker
-- [ ] **#15** Protótipo visual + painel "Minha Carteira" (ECharts, montador de perfil) e botão **"Continuar com Google"** na tela de login e cadastro (seção 2.4).
+- [x] **#15** Protótipo visual + painel "Minha Carteira" (ECharts, montador de perfil) e botão **"Continuar com Google"** na tela de login e cadastro (seção 2.4).
   - [x] Etapa 1 (Issue #31, feita antes do #11): sistema de design, shell (navbar, sidebar, busca Ctrl+K, tema escuro e Ivory) e as páginas que já têm backend. Ver [design-prototipo.md](design-prototipo.md).
-  - [ ] Etapa 2: Minha Carteira, montador de perfil, ECharts e botão "Continuar com Google" (depende dos itens #11 e #12).
+  - [x] Etapa 2 (Issue #26): entrada (senha, Google e demonstração), menu da conta, Minha Carteira (patrimônio, alocação em treemap, aderência com radar, posições, operações, livro, ganho ou perda por posição) com ECharts servido localmente, e "salvar como meu perfil" (montador de perfil). Ver [carteira.md](carteira.md) e o ADR 017.
 - [ ] **#16** Mapa interativo de ativos reais (Leaflet, dark tiles, satélite/Street View).
 - [ ] **#17** Shopping financeiro multi-classe e cockpit home broker (Lightweight Charts, paleta de comandos).
 
@@ -112,8 +112,10 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [014](adr/014-carteira-persistida-preco-medio-e-bloqueio-otimista.md) | Carteira persistida, preço médio ponderado e bloqueio otimista | Aceito |
 | [015](adr/015-livro-de-movimentacoes-idempotencia-e-apoio-ao-ir.md) | Livro de movimentações, idempotência e apoio ao imposto de renda | Aceito |
 | [016](adr/016-monolito-modular-e-observabilidade.md) | Monólito modular com fronteiras verificadas e observabilidade por provedor | Aceito |
+| [017](adr/017-interface-da-carteira-sessao-no-cliente-e-echarts-local.md) | Interface da carteira: sessão no cliente, ECharts local e Google na CSP | Aceito |
 
 Decisões menores (no corpo dos PRs):
+- Item #15 (etapa 2): decimais saem do formulário como texto exato (nunca por `double`); a mesma `Idempotency-Key` vale até a operação dar certo; "por corretora" e "do aporte ao saldo" do protótipo não existem (o modelo não guarda corretora nem aportes: sem dado, sem gráfico); sem "Importar extrato" (Milestone 6) e sem alternância BRL/USD; o avatar do Google não é carregado (inicial do nome), então a CSP não libera imagens externas.
 - Item #14: microsserviços só por gatilho medido (carga, cadência, isolamento, infraestrutura), com a ingestão de mercado como candidata e carteira + livro sempre juntos; `liveness` e `readiness` sem provedor externo e `DEGRADED` em grupo à parte; `X-Correlation-Id` só no formato `[A-Za-z0-9._-]{8,64}`; métricas por provedor lidas do `ProviderStatus` existente; `/actuator/metrics` e `/actuator/prometheus` somem (404) sem `MW_METRICS_TOKEN`.
 - Item #9: nenhuma cotação na simulação (valores em reais do usuário); risco de carteira como limite superior com cobertura declarada; `MoneyBounds` compartilhado; classes nomeadas `Impact` para manter a regra do ArchUnit contra `Simulat`; glossário escrito a partir da leitura do código, com a ligação métrica → entrada testada.
 - Item #8: perguntas ancoradas nas dimensões do art. 3 da Resolução CVM 30 (sem alegar conformidade); tetos de perfil por horizonte curto, necessidade de caixa, falta de reserva e venda em pânico; metas por `AssetCategory` rotuladas como ilustrativas; respostas e carteira não são gravadas nem logadas; aderência só descreve desvio, sem dizer o que comprar ou vender.
@@ -145,21 +147,24 @@ Decisões menores (no corpo dos PRs):
 | 24 | Dividend yield do Informe Mensal sem unidade documentada pela CVM (o veredito compara com o próprio histórico; a tela mostra o valor sem converter) | `domain/reports` | quando a CVM documentar |
 
 | 25 | Pontos, faixas, tetos e metas do suitability são definições do produto, não validadas por profissional habilitado nem por dados históricos | `domain/suitability` | revisão por profissional antes de qualquer uso além do educacional |
-| 26 | A carteira de aderência e a do simulador ainda são digitadas à mão na tela: elas ainda não leem a carteira salva (`GET /api/me/portfolio`) nem o perfil salvo | UI | item #15 (etapa 2) |
+| 26 | O simulador pré-ordem e o tradutor geopolítico ainda pedem a carteira digitada à mão; só a aderência da Minha Carteira lê a carteira e o perfil salvos | UI | item #17 |
 
 | 27 | O risco do simulador ignora a correlação entre posições (média ponderada das volatilidades, limite superior); uma matriz de covariância com históricos alinhados daria o risco real | `domain/impact` | PR futuro (item #20 ou antes) |
 | 28 | O conteúdo do glossário não foi revisado por profissional habilitado, e a lista de rótulos do teste de cobertura é espelhada à mão | `domain/glossary`, `GlossaryTest` | revisão antes de uso além do educacional |
 | 29 | A pressão geopolítica é contagem de palavras-chave em manchetes de terceiros e só mede cinco setores; o setor da posição vem do universo do painel | `GeoRiskScorer`, `GeoTranslator` | fonte de eventos estruturada e mapa de exposição por país (item #16) |
 | 30 | As caracterizações das gestoras e os textos das teses são resumos simplificados, sem revisão pelas instituições nem por profissional habilitado | `ThesisCatalog` | revisão antes de uso além do educacional |
-| 32 | Controles do protótipo sem backend ficam de fora: alternância BRL/USD, modo privacidade, central de alertas e menu do usuário; páginas sem dado real ficam desabilitadas na sidebar | `index.html` (NAV) | itens #11, #12, #15, #16, #18, #19 e Milestone 6 |
+| 32 | Controles do protótipo sem backend ficam de fora: alternância BRL/USD, modo privacidade e central de alertas (o menu do usuário passou a existir no item #15); páginas sem dado real ficam desabilitadas na sidebar | `index.html` (NAV) | itens #11, #12, #15, #16, #18, #19 e Milestone 6 |
 | 34 | O refresh token trafega no corpo da resposta e fica no armazenamento do navegador (um cookie `HttpOnly` com `SameSite` o protegeria melhor de XSS); o ID token do Google não leva `nonce`; as travas de login valem por instância | `AuthController`, `GoogleIdTokenVerifier`, `LoginAttemptLimiter` | item #15 (cliente de login) e item #14 |
 | 36 | Os testes de persistência usam um PostgreSQL embutido (`zonky`), que baixa um binário e exige `commons-lang3` mais novo que o do Spring Boot 3.3; a suíte de contratos não depende dele | `pom.xml`, `testsupport/PostgresDb` | item #20 (Testcontainers) |
 | 37 | O apoio ao IR não calcula imposto devido, DARF nem compensação de prejuízos: a base legal da compensação e do ganho de capital em FII, ETF, cripto e ativos no exterior não foi confirmada em fonte oficial (só os arts. 2º e 3º da Lei 11.033/2004 foram lidos, e o Planalto ainda anota a MP 1.303/2025 com vigência encerrada) | `domain/portfolio/TaxReport` | item #25 (sob pedido), com a base legal confirmada |
 | 38 | O livro é cronológico por ativo (operação anterior à última do ativo é recusada) e não há importação em lote; os eventos de domínio são em processo e voláteis (sem outbox) | `PortfolioService`, `InProcessEventBus` | item #14 (observabilidade) e importação no Milestone 6 |
 | 39 | Posições em dólar abertas antes do livro (item #12) ficam com o custo em reais "não informado" até um ajuste com câmbio | migração V3, `Position` | ajuste manual do usuário |
 | 40 | Se uma série do Banco Central falha na partida (visto uma vez ao vivo: CDI anualizado, SGS 4389, "resposta inesperada", com o serviço respondendo normalmente minutos depois), ela fica "indisponível" até a próxima atualização, 30 minutos depois; o health `officialRates` mostra `DEGRADED` nesse intervalo | `LiveBrazilRates` | repetir mais cedo a série sem valor (item futuro) |
+| 41 | O fluxo do botão do Google (GIS, ID token em popup) e a CSP com o domínio do Google foram testados só com a chave desligada e por teste de integração com chave RSA de teste; **não foi validado ao vivo com um `MW_GOOGLE_CLIENT_ID` real** | `auth.js`, `SecurityHeadersFilter` | quando houver o ID do cliente OAuth |
+| 42 | O token de acesso e o refresh ficam no `localStorage` (a CSP estrita é a defesa contra XSS; um cookie `HttpOnly` seria melhor, ver dívida 34); "Importar extrato" e dados por corretora não existem | `auth.js` | Milestone 6 |
 
 **Resolvidas**
+- Dívida 26 parcial e item #15 (Issue #26): a Minha Carteira lê a carteira e o perfil salvos; o "montador de perfil" salva o resultado do questionário na conta.
 - Dívidas 3 e 4 (item #14, Issue #40): o `MarketService` tem um escritor único e publica um mapa imutável de visões, e as leituras não esperam a atualização (teste: leituras abaixo de 100 ms durante uma atualização de mais de 250 ms, que falha no código anterior); a dívida 4 (`JsonBacktestCache`) já tinha sido resolvida no PR #2.
 - Dívida 35 (item #13, Issue #38): o custo em reais de posição em dólar usa o câmbio de cada compra (PTAX do Banco Central da data ou o câmbio da nota informado pelo usuário), guardado no livro de movimentações; o resultado em reais passou a existir e inclui a variação cambial.
 - Dívidas 6 e 33 (item #12, Issue #36): o cálculo monetário da carteira é todo em `BigDecimal` (preço médio, custo, valorização, câmbio), com `NUMERIC` no banco; contas, sessões e perfil têm adaptadores JDBC (V2) com a rotação do refresh atômica no banco, testados contra um PostgreSQL de verdade. O motor de mercado segue em `double` por decisão do ADR 002.
@@ -196,7 +201,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 555 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 561 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |

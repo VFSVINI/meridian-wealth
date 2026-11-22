@@ -4,6 +4,10 @@ Itens #12 e #13 do roadmap. Decisões em [ADR 014](adr/014-carteira-persistida-p
 ver [seguranca.md](seguranca.md)). A carteira é um registro seu: não é extrato de corretora, a plataforma não executa ordens e nada
 aqui é recomendação de investimento.
 
+## Tela "Minha Carteira" (item #15)
+
+`#/carteira` exige login (senha, Google ou demonstração). Mostra: patrimônio total em reais com o PTAX usado, custo, resultado não realizado, maior posição, HHI e posições efetivas (só sobre as posições com valor em reais); **alocação por classe** (treemap do ECharts com rótulo e percentual em texto); **aderência ao perfil salvo** (nota, tabela e radar meta contra atual, pelo mesmo `POST /api/suitability/adherence` do questionário); **posições** com preço médio, valor, resultado, peso e a fonte e o horário da cotação; **livro de movimentações** com filtro por tipo; e **ganho ou perda por posição**. Compra, venda, ajuste, baixa e abertura usam os formulários da própria tela: os números saem como texto exato, a `Idempotency-Key` é a mesma até a operação dar certo, e o conflito de versão (409) e o PTAX indisponível (503) têm mensagem própria. O que não tem dado (sem cotação, sem câmbio de compra) aparece como "não informado". Sem perfil salvo, a tela leva ao questionário; o botão "Salvar como meu perfil" grava o resultado na conta (`PUT /api/me/profile`).
+
 ## Rotas
 
 | Rota | Corpo | O que faz |
