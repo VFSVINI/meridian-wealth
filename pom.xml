@@ -17,7 +17,7 @@
     <java.version>21</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jacoco.version>0.8.12</jacoco.version>
-    <archunit.version>1.3.0</archunit.version>
+    <archunit.version>1.5.1</archunit.version>
     <!-- O PostgreSQL embutido dos testes (zonky) exige o commons-lang3 mais novo que o gerenciado pelo Spring Boot 3.3. -->
     <commons-lang3.version>3.18.0</commons-lang3.version>
     <!-- Piso de cobertura de linhas; sobe a cada milestone (ver docs/PROJETO.md). -->
