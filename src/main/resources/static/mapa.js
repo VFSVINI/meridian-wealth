@@ -21,21 +21,21 @@ async function loadMapa(){
       MP.funds=c;MP.geo=g;
     }
     if(!LF)throw new Error('leaflet');
-    renderMapa();
+    mpRenderMapa();
   }catch(e){$('#mpMsg').textContent='Não foi possível carregar o mapa agora. Os dados dos imóveis seguem na página Composição (Raio-X).'}
   finally{MP.loading=false}
 }
 const mpAssets=()=>(MP.funds||[]).flatMap(fd=>fd.assets.map(a=>({fund:fd.symbol,src:fd.source,a})));
 const mpFiltered=()=>mpAssets().filter(x=>(MP.fund==='ALL'||x.fund===MP.fund)&&(MP.uf==='ALL'||x.a.uf===MP.uf)&&(MP.kind==='ALL'||(x.a.kind||'NONE')===MP.kind));
 
-function renderMapa(){
+function mpRenderMapa(){
   $('#mpMsg').textContent='';
-  renderFilters();ensureMap();renderStates();renderPins();renderList();renderCompare();
+  mpRenderFilters();ensureMap();mpRenderStates();mpRenderPins();mpRenderList();mpRenderCompare();
 }
 function chips(group,items,cur){
   return `<div class="chips" role="group" aria-label="${esc(group)}">${items.map(([k,l])=>`<button type="button" class="fchip" data-mp="${esc(group)}" data-v="${esc(k)}" aria-pressed="${cur===k}">${esc(l)}</button>`).join('')}</div>`;
 }
-function renderFilters(){
+function mpRenderFilters(){
   const all=mpAssets();
   const ufs=[...new Set(all.map(x=>x.a.uf).filter(Boolean))].sort();
   const kinds=[...new Set(all.map(x=>x.a.kind||'NONE'))];
@@ -56,10 +56,10 @@ function ensureMap(){
   MP.map=LF.map('mpMap',{zoomControl:true,attributionControl:false,minZoom:3,maxZoom:14,zoomSnap:.25,keyboard:true,worldCopyJump:false});
   MP.map.fitBounds([[-34.5,-74.5],[5.5,-33.5]],{animate:false});
   MP.layers.pins=LF.layerGroup().addTo(MP.map);
-  MP.map.on('zoomend',()=>renderPins());
+  MP.map.on('zoomend',()=>mpRenderPins());
 }
 function stateCounts(){const m={};mpAssets().forEach(x=>{if(x.a.uf)m[x.a.uf]=(m[x.a.uf]||0)+1});return m}
-function renderStates(){
+function mpRenderStates(){
   const k=mpColors(),counts=stateCounts(),max=Math.max(1,...Object.values(counts));
   if(MP.layers.states)MP.map.removeLayer(MP.layers.states);
   MP.layers.states=LF.geoJSON(MP.geo,{
@@ -93,7 +93,7 @@ function clusterGroups(items,zoom){
   });
   return groups.map(g=>g.items);
 }
-function renderPins(){
+function mpRenderPins(){
   MP.layers.pins.clearLayers();MP.markers.clear();
   const located=mpFiltered().filter(x=>x.a.coordinates),k=mpColors();
   clusterGroups(located,MP.map.getZoom()).forEach(group=>{
@@ -115,7 +115,7 @@ function renderPins(){
   });
   if(MP.pending&&MP.markers.has(MP.pending)){MP.markers.get(MP.pending).openPopup();MP.pending=null}
 }
-function renderList(){
+function mpRenderList(){
   const items=mpFiltered(),located=items.filter(x=>x.a.coordinates),approx=located.filter(x=>x.a.coordinates.approximate).length,none=items.length-located.length;
   $('#mpCount').textContent=`${located.length-approx} localizado${located.length-approx===1?'':'s'} · ${approx} aproximado${approx===1?'':'s'} · ${none} sem coordenada`;
   $('#mpList').innerHTML=`<h2>${items.length} imóve${items.length===1?'l':'is'} <a href="#/composicao" style="margin-left:auto;font-size:12px;letter-spacing:0;text-transform:none">Raio-X</a></h2><ul class="mplist">${items.map(x=>{
@@ -127,7 +127,7 @@ function renderList(){
   const srcs=MP.funds.filter(fd=>fd.assets.length).map(fd=>`<b>${esc(fd.symbol)}</b>: ${esc(fd.source.kindLabel)} · dados de ${esc(fd.source.referenceDate||'data não informada')} · consultado em ${esc(fd.source.consultedOn)}${fd.stale?' <span class="fresh dn">desatualizado</span>':''}`).join('<br>');
   $('#mpSrc').innerHTML=srcs;
 }
-function renderCompare(){
+function mpRenderCompare(){
   $('#mpCompare').innerHTML=`<h2>Comparação de fundos</h2><div class="scroll"><table><thead><tr><th>Fundo</th><th class="n">ABL listada${GL('abl')}</th><th class="n">Vacância média${GL('vacancy')}</th><th class="n">Imóveis</th><th class="n">Com coordenada</th></tr></thead><tbody>${MP.funds.map(fd=>{
     if(!fd.assets.length)return `<tr><td class="mono"><b>${esc(fd.symbol)}</b></td><td colspan="4" class="mute">Fundo sem imóveis listados (fundo de papel): veja a alocação por classe no <a href="#/composicao">Raio-X</a>.</td></tr>`;
     const withVac=fd.assets.filter(a=>a.vacancyPercent!=null),area=withVac.reduce((s,a)=>s+Number(a.areaM2),0);
@@ -137,12 +137,12 @@ function renderCompare(){
 }
 document.addEventListener('click',e=>{
   const c=e.target.closest('button[data-mp]');
-  if(c){MP[c.dataset.mp]=c.dataset.v;renderFilters();renderPins();renderList();return}
+  if(c){MP[c.dataset.mp]=c.dataset.v;mpRenderFilters();mpRenderPins();mpRenderList();return}
   const p=e.target.closest('button[data-pin]');
-  if(p&&MP.map){const x=mpAssets().find(y=>y.a.id===p.dataset.pin);if(x&&x.a.coordinates){MP.pending=x.a.id;MP.map.flyTo([Number(x.a.coordinates.lat),Number(x.a.coordinates.lng)],MP_CLUSTER_MAX_ZOOM,{duration:.6});setTimeout(()=>{if(MP.pending)renderPins()},900)}}
+  if(p&&MP.map){const x=mpAssets().find(y=>y.a.id===p.dataset.pin);if(x&&x.a.coordinates){MP.pending=x.a.id;MP.map.flyTo([Number(x.a.coordinates.lat),Number(x.a.coordinates.lng)],MP_CLUSTER_MAX_ZOOM,{duration:.6});setTimeout(()=>{if(MP.pending)mpRenderPins()},900)}}
 });
 function onMapaRoute(){if((location.hash.match(/^#\/([a-z]+)/)||[])[1]==='mapa')loadMapa().then(()=>MP.map&&setTimeout(()=>MP.map.invalidateSize(),50))}
 addEventListener('hashchange',onMapaRoute);
-new MutationObserver(()=>{if(MP.map&&MP.funds){renderStates();renderPins()}}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+new MutationObserver(()=>{if(MP.map&&MP.funds){mpRenderStates();mpRenderPins()}}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 addEventListener('resize',()=>{if(MP.map)MP.map.invalidateSize()});
 onMapaRoute();
