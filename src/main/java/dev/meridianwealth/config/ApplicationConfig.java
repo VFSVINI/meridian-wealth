@@ -26,6 +26,7 @@ import dev.meridianwealth.application.port.RefreshTokenStore;
 import dev.meridianwealth.application.port.UserStore;
 import dev.meridianwealth.application.portfolio.PortfolioService;
 import dev.meridianwealth.application.privacy.DataSubjectService;
+import dev.meridianwealth.application.risk.CorrelationService;
 import dev.meridianwealth.application.risk.MonteCarloService;
 import dev.meridianwealth.application.port.SignalStore;
 import dev.meridianwealth.application.port.TickSink;
@@ -96,10 +97,26 @@ public class ApplicationConfig {
     }
 
     @Bean
-    MonteCarloService monteCarloService(PortfolioService portfolio, MarketService market) {
-        return new MonteCarloService(who -> portfolio.list(who).lines().stream().map(l -> new MonteCarloService.Holding(l.assetKey(), l.valuation().position().asset().label(), l.symbol(),
-                l.valuation().position().currency().name(), l.valuation().currentValueBrl())).toList(), market::candles);
+    MonteCarloService.PortfolioSource riskPortfolioSource(PortfolioService portfolio, MarketService market) {
+        return who -> portfolio.list(who).lines().stream().map(l -> new MonteCarloService.Holding(l.assetKey(), l.valuation().position().asset().label(), l.symbol(),
+                l.valuation().position().currency().name(), l.valuation().currentValueBrl(), l.type().category().name(), l.type().category().label(), riskOf(market, l.symbol()))).toList();
     }
+
+    /** Faixa de risco do motor para o ativo, ou {@code null} sem dado suficiente (a tela chama de "sem classificação"). */
+    private static String riskOf(MarketService market, String symbol) {
+        if (symbol == null) return null;
+        try {
+            return market.assessment(symbol).risk().name();
+        } catch (RuntimeException e) {
+            return null;
+        }
+    }
+
+    @Bean
+    MonteCarloService monteCarloService(MonteCarloService.PortfolioSource source, MarketService market) { return new MonteCarloService(source, market::candles); }
+
+    @Bean
+    CorrelationService correlationService(MonteCarloService.PortfolioSource source, MarketService market) { return new CorrelationService(source, market::candles); }
 
     @Bean
     DataSubjectService dataSubjectService(AuthService auth, UserStore users, RefreshTokenStore refreshTokens, PositionStore positions, PortfolioLedger ledger,
