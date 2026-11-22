@@ -116,7 +116,7 @@ public final class MonteCarlo {
         return sorted[lo] + (sorted[hi] - sorted[lo]) * (pos - lo);
     }
 
-    private static double shareAtOrAbove(double[] sorted, double goal) {
+    static double shareAtOrAbove(double[] sorted, double goal) {
         int idx = Arrays.binarySearch(sorted, goal);
         int first;
         if (idx >= 0) {
