@@ -48,7 +48,7 @@ public class ApiRateLimitFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        String p = request.getRequestURI();
+        String p = RequestPaths.dispatchPath(request);
         return !p.startsWith("/api/") || p.startsWith("/api/stream");
     }
 
@@ -57,7 +57,8 @@ public class ApiRateLimitFilter extends OncePerRequestFilter {
         Object attr = req.getAttribute(AuthPrincipal.CLIENT_IP_ATTRIBUTE);
         String ip = attr instanceof String s ? s : ips.resolve(req.getRemoteAddr(), req.getHeader("X-Forwarded-For"));
         AuthPrincipal who = (AuthPrincipal) req.getAttribute(AuthPrincipal.REQUEST_ATTRIBUTE);
-        boolean authRoute = req.getRequestURI().startsWith("/api/auth/") && !req.getRequestURI().equals("/api/auth/config");
+        String path = RequestPaths.dispatchPath(req);
+        boolean authRoute = path.startsWith("/api/auth/") && !path.equals("/api/auth/config");
         boolean over;
         if (who != null) {
             over = cache.incrementWindow("rl:u:" + who.userId(), Duration.ofMinutes(1)) > (who.demo() ? demoPerMinute : userPerMinute);
