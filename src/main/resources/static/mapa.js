@@ -3,7 +3,8 @@
    Só dado real: imóvel sem coordenada aparece na lista com o motivo e nunca ganha marcador. Depende de app.js (helpers $, esc, f) e do Leaflet. */
 /* o app.js já usa o identificador global L (layout do gráfico de preço): o Leaflet é lido de window.L */
 const LF=window.L;
-const MP={funds:null,geo:null,map:null,layers:{states:null,pins:null},fund:'ALL',uf:'ALL',kind:'ALL',loading:false,markers:new Map()};
+const MP={funds:null,geo:null,map:null,layers:{states:null,pins:null},fund:'ALL',uf:'ALL',kind:'ALL',loading:false,markers:new Map(),pending:null};
+const MP_CLUSTER_PX=36,MP_CLUSTER_MAX_ZOOM=11; // agrupa o que ficaria a menos de 36 px um do outro, até o zoom 11
 const UF_BY_CODE={11:'RO',12:'AC',13:'AM',14:'RR',15:'PA',16:'AP',17:'TO',21:'MA',22:'PI',23:'CE',24:'RN',25:'PB',26:'PE',27:'AL',28:'SE',29:'BA',31:'MG',32:'ES',33:'RJ',35:'SP',41:'PR',42:'SC',43:'RS',50:'MS',51:'MT',52:'GO',53:'DF'};
 const MP_KIND={GALPAO_LOGISTICO:'Galpão logístico',EDIFICIO_COMERCIAL:'Edifício comercial',SHOPPING:'Shopping center',LAJE_CORPORATIVA:'Laje corporativa'};
 const MP_FUND_COL=['--gold','--info','--up','--warn'];
@@ -52,9 +53,10 @@ function legend(){
 }
 function ensureMap(){
   if(MP.map){MP.map.invalidateSize();return}
-  MP.map=LF.map('mpMap',{zoomControl:true,attributionControl:false,minZoom:3,maxZoom:10,zoomSnap:.25,keyboard:true,worldCopyJump:false});
+  MP.map=LF.map('mpMap',{zoomControl:true,attributionControl:false,minZoom:3,maxZoom:14,zoomSnap:.25,keyboard:true,worldCopyJump:false});
   MP.map.fitBounds([[-34.5,-74.5],[5.5,-33.5]],{animate:false});
   MP.layers.pins=LF.layerGroup().addTo(MP.map);
+  MP.map.on('zoomend',()=>renderPins());
 }
 function stateCounts(){const m={};mpAssets().forEach(x=>{if(x.a.uf)m[x.a.uf]=(m[x.a.uf]||0)+1});return m}
 function renderStates(){
@@ -78,15 +80,40 @@ function popupHtml(x){
    <div class="plinks"><a href="${esc(c.satelliteUrl)}" target="_blank" rel="noopener noreferrer">Satélite</a><a href="${esc(c.streetViewUrl)}" target="_blank" rel="noopener noreferrer">Street View</a></div>
    <div class="src">${esc(x.src.kindLabel)}: ${esc(x.src.name)} · dados de ${esc(x.src.referenceDate||'data não informada')}</div></div>`;
 }
+/* Agrupa por proximidade em pixels no zoom atual: cada imóvel entra no primeiro grupo cujo centro está a menos de MP_CLUSTER_PX (e o centro é
+   recalculado). Uma grade fixa deixaria marcadores de células vizinhas se sobrepondo; sem agrupar, os imóveis de SP, RJ e MG se empilham. */
+function clusterGroups(items,zoom){
+  if(zoom>=MP_CLUSTER_MAX_ZOOM)return items.map(x=>[x]);
+  const groups=[];
+  items.forEach(x=>{
+    const pt=MP.map.project([Number(x.a.coordinates.lat),Number(x.a.coordinates.lng)],zoom);
+    const g=groups.find(c=>Math.hypot(c.x-pt.x,c.y-pt.y)<MP_CLUSTER_PX);
+    if(g){g.items.push(x);g.x=(g.x*(g.items.length-1)+pt.x)/g.items.length;g.y=(g.y*(g.items.length-1)+pt.y)/g.items.length}
+    else groups.push({x:pt.x,y:pt.y,items:[x]});
+  });
+  return groups.map(g=>g.items);
+}
 function renderPins(){
   MP.layers.pins.clearLayers();MP.markers.clear();
-  mpFiltered().filter(x=>x.a.coordinates).forEach(x=>{
-    const c=x.a.coordinates,col=mpFundColor(x.fund);
+  const located=mpFiltered().filter(x=>x.a.coordinates),k=mpColors();
+  clusterGroups(located,MP.map.getZoom()).forEach(group=>{
+    if(group.length>1){
+      const lat=group.reduce((s,x)=>s+Number(x.a.coordinates.lat),0)/group.length,lng=group.reduce((s,x)=>s+Number(x.a.coordinates.lng),0)/group.length;
+      const funds=[...new Set(group.map(x=>x.fund))].join(', ');
+      const icon=LF.divIcon({className:'mpin cluster',html:`<i style="--c:${k.gold}"><b>${group.length}</b></i>`,iconSize:[30,30],iconAnchor:[15,15]});
+      const m=LF.marker([lat,lng],{icon,keyboard:true,title:`${group.length} imóveis (${funds}): ampliar`});
+      m.on('click',()=>{const bounds=LF.latLngBounds(group.map(x=>[Number(x.a.coordinates.lat),Number(x.a.coordinates.lng)]));
+        if(bounds.getSouthWest().equals(bounds.getNorthEast()))MP.map.setView(bounds.getCenter(),MP_CLUSTER_MAX_ZOOM,{animate:true});else MP.map.fitBounds(bounds,{padding:[50,50],maxZoom:12})});
+      m.on('keypress',e=>{if(e.originalEvent&&(e.originalEvent.key==='Enter'||e.originalEvent.key===' '))m.fire('click')});
+      m.addTo(MP.layers.pins);return;
+    }
+    const x=group[0],c=x.a.coordinates,col=mpFundColor(x.fund);
     const icon=LF.divIcon({className:'mpin '+(c.approximate?'dashed':'solid'),html:`<i style="--c:${col}"></i>`,iconSize:[22,22],iconAnchor:[11,11],popupAnchor:[0,-12]});
     const m=LF.marker([Number(c.lat),Number(c.lng)],{icon,keyboard:true,title:`${x.a.name} (${x.fund})`,alt:`${x.a.name}, ${x.fund}, ${c.approximate?'posição aproximada':'endereço localizado'}`});
     m.bindPopup(popupHtml(x),{maxWidth:300,className:'mw-popup'});
     m.addTo(MP.layers.pins);MP.markers.set(x.a.id,m);
   });
+  if(MP.pending&&MP.markers.has(MP.pending)){MP.markers.get(MP.pending).openPopup();MP.pending=null}
 }
 function renderList(){
   const items=mpFiltered(),located=items.filter(x=>x.a.coordinates),approx=located.filter(x=>x.a.coordinates.approximate).length,none=items.length-located.length;
@@ -112,7 +139,7 @@ document.addEventListener('click',e=>{
   const c=e.target.closest('button[data-mp]');
   if(c){MP[c.dataset.mp]=c.dataset.v;renderFilters();renderPins();renderList();return}
   const p=e.target.closest('button[data-pin]');
-  if(p&&MP.map){const m=MP.markers.get(p.dataset.pin);if(m){MP.map.flyTo(m.getLatLng(),Math.max(MP.map.getZoom(),8),{duration:.6});m.openPopup()}}
+  if(p&&MP.map){const x=mpAssets().find(y=>y.a.id===p.dataset.pin);if(x&&x.a.coordinates){MP.pending=x.a.id;MP.map.flyTo([Number(x.a.coordinates.lat),Number(x.a.coordinates.lng)],MP_CLUSTER_MAX_ZOOM,{duration:.6});setTimeout(()=>{if(MP.pending)renderPins()},900)}}
 });
 function onMapaRoute(){if((location.hash.match(/^#\/([a-z]+)/)||[])[1]==='mapa')loadMapa().then(()=>MP.map&&setTimeout(()=>MP.map.invalidateSize(),50))}
 addEventListener('hashchange',onMapaRoute);

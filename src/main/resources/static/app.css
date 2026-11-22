@@ -197,6 +197,7 @@ button.danger{border-color:var(--down);color:var(--down)}button.danger:hover{bac
 .mpin{background:transparent;border:0}.mpin i{display:block;width:20px;height:20px;border-radius:50%;background:var(--c);border:2px solid var(--panel);box-shadow:0 0 0 1px var(--c)}
 .mpin.dashed i{border:2px dashed var(--bg);background:color-mix(in srgb,var(--c) 70%,transparent);box-shadow:0 0 0 2px var(--c)}
 .mpin:focus-visible i,.mpin:focus i{outline:2px solid var(--text);outline-offset:2px}
+.mpin.cluster i{width:30px;height:30px;display:grid;place-items:center;background:var(--c);color:var(--gold-fg);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 35%,transparent);border:2px solid var(--panel)}.mpin.cluster b{font:600 13px var(--mono)}
 .legendlist.col{flex-direction:column;gap:8px}.pin{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--c);flex:none}.pin.dashed{background:color-mix(in srgb,var(--c) 70%,transparent);border:2px dashed var(--bg);box-shadow:0 0 0 2px var(--c)}
 .mpop dl{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin:8px 0}.mpop dt{color:var(--text-3);font-size:12px}.mpop dd{margin:0;font-family:var(--mono);font-size:12.5px}
 .plinks{display:flex;gap:8px;margin:8px 0}.plinks a{border:1px solid var(--line-2);border-radius:var(--r);padding:4px 12px;text-decoration:none;color:var(--text)}.plinks a:hover{border-color:var(--gold);color:var(--gold)}
