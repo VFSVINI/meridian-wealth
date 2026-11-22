@@ -542,7 +542,7 @@ const IC={home:'M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',mercad
  saude:'M3 12h4l3-8 4 16 3-8h4',privacidade:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4'};
 const NAV=[['VISÃO GERAL',[['home','Painel inicial'],['mercados','Mercados']]],
  ['ANÁLISE',[['cockpit','Cockpit do ativo'],['radar','Radar de relatórios'],['brasil','Brasil: juros e inflação'],['geo','Geopolítica e teses']]],
- ['PATRIMÔNIO',[['carteira','Minha Carteira'],['perfil','Perfil e carteira modelo'],['simulador','Simulador pré-ordem'],['mapa','Mapa de ativos reais','item #16'],['composicao','Composição (Raio-X)']]],
+ ['PATRIMÔNIO',[['carteira','Minha Carteira'],['perfil','Perfil e carteira modelo'],['simulador','Simulador pré-ordem'],['mapa','Mapa de ativos reais'],['composicao','Composição (Raio-X)']]],
  ['RISCO',[['montecarlo','Monte Carlo','item #18'],['correlacao','Correlação e concentração','item #19'],['stress','Stress testing','sob pedido']]],
  ['APRENDER',[['glossario','Glossário']]],
  ['CONTA',[['alertas','Alertas','sob pedido'],['config','Configurações','item #11 e #15'],['saude','Saúde dos dados'],['privacidade','Privacidade e termos']]]];

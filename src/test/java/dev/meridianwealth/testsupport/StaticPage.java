@@ -20,6 +20,6 @@ public final class StaticPage {
 
     /** index.html seguido do CSS e dos scripts, como se fossem um só documento. */
     public static String whole() throws IOException {
-        return file("index.html") + "\n" + file("app.css") + "\n" + file("theme.js") + "\n" + file("app.js") + "\n" + file("auth.js") + "\n" + file("carteira.js");
+        return file("index.html") + "\n" + file("app.css") + "\n" + file("theme.js") + "\n" + file("app.js") + "\n" + file("auth.js") + "\n" + file("carteira.js") + "\n" + file("mapa.js");
     }
 }

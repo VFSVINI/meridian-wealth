@@ -23,11 +23,11 @@ class CspReadinessTest {
         Matcher m = Pattern.compile("(?:src|href)=\"([^\"]+)\"").matcher(html);
         while (m.find()) refs.add(m.group(1));
         assertThat(refs).isNotEmpty().allSatisfy(r -> assertThat(r).as("referência externa: " + r).matches("^(/|#).*"));
-        assertThat(html).contains("<script src=\"/theme.js\">").contains("<script src=\"/app.js\">").contains("<script src=\"/auth.js\">").contains("<script src=\"/carteira.js\">").contains("<script src=\"/vendor/echarts.min.js\">").contains("<link rel=\"stylesheet\" href=\"/app.css\">");
+        assertThat(html).contains("<script src=\"/theme.js\">").contains("<script src=\"/app.js\">").contains("<script src=\"/auth.js\">").contains("<script src=\"/carteira.js\">").contains("<script src=\"/vendor/echarts.min.js\">").contains("<script src=\"/vendor/leaflet.js\">").contains("<script src=\"/mapa.js\">").contains("<link rel=\"stylesheet\" href=\"/app.css\">");
     }
 
     @Test void theScriptDoesNotBuildCodeAtRuntimeNorGenerateInlineHandlers() throws IOException {
-        String js = StaticPage.file("app.js") + StaticPage.file("theme.js") + StaticPage.file("auth.js") + StaticPage.file("carteira.js");
+        String js = StaticPage.file("app.js") + StaticPage.file("theme.js") + StaticPage.file("auth.js") + StaticPage.file("carteira.js") + StaticPage.file("mapa.js");
         assertThat(js).doesNotContain("eval(").doesNotContain("new Function(").doesNotContain("document.write(").doesNotContain("javascript:");
         assertThat(js).doesNotContainPattern("set(Timeout|Interval)\\(\\s*[\"'`]");
         assertThat(js).as("marcação gerada com manipulador de evento seria bloqueada pela CSP").doesNotContainPattern("(?i)\\son(click|change|input|submit|load|error|focus|blur|keydown)=[\"']");
@@ -46,7 +46,7 @@ class CspReadinessTest {
     }
 
     @Test void externalLinksOpenedInANewTabNeverGiveTheOpenerBack() throws IOException {
-        String all = StaticPage.file("app.js") + StaticPage.file("carteira.js") + StaticPage.file("index.html");
+        String all = StaticPage.file("app.js") + StaticPage.file("carteira.js") + StaticPage.file("mapa.js") + StaticPage.file("index.html");
         Matcher m = Pattern.compile("<a [^>]*target=\"_blank\"[^>]*>").matcher(all);
         int found = 0;
         while (m.find()) {

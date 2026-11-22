@@ -56,7 +56,7 @@ class ShellContractTest {
 
     @Test void unavailableEntriesNameTheRoadmapItemThatDeliversThem() {
         List<NavEntry> soon = nav().stream().filter(e -> e.soon() != null).toList();
-        assertThat(soon).extracting(NavEntry::id).contains("mapa", "montecarlo", "correlacao", "stress", "alertas", "config");
+        assertThat(soon).extracting(NavEntry::id).contains("montecarlo", "correlacao", "stress", "alertas", "config");
         assertThat(soon).allSatisfy(e -> assertThat(e.soon()).matches("item #\\d+( e #\\d+)?|sob pedido"));
     }
 
