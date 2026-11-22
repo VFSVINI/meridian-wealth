@@ -27,6 +27,7 @@ class ModuleBoundariesTest {
             "auth", Set.of("suitability"),
             "composition", Set.of(),
             "glossary", Set.of(),
+            "montecarlo", Set.of(),
             "impact", Set.of("suitability"),
             "portfolio", Set.of(),
             "reports", Set.of("composition"),
@@ -37,7 +38,8 @@ class ModuleBoundariesTest {
     private static final Map<String, Set<String>> APPLICATION = Map.of(
             "auth", Set.of(),
             "portfolio", Set.of("auth"),
-            "privacy", Set.of("auth"));
+            "privacy", Set.of("auth"),
+            "risk", Set.of("auth", "portfolio"));
 
     private static void check(String layer, Map<String, Set<String>> modules) {
         for (Map.Entry<String, Set<String>> m : modules.entrySet()) {
