@@ -92,6 +92,18 @@ class AuthApiIntegrationTest {
                 .issueTime(new Date()).expirationTime(Date.from(Instant.now().plusSeconds(3000)));
     }
 
+    @Test void apiDocumentationAndAdminSurfacesAreOffByDefaultAndErrorsDoNotEchoInput() {
+        assertThat(http.get("/v3/api-docs").status()).as("a lista de todas as rotas não fica pública").isEqualTo(404);
+        assertThat(http.get("/swagger-ui/index.html").status()).isEqualTo(404);
+        assertThat(http.get("/actuator/env").status()).isEqualTo(404);
+        Http.Reply odd = http.get("/api/candles/%3Cscript%3Ealert(1)%3C/script%3E");
+        assertThat(odd.status()).isEqualTo(404);
+        assertThat(odd.body()).as("a mensagem de erro não devolve a entrada do usuário").doesNotContain("script").doesNotContain("alert");
+        Http.Reply broken = http.post("/api/auth/login", "{nao e json");
+        assertThat(broken.status()).isEqualTo(400);
+        assertThat(broken.body()).doesNotContain("Exception").doesNotContain("at dev.").doesNotContain("com.fasterxml");
+    }
+
     @Test void configReportsWhatTheEnvironmentOffers() {
         Http.Reply r = http.get("/api/auth/config");
         assertThat(r.status()).isEqualTo(200);
@@ -102,6 +114,65 @@ class AuthApiIntegrationTest {
         assertThat(r.get("registrationEnabled")).isEqualTo(true);
         assertThat(r.get("passwordMinLength")).isEqualTo(12);
         assertThat(r.header("Cache-Control")).contains("no-store");
+    }
+
+    private static final Map<String, String> COOKIE_MODE = Map.of("X-Session-Mode", "cookie");
+
+    private static String cookieValue(Http.Reply r) {
+        String c = r.header("Set-Cookie");
+        assertThat(c).as("Set-Cookie ausente").isNotNull().startsWith("mw_rt=");
+        return c.substring("mw_rt=".length(), c.indexOf(';'));
+    }
+
+    private static Map<String, String> withCookie(String value) { return Map.of("X-Session-Mode", "cookie", "Cookie", "mw_rt=" + value); }
+
+    @Test void cookieModeKeepsTheRefreshTokenOutOfTheBodyAndOutOfReachOfScripts() {
+        String email = email();
+        Http.Reply login = http.post("/api/auth/register", COOKIE_MODE, Map.of("email", email, "password", PASSWORD, "displayName", "Teste"));
+        assertThat(login.status()).isEqualTo(201);
+        String setCookie = login.header("Set-Cookie");
+        assertThat(setCookie).contains("HttpOnly").contains("SameSite=Strict").contains("Path=/api/auth").contains("Max-Age=").doesNotContain("Secure");
+        assertThat(login.get("refreshToken")).as("o refresh token não aparece no corpo: um XSS não teria o que ler").isNull();
+        assertThat(login.body()).doesNotContain(cookieValue(login));
+        assertThat(login.get("accessToken")).isNotNull();
+
+        String c1 = cookieValue(login);
+        Http.Reply r2 = http.post("/api/auth/refresh", withCookie(c1), null);
+        assertThat(r2.status()).isEqualTo(200);
+        assertThat(r2.get("refreshToken")).isNull();
+        String c2 = cookieValue(r2);
+        assertThat(c2).as("o refresh gira a cada uso").isNotEqualTo(c1);
+        assertThat(http.get("/api/me", bearer((String) r2.get("accessToken"))).status()).isEqualTo(200);
+
+        Http.Reply reuse = http.post("/api/auth/refresh", withCookie(c1), null);
+        assertThat(reuse.status()).isEqualTo(401);
+        assertThat(reuse.get("code")).isEqualTo("REFRESH_TOKEN_REUSED");
+        assertThat(reuse.header("Set-Cookie")).as("o cookie comprometido é apagado do navegador").contains("mw_rt=;").contains("Max-Age=0");
+        assertThat(http.post("/api/auth/refresh", withCookie(c2), null).status()).as("a família inteira caiu").isEqualTo(401);
+    }
+
+    @Test void theCookieIsIgnoredWithoutTheSessionModeHeaderAndLogoutClearsIt() {
+        Http.Reply login = http.post("/api/auth/register", COOKIE_MODE, Map.of("email", email(), "password", PASSWORD, "displayName", "Teste"));
+        String c1 = cookieValue(login);
+        Http.Reply noHeader = http.post("/api/auth/refresh", Map.of("Cookie", "mw_rt=" + c1), null);
+        assertThat(noHeader.status()).as("sem o cabeçalho (defesa extra contra CSRF) o cookie não vale").isEqualTo(401);
+        Http.Reply ok = http.post("/api/auth/refresh", withCookie(c1), null);
+        assertThat(ok.status()).isEqualTo(200);
+        String c2 = cookieValue(ok);
+        Http.Reply out = http.post("/api/auth/logout", withCookie(c2), null);
+        assertThat(out.status()).isEqualTo(204);
+        assertThat(out.header("Set-Cookie")).contains("mw_rt=;").contains("Max-Age=0").contains("HttpOnly");
+        assertThat(http.post("/api/auth/refresh", withCookie(c2), null).status()).as("o logout revogou a sessão").isEqualTo(401);
+        assertThat(http.post("/api/auth/refresh", COOKIE_MODE, null).status()).as("sem cookie").isEqualTo(401);
+    }
+
+    @Test void theCookieIsSecureUnderHttpsFromATrustedProxyOnlyAndTheDemoHasNone() {
+        Map<String, String> https = Map.of("X-Session-Mode", "cookie", "X-Forwarded-Proto", "https");
+        Http.Reply direct = http.post("/api/auth/register", https, Map.of("email", email(), "password", PASSWORD, "displayName", "Teste"));
+        assertThat(direct.header("Set-Cookie")).as("X-Forwarded-Proto de quem não é proxy confiável é ignorado").doesNotContain("Secure");
+        Http.Reply demo = http.post("/api/auth/demo", COOKIE_MODE, null);
+        assertThat(demo.status()).isEqualTo(200);
+        assertThat(demo.header("Set-Cookie")).as("a sessão de demonstração não renova, então não tem cookie").isNull();
     }
 
     @Test void passwordFlowRegisterLoginRefreshReuseAndLogout() {

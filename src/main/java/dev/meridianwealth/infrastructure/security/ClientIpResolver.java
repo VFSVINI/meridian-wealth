@@ -49,6 +49,12 @@ public class ClientIpResolver {
         this.trusted = List.copyOf(list);
     }
 
+    /** A conexão original do cliente é HTTPS: direta, ou anunciada por um proxy confiável ({@code X-Forwarded-Proto}). */
+    public boolean isHttps(jakarta.servlet.http.HttpServletRequest req) {
+        if (req.isSecure()) return true;
+        return "https".equalsIgnoreCase(req.getHeader("X-Forwarded-Proto")) && isTrusted(req.getRemoteAddr());
+    }
+
     public boolean isTrusted(String address) {
         byte[] b = literal(address);
         return b != null && trusted.stream().anyMatch(c -> c.contains(b));

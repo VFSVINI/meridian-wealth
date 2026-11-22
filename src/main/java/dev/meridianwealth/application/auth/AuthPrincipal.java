@@ -11,5 +11,8 @@ public record AuthPrincipal(UUID userId, AuthProvider provider) {
     /** Atributo da requisição com o IP real do cliente (já resolvido com proxies confiáveis). */
     public static final String CLIENT_IP_ATTRIBUTE = "meridianwealth.clientIp";
 
+    /** Atributo da requisição: a conexão original do cliente é HTTPS (direta ou por proxy confiável). Decide a flag {@code Secure} do cookie. */
+    public static final String HTTPS_ATTRIBUTE = "meridianwealth.https";
+
     public boolean demo() { return provider == AuthProvider.DEMO; }
 }
