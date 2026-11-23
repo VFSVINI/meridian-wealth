@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR do item #21 (Issue #55), 2026-11-23. Milestone 4 concluído (v0.4.0).
+> Atualizado em todo PR. Última atualização: PR do item #21 (Issue #55), 2026-11-23. Milestone 5 concluído (v0.5.0).
 > Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
