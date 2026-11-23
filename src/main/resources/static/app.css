@@ -222,3 +222,25 @@ details>summary{cursor:pointer;color:var(--text-2);margin-top:var(--s2)}
 .crlegend{display:flex;align-items:center;gap:6px;margin-top:var(--s2);flex-wrap:wrap}.crlegend i{width:26px;height:10px;border-radius:2px;background:var(--panel-2);display:inline-block}.crlegend i.neg{background:var(--down)}.crlegend i.pos{background:var(--up)}
 @media(max-width:1180px){.ct-top{grid-template-columns:1fr}.un{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* item #30: fundação visual (tema claro com superfícies que se destacam, escala fluida, seletor de ativo com busca) */
+:root[data-theme="ivory"]{--bg:#eeeadd;--panel:#ffffff;--panel-2:#f6f2e6;--popover:#ffffff;--line:#cdc2a4;--line-2:#8c8060;
+--gold:#7a5d22;--gold-2:#654c1a;--up:#0a6b59;--down:#a63a34}
+:root[data-theme="ivory"] .card{box-shadow:0 1px 2px rgba(60,48,20,.10),0 4px 14px rgba(60,48,20,.05)}
+:root[data-theme="ivory"] .lwc{background:var(--panel)}
+.content{padding:clamp(12px,2.2vw,var(--s5)) clamp(12px,3vw,var(--s6)) var(--s6)}
+h1{font-size:clamp(26px,3.4vw,40px)}
+.card{padding:clamp(12px,1.6vw,var(--s4)) clamp(12px,2vw,var(--s5))}
+@media(min-width:981px) and (max-width:1180px){
+  body.collapsed .grid2,body.collapsed .grid-home{grid-template-columns:minmax(0,1fr) minmax(280px,340px)}
+  body.collapsed .grid3,body.collapsed .sig-cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:1366px){body{font-size:13.5px}.nav a,.nav button.item{font-size:13px}}
+.combo{position:relative;min-width:min(420px,100%);max-width:520px;flex:1 1 320px}
+.combo input{width:100%}
+.combo ul{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:50;margin:0;padding:4px;list-style:none;max-height:340px;overflow:auto;background:var(--popover);border:1px solid var(--line-2);border-radius:var(--r);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.combo li{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:baseline;padding:7px 10px;border-radius:6px;cursor:pointer;font-size:13px}
+.combo li b{font-family:var(--mono);font-weight:600}.combo li span{color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.combo li small{color:var(--text-3);font-size:11px}
+.combo li[aria-selected="true"],.combo li:hover{background:var(--panel-2);outline:1px solid var(--gold)}
+.combo li.none{cursor:default;color:var(--text-3);display:block}
+.symbar .combo{flex:1 1 320px}
