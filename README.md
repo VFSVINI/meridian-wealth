@@ -36,9 +36,9 @@
 ## Resumo executivo
 
 - **O que é:** cockpit analítico multi-ativo que mostra, com fórmulas e gatilhos explicados, quando comprar na baixa, manter a tendência ou realizar lucro; carteira persistida com livro de movimentações, risco (Monte Carlo e correlação), mapa de ativos reais e radar de relatórios.
-- **O que garante:** nenhum preço simulado (fonte, horário e atraso em cada cotação; sem dado, a tela diz isso), `BigDecimal` no dinheiro, arquitetura hexagonal verificada por teste, 675 testes, teste de mutação do domínio (85% mortos) e PostgreSQL real nos testes de concorrência.
+- **O que garante:** nenhum preço simulado (fonte, horário e atraso em cada cotação; sem dado, a tela diz isso), `BigDecimal` no dinheiro, arquitetura hexagonal verificada por teste, 676 testes, teste de mutação do domínio (85% mortos) e PostgreSQL real nos testes de concorrência.
 - **O que não é:** não executa ordens e não é recomendação financeira.
-- **Como publicar de graça:** Hugging Face Spaces (Docker, porta 7860) com PostgreSQL no Neon: [docs/deploy.md](docs/deploy.md).
+- **Como publicar de graça:** Render (Docker, plano gratuito) com PostgreSQL no Neon: [docs/deploy.md](docs/deploy.md). O Hugging Face Spaces exige plano pago para Docker.
 - **Como rodar local:** `docker compose up --build` ou `./mvnw spring-boot:run` (seção abaixo).
 
 ## Executar
@@ -83,7 +83,7 @@ Swagger (só com `MW_API_DOCS=true`): `http://localhost:8080/swagger-ui.html`. S
 | `MW_PERSISTENCE` | `false` | `true` grava candles e sinais no PostgreSQL |
 | `MW_EXCLUDE_AUTOCONFIG` | lista JDBC/Flyway/Redis | vazio no Compose para ligar banco e Redis |
 | `DB_URL`, `DB_USER`, `DB_PASSWORD`, `REDIS_HOST`, `REDIS_PORT` | locais | conexões |
-| `PORT` | `8080` | porta do servidor (o Space usa `7860`) |
+| `PORT` | `8080` | porta do servidor (o Render define sozinho) |
 | `DB_POOL_SIZE`, `DB_CONNECT_TIMEOUT_MS` | `10`, `30000` | pool de conexões e espera pela primeira (o Neon gratuito limita conexões e suspende o banco ocioso) |
 
 ## Endpoints
@@ -151,8 +151,8 @@ Comportamento e latência observados em 2026-11-20 (sexta-feira, após o fechame
 - [`docs/PROJETO.md`](docs/PROJETO.md): visão, regras, roadmap, decisões, dívidas e como rodar.
 - [`docs/mercados.md`](docs/mercados.md): bolsas, calendários, fontes com latência medida e indicadores do BCB.
 - [`docs/carteira.md`](docs/carteira.md): posições, preço médio ponderado, versão, moedas e valorização.
-- [`docs/deploy.md`](docs/deploy.md): runbook do deploy gratuito (Hugging Face Spaces + Neon), variáveis, verificação, reversão e pontos a conferir no primeiro deploy.
-- [`docs/seguranca.md`](docs/seguranca.md): autenticação, Login com Google (passo a passo do Google Cloud Console para `localhost` e Hugging Face Spaces), variáveis e proxies.
+- [`docs/deploy.md`](docs/deploy.md): runbook do deploy gratuito (Render + Neon), variáveis, verificação, reversão e pontos a conferir no primeiro deploy.
+- [`docs/seguranca.md`](docs/seguranca.md): autenticação, Login com Google (passo a passo do Google Cloud Console para `localhost` e para o endereço do deploy), variáveis e proxies.
 - [`docs/taxonomia.md`](docs/taxonomia.md): tipos de ativo, atributos e o que foi verificado.
 - [`docs/adr/`](docs/adr/): decisões de arquitetura (hexagonal, precisão financeira, frontend sem build, dados reais e procedência).
 - [`CONTRIBUTING.md`](CONTRIBUTING.md), [`SECURITY.md`](SECURITY.md) e [`CHANGELOG.md`](CHANGELOG.md).

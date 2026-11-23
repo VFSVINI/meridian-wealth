@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR do item #21 (Issue #55), 2026-11-23. Milestone 5 concluído (v0.5.0).
+> Atualizado em todo PR. Última atualização: PR da correção do deploy (Issue #58), 2026-11-23. Milestone 5 concluído (v0.5.0).
 > Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
@@ -90,7 +90,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 - [x] **#18** Monte Carlo e metas (`#/montecarlo`): cone patrimonial (percentis 5, 25, 50, 75 e 95), probabilidade de bater a meta e distribuição do patrimônio final, por premissas manuais ou pela carteira salva (reamostragem de retornos **reais** alinhados por data, que preserva a correlação). Sempre rotulado projeção; determinístico por semente. Ver o ADR 020.
 - [x] **#19** Correlação e concentração (`#/correlacao`): matriz de correlação de Pearson entre ativos e entre classes (retornos reais, par a par, 252 pregões, célula sem dado fica "n/d"), risco da carteira com a correlação contra a média ponderada (benefício da diversificação) e mapa de concentração por faixa de risco. Ver o ADR 021.
 - [x] **#20** Testcontainers (PostgreSQL 16 em contêiner na CI), concorrência e idempotência pela API HTTP nos dois modos de persistência (cadastro, refresh e venda simultâneos) e **PIT** (teste de mutação) sobre o domínio, com meta de 80% (medido 85%). Ver o ADR 022.
-- [x] **#21** Deploy cloud gratuito: Space do Hugging Face (Docker, porta 7860) com PostgreSQL no Neon, workflow manual de publicação, runbook ([deploy.md](deploy.md)) e README executivo. O deploy em si depende das contas do dono e **não foi executado**; os pontos a conferir no primeiro deploy estão no runbook. Ver o ADR 023.
+- [x] **#21** Deploy cloud gratuito: serviço web do Render (Docker, plano gratuito) com PostgreSQL no Neon, `render.yaml`, runbook ([deploy.md](deploy.md)) e README executivo. O primeiro plano (Hugging Face Spaces) caiu porque Docker exige plano pago; o deploy real depende das contas do dono e **ainda não foi concluído**. Ver os ADRs 023 e 024.
 
 ### Milestone 6 — Extensões Premium (só sob pedido)
 - [ ] **#22** Central de alertas · [ ] **#23** Rebalanceamento assistido · [ ] **#24** Calendário de renda passiva · [ ] **#25** Apuração de impostos · [ ] **#26** Backtest avançado · [ ] **#27** Stress testing · [ ] **#28** Research Studio · [ ] **#29** Importação e reconciliação.
@@ -121,10 +121,11 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [020](adr/020-monte-carlo-reprodutivel-e-excecao-a-aleatoriedade.md) | Monte Carlo reprodutível e a exceção estreita à regra de aleatoriedade | Aceito |
 | [021](adr/021-correlacao-par-a-par-e-celula-sem-dado.md) | Correlação par a par, célula sem dado e risco da carteira com diversificação | Aceito |
 | [022](adr/022-testes-de-persistencia-em-conteiner-e-mutacao.md) | Persistência testada em contêiner, concorrência pela API e teste de mutação | Aceito |
-| [023](adr/023-deploy-gratuito-hugging-face-e-neon.md) | Deploy gratuito no Hugging Face Spaces com PostgreSQL no Neon | Aceito |
+| [023](adr/023-deploy-gratuito-hugging-face-e-neon.md) | Deploy gratuito no Hugging Face Spaces com PostgreSQL no Neon | Substituído pelo 024 |
+| [024](adr/024-deploy-gratuito-render-e-neon.md) | Deploy gratuito no Render com PostgreSQL no Neon | Aceito |
 
 Decisões menores (no corpo dos PRs):
-- Item #21: o Redis fica fora do deploy gratuito (cache em memória); o workflow de publicação é manual; o `HEALTHCHECK` usa o `liveness` porque o agregado fica `DEGRADED` (normal) enquanto falta dado de algum provedor.
+- Item #21 (corrigido na Issue #58): o Hugging Face exige plano pago para Docker, então o deploy vai para o Render; o Redis fica fora do deploy gratuito (cache em memória); o Render publica sem workflow nosso (`autoDeploy: false`); o `HEALTHCHECK` usa o `liveness` porque o agregado fica `DEGRADED` (normal) enquanto falta dado de algum provedor.
 - Item #20: o PostgreSQL embutido segue como padrão local (sem Docker) e o contêiner roda na CI; o teste dourado do motor de timing é de caracterização (congela o comportamento) e vem do PIT, que achou o motor com 85% dos mutantes vivos; a meta de mutação é 80% e só sobe; o beta com benchmark parado passou a ser "não informado" e o motor deixou de explicar um sinal de realização com "sem gatilhos relevantes" (agora diz que o sinal vem da soma de leituras moderadas).
 - Item #19: correlação par a par (um ativo curto só apaga as próprias células), piso de 60 pregões, célula sem dado é `null` e vira "n/d", nunca zero; classe sem histórico em comum fica fora da matriz de classes e a tela diz; ativos sem faixa de risco do motor vão para a coluna "sem classificação" do mapa de concentração.
 - Item #18: `SplittableRandom` com semente explícita só em `domain.montecarlo` (as outras fontes de aleatoriedade seguem proibidas); posição sem histórico real fica parada no valor atual, nunca preenchida com a Selic ou o CDI; ativos em dólar entram pelo retorno na moeda do ativo (o câmbio não entra); a semente padrão sai da própria entrada, então reabrir a tela mostra o mesmo cone.
@@ -218,7 +219,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 675 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 676 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
