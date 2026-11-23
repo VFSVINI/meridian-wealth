@@ -432,6 +432,80 @@ class TimingEngineGoldenTest {
                 tuple("COMPRA", "Força relativa: +6.1 pp acima do benchmark em 60 barras"));
     }
 
+    @Test void quiet() {
+        Assessment a = assess("quiet");
+        assertThat(a.score()).isEqualTo(-24);
+        assertThat(a.signal()).isEqualTo(Signal.TAKE_PROFIT_WINDOW);
+        assertThat(a.phase()).isEqualTo(Phase.ESTICADO_REALIZAR);
+        assertThat(a.regime()).isEqualTo(Regime.RANGE);
+        assertThat(a.confidence()).isEqualTo(84);
+        assertThat(a.risk()).isEqualTo(RiskClass.LOW);
+        assertThat(a.periodsPerYear()).isEqualTo(252);
+        assertThat(a.beta()).isNull();
+        assertThat(a.price()).isCloseTo(100.2724958667, within(TOL));
+        assertThat(a.zScore()).isCloseTo(0.8641937402, within(TOL));
+        assertThat(a.percentile()).isCloseTo(79.1164658635, within(TOL));
+        assertThat(a.rsi()).isCloseTo(52.5447651355, within(TOL));
+        assertThat(a.macdHist()).isCloseTo(0.0166368905, within(TOL));
+        assertThat(a.annVol()).isCloseTo(0.0815049049, within(TOL));
+        assertThat(a.maxDrawdown()).isCloseTo(0.0124343740, within(TOL));
+        assertThat(a.sharpe()).isCloseTo(-0.0809227391, within(TOL));
+        assertThat(a.var95()).isCloseTo(0.0096582738, within(TOL));
+        assertThat(a.atr()).isCloseTo(1.5568182179, within(TOL));
+        assertThat(a.fairValue()).isCloseTo(99.9976817918, within(TOL));
+        assertThat(a.entryLow()).isCloseTo(99.3733069228, within(TOL));
+        assertThat(a.entryHigh()).isCloseTo(100.6617004212, within(TOL));
+        assertThat(a.invalidation()).isCloseTo(97.1588594309, within(TOL));
+        assertThat(a.target1()).isCloseTo(101.8293140846, within(TOL));
+        assertThat(a.target2()).isCloseTo(103.3861323025, within(TOL));
+        assertThat(a.upside()).isCloseTo(0.0310517496, within(TOL));
+        assertThat(a.downside()).isCloseTo(0.0310517496, within(TOL));
+        assertThat(a.riskReward()).isCloseTo(1.0000000000, within(TOL));
+        assertThat(a.expectedValue()).isCloseTo(-0.0049682799, within(TOL));
+        assertThat(a.suggestedExposure()).isCloseTo(0.0000000000, within(TOL));
+        assertThat(a.relStrength()).isCloseTo(0.0000000000, within(TOL));
+        assertThat(a.relVolume()).isCloseTo(1.1680644804, within(TOL));
+        assertThat(a.factors()).extracting(Factor::side, Factor::text).containsExactly(
+                tuple("VENDA", "Nenhum gatilho passou do limite sozinho; o sinal vem da soma de leituras moderadas (Z-Score 0.86, percentil 79%, RSI 53)"));
+    }
+
+    @Test void calm() {
+        Assessment a = assess("calm");
+        assertThat(a.score()).isEqualTo(-4);
+        assertThat(a.signal()).isEqualTo(Signal.HIGH_RISK_WAIT);
+        assertThat(a.phase()).isEqualTo(Phase.CAUTELA_EVITAR);
+        assertThat(a.regime()).isEqualTo(Regime.RANGE);
+        assertThat(a.confidence()).isEqualTo(84);
+        assertThat(a.risk()).isEqualTo(RiskClass.LOW);
+        assertThat(a.periodsPerYear()).isEqualTo(252);
+        assertThat(a.beta()).isNull();
+        assertThat(a.price()).isCloseTo(100.0395960206, within(TOL));
+        assertThat(a.zScore()).isCloseTo(0.1630861745, within(TOL));
+        assertThat(a.percentile()).isCloseTo(51.8072289157, within(TOL));
+        assertThat(a.rsi()).isCloseTo(50.3328738850, within(TOL));
+        assertThat(a.macdHist()).isCloseTo(0.0033634062, within(TOL));
+        assertThat(a.annVol()).isCloseTo(0.0831190001, within(TOL));
+        assertThat(a.maxDrawdown()).isCloseTo(0.0132162699, within(TOL));
+        assertThat(a.sharpe()).isCloseTo(-0.0778691903, within(TOL));
+        assertThat(a.var95()).isCloseTo(0.0086207889, within(TOL));
+        assertThat(a.atr()).isCloseTo(1.6180888895, within(TOL));
+        assertThat(a.fairValue()).isCloseTo(99.9972996073, within(TOL));
+        assertThat(a.entryLow()).isCloseTo(99.5473931717, within(TOL));
+        assertThat(a.entryHigh()).isCloseTo(100.4441182430, within(TOL));
+        assertThat(a.invalidation()).isCloseTo(96.8034182416, within(TOL));
+        assertThat(a.target1()).isCloseTo(101.6576849101, within(TOL));
+        assertThat(a.target2()).isCloseTo(103.2757737996, within(TOL));
+        assertThat(a.upside()).isCloseTo(0.0323489689, within(TOL));
+        assertThat(a.downside()).isCloseTo(0.0323489689, within(TOL));
+        assertThat(a.riskReward()).isCloseTo(1.0000000000, within(TOL));
+        assertThat(a.expectedValue()).isCloseTo(-0.0008626392, within(TOL));
+        assertThat(a.suggestedExposure()).isCloseTo(0.0000000000, within(TOL));
+        assertThat(a.relStrength()).isCloseTo(0.0000000000, within(TOL));
+        assertThat(a.relVolume()).isCloseTo(1.1680644804, within(TOL));
+        assertThat(a.factors()).extracting(Factor::side, Factor::text).containsExactly(
+                tuple("ALERTA", "Sem gatilhos relevantes: preço próximo do valor justo estatístico"));
+    }
+
     @Test void crypto() {
         Assessment a = assess("crypto");
         assertThat(a.score()).isEqualTo(40);

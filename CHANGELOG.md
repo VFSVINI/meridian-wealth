@@ -13,7 +13,8 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 - **Teste dourado do motor de timing** (11 cenários determinísticos, todos os campos e os textos dos fatores), testes de frescor, beta, volume relativo, ATR, quantis e limites do Monte Carlo e da correlação.
 
 ### Corrigido (item #20)
-- O **beta** com benchmark praticamente parado devolvia números gigantes (da ordem de 10¹²), porque só a variância exatamente zero era tratada; agora vira "não informado" (achado do PIT).
+- O motor podia dizer **"Realizar lucro" e justificar com "Sem gatilhos relevantes"**: o score soma componentes, mas a lista de fatores só mostrava os que passam de um limite sozinhos; em 4 de 11 séries calmas o sinal saiu da soma de leituras moderadas com a explicação de reserva. Agora, sem gatilho individual e com |score| de pelo menos 20, o fator diz que o sinal vem da soma de leituras moderadas, com Z-Score, percentil e RSI (achado do code review, ao cobrir o último ramo que o PIT mostrou sem cobertura).
+- O **beta** com benchmark praticamente parado devolvia números gigantes (da ordem de 10¹²), porque só a variância exatamente zero era tratada; agora vira "não informado" (achado ao montar os cenários do teste dourado; o PIT mostrava o `beta` com mutantes vivos).
 
 ### Adicionado (item #19 do roadmap)
 - **Correlação e concentração** (`#/correlacao`, `GET /api/me/risk/correlation`, com login): matriz de **correlação de Pearson** entre os ativos e entre as classes da carteira salva, sobre os últimos 252 retornos diários reais, **par a par** (cada par usa as datas que os dois têm); par com menos de 60 pregões em comum, ou série que não varia, fica **"n/d"** (nunca zero), com o número de pregões no título da célula; o número aparece em toda célula com dado.

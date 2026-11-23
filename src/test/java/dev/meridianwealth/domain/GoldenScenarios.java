@@ -54,6 +54,12 @@ final class GoldenScenarios {
         m.put("knifeMacro", new Scenario("knifeMacro", candles(knife, 1000, 0, 1), 0.9, null, 252));
         m.put("benchBehind", new Scenario("benchBehind", candles(up, 1000, 0, 1), 0.1, benchFast, 252));
         m.put("benchAhead", new Scenario("benchAhead", candles(up, 1000, 0, 1), 0.1, bench, 252));
+        // série calma, sem nenhum gatilho individual, mas com a soma de leituras moderadas passando de 20 (o sinal sai sem fator isolado)
+        double[] quiet = series(300, i -> 100 + 0.36 * Math.sin(i * 1.52) + 0.278 * Math.cos(i * 2.6));
+        m.put("quiet", new Scenario("quiet", candles(quiet, 1000, 0, 1), 0.1, null, 252));
+        // série calma com score neutro: aí sim a explicação é "sem gatilhos relevantes"
+        double[] calm = series(300, i -> 100 + 0.54 * Math.sin(i * 2.78) + 0.512 * Math.cos(i * 3.5));
+        m.put("calm", new Scenario("calm", candles(calm, 1000, 0, 1), 0.1, null, 252));
         m.put("crypto", new Scenario("crypto", candles(down, 1000, 0, 1), 0.2, null, 365));
         return m;
     }

@@ -123,7 +123,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [022](adr/022-testes-de-persistencia-em-conteiner-e-mutacao.md) | Persistência testada em contêiner, concorrência pela API e teste de mutação | Aceito |
 
 Decisões menores (no corpo dos PRs):
-- Item #20: o PostgreSQL embutido segue como padrão local (sem Docker) e o contêiner roda na CI; o teste dourado do motor de timing é de caracterização (congela o comportamento) e vem do PIT, que achou o motor com 85% dos mutantes vivos; a meta de mutação é 80% e só sobe; o beta com benchmark parado passou a ser "não informado".
+- Item #20: o PostgreSQL embutido segue como padrão local (sem Docker) e o contêiner roda na CI; o teste dourado do motor de timing é de caracterização (congela o comportamento) e vem do PIT, que achou o motor com 85% dos mutantes vivos; a meta de mutação é 80% e só sobe; o beta com benchmark parado passou a ser "não informado" e o motor deixou de explicar um sinal de realização com "sem gatilhos relevantes" (agora diz que o sinal vem da soma de leituras moderadas).
 - Item #19: correlação par a par (um ativo curto só apaga as próprias células), piso de 60 pregões, célula sem dado é `null` e vira "n/d", nunca zero; classe sem histórico em comum fica fora da matriz de classes e a tela diz; ativos sem faixa de risco do motor vão para a coluna "sem classificação" do mapa de concentração.
 - Item #18: `SplittableRandom` com semente explícita só em `domain.montecarlo` (as outras fontes de aleatoriedade seguem proibidas); posição sem histórico real fica parada no valor atual, nunca preenchida com a Selic ou o CDI; ativos em dólar entram pelo retorno na moeda do ativo (o câmbio não entra); a semente padrão sai da própria entrada, então reabrir a tela mostra o mesmo cone.
 - Item #17: o logotipo da TradingView fica desligado porque injeta `<style>` e a CSP o bloqueia (crédito por texto e link); o shopping só mostra a referência oficial de cada indexador e diz que a taxa do produto não existe; nomes globais dos scripts passam a ser únicos por teste (a colisão `renderList` do mapa quebrou a lista de Mercados e foi corrigida aqui).
@@ -216,7 +216,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 662 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 665 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
