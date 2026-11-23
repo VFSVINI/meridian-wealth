@@ -6,6 +6,10 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+## [0.5.0] - 2026-11-23
+
+Fecha o Milestone 5 (itens #18 a #21): risco quantitativo, testes de concorrência e deploy gratuito.
+
 ### Adicionado (item #21 do roadmap)
 - **Deploy gratuito** no Hugging Face Spaces (SDK Docker, porta 7860) com PostgreSQL no Neon: `deploy/hf/` (Dockerfile com UID 1000 e README com `sdk: docker` e `app_port: 7860`), workflow **manual** `deploy-hf.yml` (segredos `HF_TOKEN` e `HF_SPACE` do dono do repositório) e o runbook [docs/deploy.md](docs/deploy.md), com variáveis, verificação, reversão e os pontos que só se provam com o Space no ar. ADR 023.
 - Resumo executivo no README; variáveis `PORT`, `DB_POOL_SIZE` e `DB_CONNECT_TIMEOUT_MS`.
