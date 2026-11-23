@@ -61,7 +61,7 @@
 
     <section class="page" data-page="cockpit" hidden>
       <div class="ph"><p class="eyebrow">Análise</p><h1>Cockpit do ativo</h1><p class="lede">Preço, sinal de timing e o porquê de cada fator. Leitura analítica: não é ordem nem recomendação.</p></div>
-      <div class="symbar"><label for="pickCockpit">Ativo</label><select class="symPick" id="pickCockpit" aria-label="Ativo"></select></div>
+      <div class="symbar"><label>Ativo</label><div class="symPick" id="pickCockpit"></div></div>
       <div class="grid2">
         <div>
           <div class="head"><span class="sym" id="hSym">—</span><span class="mute" id="hName"></span><span class="px" id="hPx"></span><span class="num" id="hChg"></span></div>
@@ -97,7 +97,7 @@
 
     <section class="page" data-page="radar" hidden>
       <div class="ph"><p class="eyebrow">Análise</p><h1>Radar de relatórios</h1><p class="lede">Balanços e informes mensais dos dados abertos da CVM, com veredito calculado por regra explícita e o calendário de prazos.</p></div>
-      <div class="symbar"><label for="pickRadar">Ativo</label><select class="symPick" id="pickRadar" aria-label="Ativo"></select></div>
+      <div class="symbar"><label>Ativo</label><div class="symPick" id="pickRadar"></div></div>
       <div class="card rx"><h2>Relatórios <span class="tag info">dado oficial CVM</span></h2><div id="rr" class="mute" style="font-size:12.5px">Selecione uma ação ou fundo imobiliário brasileiro.</div></div>
     </section>
 
@@ -208,7 +208,7 @@
 
     <section class="page" data-page="composicao" hidden>
       <div class="ph"><p class="eyebrow">Patrimônio</p><h1>Composição (Raio-X)</h1><p class="lede">Imóveis, vacância e alocação dos fundos imobiliários com dado curado, com a fonte e a data de cada informação.</p></div>
-      <div class="symbar"><label for="pickComp">Ativo</label><select class="symPick" id="pickComp" aria-label="Ativo"></select></div>
+      <div class="symbar"><label>Ativo</label><div class="symPick" id="pickComp"></div></div>
       <div class="card rx"><h2>Raio-X <span class="tag info">dado curado</span></h2><div id="rx" class="mute" style="font-size:12.5px">Selecione um fundo imobiliário.</div></div>
     </section>
 
@@ -266,6 +266,7 @@
 <script src="/vendor/echarts.min.js"></script>
 <script src="/vendor/leaflet.js"></script>
 <script src="/vendor/lightweight-charts.standalone.production.js"></script>
+<script src="/picker.js"></script>
 <script src="/app.js"></script>
 <script src="/auth.js"></script>
 <script src="/carteira.js"></script>

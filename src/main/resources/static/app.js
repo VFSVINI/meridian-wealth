@@ -533,15 +533,15 @@ $('#menuBtn').onclick=()=>{const o=document.body.classList.toggle('navopen');$('
 function closeNav(back){document.body.classList.remove('navopen');$('#menuBtn').setAttribute('aria-expanded','false');if(back)$('#menuBtn').focus()}
 $('#scrim').onclick=()=>closeNav(false);
 addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('navopen'))closeNav(true)});
-try{if(localStorage.getItem('mw-nav')==='collapsed')document.body.classList.add('collapsed')}catch(e){}
+/* barra lateral: a escolha do usuário vale; sem escolha, telas até 1279px já começam recolhidas (notebook com escala de 125%) */
+try{const pref=localStorage.getItem('mw-nav');if(pref==='collapsed'||(!pref&&matchMedia('(max-width:1279px)').matches))document.body.classList.add('collapsed')}catch(e){}
 $('#navCollapse').onclick=()=>{const c=document.body.classList.toggle('collapsed');try{localStorage.setItem('mw-nav',c?'collapsed':'open')}catch(e){}requestAnimationFrame(draw)};
 $('#theme').onclick=()=>{const r=document.documentElement,n=r.dataset.theme==='ivory'?'dark':'ivory';r.dataset.theme=n;try{localStorage.setItem('mw-theme',n)}catch(e){}draw()};
 /* seletor de ativo das páginas de análise (todos sincronizados com o ativo selecionado) */
 function buildPickers(){
-  const opts=universe.map(u=>`<option value="${esc(u.symbol)}">${esc(u.symbol)} · ${esc(u.name)}</option>`).join('');
-  document.querySelectorAll('.symPick').forEach(s=>{s.innerHTML=opts;s.value=sel||'';s.onchange=()=>select(s.value)});
+  document.querySelectorAll('.symPick').forEach(s=>{mountAssetPicker(s,universe,sym=>select(sym));if(sel)s.setAsset(sel)});
 }
-function syncPick(){document.querySelectorAll('.symPick').forEach(s=>{if(sel)s.value=sel})}
+function syncPick(){document.querySelectorAll('.symPick').forEach(s=>{if(sel&&s.setAsset)s.setAsset(sel)})}
 /* busca rápida (Ctrl+K): páginas e ativos */
 function palOpen(){const d=$('#pal');if(!d.open)d.showModal();$('#palQ').value='';palRender();$('#palQ').focus()}
 function palRender(){
@@ -563,11 +563,13 @@ $('#palList').addEventListener('click',e=>{const b=e.target.closest('button');if
   if(b.dataset.pg){if(b.dataset.pg==='glossario')openGloss();else go(b.dataset.pg)}else if(b.dataset.as){select(b.dataset.as);go('cockpit')}});
 $('#pal').addEventListener('click',e=>{if(e.target===$('#pal'))$('#pal').close()});
 addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();palOpen()}});
+/* saudação pelo horário de Brasília: 0h–4h59 madrugada, 5h–11h59 dia, 12h–17h59 tarde, 18h em diante noite */
+function greeting(h){return h<5?'Boa madrugada':h<12?'Bom dia':h<18?'Boa tarde':'Boa noite'}
 /* painel inicial: só dado real, com frescor e fonte */
 function renderHome(){
   const now=new Date(),tz={timeZone:'America/Sao_Paulo'};
   const h=Number(now.toLocaleTimeString('pt-BR',{hour:'2-digit',hour12:false,...tz}).slice(0,2));
-  $('#hmH1').textContent=h<12?'Bom dia':h<18?'Boa tarde':'Boa noite';
+  $('#hmH1').textContent=greeting(h);
   $('#hmDate').textContent=now.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric',...tz}).toUpperCase()+' · '+now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',...tz})+' (BRASÍLIA)';
   const live=universe.filter(u=>hasData(rows[u.symbol]));
   const sig=live.filter(u=>rows[u.symbol].assessment).sort((a,b)=>Math.abs(rows[b.symbol].assessment.score)-Math.abs(rows[a.symbol].assessment.score)).slice(0,3);
