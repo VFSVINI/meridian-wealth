@@ -13,5 +13,5 @@ COPY --from=build /src/target/meridian-wealth.jar app.jar
 USER app
 EXPOSE 8080
 HEALTHCHECK --interval=15s --timeout=3s --start-period=90s \
-  CMD wget -qO- http://localhost:8080/actuator/health/liveness | grep -q UP || exit 1
+  CMD wget -qO- http://localhost:${PORT:-8080}/actuator/health/liveness | grep -q UP || exit 1
 ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75", "-jar", "app.jar"]

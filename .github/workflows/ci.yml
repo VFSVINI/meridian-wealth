@@ -51,8 +51,6 @@ jobs:
         run: docker compose config -q
       - name: Build da imagem
         run: docker build -t meridian-wealth:ci .
-      - name: Build da imagem do Space (Hugging Face)
-        run: docker build -f deploy/hf/Dockerfile -t meridian-wealth-hf:ci .
   mutation:
     name: Teste de mutação (PIT, domínio)
     runs-on: ubuntu-latest
