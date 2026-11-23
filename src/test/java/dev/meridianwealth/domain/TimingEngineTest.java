@@ -63,4 +63,26 @@ class TimingEngineTest {
         org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class,
                 () -> engine.assess("T", candles(c), 0));
     }
+
+    @Test void theNoTriggersExplanationNeverAccompaniesASignalThatMovedOnTheSumOfModerateReadings() {
+        int reserve = 0, summed = 0;
+        for (int k = 1; k <= 60; k++) {
+            double a = 0.3 + 0.01 * k, b = 0.2 + 0.013 * k;
+            double[] c = new double[300];
+            for (int i = 0; i < 300; i++) c[i] = 100 + a * Math.sin(i * (1.1 + 0.07 * k)) + b * Math.cos(i * (2.3 + 0.05 * k));
+            Assessment as = engine.assess("Q", candles(c), 0.1);
+            boolean onlyOneFactor = as.factors().size() == 1;
+            if (onlyOneFactor && as.factors().get(0).text().startsWith("Sem gatilhos")) {
+                reserve++;
+                assertThat(Math.abs(as.score())).as("k=%d: \"sem gatilhos\" só com score neutro", k).isLessThan(20);
+            }
+            if (onlyOneFactor && as.factors().get(0).text().startsWith("Nenhum gatilho passou do limite sozinho")) {
+                summed++;
+                assertThat(Math.abs(as.score())).as("k=%d", k).isGreaterThanOrEqualTo(20);
+                assertThat(as.factors().get(0).side()).isEqualTo(as.score() > 0 ? "COMPRA" : "VENDA");
+            }
+        }
+        assertThat(reserve).as("a varredura exercita o caso neutro").isPositive();
+        assertThat(summed).as("e o caso da soma de leituras moderadas").isPositive();
+    }
 }

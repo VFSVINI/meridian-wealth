@@ -149,7 +149,16 @@ public final class TimingEngine {
         if (hasBench && rs > 0.05) f.add(new Factor("COMPRA", String.format(l, "Força relativa: %+.1f pp acima do benchmark em 60 barras", rs * 100)));
         if (hasBench && rs < -0.05) f.add(new Factor("ALERTA", String.format(l, "Força relativa fraca: %+.1f pp frente ao benchmark em 60 barras", rs * 100)));
         if (relVol > 1.8 && z < -1) f.add(new Factor("ALERTA", String.format(l, "Volume %.1fx a média em queda: capitulação ou distribuição, confirmar estabilização", relVol)));
-        if (f.isEmpty()) f.add(new Factor("ALERTA", "Sem gatilhos relevantes: preço próximo do valor justo estatístico"));
+        if (f.isEmpty()) {
+            // o score soma componentes; os fatores acima só mostram os que passam do limite sozinhos. Se a soma de leituras moderadas já move o sinal (|score| >= 20),
+            // a explicação precisa dizer isso, em vez de afirmar "sem gatilhos" ao lado de um sinal de compra ou de realização
+            if (Math.abs(score) >= 20) {
+                f.add(new Factor(score > 0 ? "COMPRA" : "VENDA", String.format(l,
+                        "Nenhum gatilho passou do limite sozinho; o sinal vem da soma de leituras moderadas (Z-Score %.2f, percentil %.0f%%, RSI %.0f)", z, pct, rsi)));
+            } else {
+                f.add(new Factor("ALERTA", "Sem gatilhos relevantes: preço próximo do valor justo estatístico"));
+            }
+        }
         return f;
     }
 }
