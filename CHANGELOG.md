@@ -6,6 +6,14 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #21 do roadmap)
+- **Deploy gratuito** no Hugging Face Spaces (SDK Docker, porta 7860) com PostgreSQL no Neon: `deploy/hf/` (Dockerfile com UID 1000 e README com `sdk: docker` e `app_port: 7860`), workflow **manual** `deploy-hf.yml` (segredos `HF_TOKEN` e `HF_SPACE` do dono do repositório) e o runbook [docs/deploy.md](docs/deploy.md), com variáveis, verificação, reversão e os pontos que só se provam com o Space no ar. ADR 023.
+- Resumo executivo no README; variáveis `PORT`, `DB_POOL_SIZE` e `DB_CONNECT_TIMEOUT_MS`.
+- Testes: coerência dos arquivos de deploy e a aplicação inteira subindo como no Space (banco ligado, Redis desligado) contra PostgreSQL.
+
+### Corrigido (item #21)
+- O `HEALTHCHECK` dos Dockerfiles procurava `UP` no health agregado, que devolve `DEGRADED` (HTTP 200) quando falta dado de algum provedor; agora usa `/actuator/health/liveness`.
+
 ### Adicionado (item #20 do roadmap)
 - **Testcontainers 1.21.4:** `PostgresDb` escolhe o PostgreSQL por `-Dmw.test.postgres=`; o padrão segue sendo o binário embutido (sem Docker) e `container` sobe um PostgreSQL 16 do Testcontainers. A CI roda, depois do `verify`, os contratos de persistência, a migração V3 e a aplicação com banco **no contêiner**. Fecha a dívida 36.
 - **Concorrência e idempotência pela API HTTP**, nos dois modos de persistência: cadastro simultâneo do mesmo e-mail (uma conta, as outras 409), refresh simultâneo do mesmo cookie (uma troca, as outras 401, família revogada) e venda total simultânea da mesma posição (uma venda, nunca 500, livro com abertura e uma venda).
