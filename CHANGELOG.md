@@ -7,6 +7,7 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 ## [Não lançado]
 
 ### Corrigido (Issue #58, deploy do item #21)
+- O runbook do deploy subestimava o proxy não confiável: além dos 300 pedidos por minuto, as rotas pesadas (Monte Carlo e correlação) têm 10 por minuto, e atrás do proxy o site inteiro divide esse limite (medido: da 11ª chamada em diante, 429); configurar `MW_TRUSTED_PROXIES` passou a ser obrigatório antes de divulgar o endereço (achado do code review).
 - O **Hugging Face Spaces exige plano pago para Docker** (só Spaces estáticos são gratuitos); a premissa do ADR 023 não tinha sido conferida no site. O deploy gratuito passa a ser o **Render** (Docker, plano gratuito) com o PostgreSQL no Neon: `render.yaml` (Blueprint), runbook reescrito, ADR 024 (substitui o 023), limites de memória da JVM por variável e o `HEALTHCHECK` do `Dockerfile` seguindo a `PORT`. Saem `deploy/hf/` e o workflow do Hugging Face.
 
 ## [0.5.0] - 2026-11-23

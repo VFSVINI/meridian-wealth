@@ -54,14 +54,14 @@ Deve responder `{"status":"UP"}` (a primeira chamada depois de uma pausa demora)
 
 ## Atrás do proxy do Render
 
-O tráfego chega ao contêiner por um proxy do Render. Sem `MW_TRUSTED_PROXIES`, todos os visitantes aparecem com o IP do proxy e dividem **um único balde** de limite de requisições (300 por minuto), e o cookie de sessão não recebe o atributo `Secure` (o servidor não sabe que a conexão original é HTTPS). Veja o ponto 1 abaixo para descobrir o endereço do proxy. Não ligue `MW_FORCE_HTTPS` antes de o proxy ser confiável: sem isso o redirecionamento entraria em laço.
+O tráfego chega ao contêiner por um proxy do Render. Sem `MW_TRUSTED_PROXIES`, todos os visitantes aparecem com o IP do proxy e dividem **um único balde**: 300 requisições por minuto no geral e **apenas 10 por minuto nas rotas pesadas** (Monte Carlo e correlação), ou seja, o site inteiro, somados todos os visitantes, faz 10 simulações por minuto (medido: da 11ª chamada em diante, 429). Por isso configurar `MW_TRUSTED_PROXIES` é **obrigatório antes de divulgar o endereço**. Além disso, o cookie de sessão não recebe o atributo `Secure` (o servidor não sabe que a conexão original é HTTPS). Veja o ponto 1 abaixo para descobrir o endereço do proxy. Não ligue `MW_FORCE_HTTPS` antes de o proxy ser confiável: sem isso o redirecionamento entraria em laço.
 
 ## Pontos a verificar no primeiro deploy
 
 Estes itens dependem do ambiente real e não puderam ser validados antes:
 
 1. **Faixa do proxy:** com `MW_TRUSTED_PROXIES` vazio, a primeira requisição que chegar com `X-Forwarded-For` gera nos *Logs* do serviço o aviso `X-Forwarded-For ignorado: a conexão vem de <endereço>, que não está em MW_TRUSTED_PROXIES` (só o endereço do proxy é registrado, nunca o IP do visitante). Liste esse endereço (ou a faixa que o contém, se o Render documentar uma) em `MW_TRUSTED_PROXIES`, reinicie e confira que o aviso sumiu, que o cookie `mw_rt` sai com `Secure` e que a resposta traz `Strict-Transport-Security` e `wss://` na CSP. Enquanto o proxy não é confiável, o servidor acha que a conexão é HTTP: sem `Secure` no cookie, sem HSTS e com `ws://` na CSP.
-2. **Memória:** o ajuste da JVM (`-Xmx280m`, medido cerca de 236 MB em uso leve) cabe nos 512 MB, mas o consumo durante um Monte Carlo pesado não foi medido. Se o serviço for reiniciado por falta de memória, os *Logs* e as métricas do Render mostram.
+2. **Memória:** o ajuste da JVM (`-Xmx280m`) foi medido localmente com 12 simulações de 40 anos (4 em paralelo): 237 MB em uso e nenhum `OutOfMemory`, dentro dos 512 MB. O que não foi medido é o consumo real no Render; se o serviço for reiniciado por falta de memória, os *Logs* e as métricas dele mostram.
 3. **Partida lenta:** a CPU gratuita é pequena e o Spring Boot pode levar minutos para subir; se a verificação de saúde do Render derrubar o serviço antes, aumente a tolerância ou use um plano pago.
 4. **Cripto:** a Binance bloqueia algumas regiões de nuvem (HTTP 451); o failover para Coinbase e Kraken existe (ADR 005), mas só se prova no ar (dívida 13). O status do stream mostra a bolsa em uso.
 5. **Partida a frio do Neon:** o banco suspende ocioso e a primeira conexão pode levar alguns segundos (`DB_CONNECT_TIMEOUT_MS`, 30 s por padrão).

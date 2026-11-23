@@ -10,7 +10,7 @@ O ADR 023 escolheu o Hugging Face Spaces sem conferir no site do provedor se o S
 
 Pesquisa de 2026-11-23 sobre planos gratuitos com Docker: o Koyeb passou a exigir cartão (com bloqueio de US$ 29); o Back4App tem 256 MB, pouco para a JVM; o Render oferece Docker, 512 MB e 750 horas por mês, e dorme após 15 minutos sem acesso. As fontes divergem em detalhes (CPU, banda), então os limites são conferidos no site do Render antes do deploy.
 
-Medição local: a aplicação com `-Xmx300m` e coletor serial ocupa cerca de 236 MB depois de algumas requisições, o que cabe em 512 MB.
+Medição local com as flags do blueprint (`-Xmx280m`, coletor serial) e 12 simulações de Monte Carlo de 40 anos (4 em paralelo): 237 MB em uso, sem `OutOfMemory`, o que cabe em 512 MB.
 
 ## Decisão
 
@@ -23,6 +23,7 @@ Medição local: a aplicação com `-Xmx300m` e coletor serial ocupa cerca de 23
 
 - O deploy continua dependendo de ações do dono (conta, segredos, criação do serviço). Os pontos que só se provam no ar (faixa do proxy, memória em Monte Carlo, partida lenta com CPU pequena, failover da cripto, banda gratuita) ficam listados no runbook.
 - O plano gratuito dorme e a CPU é pequena: a primeira visita depois de uma pausa é lenta.
+- Atrás do proxy do Render, sem `MW_TRUSTED_PROXIES`, o site inteiro divide o limite de 10 simulações por minuto das rotas pesadas (medido): configurar o proxy é obrigatório antes de divulgar o endereço.
 - Sem a restrição do iframe do Hugging Face, a CSP `frame-ancestors 'none'` permanece como está.
 - Plano B se o gratuito não bastar: Oracle Cloud "Always Free" (mais memória, mas exige cartão e cadastro trabalhoso) ou um plano pago de entrada.
 
