@@ -6,6 +6,10 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #31, etapa 1: página inicial)
+- **Hero 3D original** na página inicial: um medalhão dourado com o "M" da marca, em **three.js 0.170.0** (MIT) servido localmente com SHA-256 fixado, que inclina com o ponteiro e gira devagar. Título editorial com a saudação, subtítulo e botões em pílula, sobre um degradê azul-marinho. Pausa fora da tela e com a aba oculta, tem um quadro estático com movimento reduzido e, sem WebGL, o medalhão em CSS. Nenhum número ou preço dentro do 3D (é identidade, não dado). ADR 026.
+- Estrutura inspirada no Wealthsimple (hero escuro e calmo, título grande, pílulas, objeto 3D) **sem copiar marca, moeda, vídeo nem texto** deles.
+
 ### Adicionado (item #30 do roadmap, Milestone 7)
 - **Seletor de ativo com busca** (`picker.js`): combobox acessível (digite símbolo, nome, classe ou bolsa; setas, Enter e Esc; leitor de tela) no cockpit, no radar e na composição, no lugar do `select` longo.
 - **Escala em qualquer tela:** a barra lateral começa recolhida até 1279 px (a escolha do usuário vale), espaçamento, títulos e cartões fluidos, duas colunas em notebook; medido sem rolagem horizontal nas 16 rotas em 390, 768, 1093 e 1366 px.
