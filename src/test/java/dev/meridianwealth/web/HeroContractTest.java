@@ -45,6 +45,10 @@ class HeroContractTest {
         String js = StaticPage.file("hero3d.js"), css = StaticPage.file("app.css"), html = StaticPage.file("index.html");
         assertThat(js).contains("prefers-reduced-motion: reduce").contains("IntersectionObserver").contains("visibilitychange").contains("document.hidden");
         assertThat(js).contains("no3d").contains("catch");
+        // perda do contexto depois de funcionar (celular em segundo plano): sem tratar, o canvas vira um retângulo branco
+        assertThat(js).contains("webglcontextlost").contains("webglcontextrestored").contains("preventDefault").contains("buildEnvironment");
+        assertThat(js.indexOf("buildEnvironment()")).as("o ambiente é refeito na partida").isPositive();
+        assertThat(js.indexOf("buildEnvironment()", js.indexOf("webglcontextrestored"))).as("e na restauração do contexto").isPositive();
         assertThat(html).contains("class=\"medal-fb\"").contains("aria-hidden=\"true\"");
         assertThat(css).contains(".hero3d.ready .medal-fb{display:none}").contains(".hero3d.no3d");
     }
