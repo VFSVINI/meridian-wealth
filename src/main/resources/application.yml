@@ -20,6 +20,9 @@ spring:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/meridianwealth}
     username: ${DB_USER:meridian}
     password: ${DB_PASSWORD:meridian}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:10}      # o plano gratuito do Neon limita conexões: no deploy use 5
+      connection-timeout: ${DB_CONNECT_TIMEOUT_MS:30000}   # o Neon gratuito suspende o banco ocioso: a primeira conexão pode demorar
   data:
     redis:
       host: ${REDIS_HOST:localhost}
@@ -29,7 +32,7 @@ logging:
     # o identificador de correlação de cada requisição aparece em todo log dela (ver CorrelationIdFilter)
     level: "%5p [%X{correlationId:-}]"
 server:
-  port: 8080
+  port: ${PORT:8080}   # o Hugging Face Spaces usa 7860
 # Documentação da API (Swagger e /v3/api-docs) lista todas as rotas: fora do ar por padrão (MW_API_DOCS=true liga, para desenvolvimento)
 springdoc:
   api-docs:
