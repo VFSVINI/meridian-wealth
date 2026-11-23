@@ -37,8 +37,14 @@ function start() {
   softbox(new THREE.Color(5, 4.4, 3.4), 2, 2, 2, -4, 5);
   softbox(new THREE.Color(2.4, 2.0, 1.4), 9, 9, 0.6, 0.4, 9); /* painel frontal: a face da moeda reflete ouro, não o fundo escuro */
   const pmrem = new THREE.PMREMGenerator(renderer);
-  scene.environment = pmrem.fromScene(envScene, 0.035).texture;
-  pmrem.dispose();
+  let envTarget = null;
+  /* o mapa de reflexo mora na GPU e se perde com o contexto: por isso é uma função, refeita ao restaurar */
+  const buildEnvironment = () => {
+    if (envTarget) envTarget.dispose();
+    envTarget = pmrem.fromScene(envScene, 0.035);
+    scene.environment = envTarget.texture;
+  };
+  buildEnvironment();
 
   const gold = new THREE.MeshStandardMaterial({color: 0xd9b765, metalness: 1, roughness: 0.26});
   const goldSoft = new THREE.MeshStandardMaterial({color: 0xc7a257, metalness: 1, roughness: 0.46});
@@ -76,7 +82,7 @@ function start() {
   const key = new THREE.DirectionalLight(0xfff1d0, 1.1); key.position.set(-3, 4, 5); scene.add(key);
   scene.add(new THREE.AmbientLight(0x6f86ad, 0.25));
 
-  let px = 0, py = 0, tx = 0, ty = 0, t0 = performance.now(), raf = 0, visible = true;
+  let px = 0, py = 0, tx = 0, ty = 0, t0 = performance.now(), raf = 0, visible = true, lost = false;
 
   function size() {
     const w = Math.max(1, stage.clientWidth), h = Math.max(1, stage.clientHeight);
@@ -92,13 +98,23 @@ function start() {
     coin.position.y = Math.sin(t * 0.0008) * 0.045;
   }
   function frame(now) {
+    if (lost) { raf = 0; return; }
     pose(now - t0);
     renderer.render(scene, camera);
     raf = running() ? requestAnimationFrame(frame) : 0;
   }
   const running = () => visible && !document.hidden && !reduced.matches && stage.clientWidth > 0;
-  function wake() { cancelAnimationFrame(raf); raf = 0; size(); pose(performance.now() - t0); renderer.render(scene, camera); if (running()) raf = requestAnimationFrame(frame); }
+  function wake() { cancelAnimationFrame(raf); raf = 0; if (lost) return; size(); pose(performance.now() - t0); renderer.render(scene, camera); if (running()) raf = requestAnimationFrame(frame); }
 
+  /* celulares tiram o contexto WebGL quando o navegador vai para segundo plano: sem tratar, o canvas vira um retângulo branco */
+  canvas.addEventListener('webglcontextlost', e => {
+    e.preventDefault(); lost = true; cancelAnimationFrame(raf); raf = 0;
+    hero.classList.remove('ready'); hero.classList.add('no3d');
+  });
+  canvas.addEventListener('webglcontextrestored', () => {
+    lost = false; buildEnvironment();
+    hero.classList.remove('no3d'); hero.classList.add('ready'); wake();
+  });
   hero.addEventListener('pointermove', e => {
     const r = stage.getBoundingClientRect();
     tx = Math.max(-1, Math.min(1, ((e.clientX - r.left) / Math.max(1, r.width)) * 2 - 1));

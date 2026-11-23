@@ -8,6 +8,7 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ### Adicionado (item #31, etapa 1: página inicial)
 - **Hero 3D original** na página inicial: um medalhão dourado com o "M" da marca, em **three.js 0.170.0** (MIT) servido localmente com SHA-256 fixado, que inclina com o ponteiro e gira devagar. Título editorial com a saudação, subtítulo e botões em pílula, sobre um degradê azul-marinho. Pausa fora da tela e com a aba oculta, tem um quadro estático com movimento reduzido e, sem WebGL, o medalhão em CSS. Nenhum número ou preço dentro do 3D (é identidade, não dado). ADR 026.
+- O hero trata a **perda do contexto WebGL** (celular em segundo plano, driver reiniciado): mostra o medalhão em CSS e refaz o mapa de reflexo ao restaurar (antes virava um retângulo branco com ícone de imagem quebrada) (achado do code review).
 - Estrutura inspirada no Wealthsimple (hero escuro e calmo, título grande, pílulas, objeto 3D) **sem copiar marca, moeda, vídeo nem texto** deles.
 
 ### Adicionado (item #30 do roadmap, Milestone 7)
