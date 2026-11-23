@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR do item #19 (Issue #51), 2026-11-22. Milestone 4 concluído (v0.4.0).
+> Atualizado em todo PR. Última atualização: PR do item #20 (Issue #53), 2026-11-22. Milestone 4 concluído (v0.4.0).
 > Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
@@ -89,7 +89,7 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 ### Milestone 5 — Risco Quantitativo, Testes de Concorrência & Cloud
 - [x] **#18** Monte Carlo e metas (`#/montecarlo`): cone patrimonial (percentis 5, 25, 50, 75 e 95), probabilidade de bater a meta e distribuição do patrimônio final, por premissas manuais ou pela carteira salva (reamostragem de retornos **reais** alinhados por data, que preserva a correlação). Sempre rotulado projeção; determinístico por semente. Ver o ADR 020.
 - [x] **#19** Correlação e concentração (`#/correlacao`): matriz de correlação de Pearson entre ativos e entre classes (retornos reais, par a par, 252 pregões, célula sem dado fica "n/d"), risco da carteira com a correlação contra a média ponderada (benefício da diversificação) e mapa de concentração por faixa de risco. Ver o ADR 021.
-- [ ] **#20** Testcontainers, testes de concorrência/idempotência, PIT.
+- [x] **#20** Testcontainers (PostgreSQL 16 em contêiner na CI), concorrência e idempotência pela API HTTP nos dois modos de persistência (cadastro, refresh e venda simultâneos) e **PIT** (teste de mutação) sobre o domínio, com meta de 80% (medido 85%). Ver o ADR 022.
 - [ ] **#21** Deploy cloud gratuito (Neon + Hugging Face Spaces, porta 7860), runbook e README executivo.
 
 ### Milestone 6 — Extensões Premium (só sob pedido)
@@ -120,8 +120,10 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [019](adr/019-cockpit-com-lightweight-charts-e-shopping-sem-ofertas-inventadas.md) | Cockpit com Lightweight Charts e shopping financeiro sem ofertas inventadas | Aceito |
 | [020](adr/020-monte-carlo-reprodutivel-e-excecao-a-aleatoriedade.md) | Monte Carlo reprodutível e a exceção estreita à regra de aleatoriedade | Aceito |
 | [021](adr/021-correlacao-par-a-par-e-celula-sem-dado.md) | Correlação par a par, célula sem dado e risco da carteira com diversificação | Aceito |
+| [022](adr/022-testes-de-persistencia-em-conteiner-e-mutacao.md) | Persistência testada em contêiner, concorrência pela API e teste de mutação | Aceito |
 
 Decisões menores (no corpo dos PRs):
+- Item #20: o PostgreSQL embutido segue como padrão local (sem Docker) e o contêiner roda na CI; o teste dourado do motor de timing é de caracterização (congela o comportamento) e vem do PIT, que achou o motor com 85% dos mutantes vivos; a meta de mutação é 80% e só sobe; o beta com benchmark parado passou a ser "não informado".
 - Item #19: correlação par a par (um ativo curto só apaga as próprias células), piso de 60 pregões, célula sem dado é `null` e vira "n/d", nunca zero; classe sem histórico em comum fica fora da matriz de classes e a tela diz; ativos sem faixa de risco do motor vão para a coluna "sem classificação" do mapa de concentração.
 - Item #18: `SplittableRandom` com semente explícita só em `domain.montecarlo` (as outras fontes de aleatoriedade seguem proibidas); posição sem histórico real fica parada no valor atual, nunca preenchida com a Selic ou o CDI; ativos em dólar entram pelo retorno na moeda do ativo (o câmbio não entra); a semente padrão sai da própria entrada, então reabrir a tela mostra o mesmo cone.
 - Item #17: o logotipo da TradingView fica desligado porque injeta `<style>` e a CSP o bloqueia (crédito por texto e link); o shopping só mostra a referência oficial de cada indexador e diz que a taxa do produto não existe; nomes globais dos scripts passam a ser únicos por teste (a colisão `renderList` do mapa quebrou a lista de Mercados e foi corrigida aqui).
@@ -164,7 +166,6 @@ Decisões menores (no corpo dos PRs):
 | 29 | A pressão geopolítica é contagem de palavras-chave em manchetes de terceiros e só mede cinco setores; o setor da posição vem do universo do painel | `GeoRiskScorer`, `GeoTranslator` | fonte de eventos estruturada e mapa de exposição por país (PR futuro; o mapa do item #16 só cobre imóveis) |
 | 30 | As caracterizações das gestoras e os textos das teses são resumos simplificados, sem revisão pelas instituições nem por profissional habilitado | `ThesisCatalog` | revisão antes de uso além do educacional |
 | 32 | Controles do protótipo sem backend ficam de fora: alternância BRL/USD, modo privacidade, central de alertas, "Fixar" e "Comparar" do cockpit e as seções Técnico, Macro e Backtest em abas (o menu do usuário passou a existir no item #15); páginas sem dado real ficam desabilitadas na sidebar | `index.html` (NAV) | itens #18, #19 e Milestone 6 |
-| 36 | Os testes de persistência usam um PostgreSQL embutido (`zonky`), que baixa um binário e exige `commons-lang3` mais novo que o do Spring Boot 3.3; a suíte de contratos não depende dele | `pom.xml`, `testsupport/PostgresDb` | item #20 (Testcontainers) |
 | 37 | O apoio ao IR não calcula imposto devido, DARF nem compensação de prejuízos: a base legal da compensação e do ganho de capital em FII, ETF, cripto e ativos no exterior não foi confirmada em fonte oficial (só os arts. 2º e 3º da Lei 11.033/2004 foram lidos, e o Planalto ainda anota a MP 1.303/2025 com vigência encerrada) | `domain/portfolio/TaxReport` | item #25 (sob pedido), com a base legal confirmada |
 | 38 | O livro é cronológico por ativo (operação anterior à última do ativo é recusada) e não há importação em lote; os eventos de domínio são em processo e voláteis (sem outbox) | `PortfolioService`, `InProcessEventBus` | item #14 (observabilidade) e importação no Milestone 6 |
 | 39 | Posições em dólar abertas antes do livro (item #12) ficam com o custo em reais "não informado" até um ajuste com câmbio | migração V3, `Position` | ajuste manual do usuário |
@@ -173,6 +174,7 @@ Decisões menores (no corpo dos PRs):
 | 43 | Pendências da auditoria de segurança ([seguranca-checklist.md](seguranca-checklist.md)): criptografia em repouso e backups (deploy), aceite dos termos gravado com data e versão (hoje só a caixa na tela), correção do nome da conta, expurgo de contas inativas, arquivo `LICENSE` (decisão do dono do projeto), alertas de monitoramento, CAPTCHA, teste de invasão externo, `nonce` do login com Google e travas de login compartilhadas entre instâncias | `docs/seguranca-checklist.md` | item #21 (deploy) e PRs futuros |
 
 **Resolvidas**
+- Dívida 36 (item #20, Issue #53): o Testcontainers existe e a CI roda os contratos de persistência, a migração V3 e a aplicação com banco num PostgreSQL 16 em contêiner; o binário embutido (zonky) segue só como conveniência local sem Docker.
 - Dívida 26 (item #17, Issue #47): o simulador pré-ordem e o tradutor geopolítico têm "Usar minha carteira salva", que preenche as linhas com as posições reais em reais.
 - Dívida 9 (item #12): a persistência JDBC tem testes contra um PostgreSQL de verdade, com contratos que rodam também na versão em memória.
 - Dívidas 34 e 42 (parte, Issue #43): o refresh token saiu do corpo e do `localStorage` para um cookie `HttpOnly`, `SameSite=Strict`, `Secure` sob HTTPS, e nenhum token fica no armazenamento do navegador; o que resta (`nonce` do Google e travas de login por instância) está na dívida 43.
@@ -214,7 +216,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 633 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 662 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |

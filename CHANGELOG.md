@@ -6,6 +6,15 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #20 do roadmap)
+- **Testcontainers 1.21.4:** `PostgresDb` escolhe o PostgreSQL por `-Dmw.test.postgres=`; o padrão segue sendo o binário embutido (sem Docker) e `container` sobe um PostgreSQL 16 do Testcontainers. A CI roda, depois do `verify`, os contratos de persistência, a migração V3 e a aplicação com banco **no contêiner**. Fecha a dívida 36.
+- **Concorrência e idempotência pela API HTTP**, nos dois modos de persistência: cadastro simultâneo do mesmo e-mail (uma conta, as outras 409), refresh simultâneo do mesmo cookie (uma troca, as outras 401, família revogada) e venda total simultânea da mesma posição (uma venda, nunca 500, livro com abertura e uma venda).
+- **PIT (teste de mutação)** sobre o domínio (`mvn test-compile org.pitest:pitest-maven:mutationCoverage`), job próprio na CI com o relatório publicado e **meta de 80%** no `pom.xml`. Primeira medida: 71% dos mutantes mortos e o motor de timing com 85% de sobreviventes; depois dos testes novos, **85% mortos** e força dos testes de 87%. ADR 022.
+- **Teste dourado do motor de timing** (11 cenários determinísticos, todos os campos e os textos dos fatores), testes de frescor, beta, volume relativo, ATR, quantis e limites do Monte Carlo e da correlação.
+
+### Corrigido (item #20)
+- O **beta** com benchmark praticamente parado devolvia números gigantes (da ordem de 10¹²), porque só a variância exatamente zero era tratada; agora vira "não informado" (achado do PIT).
+
 ### Adicionado (item #19 do roadmap)
 - **Correlação e concentração** (`#/correlacao`, `GET /api/me/risk/correlation`, com login): matriz de **correlação de Pearson** entre os ativos e entre as classes da carteira salva, sobre os últimos 252 retornos diários reais, **par a par** (cada par usa as datas que os dois têm); par com menos de 60 pregões em comum, ou série que não varia, fica **"n/d"** (nunca zero), com o número de pregões no título da célula; o número aparece em toda célula com dado.
 - **Risco da carteira com a correlação:** volatilidade anualizada sobre os retornos alinhados, ao lado da média ponderada das volatilidades individuais (o limite superior que o simulador usa) e o **benefício da diversificação**, com a cobertura do patrimônio dita (resolve a essência da dívida 27 para a carteira salva).

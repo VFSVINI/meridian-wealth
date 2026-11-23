@@ -43,6 +43,8 @@ docker compose up --build         # app + PostgreSQL + Redis em http://localhost
 
 # sem Docker: sem Postgres/Redis, cache em memória
 ./mvnw verify                     # testes, cobertura JaCoCo, Checkstyle e Spotless
+./mvnw -B test -Dmw.test.postgres=container -Dtest='Jdbc*Test,MigrationV3Test'   # persistência no PostgreSQL de um contêiner (exige Docker; a CI faz isso)
+./mvnw -B test-compile org.pitest:pitest-maven:mutationCoverage   # teste de mutação do domínio (alguns minutos; relatório em target/pit-reports)
 ./mvnw spring-boot:run
 ```
 
