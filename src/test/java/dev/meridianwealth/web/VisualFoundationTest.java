@@ -50,7 +50,7 @@ class VisualFoundationTest {
         for (boolean ivory : new boolean[] {false, true}) {
             Map<String, String> t = theme(ivory);
             for (String fg : new String[] {"text", "text-2", "text-3", "gold", "gold-2", "up", "down", "warn", "info"}) {
-                for (String bg : new String[] {"bg", "panel", "panel-2"}) {
+                for (String bg : new String[] {"bg", "panel", "panel-2", "popover"}) {
                     assertThat(contrast(t.get(fg), t.get(bg))).as("%s sobre %s no tema %s", fg, bg, ivory ? "claro" : "escuro").isGreaterThanOrEqualTo(4.5);
                 }
             }
@@ -88,6 +88,8 @@ class VisualFoundationTest {
         String js = StaticPage.file("app.js");
         assertThat(js).contains("function greeting(h){return h<5?'Boa madrugada':h<12?'Bom dia':h<18?'Boa tarde':'Boa noite'}");
         assertThat(js).contains("$('#hmH1').textContent=greeting(h)");
+        // com hour12:false alguns navegadores devolvem "24" à meia-noite e a saudação cairia em "Boa noite"; h23 vai de 00 a 23
+        assertThat(js).contains("hourCycle:'h23'").doesNotContain("hour12:false");
     }
 
     @Test

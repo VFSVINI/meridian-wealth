@@ -568,7 +568,7 @@ function greeting(h){return h<5?'Boa madrugada':h<12?'Bom dia':h<18?'Boa tarde':
 /* painel inicial: só dado real, com frescor e fonte */
 function renderHome(){
   const now=new Date(),tz={timeZone:'America/Sao_Paulo'};
-  const h=Number(now.toLocaleTimeString('pt-BR',{hour:'2-digit',hour12:false,...tz}).slice(0,2));
+  const h=Number(now.toLocaleTimeString('pt-BR',{hour:'2-digit',hourCycle:'h23',...tz}).slice(0,2));
   $('#hmH1').textContent=greeting(h);
   $('#hmDate').textContent=now.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric',...tz}).toUpperCase()+' · '+now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',...tz})+' (BRASÍLIA)';
   const live=universe.filter(u=>hasData(rows[u.symbol]));
