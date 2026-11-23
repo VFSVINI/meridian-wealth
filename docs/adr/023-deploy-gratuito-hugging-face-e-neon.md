@@ -1,6 +1,6 @@
 # ADR 023 — Deploy gratuito no Hugging Face Spaces com PostgreSQL no Neon
 
-- **Status:** aceito
+- **Status:** substituído pelo [ADR 024](024-deploy-gratuito-render-e-neon.md) (o Hugging Face exige plano pago para Docker; a premissa não foi conferida no site)
 - **Data:** 2026-11-23
 - **Issue:** #55 (item #21 do roadmap)
 
