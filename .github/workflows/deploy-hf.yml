@@ -1,0 +1,45 @@
+name: Publicar no Hugging Face Space
+
+# Manual de propósito: só publica quando o dono do repositório pede, e só funciona depois de ele criar o Space e cadastrar os
+# segredos HF_TOKEN (token com permissão de escrita) e HF_SPACE (formato usuario/nome). Sem eles, o job para com uma mensagem clara.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publicar:
+    name: Publica a versão atual no Space
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Confere os segredos
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE: ${{ secrets.HF_SPACE }}
+        run: |
+          if [ -z "$HF_TOKEN" ] || [ -z "$HF_SPACE" ]; then
+            echo "::error::Cadastre os segredos HF_TOKEN e HF_SPACE (veja docs/deploy.md)."
+            exit 1
+          fi
+      - name: Monta o conteúdo do Space
+        run: |
+          mkdir space
+          git archive HEAD | tar -x -C space
+          cp deploy/hf/Dockerfile space/Dockerfile
+          cp deploy/hf/README.md space/README.md
+          rm -rf space/deploy space/.github
+      - name: Envia ao Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE: ${{ secrets.HF_SPACE }}
+        run: |
+          cd space
+          git init -q -b main
+          git config user.name "deploy"
+          git config user.email "deploy@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Publicação de ${GITHUB_SHA::7}"
+          git push -q --force "https://user:${HF_TOKEN}@huggingface.co/spaces/${HF_SPACE}" main
