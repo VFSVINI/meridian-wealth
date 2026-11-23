@@ -31,7 +31,16 @@
   <main class="content" id="main" tabindex="-1">
 
     <section class="page" data-page="home" hidden>
-      <div class="ph"><p class="eyebrow" id="hmDate">—</p><h1 id="hmH1">Bom dia</h1><p class="lede">Leitura dos mercados que a plataforma acompanha, só com dado real: cada número mostra fonte, horário e atraso. Sua carteira fica em <a href="#/carteira">Minha Carteira</a> (exige login).</p></div>
+      <div class="hero3d" id="hero3d">
+        <div class="hero-copy">
+          <p class="eyebrow" id="hmDate">—</p>
+          <h1 id="hmH1">Bom dia</h1>
+          <p class="hero-sub">Seu patrimônio, lido com dado real.</p>
+          <p class="lede">Leitura dos mercados que a plataforma acompanha, só com dado real: cada número mostra fonte, horário e atraso. Sua carteira fica em <a href="#/carteira">Minha Carteira</a> (exige login).</p>
+          <div class="hero-cta"><a class="pillbtn primary" href="#/mercados">Explorar mercados</a><a class="pillbtn" href="#/cockpit">Abrir o cockpit</a></div>
+        </div>
+        <div class="hero-stage" aria-hidden="true"><div class="medal-fb">M</div><canvas id="heroCanvas"></canvas></div>
+      </div>
       <div class="card"><h2>Pregões</h2><div class="clock" id="clock"><span class="skel" style="width:60%"></span></div></div>
       <div class="grid-home">
         <div>
@@ -275,5 +284,6 @@
 <script src="/montecarlo.js"></script>
 <script src="/correlacao.js"></script>
 <script src="/cockpit.js"></script>
+<script type="module" src="/hero3d.js"></script>
 </body>
 </html>
