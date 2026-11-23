@@ -36,7 +36,7 @@
 ## Resumo executivo
 
 - **O que é:** cockpit analítico multi-ativo que mostra, com fórmulas e gatilhos explicados, quando comprar na baixa, manter a tendência ou realizar lucro; carteira persistida com livro de movimentações, risco (Monte Carlo e correlação), mapa de ativos reais e radar de relatórios.
-- **O que garante:** nenhum preço simulado (fonte, horário e atraso em cada cotação; sem dado, a tela diz isso), `BigDecimal` no dinheiro, arquitetura hexagonal verificada por teste, 665 testes, teste de mutação do domínio (85% mortos) e PostgreSQL real nos testes de concorrência.
+- **O que garante:** nenhum preço simulado (fonte, horário e atraso em cada cotação; sem dado, a tela diz isso), `BigDecimal` no dinheiro, arquitetura hexagonal verificada por teste, 675 testes, teste de mutação do domínio (85% mortos) e PostgreSQL real nos testes de concorrência.
 - **O que não é:** não executa ordens e não é recomendação financeira.
 - **Como publicar de graça:** Hugging Face Spaces (Docker, porta 7860) com PostgreSQL no Neon: [docs/deploy.md](docs/deploy.md).
 - **Como rodar local:** `docker compose up --build` ou `./mvnw spring-boot:run` (seção abaixo).

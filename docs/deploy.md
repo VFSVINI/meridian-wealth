@@ -61,13 +61,13 @@ Deve responder `{"status":"UP"}`. O `/actuator/health` agregado pode dizer `DEGR
 
 ## Atrás do proxy do Hugging Face
 
-O tráfego chega ao contêiner por um proxy do Hugging Face. Sem `MW_TRUSTED_PROXIES`, todos os visitantes aparecem com o IP do proxy e dividem **um único balde** de limite de requisições (300 por minuto), e o cookie de sessão não recebe o atributo `Secure` (o servidor não sabe que a conexão original é HTTPS). Como o contêiner só é alcançável pelo proxy, é aceitável listar as faixas privadas, por exemplo `10.0.0.0/8,172.16.0.0/12,192.168.0.0/16`, **depois de conferir o endereço de origem** na primeira partida (ver abaixo). Não ligue `MW_FORCE_HTTPS` antes de o proxy ser confiável: sem isso o redirecionamento entraria em laço.
+O tráfego chega ao contêiner por um proxy do Hugging Face. Sem `MW_TRUSTED_PROXIES`, todos os visitantes aparecem com o IP do proxy e dividem **um único balde** de limite de requisições (300 por minuto), e o cookie de sessão não recebe o atributo `Secure` (o servidor não sabe que a conexão original é HTTPS). Como o contêiner só é alcançável pelo proxy, é aceitável listar as faixas privadas, por exemplo `10.0.0.0/8,172.16.0.0/12,192.168.0.0/16`, **depois de conferir o endereço de origem** pelo aviso nos logs (ver abaixo, ponto 1). Não ligue `MW_FORCE_HTTPS` antes de o proxy ser confiável: sem isso o redirecionamento entraria em laço.
 
 ## Pontos a verificar no primeiro deploy
 
 Estes itens dependem do ambiente real e não puderam ser validados antes:
 
-1. **Faixa do proxy:** o IP de origem das requisições precisa estar dentro de `MW_TRUSTED_PROXIES`; confira depois de configurar que o cookie `mw_rt` sai com `Secure` e que visitantes diferentes não dividem o mesmo limite.
+1. **Faixa do proxy:** com `MW_TRUSTED_PROXIES` vazio, a primeira requisição que chegar com `X-Forwarded-For` gera nos *Logs* do Space o aviso `X-Forwarded-For ignorado: a conexão vem de <endereço>, que não está em MW_TRUSTED_PROXIES`; esse é o endereço do proxy (só ele é registrado, nunca o IP do visitante). Liste-o (ou a faixa que o contém) em `MW_TRUSTED_PROXIES`, reinicie e confira que o aviso sumiu, que o cookie `mw_rt` sai com `Secure` e que a resposta traz `Strict-Transport-Security` e `wss://` na CSP. Enquanto o proxy não é confiável, o servidor acha que a conexão é HTTP: sem `Secure` no cookie, sem HSTS e com `ws://` na CSP.
 2. **Cripto:** a Binance bloqueia algumas regiões de nuvem (HTTP 451); o failover para Coinbase e Kraken existe (ADR 005), mas só se prova no Space (dívida 13). O status do stream mostra a bolsa em uso.
 3. **Iframe:** a página do Space no huggingface.co embute a aplicação num iframe, e a CSP do projeto proíbe ser embutido (`frame-ancestors 'none'`, por segurança). Use o endereço direto `https://<usuario>-<nome>.hf.space`.
 4. **Partida a frio:** o Neon suspende o banco ocioso, então a primeira conexão pode levar alguns segundos (`DB_CONNECT_TIMEOUT_MS`, 30 s por padrão).

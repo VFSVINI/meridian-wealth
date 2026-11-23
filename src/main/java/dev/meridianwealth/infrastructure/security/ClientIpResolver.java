@@ -4,7 +4,11 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Pattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Descobre o IP real do cliente. O cabeçalho {@code X-Forwarded-For} é escrito por quem quiser, então só vale quando a conexão
@@ -16,6 +20,9 @@ import java.util.regex.Pattern;
  * <p>Só aceita literais de IP (v4 ou v6): nenhum nome é resolvido por DNS.
  */
 public class ClientIpResolver {
+    private static final Logger LOG = LoggerFactory.getLogger(ClientIpResolver.class);
+    /** Quantos endereços de conexão diferentes são avisados (cada um uma vez): limita o log contra quem forje o cabeçalho. */
+    static final int MAX_WARNED_PEERS = 50;
     private static final Pattern IPV4 = Pattern.compile("^(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})$");
     private static final Pattern IPV6 = Pattern.compile("^[0-9a-fA-F:.]{2,45}$");
 
@@ -32,6 +39,7 @@ public class ClientIpResolver {
     }
 
     private final List<Cidr> trusted;
+    private final Set<String> warnedPeers = ConcurrentHashMap.newKeySet();
 
     /** @param trustedProxies IPs ou faixas CIDR (por exemplo {@code 10.0.0.0/8}, {@code 172.18.0.5}, {@code ::1}) */
     public ClientIpResolver(List<String> trustedProxies) {
@@ -62,7 +70,11 @@ public class ClientIpResolver {
 
     /** @param remoteAddr endereço da conexão TCP; @param forwardedFor valor do cabeçalho X-Forwarded-For (pode ser nulo) */
     public String resolve(String remoteAddr, String forwardedFor) {
-        if (forwardedFor == null || forwardedFor.isBlank() || !isTrusted(remoteAddr)) return remoteAddr;
+        if (forwardedFor == null || forwardedFor.isBlank()) return remoteAddr;
+        if (!isTrusted(remoteAddr)) {
+            warnOnce(remoteAddr);
+            return remoteAddr;
+        }
         String[] parts = forwardedFor.split(",");
         for (int i = parts.length - 1; i >= 0; i--) {
             String candidate = parts[i].trim();
@@ -71,6 +83,20 @@ public class ClientIpResolver {
         }
         return remoteAddr;
     }
+
+    /**
+     * Avisa, uma vez por endereço de conexão, que o {@code X-Forwarded-For} foi ignorado. É como o operador descobre o endereço do
+     * proxy do provedor (que ele não vê de outro jeito) para listá-lo em {@code MW_TRUSTED_PROXIES}. Registra só o endereço da
+     * conexão (o proxy), nunca o conteúdo do cabeçalho, que é o IP do visitante.
+     */
+    private void warnOnce(String remoteAddr) {
+        if (remoteAddr == null || warnedPeers.size() >= MAX_WARNED_PEERS || !warnedPeers.add(remoteAddr)) return;
+        LOG.warn("X-Forwarded-For ignorado: a conexão vem de {}, que não está em MW_TRUSTED_PROXIES. Se esse for o seu proxy, "
+                + "inclua o endereço em MW_TRUSTED_PROXIES; senão todos os visitantes dividem o mesmo limite de requisições.", remoteAddr);
+    }
+
+    /** Endereços já avisados (cópia), para teste. */
+    Set<String> warnedPeers() { return Set.copyOf(warnedPeers); }
 
     private static int parseBits(String s, int max, String whole) {
         try {
