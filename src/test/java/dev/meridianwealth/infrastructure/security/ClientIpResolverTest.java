@@ -66,4 +66,27 @@ class ClientIpResolverTest {
         assertThatThrownBy(() -> new ClientIpResolver(List.of("300.1.1.1"))).hasMessageContaining("inválido");
         assertThat(new ClientIpResolver(List.of(" ", "")).isTrusted("10.0.0.1")).isFalse();
     }
+
+    @Test void anIgnoredForwardedForNamesThePeerOnceSoTheOperatorCanListTheProxy() {
+        ClientIpResolver r = new ClientIpResolver(List.of());
+        r.resolve("10.20.30.40", "198.51.100.7");
+        r.resolve("10.20.30.40", "198.51.100.8");
+        assertThat(r.warnedPeers()).as("uma vez por endereço, e nunca o conteúdo do cabeçalho").containsExactly("10.20.30.40");
+        r.resolve("10.20.30.41", "198.51.100.7");
+        assertThat(r.warnedPeers()).containsExactlyInAnyOrder("10.20.30.40", "10.20.30.41");
+    }
+
+    @Test void noWarningWithoutTheHeaderOrFromATrustedProxy() {
+        ClientIpResolver r = new ClientIpResolver(List.of("10.0.0.0/8"));
+        r.resolve("203.0.113.9", null);
+        r.resolve("203.0.113.9", " ");
+        r.resolve("10.1.1.1", "198.51.100.7");
+        assertThat(r.warnedPeers()).isEmpty();
+    }
+
+    @Test void theWarningSetIsBoundedAgainstSomeoneForgingTheHeaderFromManyAddresses() {
+        ClientIpResolver r = new ClientIpResolver(List.of());
+        for (int i = 0; i < ClientIpResolver.MAX_WARNED_PEERS + 30; i++) r.resolve("203.0.113." + (i % 250), "1.2.3.4");
+        assertThat(r.warnedPeers()).hasSize(ClientIpResolver.MAX_WARNED_PEERS);
+    }
 }

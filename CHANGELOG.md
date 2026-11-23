@@ -12,6 +12,7 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 - Testes: coerência dos arquivos de deploy e a aplicação inteira subindo como no Space (banco ligado, Redis desligado) contra PostgreSQL.
 
 ### Corrigido (item #21)
+- O `X-Forwarded-For` ignorado (conexão de proxy não listado em `MW_TRUSTED_PROXIES`) agora gera um aviso nos logs, uma vez por endereço de conexão (no máximo 50), com o endereço do proxy e nunca o IP do visitante; sem isso o operador de um provedor como o Hugging Face não tinha como descobrir a faixa a listar (achado do code review).
 - O `HEALTHCHECK` dos Dockerfiles procurava `UP` no health agregado, que devolve `DEGRADED` (HTTP 200) quando falta dado de algum provedor; agora usa `/actuator/health/liveness`.
 
 ### Adicionado (item #20 do roadmap)
