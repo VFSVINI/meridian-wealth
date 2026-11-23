@@ -167,6 +167,68 @@ abstract class PortfolioApiScenarios {
         assertThat(r.body()).doesNotContain("passwordHash").doesNotContain(PASSWORD);
     }
 
+    /** Dispara {@code n} chamadas ao mesmo tempo (todas esperam a largada) e devolve as respostas. */
+    List<Http.Reply> inParallel(int n, java.util.function.IntFunction<Http.Reply> call) throws Exception {
+        CountDownLatch go = new CountDownLatch(1);
+        List<Future<Http.Reply>> futures = new ArrayList<>();
+        try (ExecutorService pool = Executors.newFixedThreadPool(n)) {
+            for (int i = 0; i < n; i++) {
+                int idx = i;
+                futures.add(pool.submit(() -> {
+                    go.await();
+                    return call.apply(idx);
+                }));
+            }
+            go.countDown();
+            List<Http.Reply> out = new ArrayList<>();
+            for (Future<Http.Reply> f : futures) out.add(f.get());
+            return out;
+        }
+    }
+
+    @Test void concurrentRegistrationsOfTheSameEmailCreateExactlyOneAccount() throws Exception {
+        for (int round = 0; round < 3; round++) {
+            String email = "corrida-" + UUID.randomUUID().toString().substring(0, 8) + "@exemplo.com";
+            List<Http.Reply> replies = inParallel(16, i -> http.post("/api/auth/register", Map.of("email", email, "password", PASSWORD, "displayName", "Corrida " + i)));
+            assertThat(replies).as("rodada %d: uma conta só", round).filteredOn(r -> r.status() == 201).hasSize(1);
+            assertThat(replies).filteredOn(r -> r.status() != 201).as("as outras recebem conflito, nunca erro de servidor").allSatisfy(r -> assertThat(r.status()).isEqualTo(409));
+            assertThat(http.post("/api/auth/login", Map.of("email", email, "password", PASSWORD)).status()).as("a conta criada funciona").isEqualTo(200);
+        }
+    }
+
+    @Test void concurrentRefreshesOfTheSameCookieLetExactlyOneThroughAndKillTheSession() throws Exception {
+        Map<String, String> cookieMode = Map.of("X-Session-Mode", "cookie");
+        for (int round = 0; round < 3; round++) {
+            Http.Reply reg = http.post("/api/auth/register", cookieMode, Map.of("email", "refresh-" + UUID.randomUUID().toString().substring(0, 8) + "@exemplo.com", "password", PASSWORD, "displayName", "R"));
+            assertThat(reg.status()).isEqualTo(201);
+            String cookie = reg.header("Set-Cookie");
+            String first = cookie.substring("mw_rt=".length(), cookie.indexOf(';'));
+            Map<String, String> sent = Map.of("X-Session-Mode", "cookie", "Cookie", "mw_rt=" + first);
+            List<Http.Reply> replies = inParallel(12, i -> http.post("/api/auth/refresh", sent, null));
+            assertThat(replies).as("rodada %d: uma troca só", round).filteredOn(r -> r.status() == 200).hasSize(1);
+            assertThat(replies).filteredOn(r -> r.status() != 200).as("as perdedoras recebem 401, nunca erro de servidor").allSatisfy(r -> assertThat(r.status()).isEqualTo(401));
+            Http.Reply winner = replies.stream().filter(r -> r.status() == 200).findFirst().orElseThrow();
+            String second = winner.header("Set-Cookie");
+            String rotated = second.substring("mw_rt=".length(), second.indexOf(';'));
+            assertThat(http.post("/api/auth/refresh", Map.of("X-Session-Mode", "cookie", "Cookie", "mw_rt=" + rotated), null).status()).as("o reuso revogou a família inteira, inclusive o token do vencedor").isEqualTo(401);
+        }
+    }
+
+    @Test void concurrentSalesOfTheWholePositionCloseItExactlyOnceAndNeverGoNegative() throws Exception {
+        String token = newUserToken();
+        Http.Reply opened = open(token, typedOn("TESOURO_SELIC", "Selic corrida", "10", "100", "2026-01-05"));
+        assertThat(opened.status()).isEqualTo(201);
+        String id = idOf(opened);
+        List<Http.Reply> replies = inParallel(8, i -> http.post(path(id, "sales"), merge(bearer(token), Map.of("Idempotency-Key", "venda-" + i)),
+                Map.of("quantity", "10", "unitPrice", "110", "tradeDate", "2026-02-02", "expectedVersion", 0)));
+        assertThat(replies).as("uma venda total só").filteredOn(r -> r.status() == 200).hasSize(1);
+        assertThat(replies).filteredOn(r -> r.status() != 200).as("as outras são recusadas com erro de cliente, nunca 500").allSatisfy(r -> assertThat(r.status()).isBetween(400, 499));
+        Http.Reply book = http.get("/api/me/portfolio/transactions?limit=50", bearer(token));
+        List<Map<String, Object>> entries = (List<Map<String, Object>>) book.json().get("entries");
+        assertThat(entries).extracting(e -> e.get("entryType")).as("abertura mais uma única venda").containsExactly("OPENING", "SELL");
+        assertThat(((List<?>) http.get("/api/me/portfolio", bearer(token)).json().get("positions"))).as("a posição fechou").isEmpty();
+    }
+
     String idOf(Http.Reply operation) { return (String) operation.obj("position").get("id"); }
 
     String path(String id, String op) { return "/api/me/portfolio/positions/" + id + "/" + op; }
