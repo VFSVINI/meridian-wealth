@@ -6,6 +6,13 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #30 do roadmap, Milestone 7)
+- **Seletor de ativo com busca** (`picker.js`): combobox acessível (digite símbolo, nome, classe ou bolsa; setas, Enter e Esc; leitor de tela) no cockpit, no radar e na composição, no lugar do `select` longo.
+- **Escala em qualquer tela:** a barra lateral começa recolhida até 1279 px (a escolha do usuário vale), espaçamento, títulos e cartões fluidos, duas colunas em notebook; medido sem rolagem horizontal nas 16 rotas em 390, 768, 1093 e 1366 px.
+- **Tema claro refeito:** fundo creme mais escuro com cartões brancos e sombra, bordas visíveis e cores de texto com contraste AA conferido por teste nos dois temas.
+- Saudação por horário com "Boa madrugada" (antes, à 00h24, dizia "Bom dia").
+- Novo bloco **Milestone 7** no roadmap (itens #30 a #39) com o que o primeiro uso do site no ar apontou. ADR 025.
+
 ### Corrigido (Issue #58, deploy do item #21)
 - O runbook do deploy subestimava o proxy não confiável: além dos 300 pedidos por minuto, as rotas pesadas (Monte Carlo e correlação) têm 10 por minuto, e atrás do proxy o site inteiro divide esse limite (medido: da 11ª chamada em diante, 429); configurar `MW_TRUSTED_PROXIES` passou a ser obrigatório antes de divulgar o endereço (achado do code review).
 - O **Hugging Face Spaces exige plano pago para Docker** (só Spaces estáticos são gratuitos); a premissa do ADR 023 não tinha sido conferida no site. O deploy gratuito passa a ser o **Render** (Docker, plano gratuito) com o PostgreSQL no Neon: `render.yaml` (Blueprint), runbook reescrito, ADR 024 (substitui o 023), limites de memória da JVM por variável e o `HEALTHCHECK` do `Dockerfile` seguindo a `PORT`. Saem `deploy/hf/` e o workflow do Hugging Face.

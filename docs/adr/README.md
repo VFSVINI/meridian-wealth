@@ -29,3 +29,4 @@ ADRs aceitos não são reescritos; uma mudança de rumo gera um ADR novo que sub
 | [022](022-testes-de-persistencia-em-conteiner-e-mutacao.md) | Persistência testada em contêiner, concorrência pela API e teste de mutação | Aceito | 2026-11-22 |
 | [023](023-deploy-gratuito-hugging-face-e-neon.md) | Deploy gratuito no Hugging Face Spaces com PostgreSQL no Neon | Substituído pelo 024 | 2026-11-23 |
 | [024](024-deploy-gratuito-render-e-neon.md) | Deploy gratuito no Render com PostgreSQL no Neon | Aceito | 2026-11-23 |
+| [025](025-fundacao-visual-escala-contraste-e-seletor-com-busca.md) | Fundação visual: escala, contraste e seletor de ativo com busca | Aceito | 2026-11-23 |

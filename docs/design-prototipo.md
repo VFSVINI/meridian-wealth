@@ -90,3 +90,31 @@ dourado (24 e 32 px); 65 ícones de traço de 1,5 px mascarados com `currentColo
 | #17 | Mercados, Cockpit do ativo |
 | #18 e #19 | Monte Carlo, correlação e concentração |
 | Milestone 6 (sob pedido) | Stress test, Alertas e calendário |
+
+## Referências de design fintech (indicadas pelo dono do projeto em 2026-11-23)
+
+Fonte: o artigo "Top 10 FinTech product interface designs", da agência Goodface (atualizado em 05/03/2026; <https://goodface.agency/insight/top-10-fintech-product-interface-designs/>). **Ressalvas:** é texto de uma agência que promove os próprios serviços (um dos dez casos é trabalho dela) e é qualitativo, sem métricas de usabilidade; o artigo não trata de visualização de carteira, alocação nem acessibilidade de gráficos, então esses pontos pedem outras fontes. O resumo abaixo é uma paráfrase.
+
+Os dez casos: Revolut, Stripe, Neverless, Robinhood, Vivid, Uniswap, Wealthsimple, Fey, Monobank e Magnetiq Bank.
+
+Padrões que o dono quer ver aplicados, em ordem do que mais serve a uma plataforma analítica de investimentos:
+- **Densidade com clareza** (Stripe, Revolut, Robinhood): dado denso, mas com hierarquia visual forte, cor por categoria e navegação por camadas; é o ponto central do redesenho das páginas (item #31).
+- **Modo escuro rico para análise longa** (Fey): o escuro continua o padrão, e os gráficos usam luz e cor para contar a história do número (item #32).
+- **Explicação progressiva** (Wealthsimple): sliders, tooltips e metáforas visuais no lugar de blocos de texto, o que atende à queixa de "informação jogada" (itens #31 e #36).
+- **Poucas ações por tela e muito respiro** (Uniswap, Wealthsimple): menos poluição visual.
+- **Movimento com função** (Revolut, Robinhood): microinterações que dão retorno, nunca enfeite; respeitam `prefers-reduced-motion`.
+- **Identidade própria e confiança** (Stripe, Fey, Monobank): sobriedade premium com personalidade, sem perder a clareza.
+- **Gamificação com moderação** (Monobank, Vivid): só onde ajuda a criar hábito (por exemplo, progresso até a meta no Monte Carlo), sem perder a seriedade.
+
+Limites que continuam valendo por cima da referência: dado real com fonte, horário e atraso (ADR 004), nada de recomendação financeira e o protótipo aprovado como base visual (ADR 012). Imitar a **estrutura** e os princípios dos exemplos, nunca copiar marca, ilustração ou texto de terceiros.
+
+### Wealthsimple como referência principal do front (pedido do dono em 2026-11-23)
+
+O dono pediu o site wealthsimple.com/en-ca como **fonte principal** do front-end e a interação 3D da página inicial como inspiração. O que se observou na página (2026-11-23): fundo azul-marinho escuro em degradê, título editorial enorme com tipografia sem serifa geométrica, rótulo em serifa acima do título, botões em pílula (um claro e um escuro), barra de navegação flutuante e arredondada, muito espaço vazio, e um **objeto 3D dourado** (uma moeda com a marca) em destaque. O 3D deles é **mídia pré-renderizada** (vídeos em loop sobre a tela inteira, nenhum `canvas` nem WebGL na página).
+
+Regras para aplicar sem copiar:
+- Adota-se a **estrutura e os princípios**: hero escuro e calmo, título editorial grande, pouco texto, botões em pílula, navegação limpa, o objeto 3D como protagonista.
+- **Não se copia** marca, moeda com o "W", vídeo, ilustração, texto nem identidade deles. O 3D do MeridianWealth é **original**, com a nossa marca (o "M" do protótipo), em **CSS 3D sem biblioteca** (a CSP só aceita script local e o projeto não tem etapa de build; baixar uma biblioteca 3D exige permissão), com inclinação pelo ponteiro e giro lento, e desligado com `prefers-reduced-motion`.
+- O objeto 3D é **identidade visual, não dado**: nenhum número ou preço aparece nele. Todo dado do painel continua real, com fonte, horário e atraso (ADR 004).
+- O protótipo aprovado (ADR 012) segue sendo a base das cores e dos componentes; o Wealthsimple orienta a composição, o ritmo e o tom.
+

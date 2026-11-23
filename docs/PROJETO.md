@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR da correção do deploy (Issue #58), 2026-11-23. Milestone 5 concluído (v0.5.0).
+> Atualizado em todo PR. Última atualização: PR do item #30 (Issue #60), 2026-11-23. Milestone 5 concluído (v0.5.0).
 > Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
@@ -92,6 +92,19 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 - [x] **#20** Testcontainers (PostgreSQL 16 em contêiner na CI), concorrência e idempotência pela API HTTP nos dois modos de persistência (cadastro, refresh e venda simultâneos) e **PIT** (teste de mutação) sobre o domínio, com meta de 80% (medido 85%). Ver o ADR 022.
 - [x] **#21** Deploy cloud gratuito: serviço web do Render (Docker, plano gratuito) com PostgreSQL no Neon, `render.yaml`, runbook ([deploy.md](deploy.md)) e README executivo. O primeiro plano (Hugging Face Spaces) caiu porque Docker exige plano pago; o deploy real depende das contas do dono e **ainda não foi concluído**. Ver os ADRs 023 e 024.
 
+### Milestone 7 — Redesenho profissional e universo de ativos
+Aberto em 2026-11-23, a partir do primeiro uso do site no ar (feedback do dono do projeto). Um PR por item, nesta ordem; cada item cria a sua Issue. Referência de design pedida pelo dono: [os exemplos de fintech em design-prototipo.md](design-prototipo.md#referências-de-design-fintech-indicadas-pelo-dono-do-projeto-em-2026-11-23).
+- [x] **#30** Fundação visual: tela que se ajusta a notebook, tablet e celular (barra lateral recolhida em telas até 1279 px, espaçamento e tipografia fluidos, sem rolagem horizontal em 390, 768, 1093 e 1366 px), tema claro com cartões que se destacam do fundo e contraste AA medido por teste, saudação por horário (inclui "Boa madrugada") e **seletor de ativo com busca por digitação** no lugar da lista longa. Ver o ADR 025.
+- [ ] **#31** Repaginação das páginas, começando pela **página inicial com hero 3D original** (medalhão com a marca do MeridianWealth em CSS 3D, inclinação pelo ponteiro, sem dado inventado; inspirada em estrutura e princípios do Wealthsimple, sem copiar nada deles) e seguindo com: Mercados em cartões com mini-gráficos no lugar da lista vertical, Painel, Shopping, Glossário, Saúde dos dados, Radar de relatórios, Brasil (juros e inflação) e Simulador, com menos texto e tipografia e alinhamento padronizados.
+- [ ] **#32** Cockpit profissional e mais gráficos interativos.
+- [ ] **#33** Universo de ativos: catálogo montado de listas oficiais (SEC, CVM e B3, com permissão de download dada em 2026-11-23) e busca de qualquer ativo nacional e global.
+- [ ] **#34** Composição e Mapa para todos os ativos, só com o que uma fonte publica ("não informado" no resto).
+- [ ] **#35** Stress testing com cenários históricos reais (absorve o #27 do Milestone 6).
+- [ ] **#36** Perfil de investidor com questionário profissional.
+- [ ] **#37** Geopolítica em dia (verificar a frequência de atualização das manchetes antes de mexer).
+- [ ] **#38** Redefinição de senha por e-mail (serviço de e-mail gratuito, chaves só como segredo).
+- [ ] **#39** Login com Google ativo e o primeiro deploy conferido (faixa do proxy, cookie `Secure`).
+
 ### Milestone 6 — Extensões Premium (só sob pedido)
 - [ ] **#22** Central de alertas · [ ] **#23** Rebalanceamento assistido · [ ] **#24** Calendário de renda passiva · [ ] **#25** Apuração de impostos · [ ] **#26** Backtest avançado · [ ] **#27** Stress testing · [ ] **#28** Research Studio · [ ] **#29** Importação e reconciliação.
 
@@ -123,8 +136,10 @@ Legenda: `[x]` concluído · `[ ]` pendente. Issues dos milestones 2 a 6 são cr
 | [022](adr/022-testes-de-persistencia-em-conteiner-e-mutacao.md) | Persistência testada em contêiner, concorrência pela API e teste de mutação | Aceito |
 | [023](adr/023-deploy-gratuito-hugging-face-e-neon.md) | Deploy gratuito no Hugging Face Spaces com PostgreSQL no Neon | Substituído pelo 024 |
 | [024](adr/024-deploy-gratuito-render-e-neon.md) | Deploy gratuito no Render com PostgreSQL no Neon | Aceito |
+| [025](adr/025-fundacao-visual-escala-contraste-e-seletor-com-busca.md) | Fundação visual: escala, contraste e seletor de ativo com busca | Aceito |
 
 Decisões menores (no corpo dos PRs):
+- Item #30: a barra lateral começa recolhida até 1279 px (a escolha do usuário vence); o tema claro ganhou fundo creme mais escuro com cartões brancos; o seletor de ativo é um combobox e não um select; a regra que pintava todo `canvas` de branco foi removida porque escondia as camadas do gráfico.
 - Item #21 (corrigido na Issue #58): o Hugging Face exige plano pago para Docker, então o deploy vai para o Render; o Redis fica fora do deploy gratuito (cache em memória); o Render publica sem workflow nosso (`autoDeploy: false`); o `HEALTHCHECK` usa o `liveness` porque o agregado fica `DEGRADED` (normal) enquanto falta dado de algum provedor.
 - Item #20: o PostgreSQL embutido segue como padrão local (sem Docker) e o contêiner roda na CI; o teste dourado do motor de timing é de caracterização (congela o comportamento) e vem do PIT, que achou o motor com 85% dos mutantes vivos; a meta de mutação é 80% e só sobe; o beta com benchmark parado passou a ser "não informado" e o motor deixou de explicar um sinal de realização com "sem gatilhos relevantes" (agora diz que o sinal vem da soma de leituras moderadas).
 - Item #19: correlação par a par (um ativo curto só apaga as próprias células), piso de 60 pregões, célula sem dado é `null` e vira "n/d", nunca zero; classe sem histórico em comum fica fora da matriz de classes e a tela diz; ativos sem faixa de risco do motor vão para a coluna "sem classificação" do mapa de concentração.
@@ -219,7 +234,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 676 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 682 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
