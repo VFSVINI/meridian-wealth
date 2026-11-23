@@ -73,7 +73,7 @@
           <threads>4</threads>
           <outputFormats><param>HTML</param><param>XML</param></outputFormats>
           <timestampedReports>false</timestampedReports>
-          <mutationThreshold>0</mutationThreshold>
+          <mutationThreshold>80</mutationThreshold>
           <jvmArgs><jvmArg>-XX:+EnableDynamicAgentLoading</jvmArg><jvmArg>-Dfile.encoding=UTF-8</jvmArg></jvmArgs>
         </configuration>
       </plugin>

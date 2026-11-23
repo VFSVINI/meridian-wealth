@@ -22,6 +22,10 @@ jobs:
           cache: maven
       - name: mvn verify (JUnit, JaCoCo, Checkstyle e Spotless)
         run: ./mvnw -B verify
+      - name: Persistência contra PostgreSQL 16 real em contêiner (Testcontainers)
+        # os contratos de persistência, a migração V3 e a aplicação inteira com banco, agora no PostgreSQL do contêiner em vez do binário embutido:
+        # prova que a concorrência e a idempotência valem fora do embutido (o verify acima já rodou tudo no embutido)
+        run: ./mvnw -B test -Dmw.test.postgres=container -Dtest='Jdbc*Test,MigrationV3Test,PortfolioPostgresIntegrationTest'
       - name: Publica o relatório de cobertura
         if: always()
         uses: actions/upload-artifact@v4
@@ -47,3 +51,23 @@ jobs:
         run: docker compose config -q
       - name: Build da imagem
         run: docker build -t meridian-wealth:ci .
+  mutation:
+    name: Teste de mutação (PIT, domínio)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+      - name: PIT sobre o domínio (falha abaixo da meta de mutação do pom.xml)
+        run: ./mvnw -B test-compile org.pitest:pitest-maven:mutationCoverage
+      - name: Publica o relatório de mutação
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pit
+          path: target/pit-reports
+          if-no-files-found: ignore
