@@ -1,0 +1,30 @@
+# Blueprint do Render (https://render.com/docs/blueprint-spec): serviço web em Docker no plano gratuito, com o PostgreSQL no Neon.
+# Os segredos (sync: false) o Render pede no painel na hora de criar o serviço; nada sensível mora neste arquivo.
+# Passo a passo e o que não foi validado: docs/deploy.md.
+services:
+  - type: web
+    name: meridianwealth
+    runtime: docker
+    plan: free
+    region: ohio          # a mais próxima do Neon em AWS US East 2 (Ohio); mantenha as duas na mesma região
+    healthCheckPath: /actuator/health/liveness
+    autoDeploy: false     # publica quando o dono manda, não a cada push
+    envVars:
+      # 512 MB no plano gratuito: heap, metaspace e código somados precisam caber com folga (medido: cerca de 236 MB com -Xmx300m)
+      - key: JAVA_TOOL_OPTIONS
+        value: -Xmx280m -XX:MaxMetaspaceSize=120m -XX:ReservedCodeCacheSize=64m -Xss512k -XX:+UseSerialGC
+      - key: MW_PERSISTENCE
+        value: "true"
+      # liga banco e Flyway e mantém só o Redis desligado (cache em memória)
+      - key: MW_EXCLUDE_AUTOCONFIG
+        value: org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration,org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration
+      - key: DB_POOL_SIZE
+        value: "5"
+      - key: DB_URL
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: MW_JWT_SECRET
+        generateValue: true
