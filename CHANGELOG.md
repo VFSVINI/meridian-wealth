@@ -6,6 +6,13 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #40 do roadmap, bloco 3D)
+- **Cockpit em 3D** (botão "Gráfico 3D"): o histórico **real** do ativo (os mesmos candles do gráfico 2D) como terreno: x = tempo, y = preço, corpos e pavios dos candles, volume em barras no piso à frente, SMA50, bandas de Bollinger e a faixa entre elas. Câmera orbital: arrastar gira (com inércia), Ctrl + roda ou botões dão zoom, duplo clique restaura, setas do teclado giram. Passar o mouse sobre um candle mostra abertura, máxima, mínima, fechamento e volume reais e **atualiza o cartão "Inspetor do candle"**. O gráfico 2D (TradingView Lightweight Charts) e a tabela continuam como alternativa; em celular o terreno inteiro cabe na largura. ADR 028.
+- **`kit3d.js`**, o módulo 3D compartilhado (ADR 026 prometia antes do segundo uso): cria o renderizador, ajusta o tamanho, só desenha o que se vê (0 desenhos fora da tela), trata a perda e a restauração do contexto WebGL e o movimento reduzido. O hero passou a usá-lo, com o mesmo comportamento.
+
+### Corrigido (item #40)
+- No cockpit 3D, um evento de dados chegando **enquanto o contexto WebGL estava perdido** chamava a montagem da cena, que escondia o aviso "O navegador pausou o 3D"; agora a montagem espera a restauração (medido).
+
 ### Adicionado (item #45 do roadmap, bloco 3D)
 - **Transição "íris" entre telas:** a página que entra se revela num círculo que abre, com leve rotação 3D e desfoque que some (`fx.js`). O roteador continua trocando as páginas de forma síncrona (ECharts e Leaflet medem o tamanho na hora); a transição é só uma camada visual.
 - **Cartões que se inclinam em 3D** seguindo o ponteiro, com um brilho que acompanha (sinais do dia, atalhos), e **revelação ao rolar** (cartões abaixo da dobra entram com subida suave).
