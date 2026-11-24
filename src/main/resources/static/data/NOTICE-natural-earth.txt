@@ -1,0 +1,4 @@
+Natural Earth (ne_110m_land.geojson): dominio publico.
+Fonte: https://github.com/nvkelso/natural-earth-vector (https://www.naturalearthdata.com/about/terms-of-use/)
+"All versions of Natural Earth raster + vector map data found on this website are in the public domain."
+Baixado em 2026-11-24; hash fixado em teste (HeroContractTest/GlobeContractTest).

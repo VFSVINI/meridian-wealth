@@ -490,9 +490,14 @@ const EXS={NYSE:'NYSE',B3:'B3',XETRA:'Xetra',LSE:'LSE',EURONEXT_AMS:'Euronext',T
 async function clock(){
   const ms=await j('/api/markets').catch(()=>null);if(!ms)return;
   $('#clock').innerHTML=ms.map(m=>{const st=m.open?'<b>aberto</b>':m.holiday?'<i>feriado</i>':'<u>fechado</u>';
-    const tip=`${m.reason} · hora local ${new Date(m.localTime).toLocaleTimeString('pt-BR',{timeZone:m.localTime.match(/\[(.+)\]/)?.[1]||'UTC',hour:'2-digit',minute:'2-digit'})}${m.holidaysVerified?'':' · calendário de feriados não verificado'}`;
-    return `<span title="${tip}">${EXS[m.exchange]||m.exchange} ${st}${m.holidaysVerified?'':'<sup>*</sup>'}</span>`}).join('');
+    const tip=`${m.reason} · hora local ${m.localTime.slice(11,16)}${m.holidaysVerified?'':' · calendário de feriados não verificado'}`;
+    return `<button type="button" class="mk" data-ex="${esc(m.exchange)}" aria-pressed="false" title="${esc(tip)}">${EXS[m.exchange]||m.exchange} ${st}${m.holidaysVerified?'':'<sup>*</sup>'}</button>`}).join('');
+  /* o globo 3D (globe3d.js) usa o MESMO estado calculado no servidor; a lista em texto continua sendo a alternativa */
+  document.dispatchEvent(new CustomEvent('mw:markets',{detail:ms}));
 }
+document.addEventListener('click',e=>{const b=e.target.closest('#clock button[data-ex]');if(b)document.dispatchEvent(new CustomEvent('mw:market-pick',{detail:{exchange:b.dataset.ex}}))});
+document.addEventListener('mw:open-asset',e=>{select(e.detail.symbol);go('cockpit')});
+document.addEventListener('mw:markets-need',()=>clock());
 clock();setInterval(clock,30000);
 /* ---------- shell: navegação por rota, tema, busca rápida e painel inicial (protótipo aprovado, ADR 012) ---------- */
 const IC={home:'M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',mercados:'M4 19V5M4 19h16M8 15l3-4 3 2 4-6',cockpit:'M4 18a8 8 0 1 1 16 0M12 18l4-6',

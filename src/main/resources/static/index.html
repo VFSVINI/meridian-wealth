@@ -41,7 +41,14 @@
         </div>
         <div class="hero-stage" aria-hidden="true"><div class="medal-fb">M</div><canvas id="heroCanvas"></canvas><span class="hint">Arraste para girar</span></div>
       </div>
-      <div class="card"><h2>Pregões</h2><div class="clock" id="clock"><span class="skel" style="width:60%"></span></div></div>
+      <div class="card globe-card"><h2>Pregões agora <span class="src" style="text-transform:none;letter-spacing:0;margin-left:auto">Estado calculado no servidor, com os feriados oficiais</span></h2>
+        <div class="globe-grid">
+          <div class="globe-stage" id="globeStage"><canvas id="globeCanvas" tabindex="0" role="img" aria-label="Globo 3D das bolsas. A lista ao lado traz o estado de todas em texto."></canvas>
+            <div id="globeTip" class="c3d-tip" hidden></div><p class="c3d-hint">Arraste para girar · clique numa bolsa</p></div>
+          <div><div class="clock" id="clock"><span class="skel" style="width:60%"></span></div>
+            <div id="globeSel" class="globe-sel" aria-live="polite">Clique numa bolsa no globo ou na lista para ver o estado dela e os ativos do universo.</div>
+            <p class="src">Posição das bolsas: cidade de cada uma. Dia e noite: posição do Sol calculada do horário UTC (aproximada). * calendário de feriados não verificado.</p></div>
+        </div></div>
       <div class="grid-home">
         <div>
           <div class="card"><h2>Sinais do dia <span class="src" style="text-transform:none;letter-spacing:0;margin-left:auto">Leitura mecânica dos números publicados</span></h2><div class="sig-cards" id="hmSignals"><span class="skel"></span></div></div>
@@ -290,6 +297,7 @@
 <script src="/correlacao.js"></script>
 <script src="/cockpit.js"></script>
 <script type="module" src="/cockpit3d.js"></script>
+<script type="module" src="/globe3d.js"></script>
 <script type="module" src="/hero3d.js"></script>
 </body>
 </html>
