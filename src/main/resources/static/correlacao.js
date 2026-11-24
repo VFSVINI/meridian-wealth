@@ -4,6 +4,7 @@
 const CR={data:null,loading:false};
 const CR_RISK={LOW:'Baixo',MEDIUM:'Moderado',HIGH:'Alto',EXTREME:'Extremo',UNRATED:'Sem classificação'};
 function crGate(){
+  CR.data=null;document.dispatchEvent(new Event('mw:cr-clear'));   /* sem sessão, nenhuma matriz da carteira fica na memória do 3D */
   $('#crBody').hidden=true;$('#crGate').hidden=false;
   $('#crGate').innerHTML=`<h2>Entre para analisar sua carteira</h2><p>A correlação e a concentração usam as posições da sua carteira salva e o histórico real de cada ativo.</p><button type="button" class="primary" id="crLogin">Entrar ou criar conta</button>`;
   $('#crLogin').onclick=openLogin;
