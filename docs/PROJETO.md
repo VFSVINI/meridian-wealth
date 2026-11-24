@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR da etapa 1 do item #31 (Issue #62), 2026-11-23. Milestone 5 concluído (v0.5.0).
+> Atualizado em todo PR. Última atualização: PR dos ajustes do hero (Issue #66), 2026-11-23. Milestone 5 concluído (v0.5.0).
 > Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
@@ -104,6 +104,15 @@ Aberto em 2026-11-23, a partir do primeiro uso do site no ar (feedback do dono d
 - [ ] **#37** Geopolítica em dia (verificar a frequência de atualização das manchetes antes de mexer).
 - [ ] **#38** Redefinição de senha por e-mail (serviço de e-mail gratuito, chaves só como segredo).
 - [ ] **#39** Login com Google ativo e o primeiro deploy conferido (faixa do proxy, cookie `Secure`).
+
+**Bloco 3D** (pedido do dono em 2026-11-23: "gráficos de bolsa e tudo o que você puder imaginar", o site "repleto e completamente lindo"). Regras de todo item 3D: **só dado real**, com fonte, horário e atraso à vista (ADR 004); **alternativa em tabela ou 2D** para quem não usa o 3D (leitor de tela, movimento reduzido, sem WebGL); pausa fora da tela, tratamento da perda de contexto e orçamento de desempenho, reusando um módulo comum (`kit3d`: redimensionar, pausar, perda de contexto, rolagem) em vez de repetir o código do hero; o three.js já está no projeto, então não há novo download.
+- [ ] **#40** Cockpit em 3D: o histórico do ativo como terreno de candles e volume em barras 3D, com câmera orbital (arrastar, zoom, inclinar), cursor que mostra o candle real e a tabela de sempre como alternativa.
+- [ ] **#41** Globo 3D dos mercados: as bolsas do universo no globo, coloridas por aberta ou fechada **agora** (calendários reais do projeto), com clique que abre o mercado.
+- [ ] **#42** Correlação em 3D: a matriz como barras cuja altura é a correlação real; "n/d" fica vazio, nunca zero.
+- [ ] **#43** Minha Carteira em 3D: alocação como rosca ou treemap 3D interativo (só com a carteira do usuário).
+- [ ] **#44** Monte Carlo em 3D: caminhos e superfície de percentis (projeção, sempre rotulada).
+- [ ] **#45** Microinterações: cartões que se inclinam, contadores e mini-gráficos que se desenham, transições entre páginas, brilho que segue o ponteiro (leves, com `prefers-reduced-motion`).
+- [ ] **#46** Fundo vivo sutil (linhas e partículas) em páginas escolhidas, só se couber no orçamento de desempenho medido.
 
 ### Milestone 6 — Extensões Premium (só sob pedido)
 - [ ] **#22** Central de alertas · [ ] **#23** Rebalanceamento assistido · [ ] **#24** Calendário de renda passiva · [ ] **#25** Apuração de impostos · [ ] **#26** Backtest avançado · [ ] **#27** Stress testing · [ ] **#28** Research Studio · [ ] **#29** Importação e reconciliação.
@@ -236,7 +245,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 688 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 690 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
