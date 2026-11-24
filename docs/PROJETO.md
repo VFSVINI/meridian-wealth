@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR dos ajustes do hero (Issue #66), 2026-11-23. Milestone 5 concluído (v0.5.0).
+> Atualizado em todo PR. Última atualização: PR do item #45 (Issue #68), 2026-11-23. Milestone 5 concluído (v0.5.0).
 > Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
@@ -111,7 +111,7 @@ Aberto em 2026-11-23, a partir do primeiro uso do site no ar (feedback do dono d
 - [ ] **#42** Correlação em 3D: a matriz como barras cuja altura é a correlação real; "n/d" fica vazio, nunca zero.
 - [ ] **#43** Minha Carteira em 3D: alocação como rosca ou treemap 3D interativo (só com a carteira do usuário).
 - [ ] **#44** Monte Carlo em 3D: caminhos e superfície de percentis (projeção, sempre rotulada).
-- [ ] **#45** Microinterações: cartões que se inclinam, contadores e mini-gráficos que se desenham, transições entre páginas, brilho que segue o ponteiro (leves, com `prefers-reduced-motion`).
+- [x] **#45** Microinterações e transições (Issue #68, ADR 027): transição "íris" entre telas, cartões que se inclinam em 3D com brilho que segue o ponteiro e revelação ao rolar, tudo desligado com `prefers-reduced-motion`. **Contadores de preço que sobem de zero ficaram de fora de propósito:** o ADR 004 proíbe preço animado. Mini-gráficos que se desenham entram com os cartões de Mercados (#31).
 - [ ] **#46** Fundo vivo sutil (linhas e partículas) em páginas escolhidas, só se couber no orçamento de desempenho medido.
 
 ### Milestone 6 — Extensões Premium (só sob pedido)
@@ -147,6 +147,7 @@ Aberto em 2026-11-23, a partir do primeiro uso do site no ar (feedback do dono d
 | [024](adr/024-deploy-gratuito-render-e-neon.md) | Deploy gratuito no Render com PostgreSQL no Neon | Aceito |
 | [025](adr/025-fundacao-visual-escala-contraste-e-seletor-com-busca.md) | Fundação visual: escala, contraste e seletor de ativo com busca | Aceito |
 | [026](adr/026-hero-3d-original-com-three-js-local.md) | Hero 3D original da página inicial com three.js servido localmente | Aceito |
+| [027](adr/027-transicoes-e-microinteracoes-sem-animar-numeros.md) | Transições e microinterações sem animar números | Aceito |
 
 Decisões menores (no corpo dos PRs):
 - Item #31, etapa 1: o hero 3D é identidade visual (nenhum número dentro dele), original (nada do Wealthsimple foi copiado), em three.js 0.170.0 baixado com permissão e fixado por SHA-256; pausa fora da tela, com movimento reduzido tem um quadro estático e sem WebGL fica o medalhão em CSS.
@@ -245,7 +246,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 691 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 696 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |

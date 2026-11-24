@@ -6,6 +6,14 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #45 do roadmap, bloco 3D)
+- **Transição "íris" entre telas:** a página que entra se revela num círculo que abre, com leve rotação 3D e desfoque que some (`fx.js`). O roteador continua trocando as páginas de forma síncrona (ECharts e Leaflet medem o tamanho na hora); a transição é só uma camada visual.
+- **Cartões que se inclinam em 3D** seguindo o ponteiro, com um brilho que acompanha (sinais do dia, atalhos), e **revelação ao rolar** (cartões abaixo da dobra entram com subida suave).
+- Desligado com `prefers-reduced-motion`; a inclinação também em telas de toque. **Nenhum número é animado** (ADR 004): o módulo não escreve texto em elemento nenhum, e um teste trava isso. ADR 027.
+
+### Corrigido (item #45)
+- A íris podia ser cortada no meio: o pulso de cotação nova (`beat`, `fd`, `fu`) de um filho também dispara `animationend`, que borbulha e removia a classe da página antes da hora; agora só vale o fim da própria animação da página (medido provocando o caso).
+
 ### Alterado (item #31, etapa 1b: ajustes do hero)
 - **Interação:** arrastar para girar (com inércia, volta ao giro lento), clique ou toque dá um impulso, brilho que segue o ponteiro e a rolagem da página inclina a moeda; em tela de toque a rolagem vertical continua funcionando (`touch-action: pan-y`). Dica "Arraste para girar" que some no primeiro uso.
 - **Tamanho e acabamento:** moeda maior, ouro mais rico com luz de borda quente e halo suave atrás.

@@ -31,3 +31,4 @@ ADRs aceitos não são reescritos; uma mudança de rumo gera um ADR novo que sub
 | [024](024-deploy-gratuito-render-e-neon.md) | Deploy gratuito no Render com PostgreSQL no Neon | Aceito | 2026-11-23 |
 | [025](025-fundacao-visual-escala-contraste-e-seletor-com-busca.md) | Fundação visual: escala, contraste e seletor de ativo com busca | Aceito | 2026-11-23 |
 | [026](026-hero-3d-original-com-three-js-local.md) | Hero 3D original da página inicial com three.js servido localmente | Aceito | 2026-11-23 |
+| [027](027-transicoes-e-microinteracoes-sem-animar-numeros.md) | Transições e microinterações sem animar números | Aceito | 2026-11-23 |
