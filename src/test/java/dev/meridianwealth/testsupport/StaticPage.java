@@ -20,6 +20,6 @@ public final class StaticPage {
 
     /** index.html seguido do CSS e dos scripts, como se fossem um só documento. */
     public static String whole() throws IOException {
-        return file("index.html") + "\n" + file("app.css") + "\n" + file("theme.js") + "\n" + file("picker.js") + "\n" + file("fx.js") + "\n" + file("app.js") + "\n" + file("auth.js") + "\n" + file("carteira.js") + "\n" + file("mapa.js") + "\n" + file("shopping.js") + "\n" + file("cockpit.js") + "\n" + file("montecarlo.js") + "\n" + file("correlacao.js") + "\n" + file("kit3d.js") + "\n" + file("hero3d.js") + "\n" + file("cockpit3d.js") + "\n" + file("globe3d.js") + "\n" + file("montecarlo3d.js");
+        return file("index.html") + "\n" + file("app.css") + "\n" + file("theme.js") + "\n" + file("picker.js") + "\n" + file("fx.js") + "\n" + file("app.js") + "\n" + file("auth.js") + "\n" + file("carteira.js") + "\n" + file("mapa.js") + "\n" + file("shopping.js") + "\n" + file("cockpit.js") + "\n" + file("montecarlo.js") + "\n" + file("correlacao.js") + "\n" + file("kit3d.js") + "\n" + file("hero3d.js") + "\n" + file("cockpit3d.js") + "\n" + file("globe3d.js") + "\n" + file("montecarlo3d.js") + "\n" + file("correlacao3d.js");
     }
 }
