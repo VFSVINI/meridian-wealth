@@ -53,4 +53,14 @@ class Portfolio3dContractTest {
                 .contains("<script type=\"module\" src=\"/carteira3d.js\"></script>");
         assertThat(c3).doesNotContain("new THREE.WebGLRenderer").contains("createStage(").contains("createOrbit(kit, canvas").contains("if (!kit || !data || kit.lost) return;");
     }
+
+    @Test
+    void touchScreensOpenTheDetailWithATapBecauseTheyHaveNoHover() throws IOException {
+        // medido: um toque simples numa fatia não abria nada (o tooltip só existia com hover) e o pointerleave do dedo o esconderia
+        String kit = StaticPage.file("kit3d.js");
+        assertThat(kit).contains("if (e.type === 'pointerup' && moved < 6 && o.onTap) o.onTap(e);").contains("if (e.pointerType === 'mouse' && o.onLeave) o.onLeave();");
+        for (String f : new String[] {"cockpit3d.js", "montecarlo3d.js", "correlacao3d.js", "carteira3d.js"}) {
+            assertThat(StaticPage.file(f)).as(f).contains("onTap: e => { px = e.clientX; py = e.clientY; pick(); }");
+        }
+    }
 }

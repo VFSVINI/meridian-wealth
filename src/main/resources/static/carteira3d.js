@@ -98,6 +98,7 @@ function ensure() {
     host: box, target, start: {az: -0.3, el: 0.85, dist: 11},
     fit: () => Math.max(11, 9.4 / (2 * Math.tan(kit.camera.fov * Math.PI / 360) * Math.max(0.5, kit.camera.aspect))),
     onHover: e => { px = e.clientX; py = e.clientY; if (!hoverQueued) { hoverQueued = true; requestAnimationFrame(pick); } },
+    onTap: e => { px = e.clientX; py = e.clientY; pick(); },
     onDragStart: () => { tip.hidden = true; hovered = -1; },
     onLeave: () => { tip.hidden = true; hovered = -1; kit.invalidate(); }
   });

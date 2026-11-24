@@ -10,6 +10,9 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 - **Alocação em 3D** em Minha Carteira: uma **rosca 3D** com o anel de fora nas **classes de ativo** (os percentuais exatos da API, os mesmos da legenda e do treemap 2D) e o anel de dentro nas **posições** (peso no valor em reais de hoje; posições sem valor em reais ficam de fora e isso é dito). Passar o mouse numa fatia a destaca e mostra o nome, o percentual e, nas posições, o valor. Câmera orbital compartilhada; a lista, o treemap e a tabela de posições são a alternativa. ADR 032.
 - **Privacidade:** ao sair da conta o módulo esquece a carteira, esvazia a cena e troca o texto de acessibilidade por um genérico; um novo login monta a cena do zero.
 
+### Corrigido (item #43)
+- Em tela de toque os detalhes dos gráficos 3D (cockpit, Monte Carlo, correlação e carteira) não abriam: o tooltip só existia com hover e o `pointerleave` do dedo o esconderia. A órbita compartilhada ganhou `onTap` (toque ou clique sem arrastar) e o `onLeave` vale só para mouse; um toque abre o detalhe e ele permanece (achado do code review, medido antes e depois).
+
 ### Adicionado (item #42 do roadmap, bloco 3D)
 - **Correlação entre ativos em 3D** (card na página de correlação): a matriz de Pearson da carteira salva como barras, **altura = correlação**: positiva sobe em verde, negativa desce em vermelho, a diagonal (1,0) fica evidente. **A célula "não informado" nunca vira zero**: é só um marcador cinza achatado, sem barra. Passar o mouse mostra o par, o valor, os pregões em comum e o aviso de estimativa frágil (menos de 120 pregões). Câmera orbital compartilhada (`kit3d.js`); a tabela de cima traz os mesmos números. ADR 031.
 
