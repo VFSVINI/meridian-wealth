@@ -6,6 +6,15 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #41 do roadmap, bloco 3D)
+- **Globo 3D dos mercados** na página inicial ("Pregões agora"): as dez bolsas com cidade (NYSE, B3, Xetra, LSE, Euronext, Tóquio, Hong Kong, ASX, Tadawul, JSE) como marcadores no globo, coloridas por **aberta, fechada ou feriado agora**, e FX e cripto (24 h, sem cidade) como anéis em órbita. O estado é o do servidor (`/api/markets`, com os feriados oficiais e o aviso de calendário não verificado). **Dia e noite reais:** a posição do Sol é calculada do horário UTC (aproximada, erro de poucos graus). Continentes do **Natural Earth 110m** (domínio público), baixado com permissão e fixado por SHA-256 em `static/data`.
+- Arrastar gira (com inércia); **clicar ou tocar numa bolsa** (no globo ou na lista) gira até ela e mostra o estado, a hora local e os ativos do universo nela, que abrem o cockpit. Usa o `kit3d.js`. ADR 029.
+- O relógio de pregões virou **botões** (teclado, toque e leitor de tela), a alternativa em texto do globo.
+
+### Corrigido (item #41)
+- O `title` do relógio de pregões mostrava a **hora em UTC** como "hora local" (o texto da API não traz `[zona]`, e o código caía em UTC); a API já devolve a hora no fuso da bolsa (ASX 15:09, Tóquio 13:09), e agora ela é lida direto da string (medido contra `/api/markets`).
+- O globo pedia o estado das bolsas só pelo evento periódico, que sai antes de o módulo existir: ficava em branco por até 30 s; agora o módulo pede o estado ao carregar.
+
 ### Adicionado (item #40 do roadmap, bloco 3D)
 - **Cockpit em 3D** (botão "Gráfico 3D"): o histórico **real** do ativo (os mesmos candles do gráfico 2D) como terreno: x = tempo, y = preço, corpos e pavios dos candles, volume em barras no piso à frente, SMA50, bandas de Bollinger e a faixa entre elas. Câmera orbital: arrastar gira (com inércia), Ctrl + roda ou botões dão zoom, duplo clique restaura, setas do teclado giram. Passar o mouse sobre um candle mostra abertura, máxima, mínima, fechamento e volume reais e **atualiza o cartão "Inspetor do candle"**. O gráfico 2D (TradingView Lightweight Charts) e a tabela continuam como alternativa; em celular o terreno inteiro cabe na largura. ADR 028.
 - **`kit3d.js`**, o módulo 3D compartilhado (ADR 026 prometia antes do segundo uso): cria o renderizador, ajusta o tamanho, só desenha o que se vê (0 desenhos fora da tela), trata a perda e a restauração do contexto WebGL e o movimento reduzido. O hero passou a usá-lo, com o mesmo comportamento.

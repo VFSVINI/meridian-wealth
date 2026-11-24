@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR do item #40 (Issue #70), 2026-11-24. Milestone 5 concluído (v0.5.0).
+> Atualizado em todo PR. Última atualização: PR do item #41 (Issue #72), 2026-11-24. Milestone 5 concluído (v0.5.0).
 > Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
@@ -107,7 +107,7 @@ Aberto em 2026-11-23, a partir do primeiro uso do site no ar (feedback do dono d
 
 **Bloco 3D** (pedido do dono em 2026-11-23: "gráficos de bolsa e tudo o que você puder imaginar", o site "repleto e completamente lindo"). Regras de todo item 3D: **só dado real**, com fonte, horário e atraso à vista (ADR 004); **alternativa em tabela ou 2D** para quem não usa o 3D (leitor de tela, movimento reduzido, sem WebGL); pausa fora da tela, tratamento da perda de contexto e orçamento de desempenho, reusando um módulo comum (`kit3d`: redimensionar, pausar, perda de contexto, rolagem) em vez de repetir o código do hero; o three.js já está no projeto, então não há novo download.
 - [x] **#40** Cockpit em 3D (Issue #70, ADR 028): o histórico real do ativo como terreno de candles (x = tempo, y = preço), volume em barras no piso, SMA50 e faixa de Bollinger, câmera orbital (arrastar, Ctrl+roda ou botões para zoom, duplo clique restaura, setas), passar o mouse mostra o candle real e atualiza o inspetor. Cria o módulo compartilhado `kit3d.js`, que o hero também passa a usar. O 2D e a tabela continuam como alternativa.
-- [ ] **#41** Globo 3D dos mercados: as bolsas do universo no globo, coloridas por aberta ou fechada **agora** (calendários reais do projeto), com clique que abre o mercado.
+- [x] **#41** Globo 3D dos mercados (Issue #72, ADR 029): as dez bolsas com cidade no globo e FX e cripto como anéis em órbita, coloridas por aberta, fechada ou feriado **agora** (o estado do servidor, com os calendários reais e o aviso de calendário não verificado), dia e noite pelo Sol calculado do horário UTC, continentes do Natural Earth (domínio público, baixado com permissão e fixado por hash); clique ou toque numa bolsa mostra o estado, a hora local e os ativos dela, que abrem o cockpit. O relógio de pregões vira botões (alternativa em texto, teclado e toque).
 - [ ] **#42** Correlação em 3D: a matriz como barras cuja altura é a correlação real; "n/d" fica vazio, nunca zero.
 - [ ] **#43** Minha Carteira em 3D: alocação como rosca ou treemap 3D interativo (só com a carteira do usuário).
 - [ ] **#44** Monte Carlo em 3D: caminhos e superfície de percentis (projeção, sempre rotulada).
@@ -149,6 +149,7 @@ Aberto em 2026-11-23, a partir do primeiro uso do site no ar (feedback do dono d
 | [026](adr/026-hero-3d-original-com-three-js-local.md) | Hero 3D original da página inicial com three.js servido localmente | Aceito |
 | [027](adr/027-transicoes-e-microinteracoes-sem-animar-numeros.md) | Transições e microinterações sem animar números | Aceito |
 | [028](adr/028-kit3d-e-cockpit-em-3d.md) | Módulo 3D compartilhado e cockpit em 3D com o histórico real | Aceito |
+| [029](adr/029-globo-3d-dos-mercados.md) | Globo 3D dos mercados com o estado real do servidor | Aceito |
 
 Decisões menores (no corpo dos PRs):
 - Item #31, etapa 1: o hero 3D é identidade visual (nenhum número dentro dele), original (nada do Wealthsimple foi copiado), em three.js 0.170.0 baixado com permissão e fixado por SHA-256; pausa fora da tela, com movimento reduzido tem um quadro estático e sem WebGL fica o medalhão em CSS.
@@ -247,7 +248,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 704 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 711 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |
