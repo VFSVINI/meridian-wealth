@@ -178,6 +178,12 @@
         <div class="grid2c"><div class="card gold" id="crRisk"></div><div class="card" id="crExcl" hidden></div></div>
         <div class="card" id="crClasses"></div>
         <div class="card" id="crAssets"></div>
+        <div class="card" id="cr3dCard" hidden><h2>Correlação entre ativos em 3D <span class="tag info">dado real</span></h2>
+          <div id="cr3d" class="lwc ck3d"><canvas id="cr3dCanvas" tabindex="0" role="img" aria-label="Barras 3D da correlação entre os ativos da carteira. A tabela acima traz os mesmos números."></canvas>
+            <div class="c3d-ctl"><button type="button" id="cr3dIn" aria-label="Aproximar">+</button><button type="button" id="cr3dOut" aria-label="Afastar">−</button><button type="button" id="cr3dReset" aria-label="Restaurar a câmera">⟲</button></div>
+            <div class="c3d-hint">Altura = correlação · verde positiva, vermelha negativa, cinza = não informado · arraste para girar · Ctrl + roda para zoom</div>
+            <div id="cr3dTip" class="c3d-tip" hidden></div><p id="cr3dNote" class="c3d-note" hidden></p></div>
+          <p class="src">Cada barra é a correlação de Pearson entre dois ativos nos pregões em comum; célula sem pregões suficientes fica como marcador cinza, nunca como zero. A tabela acima traz os mesmos números.</p></div>
         <div class="card" id="crConc"></div>
         <div class="card"><h2>Como ler</h2><ul class="note" id="crNotes"></ul><div class="src" id="crDisc"></div></div>
       </div>
@@ -302,6 +308,7 @@
 <script src="/cockpit.js"></script>
 <script type="module" src="/cockpit3d.js"></script>
 <script type="module" src="/montecarlo3d.js"></script>
+<script type="module" src="/correlacao3d.js"></script>
 <script type="module" src="/globe3d.js"></script>
 <script type="module" src="/hero3d.js"></script>
 </body>
