@@ -20,6 +20,7 @@ function dec(raw,label,{max=8,required=true}={}){
 const ser=o=>JSON.stringify(o,(k,v)=>v&&v.__dec?`@@${v.__dec}@@`:v).replace(/"@@(\d+(?:\.\d+)?)@@"/g,'$1');
 
 function gate(){
+  document.dispatchEvent(new Event('mw:ct-clear'));   /* sem sessão, a rosca 3D esquece a carteira */
   $('#ctBody').hidden=true;$('#ctActions').innerHTML='';
   $('#ctGate').hidden=false;
   $('#ctGate').innerHTML=`<h2>Entre para ver sua carteira</h2><p>Sua carteira é um registro seu, guardado na sua conta: posições, preço médio ponderado, câmbio de cada compra e o livro de movimentações. Cada posição é valorizada com a cotação real (com fonte e horário) e o PTAX do Banco Central.</p>
@@ -67,7 +68,15 @@ function weights(){
 function renderCarteira(){
   const s=CT.sum;if(!s)return;
   renderTotal(s);renderAlloc(s);renderAdherence();renderPositions(s);renderBook();renderPnl(s);
+  ctEmit();
 }
+/* a rosca 3D (carteira3d.js) lê os MESMOS números da lista e da tabela: classes (percentuais da API) e posições com valor em reais */
+function ctEmit(){
+  const s=CT.sum;if(!s)return;
+  const positions=weights().filter(x=>x.w!=null).map(x=>({label:x.l.position.symbol||x.l.position.label,weight:x.w,valueBrl:x.l.currentValueBrl!=null?Number(x.l.currentValueBrl):null}));
+  document.dispatchEvent(new CustomEvent('mw:ct-data',{detail:{byClass:s.byClass,positions,positionsWithoutBrlValue:s.positionsWithoutBrlValue,catCol:CAT_COL}}));
+}
+document.addEventListener('mw:ct-need',ctEmit);
 function renderTotal(s){
   const ws=weights().filter(x=>x.w!=null),hhi=ws.reduce((a,x)=>a+x.w*x.w,0),big=ws.reduce((m,x)=>Math.max(m,x.w),0);
   const withPnl=s.positions.filter(l=>l.unrealizedPnlBrl!=null),pnl=withPnl.reduce((a,l)=>a+Number(l.unrealizedPnlBrl),0);
