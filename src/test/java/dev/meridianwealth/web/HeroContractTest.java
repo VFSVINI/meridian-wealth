@@ -61,6 +61,14 @@ class HeroContractTest {
     }
 
     @Test
+    void onlyThePrimaryMouseButtonDragsAndPointerCaptureCannotBreakTheHandler() throws IOException {
+        // medido: o clique direito ligava o arrasto (e o menu de contexto pode engolir o pointerup, congelando a moeda)
+        String js = StaticPage.file("hero3d.js");
+        assertThat(js).contains("e.pointerType === 'mouse' && e.button !== 0").contains("try { stage.setPointerCapture(e.pointerId); }").contains("lostpointercapture");
+        assertThat(js).contains("if (moved < 5 && e.type === 'pointerup') vel += 0.014");
+    }
+
+    @Test
     void nothingIsDrawnWhenTheHeroIsNotOnScreen() throws IOException {
         // medido: sem essa guarda, 40 eventos de rolagem fora da página inicial faziam 360 chamadas de desenho da GPU
         String js = StaticPage.file("hero3d.js");

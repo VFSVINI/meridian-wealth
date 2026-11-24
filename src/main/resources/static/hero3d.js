@@ -141,8 +141,10 @@ function start() {
 
   /* arrastar para girar; clique ou toque (sem arrastar) dá um impulso */
   stage.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;   /* clique direito e do meio não giram a moeda (e o menu de contexto pode engolir o pointerup) */
     dragging = true; moved = 0; lastX = e.clientX; lastY = e.clientY; lastT = performance.now();
-    stage.setPointerCapture(e.pointerId); stage.classList.add('grabbing'); hero.classList.add('touched');
+    try { stage.setPointerCapture(e.pointerId); } catch (err) { /* ponteiro já inativo: o arrasto segue pelos eventos do palco */ }
+    stage.classList.add('grabbing'); hero.classList.add('touched');
   });
   stage.addEventListener('pointermove', e => {
     if (!dragging) return;
@@ -157,12 +159,13 @@ function start() {
   const release = e => {
     if (!dragging) return;
     dragging = false; stage.classList.remove('grabbing');
-    if (stage.hasPointerCapture(e.pointerId)) stage.releasePointerCapture(e.pointerId);
-    if (moved < 5) vel += 0.014;                       /* um toque: impulso de giro */
+    try { if (stage.hasPointerCapture(e.pointerId)) stage.releasePointerCapture(e.pointerId); } catch (err) { /* já solto */ }
+    if (moved < 5 && e.type === 'pointerup') vel += 0.014;   /* um toque: impulso de giro (cancelar ou perder a captura não é toque) */
     redraw();
   };
   stage.addEventListener('pointerup', release);
   stage.addEventListener('pointercancel', release);
+  stage.addEventListener('lostpointercapture', release);
 
   /* canvas decorativo: o teclado não precisa dele; o brilho acompanha o mouse sobre o hero inteiro */
   /* celulares tiram o contexto WebGL quando o navegador vai para segundo plano: sem tratar, o canvas vira um retângulo branco */
