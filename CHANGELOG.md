@@ -12,6 +12,7 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 - **Bloco 3D no roadmap** (itens #40 a #46): cockpit, globo dos mercados, correlação, carteira e Monte Carlo em 3D, microinterações e fundo vivo, todos só com dado real e com alternativa em tabela ou 2D.
 
 ### Corrigido (item #31, etapa 1b)
+- O clique direito acionava o modo arrasto da moeda (e o menu de contexto pode engolir o `pointerup`, congelando o giro) e `setPointerCapture` não tinha proteção contra erro; agora só o botão principal arrasta, a captura é protegida e perder a captura também solta o arrasto (achado do code review).
 - O hero **desenhava a cena 3D a cada evento de rolagem ou de ponteiro mesmo fora da tela ou em outra página** (medido: 360 chamadas de desenho da GPU para 40 rolagens fora da página inicial), gastando bateria à toa; agora só desenha o que está visível (achado do code review).
 
 ### Adicionado (item #31, etapa 1: página inicial)
