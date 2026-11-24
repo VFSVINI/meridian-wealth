@@ -35,18 +35,20 @@ class HeroContractTest {
     @Test
     void theHeroIsAnEsModuleThatImportsTheLocalLibraryAndDeclaresNoGlobal() throws IOException {
         String js = StaticPage.file("hero3d.js"), html = StaticPage.file("index.html");
-        assertThat(js).contains("from '/vendor/three.module.min.js'").doesNotContain("cdn.").doesNotContain("http://").doesNotContain("https://");
+        assertThat(js).contains("from '/kit3d.js'").doesNotContain("cdn.").doesNotContain("http://").doesNotContain("https://");
+        assertThat(StaticPage.file("kit3d.js")).contains("from '/vendor/three.module.min.js'");
         assertThat(html).contains("<script type=\"module\" src=\"/hero3d.js\"></script>");
         assertThat(js).as("módulo: nada em window").doesNotContain("window.").doesNotContain("globalThis");
     }
 
     @Test
     void theHeroRespectsReducedMotionPausesOffscreenAndHasANoWebglFallback() throws IOException {
-        String js = StaticPage.file("hero3d.js"), css = StaticPage.file("app.css"), html = StaticPage.file("index.html");
-        assertThat(js).contains("prefers-reduced-motion: reduce").contains("IntersectionObserver").contains("visibilitychange").contains("document.hidden");
-        assertThat(js).contains("no3d").contains("catch");
+        String js = StaticPage.file("hero3d.js"), kit = StaticPage.file("kit3d.js"), css = StaticPage.file("app.css"), html = StaticPage.file("index.html");
+        assertThat(kit).contains("prefers-reduced-motion: reduce").contains("IntersectionObserver").contains("visibilitychange").contains("document.hidden");
+        assertThat(js).contains("no3d").contains("catch").contains("onFail");
         // perda do contexto depois de funcionar (celular em segundo plano): sem tratar, o canvas vira um retângulo branco
-        assertThat(js).contains("webglcontextlost").contains("webglcontextrestored").contains("preventDefault").contains("buildEnvironment");
+        assertThat(kit).contains("webglcontextlost").contains("webglcontextrestored").contains("preventDefault");
+        assertThat(js).contains("onLost").contains("onRestore").contains("buildEnvironment");
         assertThat(js.indexOf("buildEnvironment()")).as("o ambiente é refeito na partida").isPositive();
         assertThat(js.indexOf("buildEnvironment()", js.indexOf("webglcontextrestored"))).as("e na restauração do contexto").isPositive();
         assertThat(html).contains("class=\"medal-fb\"").contains("aria-hidden=\"true\"");
@@ -71,9 +73,9 @@ class HeroContractTest {
     @Test
     void nothingIsDrawnWhenTheHeroIsNotOnScreen() throws IOException {
         // medido: sem essa guarda, 40 eventos de rolagem fora da página inicial faziam 360 chamadas de desenho da GPU
-        String js = StaticPage.file("hero3d.js");
-        assertThat(js).contains("const onScreen = () => visible && !document.hidden && stage.clientWidth > 0 && !lost;");
-        assertThat(js).contains("const redraw = () => { if (!raf && onScreen()) draw(); };").contains("if (!onScreen()) return;");
+        String kit = StaticPage.file("kit3d.js");
+        assertThat(kit).contains("s.onScreen = () => s.visible && !document.hidden && stage.clientWidth > 0 && !s.lost;");
+        assertThat(kit).contains("s.invalidate = () => { s.dirty = true; if (!s.raf && s.onScreen()) s.raf = requestAnimationFrame(frame); };").contains("if (!s.onScreen()) return;");
     }
 
     @Test
