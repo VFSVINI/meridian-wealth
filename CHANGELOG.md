@@ -6,6 +6,14 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Alterado (item #31, etapa 1b: ajustes do hero)
+- **Interação:** arrastar para girar (com inércia, volta ao giro lento), clique ou toque dá um impulso, brilho que segue o ponteiro e a rolagem da página inclina a moeda; em tela de toque a rolagem vertical continua funcionando (`touch-action: pan-y`). Dica "Arraste para girar" que some no primeiro uso.
+- **Tamanho e acabamento:** moeda maior, ouro mais rico com luz de borda quente e halo suave atrás.
+- **Bloco 3D no roadmap** (itens #40 a #46): cockpit, globo dos mercados, correlação, carteira e Monte Carlo em 3D, microinterações e fundo vivo, todos só com dado real e com alternativa em tabela ou 2D.
+
+### Corrigido (item #31, etapa 1b)
+- O hero **desenhava a cena 3D a cada evento de rolagem ou de ponteiro mesmo fora da tela ou em outra página** (medido: 360 chamadas de desenho da GPU para 40 rolagens fora da página inicial), gastando bateria à toa; agora só desenha o que está visível (achado do code review).
+
 ### Adicionado (item #31, etapa 1: página inicial)
 - **Hero 3D original** na página inicial: um medalhão dourado com o "M" da marca, em **three.js 0.170.0** (MIT) servido localmente com SHA-256 fixado, que inclina com o ponteiro e gira devagar. Título editorial com a saudação, subtítulo e botões em pílula, sobre um degradê azul-marinho. Pausa fora da tela e com a aba oculta, tem um quadro estático com movimento reduzido e, sem WebGL, o medalhão em CSS. Nenhum número ou preço dentro do 3D (é identidade, não dado). ADR 026.
 - O hero trata a **perda do contexto WebGL** (celular em segundo plano, driver reiniciado): mostra o medalhão em CSS e refaz o mapa de reflexo ao restaurar (antes virava um retângulo branco com ícone de imagem quebrada) (achado do code review).
