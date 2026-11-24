@@ -55,4 +55,11 @@ class MonteCarlo3dContractTest {
             assertThat(StaticPage.file(f)).as(f).contains("createOrbit(kit, canvas").doesNotContain("setPointerCapture").doesNotContain("'wheel'");
         }
     }
+
+    @Test
+    void backToTwoDimensionalTheEchartsChartsAreResizedBecauseTheyDoNotResizeWhileHidden() throws IOException {
+        // medido: janela de 1366 para 1000 px com o 3D aberto; ao voltar, contêiner de 635 px e gráfico ECharts de 100 px
+        assertThat(StaticPage.file("montecarlo3d.js")).contains("else document.dispatchEvent(new Event('mw:mc-2d-visible'));");
+        assertThat(StaticPage.file("montecarlo.js")).contains("'mw:mc-2d-visible'").contains("Object.values(MC.charts).forEach(c=>c.resize())");
+    }
 }

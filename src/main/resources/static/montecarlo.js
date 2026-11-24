@@ -100,6 +100,8 @@ new MutationObserver(()=>{if(MC.data)mcRender()}).observe(document.documentEleme
 /* o Monte Carlo em 3D (montecarlo3d.js) lê o MESMO resultado que os gráficos 2D, por este evento */
 function mcEmit(){if(MC.data)document.dispatchEvent(new CustomEvent('mw:mc-data',{detail:{data:MC.data}}))}
 document.addEventListener('mw:mc-need',mcEmit);
+/* o gráfico 2D reaparece depois do 3D: o ECharts não se redimensiona sozinho depois de escondido (medido: 100 px num contêiner de 635 px) */
+document.addEventListener('mw:mc-2d-visible',()=>requestAnimationFrame(()=>Object.values(MC.charts).forEach(c=>c.resize())));
 function onMonteCarloRoute(){if((location.hash.match(/^#\/([a-z]+)/)||[])[1]==='montecarlo')setTimeout(()=>Object.values(MC.charts).forEach(c=>c.resize()),50)}
 addEventListener('hashchange',onMonteCarloRoute);
 mcTabs();mcForm();
