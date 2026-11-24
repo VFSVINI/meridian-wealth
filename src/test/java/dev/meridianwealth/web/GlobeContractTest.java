@@ -97,4 +97,11 @@ class GlobeContractTest {
         assertThat(js).as("com o contexto perdido, nenhum evento de dados reconstrói a cena").contains("if (kit && !kit.lost) buildPins();");
         assertThat(js).as("o anel olha para fora em coordenadas do globo, não do mundo").contains("setFromUnitVectors(new THREE.Vector3(0, 0, 1), n)").doesNotContain("lookAt(n");
     }
+
+    @Test
+    void theGlobeOccludesPinsOnTheFarSideSoHoverAndClickOnlyFindWhatIsVisible() throws IOException {
+        // medido: com a B3 de frente, o hover achava a Tadawul (a ~102 graus, atrás do globo); o raycast ignorava a esfera
+        String js = StaticPage.file("globe3d.js");
+        assertThat(js).contains("ray.intersectObjects(earth ? [earth, ...targets] : targets, false)[0]").contains("h.object !== earth").contains("earth = sphere;");
+    }
 }

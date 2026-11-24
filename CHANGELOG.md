@@ -12,6 +12,7 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 - O relógio de pregões virou **botões** (teclado, toque e leitor de tela), a alternativa em texto do globo.
 
 ### Corrigido (item #41)
+- No globo, o hover e o clique achavam marcadores **do outro lado do planeta** (invisíveis): o raycast não considerava a esfera. Com a B3 de frente o tooltip mostrava a Tadawul, a ~102°; agora a esfera oclui o que está atrás (achado do code review, medido antes e depois).
 - O `title` do relógio de pregões mostrava a **hora em UTC** como "hora local" (o texto da API não traz `[zona]`, e o código caía em UTC); a API já devolve a hora no fuso da bolsa (ASX 15:09, Tóquio 13:09), e agora ela é lida direto da string (medido contra `/api/markets`).
 - O globo pedia o estado das bolsas só pelo evento periódico, que sai antes de o módulo existir: ficava em branco por até 30 s; agora o módulo pede o estado ao carregar.
 
