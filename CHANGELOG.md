@@ -6,6 +6,9 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #42 do roadmap, bloco 3D)
+- **Correlação entre ativos em 3D** (card na página de correlação): a matriz de Pearson da carteira salva como barras, **altura = correlação**: positiva sobe em verde, negativa desce em vermelho, a diagonal (1,0) fica evidente. **A célula "não informado" nunca vira zero**: é só um marcador cinza achatado, sem barra. Passar o mouse mostra o par, o valor, os pregões em comum e o aviso de estimativa frágil (menos de 120 pregões). Câmera orbital compartilhada (`kit3d.js`); a tabela de cima traz os mesmos números. ADR 031.
+
 ### Adicionado (item #44 do roadmap, bloco 3D)
 - **Cone 3D** no Monte Carlo (botão "Cone 3D"): o cone patrimonial como **superfície**, x = tempo, y = patrimônio, z = percentil, com as cinco curvas dos percentis 5, 25, 50, 75 e 95 **exatos** que a simulação devolveu (a superfície só liga as curvas), a parede do histograma do patrimônio final no fim do cone e o plano da meta, tudo na mesma escala de patrimônio. Passar o mouse mostra o mês e os cinco percentis. **Rótulo "projeção" sempre visível** (na tela, no tooltip e na descrição para leitor de tela). O 2D (ECharts) e a tabela continuam. ADR 030.
 - **Câmera orbital compartilhada** no `kit3d.js` (`createOrbit`), mais `makeLabel` e `disposeGroup`: o cockpit passou a usá-la, sem mudar de comportamento (hover, inspetor, teclado, zoom, ajuste ao celular e 0 vazamento conferidos de novo).
