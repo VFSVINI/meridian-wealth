@@ -144,6 +144,12 @@
           <div class="card"><h2>Alocação por classe <span class="tag info">dado real</span></h2><div id="ctAllocWrap"></div></div>
           <div class="card" id="ctRadarCard" hidden><h2>Meta e atual</h2><div id="ctRadar" class="echart" role="img" aria-label="Radar: meta do perfil contra a carteira, por classe"></div></div>
         </div>
+        <div class="card" id="ct3dCard" hidden><h2>Alocação em 3D <span class="tag info">dado real</span></h2>
+          <div id="ct3d" class="lwc ck3d"><canvas id="ct3dCanvas" tabindex="0" role="img" aria-label="Rosca 3D da alocação da carteira. A lista de classes e a tabela de posições trazem os mesmos números."></canvas>
+            <div class="c3d-ctl"><button type="button" id="ct3dIn" aria-label="Aproximar">+</button><button type="button" id="ct3dOut" aria-label="Afastar">−</button><button type="button" id="ct3dReset" aria-label="Restaurar a câmera">⟲</button></div>
+            <div class="c3d-hint">Anel de fora: classes · anel de dentro: posições com valor em reais · arraste para girar · Ctrl + roda para zoom</div>
+            <div id="ct3dTip" class="c3d-tip" hidden></div><p id="ct3dNote" class="c3d-note" hidden></p></div>
+          <p class="src">O anel de fora traz os percentuais por classe da carteira; o de dentro, o peso de cada posição no valor em reais de hoje (posições sem valor em reais ficam de fora). A lista e a tabela de posições trazem os mesmos números.</p></div>
         <div class="card" id="ctAdh"></div>
         <div class="card" id="ctPos"></div>
         <div class="card" id="ctBook"></div>
@@ -309,6 +315,7 @@
 <script type="module" src="/cockpit3d.js"></script>
 <script type="module" src="/montecarlo3d.js"></script>
 <script type="module" src="/correlacao3d.js"></script>
+<script type="module" src="/carteira3d.js"></script>
 <script type="module" src="/globe3d.js"></script>
 <script type="module" src="/hero3d.js"></script>
 </body>
