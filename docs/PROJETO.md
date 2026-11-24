@@ -1,7 +1,7 @@
 # MeridianWealth — memória do projeto
 
 > Leia este arquivo e o `git log` antes de qualquer ação em uma conversa nova.
-> Atualizado em todo PR. Última atualização: PR do item #41 (Issue #72), 2026-11-24. Milestone 5 concluído (v0.5.0).
+> Atualizado em todo PR. Última atualização: PR do item #44 (Issue #74), 2026-11-24. Milestone 5 concluído (v0.5.0).
 > Numeração: Issues e PRs compartilham a sequência do GitHub. Os itens #1 a #3 do roadmap foram entregues antes da recriação do repositório (2026-11-20) e **não têm objeto de PR**, só os commits e as Issues fechadas. A partir do item #4, o número do PR é o que o GitHub atribuir e vai no corpo do PR.
 
 ## 1. Visão
@@ -110,7 +110,7 @@ Aberto em 2026-11-23, a partir do primeiro uso do site no ar (feedback do dono d
 - [x] **#41** Globo 3D dos mercados (Issue #72, ADR 029): as dez bolsas com cidade no globo e FX e cripto como anéis em órbita, coloridas por aberta, fechada ou feriado **agora** (o estado do servidor, com os calendários reais e o aviso de calendário não verificado), dia e noite pelo Sol calculado do horário UTC, continentes do Natural Earth (domínio público, baixado com permissão e fixado por hash); clique ou toque numa bolsa mostra o estado, a hora local e os ativos dela, que abrem o cockpit. O relógio de pregões vira botões (alternativa em texto, teclado e toque).
 - [ ] **#42** Correlação em 3D: a matriz como barras cuja altura é a correlação real; "n/d" fica vazio, nunca zero.
 - [ ] **#43** Minha Carteira em 3D: alocação como rosca ou treemap 3D interativo (só com a carteira do usuário).
-- [ ] **#44** Monte Carlo em 3D: caminhos e superfície de percentis (projeção, sempre rotulada).
+- [x] **#44** Monte Carlo em 3D (Issue #74, ADR 030): o cone patrimonial como superfície (x = tempo, y = patrimônio, z = percentil) com as cinco curvas dos percentis 5, 25, 50, 75 e 95 exatos da simulação, a parede do histograma do patrimônio final e o plano da meta, na mesma escala; passar o mouse mostra o mês e os cinco percentis. **Sempre rotulado projeção.** A câmera orbital saiu do cockpit para o `kit3d.js` e é compartilhada.
 - [x] **#45** Microinterações e transições (Issue #68, ADR 027): transição "íris" entre telas, cartões que se inclinam em 3D com brilho que segue o ponteiro e revelação ao rolar, tudo desligado com `prefers-reduced-motion`. **Contadores de preço que sobem de zero ficaram de fora de propósito:** o ADR 004 proíbe preço animado. Mini-gráficos que se desenham entram com os cartões de Mercados (#31).
 - [ ] **#46** Fundo vivo sutil (linhas e partículas) em páginas escolhidas, só se couber no orçamento de desempenho medido.
 
@@ -150,6 +150,7 @@ Aberto em 2026-11-23, a partir do primeiro uso do site no ar (feedback do dono d
 | [027](adr/027-transicoes-e-microinteracoes-sem-animar-numeros.md) | Transições e microinterações sem animar números | Aceito |
 | [028](adr/028-kit3d-e-cockpit-em-3d.md) | Módulo 3D compartilhado e cockpit em 3D com o histórico real | Aceito |
 | [029](adr/029-globo-3d-dos-mercados.md) | Globo 3D dos mercados com o estado real do servidor | Aceito |
+| [030](adr/030-monte-carlo-3d-e-orbita-compartilhada.md) | Monte Carlo em 3D e câmera orbital compartilhada | Aceito |
 
 Decisões menores (no corpo dos PRs):
 - Item #31, etapa 1: o hero 3D é identidade visual (nenhum número dentro dele), original (nada do Wealthsimple foi copiado), em three.js 0.170.0 baixado com permissão e fixado por SHA-256; pausa fora da tela, com movimento reduzido tem um quadro estático e sem WebGL fica o medalhão em CSS.
@@ -248,7 +249,7 @@ Formatação: `.\mvnw.cmd spotless:apply`. Relatório de cobertura: `target/site
 
 | Item | Estado |
 |---|---|
-| `mvn verify` (compilação, 712 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
+| `mvn verify` (compilação, 718 testes incluindo ArchUnit, Checkstyle, Spotless, JaCoCo) | Validado localmente (Windows 11, JDK 21.0.9, Maven 3.9.9) |
 | GitHub Actions (CI, CodeQL, job Docker) | Validado no PR #1 (todos os checks verdes) |
 | Docker / Compose | **Não validado localmente** (Docker ausente na máquina); `docker compose config` e build da imagem validados no job `docker` da CI |
 | Provedores reais | Item #5: BCB (SGS e Olinda) **validado ao vivo** (7 indicadores, 6 chamadas, 0 falhas) e FIIs na Yahoo; item #4: Binance, Coinbase e Kraken **validadas ao vivo** (stream real rodando no app, 29 ativos carregados, preços com 1 s de idade); item #3: Yahoo (25 ativos), brapi (B3) e Frankfurter **validados ao vivo** com latência medida; Stooq bloqueado por verificação JS; Finnhub (REST/WS) e FRED não validados (sem chave). Detalhes em `docs/mercados.md` |

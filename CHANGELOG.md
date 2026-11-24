@@ -6,6 +6,10 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #44 do roadmap, bloco 3D)
+- **Cone 3D** no Monte Carlo (botão "Cone 3D"): o cone patrimonial como **superfície**, x = tempo, y = patrimônio, z = percentil, com as cinco curvas dos percentis 5, 25, 50, 75 e 95 **exatos** que a simulação devolveu (a superfície só liga as curvas), a parede do histograma do patrimônio final no fim do cone e o plano da meta, tudo na mesma escala de patrimônio. Passar o mouse mostra o mês e os cinco percentis. **Rótulo "projeção" sempre visível** (na tela, no tooltip e na descrição para leitor de tela). O 2D (ECharts) e a tabela continuam. ADR 030.
+- **Câmera orbital compartilhada** no `kit3d.js` (`createOrbit`), mais `makeLabel` e `disposeGroup`: o cockpit passou a usá-la, sem mudar de comportamento (hover, inspetor, teclado, zoom, ajuste ao celular e 0 vazamento conferidos de novo).
+
 ### Adicionado (item #41 do roadmap, bloco 3D)
 - **Globo 3D dos mercados** na página inicial ("Pregões agora"): as dez bolsas com cidade (NYSE, B3, Xetra, LSE, Euronext, Tóquio, Hong Kong, ASX, Tadawul, JSE) como marcadores no globo, coloridas por **aberta, fechada ou feriado agora**, e FX e cripto (24 h, sem cidade) como anéis em órbita. O estado é o do servidor (`/api/markets`, com os feriados oficiais e o aviso de calendário não verificado). **Dia e noite reais:** a posição do Sol é calculada do horário UTC (aproximada, erro de poucos graus). Continentes do **Natural Earth 110m** (domínio público), baixado com permissão e fixado por SHA-256 em `static/data`.
 - Arrastar gira (com inércia); **clicar ou tocar numa bolsa** (no globo ou na lista) gira até ela e mostra o estado, a hora local e os ativos do universo nela, que abrem o cockpit. Usa o `kit3d.js`. ADR 029.
