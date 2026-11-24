@@ -92,6 +92,7 @@ function ensure() {
     host: box, target, start: {az: -0.62, el: 0.6, dist: 14},
     fit: () => { const n = Number(card.dataset.n || 4), need = n * 1.15 + 5; return Math.max(13, need / (2 * Math.tan(kit.camera.fov * Math.PI / 360) * Math.max(0.5, kit.camera.aspect))) * 1.3; },
     onHover: e => { px = e.clientX; py = e.clientY; if (!hoverQueued) { hoverQueued = true; requestAnimationFrame(pick); } },
+    onTap: e => { px = e.clientX; py = e.clientY; pick(); },
     onDragStart: () => { tip.hidden = true; hovered = null; },
     onLeave: () => { tip.hidden = true; hovered = null; }
   });

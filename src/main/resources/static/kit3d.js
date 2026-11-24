@@ -88,7 +88,8 @@ export function createStage(o) {
  * @param o.fit  () => distância que cabe a cena na largura (enquanto o usuário não deu zoom)
  * @param o.onHover   (evento) chamado ao mover o ponteiro sem arrastar
  * @param o.onDragStart chamado ao começar a arrastar
- * @param o.onLeave   chamado quando o ponteiro sai do canvas
+ * @param o.onLeave   chamado quando o MOUSE sai do canvas (em tela de toque o dedo levantado também "sai", e isso apagaria o que o toque acabou de abrir)
+ * @param o.onTap     (evento) chamado num toque ou clique sem arrastar: é como a tela de toque, que não tem hover, abre o detalhe do que está sob o dedo
  * @returns {cam, update(dt) => boolean (true enquanto a câmera se move), zoom(f), reset(), dragging()}
  */
 export function createOrbit(kit, canvas, o = {}) {
@@ -96,7 +97,7 @@ export function createOrbit(kit, canvas, o = {}) {
   const start = Object.assign({az: -0.55, el: 0.42, dist: 17}, o.start);
   const cam = Object.assign({vaz: 0, vel: 0, sway: true, fit: !!o.fit}, start);
   const host = o.host || canvas;
-  let dragging = false, lastX = 0, lastY = 0;
+  let dragging = false, lastX = 0, lastY = 0, moved = 0;
   const EL_MIN = 0.05, EL_MAX = 1.45;
   const clampEl = v => Math.max(EL_MIN, Math.min(EL_MAX, v));
 
@@ -120,14 +121,14 @@ export function createOrbit(kit, canvas, o = {}) {
 
   canvas.addEventListener('pointerdown', e => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
-    dragging = true; lastX = e.clientX; lastY = e.clientY; cam.sway = false;
+    dragging = true; moved = 0; lastX = e.clientX; lastY = e.clientY; cam.sway = false;
     if (o.onDragStart) o.onDragStart();
     try { canvas.setPointerCapture(e.pointerId); } catch (err) { /* ponteiro já inativo */ }
     host.classList.add('grabbing'); kit.invalidate();
   });
   canvas.addEventListener('pointermove', e => {
     if (!dragging) { if (o.onHover) o.onHover(e); return; }
-    const dx = e.clientX - lastX, dy = e.clientY - lastY;
+    const dx = e.clientX - lastX, dy = e.clientY - lastY; moved += Math.abs(dx) + Math.abs(dy);
     cam.az -= dx * 0.008; cam.el = clampEl(cam.el + dy * 0.006);
     cam.vaz = -dx * 0.008 / 16; cam.vel = dy * 0.006 / 16; lastX = e.clientX; lastY = e.clientY; kit.invalidate();
   });
@@ -137,9 +138,10 @@ export function createOrbit(kit, canvas, o = {}) {
     try { if (canvas.hasPointerCapture(e.pointerId)) canvas.releasePointerCapture(e.pointerId); } catch (err) { /* já solto */ }
     if (kit.reduced.matches) { cam.vaz = 0; cam.vel = 0; }
     kit.invalidate();
+    if (e.type === 'pointerup' && moved < 6 && o.onTap) o.onTap(e);   /* toque ou clique sem arrastar */
   };
   canvas.addEventListener('pointerup', release); canvas.addEventListener('pointercancel', release); canvas.addEventListener('lostpointercapture', release);
-  canvas.addEventListener('pointerleave', () => { if (o.onLeave) o.onLeave(); });
+  canvas.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse' && o.onLeave) o.onLeave(); });
   canvas.addEventListener('dblclick', reset);
   canvas.addEventListener('wheel', e => { if (!(e.ctrlKey || e.metaKey || document.activeElement === canvas)) return; e.preventDefault(); zoom(e.deltaY > 0 ? 1.1 : 0.9); }, {passive: false});
   canvas.addEventListener('keydown', e => {

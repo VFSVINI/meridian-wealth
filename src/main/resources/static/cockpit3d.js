@@ -135,6 +135,7 @@ function ensure() {
     host: box, target, start: {az: -0.55, el: 0.42, dist: 17},
     fit: () => Math.max(17, 15.5 / (2 * Math.tan(kit.camera.fov * Math.PI / 360) * Math.max(0.5, kit.camera.aspect))),   /* terreno inteiro na largura do palco */
     onHover: e => { px = e.clientX; py = e.clientY; queue(); },
+    onTap: e => { px = e.clientX; py = e.clientY; pick(); },
     onDragStart: () => { tip.hidden = true; },
     onLeave: () => { hoverIdx = -1; tip.hidden = true; document.dispatchEvent(new CustomEvent('mw:ck-hover', {detail: {t: null}})); }
   });
