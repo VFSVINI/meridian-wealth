@@ -54,6 +54,21 @@ class HeroContractTest {
     }
 
     @Test
+    void theCoinCanBeDraggedAndFlickedWithoutBreakingVerticalScrollOnTouchScreens() throws IOException {
+        String js = StaticPage.file("hero3d.js"), css = StaticPage.file("app.css");
+        assertThat(js).contains("pointerdown").contains("setPointerCapture").contains("pointercancel").contains("vel += 0.014").contains("PointLight");
+        assertThat(css).as("arrasto horizontal gira a moeda; a rolagem vertical da página continua").contains("touch-action:pan-y").contains(".hero-stage.grabbing");
+    }
+
+    @Test
+    void nothingIsDrawnWhenTheHeroIsNotOnScreen() throws IOException {
+        // medido: sem essa guarda, 40 eventos de rolagem fora da página inicial faziam 360 chamadas de desenho da GPU
+        String js = StaticPage.file("hero3d.js");
+        assertThat(js).contains("const onScreen = () => visible && !document.hidden && stage.clientWidth > 0 && !lost;");
+        assertThat(js).contains("const redraw = () => { if (!raf && onScreen()) draw(); };").contains("if (!onScreen()) return;");
+    }
+
+    @Test
     void theHeroIsIdentityNotDataNoNumberOrPriceLivesInsideTheMedallion() throws IOException {
         String stage = StaticPage.file("index.html");
         int from = stage.indexOf("class=\"hero-stage\""), to = stage.indexOf("</div>", stage.indexOf("heroCanvas"));
