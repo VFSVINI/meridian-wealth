@@ -75,3 +75,102 @@ export function createStage(o) {
   reduced.addEventListener('change', s.wake);
   return s;
 }
+
+/**
+ * Câmera orbital compartilhada (cockpit, Monte Carlo, correlação): arrastar gira com inércia, Ctrl + roda ou botões dão zoom, duplo clique restaura,
+ * setas do teclado giram, + e - dão zoom, 0 restaura; só o botão principal do mouse arrasta; a roda só zooma com Ctrl ou com o canvas focado
+ * (senão o 3D roubaria a rolagem da página). Com movimento reduzido não há balanço nem inércia.
+ * @param kit    o palco de createStage
+ * @param canvas o canvas
+ * @param o.host elemento que recebe a classe "grabbing" (padrão: o canvas)
+ * @param o.target ponto para onde a câmera olha (THREE.Vector3)
+ * @param o.start {az, el, dist} posição inicial
+ * @param o.fit  () => distância que cabe a cena na largura (enquanto o usuário não deu zoom)
+ * @param o.onHover   (evento) chamado ao mover o ponteiro sem arrastar
+ * @param o.onDragStart chamado ao começar a arrastar
+ * @param o.onLeave   chamado quando o ponteiro sai do canvas
+ * @returns {cam, update(dt) => boolean (true enquanto a câmera se move), zoom(f), reset(), dragging()}
+ */
+export function createOrbit(kit, canvas, o = {}) {
+  const target = o.target || new THREE.Vector3();
+  const start = Object.assign({az: -0.55, el: 0.42, dist: 17}, o.start);
+  const cam = Object.assign({vaz: 0, vel: 0, sway: true, fit: !!o.fit}, start);
+  const host = o.host || canvas;
+  let dragging = false, lastX = 0, lastY = 0;
+  const EL_MIN = 0.05, EL_MAX = 1.45;
+  const clampEl = v => Math.max(EL_MIN, Math.min(EL_MAX, v));
+
+  function place() {
+    const ce = Math.cos(cam.el);
+    kit.camera.position.set(target.x + cam.dist * ce * Math.sin(cam.az), target.y + cam.dist * Math.sin(cam.el), target.z + cam.dist * ce * Math.cos(cam.az));
+    kit.camera.lookAt(target);
+  }
+  const moving = () => Math.abs(cam.vaz) > 0.00001 || Math.abs(cam.vel) > 0.00001;
+  function update(dt) {
+    if (cam.fit && o.fit) cam.dist = o.fit();
+    if (!dragging) {
+      if (moving()) { cam.az += cam.vaz * dt; cam.el = clampEl(cam.el + cam.vel * dt); cam.vaz *= 0.93; cam.vel *= 0.93; }
+      else if (cam.sway && !kit.reduced.matches) cam.az += 0.00016 * dt;       /* balanço lento até o primeiro toque */
+    }
+    place();
+    return !!(cam.sway && !kit.reduced.matches) || moving() || dragging;
+  }
+  const zoom = f => { cam.sway = false; cam.fit = false; cam.dist = Math.max(o.minDist || 7, Math.min(o.maxDist || 40, cam.dist * f)); kit.invalidate(); };
+  const reset = () => { Object.assign(cam, start, {vaz: 0, vel: 0, fit: !!o.fit}); kit.invalidate(); };
+
+  canvas.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    dragging = true; lastX = e.clientX; lastY = e.clientY; cam.sway = false;
+    if (o.onDragStart) o.onDragStart();
+    try { canvas.setPointerCapture(e.pointerId); } catch (err) { /* ponteiro já inativo */ }
+    host.classList.add('grabbing'); kit.invalidate();
+  });
+  canvas.addEventListener('pointermove', e => {
+    if (!dragging) { if (o.onHover) o.onHover(e); return; }
+    const dx = e.clientX - lastX, dy = e.clientY - lastY;
+    cam.az -= dx * 0.008; cam.el = clampEl(cam.el + dy * 0.006);
+    cam.vaz = -dx * 0.008 / 16; cam.vel = dy * 0.006 / 16; lastX = e.clientX; lastY = e.clientY; kit.invalidate();
+  });
+  const release = e => {
+    if (!dragging) return;
+    dragging = false; host.classList.remove('grabbing');
+    try { if (canvas.hasPointerCapture(e.pointerId)) canvas.releasePointerCapture(e.pointerId); } catch (err) { /* já solto */ }
+    if (kit.reduced.matches) { cam.vaz = 0; cam.vel = 0; }
+    kit.invalidate();
+  };
+  canvas.addEventListener('pointerup', release); canvas.addEventListener('pointercancel', release); canvas.addEventListener('lostpointercapture', release);
+  canvas.addEventListener('pointerleave', () => { if (o.onLeave) o.onLeave(); });
+  canvas.addEventListener('dblclick', reset);
+  canvas.addEventListener('wheel', e => { if (!(e.ctrlKey || e.metaKey || document.activeElement === canvas)) return; e.preventDefault(); zoom(e.deltaY > 0 ? 1.1 : 0.9); }, {passive: false});
+  canvas.addEventListener('keydown', e => {
+    const step = {ArrowLeft: [0.12, 0], ArrowRight: [-0.12, 0], ArrowUp: [0, -0.08], ArrowDown: [0, 0.08]}[e.key];
+    if (step) { e.preventDefault(); cam.sway = false; cam.az += step[0]; cam.el = clampEl(cam.el + step[1]); kit.invalidate(); }
+    else if (e.key === '+' || e.key === '=') { e.preventDefault(); zoom(0.9); }
+    else if (e.key === '-') { e.preventDefault(); zoom(1.1); }
+    else if (e.key === '0' || e.key === 'Home') { e.preventDefault(); reset(); }
+  });
+  return {cam, update, zoom, reset, dragging: () => dragging};
+}
+
+/** Rótulo de texto como sprite (escalas dos gráficos 3D): o texto vira textura de um canvas 2D, sempre voltado para a câmera. */
+export function makeLabel(text, color, size) {
+  const c = document.createElement('canvas'), g = c.getContext('2d');
+  const fs = 56, font = `500 ${fs * 0.5}px IBM Plex Mono, ui-monospace, monospace`;
+  g.font = font; c.width = Math.ceil(g.measureText(text).width) + 16; c.height = fs;
+  g.font = font; g.fillStyle = color; g.textBaseline = 'middle'; g.fillText(text, 8, fs / 2);
+  const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({map: tex, transparent: true, depthWrite: false}));
+  sp.scale.set(size * c.width / c.height, size, 1);
+  return sp;
+}
+
+/** Libera da GPU tudo o que o grupo usa e o esvazia. Os buffers de matriz e de cor das instâncias só saem com o dispose do próprio InstancedMesh
+ *  (medido no cockpit: sem isso, 46 buffers vazados em 12 reconstruções). */
+export function disposeGroup(group) {
+  group.traverse(o => {
+    if (o.geometry) o.geometry.dispose();
+    if (o.material) { if (o.material.map) o.material.map.dispose(); o.material.dispose(); }
+    if (o.isInstancedMesh) o.dispose();
+  });
+  group.clear();
+}
