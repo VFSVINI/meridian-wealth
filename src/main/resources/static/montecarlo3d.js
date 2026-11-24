@@ -122,6 +122,7 @@ function setActive(on) {
   active = on; btn.setAttribute('aria-pressed', String(on));
   box.hidden = !on; flat.hidden = on;
   if (on) { if (!ensure()) return; document.dispatchEvent(new Event('mw:mc-need')); build(); kit.wake(); }
+  else document.dispatchEvent(new Event('mw:mc-2d-visible'));
 }
 btn.addEventListener('click', () => setActive(!active));
 document.getElementById('mc3dIn').addEventListener('click', () => orbit && orbit.zoom(0.85));
