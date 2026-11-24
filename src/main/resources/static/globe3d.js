@@ -21,6 +21,7 @@ const NAME = {NYSE: 'NYSE', B3: 'B3', XETRA: 'Xetra', LSE: 'LSE', EURONEXT_AMS: 
 const R = 1;
 const vec = (lat, lon, r = R) => { const la = lat * Math.PI / 180, lo = lon * Math.PI / 180; return new THREE.Vector3(r * Math.cos(la) * Math.sin(lo), r * Math.sin(la), r * Math.cos(la) * Math.cos(lo)); };
 
+let earth = null;   /* a esfera base: oclui os marcadores do outro lado no raycast */
 let kit = null, started = false, markets = [], universe = [], pins = [], rings = [], dots = null, land = null, selected = null;
 const globe = new THREE.Group();
 const st = {az: 0, el: 0.25, vaz: 0, vel: 0, auto: true, dragging: false, lastX: 0, lastY: 0, moved: 0};
@@ -76,7 +77,7 @@ function paintLand(now) {
 
 function buildStatic() {
   const sphere = new THREE.Mesh(new THREE.SphereGeometry(R * 0.995, 64, 48), new THREE.MeshStandardMaterial({color: 0x16304f, roughness: 0.9, metalness: 0}));
-  globe.add(sphere);
+  earth = sphere; globe.add(sphere);
   const halo = new THREE.Mesh(new THREE.SphereGeometry(R * 1.1, 48, 32), new THREE.MeshBasicMaterial({color: new THREE.Color(css().info), transparent: true, opacity: 0.07, side: THREE.BackSide, depthWrite: false}));
   globe.add(halo);
   const grat = [];
@@ -209,7 +210,8 @@ function ensure() {
     const r = canvas.getBoundingClientRect(); ndc.set(((px - r.left) / r.width) * 2 - 1, -((py - r.top) / r.height) * 2 + 1);
     ray.setFromCamera(ndc, kit.camera);
     const targets = [...pins.map(p => p.hitMesh), ...rings.map(x => x.hitMesh)];
-    const h = ray.intersectObjects(targets, false)[0]; hit = h ? h.object.userData.exchange : null;
+    /* o globo entra no raycast como oclusor: o primeiro objeto atingido decide, então um marcador do outro lado do planeta (invisível) não é achado */
+    const h = ray.intersectObjects(earth ? [earth, ...targets] : targets, false)[0]; hit = h && h.object !== earth ? h.object.userData.exchange : null;
     canvas.style.cursor = hit ? 'pointer' : '';
     if (hit) { const m = markets.find(x => x.exchange === hit), d = describe(m); tip.textContent = ''; const b = document.createElement('b'); b.textContent = d.title; const l = document.createElement('div'); l.className = 'src'; l.textContent = d.line; tip.append(b, l); tip.hidden = false; const rr = stageEl.getBoundingClientRect(); tip.style.left = Math.min(rr.width - tip.offsetWidth - 8, Math.max(8, px - rr.left + 14)) + 'px'; tip.style.top = Math.max(8, py - rr.top - tip.offsetHeight - 12) + 'px'; } else tip.hidden = true;
   };
