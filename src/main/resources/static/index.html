@@ -76,8 +76,12 @@
           <div class="head"><span class="sym" id="hSym">—</span><span class="mute" id="hName"></span><span class="px" id="hPx"></span><span class="num" id="hChg"></span></div>
           <div class="prov" id="hProv" aria-live="polite"></div>
           <div class="ck-bar"><div class="chips" role="group" aria-label="Período do gráfico"><button type="button" class="fchip" data-ckr="1M" aria-pressed="false">1M</button><button type="button" class="fchip" data-ckr="3M" aria-pressed="false">3M</button><button type="button" class="fchip" data-ckr="6M" aria-pressed="true">6M</button><button type="button" class="fchip" data-ckr="1A" aria-pressed="false">1A</button></div>
-            <div class="chips" role="group" aria-label="Camadas do gráfico"><button type="button" class="fchip" data-ckt="bb" aria-pressed="true">Bollinger</button><button type="button" class="fchip" data-ckt="sma" aria-pressed="true">SMA50</button><button type="button" class="fchip" data-ckt="zones" aria-pressed="true">Zonas e níveis</button></div></div>
+            <div class="chips" role="group" aria-label="Camadas do gráfico"><button type="button" class="fchip" data-ckt="bb" aria-pressed="true">Bollinger</button><button type="button" class="fchip" data-ckt="sma" aria-pressed="true">SMA50</button><button type="button" class="fchip" data-ckt="zones" aria-pressed="true">Zonas e níveis</button><button type="button" class="fchip" id="ck3dBtn" aria-pressed="false" aria-controls="ck3d">Gráfico 3D</button></div></div>
           <div class="chartwrap"><div id="chart" class="lwc" role="img" aria-label="Gráfico de candles com volume, média de 50 barras, bandas de Bollinger e os níveis do motor de timing. Use a tabela abaixo para ler os preços."></div>
+            <div id="ck3d" class="lwc ck3d" hidden><canvas id="ck3dCanvas" tabindex="0" role="img" aria-label="Terreno 3D do histórico real do ativo. Use a tabela para ler os preços."></canvas>
+              <div class="c3d-ctl"><button type="button" id="ck3dIn" aria-label="Aproximar">+</button><button type="button" id="ck3dOut" aria-label="Afastar">−</button><button type="button" id="ck3dReset" aria-label="Restaurar a câmera">⟲</button></div>
+              <div class="c3d-hint">Arraste para girar · Ctrl + roda para zoom · duplo clique restaura · setas giram</div>
+              <div id="ck3dTip" class="c3d-tip" hidden></div><p id="ck3dNote" class="c3d-note" hidden></p></div>
             <div class="empty" id="empty" hidden><strong>Sem dado em tempo real</strong><span id="emptyTxt"></span></div></div>
           <div class="legend"><span style="--c:var(--up)">Zona de entrada</span><span style="--c:var(--warn)">Realização e alvos</span><span style="--c:var(--down)">Invalidação</span><span style="--c:var(--gold)">Valor justo (SMA50)</span><span style="--c:var(--info)">Bollinger (20, 2σ), tracejado</span></div>
           <div class="ck-tools"><button type="button" id="ckTableBtn" aria-expanded="false" aria-controls="ckTable">Ver como tabela</button><button type="button" id="ckExport">Exportar imagem</button><button type="button" class="primary" id="ckSim">Simular compra ou venda</button></div>
@@ -285,6 +289,7 @@
 <script src="/montecarlo.js"></script>
 <script src="/correlacao.js"></script>
 <script src="/cockpit.js"></script>
+<script type="module" src="/cockpit3d.js"></script>
 <script type="module" src="/hero3d.js"></script>
 </body>
 </html>

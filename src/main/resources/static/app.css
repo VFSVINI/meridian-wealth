@@ -290,3 +290,13 @@ h1{font-size:clamp(26px,3.4vw,40px)}
 .fx .card.rv:not(.in){opacity:0;transform:translateY(24px)}
 @media(prefers-reduced-motion:reduce){.fx .page.enter{animation:none}.fx .card.rv:not(.in){opacity:1;transform:none}}
 @media print{.fx .card.rv:not(.in){opacity:1!important;transform:none!important}.fx .page.enter{animation:none!important}.fx .tilting{transform:none!important;box-shadow:none!important}}
+
+/* item #40: cockpit em 3D (terreno de candles do histórico real, câmera orbital) */
+.ck3d{position:relative;touch-action:pan-y;cursor:grab;overflow:hidden;background:radial-gradient(120% 100% at 50% 0%,color-mix(in srgb,var(--panel-2) 80%,transparent),var(--panel) 70%)}
+.ck3d.grabbing{cursor:grabbing}.ck3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline-offset:-3px}
+.c3d-ctl{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:6px}
+.c3d-ctl button{width:34px;height:34px;padding:0;border-radius:50%;font-size:16px;line-height:1}
+.c3d-hint{position:absolute;left:12px;top:10px;font-size:11px;letter-spacing:.04em;color:var(--text-3);pointer-events:none;max-width:calc(100% - 24px)}
+.c3d-tip{position:absolute;z-index:3;pointer-events:none;padding:8px 10px;border-radius:var(--r);background:var(--popover);border:1px solid var(--line-2);box-shadow:0 10px 28px rgba(0,0,0,.35);font-size:12px;white-space:nowrap}
+.c3d-tip .src{margin-bottom:4px}.c3d-tip .num{white-space:pre;line-height:1.5}.c3d-note{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;margin:0;padding:var(--s4);text-align:center;color:var(--text-2);z-index:2}
+@media(max-width:900px){.c3d-hint{white-space:normal}}
