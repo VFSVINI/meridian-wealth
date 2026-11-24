@@ -40,8 +40,10 @@ class Cockpit3dContractTest {
         String html = StaticPage.file("index.html"), c3 = StaticPage.file("cockpit3d.js");
         assertThat(html).contains("id=\"ck3dBtn\"").contains("aria-pressed=\"false\"").contains("id=\"ck3dCanvas\" tabindex=\"0\" role=\"img\"").contains("id=\"ckTableBtn\"")
                 .contains("<script type=\"module\" src=\"/cockpit3d.js\"></script>");
-        assertThat(c3).contains("ArrowLeft").contains("ArrowRight").contains("ArrowUp").contains("ArrowDown").contains("dblclick").contains("canvas.setAttribute('aria-label'");
-        assertThat(c3).as("a roda só dá zoom com Ctrl ou com o gráfico focado: senão o 3D roubaria a rolagem da página").contains("e.ctrlKey || e.metaKey || document.activeElement === canvas");
+        String kit = StaticPage.file("kit3d.js");
+        assertThat(c3).contains("createOrbit(kit, canvas").contains("canvas.setAttribute('aria-label'");
+        assertThat(kit).contains("ArrowLeft").contains("ArrowRight").contains("ArrowUp").contains("ArrowDown").contains("dblclick");
+        assertThat(kit).as("a roda só dá zoom com Ctrl ou com o gráfico focado: senão o 3D roubaria a rolagem da página").contains("e.ctrlKey || e.metaKey || document.activeElement === canvas");
         assertThat(StaticPage.file("app.css")).contains(".ck3d{position:relative;touch-action:pan-y");
     }
 
@@ -50,7 +52,8 @@ class Cockpit3dContractTest {
         // medido: um evento de dados do cockpit durante a perda chamava build(), que escondia o aviso "O navegador pausou o 3D"
         String c3 = StaticPage.file("cockpit3d.js");
         assertThat(c3).contains("if (!kit || !data || kit.lost) return;");
-        assertThat(c3).as("distância da câmera pela proporção do palco (celular estreito não corta o terreno)").contains("if (cam.fit) cam.dist = Math.max(17,");
+        assertThat(c3).as("distância da câmera pela proporção do palco (celular estreito não corta o terreno)").contains("fit: () => Math.max(17,");
+        assertThat(StaticPage.file("kit3d.js")).contains("if (cam.fit && o.fit) cam.dist = o.fit();");
     }
 
     @Test
@@ -62,6 +65,7 @@ class Cockpit3dContractTest {
     @Test
     void everyRebuildReleasesTheInstanceBuffersOfTheOldScene() throws IOException {
         // medido: sem InstancedMesh.dispose(), 12 reconstruções vazavam 46 buffers da GPU (cada atualização de cotação reconstrói a cena)
-        assertThat(StaticPage.file("cockpit3d.js")).contains("if (o.isInstancedMesh) o.dispose();").contains("o.geometry.dispose()").contains("o.material.dispose()");
+        assertThat(StaticPage.file("kit3d.js")).contains("export function disposeGroup(group)").contains("if (o.isInstancedMesh) o.dispose();").contains("o.geometry.dispose()").contains("o.material.dispose()");
+        assertThat(StaticPage.file("cockpit3d.js")).contains("disposeGroup(group);");
     }
 }
