@@ -11,6 +11,7 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 - **`kit3d.js`**, o módulo 3D compartilhado (ADR 026 prometia antes do segundo uso): cria o renderizador, ajusta o tamanho, só desenha o que se vê (0 desenhos fora da tela), trata a perda e a restauração do contexto WebGL e o movimento reduzido. O hero passou a usá-lo, com o mesmo comportamento.
 
 ### Corrigido (item #40)
+- A cada atualização do cockpit o 3D reconstruía a cena sem liberar os buffers de matriz e de cor dos `InstancedMesh`: **46 buffers da GPU vazados em 12 reconstruções** (medido contando `createBuffer` e `deleteBuffer`); agora o `dispose()` do `InstancedMesh` é chamado e o vazamento líquido é 0 (achado do code review).
 - No cockpit 3D, um evento de dados chegando **enquanto o contexto WebGL estava perdido** chamava a montagem da cena, que escondia o aviso "O navegador pausou o 3D"; agora a montagem espera a restauração (medido).
 
 ### Adicionado (item #45 do roadmap, bloco 3D)

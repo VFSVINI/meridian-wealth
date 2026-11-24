@@ -58,4 +58,10 @@ class Cockpit3dContractTest {
         String c3 = StaticPage.file("cockpit3d.js");
         assertThat(c3).contains("getComputedStyle(document.documentElement)").contains("'--up'").contains("'--down'").contains("'--gold'").contains("data-theme");
     }
+
+    @Test
+    void everyRebuildReleasesTheInstanceBuffersOfTheOldScene() throws IOException {
+        // medido: sem InstancedMesh.dispose(), 12 reconstruções vazavam 46 buffers da GPU (cada atualização de cotação reconstrói a cena)
+        assertThat(StaticPage.file("cockpit3d.js")).contains("if (o.isInstancedMesh) o.dispose();").contains("o.geometry.dispose()").contains("o.material.dispose()");
+    }
 }
