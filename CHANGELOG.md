@@ -12,6 +12,7 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 - Desligado com `prefers-reduced-motion`; a inclinação também em telas de toque. **Nenhum número é animado** (ADR 004): o módulo não escreve texto em elemento nenhum, e um teste trava isso. ADR 027.
 
 ### Corrigido (item #45)
+- Imprimir ou salvar em PDF uma página longa antes de rolar deixava os cartões ainda não revelados em branco (medido: 7 de 7 no cockpit); agora a impressão mostra todos (achado do code review).
 - A íris podia ser cortada no meio: o pulso de cotação nova (`beat`, `fd`, `fu`) de um filho também dispara `animationend`, que borbulha e removia a classe da página antes da hora; agora só vale o fim da própria animação da página (medido provocando o caso).
 
 ### Alterado (item #31, etapa 1b: ajustes do hero)

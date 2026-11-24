@@ -46,4 +46,10 @@ class FxContractTest {
         assertThat(js).contains("document.addEventListener('pointermove'").contains("'IntersectionObserver' in window");
         assertThat(css).as("a revelação só esconde sob a classe fx, que o JavaScript acrescenta").contains(".fx .card.rv:not(.in){opacity:0");
     }
+
+    @Test
+    void printingShowsEveryCardEvenBeforeScrollingToReachThem() throws IOException {
+        // medido: 7 de 7 cartões do cockpit ficam com opacidade 0 ao carregar; sem regra de impressão, o PDF sairia em branco
+        assertThat(StaticPage.file("app.css")).contains("@media print{.fx .card.rv:not(.in){opacity:1!important;transform:none!important}");
+    }
 }
