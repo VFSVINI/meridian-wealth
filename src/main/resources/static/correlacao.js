@@ -56,7 +56,11 @@ function crRender(){
   $('#crExcl').hidden=!d.excluded.length;
   $('#crNotes').innerHTML=d.notes.map(n=>`<li>${esc(n)}</li>`).join('');
   $('#crDisc').textContent=d.disclaimer;
+  crEmit();
 }
+/* as barras 3D (correlacao3d.js) leem a MESMA matriz que a tabela, por este evento */
+function crEmit(){if(CR.data)document.dispatchEvent(new CustomEvent('mw:cr-data',{detail:{data:CR.data}}))}
+document.addEventListener('mw:cr-need',crEmit);
 function onCorrelacaoRoute(){if((location.hash.match(/^#\/([a-z]+)/)||[])[1]==='correlacao')crLoad()}
 addEventListener('hashchange',onCorrelacaoRoute);
 document.addEventListener('mw-auth',()=>{if((location.hash||'').startsWith('#/correlacao'))crLoad()});
