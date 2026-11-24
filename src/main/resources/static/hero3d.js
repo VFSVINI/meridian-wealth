@@ -1,28 +1,23 @@
 /* Hero 3D da página inicial (item #31): medalhão ORIGINAL do MeridianWealth com o "M" da marca, em three.js servido localmente.
    É identidade visual, não dado: nenhum preço ou número aparece nele. Interação: arrastar para girar (com inércia), clique ou toque dá um
-   impulso, o brilho segue o ponteiro e a rolagem da página inclina a moeda. Pausa fora da tela e com a aba oculta; com movimento reduzido
-   o giro automático não existe (só o que o usuário aciona); sem WebGL, fica o medalhão em CSS. Módulo ES: não declara nenhum global. */
-import * as THREE from '/vendor/three.module.min.js';
+   impulso, o brilho segue o ponteiro e a rolagem da página inclina a moeda. O que é comum a toda cena 3D (tamanho, pausa fora da tela, perda
+   de contexto, movimento reduzido) vem do kit3d.js. Módulo ES: não declara nenhum global. */
+import {THREE, createStage} from '/kit3d.js';
 
 const hero = document.getElementById('hero3d');
 const canvas = document.getElementById('heroCanvas');
 const stage = hero && hero.querySelector('.hero-stage');
 
 function start() {
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  let renderer;
-  try {
-    renderer = new THREE.WebGLRenderer({canvas, antialias: true, alpha: true, powerPreference: 'low-power'});
-  } catch (e) {
-    hero.classList.add('no3d');
-    return;
-  }
-  renderer.setClearColor(0x000000, 0);
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.15;
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 50);
+  const kit = createStage({
+    stage, canvas, fov: 30, exposure: 1.15,
+    onFail: () => hero.classList.add('no3d'),
+    onLost: () => { hero.classList.remove('ready'); hero.classList.add('no3d'); },
+    onRestore: () => { buildEnvironment(); hero.classList.remove('no3d'); hero.classList.add('ready'); },
+    onFrame: step
+  });
+  if (!kit) return;
+  const {scene, camera, renderer, reduced} = kit;
   camera.position.set(0, 0, 4.7);
 
   /* ambiente de estúdio: caixas de luz quentes e frias refletidas pelo metal (sem arquivo HDR de terceiros) */
@@ -41,11 +36,11 @@ function start() {
   const pmrem = new THREE.PMREMGenerator(renderer);
   let envTarget = null;
   /* o mapa de reflexo mora na GPU e se perde com o contexto: por isso é uma função, refeita ao restaurar */
-  const buildEnvironment = () => {
+  function buildEnvironment() {
     if (envTarget) envTarget.dispose();
     envTarget = pmrem.fromScene(envScene, 0.035);
     scene.environment = envTarget.texture;
-  };
+  }
   buildEnvironment();
 
   const gold = new THREE.MeshStandardMaterial({color: 0xe3bc62, metalness: 1, roughness: 0.22});
@@ -92,22 +87,14 @@ function start() {
   let gx = 0, gy = 0;                   /* posição suavizada do brilho */
   let scrollTilt = 0, scrollScale = 1;
   let dragging = false, moved = 0, lastX = 0, lastY = 0, lastT = 0;
-  let last = performance.now(), raf = 0, visible = true, lost = false;
-  const running = () => visible && !document.hidden && !reduced.matches && stage.clientWidth > 0 && !lost;
 
-  function size() {
-    const w = Math.max(1, stage.clientWidth), h = Math.max(1, stage.clientHeight);
-    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h; camera.updateProjectionMatrix();
-  }
   function onScroll() {
     const r = hero.getBoundingClientRect();
     const p = Math.max(0, Math.min(1, -r.top / Math.max(1, r.height)));
     scrollTilt = p * 0.55; scrollScale = 1 - p * 0.18;
   }
-  function step(now) {
-    const dt = Math.min(64, now - last); last = now;
+  /* atualiza a cena; devolve true enquanto algo se move (o kit mantém o laço) */
+  function step(dt, now) {
     if (!dragging) {
       if (reduced.matches) vel *= 0.9;                 /* sem giro automático: só a inércia do que o usuário acionou */
       else vel += (IDLE - vel) * Math.min(1, dt * 0.0035);
@@ -122,22 +109,8 @@ function start() {
     coin.position.y = reduced.matches ? 0 : Math.sin(now * 0.0008) * 0.04;
     coin.scale.setScalar(scrollScale);
     glint.position.set(gx * 2.4, -gy * 1.8, 2.6);
+    return !reduced.matches || dragging || Math.abs(vel) > 0.00002 || Math.abs(tilt - tiltTarget) > 0.001 || Math.abs(tx - px) > 0.002 || Math.abs(ty - py) > 0.002;
   }
-  function draw() { step(performance.now()); renderer.render(scene, camera); }
-  function frame(now) {
-    if (lost) { raf = 0; return; }
-    step(now); renderer.render(scene, camera);
-    raf = running() ? requestAnimationFrame(frame) : 0;
-  }
-  /* só desenha o que se vê: fora da tela, em outra página ou com a aba oculta, nenhum evento (rolagem, ponteiro, redimensionar) gasta GPU */
-  const onScreen = () => visible && !document.hidden && stage.clientWidth > 0 && !lost;
-  function wake() {
-    cancelAnimationFrame(raf); raf = 0; if (!onScreen()) return;
-    size(); last = performance.now(); onScroll(); draw();
-    if (running()) raf = requestAnimationFrame(frame);
-  }
-  /* com movimento reduzido não há laço: o que o usuário aciona pede um quadro por vez */
-  const redraw = () => { if (!raf && onScreen()) draw(); };
 
   /* arrastar para girar; clique ou toque (sem arrastar) dá um impulso */
   stage.addEventListener('pointerdown', e => {
@@ -145,6 +118,7 @@ function start() {
     dragging = true; moved = 0; lastX = e.clientX; lastY = e.clientY; lastT = performance.now();
     try { stage.setPointerCapture(e.pointerId); } catch (err) { /* ponteiro já inativo: o arrasto segue pelos eventos do palco */ }
     stage.classList.add('grabbing'); hero.classList.add('touched');
+    kit.invalidate();
   });
   stage.addEventListener('pointermove', e => {
     if (!dragging) return;
@@ -154,42 +128,30 @@ function start() {
     tiltTarget = Math.max(-0.7, Math.min(0.7, tiltTarget + dy * 0.006));
     vel = Math.max(-0.02, Math.min(0.02, (dx * 0.012) / Math.max(8, now - lastT)));
     lastX = e.clientX; lastY = e.clientY; lastT = now;
-    redraw();
+    kit.invalidate();
   });
   const release = e => {
     if (!dragging) return;
     dragging = false; stage.classList.remove('grabbing');
     try { if (stage.hasPointerCapture(e.pointerId)) stage.releasePointerCapture(e.pointerId); } catch (err) { /* já solto */ }
     if (moved < 5 && e.type === 'pointerup') vel += 0.014;   /* um toque: impulso de giro (cancelar ou perder a captura não é toque) */
-    redraw();
+    kit.invalidate();
   };
   stage.addEventListener('pointerup', release);
   stage.addEventListener('pointercancel', release);
   stage.addEventListener('lostpointercapture', release);
 
-  /* canvas decorativo: o teclado não precisa dele; o brilho acompanha o mouse sobre o hero inteiro */
-  /* celulares tiram o contexto WebGL quando o navegador vai para segundo plano: sem tratar, o canvas vira um retângulo branco */
-  canvas.addEventListener('webglcontextlost', e => {
-    e.preventDefault(); lost = true; cancelAnimationFrame(raf); raf = 0;
-    hero.classList.remove('ready'); hero.classList.add('no3d');
-  });
-  canvas.addEventListener('webglcontextrestored', () => {
-    lost = false; buildEnvironment();
-    hero.classList.remove('no3d'); hero.classList.add('ready'); wake();
-  });
+  /* o brilho acompanha o mouse sobre o hero inteiro */
   hero.addEventListener('pointermove', e => {
     const r = stage.getBoundingClientRect();
     tx = Math.max(-1, Math.min(1, ((e.clientX - r.left) / Math.max(1, r.width)) * 2 - 1));
     ty = Math.max(-1, Math.min(1, ((e.clientY - r.top) / Math.max(1, r.height)) * 2 - 1));
-    redraw();
+    kit.invalidate();
   });
-  hero.addEventListener('pointerleave', () => { tx = 0; ty = 0; redraw(); });
-  addEventListener('scroll', () => { onScroll(); redraw(); }, {passive: true});
-  new ResizeObserver(wake).observe(stage);
-  new IntersectionObserver(es => { visible = es[0].isIntersecting; wake(); }).observe(stage);
-  document.addEventListener('visibilitychange', wake);
-  reduced.addEventListener('change', wake);
-  wake();
+  hero.addEventListener('pointerleave', () => { tx = 0; ty = 0; kit.invalidate(); });
+  addEventListener('scroll', () => { onScroll(); kit.invalidate(); }, {passive: true});
+  onScroll();
+  kit.wake();
   hero.classList.add('ready');
 }
 

@@ -102,7 +102,15 @@ function draw(){
   }
   applyTheme();syncLines(false);renderTable();
   if(!CK.hovering)inspect(null);
+  ckEmit();
 }
+/* o gráfico 3D (cockpit3d.js) lê os MESMOS candles reais e as mesmas contas (Bollinger e SMA50) por este evento */
+function ckEmit(){
+  const bars=CK.bars||[];
+  document.dispatchEvent(new CustomEvent('mw:ck-data',{detail:{symbol:sel,bars,bb:bollinger(bars),sma:smaSeries(bars),range:CK.range,days:CK_DAYS[CK.range],when:ckWhen}}));
+}
+document.addEventListener('mw:ck-need',ckEmit);
+document.addEventListener('mw:ck-hover',e=>inspect(e.detail&&e.detail.t!=null?e.detail.t:null));
 /* inspetor do candle: o que está sob o cursor, ou a última barra */
 function inspect(time){
   const el=document.getElementById('insp');if(!el)return;
@@ -124,7 +132,7 @@ function renderTable(){
 }
 document.addEventListener('click',e=>{
   const r=e.target.closest('button[data-ckr]');
-  if(r){CK.range=r.dataset.ckr;document.querySelectorAll('button[data-ckr]').forEach(b=>b.setAttribute('aria-pressed',String(b===r)));if(CK.chart)applyRange();return}
+  if(r){CK.range=r.dataset.ckr;document.querySelectorAll('button[data-ckr]').forEach(b=>b.setAttribute('aria-pressed',String(b===r)));if(CK.chart)applyRange();ckEmit();return}
   const t=e.target.closest('button[data-ckt]');
   if(t){const on=t.getAttribute('aria-pressed')!=='true';CK.show[t.dataset.ckt]=on;t.setAttribute('aria-pressed',String(on));if(CK.chart)applyVisibility();return}
   if(e.target.closest('#ckTableBtn')){const w=$('#ckTable'),b=$('#ckTableBtn');w.hidden=!w.hidden;b.setAttribute('aria-expanded',String(!w.hidden));b.textContent=w.hidden?'Ver como tabela':'Ocultar tabela';renderTable();return}
