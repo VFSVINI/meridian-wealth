@@ -36,3 +36,4 @@ ADRs aceitos não são reescritos; uma mudança de rumo gera um ADR novo que sub
 | [029](029-globo-3d-dos-mercados.md) | Globo 3D dos mercados com o estado real do servidor | Aceito | 2026-11-24 |
 | [030](030-monte-carlo-3d-e-orbita-compartilhada.md) | Monte Carlo em 3D e câmera orbital compartilhada | Aceito | 2026-11-24 |
 | [031](031-correlacao-em-3d.md) | Correlação em 3D com célula sem dado nunca como zero | Aceito | 2026-11-24 |
+| [032](032-carteira-em-3d.md) | Minha Carteira em 3D: rosca de alocação sem guardar dado depois do logout | Aceito | 2026-11-24 |
