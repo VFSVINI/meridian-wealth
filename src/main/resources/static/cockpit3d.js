@@ -3,7 +3,7 @@
    Nada é simulado nem animado: a única animação é a da câmera. Câmera orbital: arrastar gira, Ctrl+roda ou os botões dão zoom, duplo clique restaura,
    setas do teclado giram. Passar o mouse sobre um candle mostra os números reais e atualiza o inspetor. O 2D e a tabela continuam como alternativa.
    Módulo ES: não declara nenhum global; usa o kit3d.js. */
-import {THREE, createStage} from '/kit3d.js';
+import {THREE, createStage, createOrbit, makeLabel, disposeGroup} from '/kit3d.js';
 
 const box = document.getElementById('ck3d');
 const canvas = document.getElementById('ck3dCanvas');
@@ -13,42 +13,19 @@ const tip = document.getElementById('ck3dTip');
 const note = document.getElementById('ck3dNote');
 if (!box || !canvas || !btn) throw new Error('cockpit 3D: elementos ausentes');
 
-let kit = null, active = false, data = null, built = null;
+let kit = null, orbit = null, active = false, data = null, built = null;
 const W = 12, H = 5;                                   /* largura do tempo e altura do preço, em unidades da cena */
-const cam = {az: -0.55, el: 0.42, dist: 17, vaz: 0, vel: 0, sway: true, fit: true};
-const START = {az: -0.55, el: 0.42, dist: 17};
 const target = new THREE.Vector3(0, H * 0.42, 0.9);
 const group = new THREE.Group();
 let bodies = null, shown = [];                          /* candles visíveis (para o raycast e o tooltip) */
 let hoverIdx = -1, hoverQueued = false, px = 0, py = 0;
-let dragging = false, lastX = 0, lastY = 0, moved = 0;
 
 const css = () => { const c = getComputedStyle(document.documentElement), k = n => c.getPropertyValue(n).trim(); return {up: k('--up'), down: k('--down'), gold: k('--gold'), info: k('--info'), text: k('--text-2'), line: k('--line-2'), bg: k('--panel')}; };
-
-function label(text, color, size) {
-  const c = document.createElement('canvas'), g = c.getContext('2d');
-  const fs = 56; g.font = `500 ${fs * 0.5}px IBM Plex Mono, ui-monospace, monospace`;
-  c.width = Math.ceil(g.measureText(text).width) + 16; c.height = fs;
-  g.font = `500 ${fs * 0.5}px IBM Plex Mono, ui-monospace, monospace`; g.fillStyle = color; g.textBaseline = 'middle'; g.fillText(text, 8, fs / 2);
-  const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
-  const sp = new THREE.Sprite(new THREE.SpriteMaterial({map: tex, transparent: true, depthWrite: false}));
-  sp.scale.set(size * c.width / c.height, size, 1);
-  return sp;
-}
-function disposeGroup() {
-  group.traverse(o => {
-    if (o.geometry) o.geometry.dispose();
-    if (o.material) { if (o.material.map) o.material.map.dispose(); o.material.dispose(); }
-    /* os buffers de matriz e de cor das instâncias só são liberados pelo dispose do próprio InstancedMesh (medido: sem isso, 46 buffers vazados em 12 reconstruções) */
-    if (o.isInstancedMesh) o.dispose();
-  });
-  group.clear(); bodies = null; shown = [];
-}
 
 function build() {
   /* com o contexto perdido não há o que montar, e esconder o aviso aqui o apagaria: a restauração chama build() de novo */
   if (!kit || !data || kit.lost) return;
-  disposeGroup();
+  disposeGroup(group); bodies = null; shown = [];
   const all = data.bars || [];
   if (!all.length) { box.classList.add('empty3d'); note.textContent = 'Sem dado real para este ativo.'; note.hidden = false; kit.invalidate(); return; }
   note.hidden = true; box.classList.remove('empty3d');
@@ -102,34 +79,17 @@ function build() {
   grid.position.set(0, -0.001, 1.6); grid.scale.z = 0.62; grid.material.transparent = true; grid.material.opacity = 0.35; group.add(grid);
   const dec = pmax < 10 ? 4 : 2;
   for (let t = 0; t <= 4; t++) {
-    const p = pmin + span * t / 4, sp = label(p.toLocaleString('pt-BR', {minimumFractionDigits: dec, maximumFractionDigits: dec}), k.text, 0.42);
+    const p = pmin + span * t / 4, sp = makeLabel(p.toLocaleString('pt-BR', {minimumFractionDigits: dec, maximumFractionDigits: dec}), k.text, 0.42);
     sp.position.set(-W / 2 - 0.15 - sp.scale.x / 2, Y(p), 0); group.add(sp);
   }
   for (let t = 0; t <= 3; t++) {
     const i = Math.round((n - 1) * t / 3), b = bars[i];
-    const sp = label(data.when(b.t, {day: '2-digit', month: '2-digit', year: '2-digit'}), k.text, 0.42);
+    const sp = makeLabel(data.when(b.t, {day: '2-digit', month: '2-digit', year: '2-digit'}), k.text, 0.42);
     sp.position.set(X(i), -0.05, 3.9); group.add(sp);
   }
   built = {n, pmin, pmax, symbol: data.symbol, range: data.range};
   canvas.setAttribute('aria-label', `Terreno 3D do histórico real de ${data.symbol}: ${n} barras, de ${data.when(bars[0].t, {day: '2-digit', month: '2-digit', year: 'numeric'})} a ${data.when(bars[n - 1].t, {day: '2-digit', month: '2-digit', year: 'numeric'})}, mínima ${pmin.toLocaleString('pt-BR')} e máxima ${pmax.toLocaleString('pt-BR')}. Para ler os preços use a tabela.`);
   kit.invalidate();
-}
-
-function place() {
-  const ce = Math.cos(cam.el);
-  kit.camera.position.set(target.x + cam.dist * ce * Math.sin(cam.az), target.y + cam.dist * Math.sin(cam.el), target.z + cam.dist * ce * Math.cos(cam.az));
-  kit.camera.lookAt(target);
-}
-/* devolve true enquanto a câmera se move (balanço inicial, inércia): o kit mantém o laço; senão desenha só sob demanda */
-function frame(dt) {
-  /* distância que cabe o terreno inteiro na largura do palco (tela estreita afasta a câmera) enquanto o usuário não deu zoom */
-  if (cam.fit) cam.dist = Math.max(17, 15.5 / (2 * Math.tan(kit.camera.fov * Math.PI / 360) * Math.max(0.5, kit.camera.aspect)));
-  if (!dragging) {
-    if (Math.abs(cam.vaz) > 0.00001 || Math.abs(cam.vel) > 0.00001) { cam.az += cam.vaz * dt; cam.el = Math.max(0.05, Math.min(1.45, cam.el + cam.vel * dt)); cam.vaz *= 0.93; cam.vel *= 0.93; }
-    else if (cam.sway && !kit.reduced.matches) cam.az += 0.00016 * dt;       /* balanço lento até o primeiro toque */
-  }
-  place();
-  return !!(cam.sway && !kit.reduced.matches) || Math.abs(cam.vaz) > 0.00001 || Math.abs(cam.vel) > 0.00001 || dragging;
 }
 
 function ensure() {
@@ -139,7 +99,7 @@ function ensure() {
     onFail: () => { note.textContent = 'Seu navegador não tem WebGL: use o gráfico 2D e a tabela.'; note.hidden = false; },
     onLost: () => { note.textContent = 'O navegador pausou o 3D. Volte para a aba ou alterne o gráfico para retomar.'; note.hidden = false; },
     onRestore: () => { note.hidden = true; build(); },
-    onFrame: frame
+    onFrame: dt => orbit.update(dt)
   });
   if (!kit) return false;
   kit.scene.add(group);
@@ -160,7 +120,7 @@ function ensure() {
   };
   const pick = () => {
     hoverQueued = false;
-    if (!bodies || dragging) return;
+    if (!bodies || (orbit && orbit.dragging())) return;
     const r = canvas.getBoundingClientRect();
     ndc.set(((px - r.left) / r.width) * 2 - 1, -((py - r.top) / r.height) * 2 + 1);
     ray.setFromCamera(ndc, kit.camera);
@@ -170,43 +130,16 @@ function ensure() {
   };
   const queue = () => { if (!hoverQueued) { hoverQueued = true; requestAnimationFrame(pick); } };
 
-  canvas.addEventListener('pointerdown', e => {
-    if (e.pointerType === 'mouse' && e.button !== 0) return;
-    dragging = true; moved = 0; lastX = e.clientX; lastY = e.clientY; cam.sway = false; tip.hidden = true;
-    try { canvas.setPointerCapture(e.pointerId); } catch (err) { /* ponteiro já inativo */ }
-    box.classList.add('grabbing'); kit.invalidate();
-  });
-  canvas.addEventListener('pointermove', e => {
-    px = e.clientX; py = e.clientY;
-    if (!dragging) { queue(); return; }
-    const dx = e.clientX - lastX, dy = e.clientY - lastY; moved += Math.abs(dx) + Math.abs(dy);
-    cam.az -= dx * 0.008; cam.el = Math.max(0.05, Math.min(1.45, cam.el + dy * 0.006));
-    cam.vaz = -dx * 0.008 / 16; cam.vel = dy * 0.006 / 16; lastX = e.clientX; lastY = e.clientY; kit.invalidate();
-  });
-  const release = e => {
-    if (!dragging) return;
-    dragging = false; box.classList.remove('grabbing');
-    try { if (canvas.hasPointerCapture(e.pointerId)) canvas.releasePointerCapture(e.pointerId); } catch (err) { /* já solto */ }
-    if (kit.reduced.matches) { cam.vaz = 0; cam.vel = 0; }
-    kit.invalidate();
-  };
-  canvas.addEventListener('pointerup', release); canvas.addEventListener('pointercancel', release); canvas.addEventListener('lostpointercapture', release);
-  canvas.addEventListener('pointerleave', () => { hoverIdx = -1; tip.hidden = true; document.dispatchEvent(new CustomEvent('mw:ck-hover', {detail: {t: null}})); });
-  canvas.addEventListener('dblclick', () => reset());
-  /* a roda só dá zoom com Ctrl (ou com o gráfico focado): senão ela rolaria a página e o 3D a "roubaria" */
-  canvas.addEventListener('wheel', e => { if (!(e.ctrlKey || e.metaKey || document.activeElement === canvas)) return; e.preventDefault(); zoom(e.deltaY > 0 ? 1.1 : 0.9); }, {passive: false});
-  canvas.addEventListener('keydown', e => {
-    const step = {ArrowLeft: [0.12, 0], ArrowRight: [-0.12, 0], ArrowUp: [0, -0.08], ArrowDown: [0, 0.08]}[e.key];
-    if (step) { e.preventDefault(); cam.sway = false; cam.az += step[0]; cam.el = Math.max(0.05, Math.min(1.45, cam.el + step[1])); kit.invalidate(); }
-    else if (e.key === '+' || e.key === '=') { e.preventDefault(); zoom(0.9); }
-    else if (e.key === '-') { e.preventDefault(); zoom(1.1); }
-    else if (e.key === '0' || e.key === 'Home') { e.preventDefault(); reset(); }
+  /* a câmera orbital (arrastar, inércia, zoom, teclado, restaurar) é a compartilhada do kit3d; aqui só o que é do cockpit: o hover do candle */
+  orbit = createOrbit(kit, canvas, {
+    host: box, target, start: {az: -0.55, el: 0.42, dist: 17},
+    fit: () => Math.max(17, 15.5 / (2 * Math.tan(kit.camera.fov * Math.PI / 360) * Math.max(0.5, kit.camera.aspect))),   /* terreno inteiro na largura do palco */
+    onHover: e => { px = e.clientX; py = e.clientY; queue(); },
+    onDragStart: () => { tip.hidden = true; },
+    onLeave: () => { hoverIdx = -1; tip.hidden = true; document.dispatchEvent(new CustomEvent('mw:ck-hover', {detail: {t: null}})); }
   });
   return true;
 }
-function zoom(f) { cam.sway = false; cam.fit = false; cam.dist = Math.max(7, Math.min(40, cam.dist * f)); kit.invalidate(); }
-function reset() { Object.assign(cam, START, {vaz: 0, vel: 0, fit: true}); kit.invalidate(); }
-
 function setActive(on) {
   active = on; btn.setAttribute('aria-pressed', String(on));
   box.hidden = !on; chart2d.hidden = on;
@@ -214,8 +147,8 @@ function setActive(on) {
   if (on) { if (!ensure()) return; document.dispatchEvent(new Event('mw:ck-need')); build(); kit.wake(); }
 }
 btn.addEventListener('click', () => setActive(!active));
-document.getElementById('ck3dIn').addEventListener('click', () => kit && zoom(0.85));
-document.getElementById('ck3dOut').addEventListener('click', () => kit && zoom(1.18));
-document.getElementById('ck3dReset').addEventListener('click', () => kit && reset());
+document.getElementById('ck3dIn').addEventListener('click', () => orbit && orbit.zoom(0.85));
+document.getElementById('ck3dOut').addEventListener('click', () => orbit && orbit.zoom(1.18));
+document.getElementById('ck3dReset').addEventListener('click', () => orbit && orbit.reset());
 document.addEventListener('mw:ck-data', e => { data = e.detail; if (active && kit) build(); });
 new MutationObserver(() => { if (active && kit) build(); }).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});

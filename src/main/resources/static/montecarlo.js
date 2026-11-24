@@ -42,6 +42,7 @@ function mcChart(id){
 const mcN=v=>Number(v);
 function mcRender(){
   const d=MC.data;if(!d)return;
+  setTimeout(mcEmit,0);   /* o 3D refaz a superfície com o mesmo resultado */
   const k=chartColors(),pts=d.points,years=d.months/12;
   const base=pts.map(p=>mcN(p.p5));
   const diff=(a,b)=>pts.map(p=>Math.max(0,mcN(p[b])-mcN(p[a])));
@@ -96,6 +97,9 @@ document.addEventListener('click',e=>{
 $('#mcForm').addEventListener('submit',mcRun);
 addEventListener('resize',()=>Object.values(MC.charts).forEach(c=>c.resize()));
 new MutationObserver(()=>{if(MC.data)mcRender()}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+/* o Monte Carlo em 3D (montecarlo3d.js) lê o MESMO resultado que os gráficos 2D, por este evento */
+function mcEmit(){if(MC.data)document.dispatchEvent(new CustomEvent('mw:mc-data',{detail:{data:MC.data}}))}
+document.addEventListener('mw:mc-need',mcEmit);
 function onMonteCarloRoute(){if((location.hash.match(/^#\/([a-z]+)/)||[])[1]==='montecarlo')setTimeout(()=>Object.values(MC.charts).forEach(c=>c.resize()),50)}
 addEventListener('hashchange',onMonteCarloRoute);
 mcTabs();mcForm();

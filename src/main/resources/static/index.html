@@ -193,9 +193,13 @@
           <form id="mcForm" novalidate></form>
         </div>
         <div id="mcResult" hidden>
-          <div class="card gold"><h2>Cone patrimonial · percentis 5, 25, 50, 75 e 95 <span class="tag">projeção</span></h2>
+          <div class="card gold"><h2>Cone patrimonial · percentis 5, 25, 50, 75 e 95 <span class="tag">projeção</span><span class="chips"><button type="button" class="fchip" id="mc3dBtn" aria-pressed="false" aria-controls="mc3d">Cone 3D</button></span></h2>
             <div id="mcKpi"></div>
             <div id="mcCone" class="echart" style="height:360px" role="img" aria-label="Cone patrimonial: percentis 5, 25, 50, 75 e 95 do patrimônio projetado ao longo dos anos. A tabela abaixo traz os mesmos números."></div>
+            <div id="mc3d" class="lwc ck3d mc3d" hidden><canvas id="mc3dCanvas" tabindex="0" role="img" aria-label="Superfície 3D da projeção do patrimônio. Use a tabela para ler os números."></canvas>
+              <div class="c3d-ctl"><button type="button" id="mc3dIn" aria-label="Aproximar">+</button><button type="button" id="mc3dOut" aria-label="Afastar">−</button><button type="button" id="mc3dReset" aria-label="Restaurar a câmera">⟲</button></div>
+              <div class="c3d-hint"><span class="tag">projeção</span> não é cotação nem promessa de retorno · arraste para girar · Ctrl + roda para zoom</div>
+              <div id="mc3dTip" class="c3d-tip" hidden></div><p id="mc3dNote" class="c3d-note" hidden></p></div>
             <details><summary>Ver como tabela</summary><div id="mcTable"></div></details>
           </div>
           <div class="grid2c">
@@ -297,6 +301,7 @@
 <script src="/correlacao.js"></script>
 <script src="/cockpit.js"></script>
 <script type="module" src="/cockpit3d.js"></script>
+<script type="module" src="/montecarlo3d.js"></script>
 <script type="module" src="/globe3d.js"></script>
 <script type="module" src="/hero3d.js"></script>
 </body>
