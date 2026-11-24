@@ -45,4 +45,12 @@ class Correlation3dContractTest {
         String c3 = StaticPage.file("correlacao3d.js");
         assertThat(c3).doesNotContain("new THREE.WebGLRenderer").contains("createStage(").contains("disposeGroup(group)").contains("if (!kit || !data || kit.lost) return;");
     }
+
+    @Test
+    void afterLoggingOutTheThreeDimensionalViewForgetsThePortfolioMatrix() throws IOException {
+        // medido: depois do logout o módulo ainda guardava a matriz e o aria-label citava "3 ativos da carteira"
+        String cr = StaticPage.file("correlacao.js"), c3 = StaticPage.file("correlacao3d.js");
+        assertThat(cr).contains("CR.data=null;document.dispatchEvent(new Event('mw:cr-clear'));");
+        assertThat(c3).contains("document.addEventListener('mw:cr-clear'").contains("data = null; matrix = null;").contains("Entre na sua conta para ver.").contains("disposeGroup(group);");
+    }
 }

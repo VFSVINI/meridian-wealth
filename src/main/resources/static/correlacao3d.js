@@ -101,6 +101,12 @@ function ensure() {
 document.getElementById('cr3dIn').addEventListener('click', () => orbit && orbit.zoom(0.85));
 document.getElementById('cr3dOut').addEventListener('click', () => orbit && orbit.zoom(1.18));
 document.getElementById('cr3dReset').addEventListener('click', () => orbit && orbit.reset());
+/* sem sessão (saiu da conta): o 3D esquece a matriz, esvazia a cena e troca o texto de acessibilidade por um genérico */
+document.addEventListener('mw:cr-clear', () => {
+  data = null; matrix = null; hovered = null; tip.hidden = true; card.hidden = true; card.dataset.n = '';
+  canvas.setAttribute('aria-label', 'Barras 3D da correlação entre os ativos da carteira. Entre na sua conta para ver.');
+  if (kit) { disposeGroup(group); bars = null; voids = null; barIdx = []; voidIdx = []; kit.invalidate(); }
+});
 document.addEventListener('mw:cr-data', e => {
   data = e.detail && e.detail.data;
   if (!data || !data.assets) { card.hidden = true; return; }
