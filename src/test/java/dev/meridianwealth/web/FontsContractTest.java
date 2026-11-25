@@ -40,7 +40,8 @@ class FontsContractTest {
 
     @Test void everyDeclaredFontIsServedByTheProjectAsRealWoff2() throws IOException {
         List<String> files = fontFiles();
-        assertThat(files).hasSize(8);
+        assertThat(files).containsExactlyInAnyOrder("/fonts/big-shoulders-display-latin-variable-normal.woff2", "/fonts/inter-latin-variable-normal.woff2",
+                "/fonts/ibm-plex-mono-latin-400-normal.woff2", "/fonts/ibm-plex-mono-latin-500-normal.woff2");
         for (String f : files) {
             byte[] bytes = read("/static" + f);
             assertThat(new String(bytes, 0, 4, StandardCharsets.US_ASCII)).as("assinatura WOFF2 de " + f).isEqualTo("wOF2");
@@ -49,13 +50,24 @@ class FontsContractTest {
     }
 
     @Test void thePrototypeFamiliesAreDeclaredWithTheirFallbacks() {
-        assertThat(html).contains("font-family:\"Cormorant Garamond\"").contains("font-family:\"Figtree\"").contains("font-family:\"IBM Plex Mono\"");
-        assertThat(html).contains("--serif:\"Cormorant Garamond\",Georgia").contains("--sans:\"Figtree\",system-ui").contains("--mono:\"IBM Plex Mono\",ui-monospace");
+        assertThat(html).contains("font-family:\"Big Shoulders Display\"").contains("font-family:\"Inter\"").contains("font-family:\"IBM Plex Mono\"");
+        assertThat(html).contains("--display:\"Big Shoulders Display\",\"Arial Narrow\"").contains("--sans:\"Inter\",system-ui").contains("--mono:\"IBM Plex Mono\",ui-monospace");
         assertThat(html).containsPattern("font-display:swap");
+        assertThat(html).as("as fontes do protótipo anterior saíram").doesNotContain("Cormorant").doesNotContain("Figtree");
+    }
+
+    /** O arquivo é o que foi baixado do Google Fonts em 2026-11-24 (Big Shoulders Display v24 e Inter v20, subconjunto latino, 35436 e 48256 bytes). */
+    @Test void theTwoCosmosFontsAreExactlyTheFilesThatWereDownloaded() throws Exception {
+        assertThat(sha256(read("/static/fonts/big-shoulders-display-latin-variable-normal.woff2"))).isEqualTo("698f9960927e7b5a0c38e5bf388cd0a6e42d855062fe70366cf5057664e39401");
+        assertThat(sha256(read("/static/fonts/inter-latin-variable-normal.woff2"))).isEqualTo("3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62");
+    }
+
+    private static String sha256(byte[] b) throws Exception {
+        return java.util.HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256").digest(b));
     }
 
     @Test void eachFontFamilyShipsItsOpenFontLicense() throws IOException {
-        for (String family : List.of("cormorant-garamond", "figtree", "ibm-plex-mono")) {
+        for (String family : List.of("big-shoulders-display", "inter", "ibm-plex-mono")) {
             String license = new String(read("/static/fonts/LICENSE-" + family + ".txt"), StandardCharsets.UTF_8);
             assertThat(license).as("licença de " + family).containsIgnoringCase("SIL OPEN FONT LICENSE").contains("Copyright");
         }
