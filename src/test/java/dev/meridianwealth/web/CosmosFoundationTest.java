@@ -39,6 +39,15 @@ class CosmosFoundationTest {
     }
 
     @Test
+    void theReadingCardIsNotALiveRegionAndOnlyRewritesWhenItsContentChanges() throws IOException {
+        // medido: com aria-live o cartão era reescrito 27 vezes em 25 s e o leitor de tela releria tudo; sem ele e com a comparação, 0 reescritas com o mesmo conteúdo
+        String html = StaticPage.file("index.html"), js = StaticPage.file("app.js");
+        assertThat(html).contains("id=\"hmRead\" aria-label=\"A leitura em uma frase\">").doesNotContain("id=\"hmRead\" aria-live");
+        assertThat(js).contains("if(html!==readHtml){readHtml=html;box.innerHTML=html}");
+        assertThat(StaticPage.file("stars.js")).contains("document.addEventListener('pointerout'").doesNotContain("addEventListener('pointerleave'");
+    }
+
+    @Test
     void theMenuIsGroupedLikeThePrototypeAndTheLegalStripIsAlwaysAtTheBottom() throws IOException {
         String js = StaticPage.file("app.js"), html = StaticPage.file("index.html");
         assertThat(js).contains("['EXPLORAR',[['home','Início']").contains("['ENTENDER',[").contains("['SIMULAR',[").contains("['MAIS',[");
