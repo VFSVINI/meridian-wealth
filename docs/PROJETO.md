@@ -98,7 +98,7 @@ Aberto em 2026-11-23, a partir do primeiro uso do site no ar (feedback do dono d
 - [ ] **#31** Repaginação das páginas. **Etapa 1 feita (Issue #62): página inicial com hero 3D original** em three.js local (ADR 026); restam as demais páginas. Plano: começando pela **página inicial com hero 3D original** (medalhão com a marca do MeridianWealth em CSS 3D, inclinação pelo ponteiro, sem dado inventado; inspirada em estrutura e princípios do Wealthsimple, sem copiar nada deles) e seguindo com: Mercados em cartões com mini-gráficos no lugar da lista vertical, Painel, Shopping, Glossário, Saúde dos dados, Radar de relatórios, Brasil (juros e inflação) e Simulador, com menos texto e tipografia e alinhamento padronizados.
 - [ ] **#32** Cockpit profissional e mais gráficos interativos.
 - [x] **#33** (Issue #82, ADR 034) Universo de ativos: catálogo montado de listas oficiais (SEC, CVM e B3, com permissão de download dada em 2026-11-23) e busca de qualquer ativo nacional e global.
-- [ ] **#34** Composição e Mapa para todos os ativos, só com o que uma fonte publica ("não informado" no resto).
+- [x] **#34** (Issue #84, ADR 035) Composição e Mapa para todos os ativos, só com o que uma fonte publica ("não informado" no resto).
 - [ ] **#35** Stress testing com cenários históricos reais (absorve o #27 do Milestone 6).
 - [ ] **#36** Perfil de investidor com questionário profissional.
 - [ ] **#37** Geopolítica em dia (verificar a frequência de atualização das manchetes antes de mexer).

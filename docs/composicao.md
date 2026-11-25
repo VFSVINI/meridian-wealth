@@ -13,6 +13,22 @@ inquilinos, alocação) e **onde ficam** os imóveis (coordenadas, com links par
 
 O cockpit do ativo usa o TradingView Lightweight Charts (ADR 019); o **Shopping financeiro** (`#/shopping`) compara os tipos de ativo da taxonomia com as referências oficiais do Banco Central e **não mostra taxa de produto**, porque a plataforma não tem ofertas de emissores.
 
+## Todos os FIIs com imóveis na CVM (item #34)
+
+Além dos quatro fundos curados à mão (tabela acima), o mapa e o Raio-X trazem **todos os FIIs listados que publicam a carteira no Informe Trimestral da
+CVM** (167 fundos e 1.220 imóveis na geração de 2026-11-25, bases de 2025-09-30 a 2026-09-30). Fonte única e oficial: dados abertos da CVM
+(`https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/`), gerada por `scripts/curadoria/gerar_composicao_cvm.py` ([ADR 035](adr/035-composicao-de-todos-os-fiis-pela-cvm.md)).
+
+- O ticker é ligado ao CNPJ pelo **código ISIN** que o próprio Informe publica, conferido com o catálogo de ativos e com o nome do fundo; fundo duvidoso fica de fora.
+- Só a última data-base de cada fundo; vacância e participação ausentes ficam "não informado"; o **tipo do imóvel fica em branco** (a CVM não publica).
+- Coordenadas pela mesma geocodificação conservadora; hoje 466 dos 1.220 imóveis têm coordenada (173 por endereço, 293 por via). Os demais explicam o motivo: o endereço não traz cidade nem CEP (392), o OpenStreetMap não concordou (332) ou a via é uma rodovia (30).
+
+```powershell
+# baixe os zips da CVM (inf_trimestral_fii_2025 e 2026, inf_mensal_fii_2026), extraia em tri2025, tri2026 e men2026 e rode:
+python -I scripts/curadoria/gerar_composicao_cvm.py <pasta> [--sem-geocodificar] [--so-cache]
+python -m unittest scripts/curadoria/test_gerar_composicao_cvm.py
+```
+
 ## Regra de ouro: nada é inventado
 
 Cada dado vem de uma **fonte identificável, com data**. O que a fonte não publica aparece como **"não informado"**, com o
