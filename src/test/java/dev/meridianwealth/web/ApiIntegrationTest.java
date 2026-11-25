@@ -62,7 +62,7 @@ class ApiIntegrationTest {
 
     @Test void compositionGeoListsOnlyValidatedPoints() {
         Map<?, ?> geo = rest.getForObject("/api/composition/geo", Map.class);
-        assertThat((List<?>) geo.get("points")).hasSize(32);
+        assertThat((List<?>) geo.get("points")).as("32 dos curados mais os fundos da CVM").hasSizeGreaterThan(400);
     }
 
     @Test void compositionWithoutCuratedDataIs404() {

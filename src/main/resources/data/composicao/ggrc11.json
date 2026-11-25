@@ -1,0 +1,1471 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "GGRC11",
+  "nomeDoFundo": "Zagros Renda Imobiliária Fii Responsabil",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "e575706a3dde9375a571a0e9fc479ae824910a387f34ee70572259492ebf77e0"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 9,
+    "semCoordenadas": 36
+  },
+  "cnpj": "26.614.291/0001-00",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código GGRC11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRGGRCCTF002), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área.",
+    "3 imóveis do Informe não trazem área positiva e não aparecem aqui."
+  ],
+  "ativos": [
+    {
+      "nome": "TODIMO",
+      "enderecoPublicado": "Rodovia Palmiro Paes de Barros, 290, Vista Alegre - Cuiabá - MT",
+      "cidade": "Cuiabá",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "52187.33",
+      "areaPublicada": "52187.33",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-todimo",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "CEPALGO",
+      "enderecoPublicado": "Fazenda Santo Antonio, Aparecida de Goiania/SP",
+      "cidade": "Aparecida de Goiania",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "31395.3",
+      "areaPublicada": "31395.3",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-cepalgo",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "SANTA CRUZ",
+      "enderecoPublicado": "BR 153,KM 2, 3621, ANAPOLIS - GO",
+      "cidade": "ANAPOLIS",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "19000",
+      "areaPublicada": "19000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-santa-cruz",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BRASPARK A",
+      "enderecoPublicado": "Rodovia SC 417, nº 11.915 - Mina Velha - Garuva-SC",
+      "cidade": "Garuva",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "259763.94",
+      "areaPublicada": "259763.94",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-braspark-a",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BENTELER",
+      "enderecoPublicado": "Area 1-1, Via principial 2, Polo Empresarial VTO Iguarassu 1, Iguarassu/PE",
+      "cidade": "Iguarassu",
+      "uf": "PE",
+      "tipo": null,
+      "areaM2": "33582.25",
+      "areaPublicada": "33582.25",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-benteler",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "CONTAGEM1",
+      "enderecoPublicado": "Av Wilson Tavares Ribeiro, 800, Contagem/MG",
+      "cidade": "Contagem",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "31671.08",
+      "areaPublicada": "31671.08",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-contagem1",
+      "coordenadas": {
+        "lat": "-19.872368",
+        "lng": "-44.049742",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Wilson Tavares Ribeiro, Chácaras Cotia, Regional Nacional, Contagem, Minas Gerais, Região Sudeste, 32183-028, Brasil",
+        "osm": "way/11274276",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av Wilson Tavares Ribeiro, 800, Contagem/MG, Brasil"
+      }
+    },
+    {
+      "nome": "QUEI 13639",
+      "enderecoPublicado": "Rua Irmãos Guinle, nº 1000, Galpão 07 Queimados/RJ",
+      "cidade": null,
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "2172.93",
+      "areaPublicada": "2172.93",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-quei-13639",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "EAGLEBURGM",
+      "enderecoPublicado": "Quadra A, Loteamento Macuco, Valinhos/SP",
+      "cidade": "Valinhos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "12375",
+      "areaPublicada": "12375",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-eagleburgm",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "EXTREMA2",
+      "enderecoPublicado": "Rua Josepha Gomes de Souza, Galpão 02 N° 306B - Extrema/MG",
+      "cidade": "Extrema",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "18804.17",
+      "areaPublicada": "18804.17",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-extrema2",
+      "coordenadas": {
+        "lat": "-22.875464",
+        "lng": "-46.349446",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Josepha Gomes de Souza, Bairro dos Pires, Extrema, Minas Gerais, Região Sudeste, 37640-915, Brasil",
+        "osm": "way/273373769",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Josepha Gomes de Souza, Extrema, MG, Brasil"
+      }
+    },
+    {
+      "nome": "EXTREMA1",
+      "enderecoPublicado": "Rua Josepha Gomes de Souza, Galpão 01 N° 306A - Extrema/MG",
+      "cidade": "Extrema",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "16926.06",
+      "areaPublicada": "16926.06",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-extrema1",
+      "coordenadas": {
+        "lat": "-22.875464",
+        "lng": "-46.349446",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Josepha Gomes de Souza, Bairro dos Pires, Extrema, Minas Gerais, Região Sudeste, 37640-915, Brasil",
+        "osm": "way/273373769",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Josepha Gomes de Souza, Extrema, MG, Brasil"
+      }
+    },
+    {
+      "nome": "21941_26614",
+      "enderecoPublicado": "Via de Ligação Camaçari - Dias D'Ávila, S/N, Loteamento São José, Camaçari,Bahia, CEP: 42.810-270",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1374",
+      "areaPublicada": "1374",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "ggrc11-21941-26614",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BRASPARK B C",
+      "enderecoPublicado": "Rodovia SC 417, nº 11.915 - Mina Velha/SC",
+      "cidade": "Mina Velha",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "21305.4",
+      "areaPublicada": "21305.4",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "ggrc11-braspark-b-c",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "119889_26614",
+      "enderecoPublicado": "Pouso Alegre Business Park, Pouso Algere - MG",
+      "cidade": "Pouso Algere",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "23719.809",
+      "areaPublicada": "23719.809",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "ggrc11-119889-26614",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "16067_26614",
+      "enderecoPublicado": "Loteamento São Jose, Camaçari - Bahia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "84717.9",
+      "areaPublicada": "84717.9",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "ggrc11-16067-26614",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "MARTINBROWER",
+      "enderecoPublicado": "Rua Paul Garfunkel,300 - Curitiba/PR",
+      "cidade": "Curitiba",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "12845.08",
+      "areaPublicada": "12845.08",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-martinbrower",
+      "coordenadas": {
+        "lat": "-25.531715",
+        "lng": "-49.329270",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "300, Rua Paul Garfunkel, Cidade Industrial de Curitiba, Curitiba, Paraná, Região Sul, 81460-275, Brasil",
+        "osm": "node/6358191161",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Paul Garfunkel,300 - Curitiba/PR, Brasil"
+      }
+    },
+    {
+      "nome": "APTIV1",
+      "enderecoPublicado": "Rua Mary Aparecida de Carvalhinho Valente Passarelli, Espirito Santo do Pinhal/SP",
+      "cidade": "Espirito Santo do Pinhal",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "68947.53",
+      "areaPublicada": "68947.53",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-aptiv1",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "VOLKSWAGEM",
+      "enderecoPublicado": "RESENDE/RJ",
+      "cidade": "RESENDE",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "151209.23",
+      "areaPublicada": "151209.23",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-volkswagem",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "AMBEV PELOT",
+      "enderecoPublicado": "AV Presidente João Belchior Marques Goulart, 9500, Pelotas/RS",
+      "cidade": "Pelotas",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "23500",
+      "areaPublicada": "23500",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-ambev-pelot",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "AIRLIQUIDE",
+      "enderecoPublicado": "Rua Ronald Cladstone Negri, nº 557,, Campinas/SP",
+      "cidade": "Campinas",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "26176",
+      "areaPublicada": "26176",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-airliquide",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "DIADEMA",
+      "enderecoPublicado": "Avenida Casa Grande, 1.864 e 1.960, bairro Piraporinha, Diadema - São Paulo, CEP 09961-350",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "34378.65",
+      "areaPublicada": "34378.65",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-diadema",
+      "coordenadas": {
+        "lat": "-23.700265",
+        "lng": "-46.590334",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Casa Grande, Jardim Portinari, Casa Grande, Diadema, São Paulo, Região Sudeste, 09961-350, Brasil",
+        "osm": "way/124950809",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Casa Grande, 09961-350, Brasil"
+      }
+    },
+    {
+      "nome": "AMBEV GRU",
+      "enderecoPublicado": "Avenida Amâncio Gaiolli, nº 1493, bairro Água Chata, Guarulhos/SP",
+      "cidade": "Guarulhos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "67790.81",
+      "areaPublicada": "67790.81",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-ambev-gru",
+      "coordenadas": {
+        "lat": "-23.432524",
+        "lng": "-46.389547",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Amâncio Gaiolli, Jardim Presidente Dutra, Água Chata, Jardim Presidente Dutra, Guarulhos, São Paulo, Região Sudeste, 08583-370, Brasil",
+        "osm": "way/1268291101",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Amâncio Gaiolli, Guarulhos, SP, Brasil"
+      }
+    },
+    {
+      "nome": "QUEI 13632",
+      "enderecoPublicado": "Rua Irmãos Guinle, nº 1000, Galpão 01A Queimados/RJ",
+      "cidade": null,
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "1692",
+      "areaPublicada": "1692",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-quei-13632",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "UBERLANDIA",
+      "enderecoPublicado": "LASA Avenida CTR Empresarial, KM 1.480 BR 497, Uberlândia-MG",
+      "cidade": "Uberlândia",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "204537",
+      "areaPublicada": "204537",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-uberlandia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "MOINHO SMI",
+      "enderecoPublicado": "Rodovia Federal BR 277, S/N KM 600+400, São Miguel do Iguaçu - PR",
+      "cidade": "São Miguel do Iguaçu",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "7164",
+      "areaPublicada": "7164",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-moinho-smi",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "QUEI 13633",
+      "enderecoPublicado": "Rua Irmãos Guinle, nº 1000, Galpão 01A Queimados/RJ",
+      "cidade": null,
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "1632",
+      "areaPublicada": "1632",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-quei-13633",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "MAGNA",
+      "enderecoPublicado": "VINHEDO/SP",
+      "cidade": "VINHEDO",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "32436.35",
+      "areaPublicada": "32436.35",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-magna",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "HERING",
+      "enderecoPublicado": "ANAPOLIS - GO",
+      "cidade": "ANAPOLIS",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "28099",
+      "areaPublicada": "28099",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-hering",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "COPOBRASPB",
+      "enderecoPublicado": "Rua Ind. Jose Flavio Pinheiro, Distrito Industrial, Joao Pessoa/PB",
+      "cidade": "Joao Pessoa",
+      "uf": "PB",
+      "tipo": null,
+      "areaM2": "25738.55",
+      "areaPublicada": "25738.55",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-copobraspb",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "QUEI 13635",
+      "enderecoPublicado": "Rua Irmãos Guinle, nº 1000, Galpão 03 Queimados/RJ",
+      "cidade": null,
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "2172.93",
+      "areaPublicada": "2172.93",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-quei-13635",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "QUEI 13637",
+      "enderecoPublicado": "Rua Irmãos Guinle, nº 1000, Galpão 05 Queimados/RJ",
+      "cidade": null,
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "2172.93",
+      "areaPublicada": "2172.93",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-quei-13637",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "CERATTI",
+      "enderecoPublicado": "Rodovia Miguel Melhado Campos - Vinhedo/SP",
+      "cidade": "Vinhedo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "39220.64",
+      "areaPublicada": "39220.64",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-ceratti",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "QUEI 13638",
+      "enderecoPublicado": "Rua Irmãos Guinle, nº 1000, Galpão 06 Queimados/RJ",
+      "cidade": null,
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "2172.96",
+      "areaPublicada": "2172.96",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-quei-13638",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "COTIA",
+      "enderecoPublicado": "Avenida dos Bandeirantes, n° 988 - São Paulo SP",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "20000",
+      "areaPublicada": "20000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-cotia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "QUEI 13636",
+      "enderecoPublicado": "Rua Irmãos Guinle, nº 1000, Galpão 04 Queimados/RJ",
+      "cidade": null,
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "2027.43",
+      "areaPublicada": "2027.43",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-quei-13636",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "RIZOBACTER",
+      "enderecoPublicado": "Londrina - PR",
+      "cidade": "Londrina",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "11118.43",
+      "areaPublicada": "11118.43",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-rizobacter",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "AMBEV ITAJAI",
+      "enderecoPublicado": "Bairro Cordeiros, Itajai/SP",
+      "cidade": "Itajai",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "58850",
+      "areaPublicada": "58850",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-ambev-itajai",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "SUPERMARKET",
+      "enderecoPublicado": "RIO DE JANEIRO/RJ",
+      "cidade": "RIO DE JANEIRO",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "33840",
+      "areaPublicada": "33840",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-supermarket",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "MOINHO CASC",
+      "enderecoPublicado": "Rodovia Federal BR 467, 0, Canadá, Cascavel PR",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "5680",
+      "areaPublicada": "5680",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-moinho-casc",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "AETHRA",
+      "enderecoPublicado": "LOTE C123",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "130860.37",
+      "areaPublicada": "130860.37",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-aethra",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "CAMAÇARI III",
+      "enderecoPublicado": "Via de Ligação, s/n - Polo Industrial de Camaçari, Camaçari / BA",
+      "cidade": "Camaçari",
+      "uf": "BA",
+      "tipo": null,
+      "areaM2": "91775.94",
+      "areaPublicada": "91775.94",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-camacari-iii",
+      "coordenadas": {
+        "lat": "-12.673095",
+        "lng": "-38.300236",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Via de Ligação, Polo Industrial, Camaçari, Bahia, Região Nordeste, 42810-030, Brasil",
+        "osm": "way/94514576",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Via de Ligação, s/n - Polo Industrial de Camaçari, Camaçari / BA, Brasil"
+      }
+    },
+    {
+      "nome": "AMBEV STALUZ",
+      "enderecoPublicado": "Sitio Boa Vista - Santa Luzia - MG",
+      "cidade": "Santa Luzia",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "102423",
+      "areaPublicada": "102423",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-ambev-staluz",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "CAMARGO",
+      "enderecoPublicado": "Rua Angelo Buffo, Tiete/SP",
+      "cidade": "Tiete",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "39775.97",
+      "areaPublicada": "39775.97",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-camargo",
+      "coordenadas": {
+        "lat": "-22.997085",
+        "lng": "-47.718298",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Angelo Buffo, Distrito Industrial, Distrito Industrial Antônio Romano Schincariol, Tietê, São Paulo, Região Sudeste, 18530-000, Brasil",
+        "osm": "way/260438545",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Angelo Buffo, Tiete/SP, Brasil"
+      }
+    },
+    {
+      "nome": "RENAULT",
+      "enderecoPublicado": "Av. Dom Pedro II, nº 1900, Borda do Campo, Quatro Barras/ PR",
+      "cidade": "Quatro Barras",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "40964.72",
+      "areaPublicada": "40964.72",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-renault",
+      "coordenadas": {
+        "lat": "-25.365189",
+        "lng": "-49.050212",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Dom Pedro II, Borda do Campo, Quatro Barras, Paraná, Região Sul, 83420-000, Brasil",
+        "osm": "way/178479882",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Dom Pedro II, 1900, Borda do Campo, Quatro Barras/ PR, Brasil"
+      }
+    },
+    {
+      "nome": "QUEI 13634",
+      "enderecoPublicado": "Rua Irmãos Guinle, nº 1000, Galpão 02A Queimados/RJ",
+      "cidade": null,
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "2172.93",
+      "areaPublicada": "2172.93",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-quei-13634",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "QUEI 13640",
+      "enderecoPublicado": "Rua Irmãos Guinle, nº 1000, Galpão 08 Queimados/RJ",
+      "cidade": null,
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "2412.42",
+      "areaPublicada": "2412.42",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ggrc11-quei-13640",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

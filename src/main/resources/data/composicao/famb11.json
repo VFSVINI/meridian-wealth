@@ -1,0 +1,66 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "FAMB11",
+  "nomeDoFundo": "Fii Edifício Almirante Barroso Rl",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "f6378d7b7c663a22f3713d2fb19e7ff928b091513ae5f04f2b575bad4365fda3"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "05.562.312/0001-02",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código FAMB11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRFAMBCTF018), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Ed Almirante Barroso",
+      "enderecoPublicado": "Avenida Almirante Barroso, 174, 1º Subsolo Até 31º Andar, Centro, Rio De Janeiro/RJ, Brasil, 20031-004",
+      "cidade": "Rio De Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "59429.46",
+      "areaPublicada": "59429.46",
+      "vacanciaPercentual": "98.0100",
+      "percentualDaReceitaDoFundo": "57.7900",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "famb11-ed-almirante-barroso",
+      "coordenadas": {
+        "lat": "-22.907721",
+        "lng": "-43.175938",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Almirante Barroso, Castelo, Centro, Rio de Janeiro, Região Sudeste, 20031-906, Brasil",
+        "osm": "way/56722056",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Almirante Barroso, 174, Rio De Janeiro, RJ, Brasil"
+      }
+    }
+  ]
+}

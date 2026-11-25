@@ -1,0 +1,202 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "PLAG11",
+  "nomeDoFundo": "Patria Agro Fii Rl",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "2b70d20ade8298bce575412cb868a73db18b9120ec2595d785a2bc4bf9c5ef5d"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 2,
+    "semCoordenadas": 6
+  },
+  "cnpj": "32.754.734/0001-52",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código PLAG11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRPLAGCTF000), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Filial Medianeira",
+      "enderecoPublicado": "Rua Goias, 540, Sem Complemento, Nazaré, Medianeira/PR, Brasil, 85884-000",
+      "cidade": "Medianeira",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "62851",
+      "areaPublicada": "62851",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.2686",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "plag11-filial-medianeira",
+      "coordenadas": {
+        "lat": "-25.305538",
+        "lng": "-54.095206",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Goiás, Cidade Alta, Medianeira, Paraná, Região Sul, 85884-000, Brasil",
+        "osm": "way/134921835",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Goias, 540, Medianeira, PR, Brasil"
+      }
+    },
+    {
+      "nome": "Filial Pato Branco",
+      "enderecoPublicado": "Rodovia Pr493, 5500, , Fraron, Pato Branco/PR, Brasil, 85503-378",
+      "cidade": "Pato Branco",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "3460",
+      "areaPublicada": "3460",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.3043",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "plag11-filial-pato-branco",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Silo Campo Ere",
+      "enderecoPublicado": "Linha Agroisa, S/n, Nas Margens Da Rodovia Sc 305, S/n, Sem Complemento, , Campo Ere/SC, Brasil, 89980-000",
+      "cidade": "Campo Ere",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "4793.5",
+      "areaPublicada": "4793.5",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.8963",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "plag11-silo-campo-ere",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Silo Jatai",
+      "enderecoPublicado": "Rodovia Br364, Km 203, Sem Complemento, Setor Francisco Antonio, Jatai/GO, Brasil, 75801-615",
+      "cidade": "Jatai",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "1842.27",
+      "areaPublicada": "1842.27",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "7.7501",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "plag11-silo-jatai",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Silo Uberlandia",
+      "enderecoPublicado": "Anel Viario Ayrton Senna, 2000, Sem Complemento, Distrito Industrial, Uberlandia/MG, Brasil, 38402-329",
+      "cidade": "Uberlandia",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "8386.77",
+      "areaPublicada": "8386.77",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "14.9612",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "plag11-silo-uberlandia",
+      "coordenadas": {
+        "lat": "-18.862812",
+        "lng": "-48.209017",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Anel Viário Ayrton Senna, Uberlândia, Minas Gerais, Região Sudeste, 38402-100, Brasil",
+        "osm": "way/1496804153",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Anel Viario Ayrton Senna, 2000, Uberlandia, MG, Brasil"
+      }
+    },
+    {
+      "nome": "Filial Francisco Beltrao",
+      "enderecoPublicado": "Rua Barra Mansa, S/n, Sem Complemento, Pinheirinho, Francisco Beltrao/PR, Brasil, 85603-260",
+      "cidade": "Francisco Beltrao",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "9112",
+      "areaPublicada": "9112",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.0398",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "plag11-filial-francisco-beltrao",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Silo Nova Ponte",
+      "enderecoPublicado": "Rodovia Mg 190, Km 72, Sem Complemento, , Nova Ponte/MG, Brasil, 38160-000",
+      "cidade": "Nova Ponte",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "1985.27",
+      "areaPublicada": "1985.27",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "11.3533",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "plag11-silo-nova-ponte",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Silo Paranagua - PR",
+      "enderecoPublicado": "Avenida Senador Attilio Fontana, 1989, Sem Complemento, Parque Sao Joao, Paranagua/PR, Brasil, 83212-250",
+      "cidade": "Paranagua",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "8398",
+      "areaPublicada": "8398",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "10.8416",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentos Processados",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "plag11-silo-paranagua-pr",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

@@ -1,0 +1,382 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "CPUR11",
+  "nomeDoFundo": "Capitania Hbc Ii Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "4f3a35aa9ee091f4db45a7bc73ff5fb1145be142c478a4de0a60768465aa07c0"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 8,
+    "semCoordenadas": 6
+  },
+  "cnpj": "34.691.520/0001-00",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código CPUR11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRCPURCTF004), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "ASSAI PORTO VELHO-RO",
+      "enderecoPublicado": "Avenida Governador Jorge Teixeira, 3500, Sem Complemento, Aeroporto, Porto Velho/RO, Brasil, 76803-250",
+      "cidade": "Porto Velho",
+      "uf": "RO",
+      "tipo": null,
+      "areaM2": "16085.54",
+      "areaPublicada": "16085.54",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.0398",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "cpur11-assai-porto-velho-ro",
+      "coordenadas": {
+        "lat": "-8.723483",
+        "lng": "-63.893437",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Governador Jorge Teixeira, Nova Esperaça, Porto Velho, Rondônia, Região Norte, 76803-620, Brasil",
+        "osm": "way/121651239",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Governador Jorge Teixeira, 3500, Porto Velho, RO, Brasil"
+      }
+    },
+    {
+      "nome": "Assai Ipatinga",
+      "enderecoPublicado": "Avenida Pedro Linhares Gomes, 5765, Sem Complemento, Industrial, Ipatinga/MG, Brasil, 35160-291",
+      "cidade": "Ipatinga",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "5500",
+      "areaPublicada": "5500",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "7.4696",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "cpur11-assai-ipatinga",
+      "coordenadas": {
+        "lat": "-19.508679",
+        "lng": "-42.572054",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Pedro Linhares Gomes, Horto, Ipatinga, Minas Gerais, Região Sudeste, 35160-293, Brasil",
+        "osm": "way/174520222",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Pedro Linhares Gomes, 5765, Ipatinga, MG, Brasil"
+      }
+    },
+    {
+      "nome": "ASSAI DOURADOS-MS",
+      "enderecoPublicado": "Rua Coronel Ponciano De Mattos Pereira, 785, Lote Pte Fazenda Coqueiros Do Lot. Chácara N°101, Parque Dos Jequitibás, Dourados/MS, Brasil, 79839-600",
+      "cidade": "Dourados",
+      "uf": "MS",
+      "tipo": null,
+      "areaM2": "13876.35",
+      "areaPublicada": "13876.35",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.4856",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "cpur11-assai-dourados-ms",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Loja Florianopolis",
+      "enderecoPublicado": "Praca Quinze De Novembro, 111, Sem Complemento, Centro, Florianópolis/SC, Brasil, 88010-400",
+      "cidade": "Florianópolis",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "399.32",
+      "areaPublicada": "399.32",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6408",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "cpur11-loja-florianopolis",
+      "coordenadas": {
+        "lat": "-27.598017",
+        "lng": "-48.550644",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Praça XV de Novembro, Centro-Leste, Centro, Sede, Florianópolis, Santa Catarina, Região Sul, 88010-420, Brasil",
+        "osm": "way/43719877",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Praca Quinze De Novembro, 111, Florianópolis, SC, Brasil"
+      }
+    },
+    {
+      "nome": "Barra Medical Center",
+      "enderecoPublicado": "Avenida Das Americas, 6205, Sem Complemento, Barra Da Tijuca, Rio De Janeiro/RJ, Brasil, 22793-080",
+      "cidade": "Rio De Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "7140",
+      "areaPublicada": "7140",
+      "vacanciaPercentual": "6.4316",
+      "percentualDaReceitaDoFundo": "6.2772",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços Médico - Hospitalares",
+          "percentualDaReceitaDoImovel": "16.7001"
+        },
+        {
+          "setor": "Análises e Diagnósticos",
+          "percentualDaReceitaDoImovel": "52.6517"
+        },
+        {
+          "setor": "Químicos",
+          "percentualDaReceitaDoImovel": "18.2161"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "10.3852"
+        }
+      ],
+      "id": "cpur11-barra-medical-center",
+      "coordenadas": {
+        "lat": "-23.000688",
+        "lng": "-43.376730",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "6205, Avenida das Américas, Barra da Tijuca, Rio de Janeiro, Região Sudeste, 22793-080, Brasil",
+        "osm": "way/279195082",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Das Americas, 6205, Rio De Janeiro, RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Assai Aracatuba-SP",
+      "enderecoPublicado": "Avenida Waldemar Alves, 230, Sem Complemento, São Vicente, Araçatuba/SP, Brasil, 16050-005",
+      "cidade": "Araçatuba",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "13189.14",
+      "areaPublicada": "13189.14",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.3159",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "cpur11-assai-aracatuba-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "SODIMAC Ribeiro Preto",
+      "enderecoPublicado": "Avenida Fabio Barreto, 263, Sem Complemento, Vila Tiberio, Ribeirao Preto/SP, Brasil, 14050-000",
+      "cidade": "Ribeirao Preto",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "12000",
+      "areaPublicada": "12000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.4604",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Construção e Engenharia",
+          "percentualDaReceitaDoImovel": "50.0048"
+        }
+      ],
+      "id": "cpur11-sodimac-ribeiro-preto",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Assai Bauru-SP",
+      "enderecoPublicado": "Rua General Marcondes Salgado, 8-55, Sem Complemento, Centro, Bauru/SP, Brasil, 17010-040",
+      "cidade": "Bauru",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "6912.5",
+      "areaPublicada": "6912.5",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.6074",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "cpur11-assai-bauru-sp",
+      "coordenadas": {
+        "lat": "-22.318582",
+        "lng": "-49.071564",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua General Marcondes Salgado, Jardim Santana, Vila Flores, Bauru, São Paulo, Região Sudeste, 17010-160, Brasil",
+        "osm": "way/548879842",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua General Marcondes Salgado, Bauru, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Assai Macae - RJ",
+      "enderecoPublicado": "Avenida Lacerda Agostinho, 107, Sem Complemento, Virgem Santa, Macaé/RJ, Brasil, 27948-005",
+      "cidade": "Macaé",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "14830.54",
+      "areaPublicada": "14830.54",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.3542",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "cpur11-assai-macae-rj",
+      "coordenadas": {
+        "lat": "-22.351628",
+        "lng": "-41.794891",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Lacerda Agostinho, Vila Novo Botafogo, Vila Ilha Leocadia, Macaé, Rio de Janeiro, Região Sudeste, 27948-970, Brasil",
+        "osm": "way/273860831",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Lacerda Agostinho, 107, Macaé, RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Lojas Santo Amaro",
+      "enderecoPublicado": "Avenida Adolfo Pinheiro, 76, Sem Complemento, Santo Amaro, São Paulo/SP, Brasil, 04733-000",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1792.85",
+      "areaPublicada": "1792.85",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.7152",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "cpur11-lojas-santo-amaro",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Lojas Belo Horizonte",
+      "enderecoPublicado": "Rua Dos Carijos, 352, Sem Complemento, Centro, Belo Horizonte/MG, Brasil, 30120-064",
+      "cidade": "Belo Horizonte",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "7211.75",
+      "areaPublicada": "7211.75",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.8184",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "cpur11-lojas-belo-horizonte",
+      "coordenadas": {
+        "lat": "-19.919382",
+        "lng": "-43.937553",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua dos Carijós, Centro, Regional Centro-Sul, Belo Horizonte, Minas Gerais, Região Sudeste, 30120-060, Brasil",
+        "osm": "way/1013326814",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Dos Carijos, 352, Belo Horizonte, MG, Brasil"
+      }
+    },
+    {
+      "nome": "Loja Diadema",
+      "enderecoPublicado": "Avenida Presidente Kennedy, 09, Sem Complemento, Centro, Diadema/SP, Brasil, 09913-000",
+      "cidade": "Diadema",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "858",
+      "areaPublicada": "858",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.7446",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "cpur11-loja-diadema",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Loja Rio Branco",
+      "enderecoPublicado": "Avenida Getulio Vargas, 258, Sem Complemento, Bosque, Rio Branco/AC, Brasil, 69900-589",
+      "cidade": "Rio Branco",
+      "uf": "AC",
+      "tipo": null,
+      "areaM2": "2730.64",
+      "areaPublicada": "2730.64",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.9868",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "cpur11-loja-rio-branco",
+      "coordenadas": {
+        "lat": "-9.974458",
+        "lng": "-67.809226",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "258, Avenida Getúlio Vargas, Centro, Rio Branco, Acre, Região Norte, 69900-062, Brasil",
+        "osm": "node/10704719299",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Getulio Vargas, 258, Rio Branco, AC, Brasil"
+      }
+    },
+    {
+      "nome": "PAO DE ACUCAR AGUAS CLARAS-DF",
+      "enderecoPublicado": "Quadra 206, Lote 02, Praça Tuim, Sul (águas Claras), Brasília/DF, Brasil, 00071-925",
+      "cidade": "Brasília",
+      "uf": "DF",
+      "tipo": null,
+      "areaM2": "5004.94",
+      "areaPublicada": "5004.94",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.5635",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "cpur11-pao-de-acucar-aguas-claras-df",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

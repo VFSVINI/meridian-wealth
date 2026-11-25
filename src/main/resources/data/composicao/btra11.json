@@ -1,0 +1,111 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "BTRA11",
+  "nomeDoFundo": "Fii Btg Pactual Terras Agricolas",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2025.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2025-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "4e80bd9fbb6449bb61610853633565263c405dd1895c09979ece7d8eafea7768"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 5
+  },
+  "cnpj": "41.076.607/0001-32",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2025, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código BTRA11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRBTRACTF000), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Fazenda Tres Irmaos - Bergamasco",
+      "enderecoPublicado": "Zona Rural, S/n, Sem Complemento, Zona Rural, Tapurah/MT, Brasil, 78573-000",
+      "cidade": "Tapurah",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "17150000",
+      "areaPublicada": "17150000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.4167",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agropecuária",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btra11-fazenda-tres-irmaos-bergamasco",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Fazenda Vianmancel - Milton Cella",
+      "enderecoPublicado": "Area Rural, Sn, Sem Complemento, N/a, Nova Maringa/MT, Brasil, 78445-000",
+      "cidade": "Nova Maringa",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "31480000",
+      "areaPublicada": "31480000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "btra11-fazenda-vianmancel-milton-cella",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Fazenda JR",
+      "enderecoPublicado": "Zona Rural, S/n, Sem Complemento, Zona Rural, Campo Verde/MT, Brasil, 78840-000",
+      "cidade": "Campo Verde",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "16730",
+      "areaPublicada": "16730",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "btra11-fazenda-jr",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Fazenda Sorriso - Hendges",
+      "enderecoPublicado": "Area Rural, Sn, Sem Complemento, N/a, Sao Desiderio/BA, Brasil, 47820-000",
+      "cidade": "Sao Desiderio",
+      "uf": "BA",
+      "tipo": null,
+      "areaM2": "17120000",
+      "areaPublicada": "17120000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.8972",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agropecuária",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btra11-fazenda-sorriso-hendges",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Fazenda Colibri - Bergamasco",
+      "enderecoPublicado": "Zona Rural, S/n, Sem Complemento, Zona Rural, Nova Mutum/MT, Brasil, 78450-000",
+      "cidade": "Nova Mutum",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "4000000",
+      "areaPublicada": "4000000",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "btra11-fazenda-colibri-bergamasco",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

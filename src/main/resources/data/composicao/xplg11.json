@@ -1,0 +1,689 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "XPLG11",
+  "nomeDoFundo": "Xp Log Fii Rl",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "0529ddd87b9cd2d9b24713a8ff271b2a42dddda9d19893f06edb5fd605e4249a"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 2,
+    "semCoordenadas": 28
+  },
+  "cnpj": "26.502.794/0001-85",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código XPLG11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRXPLGCTF002), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "24929_26502 (Galpão Extrema II)",
+      "enderecoPublicado": "Estrada M. Luiz Lopes Neto",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "77106.29",
+      "areaPublicada": "77106.29",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Diversos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-24929-26502-galpao-extrema-ii",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "88913_26502 (Galpão Hortolândia I)",
+      "enderecoPublicado": "Rod. Jornalista F. A. Proença, Km 09",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "15349.29",
+      "areaPublicada": "15349.29",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Diversos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-88913-26502-galpao-hortolandia-i",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "CD Piracicaba II",
+      "enderecoPublicado": "Est. N. Senhora da Conc., 1.000",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "161340.14",
+      "areaPublicada": "161340.14",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "xplg11-cd-piracicaba-ii",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "2260_49076 (Piracicaba)",
+      "enderecoPublicado": "Avenida Comendador Leopoldo Dedini, nº 2.260 - Piracicaba, SP",
+      "cidade": "Piracicaba",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "67988",
+      "areaPublicada": "67988",
+      "vacanciaPercentual": "16",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Diversos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-2260-49076-piracicaba",
+      "coordenadas": {
+        "lat": "-22.737100",
+        "lng": "-47.589720",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Comendador Leopoldo Dedini, Unileste, Dois Córregos, Piracicaba, São Paulo, Região Sudeste, 13422-902, Brasil",
+        "osm": "way/709302912",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Comendador Leopoldo Dedini, 2.260 - Piracicaba, SP, Brasil"
+      }
+    },
+    {
+      "nome": "95140_26502 (Galpão WT RBR Log)",
+      "enderecoPublicado": "Rod. P. Tancredo Neves, Km 45",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "33615.9",
+      "areaPublicada": "33615.9",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Diversos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-95140-26502-galpao-wt-rbr-log",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "SBP",
+      "enderecoPublicado": "Estrada Tenente Marques, 1818 - Santana de Parnaiba - SP",
+      "cidade": "Santana de Parnaiba",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "50181",
+      "areaPublicada": "50181",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio Varejista",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Logístico",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Saúde",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Suprimento e Papel",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-sbp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "SEROPEDICA",
+      "enderecoPublicado": "Estrada Miguel Pereira nº 34, Bairro São Miguel, CEP: 23.890-000",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "82048.99",
+      "areaPublicada": "82048.99",
+      "vacanciaPercentual": "37",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentos",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-seropedica",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "DIA AMERICA",
+      "enderecoPublicado": "Rua Joao de Padula, 245 - Americana - SP",
+      "cidade": "Americana",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "30345.13",
+      "areaPublicada": "30345.13",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distrib. deAlimentos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-dia-america",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "EXTREMA MG",
+      "enderecoPublicado": "Estrada Luiz Lopes Neto, 728",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "76388",
+      "areaPublicada": "76388",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentos",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-extrema-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "CD GAIA AR JARINU",
+      "enderecoPublicado": "Est. Alberto Tofanin, km 5,5",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "17253.8",
+      "areaPublicada": "17253.8",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Diversos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-cd-gaia-ar-jarinu",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "CD - GAIA TF JARINU",
+      "enderecoPublicado": "Est. Alberto Tofanin, km 5,5",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "12742.54",
+      "areaPublicada": "12742.54",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Diversos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-cd-gaia-tf-jarinu",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "CD BARÃO DE MAUÁ ATIBAIA",
+      "enderecoPublicado": "Rod. Dom Pedro I, km 87,5",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "14387.89",
+      "areaPublicada": "14387.89",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Diversos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-cd-barao-de-maua-atibaia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "CACHOEIRINHA",
+      "enderecoPublicado": "Rua Lennie Queiroz, 333 - Cachoeirinha - RS",
+      "cidade": "Cachoeirinha",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "38410",
+      "areaPublicada": "38410",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio Varejista",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-cachoeirinha",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "CD LEROY M",
+      "enderecoPublicado": "Rod. dos Bandeirantes, km 34 - Cajamar, SP",
+      "cidade": "Cajamar",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "21349.43",
+      "areaPublicada": "21349.43",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Automotivo",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Alimentos",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Comércio Varejista",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Transportes",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-cd-leroy-m",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "CAJAMAR",
+      "enderecoPublicado": "Rod. dos Bandeirantes, km 34 - Cajamar, SP",
+      "cidade": "Cajamar",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "110208.57",
+      "areaPublicada": "110208.57",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Material de Construção",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-cajamar",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "SYSLOG RJ",
+      "enderecoPublicado": "Avenida OL-1 -Duque de Caxias, RJ",
+      "cidade": null,
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "29087",
+      "areaPublicada": "29087",
+      "vacanciaPercentual": "13",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Energia",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "EmpresarialComércio Varejista",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Farmacêutico",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-syslog-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "CD São Bernardo - CD CL Imigrantes V",
+      "enderecoPublicado": "Rua Maria Loprete, 120",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "62457",
+      "areaPublicada": "62457",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Diversos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-cd-sao-bernardo-cd-cl-imigrantes-v",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "CD RENNER",
+      "enderecoPublicado": "Avenida Osvaldo José do Amaral, SN - Areias São José - SC",
+      "cidade": "Areias São José",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "47912.9",
+      "areaPublicada": "47912.9",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio Varejista",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-cd-renner",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "IMO ITAPEVA",
+      "enderecoPublicado": "Estrada Municipal do Mandu, 2550 - Itapeva - MG",
+      "cidade": "Itapeva",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "23453.67",
+      "areaPublicada": "23453.67",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Eletroeletrônicos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-imo-itapeva",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "REC GRAVATA",
+      "enderecoPublicado": "Rodovia RS118, km 11, Gravataí - RS",
+      "cidade": "Gravataí",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "105270.92",
+      "areaPublicada": "105270.92",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio Varejista",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Farmacêutico",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Logístico",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-rec-gravata",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "CD JUNDIAÍ I",
+      "enderecoPublicado": "Rua Kanebo, 175, Dis. Industrial",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "54201.79",
+      "areaPublicada": "54201.79",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Diversos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-cd-jundiai-i",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "DIA RIBEIR",
+      "enderecoPublicado": "Via Jose Luiz Galvão, 1905 - Ribeirão Preto - SP",
+      "cidade": "Ribeirão Preto",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "21135.52",
+      "areaPublicada": "21135.52",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distrib. deAlimentos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-dia-ribeir",
+      "coordenadas": {
+        "lat": "-21.132688",
+        "lng": "-47.859787",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Via José Luiz Galvão, Jardim Carlos de Lacerda Chaves, Ribeirão Preto, São Paulo, Região Sudeste, 14056-632, Brasil",
+        "osm": "way/234734101",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Via Jose Luiz Galvão, 1905 - Ribeirão Preto - SP, Brasil"
+      }
+    },
+    {
+      "nome": "1702_26502 (Guarulhos)",
+      "enderecoPublicado": "Av. Francisco Xavier, 62",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "111197.53",
+      "areaPublicada": "111197.53",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio Varejista",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-1702-26502-guarulhos",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "110307_26502 (Galpão Hortolândia II)",
+      "enderecoPublicado": "Rod. SP 101, Km 9,5",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "43123.34",
+      "areaPublicada": "43123.34",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Diversos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-110307-26502-galpao-hortolandia-ii",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "SYSLOG SP",
+      "enderecoPublicado": "km 26 + 175,35m e o km 25 + 759,35m da Rodovia Anhanguera",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "66378",
+      "areaPublicada": "66378",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio Varejista",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-syslog-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "12769_26502 (Galpão Extrema I)",
+      "enderecoPublicado": "Estrada M. Vargem João Pinto",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "37600.24",
+      "areaPublicada": "37600.24",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio Varejista",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-12769-26502-galpao-extrema-i",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "CD JUNDIAÍ II",
+      "enderecoPublicado": "Rod. Anhanguera, km 51",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "45635.657575221",
+      "areaPublicada": "45635.657575221",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Diversos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-cd-jundiai-ii",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "EXP RENNER",
+      "enderecoPublicado": "Avenida Osvaldo José do Amaral, SN - Areias São José - SC",
+      "cidade": "Areias São José",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "11843.49",
+      "areaPublicada": "11843.49",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio Varejista",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-exp-renner",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "DUQUECX_RJ",
+      "enderecoPublicado": "Av. SN 1, 280 - Parque Duque. Rio de Janeiro - RJ",
+      "cidade": "Parque Duque. Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "23541",
+      "areaPublicada": "23541",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio Varejista",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Logístico",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-duquecx-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "ESPECULATIVO",
+      "enderecoPublicado": "Rod. dos Bandeirantes, km 34 - Cajamar, SP",
+      "cidade": "Cajamar",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "125555",
+      "areaPublicada": "125555",
+      "vacanciaPercentual": "12",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Material de Construção",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "xplg11-especulativo",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

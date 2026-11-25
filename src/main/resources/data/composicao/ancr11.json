@@ -1,0 +1,334 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "ANCR11",
+  "nomeDoFundo": "Fundo De Investimento Imobiliário Ancar Ic",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "6f985159ddafcadb42b449fdbb309e25ed9c641e2764953d6e3c3c86866e18de"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 8,
+    "semCoordenadas": 2
+  },
+  "cnpj": "07.789.135/0001-27",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código ANCR11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRANCRCTF001), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "CVS - CENTER VALE SHOPPING",
+      "enderecoPublicado": "Av. Deputado Benedito Matarazzo, 9403 - Jardim Oswaldo Cruz - São José dos Campos - SP",
+      "cidade": "São José dos Campos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "48928.72",
+      "areaPublicada": "48928.72",
+      "vacanciaPercentual": "4.8678",
+      "percentualDaReceitaDoFundo": "8.6518",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "11.3197"
+        },
+        {
+          "setor": "Vestuário",
+          "percentualDaReceitaDoImovel": "10.5253"
+        }
+      ],
+      "id": "ancr11-cvs-center-vale-shopping",
+      "coordenadas": {
+        "lat": "-23.199098",
+        "lng": "-45.883069",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "TV Vanguarda, 9403, Avenida Deputado Benedito Matarazzo, Jardim Oswaldo Cruz, São José dos Campos, São Paulo, Região Sudeste, 12216-780, Brasil",
+        "osm": "way/218661905",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Deputado Benedito Matarazzo, 9403 - Jardim Oswaldo Cruz - São José dos Campos - SP, Brasil"
+      }
+    },
+    {
+      "nome": "BPS - BOTAFOGO PRAIA SHOPPING",
+      "enderecoPublicado": "Av. Praia de Botafogo, 400 - Botafogo, Cep: 22250-040 - Rio de Janeiro - RJ - Brasil.",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "16501.94",
+      "areaPublicada": "16501.94",
+      "vacanciaPercentual": "2.9523",
+      "percentualDaReceitaDoFundo": "8.4181",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "34.1693"
+        }
+      ],
+      "id": "ancr11-bps-botafogo-praia-shopping",
+      "coordenadas": {
+        "lat": "-22.941746",
+        "lng": "-43.178868",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Praia de Botafogo, Botafogo, Rio de Janeiro, Região Sudeste, 22250-150, Brasil",
+        "osm": "way/15117877",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Praia de Botafogo, Rio de Janeiro, RJ, Brasil"
+      }
+    },
+    {
+      "nome": "SCIPA - IGUATEMI PORTO ALEGRE",
+      "enderecoPublicado": "Av. João Wallig, 1800 - Passo d'Areia, Porto Alegre - RS, 91349-900",
+      "cidade": "Porto Alegre",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "79070.56",
+      "areaPublicada": "79070.56",
+      "vacanciaPercentual": "2.2266",
+      "percentualDaReceitaDoFundo": "19.7154",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Moda",
+          "percentualDaReceitaDoImovel": "25.8080"
+        }
+      ],
+      "id": "ancr11-scipa-iguatemi-porto-alegre",
+      "coordenadas": {
+        "lat": "-30.024348",
+        "lng": "-51.162493",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Av. João Wallig, 1800 Porto Alegre RS, 1800, Avenida João Wallig, Passo da Areia, Porto Alegre, Rio Grande do Sul, Região Sul, 91349-900, Brasil",
+        "osm": "node/13065573562",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. João Wallig, 1800 - Passo d'Areia, Porto Alegre - RS, 91349-900, Brasil"
+      }
+    },
+    {
+      "nome": "MDW - MIDWAY MALL",
+      "enderecoPublicado": "Av. Nevaldo Rocha, 3775 - Tirol, Natal - RN",
+      "cidade": "Natal",
+      "uf": "RN",
+      "tipo": null,
+      "areaM2": "66433.26",
+      "areaPublicada": "66433.26",
+      "vacanciaPercentual": "3.9399",
+      "percentualDaReceitaDoFundo": "9.4397",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "15.8274"
+        },
+        {
+          "setor": "Vestuário",
+          "percentualDaReceitaDoImovel": "15.0438"
+        },
+        {
+          "setor": "Loja De Departamentos",
+          "percentualDaReceitaDoImovel": "10.3142"
+        }
+      ],
+      "id": "ancr11-mdw-midway-mall",
+      "coordenadas": {
+        "lat": "-5.811139",
+        "lng": "-35.206192",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Midway Mall Shopping, 3775, Avenida Nevaldo Rocha, Tirol, Zona Leste, Natal, Rio Grande do Norte, Região Nordeste, 59015-900, Brasil",
+        "osm": "way/1395965599",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Nevaldo Rocha, 3775 - Tirol, Natal - RN, Brasil"
+      }
+    },
+    {
+      "nome": "SNI - SHOPPING NOVA IGUACU",
+      "enderecoPublicado": "Av. Abílio Augusto Távora, 1111 - Luz, Nova Iguaçu - RJ",
+      "cidade": "Nova Iguaçu",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "45732.8",
+      "areaPublicada": "45732.8",
+      "vacanciaPercentual": "6.4882",
+      "percentualDaReceitaDoFundo": "6.6287",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Loja De Departamentos",
+          "percentualDaReceitaDoImovel": "17.8849"
+        },
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "27.9310"
+        }
+      ],
+      "id": "ancr11-sni-shopping-nova-iguacu",
+      "coordenadas": {
+        "lat": "-22.763417",
+        "lng": "-43.465230",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Shopping Nova Iguaçu, 1111, Avenida Abílio Augusto Távora, Bairro da Luz, Nova Iguaçu, Rio de Janeiro, Região Sudeste, 26260-045, Brasil",
+        "osm": "way/458180837",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Abílio Augusto Távora, 1111 - Luz, Nova Iguaçu - RJ, Brasil"
+      }
+    },
+    {
+      "nome": "CNB - CONJUNTO NACIONAL BRASILIA",
+      "enderecoPublicado": "Conjunto A, T137 - Asa Norte - Distrito Federal - Brasília - DF - Brasil. CEP: 70077-900",
+      "cidade": "Brasília",
+      "uf": "DF",
+      "tipo": null,
+      "areaM2": "43423.19",
+      "areaPublicada": "43423.19",
+      "vacanciaPercentual": "10.7109",
+      "percentualDaReceitaDoFundo": "13.5543",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vestuário",
+          "percentualDaReceitaDoImovel": "12.6830"
+        }
+      ],
+      "id": "ancr11-cnb-conjunto-nacional-brasilia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "NSF - NORTH SHOPPING FORTALEZA",
+      "enderecoPublicado": "Av. Bezerra de Menezes, 2450 - Presidente Kennedy - Fortaleza - CE",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "48656.64",
+      "areaPublicada": "48656.64",
+      "vacanciaPercentual": "8.2426",
+      "percentualDaReceitaDoFundo": "13.1389",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Loja De Departamentos",
+          "percentualDaReceitaDoImovel": "17.9594"
+        }
+      ],
+      "id": "ancr11-nsf-north-shopping-fortaleza",
+      "coordenadas": {
+        "lat": "-3.734935",
+        "lng": "-38.565987",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "North Shopping Fortaleza, 2450, Avenida Bezerra de Menezes, São Gerardo, Fortaleza, Ceará, Região Nordeste, 60325-902, Brasil",
+        "osm": "relation/8887597",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Bezerra de Menezes, 2450 - Presidente Kennedy - Fortaleza - CE, Brasil"
+      }
+    },
+    {
+      "nome": "SJS - SHOPPING JARDIM SUL",
+      "enderecoPublicado": "R. Itacaiúna, 61 - Vila Andrade - São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "28740.81",
+      "areaPublicada": "28740.81",
+      "vacanciaPercentual": "2.2802",
+      "percentualDaReceitaDoFundo": "1.2767",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "11.1652"
+        },
+        {
+          "setor": "Vestuário",
+          "percentualDaReceitaDoImovel": "10.7890"
+        }
+      ],
+      "id": "ancr11-sjs-shopping-jardim-sul",
+      "coordenadas": {
+        "lat": "-23.630954",
+        "lng": "-46.735361",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Itacaiúna, Comunidade Travinhas, Vila Andrade, São Paulo, Região Sudeste, 05724-003, Brasil",
+        "osm": "way/4806456",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Itacaiúna, 61 - Vila Andrade - São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "MNS - MINAS SHOPPING",
+      "enderecoPublicado": "Av. Cristiano Machado, nº 4000, Belo Horizonte/MG",
+      "cidade": "Belo Horizonte",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "50556.47",
+      "areaPublicada": "50556.47",
+      "vacanciaPercentual": "7.0103",
+      "percentualDaReceitaDoFundo": "1.5380",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ancr11-mns-minas-shopping",
+      "coordenadas": {
+        "lat": "-19.874893",
+        "lng": "-43.925231",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Cineart, 4000, Avenida Cristiano Machado, União, Regional Nordeste, Belo Horizonte, Minas Gerais, Região Sudeste, 31910-900, Brasil",
+        "osm": "node/6647379958",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Cristiano Machado, 4000, Belo Horizonte/MG, Brasil"
+      }
+    },
+    {
+      "nome": "NAT - NATAL SHOPPING",
+      "enderecoPublicado": "Av. Senador Salgado Filho, nº 2.234 - Candelária - Natal/Rio Grande do Norte",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "28396.12",
+      "areaPublicada": "28396.12",
+      "vacanciaPercentual": "5.0654",
+      "percentualDaReceitaDoFundo": "2.9113",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ancr11-nat-natal-shopping",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

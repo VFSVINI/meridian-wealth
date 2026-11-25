@@ -1,0 +1,54 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "BROF11",
+  "nomeDoFundo": "Brpr Corporate Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "67be375ae22b07ba52cbbe0fcce3e3469c36b9ab88359de7783be555f26b9daf"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "48.978.859/0001-04",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código BROF11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRBROFCTF000), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edificio Passeio Corporate",
+      "enderecoPublicado": "Rua Do Passeio, 38, Sem Complemento, Centro, Rio De Janeiro/RJ, Brasil, 20021-290",
+      "cidade": "Rio De Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "100000000",
+      "areaPublicada": "100000000",
+      "vacanciaPercentual": "68.9884",
+      "percentualDaReceitaDoFundo": "82.1780",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços Financeiros Diversos",
+          "percentualDaReceitaDoImovel": "68.9122"
+        }
+      ],
+      "id": "brof11-edificio-passeio-corporate",
+      "coordenadas": {
+        "lat": "-22.912650",
+        "lng": "-43.176941",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua do Passeio, Lapa, Rio de Janeiro, Região Sudeste, 20021-290, Brasil",
+        "osm": "way/59823716",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Do Passeio, 38, Rio De Janeiro, RJ, Brasil"
+      }
+    }
+  ]
+}

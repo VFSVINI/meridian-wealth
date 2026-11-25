@@ -1,0 +1,141 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "AROA11",
+  "nomeDoFundo": "Fii Aroeira 333 Renda Logistica",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "27c53797859f9f21460460890e21521f2fb9fc896782055add345d8d6d21444f"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 6
+  },
+  "cnpj": "44.674.528/0001-11",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código AROA11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRAROACTF003), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "PARANGABA",
+      "enderecoPublicado": "Avenida Doutor Silas Munguba, nº 847 no bairro Parangaba na cidade de Fortaleza / CE.",
+      "cidade": null,
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "24667.66",
+      "areaPublicada": "24667.66",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "aroa11-parangaba",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "MARACANAU",
+      "enderecoPublicado": "Rodovia Doutor Mendel Steinbruch,S/N-Maracanaú-CE",
+      "cidade": "N-Maracanaú",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "24359.64",
+      "areaPublicada": "24359.64",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "0",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "aroa11-maracanau",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "MARANGUAPE",
+      "enderecoPublicado": "Avenida Comandante Aviador Childerico Mora,S/N-Maranguape-CE",
+      "cidade": "N-Maranguape",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "21945.75",
+      "areaPublicada": "21945.75",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "0",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "aroa11-maranguape",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "ARACATI",
+      "enderecoPublicado": "Rua Dragão do Mar,S/N-Aracati-CE",
+      "cidade": "N-Aracati",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "20000",
+      "areaPublicada": "20000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "0",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "aroa11-aracati",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "CANINDÉ",
+      "enderecoPublicado": "Avenida Luciano Magalhães esquina com a Rua José Félix da Silva,663-Canindé-CE",
+      "cidade": null,
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "21200",
+      "areaPublicada": "21200",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "0",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "aroa11-caninde",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "QUIXERAMOBIM",
+      "enderecoPublicado": "Rua Doutor Pinto de Mendonça,S/N-Quixeramobim-CE",
+      "cidade": "N-Quixeramobim",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "20000",
+      "areaPublicada": "20000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "0",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "aroa11-quixeramobim",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

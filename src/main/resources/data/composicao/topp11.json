@@ -1,0 +1,90 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "TOPP11",
+  "nomeDoFundo": "Patria Top Off Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "9601234fd02e55ed781dd4b32eb596ddc8c82649c7bd012eafc38efdb7e65887"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 1
+  },
+  "cnpj": "56.805.391/0001-76",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código TOPP11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRTOPPCTF013), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edificio Metropolitan",
+      "enderecoPublicado": "Rua Amauri, 225, Sem Complemento, Jardim Europa, São Paulo/SP, Brasil, 01448-000",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "10193.24",
+      "areaPublicada": "10193.24",
+      "vacanciaPercentual": "13.7896",
+      "percentualDaReceitaDoFundo": "59.1714",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Fundos",
+          "percentualDaReceitaDoImovel": "24.4116"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "60.3172"
+        }
+      ],
+      "id": "topp11-edificio-metropolitan",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Edificio Platinum",
+      "enderecoPublicado": "Rua Jeronimo Da Veiga, 384, Sem Complemento, Jardim Europa, São Paulo/SP, Brasil, 04536-001",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "2520.48",
+      "areaPublicada": "2520.48",
+      "vacanciaPercentual": "8.6491",
+      "percentualDaReceitaDoFundo": "13.1976",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços Financeiros Diversos",
+          "percentualDaReceitaDoImovel": "40.0258"
+        },
+        {
+          "setor": "Intermediários Financeiros",
+          "percentualDaReceitaDoImovel": "11.2935"
+        },
+        {
+          "setor": "Fundos",
+          "percentualDaReceitaDoImovel": "11.8123"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "18.5724"
+        }
+      ],
+      "id": "topp11-edificio-platinum",
+      "coordenadas": {
+        "lat": "-23.581161",
+        "lng": "-46.680040",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Jerônimo da Veiga, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04536-070, Brasil",
+        "osm": "way/944454792",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Jeronimo Da Veiga, 384, São Paulo, SP, Brasil"
+      }
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "RCRB11",
+  "nomeDoFundo": "Fundo De Inv. Imobiliário Rio Bravo Renda Corporativa",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "8bb1cbdf456ba2b49915d8f26c65722b9ea246bbd42ed30fa8b9e9485cce43ef"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 5,
+    "semCoordenadas": 4
+  },
+  "cnpj": "03.683.056/0001-86",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código RCRB11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRRCRBCTF000), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "JATOBÁ",
+      "enderecoPublicado": "Rua Surubim, 373, Brooklin Novo, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1712.49",
+      "areaPublicada": "1712.49",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.2588",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviço",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rcrb11-jatoba",
+      "coordenadas": {
+        "lat": "-23.601027",
+        "lng": "-46.693231",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Surubim, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04571-050, Brasil",
+        "osm": "way/27579958",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Surubim, 373, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "CANDELÁRIA CORPORATE",
+      "enderecoPublicado": "Rua da Candelária nº 65, Centro, Rio de Janeiro/RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "1296.76",
+      "areaPublicada": "1296.76",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.7264",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviço",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rcrb11-candelaria-corporate",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "EDIFÍCIO GIRASSOL",
+      "enderecoPublicado": "Rua Girassol, 555 - Vila Madalena",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "4263.94",
+      "areaPublicada": "4263.94",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.7896",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviço",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rcrb11-edificio-girassol",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "PARQUE SANTOS",
+      "enderecoPublicado": "Alameda Santos, 1163, Cerqueira César, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "5135.15",
+      "areaPublicada": "5135.15",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "7.3739",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviço",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rcrb11-parque-santos",
+      "coordenadas": {
+        "lat": "-23.565350",
+        "lng": "-46.653967",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "1163, Alameda Santos, Cerqueira César, Jardim Paulista, São Paulo, Região Sudeste, 01419-002, Brasil",
+        "osm": "way/1117323432",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Santos, 1163, Cerqueira César, São Paulo/SP, Brasil"
+      }
+    },
+    {
+      "nome": "PQ CULTURAL PAULISTA",
+      "enderecoPublicado": "Avenida Paulista, 37, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "5033.52",
+      "areaPublicada": "5033.52",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.6430",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviço",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rcrb11-pq-cultural-paulista",
+      "coordenadas": {
+        "lat": "-23.571099",
+        "lng": "-46.645175",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Casa das Rosas, 37, Avenida Paulista, Paraíso, Vila Mariana, São Paulo, Região Sudeste, 01311-903, Brasil",
+        "osm": "way/301601819",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Paulista, 37, São Paulo/SP, Brasil"
+      }
+    },
+    {
+      "nome": "JK FINANCIAL CENTER",
+      "enderecoPublicado": "Av. Juscelino Kubitschek, 510, Itaim Bibi, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "10505.42",
+      "areaPublicada": "10505.42",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "24.5649",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "29.3538"
+        },
+        {
+          "setor": "Serviço",
+          "percentualDaReceitaDoImovel": "70.6462"
+        }
+      ],
+      "id": "rcrb11-jk-financial-center",
+      "coordenadas": {
+        "lat": "-23.587337",
+        "lng": "-46.674991",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "510, Avenida Presidente Juscelino Kubitschek, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04543-000, Brasil",
+        "osm": "way/1242667782",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Juscelino Kubitschek, 510, Itaim Bibi, São Paulo/SP, Brasil"
+      }
+    },
+    {
+      "nome": "EDIFÍCIO BRAVO! PAULISTA",
+      "enderecoPublicado": "Alameda Santos, 1.800 - Jardins",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "5738.36",
+      "areaPublicada": "5738.36",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "9.5740",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "28.0378"
+        },
+        {
+          "setor": "Serviço",
+          "percentualDaReceitaDoImovel": "71.9622"
+        }
+      ],
+      "id": "rcrb11-edificio-bravo-paulista",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "CONTINENTAL SQUARE",
+      "enderecoPublicado": "Rua Olimpiadas. 205, São Paulo SP",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "8281.93",
+      "areaPublicada": "8281.93",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "14.5366",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "67.9276"
+        },
+        {
+          "setor": "Serviço",
+          "percentualDaReceitaDoImovel": "32.0724"
+        }
+      ],
+      "id": "rcrb11-continental-square",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "INTERNACIONAL RIO",
+      "enderecoPublicado": "Praia do Flamengo nº 154, Flamengo, Rio de Janeiro/RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "1481.07",
+      "areaPublicada": "1481.07",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.6972",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviço",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rcrb11-internacional-rio",
+      "coordenadas": {
+        "lat": "-22.935000",
+        "lng": "-43.174405",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Praia do Flamengo, Flamengo, Rio de Janeiro, Região Sudeste, 22210-070, Brasil",
+        "osm": "way/554984791",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Praia do Flamengo 154, Flamengo, Rio de Janeiro/RJ, Brasil"
+      }
+    }
+  ]
+}

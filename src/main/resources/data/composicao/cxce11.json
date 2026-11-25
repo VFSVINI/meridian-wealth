@@ -1,0 +1,54 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "CXCE11",
+  "nomeDoFundo": "Fundo De Investimento Imobiliario Caixa Cedae",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "f288881331bb25c76d8884aebe636d5b58b46e33bdf217a76a35337e53e582b2"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "10.991.914/0001-15",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 2. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código CXCE11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRCXCECTF004), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edifício Nova CEDAE",
+      "enderecoPublicado": "Av Presidente Vargas, 2655, Centro, Rio de Janeiro - RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "19938.07",
+      "areaPublicada": "19938.07",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "92.5400",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Água e saneamento",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "cxce11-edificio-nova-cedae",
+      "coordenadas": {
+        "lat": "-22.904287",
+        "lng": "-43.189206",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Presidente Vargas, Centro, Rio de Janeiro, Região Sudeste, 20071-004, Brasil",
+        "osm": "way/227138618",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av Presidente Vargas, 2655, Centro, Rio de Janeiro - RJ, Brasil"
+      }
+    }
+  ]
+}

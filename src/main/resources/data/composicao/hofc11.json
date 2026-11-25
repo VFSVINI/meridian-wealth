@@ -1,0 +1,90 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "HOFC11",
+  "nomeDoFundo": "Hedge Office Income Fundo De Investimento Imob",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "8bb58c4b62a7cefaf72764ce5bee4c5c76573d1163fad1f2598d08bc92ad3e55"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 1
+  },
+  "cnpj": "31.894.369/0001-19",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código HOFC11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRHOFCCTF009), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edifício Birmann 20",
+      "enderecoPublicado": "Av. das Nações Unidas, 17.891, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "18075.85",
+      "areaPublicada": "18075.85",
+      "vacanciaPercentual": "73.6100",
+      "percentualDaReceitaDoFundo": "17.5176",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "54.6528"
+        },
+        {
+          "setor": "Tecnologia",
+          "percentualDaReceitaDoImovel": "23.7524"
+        },
+        {
+          "setor": "Consultoria",
+          "percentualDaReceitaDoImovel": "18.0144"
+        }
+      ],
+      "id": "hofc11-edificio-birmann-20",
+      "coordenadas": {
+        "lat": "-23.624554",
+        "lng": "-46.705913",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida das Nações Unidas, Chácara Santo Antônio, Santo Amaro, São Paulo, Região Sudeste, 04713-002, Brasil",
+        "osm": "way/459613590",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. das Nações Unidas, 17.891, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edifício Morumbi",
+      "enderecoPublicado": "Av. Morumbi, 8.234, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "9782",
+      "areaPublicada": "9782",
+      "vacanciaPercentual": "11.6000",
+      "percentualDaReceitaDoFundo": "45.0096",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Indústria",
+          "percentualDaReceitaDoImovel": "51.5242"
+        },
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "25.7960"
+        },
+        {
+          "setor": "Saúde",
+          "percentualDaReceitaDoImovel": "22.6798"
+        }
+      ],
+      "id": "hofc11-edificio-morumbi",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

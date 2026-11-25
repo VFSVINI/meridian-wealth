@@ -1,0 +1,209 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "FISC11",
+  "nomeDoFundo": "Fii Sc 401 - Responsabilidade Limitada",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "c1e4715577e95c2313d61a65745f8089f4a53b0cf20ca16041fe49c171fc69e0"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 5
+  },
+  "cnpj": "12.804.013/0001-00",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código FISC11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRFISCCTF008), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Emp. Com. SC 401 Square Corporate T. Lagoa, Campeche, Jurerê",
+      "enderecoPublicado": "Rodovia SC 401, KM 5",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "16015.43",
+      "areaPublicada": "16015.43",
+      "vacanciaPercentual": "0.7667",
+      "percentualDaReceitaDoFundo": "58.2229",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Móveis e decoração",
+          "percentualDaReceitaDoImovel": "34.3182"
+        },
+        {
+          "setor": "Educação Cursos",
+          "percentualDaReceitaDoImovel": "27.6564"
+        },
+        {
+          "setor": "Pet Shop",
+          "percentualDaReceitaDoImovel": "15.5403"
+        },
+        {
+          "setor": "escritórios",
+          "percentualDaReceitaDoImovel": "100"
+        },
+        {
+          "setor": "Estacionamento",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fisc11-emp-com-sc-401-square-corporate-t-lagoa-campeche-jurere-1",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Terreno destinado à locação",
+      "enderecoPublicado": "Rodovia SC 401, ao lado direito da rodovia no sentido Centro/Praia e ao lado direito do empreendimento SC-401 Square Corporate",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "789.24",
+      "areaPublicada": "789.24",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6621",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Pet Shop",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fisc11-terreno-destinado-a-locacao",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Emp. Com. SC 401 Square Corporate T. Lagoa, Campeche, Jurerê",
+      "enderecoPublicado": "Rodovia SC 401, KM 5",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "8297.01",
+      "areaPublicada": "8297.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "15.4159",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Móveis e decoração",
+          "percentualDaReceitaDoImovel": "34.3182"
+        },
+        {
+          "setor": "Educação Cursos",
+          "percentualDaReceitaDoImovel": "27.6564"
+        },
+        {
+          "setor": "Pet Shop",
+          "percentualDaReceitaDoImovel": "15.5403"
+        },
+        {
+          "setor": "escritórios",
+          "percentualDaReceitaDoImovel": "100"
+        },
+        {
+          "setor": "Estacionamento",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fisc11-emp-com-sc-401-square-corporate-t-lagoa-campeche-jurere-2",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Emp. Com. SC 401 Square Corporate T. Lagoa, Campeche, Jurerê",
+      "enderecoPublicado": "Rodovia SC 401, KM 5",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2769.8",
+      "areaPublicada": "2769.8",
+      "vacanciaPercentual": "8.1667",
+      "percentualDaReceitaDoFundo": "11.4789",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Móveis e decoração",
+          "percentualDaReceitaDoImovel": "34.3182"
+        },
+        {
+          "setor": "Educação Cursos",
+          "percentualDaReceitaDoImovel": "27.6564"
+        },
+        {
+          "setor": "Pet Shop",
+          "percentualDaReceitaDoImovel": "15.5403"
+        },
+        {
+          "setor": "escritórios",
+          "percentualDaReceitaDoImovel": "100"
+        },
+        {
+          "setor": "Estacionamento",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fisc11-emp-com-sc-401-square-corporate-t-lagoa-campeche-jurere-3",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "W Tower",
+      "enderecoPublicado": "Rua Alfredo Chaves, 1208 - Caxias do Sul/RS",
+      "cidade": "Caxias do Sul",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "3224.97",
+      "areaPublicada": "3224.97",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "12.4866",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Academia",
+          "percentualDaReceitaDoImovel": "18.3678"
+        },
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "16.6213"
+        },
+        {
+          "setor": "Conveniência",
+          "percentualDaReceitaDoImovel": "15.6954"
+        },
+        {
+          "setor": "Saúde",
+          "percentualDaReceitaDoImovel": "15.2433"
+        }
+      ],
+      "id": "fisc11-w-tower",
+      "coordenadas": {
+        "lat": "-29.165438",
+        "lng": "-51.176006",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Alfredo Chaves, Centro, Primeiro Distrito, Caxias do Sul, Rio Grande do Sul, Região Sul, 95020-360, Brasil",
+        "osm": "way/183056013",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Alfredo Chaves, 1208 - Caxias do Sul/RS, Brasil"
+      }
+    },
+    {
+      "nome": "Conjunto 217B Lagoa Torre B",
+      "enderecoPublicado": "Rodovia SC 401",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "61.78",
+      "areaPublicada": "61.78",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "fisc11-conjunto-217b-lagoa-torre-b",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

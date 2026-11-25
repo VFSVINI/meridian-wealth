@@ -1,0 +1,846 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "BTLG11",
+  "nomeDoFundo": "Btgp Logistica Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "f05a2b3c575d98a6362091cbf57168970c1985cba72c8f37c86f9305c642add7"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 12,
+    "semCoordenadas": 21
+  },
+  "cnpj": "11.839.593/0001-09",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código BTLG11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRBTLGCTF000), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "BTLG - Louveira VIII",
+      "enderecoPublicado": "Rua Wagner Luis Bevilaqua, 525, 525, Sem Complemento, Parque Dos Estados, Louveira/SP, Brasil, 13290-901",
+      "cidade": "Louveira",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "73072.76",
+      "areaPublicada": "73072.76",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.9272",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "40.6527"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "59.3473"
+        }
+      ],
+      "id": "btlg11-btlg-louveira-viii",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Urban Hub Maua I",
+      "enderecoPublicado": "Avenida Papa Joao Xxiii, 3740, Sem Complemento, Sitio Sertão, Mauá/SP, Brasil, 09370-800",
+      "cidade": "Mauá",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "47536.82",
+      "areaPublicada": "47536.82",
+      "vacanciaPercentual": "13.3728",
+      "percentualDaReceitaDoFundo": "2.0376",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "71.1837"
+        }
+      ],
+      "id": "btlg11-urban-hub-maua-i",
+      "coordenadas": {
+        "lat": "-23.707854",
+        "lng": "-46.481890",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Papa João XXIII, Vila Carlina, Mauá, São Paulo, Região Sudeste, 09370-850, Brasil",
+        "osm": "way/244399363",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Papa Joao Xxiii, 3740, Mauá, SP, Brasil"
+      }
+    },
+    {
+      "nome": "BTLG - Santo Andre",
+      "enderecoPublicado": "Avenida Joao Pessoa, 500, Sem Complemento, Jardim Utinga, Santo André/SP, Brasil, 09230-650",
+      "cidade": "Santo André",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "40508.21",
+      "areaPublicada": "40508.21",
+      "vacanciaPercentual": "96.2657",
+      "percentualDaReceitaDoFundo": "0.4755",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "87.3384"
+        }
+      ],
+      "id": "btlg11-btlg-santo-andre",
+      "coordenadas": {
+        "lat": "-23.615300",
+        "lng": "-46.522184",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida João Pessoa, 2º Subdistrito, Santo André, São Paulo, Região Sudeste, 09230-650, Brasil",
+        "osm": "way/948272178",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Joao Pessoa, 500, Santo André, SP, Brasil"
+      }
+    },
+    {
+      "nome": "BTLG - Louveira IV",
+      "enderecoPublicado": "Estrada Cruz Grande, 1500, Sem Complemento, Santo Antônio, Louveira/SP, Brasil, 13294-004",
+      "cidade": "Louveira",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "18702.16",
+      "areaPublicada": "18702.16",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6452",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Embalagens",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btlg11-btlg-louveira-iv",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "BTLG Cajamar III",
+      "enderecoPublicado": "Avenida Doutor Antonio Joao Abdalla, 2010, Sem Complemento, Empresarial Colina, Cajamar/SP, Brasil, 07750-020",
+      "cidade": "Cajamar",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "57071.72",
+      "areaPublicada": "57071.72",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.7189",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btlg11-btlg-cajamar-iii",
+      "coordenadas": {
+        "lat": "-23.345164",
+        "lng": "-46.863533",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Doutor Antônio João Abdalla, Centro, Cajamar, São Paulo, Região Sudeste, 07750-710, Brasil",
+        "osm": "way/788948228",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Doutor Antonio Joao Abdalla, 2010, Cajamar, SP, Brasil"
+      }
+    },
+    {
+      "nome": "BTLG - Louveira IX",
+      "enderecoPublicado": "Rua Wagner Luis Bevilaqua, 525, Sem Complemento, Parque Dos Estados, Louveira/SP, Brasil, 13290-901",
+      "cidade": "Louveira",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "7870.22",
+      "areaPublicada": "7870.22",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2272",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Máquinas e Equipamentos",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btlg11-btlg-louveira-ix",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BTLG - Louveira V VI e VII",
+      "enderecoPublicado": "Estrada Cruz Grande, 1700, Sem Complemento, Santo Antônio, Louveira/SP, Brasil, 13294-004",
+      "cidade": "Louveira",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "87003.47",
+      "areaPublicada": "87003.47",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.3122",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btlg11-btlg-louveira-v-vi-e-vii",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "BTLG - Louveira III",
+      "enderecoPublicado": "Estrada Cruz Grande, 700, Sem Complemento, Santo Antônio, Louveira/SP, Brasil, 13294-900",
+      "cidade": "Louveira",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "31632",
+      "areaPublicada": "31632",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.1008",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Transporte",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btlg11-btlg-louveira-iii",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "BTLG -  Aracatuba",
+      "enderecoPublicado": "Rodovia Marechal Rondon, Km 536, 21500, Sem Complemento, Avenida, Aracatuba/SP, Brasil, 16027-231",
+      "cidade": "Aracatuba",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "26783",
+      "areaPublicada": "26783",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.5308",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Embalagens",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btlg11-btlg-aracatuba",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BTLG - Castelo Branco",
+      "enderecoPublicado": "Avenida Charles Goodyear, S/n, Sem Complemento, Cururuquara, Santana De Parnaiba/SP, Brasil, 06524-115",
+      "cidade": "Santana De Parnaiba",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "18940",
+      "areaPublicada": "18940",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.9308",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Diversos",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btlg11-btlg-castelo-branco",
+      "coordenadas": {
+        "lat": "-23.482171",
+        "lng": "-46.999876",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Charles Goodyear, Bolívar Ayruth, Recanto Maravilha III, Santana de Parnaíba, São Paulo, Região Sudeste, 06524-115, Brasil",
+        "osm": "way/475732346",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Charles Goodyear, Santana De Parnaiba, SP, Brasil"
+      }
+    },
+    {
+      "nome": "BTLG - Bonsucesso",
+      "enderecoPublicado": "Avenida Paschoal Thomeu, 1141, Sem Complemento, Vila Nova Bonsucesso, Guarulhos/SP, Brasil, 07175-090",
+      "cidade": "Guarulhos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "95367.41",
+      "areaPublicada": "95367.41",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.1164",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Transporte",
+          "percentualDaReceitaDoImovel": "36.7105"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "51.9192"
+        },
+        {
+          "setor": "Automóveis e Motocicletas",
+          "percentualDaReceitaDoImovel": "11.3703"
+        }
+      ],
+      "id": "btlg11-btlg-bonsucesso",
+      "coordenadas": {
+        "lat": "-23.420747",
+        "lng": "-46.408044",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Paschoal Thomeu, Jardim Presidente Dutra, Jardim do Triunfo, Bonsucesso, Jardim Presidente Dutra, Guarulhos, São Paulo, Região Sudeste, 07175-090, Brasil",
+        "osm": "way/635822190",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Paschoal Thomeu, 1141, Guarulhos, SP, Brasil"
+      }
+    },
+    {
+      "nome": "BTLG - Cotia",
+      "enderecoPublicado": "Estrada Do Capuava, 1000, Sem Complemento, Chacara Ondas Verdes, Cotia/SP, Brasil, 06715-725",
+      "cidade": "Cotia",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "7538.31",
+      "areaPublicada": "7538.31",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.5814",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btlg11-btlg-cotia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "BTLG - Cabreuva",
+      "enderecoPublicado": "Rodovia  Dom Gabriel Paulino Bueno Couto, Km 80,2, Esquina Com Via Dos Ipes, Bairro Do Jacaré, Cabreuva/SP, Brasil, 13315-000",
+      "cidade": "Cabreuva",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "47582.11",
+      "areaPublicada": "47582.11",
+      "vacanciaPercentual": "25.0274",
+      "percentualDaReceitaDoFundo": "0.6665",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Transporte",
+          "percentualDaReceitaDoImovel": "35.6003"
+        },
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "27.8568"
+        },
+        {
+          "setor": "Embalagens",
+          "percentualDaReceitaDoImovel": "36.5428"
+        }
+      ],
+      "id": "btlg11-btlg-cabreuva",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BTLG - Jundiai",
+      "enderecoPublicado": "Avenida Francisco Roveri, S/n, Sem Complemento, Parque Almerinda Pereira Chaves, Jundiai/SP, Brasil, 13212-541",
+      "cidade": "Jundiai",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "88894.76",
+      "areaPublicada": "88894.76",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.6390",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "69.9418"
+        },
+        {
+          "setor": "Medicamentos e Outros Produtos",
+          "percentualDaReceitaDoImovel": "20.7270"
+        }
+      ],
+      "id": "btlg11-btlg-jundiai",
+      "coordenadas": {
+        "lat": "-23.150160",
+        "lng": "-47.001612",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Francisco Roveri, Parque Residencial Jundiaí II, Novo Horizonte, Fazenda Grande, Jundiaí, São Paulo, Região Sudeste, 13212-590, Brasil",
+        "osm": "way/329172720",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Francisco Roveri, Jundiai, SP, Brasil"
+      }
+    },
+    {
+      "nome": "BTLG - Hortolandia",
+      "enderecoPublicado": "Rua Perola, 350, N/a, Jardim Santa Esmeralda, Hortolandia/SP, Brasil, 13186-546",
+      "cidade": "Hortolandia",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "36024.37",
+      "areaPublicada": "36024.37",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.3563",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Máquinas e Equipamentos",
+          "percentualDaReceitaDoImovel": "38.8020"
+        },
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "22.4854"
+        },
+        {
+          "setor": "Agropecuária",
+          "percentualDaReceitaDoImovel": "18.2409"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "20.4718"
+        }
+      ],
+      "id": "btlg11-btlg-hortolandia",
+      "coordenadas": {
+        "lat": "-22.910363",
+        "lng": "-47.191476",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Pérola, Jardins Terras de Santo Antônio, Santa Esmeralda, Hortolândia, São Paulo, Região Sudeste, 13186-534, Brasil",
+        "osm": "way/149119056",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Perola, 350, Hortolandia, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Loja Dengo",
+      "enderecoPublicado": "Avenida Brigadeiro Faria Lima, 186, Sem Complemento, Pinheiros, Sao Paulo/SP, Brasil, 05426-200",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1685.2",
+      "areaPublicada": "1685.2",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "btlg11-loja-dengo",
+      "coordenadas": {
+        "lat": "-23.560857",
+        "lng": "-46.695626",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "186, Avenida Brigadeiro Faria Lima, Vila Madalena, Pinheiros, São Paulo, Região Sudeste, 05426-200, Brasil",
+        "osm": "node/5682684953",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Brigadeiro Faria Lima, 186, Sao Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "BTLG - Queimados",
+      "enderecoPublicado": "Rua Minas Gerais - Quadra 10, Lote 0007, 000007, Quadra 10, Lote 0007, Distrito Industrial, Queimados/RJ, Brasil, 26373-280",
+      "cidade": "Queimados",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "52234.16",
+      "areaPublicada": "52234.16",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "btlg11-btlg-queimados",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BTLG - Caieiras",
+      "enderecoPublicado": "Rua Adamo Zambelli, 190, Sem Complemento, Calcárea, Caieiras/SP, Brasil, 07723-000",
+      "cidade": "Caieiras",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "51109.8",
+      "areaPublicada": "51109.8",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.0690",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btlg11-btlg-caieiras",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BTLG - Itapevi II",
+      "enderecoPublicado": "Avenida Portugal, 1100, Sem Complemento, Itaqui, Itapevi/SP, Brasil, 06696-060",
+      "cidade": "Itapevi",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "73591.5",
+      "areaPublicada": "73591.5",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.2842",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços Médico - Hospitalares",
+          "percentualDaReceitaDoImovel": "59.1307"
+        },
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "26.2797"
+        }
+      ],
+      "id": "btlg11-btlg-itapevi-ii",
+      "coordenadas": {
+        "lat": "-23.522060",
+        "lng": "-46.942658",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Portugal, Centro Logistico Itapevi, Jardim Nova Itapevi, Itapevi, São Paulo, Região Sudeste, 06696-070, Brasil",
+        "osm": "way/254153003",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Portugal, 1100, Itapevi, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Urban Hub Osasco",
+      "enderecoPublicado": "Avenida Doutor Alberto Jackson Byington, 2990, Sem Complemento, Industrial Anhangüera, Osasco/SP, Brasil, 06276-000",
+      "cidade": "Osasco",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "35011.07",
+      "areaPublicada": "35011.07",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.1022",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "10.1056"
+        },
+        {
+          "setor": "Transporte",
+          "percentualDaReceitaDoImovel": "89.8944"
+        }
+      ],
+      "id": "btlg11-urban-hub-osasco",
+      "coordenadas": {
+        "lat": "-23.488930",
+        "lng": "-46.772190",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Doutor Alberto Jackson Byington, Industrial Anhangüera, Osasco, São Paulo, Região Sudeste, 06276-000, Brasil",
+        "osm": "way/176580797",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Doutor Alberto Jackson Byington, 2990, Osasco, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Imovel Barueri",
+      "enderecoPublicado": "Avenida Tucunare, 720, Sem Complemento, Tamboré, Barueri/SP, Brasil, 06460-020",
+      "cidade": "Barueri",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "25394.2",
+      "areaPublicada": "25394.2",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "btlg11-imovel-barueri",
+      "coordenadas": {
+        "lat": "-23.495572",
+        "lng": "-46.834362",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Epson, 720, Avenida Tucunaré, Centro Comercial e Empresarial Jubran, Alphaville, Barueri, São Paulo, Região Sudeste, 06460-020, Brasil",
+        "osm": "way/256706757",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Tucunare, 720, Barueri, SP, Brasil"
+      }
+    },
+    {
+      "nome": "BTLG - Louveira I",
+      "enderecoPublicado": "Avenida Jose Luiz Mazzali, 450, Sem Complemento, Santo Antônio, Louveira/SP, Brasil, 13294-002",
+      "cidade": "Louveira",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "137482.71",
+      "areaPublicada": "137482.71",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.4939",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "21.5212"
+        },
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "78.4788"
+        }
+      ],
+      "id": "btlg11-btlg-louveira-i",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BTLG - Regis",
+      "enderecoPublicado": "Estrada Ferreira Guedes, 784, Sem Complemento, Potuvera, Itapecerica Da Serra/SP, Brasil, 06885-150",
+      "cidade": "Itapecerica Da Serra",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "30592.23",
+      "areaPublicada": "30592.23",
+      "vacanciaPercentual": "31.8427",
+      "percentualDaReceitaDoFundo": "0.8932",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços Diversos",
+          "percentualDaReceitaDoImovel": "20.5737"
+        },
+        {
+          "setor": "Bebidas",
+          "percentualDaReceitaDoImovel": "19.3034"
+        },
+        {
+          "setor": "Alimentos Processados",
+          "percentualDaReceitaDoImovel": "20.0410"
+        }
+      ],
+      "id": "btlg11-btlg-regis",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "BTLG - Navegantes",
+      "enderecoPublicado": "Rodovia Br470, 04, Sem Complemento, Machados, Navegantes/SC, Brasil, 88373-330",
+      "cidade": "Navegantes",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "9793.66",
+      "areaPublicada": "9793.66",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.3761",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "66.6666"
+        }
+      ],
+      "id": "btlg11-btlg-navegantes",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BTLG Campinas - Dom Pedro",
+      "enderecoPublicado": "Estrada Municipal Jose Sedano, 854, Sem Complemento, Residencial Quilombo Ii, Campinas/SP, Brasil, 13069-387",
+      "cidade": "Campinas",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "102722.77",
+      "areaPublicada": "102722.77",
+      "vacanciaPercentual": "17.3400",
+      "percentualDaReceitaDoFundo": "3.3299",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "44.2617"
+        },
+        {
+          "setor": "Construção Civil",
+          "percentualDaReceitaDoImovel": "11.2691"
+        }
+      ],
+      "id": "btlg11-btlg-campinas-dom-pedro",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "BTLG - Fortaleza",
+      "enderecoPublicado": "Br 116, 2271, Sem Complemento, Verife, Itaitinga/CE, Brasil, 61880-000",
+      "cidade": "Itaitinga",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "23274",
+      "areaPublicada": "23274",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.1835",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentos Processados",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btlg11-btlg-fortaleza",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BTLG Cajamar I",
+      "enderecoPublicado": "Avenida Doutor Antonio Joao Abdalla, 3945, Sem Complemento, Empresarial Colina, Cajamar/SP, Brasil, 07750-020",
+      "cidade": "Cajamar",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "78639.38",
+      "areaPublicada": "78639.38",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.4981",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "38.1218"
+        }
+      ],
+      "id": "btlg11-btlg-cajamar-i",
+      "coordenadas": {
+        "lat": "-23.352428",
+        "lng": "-46.876972",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Doutor Antônio João Abdalla, Centro, Cajamar, São Paulo, Região Sudeste, 07750-620, Brasil",
+        "osm": "way/408088380",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Doutor Antonio Joao Abdalla, 3945, Cajamar, SP, Brasil"
+      }
+    },
+    {
+      "nome": "BTLG - Maua",
+      "enderecoPublicado": "Avenida Alberto Soares Sampaio, S/n, Sem Complemento, Capuava, Maua/SP, Brasil, 09380-000",
+      "cidade": "Maua",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "82093.07",
+      "areaPublicada": "82093.07",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.1742",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "16.1724"
+        },
+        {
+          "setor": "Transporte",
+          "percentualDaReceitaDoImovel": "53.7342"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "15.8968"
+        }
+      ],
+      "id": "btlg11-btlg-maua",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BTLG - Extrema",
+      "enderecoPublicado": "Estrada Municipal Thereza Thomazella, 432, Sem Complemento, Bairro Dos Pires, Extrema/MG, Brasil, 37640-000",
+      "cidade": "Extrema",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "39752.45",
+      "areaPublicada": "39752.45",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.9927",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "82.2249"
+        },
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "17.7751"
+        }
+      ],
+      "id": "btlg11-btlg-extrema",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BTLG - SBC III",
+      "enderecoPublicado": "Estrada Dos Alvarengas, 630, Sem Complemento, Assunção, São Bernardo Do Campo/SP, Brasil, 09850-550",
+      "cidade": "São Bernardo Do Campo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "47751.6",
+      "areaPublicada": "47751.6",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "btlg11-btlg-sbc-iii",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "BTLG - Ribeirao Preto",
+      "enderecoPublicado": "Rodovia Anhanguera, S/n, Km 308, Parque Residencial Candido Portinari, Ribeirao Preto/SP, Brasil, 14093-500",
+      "cidade": "Ribeirao Preto",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "57164.04",
+      "areaPublicada": "57164.04",
+      "vacanciaPercentual": "2.6158",
+      "percentualDaReceitaDoFundo": "2.5685",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agropecuária",
+          "percentualDaReceitaDoImovel": "15.8871"
+        },
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "15.7572"
+        },
+        {
+          "setor": "Bebidas",
+          "percentualDaReceitaDoImovel": "38.9044"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "14.6387"
+        }
+      ],
+      "id": "btlg11-btlg-ribeirao-preto",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BTLG - Louveira II",
+      "enderecoPublicado": "Avenida Jose Luiz Mazzali, 480, Sem Complemento, Santo Antônio, Louveira/SP, Brasil, 13294-002",
+      "cidade": "Louveira",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "6503.19",
+      "areaPublicada": "6503.19",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2025",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Embalagens",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btlg11-btlg-louveira-ii",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BTLG - Suape II",
+      "enderecoPublicado": "Rodovia Pe- 60 - Km 22, S/n, , Distrito Industrial De Ipojuca - Suape, Ipojuca/PE, Brasil, 55598-078",
+      "cidade": "Ipojuca",
+      "uf": "PE",
+      "tipo": null,
+      "areaM2": "35962",
+      "areaPublicada": "35962",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6574",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Transporte",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btlg11-btlg-suape-ii",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

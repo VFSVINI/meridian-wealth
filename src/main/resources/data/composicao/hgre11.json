@@ -1,0 +1,394 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "HGRE11",
+  "nomeDoFundo": "Pátria Escritórios Fundo De Investimento Imobiliário",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "037302a528495f7d63a04cb3bba3aed8ddef578e1e45972048d7c64522dcce9c"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 10,
+    "semCoordenadas": 2
+  },
+  "cnpj": "09.072.017/0001-29",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código HGRE11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRHGRECTF006), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Roberto Sampaio Ferreira",
+      "enderecoPublicado": "Rua Flórida, 1.595 - São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "3519.9",
+      "areaPublicada": "3519.9",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.4709",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Energia",
+          "percentualDaReceitaDoImovel": "33.2451"
+        },
+        {
+          "setor": "Associação",
+          "percentualDaReceitaDoImovel": "19.8658"
+        },
+        {
+          "setor": "Previdência e Seguros",
+          "percentualDaReceitaDoImovel": "46.8892"
+        }
+      ],
+      "id": "hgre11-roberto-sampaio-ferreira",
+      "coordenadas": {
+        "lat": "-23.608324",
+        "lng": "-46.692438",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Flórida, Brooklin Novo, Itaim Bibi, São Paulo, Região Sudeste, 04571-905, Brasil",
+        "osm": "way/760437737",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Flórida, 1.595 - São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Paulista Star",
+      "enderecoPublicado": "Alameda Campinas, 1.070 - São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "13702",
+      "areaPublicada": "13702",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "9.1240",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Viagens",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgre11-paulista-star",
+      "coordenadas": {
+        "lat": "-23.564427",
+        "lng": "-46.651787",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Alameda Campinas, Morro dos Ingleses, Bela Vista, São Paulo, Região Sudeste, 01404-000, Brasil",
+        "osm": "way/230628527",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Campinas, 1.070 - São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Centro Empresarial de São Paulo - Cenesp",
+      "enderecoPublicado": "Av. Maria Coelho Aguiar, 215 - São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "3070.48",
+      "areaPublicada": "3070.48",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.4424",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Instituição Financeira",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgre11-centro-empresarial-de-sao-paulo-cenesp",
+      "coordenadas": {
+        "lat": "-23.654954",
+        "lng": "-46.735679",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Maria Coelho Aguiar, 1297, Avenida Maria Coelho de Aguiar, Jardim São Luís, São Paulo, Região Sudeste, 05805-000, Brasil",
+        "osm": "node/8149402289",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Maria Coelho Aguiar, 215 - São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Sercom Taboão",
+      "enderecoPublicado": "Rua José Lari e Rua Pedro Mari, Lotes 13 a 23 - Taboão da Serra - SP",
+      "cidade": "Taboão da Serra",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "16488.26",
+      "areaPublicada": "16488.26",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.3573",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Telecomunicação",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgre11-sercom-taboao",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Transatlântico",
+      "enderecoPublicado": "Rua Verbo Divino, 1.488 - São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1052.36",
+      "areaPublicada": "1052.36",
+      "vacanciaPercentual": "50",
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [
+        {
+          "setor": "Tecnologia da Informação",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgre11-transatlantico",
+      "coordenadas": {
+        "lat": "-23.634155",
+        "lng": "-46.704088",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Verbo Divino, Granja Julieta, Santo Amaro, São Paulo, Região Sudeste, 04719-002, Brasil",
+        "osm": "way/248521923",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Verbo Divino, 1.488 - São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edifício Jatobá - 50%",
+      "enderecoPublicado": "Avenida Marcos Penteado Ulhôa Rodrigues, 939 - Barueri - SP",
+      "cidade": "Barueri",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "16739.0649",
+      "areaPublicada": "16739.0649",
+      "vacanciaPercentual": "23.1994",
+      "percentualDaReceitaDoFundo": "3.0259",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Banco",
+          "percentualDaReceitaDoImovel": "10.4845"
+        },
+        {
+          "setor": "Transporte Aéreo",
+          "percentualDaReceitaDoImovel": "50.4247"
+        },
+        {
+          "setor": "Marketing",
+          "percentualDaReceitaDoImovel": "10.4845"
+        },
+        {
+          "setor": "Assessoria",
+          "percentualDaReceitaDoImovel": "12.0408"
+        }
+      ],
+      "id": "hgre11-edificio-jatoba-50",
+      "coordenadas": {
+        "lat": "-23.505814",
+        "lng": "-46.842782",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Marcos Penteado de Ulhoa Rodrigues, Jardim Santa Cecília, Alphaville, Barueri, São Paulo, Região Sudeste, 06465-060, Brasil",
+        "osm": "way/43230559",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Marcos Penteado Ulhôa Rodrigues, 939 - Barueri - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Chucri Zaidan",
+      "enderecoPublicado": "Av Dr Chucri Zaidan, 2460 - São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "22810.02",
+      "areaPublicada": "22810.02",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "15.4512",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Telecomunicação",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgre11-chucri-zaidan",
+      "coordenadas": {
+        "lat": "-23.620091",
+        "lng": "-46.698893",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Vivo São Paulo - Chucri Zaidan, 2460, Avenida Doutor Chucri Zaidan, Brooklin Novo, Itaim Bibi, São Paulo, Região Sudeste, 04711-130, Brasil",
+        "osm": "way/1336306286",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av Dr Chucri Zaidan, 2460 - São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Centro Empresarial Guaíba",
+      "enderecoPublicado": "Av. Dolores Alcaraz Caldas, 90 - Porto Alegre - RS",
+      "cidade": "Porto Alegre",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "10665.06",
+      "areaPublicada": "10665.06",
+      "vacanciaPercentual": "21.1327",
+      "percentualDaReceitaDoFundo": "2.7583",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Engenharia",
+          "percentualDaReceitaDoImovel": "39.9404"
+        },
+        {
+          "setor": "Telecomunicações",
+          "percentualDaReceitaDoImovel": "17.8783"
+        },
+        {
+          "setor": "Serviço Público",
+          "percentualDaReceitaDoImovel": "35.2673"
+        }
+      ],
+      "id": "hgre11-centro-empresarial-guaiba",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Edifício Sêneca",
+      "enderecoPublicado": "Avenida Braz Leme, 1.000 - São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "26963.38",
+      "areaPublicada": "26963.38",
+      "vacanciaPercentual": "1.9278",
+      "percentualDaReceitaDoFundo": "15.1137",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Tecnologia da Informação",
+          "percentualDaReceitaDoImovel": "94.5270"
+        }
+      ],
+      "id": "hgre11-edificio-seneca",
+      "coordenadas": {
+        "lat": "-23.503382",
+        "lng": "-46.635839",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Brás Leme, Santana, São Paulo, Região Sudeste, 02013-004, Brasil",
+        "osm": "way/1094556966",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Braz Leme, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Centro Empresarial Cidade Nova - Teleporto",
+      "enderecoPublicado": "Av. Presidente Vargas, 3.131 - Rio de Janeiro - RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "2309.86",
+      "areaPublicada": "2309.86",
+      "vacanciaPercentual": "19.7674",
+      "percentualDaReceitaDoFundo": "0.9894",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Convênio Médico",
+          "percentualDaReceitaDoImovel": "19.9125"
+        },
+        {
+          "setor": "Coworking",
+          "percentualDaReceitaDoImovel": "80.0875"
+        }
+      ],
+      "id": "hgre11-centro-empresarial-cidade-nova-teleporto",
+      "coordenadas": {
+        "lat": "-22.910188",
+        "lng": "-43.205541",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Presidente Vargas, Cidade Nova, Rio de Janeiro, Região Sudeste, 20210-110, Brasil",
+        "osm": "way/130347316",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Presidente Vargas, 3.131 - Rio de Janeiro - RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Berrini One",
+      "enderecoPublicado": "Avenida Eng. Carlos Berrini, 105 - São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "6924.47",
+      "areaPublicada": "6924.47",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.8588",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "25.6421"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "15.7806"
+        },
+        {
+          "setor": "Media",
+          "percentualDaReceitaDoImovel": "10.5327"
+        },
+        {
+          "setor": "Seguros",
+          "percentualDaReceitaDoImovel": "22.3139"
+        },
+        {
+          "setor": "Energia",
+          "percentualDaReceitaDoImovel": "25.7307"
+        }
+      ],
+      "id": "hgre11-berrini-one",
+      "coordenadas": {
+        "lat": "-23.598768",
+        "lng": "-46.690080",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Thera Corporate, 105, Avenida Engenheiro Luís Carlos Berrini, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04571-010, Brasil",
+        "osm": "way/439502891",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Eng. Carlos Berrini, 105 - São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Martiniano",
+      "enderecoPublicado": "Rua Martiniano de Carvalho, 851 - São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "20059.75",
+      "areaPublicada": "20059.75",
+      "vacanciaPercentual": "3.7371",
+      "percentualDaReceitaDoFundo": "9.7515",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Saúde",
+          "percentualDaReceitaDoImovel": "95.7040"
+        }
+      ],
+      "id": "hgre11-martiniano",
+      "coordenadas": {
+        "lat": "-23.566322",
+        "lng": "-46.642982",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "851, Rua Martiniano de Carvalho, Morro dos Ingleses, Bela Vista, São Paulo, Região Sudeste, 01323-000, Brasil",
+        "osm": "way/1568052342",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Martiniano de Carvalho, 851 - São Paulo - SP, Brasil"
+      }
+    }
+  ]
+}

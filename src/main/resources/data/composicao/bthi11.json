@@ -1,0 +1,302 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "BTHI11",
+  "nomeDoFundo": "Btg Hoteis Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "3496ea411b57e60d8cec78efabd0c7acafb7fc2a5d1213d2e4cd89d24419eb29"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 7,
+    "semCoordenadas": 4
+  },
+  "cnpj": "18.308.516/0001-63",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código BTHI11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRBTHICTF004), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Pullman Ibirapuera",
+      "enderecoPublicado": "Rua Joinville, 515, Sem Complemento, Vila Mariana, São Paulo/SP, Brasil, 04008-011",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "22401.05",
+      "areaPublicada": "22401.05",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "39.0493",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Hoteleiro",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "bthi11-pullman-ibirapuera",
+      "coordenadas": {
+        "lat": "-23.579954",
+        "lng": "-46.652192",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Joinville, Moema, São Paulo, Região Sudeste, 04008-010, Brasil",
+        "osm": "way/14521675",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Joinville, 515, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Ibis Budget Foz do Iguacu",
+      "enderecoPublicado": "Avenida Republica Argentina, 1834, Sem Complemento, Maracanã, Foz Do Iguaçu/PR, Brasil, 85852-016",
+      "cidade": "Foz Do Iguaçu",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "198.8",
+      "areaPublicada": "198.8",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.9511",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Hoteleiro",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "bthi11-ibis-budget-foz-do-iguacu",
+      "coordenadas": {
+        "lat": "-25.534715",
+        "lng": "-54.575756",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Ibis Budget, 1834, Avenida República Argentina, Jardim Tarobá, Foz do Iguaçu, Paraná, Região Sul, 85852-050, Brasil",
+        "osm": "node/6746848371",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Republica Argentina, 1834, Foz Do Iguaçu, PR, Brasil"
+      }
+    },
+    {
+      "nome": "Ibis Budget Curitiba",
+      "enderecoPublicado": "Rua Mariano Torres, 927, Sem Complemento, Centro, Curitiba/PR, Brasil, 80060-120",
+      "cidade": "Curitiba",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "155.1",
+      "areaPublicada": "155.1",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2706",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Hoteleiro",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "bthi11-ibis-budget-curitiba",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Ibis Budget Curitiba Aero",
+      "enderecoPublicado": "Rua Barao Do Cerro Azul, 21, Sem Complemento, Centro, São José Dos Pinhais/PR, Brasil, 83005-430",
+      "cidade": "São José Dos Pinhais",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "155.54",
+      "areaPublicada": "155.54",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.4657",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Hoteleiro",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "bthi11-ibis-budget-curitiba-aero",
+      "coordenadas": {
+        "lat": "-25.535503",
+        "lng": "-49.192941",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Barão do Cerro Azul, Cruzeiro, São José dos Pinhais, Paraná, Região Sul, 83005-290, Brasil",
+        "osm": "way/941195296",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Barao Do Cerro Azul, 21, São José Dos Pinhais, PR, Brasil"
+      }
+    },
+    {
+      "nome": "Ibis Budget Paraiso",
+      "enderecoPublicado": "Rua Vergueiro, 1571, Sem Complemento, Vila Mariana, São Paulo/SP, Brasil, 04101-000",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "10999.4",
+      "areaPublicada": "10999.4",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "12.8984",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Hoteleiro",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "bthi11-ibis-budget-paraiso",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Ibis Expo Barra Funda",
+      "enderecoPublicado": "Rua Eduardo Viana, 163, Sem Complemento, Bom Retiro, São Paulo/SP, Brasil, 01133-040",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "10725.14",
+      "areaPublicada": "10725.14",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "34.1645",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Hoteleiro",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "bthi11-ibis-expo-barra-funda",
+      "coordenadas": {
+        "lat": "-23.518850",
+        "lng": "-46.654856",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Ibis Hotel, 163, Rua Eduardo Viana, Campos Elísios, Santa Cecília, São Paulo, Região Sudeste, 01133-040, Brasil",
+        "osm": "node/4352725518",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Eduardo Viana, 163, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Novotel Curitiba Batel",
+      "enderecoPublicado": "Rua Doutor Pedrosa, 288, Sem Complemento, Centro, Curitiba/PR, Brasil, 80420-120",
+      "cidade": "Curitiba",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "1913.64",
+      "areaPublicada": "1913.64",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.5052",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Hoteleiro",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "bthi11-novotel-curitiba-batel",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Ibis Chapeco",
+      "enderecoPublicado": "Avenida Sao Pedro - E, 2300, Sem Complemento, Engenho Braun, Chapecó/SC, Brasil, 89809-440",
+      "cidade": "Chapecó",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "529.48",
+      "areaPublicada": "529.48",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.5789",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Hoteleiro",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "bthi11-ibis-chapeco",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Ibis Budget Blumenau",
+      "enderecoPublicado": "Rua Paulo Zimmermann, 142, Sem Complemento, Centro, Blumenau/SC, Brasil, 89010-170",
+      "cidade": "Blumenau",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "395.64",
+      "areaPublicada": "395.64",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.8541",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Hoteleiro",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "bthi11-ibis-budget-blumenau",
+      "coordenadas": {
+        "lat": "-26.915246",
+        "lng": "-49.071573",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Ibis Budget Blumenau, 142, Rua Paulo Zimmermann, Centro, Blumenau, Santa Catarina, Região Sul, 89010-910, Brasil",
+        "osm": "way/383270080",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Paulo Zimmermann, 142, Blumenau, SC, Brasil"
+      }
+    },
+    {
+      "nome": "Ibis Canoas",
+      "enderecoPublicado": "Rua Mathias Velho, 235, Sem Complemento, Centro, Canoas/RS, Brasil, 92310-300",
+      "cidade": "Canoas",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "207.24",
+      "areaPublicada": "207.24",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6044",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Hoteleiro",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "bthi11-ibis-canoas",
+      "coordenadas": {
+        "lat": "-29.910945",
+        "lng": "-51.184360",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Ibis Canoas Shopping, 235, Rua Mathias Velho, Centro, Canoas, Rio Grande do Sul, Região Sul, 92310-300, Brasil",
+        "osm": "way/476602385",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Mathias Velho, 235, Canoas, RS, Brasil"
+      }
+    },
+    {
+      "nome": "Ibis Styles POA Centro",
+      "enderecoPublicado": "Rua Garibaldi, 633, Sem Complemento, Floresta, Porto Alegre/RS, Brasil, 90035-050",
+      "cidade": "Porto Alegre",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "590.55",
+      "areaPublicada": "590.55",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.7126",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Hoteleiro",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "bthi11-ibis-styles-poa-centro",
+      "coordenadas": {
+        "lat": "-30.026581",
+        "lng": "-51.215602",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Garibaldi, Floresta, Porto Alegre, Rio Grande do Sul, Região Sul, 90035-050, Brasil",
+        "osm": "way/109197373",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Garibaldi, 633, Porto Alegre, RS, Brasil"
+      }
+    }
+  ]
+}

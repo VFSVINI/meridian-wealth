@@ -1,0 +1,596 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "BTRU11",
+  "nomeDoFundo": "Btg Renda Urb Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "6c2d104116d845cf0cd5ea1d04d17bd2c4ea2a264792dee5c2835a2f8b30df56"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 15,
+    "semCoordenadas": 8
+  },
+  "cnpj": "08.098.114/0001-28",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código BTRU11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRBTRUCTF008), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Loja CA Modas - Patio Brasil Shopping DF",
+      "enderecoPublicado": "Scs Quadra 7 Bloco A, 7, Sem Complemento, Asa Sul, Brasília/DF, Brasil, 70307-902",
+      "cidade": "Brasília",
+      "uf": "DF",
+      "tipo": null,
+      "areaM2": "0.01",
+      "areaPublicada": "0.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.1410",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-loja-ca-modas-patio-brasil-shopping-df",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Unitoledo Yduqs  Aracatuba SP",
+      "enderecoPublicado": "Rua Antonio Afonso De Toledo, 595, 465/512, Jardim Sumaré, Araçatuba/SP, Brasil, 16015-270",
+      "cidade": "Araçatuba",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "18353",
+      "areaPublicada": "18353",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.3173",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-unitoledo-yduqs-aracatuba-sp",
+      "coordenadas": {
+        "lat": "-21.213383",
+        "lng": "-50.430057",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Centro Universitário Toledo, 595, Rua Antônio Afonso de Toledo, Vila Mendonça, Araçatuba, São Paulo, Região Sudeste, 16015-270, Brasil",
+        "osm": "relation/4076561",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Antonio Afonso De Toledo, 595, Araçatuba, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Loja CA Modas - Shopping CuritibaPR - Loja Ancora 2",
+      "enderecoPublicado": "Rua Brigadeiro Franco, 2300, Sem Complemento, Centro, Curitiba/PR, Brasil, 80250-030",
+      "cidade": "Curitiba",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "0.01",
+      "areaPublicada": "0.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.3749",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-loja-ca-modas-shopping-curitibapr-loja-ancora-2",
+      "coordenadas": {
+        "lat": "-25.441014",
+        "lng": "-49.277361",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Shopping Curitiba, 2300, Rua Brigadeiro Franco, Centro, Curitiba, Paraná, Região Sul, 80250-903, Brasil",
+        "osm": "way/44393848",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Brigadeiro Franco, 2300, Curitiba, PR, Brasil"
+      }
+    },
+    {
+      "nome": "Loja  Shopping Iguatemi Maceio (Loja 217C)",
+      "enderecoPublicado": "Avenida Comendador Gustavo Paiva, 2990, 2990, 217 C, Mangabeiras, Maceió/AL, Brasil, 57037-901",
+      "cidade": "Maceió",
+      "uf": "AL",
+      "tipo": null,
+      "areaM2": "82.76",
+      "areaPublicada": "82.76",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1266",
+      "setoresDosInquilinos": [],
+      "id": "btru11-loja-shopping-iguatemi-maceio-loja-217c",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Loja CA Modas - Belo HorizonteMG",
+      "enderecoPublicado": "Avenida Parana, 321, Sem Complemento, Centro, Belo Horizonte/MG, Brasil, 30120-020",
+      "cidade": "Belo Horizonte",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "0.01",
+      "areaPublicada": "0.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.1287",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-loja-ca-modas-belo-horizontemg",
+      "coordenadas": {
+        "lat": "-19.915465",
+        "lng": "-43.941137",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Paraná, Centro, Regional Centro-Sul, Belo Horizonte, Minas Gerais, Região Sudeste, 30120-020, Brasil",
+        "osm": "way/510511171",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Parana, 321, Belo Horizonte, MG, Brasil"
+      }
+    },
+    {
+      "nome": "Lojas CA -  Niteroi Plaza ShoppingRJ",
+      "enderecoPublicado": "Rua Quinze De Novembro, 123, Sem Complemento, Centro, Niterói/RJ, Brasil, 24020-125",
+      "cidade": "Niterói",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "0.01",
+      "areaPublicada": "0.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.2850",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-lojas-ca-niteroi-plaza-shoppingrj",
+      "coordenadas": {
+        "lat": "-22.896472",
+        "lng": "-43.120794",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Quinze de Novembro, Centro, Região Praias da Baía, Niterói, Rio de Janeiro, Região Sudeste, 24020-320, Brasil",
+        "osm": "way/29145099",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Quinze De Novembro, 123, Niterói, RJ, Brasil"
+      }
+    },
+    {
+      "nome": "CA Modas - Loja Rua Campinas",
+      "enderecoPublicado": "Rua Treze De Maio, 520, Sem Complemento, Centro, Campinas/SP, Brasil, 13010-071",
+      "cidade": "Campinas",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "4569.8",
+      "areaPublicada": "4569.8",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.5008",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-ca-modas-loja-rua-campinas",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Loja Edificio Trade Center - Vitoria ES - AGERH",
+      "enderecoPublicado": "Avenida Jeronimo Monteiro, 1000, 1000, Agerh, Centro, Vitória/ES, Brasil, 29010-935",
+      "cidade": "Vitória",
+      "uf": "ES",
+      "tipo": null,
+      "areaM2": "2900",
+      "areaPublicada": "2900",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.5145",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Programas e Serviços",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-loja-edificio-trade-center-vitoria-es-agerh",
+      "coordenadas": {
+        "lat": "-20.318615",
+        "lng": "-40.330208",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Keen Studio 3D, 1000, Avenida Jerônimo Monteiro, Centro, Região Administrativa I - Centro, Vitória, Espírito Santo, Região Sudeste, 29010-365, Brasil",
+        "osm": "node/9069989720",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Jeronimo Monteiro, 1000, Vitória, ES, Brasil"
+      }
+    },
+    {
+      "nome": "Loja CA Modas - Shopping Iguatemi Maceio (Ancora C) AL",
+      "enderecoPublicado": "Avenida Comendador Gustavo Paiva, 1348, Sem Complemento, Cruz Das Almas, Maceió/AL, Brasil, 57038-000",
+      "cidade": "Maceió",
+      "uf": "AL",
+      "tipo": null,
+      "areaM2": "0.01",
+      "areaPublicada": "0.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.4009",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-loja-ca-modas-shopping-iguatemi-maceio-ancora-c-al",
+      "coordenadas": {
+        "lat": "-9.612628",
+        "lng": "-35.688354",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Comendador Gustavo Paiva, Jacarecica, Maceió, Alagoas, Região Nordeste, 57038-640, Brasil",
+        "osm": "way/286523330",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Comendador Gustavo Paiva, 1348, Maceió, AL, Brasil"
+      }
+    },
+    {
+      "nome": "CA Modas Ltda - Shopping ABC",
+      "enderecoPublicado": "Avenida Pereira Barreto, 42, 42, C&a, Paraíso, Santo André/SP, Brasil, 09190-900",
+      "cidade": "Santo André",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "2113.25",
+      "areaPublicada": "2113.25",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.9152",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-ca-modas-ltda-shopping-abc",
+      "coordenadas": {
+        "lat": "-23.667739",
+        "lng": "-46.533405",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Shopping ABC, 42, Avenida Pereira Barreto, Vila Boa Vista, Vila Gilda, Santo André, São Paulo, Região Sudeste, 09190-615, Brasil",
+        "osm": "way/154074027",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Pereira Barreto, 42, Santo André, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Icon Realty  -  Shopping Center Norte  Fortaleza - L29",
+      "enderecoPublicado": "Avenida Bezerra De Menezes, 2450, 2450, Sem Complemento, Presidente Kennedy, Fortaleza/CE, Brasil, 60325-902",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "0.01",
+      "areaPublicada": "0.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.6658",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-icon-realty-shopping-center-norte-fortaleza-l29",
+      "coordenadas": {
+        "lat": "-3.734935",
+        "lng": "-38.565987",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "North Shopping Fortaleza, 2450, Avenida Bezerra de Menezes, São Gerardo, Fortaleza, Ceará, Região Nordeste, 60325-902, Brasil",
+        "osm": "relation/8887597",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Bezerra De Menezes, 2450, Fortaleza, CE, Brasil"
+      }
+    },
+    {
+      "nome": "Lojas CA Modas - Shopping Del Rey MG -  Unid2140",
+      "enderecoPublicado": "Avenida Presidente Carlos Luz, 3001, 3001, Sem Complemento, Caiçaras, Belo Horizonte/MG, Brasil, 31250-900",
+      "cidade": "Belo Horizonte",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "0.01",
+      "areaPublicada": "0.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.8728",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-lojas-ca-modas-shopping-del-rey-mg-unid2140",
+      "coordenadas": {
+        "lat": "-19.890288",
+        "lng": "-43.967889",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Shopping Del Rey, 3001, Avenida Presidente Carlos Luz, Caiçaras, Regional Noroeste, Belo Horizonte, Minas Gerais, Região Sudeste, 31250-900, Brasil",
+        "osm": "relation/5383016",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Presidente Carlos Luz, 3001, Belo Horizonte, MG, Brasil"
+      }
+    },
+    {
+      "nome": "Loja Edificio Trade Center - VitoriaES - IDAF",
+      "enderecoPublicado": "Avenida Jeronimo Monteiro, 1000, 1000, Sem Complemento, Centro, Vitória/ES, Brasil, 29010-935",
+      "cidade": "Vitória",
+      "uf": "ES",
+      "tipo": null,
+      "areaM2": "2943",
+      "areaPublicada": "2943",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.8057",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Programas e Serviços",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-loja-edificio-trade-center-vitoriaes-idaf",
+      "coordenadas": {
+        "lat": "-20.318615",
+        "lng": "-40.330208",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Keen Studio 3D, 1000, Avenida Jerônimo Monteiro, Centro, Região Administrativa I - Centro, Vitória, Espírito Santo, Região Sudeste, 29010-365, Brasil",
+        "osm": "node/9069989720",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Jeronimo Monteiro, 1000, Vitória, ES, Brasil"
+      }
+    },
+    {
+      "nome": "Loja CA Modas - Shopping Center Iguatemi PA",
+      "enderecoPublicado": "Travessa Padre Eutiquio, 1078, Sem Complemento, Batista Campos, Belém/PA, Brasil, 66023-710",
+      "cidade": "Belém",
+      "uf": "PA",
+      "tipo": null,
+      "areaM2": "0.01",
+      "areaPublicada": "0.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "btru11-loja-ca-modas-shopping-center-iguatemi-pa",
+      "coordenadas": {
+        "lat": "-1.458131",
+        "lng": "-48.494855",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Shopping Pátio Belém, 1078, Travessa Padre Eutíquio, Batista Campos, Belém, Pará, Região Norte, 66023-710, Brasil",
+        "osm": "way/331449259",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Travessa Padre Eutiquio, 1078, Belém, PA, Brasil"
+      }
+    },
+    {
+      "nome": "Loja CA Modas - Duque de Caxias RJ",
+      "enderecoPublicado": "Rodovia Washington Luiz, 39, Sem Complemento, Parque Duque, Duque De Caxias/RJ, Brasil, 25085-008",
+      "cidade": "Duque De Caxias",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "0.01",
+      "areaPublicada": "0.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.4701",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-loja-ca-modas-duque-de-caxias-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "Loja CA Modas -  Shopping Barra SalvadorBA",
+      "enderecoPublicado": "Avenida Centenario, 2992, 2992, Sem Complemento, Barra, Salvador/BA, Brasil, 40140-902",
+      "cidade": "Salvador",
+      "uf": "BA",
+      "tipo": null,
+      "areaM2": "0.01",
+      "areaPublicada": "0.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.5664",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-loja-ca-modas-shopping-barra-salvadorba",
+      "coordenadas": {
+        "lat": "-13.006796",
+        "lng": "-38.524523",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Shopping Barra, 2992, Avenida Centenário, Barra, Salvador, Bahia, Região Nordeste, 40140-400, Brasil",
+        "osm": "relation/11336631",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Centenario, 2992, Salvador, BA, Brasil"
+      }
+    },
+    {
+      "nome": "Lojas Riachuelo - Shopping Boulevard RJ - Box L201 e L301",
+      "enderecoPublicado": "Avenida Das Americas, 7.777, Loja A, Barra Da Tijuca, Rio De Janeiro/RJ, Brasil, 22793-081",
+      "cidade": "Rio De Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "2299.99",
+      "areaPublicada": "2299.99",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.1755",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "92.8451"
+        }
+      ],
+      "id": "btru11-lojas-riachuelo-shopping-boulevard-rj-box-l201-e-l301",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Loja CA Modas - RecifePE",
+      "enderecoPublicado": "Rua Padre Carapuceiro, 777, 777, Sem Complemento, Boa Viagem, Recife/PE, Brasil, 51020-900",
+      "cidade": "Recife",
+      "uf": "PE",
+      "tipo": null,
+      "areaM2": "0.01",
+      "areaPublicada": "0.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.9596",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-loja-ca-modas-recifepe",
+      "coordenadas": {
+        "lat": "-8.119725",
+        "lng": "-34.903226",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Detran PE, 777, Rua Padre Carapuceiro, Boa Viagem, Recife, Pernambuco, Região Nordeste, 51020-280, Brasil",
+        "osm": "way/1009320294",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Padre Carapuceiro, 777, Recife, PE, Brasil"
+      }
+    },
+    {
+      "nome": "Lojas CA Modas - Minas Shopping MG - Ancora D",
+      "enderecoPublicado": "Avenida Cristiano Machado, 4000, 4000, Sem Complemento, União, Belo Horizonte/MG, Brasil, 31160-900",
+      "cidade": "Belo Horizonte",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "0.01",
+      "areaPublicada": "0.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.1793",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-lojas-ca-modas-minas-shopping-mg-ancora-d",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Lojas - Copacabana",
+      "enderecoPublicado": "Avenida Nossa Senhora De Copacabana, 749, Sem Complemento, Copacabana, Rio De Janeiro/RJ, Brasil, 22050-002",
+      "cidade": "Rio De Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "5453",
+      "areaPublicada": "5453",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.4238",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-lojas-copacabana",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Lojas CA Modas -  Shopping Piedade Salvador BA",
+      "enderecoPublicado": "Rua Conselheiro Junqueira Ayres, 165, 165, Sem Complemento, Barris, Salvador/BA, Brasil, 40070-901",
+      "cidade": "Salvador",
+      "uf": "BA",
+      "tipo": null,
+      "areaM2": "0.01",
+      "areaPublicada": "0.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.3508",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-lojas-ca-modas-shopping-piedade-salvador-ba",
+      "coordenadas": {
+        "lat": "-12.983244",
+        "lng": "-38.512988",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Shopping Piedade, 165, Rua Conselheiro Junqueira Ayres, Barris, Salvador, Bahia, Região Nordeste, 40070-901, Brasil",
+        "osm": "relation/3787693",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Conselheiro Junqueira Ayres, 165, Salvador, BA, Brasil"
+      }
+    },
+    {
+      "nome": "Lojas CA -  Norte ShoppingRJ",
+      "enderecoPublicado": "Avenida Dom Helder Camara, 5474, Sem Complemento, Cachambi, Rio De Janeiro/RJ, Brasil, 20771-004",
+      "cidade": "Rio De Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "0.01",
+      "areaPublicada": "0.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.6995",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-lojas-ca-norte-shoppingrj",
+      "coordenadas": {
+        "lat": "-22.886597",
+        "lng": "-43.280935",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Smart Fit, 5474, Avenida Dom Hélder Câmara, Cachambi, Rio de Janeiro, Região Sudeste, 20771-004, Brasil",
+        "osm": "way/1492419829",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Dom Helder Camara, 5474, Rio De Janeiro, RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Loja CA  - CentroRJ",
+      "enderecoPublicado": "Rua Do Ouvidor, 186, Sem Complemento, Centro, Rio De Janeiro/RJ, Brasil, 20040-030",
+      "cidade": "Rio De Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "0.01",
+      "areaPublicada": "0.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "7.8141",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btru11-loja-ca-centrorj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

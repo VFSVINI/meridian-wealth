@@ -1,0 +1,243 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "IBBP11",
+  "nomeDoFundo": "Invista Desenv Vi Fii Resp Ltda",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "10c87b04e2df88085d5f29d03492983a36fdeb62ce61ea48075f36da1339fd4a"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 9
+  },
+  "cnpj": "52.551.605/0001-74",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código IBBP11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRIBBPCTF005), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área.",
+    "36 imóveis do Informe não trazem área positiva e não aparecem aqui."
+  ],
+  "ativos": [
+    {
+      "nome": "EDIF.A AGUIA",
+      "enderecoPublicado": "Avenida Tégula, 888, Ponte Alta. Atibaia - SP. Edif. A - AGUIA Unid. 01 a 03",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "8030.28",
+      "areaPublicada": "8030.28",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.4000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Saúde",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ibbp11-edif-a-aguia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "28000-4_5",
+      "enderecoPublicado": "Extrema, estado de Minas Gerais - Unidade Autônoma nº 04do Edifício D",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1",
+      "areaPublicada": "1",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ibbp11-28000-4-5",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "28000-3_5",
+      "enderecoPublicado": "Extrema, estado de Minas Gerais - Unidade Autônoma nº 03 do Edifício D",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1",
+      "areaPublicada": "1",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ibbp11-28000-3-5",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "EDIF.L CAM A",
+      "enderecoPublicado": "Avenida Tégula, 888, Ponte Alta. Atibaia - SP. Edif. L - Camões Unid. 40 - A",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1031.41",
+      "areaPublicada": "1031.41",
+      "vacanciaPercentual": "50",
+      "percentualDaReceitaDoFundo": "0.5000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Metalurgia",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ibbp11-edif-l-cam-a",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "EDIF.I MO 29",
+      "enderecoPublicado": "Avenida Tégula, 888, Ponte Alta. Atibaia - SP. Edif. I - Monet Unid. 29",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "736.18",
+      "areaPublicada": "736.18",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.7000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Armazéns Gerais",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ibbp11-edif-i-mo-29",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "EDIF.C GEM 7",
+      "enderecoPublicado": "Avenida Tégula, 888, Ponte Alta. Atibaia - SP. Edif. C - Geminni Unid. 07 - A",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "10733.66",
+      "areaPublicada": "10733.66",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.2000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Saúde",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ibbp11-edif-c-gem-7",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "28000-1_5",
+      "enderecoPublicado": "Extrema, estado de Minas Gerais - Unidade Autônoma nº 01 do Edifício D",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1",
+      "areaPublicada": "1",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ibbp11-28000-1-5",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "EDIF.I MO 30",
+      "enderecoPublicado": "Avenida Tégula, 888, Ponte Alta. Atibaia - SP. Edif. I - Monet Unid. 30",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "762.02",
+      "areaPublicada": "762.02",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Armazéns Gerais",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ibbp11-edif-i-mo-30",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "EDIF.F TO 18",
+      "enderecoPublicado": "Avenida Tégula, 888, Ponte Alta. Atibaia - SP. Edif. F - Topázio Unid. 18",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2791.91",
+      "areaPublicada": "2791.91",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.9000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Saúde",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "ibbp11-edif-f-to-18",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

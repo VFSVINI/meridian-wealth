@@ -1,0 +1,49 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "VIML11",
+  "nomeDoFundo": "Vinci Malls Ii Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "0f9d4393d0dfe97bd817753bb84e89ec2107a81bb87937c0974f08dc314d0ce4"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "43.010.485/0001-07",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código VIML11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRVIMLCTF009), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Shopping Vitoria",
+      "enderecoPublicado": "Avenida Americo Buaiz, 200, Gleba A, Enseada Do Sua, Vitoria/ES, Brasil, 29050-902",
+      "cidade": "Vitoria",
+      "uf": "ES",
+      "tipo": null,
+      "areaM2": "87829.53",
+      "areaPublicada": "87829.53",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "98.8000",
+      "setoresDosInquilinos": [],
+      "id": "viml11-shopping-vitoria",
+      "coordenadas": {
+        "lat": "-20.313768",
+        "lng": "-40.287560",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "200, Avenida Américo Buaiz, Enseada do Suá, Região Administrativa V - Praia do Canto, Vitória, Espírito Santo, Região Sudeste, 29050-902, Brasil",
+        "osm": "way/427522167",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Americo Buaiz, 200, Vitoria, ES, Brasil"
+      }
+    }
+  ]
+}

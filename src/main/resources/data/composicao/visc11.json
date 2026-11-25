@@ -1,0 +1,1202 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "VISC11",
+  "nomeDoFundo": "Vinci Shopping Centers Fundo De Investimento Imobiliário-Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "470733a2bfe38478423982e0b124cc172d6473a64c781b1784beda2946968b12"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 23,
+    "semCoordenadas": 8
+  },
+  "cnpj": "17.554.274/0001-25",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código VISC11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRVISCCTF005), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Shopping Tacaruna",
+      "enderecoPublicado": "Avenida Governador Agamenon Magalhães, 153 - Sto Amaro, Recife - PE",
+      "cidade": "Recife",
+      "uf": "PE",
+      "tipo": null,
+      "areaM2": "49725.94",
+      "areaPublicada": "49725.94",
+      "vacanciaPercentual": "6.5300",
+      "percentualDaReceitaDoFundo": "1.2601",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-shopping-tacaruna",
+      "coordenadas": {
+        "lat": "-8.038466",
+        "lng": "-34.872292",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Change yes, 153, Avenida Governador Agamenon Magalhães, Santo Amaro, Recife, Pernambuco, Região Nordeste, 50110-900, Brasil",
+        "osm": "node/12630368768",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Governador Agamenon Magalhães, 153 - Sto Amaro, Recife - PE, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Boulevard",
+      "enderecoPublicado": "Rua Barão de São Francisco, 236 - Rio de Janeiro/RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "27617.13",
+      "areaPublicada": "27617.13",
+      "vacanciaPercentual": "7.4200",
+      "percentualDaReceitaDoFundo": "2.2701",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-shopping-boulevard",
+      "coordenadas": {
+        "lat": "-22.919387",
+        "lng": "-43.250145",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Boulevard Rio Shopping, 236, Rua Barão de São Francisco, Aldeia Campista, Vila Isabel, Rio de Janeiro, Região Sudeste, 20560-030, Brasil",
+        "osm": "way/49857359",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Barão de São Francisco, 236 - Rio de Janeiro/RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Via Sul Shopping",
+      "enderecoPublicado": "Av. Washington Soares, 4335 - Lagoa Sapiranga - Fortaleza - CE",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "25442.04",
+      "areaPublicada": "25442.04",
+      "vacanciaPercentual": "16.2400",
+      "percentualDaReceitaDoFundo": "1.0799",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-via-sul-shopping",
+      "coordenadas": {
+        "lat": "-3.807648",
+        "lng": "-38.479026",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Washington Soares, Cambeba, Fortaleza, Ceará, Região Nordeste, 60822-185, Brasil",
+        "osm": "way/379337872",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Washington Soares, Fortaleza, CE, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Paralela",
+      "enderecoPublicado": "Avenida Luiz Viana, 8544 - Salvador - BA",
+      "cidade": "Salvador",
+      "uf": "BA",
+      "tipo": null,
+      "areaM2": "42494.66",
+      "areaPublicada": "42494.66",
+      "vacanciaPercentual": "3.8700",
+      "percentualDaReceitaDoFundo": "6.2197",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-shopping-paralela",
+      "coordenadas": {
+        "lat": "-12.925132",
+        "lng": "-38.380180",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Luís Viana Filho, Bairro da Paz, Salvador, Bahia, Região Nordeste, 41515-260, Brasil",
+        "osm": "way/1464338145",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Luiz Viana, 8544 - Salvador - BA, Brasil"
+      }
+    },
+    {
+      "nome": "West Shopping",
+      "enderecoPublicado": "Estrada do Mendanha, 450 / 550 e 555 - Rio de Janeiro - RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "45987.39",
+      "areaPublicada": "45987.39",
+      "vacanciaPercentual": "1.7000",
+      "percentualDaReceitaDoFundo": "0.8906",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-west-shopping",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "SHOP MIDWAY MALL",
+      "enderecoPublicado": "Avenida Nevaldo Rocha, ú 3.775, Bairro Tirol, CEP 59 015-900",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "65877.37",
+      "areaPublicada": "65877.37",
+      "vacanciaPercentual": "2.3500",
+      "percentualDaReceitaDoFundo": "4.2535",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-shop-midway-mall",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Campinas Shopping",
+      "enderecoPublicado": "Rua Jacy Teixeireira de Camargo, 940 - Campinas/SP",
+      "cidade": "Campinas",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "36136.57",
+      "areaPublicada": "36136.57",
+      "vacanciaPercentual": "4.1900",
+      "percentualDaReceitaDoFundo": "6.9552",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-campinas-shopping",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Porto Velho Shopping",
+      "enderecoPublicado": "Av. Prefeito Chiquilito Erse, 3288 - Porto Velho/RO",
+      "cidade": "Porto Velho",
+      "uf": "RO",
+      "tipo": null,
+      "areaM2": "45677.45",
+      "areaPublicada": "45677.45",
+      "vacanciaPercentual": "6.2300",
+      "percentualDaReceitaDoFundo": "7.0538",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-porto-velho-shopping",
+      "coordenadas": {
+        "lat": "-8.748151",
+        "lng": "-63.875754",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Porto Velho Shopping, 3288, Avenida Prefeito Chiquilito Erse, Flodoaldo Pontes Pinto, Porto Velho, Rondônia, Região Norte, 76820-408, Brasil",
+        "osm": "way/398279358",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Prefeito Chiquilito Erse, 3288 - Porto Velho/RO, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Iguatemi Fortaleza",
+      "enderecoPublicado": "Av. Washington Soares, 85 - Edson Queiroz, Fortaleza - CE",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "91483.16",
+      "areaPublicada": "91483.16",
+      "vacanciaPercentual": "7.8900",
+      "percentualDaReceitaDoFundo": "2.8172",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-shopping-iguatemi-fortaleza",
+      "coordenadas": {
+        "lat": "-3.756935",
+        "lng": "-38.490150",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Porsche Center, 85, Avenida Washington Soares, Edson Queiroz, Fortaleza, Ceará, Região Nordeste, 60811-900, Brasil",
+        "osm": "way/1241657306",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Washington Soares, 85 - Edson Queiroz, Fortaleza - CE, Brasil"
+      }
+    },
+    {
+      "nome": "São Luís Shopping",
+      "enderecoPublicado": "Av. Prof. Carlos Cunha, 1000 - Jaracaty, São Luís - MA",
+      "cidade": "São Luís",
+      "uf": "MA",
+      "tipo": null,
+      "areaM2": "59410.64",
+      "areaPublicada": "59410.64",
+      "vacanciaPercentual": "16.5700",
+      "percentualDaReceitaDoFundo": "0.6163",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-sao-luis-shopping",
+      "coordenadas": {
+        "lat": "-2.510727",
+        "lng": "-44.285515",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Giraffas São Luís Shopping, 1000, Avenida Professor Carlos Cunha, Santa Eulália, Jaracati, São Luís, Maranhão, Região Nordeste, 65076-820, Brasil",
+        "osm": "node/14281280741",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Prof. Carlos Cunha, 1000 - Jaracaty, São Luís - MA, Brasil"
+      }
+    },
+    {
+      "nome": "Pantanal Shopping",
+      "enderecoPublicado": "Av. Historiador Rubens de Mendonça (Av. CPA), 3300 - Cuiabá/MT",
+      "cidade": "Cuiabá",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "46460.59",
+      "areaPublicada": "46460.59",
+      "vacanciaPercentual": "1.4100",
+      "percentualDaReceitaDoFundo": "4.8362",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-pantanal-shopping",
+      "coordenadas": {
+        "lat": "-15.577548",
+        "lng": "-56.071346",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Pantanal Shopping, 3300, Avenida Historiador Rubens de Mendonça, Jardim Aclimação, Cuiabá, Mato Grosso, Região Centro-Oeste, 78050-250, Brasil",
+        "osm": "way/1078360390",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Historiador Rubens de Mendonça , 3300 - Cuiabá/MT, Brasil"
+      }
+    },
+    {
+      "nome": "BH SHOPPING",
+      "enderecoPublicado": "BR-356, nº 3049, no bairro Belvedere, região sul de Belo Horizonte",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "49437.55",
+      "areaPublicada": "49437.55",
+      "vacanciaPercentual": "1.8000",
+      "percentualDaReceitaDoFundo": "5.1120",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-bh-shopping",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Carioca Shopping",
+      "enderecoPublicado": "Av Vicente de Carvalho, 909 - Vila da Penha - RJ",
+      "cidade": "Vila da Penha",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "36321.34",
+      "areaPublicada": "36321.34",
+      "vacanciaPercentual": "4.5900",
+      "percentualDaReceitaDoFundo": "1.9296",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-carioca-shopping",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Shopping Praia da Costa",
+      "enderecoPublicado": "Avenida Doutor Olivio Lira, 353 - Praia da Costa, Vila Velha/ES",
+      "cidade": "Vila Velha",
+      "uf": "ES",
+      "tipo": null,
+      "areaM2": "40304.35",
+      "areaPublicada": "40304.35",
+      "vacanciaPercentual": "8.6700",
+      "percentualDaReceitaDoFundo": "6.7884",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-shopping-praia-da-costa",
+      "coordenadas": {
+        "lat": "-20.341209",
+        "lng": "-40.289410",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "353, Avenida Doutor Olívio Lira, Veneza, Praia da Costa, Região 01 - Centro, Vila Velha, Espírito Santo, Região Sudeste, 29101-950, Brasil",
+        "osm": "node/3937314509",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Doutor Olivio Lira, 353 - Praia da Costa, Vila Velha/ES, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Bangu",
+      "enderecoPublicado": "Rua Fonseca, 240 - Bangu, Rio de Janeiro - RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "57945.39",
+      "areaPublicada": "57945.39",
+      "vacanciaPercentual": "1.8900",
+      "percentualDaReceitaDoFundo": "1.5493",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-shopping-bangu",
+      "coordenadas": {
+        "lat": "-22.879174",
+        "lng": "-43.467018",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Bangu Shopping, 240, Rua Fonseca, Rio da Prata, Bangu, Rio de Janeiro, Região Sudeste, 21820-005, Brasil",
+        "osm": "way/52624636",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Fonseca, 240 - Bangu, Rio de Janeiro - RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Villa Romana",
+      "enderecoPublicado": "Av. Madre Benvenuta, 687 - Santa Mônica, Trindade - Florianópolis - SC",
+      "cidade": "Florianópolis",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "27071.94",
+      "areaPublicada": "27071.94",
+      "vacanciaPercentual": "2.5900",
+      "percentualDaReceitaDoFundo": "3.4177",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-villa-romana",
+      "coordenadas": {
+        "lat": "-27.590319",
+        "lng": "-48.514932",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Makenji, 687, Avenida Madre Benvenuta, Santa Mônica, Trindade, Florianópolis, Santa Catarina, Região Sul, 88035-000, Brasil",
+        "osm": "node/11435821736",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Madre Benvenuta, 687 - Santa Mônica, Trindade - Florianópolis - SC, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Conjunto Nacional",
+      "enderecoPublicado": "SDN, CNB - Asa Norte, Brasilia - DF",
+      "cidade": "Brasilia",
+      "uf": "DF",
+      "tipo": null,
+      "areaM2": "36368.71",
+      "areaPublicada": "36368.71",
+      "vacanciaPercentual": "3.3100",
+      "percentualDaReceitaDoFundo": "1.4141",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-shopping-conjunto-nacional",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Natal Shopping",
+      "enderecoPublicado": "Avenida Senador Salgado Filho, 2234 - Natal, RN",
+      "cidade": "Natal",
+      "uf": "RN",
+      "tipo": null,
+      "areaM2": "28396.12",
+      "areaPublicada": "28396.12",
+      "vacanciaPercentual": "4.5600",
+      "percentualDaReceitaDoFundo": "2.6143",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-natal-shopping",
+      "coordenadas": {
+        "lat": "-5.842360",
+        "lng": "-35.211890",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Natal Shopping Center, 2234, Avenida Senador Salgado Filho, Alto de Candelária, Candelária, Zona Sul, Natal, Rio Grande do Norte, Região Nordeste, 59064-900, Brasil",
+        "osm": "relation/8280248",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Senador Salgado Filho, 2234 - Natal, RN, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Ribeirão",
+      "enderecoPublicado": "Avenida Coronel Fernando Ferreira Leite nº 1.540 - Ribeirão Preto/SP",
+      "cidade": "Ribeirão Preto",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "68704.49",
+      "areaPublicada": "68704.49",
+      "vacanciaPercentual": "9.7000",
+      "percentualDaReceitaDoFundo": "4.3496",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-shopping-ribeirao",
+      "coordenadas": {
+        "lat": "-21.205018",
+        "lng": "-47.817824",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Coronel Fernando Ferreira Leite, Jardim Califórnia, Ribeirão Preto, São Paulo, Região Sudeste, 14026-170, Brasil",
+        "osm": "way/843489217",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Coronel Fernando Ferreira Leite 1.540 - Ribeirão Preto/SP, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Crystal",
+      "enderecoPublicado": "Rua Comendador Araujo, 731 - Curitiba - PR",
+      "cidade": "Curitiba",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "15241.45",
+      "areaPublicada": "15241.45",
+      "vacanciaPercentual": "25.4300",
+      "percentualDaReceitaDoFundo": "0.0383",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-shopping-crystal",
+      "coordenadas": {
+        "lat": "-25.439115",
+        "lng": "-49.281307",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Crystal Plaza Shopping, 731, Rua Comendador Araújo, Batel, Curitiba, Paraná, Região Sul, 80420-000, Brasil",
+        "osm": "way/44395409",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Comendador Araujo, 731 - Curitiba - PR, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Granja Vianna",
+      "enderecoPublicado": "Rodovia Raposo Tavares, 23.500 - Lageadinho, Cotia-SP",
+      "cidade": "Cotia",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "30657.56",
+      "areaPublicada": "30657.56",
+      "vacanciaPercentual": "6.5200",
+      "percentualDaReceitaDoFundo": "4.3692",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-shopping-granja-vianna",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "Prudenshopping",
+      "enderecoPublicado": "Av. Manoel Goulart, 2400 - Jardim das Rosas - Presidente Prudente - SP",
+      "cidade": "Presidente Prudente",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "32874.27",
+      "areaPublicada": "32874.27",
+      "vacanciaPercentual": "5.3400",
+      "percentualDaReceitaDoFundo": "10.5580",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-prudenshopping",
+      "coordenadas": {
+        "lat": "-22.117251",
+        "lng": "-51.406249",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Manoel Goulart, Jardim das Rosas, Presidente Prudente, São Paulo, Região Sudeste, 19023-450, Brasil",
+        "osm": "way/254277335",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Manoel Goulart, 2400 - Jardim das Rosas - Presidente Prudente - SP, Brasil"
+      }
+    },
+    {
+      "nome": "North Shopping Maracanaú",
+      "enderecoPublicado": "Av. Carlos Jereissati, 100 - Maracanaú/CE",
+      "cidade": "Maracanaú",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "20097.47",
+      "areaPublicada": "20097.47",
+      "vacanciaPercentual": "2.4768",
+      "percentualDaReceitaDoFundo": "4.5945",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-north-shopping-maracanau",
+      "coordenadas": {
+        "lat": "-3.877839",
+        "lng": "-38.618357",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Carlos Jereissati, Jereissati - Setor A, Jereissati (Setor A), Maracanaú, Ceará, Região Nordeste, 61901-020, Brasil",
+        "osm": "way/158261048",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Carlos Jereissati, 100 - Maracanaú/CE, Brasil"
+      }
+    },
+    {
+      "nome": "Minas Shopping",
+      "enderecoPublicado": "Av. Cristiano Machado, 4000 - União - Belo horizonte - MG",
+      "cidade": "Belo horizonte",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "46802.57",
+      "areaPublicada": "46802.57",
+      "vacanciaPercentual": "4.5834",
+      "percentualDaReceitaDoFundo": "1.8154",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-minas-shopping",
+      "coordenadas": {
+        "lat": "-19.874893",
+        "lng": "-43.925231",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Cineart, 4000, Avenida Cristiano Machado, União, Regional Nordeste, Belo Horizonte, Minas Gerais, Região Sudeste, 31910-900, Brasil",
+        "osm": "node/6647379958",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Cristiano Machado, 4000 - União - Belo horizonte - MG, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping ABC",
+      "enderecoPublicado": "Av. Pereira Barreto, 42 - Santo André - SP",
+      "cidade": "Santo André",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "47146.51",
+      "areaPublicada": "47146.51",
+      "vacanciaPercentual": "2.5000",
+      "percentualDaReceitaDoFundo": "1.2925",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-shopping-abc",
+      "coordenadas": {
+        "lat": "-23.667739",
+        "lng": "-46.533405",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Shopping ABC, 42, Avenida Pereira Barreto, Paraíso, Santo André, São Paulo, Região Sudeste, 09190-615, Brasil",
+        "osm": "way/154074027",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Pereira Barreto, 42 - Santo André - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pátio Belém",
+      "enderecoPublicado": "Trav. Padre Eutíquio, 1078 - Belém - PA",
+      "cidade": "Belém",
+      "uf": "PA",
+      "tipo": null,
+      "areaM2": "20861.66",
+      "areaPublicada": "20861.66",
+      "vacanciaPercentual": "3.8500",
+      "percentualDaReceitaDoFundo": "2.0330",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-patio-belem",
+      "coordenadas": {
+        "lat": "-1.458131",
+        "lng": "-48.494855",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Shopping Pátio Belém, 1078, Travessa Padre Eutíquio, Batista Campos, Belém, Pará, Região Norte, 66023-710, Brasil",
+        "osm": "way/331449259",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Trav. Padre Eutíquio, 1078 - Belém - PA, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Madureira",
+      "enderecoPublicado": "Estr. do Portela, 222 - Madureira, Rio de Janeiro - RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "35315.81",
+      "areaPublicada": "35315.81",
+      "vacanciaPercentual": "5.3200",
+      "percentualDaReceitaDoFundo": "1.4097",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-shopping-madureira",
+      "coordenadas": {
+        "lat": "-22.870279",
+        "lng": "-43.341050",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Madureira Shopping, 222, Estrada do Portela, Madureira, Rio de Janeiro, Região Sudeste, 21351-900, Brasil",
+        "osm": "way/248377472",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Estr. do Portela, 222 - Madureira, Rio de Janeiro - RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Estação Curitiba",
+      "enderecoPublicado": "Avenida Sete de Setembro nº 2.775 - Curitiba - PR",
+      "cidade": "Curitiba",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "30520.61",
+      "areaPublicada": "30520.61",
+      "vacanciaPercentual": "6.4600",
+      "percentualDaReceitaDoFundo": "4.6632",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-shopping-estacao-curitiba",
+      "coordenadas": {
+        "lat": "-25.449473",
+        "lng": "-49.297536",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Sete de Setembro, Seminário, Curitiba, Paraná, Região Sul, 80240-420, Brasil",
+        "osm": "way/1106889699",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Sete de Setembro 2.775 - Curitiba - PR, Brasil"
+      }
+    },
+    {
+      "nome": "Ilha Plaza",
+      "enderecoPublicado": "Av. Maestro Paulo e Silva, 400 - Rio de Janeiro - RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "21978.97",
+      "areaPublicada": "21978.97",
+      "vacanciaPercentual": "4.8900",
+      "percentualDaReceitaDoFundo": "2.3684",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-ilha-plaza",
+      "coordenadas": {
+        "lat": "-22.801877",
+        "lng": "-43.201792",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Ilha Plaza Shopping, 400, Avenida Maestro Paulo Silva, Portuguesa, Rio de Janeiro, Região Sudeste, 21920-445, Brasil",
+        "osm": "way/38508368",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Maestro Paulo e Silva, 400 - Rio de Janeiro - RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Center Shopping Rio",
+      "enderecoPublicado": "Avenida Geremario Dantas, 404 - Rio de Janeiro - RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "16241.45",
+      "areaPublicada": "16241.45",
+      "vacanciaPercentual": "7.4600",
+      "percentualDaReceitaDoFundo": "0.0860",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-center-shopping-rio",
+      "coordenadas": {
+        "lat": "-22.925020",
+        "lng": "-43.361232",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Center Shopping Rio, 404, Avenida Geremário Dantas, Tanque, Rio de Janeiro, Região Sudeste, 22740-010, Brasil",
+        "osm": "way/57742229",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Geremario Dantas, 404 - Rio de Janeiro - RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Villagio Caxias",
+      "enderecoPublicado": "Rodovia RSC 453, 2780 - Desvio Rizzo, Caixas do Sul - RS",
+      "cidade": "Caixas do Sul",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "29676.78",
+      "areaPublicada": "29676.78",
+      "vacanciaPercentual": "2.8900",
+      "percentualDaReceitaDoFundo": "0.8342",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "visc11-villagio-caxias",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "BLOG11",
+  "nomeDoFundo": "Bluecap Log Fundo De Investimento Imobiliario",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "7e2159ba946c097fcdba7659957c94695e97ada47b9a5d4651cebd6210f6fd03"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 5
+  },
+  "cnpj": "49.592.781/0001-40",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código BLOG11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRBLOGCTF001), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Centro Logístico Igarassu",
+      "enderecoPublicado": "Av. Alfredo Bandeira de Melo, s/n - Quadra Area - Lote C - Vila Rural, Igarassu-PE",
+      "cidade": "Igarassu",
+      "uf": "PE",
+      "tipo": null,
+      "areaM2": "58822.61",
+      "areaPublicada": "58822.61",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "25.7789",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejista",
+          "percentualDaReceitaDoImovel": "60.1458"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "39.8542"
+        }
+      ],
+      "id": "blog11-centro-logistico-igarassu",
+      "coordenadas": {
+        "lat": "-7.851574",
+        "lng": "-34.909090",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Alfredo Bandeira de Melo, Encanto Igarassu, Igarassu, Pernambuco, Região Nordeste, 53600-000, Brasil",
+        "osm": "way/691452025",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Alfredo Bandeira de Melo, Igarassu, PE, Brasil"
+      }
+    },
+    {
+      "nome": "BlueCap Pacatuba",
+      "enderecoPublicado": "Avenida Doutor Mendel Steinbruch, 11. 308",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "22968",
+      "areaPublicada": "22968",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "blog11-bluecap-pacatuba",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "BlueCap Camaçari I",
+      "enderecoPublicado": "Via de Ligação, 858-1.176",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "30455.44",
+      "areaPublicada": "30455.44",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "18.9134",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejista",
+          "percentualDaReceitaDoImovel": "83.2871"
+        },
+        {
+          "setor": "Siderurgia",
+          "percentualDaReceitaDoImovel": "16.7129"
+        }
+      ],
+      "id": "blog11-bluecap-camacari-i",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "BLOG Garuva",
+      "enderecoPublicado": "Rodovia SC - 417, 11915, Bairro Mina Velha, Garuva/SC",
+      "cidade": "Garuva",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "22789.59",
+      "areaPublicada": "22789.59",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "13.4081",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "blog11-blog-garuva",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BlueCap Paulista/PE",
+      "enderecoPublicado": "Rodovia BR - 101 Norte, 5.800 - Jaguaribe",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "65179.77",
+      "areaPublicada": "65179.77",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "29.2637",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejista",
+          "percentualDaReceitaDoImovel": "28.6016"
+        },
+        {
+          "setor": "Indústria Alimentícia",
+          "percentualDaReceitaDoImovel": "29.4980"
+        },
+        {
+          "setor": "Varejista",
+          "percentualDaReceitaDoImovel": "41.9004"
+        }
+      ],
+      "id": "blog11-bluecap-paulista-pe",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "BlueCap Camaçari III",
+      "enderecoPublicado": "Via de Ligação Camaçari, s/n - polo industrial de Camaçari",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "28066.89",
+      "areaPublicada": "28066.89",
+      "vacanciaPercentual": "22.2999",
+      "percentualDaReceitaDoFundo": "12.6359",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Energia Renovável",
+          "percentualDaReceitaDoImovel": "39.0592"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "12.4650"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "7.6601"
+        },
+        {
+          "setor": "E-Commerce",
+          "percentualDaReceitaDoImovel": "18.6539"
+        },
+        {
+          "setor": "Varejista",
+          "percentualDaReceitaDoImovel": "6.2642"
+        },
+        {
+          "setor": "Indústria de Vidros",
+          "percentualDaReceitaDoImovel": "15.8977"
+        }
+      ],
+      "id": "blog11-bluecap-camacari-iii",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

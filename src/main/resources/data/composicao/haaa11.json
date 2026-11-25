@@ -1,0 +1,98 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "HAAA11",
+  "nomeDoFundo": "Hedge Aaa Fundo De Investimento Imobiliário",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "b3ec817bf7565d85351244bcbcdb1005363d5fc1ed61363bf3328632590ff379"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 2,
+    "semCoordenadas": 0
+  },
+  "cnpj": "27.445.482/0001-40",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código HAAA11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRHAAACTF003), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edifício Thera Corporate",
+      "enderecoPublicado": "Av. Engenheiro Luis Carlos Berrini, nº 105 - São Paulo, SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "10586.16",
+      "areaPublicada": "10586.16",
+      "vacanciaPercentual": "20.1168",
+      "percentualDaReceitaDoFundo": "14.9994",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Seguros",
+          "percentualDaReceitaDoImovel": "10.8644"
+        },
+        {
+          "setor": "Serviços",
+          "percentualDaReceitaDoImovel": "16.8459"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "25.4476"
+        },
+        {
+          "setor": "Bens de Consumo",
+          "percentualDaReceitaDoImovel": "41.3039"
+        }
+      ],
+      "id": "haaa11-edificio-thera-corporate",
+      "coordenadas": {
+        "lat": "-23.598768",
+        "lng": "-46.690080",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Thera Corporate, 105, Avenida Engenheiro Luís Carlos Berrini, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04571-010, Brasil",
+        "osm": "way/439502891",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Engenheiro Luis Carlos Berrini, 105 - São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edifício WT Morumbi",
+      "enderecoPublicado": "Avenida das Nações Unidas, nº 14.261 - São Paulo, SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "11761.45",
+      "areaPublicada": "11761.45",
+      "vacanciaPercentual": "14.8879",
+      "percentualDaReceitaDoFundo": "15.0086",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Co Working",
+          "percentualDaReceitaDoImovel": "17.3706"
+        },
+        {
+          "setor": "Bens de Consumo",
+          "percentualDaReceitaDoImovel": "23.8929"
+        }
+      ],
+      "id": "haaa11-edificio-wt-morumbi",
+      "coordenadas": {
+        "lat": "-23.526242",
+        "lng": "-46.753841",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida das Nações Unidas, Parque Continental, Jaguaré, São Paulo, Região Sudeste, 06298-100, Brasil",
+        "osm": "way/614143087",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida das Nações Unidas, 14.261 - São Paulo, SP, Brasil"
+      }
+    }
+  ]
+}

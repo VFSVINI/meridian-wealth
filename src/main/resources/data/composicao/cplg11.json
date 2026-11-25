@@ -1,0 +1,66 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "CPLG11",
+  "nomeDoFundo": "Capitania Logistica Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "089bcfd24aae951a3ab2997d7df62c9f70577830509d8119c63aaea8f87f5037"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "52.371.756/0001-40",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código CPLG11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRCPLGCTF006), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "80198_52371",
+      "enderecoPublicado": "RUA MIRACEMA , S/Nº BATISTINI, 09843-750, São bernardo do campo - SP",
+      "cidade": "São bernardo do campo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "21669252",
+      "areaPublicada": "21669252",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cplg11-80198-52371",
+      "coordenadas": {
+        "lat": "-23.770807",
+        "lng": "-46.600934",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Miracema, Fonte São Judas Tadeu, Batistini, São Bernardo do Campo, São Paulo, Região Sudeste, 09844-390, Brasil",
+        "osm": "way/169339055",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "RUA MIRACEMA, São bernardo do campo, SP, Brasil"
+      }
+    }
+  ]
+}

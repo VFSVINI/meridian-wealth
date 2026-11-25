@@ -1,0 +1,266 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "RECT11",
+  "nomeDoFundo": "Fii Rec Renda Imobiliaria Resp Limitada",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "fefd0edaed96fc5f2baafbd3fff01e78d4799f5bb18d706ad9850351956bce5f"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 4,
+    "semCoordenadas": 4
+  },
+  "cnpj": "32.274.163/0001-59",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código RECT11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRRECTCTF000), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Canopus Corporate Alphaville",
+      "enderecoPublicado": "Av. Tamboré, 267 - Alphaville - Barueri - SP",
+      "cidade": "Barueri",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "26173.81",
+      "areaPublicada": "26173.81",
+      "vacanciaPercentual": "21.4000",
+      "percentualDaReceitaDoFundo": "15.2600",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros Serviços Empresariais",
+          "percentualDaReceitaDoImovel": "24.4894"
+        },
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "18.0652"
+        },
+        {
+          "setor": "Tecnologia",
+          "percentualDaReceitaDoImovel": "25.4327"
+        },
+        {
+          "setor": "Agricultura",
+          "percentualDaReceitaDoImovel": "18.2966"
+        },
+        {
+          "setor": "Informações de Crédito",
+          "percentualDaReceitaDoImovel": "20.4957"
+        }
+      ],
+      "id": "rect11-canopus-corporate-alphaville",
+      "coordenadas": {
+        "lat": "-23.503389",
+        "lng": "-46.844396",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Canopus Corporate Alphaville, 267, Avenida Tamboré, Jardim Santa Cecília, Alphaville, Barueri, São Paulo, Região Sudeste, 06460-000, Brasil",
+        "osm": "way/1172713892",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Tamboré, 267 - Alphaville - Barueri - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Condomínio Evolution Corporate",
+      "enderecoPublicado": "Alameda Xingu, 512 - Alphaville - Barueri - SP",
+      "cidade": "Barueri",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "14929.14",
+      "areaPublicada": "14929.14",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "12.9900",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços Financeiros",
+          "percentualDaReceitaDoImovel": "96.4343"
+        }
+      ],
+      "id": "rect11-condominio-evolution-corporate",
+      "coordenadas": {
+        "lat": "-23.504492",
+        "lng": "-46.851677",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "512, Alameda Xingu, Jardim Santa Cecília, Alphaville, Barueri, São Paulo, Região Sudeste, 06455-914, Brasil",
+        "osm": "node/6060993808",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Xingu, 512 - Alphaville - Barueri - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edificio Barra da Tijuca",
+      "enderecoPublicado": "Av. Ayrton Senna, 2200 - Barra da Tijuca - Rio de Janeiro - RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "23209.7",
+      "areaPublicada": "23209.7",
+      "vacanciaPercentual": "5.5900",
+      "percentualDaReceitaDoFundo": "24.0600",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Construção",
+          "percentualDaReceitaDoImovel": "27.0105"
+        },
+        {
+          "setor": "Educação",
+          "percentualDaReceitaDoImovel": "33.8684"
+        },
+        {
+          "setor": "Telefonia",
+          "percentualDaReceitaDoImovel": "38.5004"
+        }
+      ],
+      "id": "rect11-edificio-barra-da-tijuca",
+      "coordenadas": {
+        "lat": "-22.991641",
+        "lng": "-43.364278",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Vivo, 2200, Avenida Ayrton Senna, Barra da Tijuca, Rio de Janeiro, Região Sudeste, 22775-003, Brasil",
+        "osm": "way/315327561",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Ayrton Senna, 2200 - Barra da Tijuca - Rio de Janeiro - RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Ed. Pq Dona Ana Costa",
+      "enderecoPublicado": "Av. Dona Ana Costa, nº 433, cidade de Santos - SP",
+      "cidade": "cidade de Santos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "7008.24",
+      "areaPublicada": "7008.24",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "7.6600",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços Financeiros",
+          "percentualDaReceitaDoImovel": "13.4733"
+        },
+        {
+          "setor": "Logística",
+          "percentualDaReceitaDoImovel": "18.1042"
+        },
+        {
+          "setor": "Outros Serviços Empresariais",
+          "percentualDaReceitaDoImovel": "21.6828"
+        },
+        {
+          "setor": "Transporte e Logística",
+          "percentualDaReceitaDoImovel": "34.0049"
+        }
+      ],
+      "id": "rect11-ed-pq-dona-ana-costa",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Complexo Madeira",
+      "enderecoPublicado": "Complexo Madeira, Alameda Madeira, nº 328, na cidade de Barueri - SP",
+      "cidade": "na cidade de Barueri",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "4402.6",
+      "areaPublicada": "4402.6",
+      "vacanciaPercentual": "18.7900",
+      "percentualDaReceitaDoFundo": "6.2000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Tecnologia",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rect11-complexo-madeira",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Parque Cidade Corporate",
+      "enderecoPublicado": "SHCS Q.6 BL A, 7º, 8º E 12º andares - Brasília - DF",
+      "cidade": "Brasília",
+      "uf": "DF",
+      "tipo": null,
+      "areaM2": "5294.01",
+      "areaPublicada": "5294.01",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "10.1200",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Advocacia",
+          "percentualDaReceitaDoImovel": "39.8191"
+        },
+        {
+          "setor": "Automotivo",
+          "percentualDaReceitaDoImovel": "10.7836"
+        },
+        {
+          "setor": "Órgão Governamental",
+          "percentualDaReceitaDoImovel": "43.9510"
+        }
+      ],
+      "id": "rect11-parque-cidade-corporate",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "AGAXTUR",
+      "enderecoPublicado": "Avenida Europa, nº 884, Jardim Europa, CEP 01.449-000",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1962.6",
+      "areaPublicada": "1962.6",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.0300",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros Serviços",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rect11-agaxtur",
+      "coordenadas": {
+        "lat": "-23.577329",
+        "lng": "-46.680267",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Europa, Jardim Europa, Pinheiros, São Paulo, Região Sudeste, 01449-070, Brasil",
+        "osm": "way/944778229",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Europa, 01449-000, Brasil"
+      }
+    },
+    {
+      "nome": "Corporate Emiliano",
+      "enderecoPublicado": "Corporate Emiliano, Rua Emiliano Perneta, 480, Curitiba, PR",
+      "cidade": "Curitiba",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "5934.62",
+      "areaPublicada": "5934.62",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.3800",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços Financeiros",
+          "percentualDaReceitaDoImovel": "30.2020"
+        },
+        {
+          "setor": "Saúde",
+          "percentualDaReceitaDoImovel": "69.7980"
+        }
+      ],
+      "id": "rect11-corporate-emiliano",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

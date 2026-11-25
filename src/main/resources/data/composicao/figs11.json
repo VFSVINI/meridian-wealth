@@ -1,0 +1,90 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "FIGS11",
+  "nomeDoFundo": "General Shopping Ativo E Renda Fundo De Invest Imob",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "43999bf62064baecd495c1a4895197be7bf42633d699f67cafe199dfbf119562"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 2
+  },
+  "cnpj": "17.590.518/0001-25",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código FIGS11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRFIGSCTF009), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Parque Shopping Maia - 36,50%",
+      "enderecoPublicado": "Av. Bartolomeu de Castro, 230, Guarulhos - SP",
+      "cidade": "Guarulhos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "33521.1",
+      "areaPublicada": "33521.1",
+      "vacanciaPercentual": "10.2121",
+      "percentualDaReceitaDoFundo": "44.8083",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "figs11-parque-shopping-maia-36-50",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Shopping Bonsucesso - 36,50%",
+      "enderecoPublicado": "Av. Juscelino Kubitscheck de Oliveira, 5.308, Guarulhos - SP",
+      "cidade": "Guarulhos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "29245.34",
+      "areaPublicada": "29245.34",
+      "vacanciaPercentual": "4.2898",
+      "percentualDaReceitaDoFundo": "50.5325",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "figs11-shopping-bonsucesso-36-50",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

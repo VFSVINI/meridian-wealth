@@ -1,0 +1,164 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "RBRP11",
+  "nomeDoFundo": "Fundo De Investimento Imobiliario Pátria Properties",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "6f3f69759c548e4c083025e301e3159c66a62c00f98ad1bf86adf2f7a6ef443b"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 6,
+    "semCoordenadas": 0
+  },
+  "cnpj": "21.408.063/0001-51",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código RBRP11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRRBRPCTF002), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edíficio Mario Garneiro Torre Sul",
+      "enderecoPublicado": "Av. Brigadeiro Faria Lima nº 1.461,  Pinheiros, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "2722.35",
+      "areaPublicada": "2722.35",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "rbrp11-edificio-mario-garneiro-torre-sul",
+      "coordenadas": {
+        "lat": "-23.568827",
+        "lng": "-46.692025",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Brigadeiro Faria Lima, Jardim Europa, Pinheiros, São Paulo, Região Sudeste, 01452-002, Brasil",
+        "osm": "way/369907203",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Brigadeiro Faria Lima 1.461, Pinheiros, São Paulo/SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edifício Cerp - Venezuela",
+      "enderecoPublicado": "Avenida Venezuela, 43 - Saúde - Rio de Janeiro - RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "4488",
+      "areaPublicada": "4488",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "rbrp11-edificio-cerp-venezuela",
+      "coordenadas": {
+        "lat": "-22.896486",
+        "lng": "-43.184550",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Venezuela, Saúde, Rio de Janeiro, Região Sudeste, 20081-311, Brasil",
+        "osm": "way/45258369",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Venezuela, 43 - Saúde - Rio de Janeiro - RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Edíficio River One",
+      "enderecoPublicado": "Rua Gerivatiba, esquina com a Rua Pirajussara, nºs 71,87 e 95, com frente também para a Rua Desembargador Armando Fairbanks, nº 32,Pinheiros, São Paulo - SP.",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "23625.14",
+      "areaPublicada": "23625.14",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "rbrp11-edificio-river-one",
+      "coordenadas": {
+        "lat": "-23.571078",
+        "lng": "-46.702970",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Gerivatiba, Caxingui, Butantã, São Paulo, Região Sudeste, 05501-050, Brasil",
+        "osm": "way/44756771",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Gerivatiba, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edíficio Celebration",
+      "enderecoPublicado": "Rua Casa do Ator, 1.155 - Vila Olímpia - São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "6458.29",
+      "areaPublicada": "6458.29",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "rbrp11-edificio-celebration",
+      "coordenadas": {
+        "lat": "-23.599878",
+        "lng": "-46.676794",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Casa do Ator, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04546-001, Brasil",
+        "osm": "way/760437730",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Casa do Ator, 1.155 - Vila Olímpia - São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Ed. Castello Branco",
+      "enderecoPublicado": "Av. República do Chile, 230 - Centro, Rio de Janeiro - RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "1065.15",
+      "areaPublicada": "1065.15",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "rbrp11-ed-castello-branco",
+      "coordenadas": {
+        "lat": "-22.909338",
+        "lng": "-43.180463",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida República do Chile, Castelo, Centro, Rio de Janeiro, Região Sudeste, 20031-170, Brasil",
+        "osm": "way/27292795",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. República do Chile, 230 - Centro, Rio de Janeiro - RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Edifício Delta Plaza",
+      "enderecoPublicado": "Rua Cincinato Braga, 340 - Bela Vista - São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "4058.7",
+      "areaPublicada": "4058.7",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "rbrp11-edificio-delta-plaza",
+      "coordenadas": {
+        "lat": "-23.567992",
+        "lng": "-46.646152",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Doutor Carlos Eduardo Dias, 340  10º Andar, Rua Cincinato Braga, Morro dos Ingleses, Bela Vista, São Paulo, Região Sudeste, 01333-020, Brasil",
+        "osm": "node/11822902188",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Cincinato Braga, 340 - Bela Vista - São Paulo - SP, Brasil"
+      }
+    }
+  ]
+}

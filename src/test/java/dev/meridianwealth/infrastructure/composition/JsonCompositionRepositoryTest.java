@@ -18,8 +18,11 @@ import org.junit.jupiter.api.Test;
 class JsonCompositionRepositoryTest {
     private final JsonCompositionRepository repo = new JsonCompositionRepository();
 
-    @Test void loadsTheFourCuratedFunds() {
-        assertThat(repo.all()).extracting(FundComposition::fundSymbol).containsExactly("HGLG11", "KNRI11", "MXRF11", "XPML11");
+    private static final java.util.Set<String> CURATED = java.util.Set.of("HGLG11", "KNRI11", "MXRF11", "XPML11");
+
+    @Test void loadsTheFourCuratedFundsBesideTheOnesGeneratedFromTheCvm() {
+        assertThat(repo.all()).extracting(FundComposition::fundSymbol).contains("HGLG11", "KNRI11", "MXRF11", "XPML11");
+        assertThat(repo.all().size()).isGreaterThan(100);
     }
 
     @Test void everyFundCitesAnHttpsSourceWithConsultationDate() {
@@ -32,7 +35,7 @@ class JsonCompositionRepositoryTest {
     }
 
     @Test void coordinatesAlwaysCarryProofAndLinks() {
-        long geolocated = 0;
+        long geolocated = 0, curatedGeolocated = 0;
         for (FundComposition f : repo.all()) {
             for (RealAsset a : f.assets()) {
                 if (a.coordinates() == null) {
@@ -40,13 +43,15 @@ class JsonCompositionRepositoryTest {
                     continue;
                 }
                 geolocated++;
+                if (CURATED.contains(f.fundSymbol())) curatedGeolocated++;
                 assertThat(a.coordinates().matchedAddress()).isNotBlank();
                 assertThat(a.coordinates().geocodedOn()).isNotNull();
                 assertThat(MapLinks.satellite(a.coordinates())).contains("basemap=satellite");
                 assertThat(MapLinks.streetView(a.coordinates())).contains("map_action=pano");
             }
         }
-        assertThat(geolocated).isEqualTo(32);
+        assertThat(curatedGeolocated).as("os quatro curados à mão seguem com as mesmas 32 coordenadas").isEqualTo(32);
+        assertThat(geolocated).as("com os fundos da CVM").isGreaterThan(400);
     }
 
     @Test void geolocatedAssetsAreInsideTheirPublishedStateBox() {
@@ -70,9 +75,11 @@ class JsonCompositionRepositoryTest {
     }
 
     @Test void streetPrecisionIsKeptSoTheUiCanSayApproximate() {
-        long street = repo.all().stream().flatMap(f -> f.assets().stream()).filter(a -> a.coordinates() != null)
+        long street = repo.all().stream().filter(f -> CURATED.contains(f.fundSymbol())).flatMap(f -> f.assets().stream()).filter(a -> a.coordinates() != null)
                 .filter(a -> a.coordinates().precision() == GeoPrecision.STREET).count();
         assertThat(street).isEqualTo(24);
+        assertThat(repo.all().stream().flatMap(f -> f.assets().stream()).filter(a -> a.coordinates() != null)
+                .anyMatch(a -> a.coordinates().precision() == GeoPrecision.STREET && !CURATED.contains(a.fundSymbol()))).isTrue();
     }
 
     @Test void hglgDoesNotPresentPartialRevenueAsFullAndDropsDashSectors() {

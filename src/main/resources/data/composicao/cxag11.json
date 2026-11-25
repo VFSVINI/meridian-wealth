@@ -1,0 +1,862 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "CXAG11",
+  "nomeDoFundo": "Fundo De Investimento Imobiliário Caixa Agencias",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "5ad7099a7a834edd119a85867f4faa5838ae4329765c719352dbafb31cf62994"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 27,
+    "semCoordenadas": 4
+  },
+  "cnpj": "40.189.596/0001-34",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código CXAG11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRCXAGCTF003), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "AG BAEPENDI",
+      "enderecoPublicado": "R JOSE ALBERTO PELUCIO, 63, BAEPENDI - MG",
+      "cidade": "BAEPENDI",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "664.1",
+      "areaPublicada": "664.1",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.0218",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-baependi",
+      "coordenadas": {
+        "lat": "-21.958749",
+        "lng": "-44.889410",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua José Alberto Pelucio, Baependi, Minas Gerais, Região Sudeste, 37443-000, Brasil",
+        "osm": "way/633314280",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R JOSE ALBERTO PELUCIO, 63, BAEPENDI - MG, Brasil"
+      }
+    },
+    {
+      "nome": "AG JACAREI",
+      "enderecoPublicado": "R DR LUCIO MALTA, 585, JACAREÍ - SP",
+      "cidade": "JACAREÍ",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "4186",
+      "areaPublicada": "4186",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.7157",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-jacarei",
+      "coordenadas": {
+        "lat": "-23.303810",
+        "lng": "-45.969159",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Doutor Lúcio Malta, Jardim Rosa Craveiro, Vila Denise, Jacareí, São Paulo, Região Sudeste, 12327-001, Brasil",
+        "osm": "way/324838238",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R DR LUCIO MALTA, 585, JACAREÍ - SP, Brasil"
+      }
+    },
+    {
+      "nome": "AG PILARES",
+      "enderecoPublicado": "AV DOM HELDER CAMARA, 5.809, RIO DE JANEIRO - RJ",
+      "cidade": "RIO DE JANEIRO",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "1895.68",
+      "areaPublicada": "1895.68",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.2229",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-pilares",
+      "coordenadas": {
+        "lat": "-22.883562",
+        "lng": "-43.253838",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Dom Hélder Câmara, Jacarezinho, Rio de Janeiro, Região Sudeste, 20973-011, Brasil",
+        "osm": "way/385066333",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "AV DOM HELDER CAMARA, 5.809, RIO DE JANEIRO - RJ, Brasil"
+      }
+    },
+    {
+      "nome": "AG RIBEIRAO PIRES",
+      "enderecoPublicado": "R MIGUEL PRISCO, 40, RIBEIRÃO PIRES - SP",
+      "cidade": "RIBEIRÃO PIRES",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "742.43",
+      "areaPublicada": "742.43",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.5645",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-ribeirao-pires",
+      "coordenadas": {
+        "lat": "-23.709936",
+        "lng": "-46.414015",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Miguel Prisco, Jardim Itacolomy, Centro Alto, Ribeirão Pires, São Paulo, Região Sudeste, 09400-180, Brasil",
+        "osm": "way/172716032",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R MIGUEL PRISCO, 40, RIBEIRÃO PIRES - SP, Brasil"
+      }
+    },
+    {
+      "nome": "AG PIRACICABA",
+      "enderecoPublicado": "R SAO JOSE, 667, PIRACICABA - SP",
+      "cidade": "PIRACICABA",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "3972",
+      "areaPublicada": "3972",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.6257",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-piracicaba",
+      "coordenadas": {
+        "lat": "-22.722602",
+        "lng": "-47.652683",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua São José, São Dimas, Centro, Piracicaba, São Paulo, Região Sudeste, 13419-250, Brasil",
+        "osm": "way/275251069",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R SAO JOSE, 667, PIRACICABA - SP, Brasil"
+      }
+    },
+    {
+      "nome": "AG MAGE",
+      "enderecoPublicado": "R DR SIQUEIRA, 342, MAGÉ - RJ",
+      "cidade": "MAGÉ",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "741.02",
+      "areaPublicada": "741.02",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.9556",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-mage",
+      "coordenadas": {
+        "lat": "-22.655963",
+        "lng": "-43.039195",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Doutor Siqueira, Magé, Rio de Janeiro, Região Sudeste, 25900-094, Brasil",
+        "osm": "way/239261994",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R DR SIQUEIRA, 342, MAGÉ - RJ, Brasil"
+      }
+    },
+    {
+      "nome": "AG QUEIMADOS",
+      "enderecoPublicado": "R VER. MARINHO HEMETERIO OLIVEIRA, 80, QUEIMADOS - RJ",
+      "cidade": "QUEIMADOS",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "924",
+      "areaPublicada": "924",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.6492",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-queimados",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "AG LAJEADO",
+      "enderecoPublicado": "R JULIO DE CASTILHOS, 1029, LAJEADO - RS",
+      "cidade": "LAJEADO",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "2748.57",
+      "areaPublicada": "2748.57",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.1044",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-lajeado",
+      "coordenadas": {
+        "lat": "-29.461828",
+        "lng": "-51.965681",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Caixa Econômica Federal, 1029, Rua Júlio de Castilhos, Centro, Lajeado, Rio Grande do Sul, Região Sul, 95900-000, Brasil",
+        "osm": "way/279675042",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R JULIO DE CASTILHOS, 1029, LAJEADO - RS, Brasil"
+      }
+    },
+    {
+      "nome": "AG SAO LOURENCO",
+      "enderecoPublicado": "AV PEDRO II, 244, SÃO LOURENÇO - MG",
+      "cidade": "SÃO LOURENÇO",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "1046",
+      "areaPublicada": "1046",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.6831",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-sao-lourenco",
+      "coordenadas": {
+        "lat": "-22.117091",
+        "lng": "-45.064342",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Dom Pedro II, Solar dos Lagos, São Lourenço, Minas Gerais, Região Sudeste, 37470-000, Brasil",
+        "osm": "way/232845707",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "AV PEDRO II, 244, SÃO LOURENÇO - MG, Brasil"
+      }
+    },
+    {
+      "nome": "AG BOM FIM",
+      "enderecoPublicado": "AV OSVALDO ARANHA, 1316, PORTO ALEGRE - RS",
+      "cidade": "PORTO ALEGRE",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "1356.4",
+      "areaPublicada": "1356.4",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.0312",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-bom-fim",
+      "coordenadas": {
+        "lat": "-30.036157",
+        "lng": "-51.209402",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Caixa Econômica Federal, 1316, Avenida Osvaldo Aranha, Bom Fim, Porto Alegre, Rio Grande do Sul, Região Sul, 90035-191, Brasil",
+        "osm": "way/496328982",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "AV OSVALDO ARANHA, 1316, PORTO ALEGRE - RS, Brasil"
+      }
+    },
+    {
+      "nome": "AG URUGUAIANA",
+      "enderecoPublicado": "R GAL BENTO MARTINS, 2926, URUGUAIANA - RS",
+      "cidade": "URUGUAIANA",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "2348.93",
+      "areaPublicada": "2348.93",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.9286",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-uruguaiana",
+      "coordenadas": {
+        "lat": "-29.755367",
+        "lng": "-57.075950",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua General Bento Martins, Santana, Uruguaiana, Rio Grande do Sul, Região Sul, 97502-360, Brasil",
+        "osm": "way/1516106658",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R GAL BENTO MARTINS, 2926, URUGUAIANA - RS, Brasil"
+      }
+    },
+    {
+      "nome": "AG GIOVANNI BREDA",
+      "enderecoPublicado": "PC GIOVANI BREDA, 1916, SÃO BERNARDO DO CAMPO - SP",
+      "cidade": "SÃO BERNARDO DO CAMPO",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1037.74",
+      "areaPublicada": "1037.74",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.9295",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-giovanni-breda",
+      "coordenadas": {
+        "lat": "-23.725177",
+        "lng": "-46.574101",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Praça Giovani Breda, Vila Simone, Vila Rica, Assunção, São Bernardo do Campo, São Paulo, Região Sudeste, 09811-000, Brasil",
+        "osm": "way/291706792",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "PC GIOVANI BREDA, 1916, SÃO BERNARDO DO CAMPO - SP, Brasil"
+      }
+    },
+    {
+      "nome": "AG INHANGA",
+      "enderecoPublicado": "AV NOSSA SENHORA DE COPACABANA, 427, RIO DE JANEIRO - RJ",
+      "cidade": "RIO DE JANEIRO",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "919.57",
+      "areaPublicada": "919.57",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.4106",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-inhanga",
+      "coordenadas": {
+        "lat": "-22.971324",
+        "lng": "-43.187070",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Nossa Senhora de Copacabana, Copacabana, Rio de Janeiro, Região Sudeste, 22041-012, Brasil",
+        "osm": "way/1010069098",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "AV NOSSA SENHORA DE COPACABANA, 427, RIO DE JANEIRO - RJ, Brasil"
+      }
+    },
+    {
+      "nome": "AG GUIA LOPES",
+      "enderecoPublicado": "AV TERESOPOLIS, 3235, PORTO ALEGRE - RS",
+      "cidade": "PORTO ALEGRE",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "1384.49",
+      "areaPublicada": "1384.49",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.7025",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-guia-lopes",
+      "coordenadas": {
+        "lat": "-30.081903",
+        "lng": "-51.213267",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "3235, Avenida Teresópolis, Teresópolis, Porto Alegre, Rio Grande do Sul, Região Sul, 90840-290, Brasil",
+        "osm": "way/425821160",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "AV TERESOPOLIS, 3235, PORTO ALEGRE - RS, Brasil"
+      }
+    },
+    {
+      "nome": "AG MANCHESTER",
+      "enderecoPublicado": "AV BARAO DO RIO BRANCO, 2340, JUIZ DE FORA - MG",
+      "cidade": "JUIZ DE FORA",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "5958",
+      "areaPublicada": "5958",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "9.1264",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-manchester",
+      "coordenadas": {
+        "lat": "-21.762111",
+        "lng": "-43.349567",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Barão do Rio Branco, Centro, Juiz de Fora, Minas Gerais, Região Sudeste, 36016-310, Brasil",
+        "osm": "way/1472980408",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "AV BARAO DO RIO BRANCO, 2340, JUIZ DE FORA - MG, Brasil"
+      }
+    },
+    {
+      "nome": "AG ELOI MENDES",
+      "enderecoPublicado": "R CEL. HORACIO ALVES PEREIRA, 225, ELÓI MENDES - MG",
+      "cidade": "ELÓI MENDES",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "425",
+      "areaPublicada": "425",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6714",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-eloi-mendes",
+      "coordenadas": {
+        "lat": "-21.606139",
+        "lng": "-45.568180",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Coronel Horácio Alves Pereira, Elói Mendes, Minas Gerais, Região Sudeste, 37110-000, Brasil",
+        "osm": "way/702877030",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R CEL. HORACIO ALVES PEREIRA, 225, ELÓI MENDES - MG, Brasil"
+      }
+    },
+    {
+      "nome": "AG CAPAO DA CANOA",
+      "enderecoPublicado": "AV PARAGUASSU, 1725, CAPÃO DA CANOA - RS",
+      "cidade": "CAPÃO DA CANOA",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "697.94",
+      "areaPublicada": "697.94",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.9811",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-capao-da-canoa",
+      "coordenadas": {
+        "lat": "-29.659935",
+        "lng": "-49.963146",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Paraguassu, Capão Novo Village, Capão Novo, Capão da Canoa, Rio Grande do Sul, Região Sul, Brasil",
+        "osm": "way/903225937",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "AV PARAGUASSU, 1725, CAPÃO DA CANOA - RS, Brasil"
+      }
+    },
+    {
+      "nome": "AG SANTA CRUZ DO SUL",
+      "enderecoPublicado": "R JULIO DE CASTILHOS, 189, SANTA CRUZ DO SUL - RS",
+      "cidade": "SANTA CRUZ DO SUL",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "3003.76",
+      "areaPublicada": "3003.76",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.5853",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-santa-cruz-do-sul",
+      "coordenadas": {
+        "lat": "-29.717043",
+        "lng": "-52.426700",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Caixa Econômica Federal, 189, Rua Júlio de Castilhos, Centro, Sede Municipal, Santa Cruz do Sul, Rio Grande do Sul, Região Sul, 96810-020, Brasil",
+        "osm": "way/369936960",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R JULIO DE CASTILHOS, 189, SANTA CRUZ DO SUL - RS, Brasil"
+      }
+    },
+    {
+      "nome": "AG MONTES CLAROS",
+      "enderecoPublicado": "R DR SANTOS, 103, MONTES CLAROS - MG",
+      "cidade": "MONTES CLAROS",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "2844",
+      "areaPublicada": "2844",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.6767",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-montes-claros",
+      "coordenadas": {
+        "lat": "-16.725534",
+        "lng": "-43.865766",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Doutor Santos, Centro, Montes Claros, Minas Gerais, Região Sudeste, 39400-002, Brasil",
+        "osm": "way/440532055",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R DR SANTOS, 103, MONTES CLAROS - MG, Brasil"
+      }
+    },
+    {
+      "nome": "AG CACHOEIRA DO SUL",
+      "enderecoPublicado": "R. 7 DE SETEMBRO 1231, CACHOEIRA DO SUL - RS",
+      "cidade": "CACHOEIRA DO SUL",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "900.66",
+      "areaPublicada": "900.66",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.3102",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-cachoeira-do-sul",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "AG PELOTAS",
+      "enderecoPublicado": "R QUINZE DE NOVEMBRO, 570, PELOTAS - RS",
+      "cidade": "PELOTAS",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "2701.16",
+      "areaPublicada": "2701.16",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.7809",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-pelotas",
+      "coordenadas": {
+        "lat": "-31.762635",
+        "lng": "-52.338728",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Quinze de Novembro, Centro, Sede, Pelotas, Rio Grande do Sul, Região Sul, 96015-170, Brasil",
+        "osm": "way/477188610",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R QUINZE DE NOVEMBRO, 570, PELOTAS - RS, Brasil"
+      }
+    },
+    {
+      "nome": "AG MACAE",
+      "enderecoPublicado": "AV RUI BARBOSA, 790, MACAÉ - RJ",
+      "cidade": "MACAÉ",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "2234.07",
+      "areaPublicada": "2234.07",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.9402",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-macae",
+      "coordenadas": {
+        "lat": "-22.389703",
+        "lng": "-41.776252",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Rui Barbosa, Praia Campista, Macaé, Rio de Janeiro, Região Sudeste, 27923-320, Brasil",
+        "osm": "way/181282638",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "AV RUI BARBOSA, 790, MACAÉ - RJ, Brasil"
+      }
+    },
+    {
+      "nome": "AG ITABIRA",
+      "enderecoPublicado": "AV DANIEL JARDIM DE GRISOLIA, 117, ITABIRA - MG",
+      "cidade": "ITABIRA",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "1139.95",
+      "areaPublicada": "1139.95",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.7900",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-itabira",
+      "coordenadas": {
+        "lat": "-19.621859",
+        "lng": "-43.225880",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Caixa Econômica Federal, 117, Avenida Daniel Jardim de Grisolia, Centro, Itabira, Minas Gerais, Região Sudeste, 35900-001, Brasil",
+        "osm": "way/767943489",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "AV DANIEL JARDIM DE GRISOLIA, 117, ITABIRA - MG, Brasil"
+      }
+    },
+    {
+      "nome": "AG ATIBAIA",
+      "enderecoPublicado": "PC APRIGIO DE TOLEDO, 16, ATIBAIA - SP",
+      "cidade": "ATIBAIA",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "2333.9",
+      "areaPublicada": "2333.9",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.0051",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-atibaia",
+      "coordenadas": {
+        "lat": "-23.115745",
+        "lng": "-46.555796",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Praça Aprigio de Toledo, Vila Nova Aclimação, Centro, Atibaia, São Paulo, Região Sudeste, 12040-500, Brasil",
+        "osm": "way/167788355",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "PC APRIGIO DE TOLEDO, 16, ATIBAIA - SP, Brasil"
+      }
+    },
+    {
+      "nome": "AG OSORIO",
+      "enderecoPublicado": "R JULIO DE CASTILHOS, 915, OSÓRIO - RS",
+      "cidade": "OSÓRIO",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "671.13",
+      "areaPublicada": "671.13",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.7509",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-osorio",
+      "coordenadas": {
+        "lat": "-29.889062",
+        "lng": "-50.268862",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Caixa Econômica Federal, 915, Rua Júlio de Castilhos, Centro, Osório, Rio Grande do Sul, Região Sul, 94660-016, Brasil",
+        "osm": "way/1566281734",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R JULIO DE CASTILHOS, 915, OSÓRIO - RS, Brasil"
+      }
+    },
+    {
+      "nome": "AG ARAGUARI",
+      "enderecoPublicado": "AV TIRADENTES, 387, ARAGUARI - MG",
+      "cidade": "ARAGUARI",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "1046.67",
+      "areaPublicada": "1046.67",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.8393",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-araguari",
+      "coordenadas": {
+        "lat": "-18.651452",
+        "lng": "-48.191856",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Tiradentes, Centro, Araguari, Minas Gerais, Região Sudeste, 38440-122, Brasil",
+        "osm": "way/388791904",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "AV TIRADENTES, 387, ARAGUARI - MG, Brasil"
+      }
+    },
+    {
+      "nome": "AG FREIRE ALEMÃO",
+      "enderecoPublicado": "AV CESARIO DE MELO, 3166, RIO DE JANEIRO - RJ",
+      "cidade": "RIO DE JANEIRO",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "1224.5",
+      "areaPublicada": "1224.5",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.6688",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-freire-alemao",
+      "coordenadas": {
+        "lat": "-22.915194",
+        "lng": "-43.624236",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Cesario de Melo, Cosmos, Rio de Janeiro, Região Sudeste, 23587-650, Brasil",
+        "osm": "way/298473166",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "AV CESARIO DE MELO, 3166, RIO DE JANEIRO - RJ, Brasil"
+      }
+    },
+    {
+      "nome": "AG SOLEDADE",
+      "enderecoPublicado": "R CEL FALKENBACH, 951, SOLEDADE - RS",
+      "cidade": "SOLEDADE",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "650.4",
+      "areaPublicada": "650.4",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.9185",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-soledade",
+      "coordenadas": {
+        "lat": "-28.828856",
+        "lng": "-52.515836",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Coronel Falkenbach, Fontes, Sede, Soledade, Rio Grande do Sul, Região Sul, 99300-000, Brasil",
+        "osm": "way/202448129",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R CEL FALKENBACH, 951, SOLEDADE - RS, Brasil"
+      }
+    },
+    {
+      "nome": "AG HORTO DE IPATINGA",
+      "enderecoPublicado": "R JACARANDA, 499, IPATINGA - MG",
+      "cidade": "IPATINGA",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "1062.98",
+      "areaPublicada": "1062.98",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.1921",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-horto-de-ipatinga",
+      "coordenadas": {
+        "lat": "-19.507535",
+        "lng": "-42.571742",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Jacarandá, Horto, Ipatinga, Minas Gerais, Região Sudeste, 35160-293, Brasil",
+        "osm": "way/175084736",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R JACARANDA, 499, IPATINGA - MG, Brasil"
+      }
+    },
+    {
+      "nome": "AG MADUREIRA",
+      "enderecoPublicado": "R CARVALHO DE SOUSA, 283, RIO DE JANEIRO - RJ",
+      "cidade": "RIO DE JANEIRO",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "2427",
+      "areaPublicada": "2427",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.1942",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-madureira",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "AG BELA VISTA",
+      "enderecoPublicado": "AV BRIG.LUIS ANTONIO, 900, SÃO PAULO - SP",
+      "cidade": "SÃO PAULO",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "2347.18",
+      "areaPublicada": "2347.18",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "7.2568",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agência Bancária",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "cxag11-ag-bela-vista",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

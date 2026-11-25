@@ -1,0 +1,66 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "FVPQ11",
+  "nomeDoFundo": "Via Parque Shopping Fii Resp Ltda",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "2c8062459f76680d0fcd9882642151ba5eb7b5046835285f1e6700f3b200a937"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "00.332.266/0001-31",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código FVPQ11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRFVPQCTF015), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Via Parque Shopping - 100%",
+      "enderecoPublicado": "Av. Ayrton Senna, 3000 - Barra da Tijuca, Rio de Janeiro - RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "56419.69",
+      "areaPublicada": "56419.69",
+      "vacanciaPercentual": "13.5552",
+      "percentualDaReceitaDoFundo": "95.7663",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "fvpq11-via-parque-shopping-100",
+      "coordenadas": {
+        "lat": "-22.982915",
+        "lng": "-43.361835",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Techx Engenharia e Servicos LTDA, 3000, Avenida Ayrton Senna, Barra da Tijuca, Rio de Janeiro, Região Sudeste, 22775-904, Brasil",
+        "osm": "node/11742775285",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Ayrton Senna, 3000 - Barra da Tijuca, Rio de Janeiro - RJ, Brasil"
+      }
+    }
+  ]
+}

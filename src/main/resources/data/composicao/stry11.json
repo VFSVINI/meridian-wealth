@@ -1,0 +1,72 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "STRY11",
+  "nomeDoFundo": "Hedge Strategy Fii De Rl",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "417e17d459b15fe5999dea2f2509add050d34872f53b7b0a1bc4407327289bfe"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 2,
+    "semCoordenadas": 0
+  },
+  "cnpj": "66.060.256/0001-00",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código STRY11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRSTRYCTF004), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "COND JR TATUAPE",
+      "enderecoPublicado": "Rua Coronel Luís Americano, nºs 274, 280, 290, 292, 300, 302, 306 e 310, Lotes 74, 75, 76, 77 e sobras da Quadra 7, parte do Lote 77-A, 27º Subdistrito - Tatuapé, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "612.75",
+      "areaPublicada": "612.75",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "stry11-cond-jr-tatuape",
+      "coordenadas": {
+        "lat": "-23.541935",
+        "lng": "-46.574512",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Coronel Luis Americano, Vila Azevedo, Tatuapé, São Paulo, Região Sudeste, 03308-020, Brasil",
+        "osm": "way/16945268",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Coronel Luís Americano, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "COND MANSÕES RESIDENCIAL",
+      "enderecoPublicado": "Rua João Preda, 239 - Parque Rural Fazenda Santa Cândida, Campinas/SP",
+      "cidade": "Campinas",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1074.08",
+      "areaPublicada": "1074.08",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "stry11-cond-mansoes-residencial",
+      "coordenadas": {
+        "lat": "-22.847980",
+        "lng": "-47.049931",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua João Preda, Mansões Santo Antônio, Chácara Primavera, Campinas, São Paulo, Região Sudeste, 13087-546, Brasil",
+        "osm": "way/147719444",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua João Preda, Campinas, SP, Brasil"
+      }
+    }
+  ]
+}

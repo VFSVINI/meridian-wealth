@@ -1,0 +1,49 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "ALZC11",
+  "nomeDoFundo": "Alianza Crédito Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "8cce16e6d8afb4382078e92d986e21b2bf64536de4de25f992bd87260f105ddf"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "40.011.324/0001-40",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código ALZC11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRALZCCTF016), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Empreendimento Residencial Stylo VM",
+      "enderecoPublicado": "RUA DOUTOR EDGAR GARCIA VIEIRA, 87 - VILA MATILDE - SÃO PAULO - SP",
+      "cidade": "SÃO PAULO",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "8192.88",
+      "areaPublicada": "8192.88",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "alzc11-empreendimento-residencial-stylo-vm",
+      "coordenadas": {
+        "lat": "-23.535692",
+        "lng": "-46.533172",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Doutor Edgar Garcia Vieira, Vila Aricanduva, Vila Matilde, São Paulo, Região Sudeste, 03510-040, Brasil",
+        "osm": "way/245629349",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "RUA DOUTOR EDGAR GARCIA VIEIRA, 87 - VILA MATILDE - SÃO PAULO - SP, Brasil"
+      }
+    }
+  ]
+}

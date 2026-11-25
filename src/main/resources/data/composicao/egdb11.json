@@ -1,0 +1,49 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "EGDB11",
+  "nomeDoFundo": "Fii De Desenvo De Escritórios Boutique Responsabilidade Ltda",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2025.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2025-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "c7f3f842ea8a2f954e58f898745286514f58635ac45c4224e13a65a11d0b8ac7"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "53.866.393/0001-87",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2025, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código EGDB11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BREGDBCTF009), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "TER_TUMIARU",
+      "enderecoPublicado": "Rua Tumiaru, nº 120 - Moema, São Paulo - SP, 04008-050",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "182.53",
+      "areaPublicada": "182.53",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "egdb11-ter-tumiaru",
+      "coordenadas": {
+        "lat": "-23.580722",
+        "lng": "-46.652469",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Tumiaru, Moema, São Paulo, Região Sudeste, 04008-010, Brasil",
+        "osm": "way/27691796",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Tumiaru, 120 - Moema, São Paulo - SP, 04008-050, Brasil"
+      }
+    }
+  ]
+}

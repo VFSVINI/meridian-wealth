@@ -1,0 +1,64 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "JCCJ11",
+  "nomeDoFundo": "Fii Jhsf Cap Malls",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "5cf54f33cc6f06cbdf512b5a56ee5a2cc2b1fd8ba04aff19b70ec726be05722f"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 1
+  },
+  "cnpj": "50.701.686/0001-16",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código JCCJ11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRJCCJCTF044), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "CJ Faria Lima Shopping",
+      "enderecoPublicado": "Alameda Joaquim Eugenio De Lima, S/n, Sem Complemento, Jardim Paulista, São Paulo/SP, Brasil, 01403-003",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "8500",
+      "areaPublicada": "8500",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "jccj11-cj-faria-lima-shopping",
+      "coordenadas": {
+        "lat": "-23.571011",
+        "lng": "-46.655678",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Alameda Joaquim Eugênio de Lima, Jardins, Jardim Paulista, São Paulo, Região Sudeste, 01403-002, Brasil",
+        "osm": "way/426603437",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Joaquim Eugenio De Lima, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Catarina Fashion Outlet",
+      "enderecoPublicado": "Rodovia Castelo Branco, 0, Sem Complemento, Dona Catarina, Sao Roque/SP, Brasil, 18132-900",
+      "cidade": "Sao Roque",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "50755",
+      "areaPublicada": "50755",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "14.3845",
+      "setoresDosInquilinos": [],
+      "id": "jccj11-catarina-fashion-outlet",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    }
+  ]
+}

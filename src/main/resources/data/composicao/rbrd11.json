@@ -1,0 +1,130 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "RBRD11",
+  "nomeDoFundo": "Rb Capital Renda Ii - Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "6b8b7eb62ead622c9dd67ff61576ca54c1bb04a131c34c7109aa5998532c04ab"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 3,
+    "semCoordenadas": 1
+  },
+  "cnpj": "09.006.914/0001-34",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código RBRD11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRRBRDCTF008), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "AMBEV",
+      "enderecoPublicado": "Rodovia 497, Km 2, Anel Viário Ayrton Senna, S/n - Luizote de Freitas, MG",
+      "cidade": "Luizote de Freitas",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "9013.31",
+      "areaPublicada": "9013.31",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "17.8180",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo de Bebidas",
+          "percentualDaReceitaDoImovel": "10"
+        }
+      ],
+      "id": "rbrd11-ambev",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "CATETE",
+      "enderecoPublicado": "R. do Catete, 194 - Glória, Rio de Janeiro - RJ, 22220-000",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "3358.08",
+      "areaPublicada": "3358.08",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "19.1116",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimento",
+          "percentualDaReceitaDoImovel": "10"
+        }
+      ],
+      "id": "rbrd11-catete",
+      "coordenadas": {
+        "lat": "-22.929038",
+        "lng": "-43.177271",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua do Catete, Catete, Rio de Janeiro, Região Sudeste, 22220-040, Brasil",
+        "osm": "way/58586064",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. do Catete, Rio de Janeiro, RJ, Brasil"
+      }
+    },
+    {
+      "nome": "AMPLA",
+      "enderecoPublicado": "R. Dr. Felíciano Sodré, 230 - Centro, São Gonçalo - RJ, 24440-440",
+      "cidade": "São Gonçalo",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "10219.9",
+      "areaPublicada": "10219.9",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "58.8561",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Energia",
+          "percentualDaReceitaDoImovel": "10"
+        }
+      ],
+      "id": "rbrd11-ampla",
+      "coordenadas": {
+        "lat": "-22.825412",
+        "lng": "-43.049731",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Doutor Feliciano Sodré, Zé Garoto, Centro, São Gonçalo, Rio de Janeiro, Região Sudeste, 24440-440, Brasil",
+        "osm": "way/249980041",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Dr. Felíciano Sodré, 230 - Centro, São Gonçalo - RJ, 24440-440, Brasil"
+      }
+    },
+    {
+      "nome": "NATAL",
+      "enderecoPublicado": "R. João Pessoa, 86 - Cidade Alta, Natal - RN, 59025-500",
+      "cidade": "Natal",
+      "uf": "RN",
+      "tipo": null,
+      "areaM2": "3682.78",
+      "areaPublicada": "3682.78",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vago",
+          "percentualDaReceitaDoImovel": "10"
+        }
+      ],
+      "id": "rbrd11-natal",
+      "coordenadas": {
+        "lat": "-5.786466",
+        "lng": "-35.207276",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua João Pessoa, Vila Rosário, Cidade Alta, Natal, Rio Grande do Norte, Região Nordeste, 59025-270, Brasil",
+        "osm": "way/930788029",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. João Pessoa, 86 - Cidade Alta, Natal - RN, 59025-500, Brasil"
+      }
+    }
+  ]
+}

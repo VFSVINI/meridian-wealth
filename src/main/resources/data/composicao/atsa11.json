@@ -1,0 +1,66 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "ATSA11",
+  "nomeDoFundo": "Hedge Atrium Shopping Santo André Fundo De Invest Imob",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "768a430548f3265497a2d423c98ade78a1091d3b0b36bf5d0addb82ed9a4ea24"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "12.809.972/0001-00",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código ATSA11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRATSACTF000), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Atrium Shopping Santo André - 100%",
+      "enderecoPublicado": "Rua Giovanni Battista Pirelli, 155 - Vila Homero Thon - Santo André - SP",
+      "cidade": "Santo André",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "33532.63",
+      "areaPublicada": "33532.63",
+      "vacanciaPercentual": "15.6210",
+      "percentualDaReceitaDoFundo": "96.0824",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "atsa11-atrium-shopping-santo-andre-100",
+      "coordenadas": {
+        "lat": "-23.663660",
+        "lng": "-46.507441",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Atrium Shopping Santo André, 155, Rua Giovanni Battista Pirelli, Vila Homero Thon, Santo André, São Paulo, Região Sudeste, 09111-340, Brasil",
+        "osm": "way/567558002",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Giovanni Battista Pirelli, 155 - Vila Homero Thon - Santo André - SP, Brasil"
+      }
+    }
+  ]
+}

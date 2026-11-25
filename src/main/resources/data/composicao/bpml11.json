@@ -1,0 +1,146 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "BPML11",
+  "nomeDoFundo": "Btgp Shoppings Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "10425b7024353578bff86d8fc87501392bd6b2c4de6a2758124e09df524df10d"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 3
+  },
+  "cnpj": "33.046.142/0001-49",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código BPML11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRBPMLCTF006), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Contagem",
+      "enderecoPublicado": "Av. Severino Ballesteros, 850 - Cabral, Contagem - MG, 32110-005",
+      "cidade": "Contagem",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "29701",
+      "areaPublicada": "29701",
+      "vacanciaPercentual": "9.8509",
+      "percentualDaReceitaDoFundo": "20.1825",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "18.4955"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "9.5515"
+        },
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "7.6023"
+        }
+      ],
+      "id": "bpml11-contagem",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Londrina Norte",
+      "enderecoPublicado": "Rua América Deolindo Garla, 224, Shopping, Londrina, PR, 86079-225",
+      "cidade": "Londrina",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "32992",
+      "areaPublicada": "32992",
+      "vacanciaPercentual": "7.2611",
+      "percentualDaReceitaDoFundo": "9.9073",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "9.7793"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "4.0955"
+        },
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "3.6249"
+        }
+      ],
+      "id": "bpml11-londrina-norte",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Capim Dourado",
+      "enderecoPublicado": "Q. 107, Norte Avenida, NS 5, s/n, Shopping, Palmas, TO, 77001-098",
+      "cidade": "Palmas",
+      "uf": "TO",
+      "tipo": null,
+      "areaM2": "14630",
+      "areaPublicada": "14630",
+      "vacanciaPercentual": "1.9568",
+      "percentualDaReceitaDoFundo": "12.8194",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "12.1863"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "6.5317"
+        },
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "3.9254"
+        }
+      ],
+      "id": "bpml11-capim-dourado",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Ilha Plaza",
+      "enderecoPublicado": "Av. Maestro Paulo e Silva, 400, Shopping, Rio de Janeiro, RJ, 21920-445",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "14172",
+      "areaPublicada": "14172",
+      "vacanciaPercentual": "3.3707",
+      "percentualDaReceitaDoFundo": "13.7050",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "9.3269"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "11.4987"
+        },
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "3.3821"
+        }
+      ],
+      "id": "bpml11-ilha-plaza",
+      "coordenadas": {
+        "lat": "-22.801877",
+        "lng": "-43.201792",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Ilha Plaza Shopping, 400, Avenida Maestro Paulo Silva, Jardim Carioca, Rio de Janeiro, Região Sudeste, 21920-445, Brasil",
+        "osm": "way/38508368",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Maestro Paulo e Silva, 400, Rio de Janeiro, RJ, Brasil"
+      }
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "AJFI11",
+  "nomeDoFundo": "Aj Malls Fundo De Investimento Imobiliário",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "0e648a94a551fedd22afaa1c7f15100443a96712a59eb5311f1c0a19e58cba97"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 4,
+    "semCoordenadas": 2
+  },
+  "cnpj": "51.472.985/0001-99",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código AJFI11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRAJFICTF001), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Balneário Shopping",
+      "enderecoPublicado": "Av. Santa Catarina, nº 1, Estados - 88339-005, Balneário Camboriú - SC",
+      "cidade": "Balneário Camboriú",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "35901.91",
+      "areaPublicada": "35901.91",
+      "vacanciaPercentual": "9.1804",
+      "percentualDaReceitaDoFundo": "4.3858",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Restaurante",
+          "percentualDaReceitaDoImovel": "15"
+        },
+        {
+          "setor": "Cinema",
+          "percentualDaReceitaDoImovel": "15"
+        },
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "17"
+        }
+      ],
+      "id": "ajfi11-balneario-shopping",
+      "coordenadas": {
+        "lat": "-26.992963",
+        "lng": "-48.647644",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Balneário Shopping, 1, Avenida Santa Catarina, Estados, Balneário Camboriú, Santa Catarina, Região Sul, 88339-005, Brasil",
+        "osm": "way/361072882",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Santa Catarina, 1, Estados - 88339-005, Balneário Camboriú - SC, Brasil"
+      }
+    },
+    {
+      "nome": "Continente Shopping",
+      "enderecoPublicado": "Esquina Rod. SC 281, Distrito Industrial - 88104-801, Grande Florianópolis - SC",
+      "cidade": "Grande Florianópolis",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "36032.7",
+      "areaPublicada": "36032.7",
+      "vacanciaPercentual": "9.8406",
+      "percentualDaReceitaDoFundo": "40.8432",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "17"
+        },
+        {
+          "setor": "Academia",
+          "percentualDaReceitaDoImovel": "15"
+        },
+        {
+          "setor": "Serv e Conveniência",
+          "percentualDaReceitaDoImovel": "16"
+        }
+      ],
+      "id": "ajfi11-continente-shopping",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Neumarkt Shopping",
+      "enderecoPublicado": "R. Sete de Setembro, n° 1213 , Centro - 89010-911, Blumenau - SC,",
+      "cidade": "Blumenau",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "30436.24",
+      "areaPublicada": "30436.24",
+      "vacanciaPercentual": "3.3265",
+      "percentualDaReceitaDoFundo": "13.0325",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Restaurante",
+          "percentualDaReceitaDoImovel": "53"
+        },
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "19"
+        },
+        {
+          "setor": "Serv e Conveniência",
+          "percentualDaReceitaDoImovel": "15"
+        }
+      ],
+      "id": "ajfi11-neumarkt-shopping",
+      "coordenadas": {
+        "lat": "-26.920201",
+        "lng": "-49.068204",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua 7 de Setembro, Centro, Blumenau, Santa Catarina, Região Sul, 89010-203, Brasil",
+        "osm": "way/978260244",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Sete de Setembro, Blumenau, SC, Brasil"
+      }
+    },
+    {
+      "nome": "Norte Shopping",
+      "enderecoPublicado": "Rodovia BR-470, nº  3000, Salto Norte - 89065-800, Blumenau - SC",
+      "cidade": "Blumenau",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "35324.5",
+      "areaPublicada": "35324.5",
+      "vacanciaPercentual": "3.6869",
+      "percentualDaReceitaDoFundo": "16.6336",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "19"
+        },
+        {
+          "setor": "Serv e Conveniência",
+          "percentualDaReceitaDoImovel": "24"
+        },
+        {
+          "setor": "Lazer",
+          "percentualDaReceitaDoImovel": "47"
+        }
+      ],
+      "id": "ajfi11-norte-shopping",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Nações Shopping",
+      "enderecoPublicado": "Av. Jorge Elias de Lucca, nº 765, Nossa Senhora da Salete - 88813-901, Criciúma - SC",
+      "cidade": "Criciúma",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "44574.9999482727",
+      "areaPublicada": "44574.9999482727",
+      "vacanciaPercentual": "9.8903",
+      "percentualDaReceitaDoFundo": "17.9641",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Restaurante",
+          "percentualDaReceitaDoImovel": "15"
+        },
+        {
+          "setor": "Lazer",
+          "percentualDaReceitaDoImovel": "15"
+        },
+        {
+          "setor": "Serv e Conveniência",
+          "percentualDaReceitaDoImovel": "17"
+        }
+      ],
+      "id": "ajfi11-nacoes-shopping",
+      "coordenadas": {
+        "lat": "-28.685249",
+        "lng": "-49.333550",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Nações Shopping, 765, Avenida Jorge Elias De Lucca, Nossa Senhora da Salete, Criciúma, Santa Catarina, Região Sul, 88813-901, Brasil",
+        "osm": "way/438472908",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Jorge Elias de Lucca, 765, Nossa Senhora da Salete - 88813-901, Criciúma - SC, Brasil"
+      }
+    },
+    {
+      "nome": "Garten Shopping",
+      "enderecoPublicado": "Av. Rolf Wiest, n° 333 , Bom Retiro - 89223-005, Joinville - SC,",
+      "cidade": "Joinville",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "41969.3299333191",
+      "areaPublicada": "41969.3299333191",
+      "vacanciaPercentual": "2.9845",
+      "percentualDaReceitaDoFundo": "7.1405",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Cinema",
+          "percentualDaReceitaDoImovel": "15"
+        },
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "16"
+        },
+        {
+          "setor": "Serv e Conveniência",
+          "percentualDaReceitaDoImovel": "19"
+        }
+      ],
+      "id": "ajfi11-garten-shopping",
+      "coordenadas": {
+        "lat": "-26.253370",
+        "lng": "-48.852195",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Rolf Wiest, Jardim Kelly, Bom Retiro, Joinville, Santa Catarina, Região Sul, 89223-005, Brasil",
+        "osm": "way/852054863",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Rolf Wiest, n° 333 , Bom Retiro - 89223-005, Joinville - SC, Brasil"
+      }
+    }
+  ]
+}

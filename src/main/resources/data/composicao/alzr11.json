@@ -1,0 +1,502 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "ALZR11",
+  "nomeDoFundo": "Alianza Trust Fii Rl",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "a479bd6fe2bbda26fcb0ff334fa0e5f7ae2a7b72258fc2da2f6c2aa4bd2247d1"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 9,
+    "semCoordenadas": 11
+  },
+  "cnpj": "28.737.771/0001-85",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código ALZR11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRALZRCTF006), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "BRF Guarulhos",
+      "enderecoPublicado": "Rua Barao De Penedo, 248, Sem Complemento, Cidade Industrial Satélite De São Paulo, Guarulhos/SP, Brasil, 07222-015",
+      "cidade": "Guarulhos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "3459",
+      "areaPublicada": "3459",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.8610",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentos Processados",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-brf-guarulhos",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Imovel Estancia Bela Vista - CD Ibitinga",
+      "enderecoPublicado": "Area Rural, Sn, Estância Bela Vista\", Situado Nas Fazendas \"monte Alegre\" E \"marimbondo\",, Área Rural De Ibitinga, Ibitinga/SP, Brasil, 14949-899",
+      "cidade": "Ibitinga",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "60724.22",
+      "areaPublicada": "60724.22",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.2947",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-imovel-estancia-bela-vista-cd-ibitinga",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Bauducco - Guarulhos",
+      "enderecoPublicado": "Rua Fritz Reimann, 500, Sem Complemento, Vila Sao Joao, Guarulhos/SP, Brasil, 07044-020",
+      "cidade": "Guarulhos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "11832.59",
+      "areaPublicada": "11832.59",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.0889",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentos Processados",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-bauducco-guarulhos",
+      "coordenadas": {
+        "lat": "-23.479576",
+        "lng": "-46.553204",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Fritz Reimann, Itapegica, Guarulhos, São Paulo, Região Sudeste, 07044-020, Brasil",
+        "osm": "way/301603260",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Fritz Reimann, 500, Guarulhos, SP, Brasil"
+      }
+    },
+    {
+      "nome": "BRF Bauru",
+      "enderecoPublicado": "Avenida Nacoes Unidas, 51, 51 - 15, Jardim Godoy, Bauru/SP, Brasil, 17021-365",
+      "cidade": "Bauru",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "3627",
+      "areaPublicada": "3627",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.9658",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentos Processados",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-brf-bauru",
+      "coordenadas": {
+        "lat": "-22.298729",
+        "lng": "-49.087867",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Nações Unidas, Jardim Progresso, Jardim TV, Bauru, São Paulo, Região Sudeste, 17021-365, Brasil",
+        "osm": "way/597037631",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Nacoes Unidas, 51, Bauru, SP, Brasil"
+      }
+    },
+    {
+      "nome": "OBA Hortifruti - CD Sumare",
+      "enderecoPublicado": "Avenida Americo Ribeiro Dos Santos, 385, Sem Complemento, Parque Bandeirantes I (nova Veneza), Sumaré/SP, Brasil, 13181-715",
+      "cidade": "Sumaré",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "33795.13",
+      "areaPublicada": "33795.13",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.0397",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-oba-hortifruti-cd-sumare",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Air Liquide - Galpao Vila Carioca",
+      "enderecoPublicado": "Avenida Carioca, 798, Antigo Numero 70, Lote 30, Vila Carioca, Sao Paulo/SP, Brasil, 04225-002",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "5008",
+      "areaPublicada": "5008",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.6946",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-air-liquide-galpao-vila-carioca",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "OBA Hortifruti - SBC",
+      "enderecoPublicado": "Avenida Francisco Prestes Maia, 1497, Sem Complemento, Centro, São Bernardo Do Campo/SP, Brasil, 09770-000",
+      "cidade": "São Bernardo Do Campo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "4427.56",
+      "areaPublicada": "4427.56",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.7923",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-oba-hortifruti-sbc",
+      "coordenadas": {
+        "lat": "-23.715654",
+        "lng": "-46.541890",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Francisco Prestes Maia, Santa Terezinha, São Bernardo do Campo, São Paulo, Região Sudeste, 09770-250, Brasil",
+        "osm": "way/284931550",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Francisco Prestes Maia, 1497, São Bernardo Do Campo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Imovel Globo - Jardim Botanico",
+      "enderecoPublicado": "Rua Pacheco Leao, 70, Sem Complemento, Jardim Botanico, Rio De Janeiro/RJ, Brasil, 22460-030",
+      "cidade": "Rio De Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "3815.52",
+      "areaPublicada": "3815.52",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.8389",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Mídia",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-imovel-globo-jardim-botanico",
+      "coordenadas": {
+        "lat": "-22.966071",
+        "lng": "-43.219963",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Globo PL 70, 70, Rua Pacheco Leão, Jardim Botânico, Rio de Janeiro, Região Sudeste, 22460-020, Brasil",
+        "osm": "way/206379170",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Pacheco Leao, 70, Rio De Janeiro, RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Decathlon - Morumbi",
+      "enderecoPublicado": "Avenida Duquesa De Goias, 381, Sem Complemento, Real Parque, Sao Paulo/SP, Brasil, 05686-001",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "28500",
+      "areaPublicada": "28500",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.8904",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-decathlon-morumbi",
+      "coordenadas": {
+        "lat": "-23.611215",
+        "lng": "-46.702963",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Decathlon, 381, Avenida Duquesa de Goiás, Morumbi, São Paulo, Região Sudeste, 05686-900, Brasil",
+        "osm": "way/245886219",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Duquesa De Goias, 381, Sao Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Atento Del Castilho",
+      "enderecoPublicado": "Avenida Dom Helder Camara, 3.203, Sem Complemento, Del Castilho, Rio De Janeiro/RJ, Brasil, 21050-624",
+      "cidade": "Rio De Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "8177.88",
+      "areaPublicada": "8177.88",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.9337",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços Diversos",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-atento-del-castilho",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Assai - Bangu RJ",
+      "enderecoPublicado": "Avenida Brasil, 33809, Sem Complemento, Bangu, Rio De Janeiro/RJ, Brasil, 21852-002",
+      "cidade": "Rio De Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "34520",
+      "areaPublicada": "34520",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.2299",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-assai-bangu-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Editora Moderna Santillana - Belenzinho",
+      "enderecoPublicado": "Rua Padre Adelino, 758, Sem Complemento, Quarta Parada, Sao Paulo/SP, Brasil, 03303-000",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "9261",
+      "areaPublicada": "9261",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.6508",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-editora-moderna-santillana-belenzinho",
+      "coordenadas": {
+        "lat": "-23.544572",
+        "lng": "-46.586795",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "758, Rua Padre Adelino, Belém, São Paulo, Região Sudeste, 03303-000, Brasil",
+        "osm": "way/1165804781",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Padre Adelino, 758, Sao Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "CDB - Ana Rosa",
+      "enderecoPublicado": "Avenida Conselheiro Rodrigues Alves, 300, Sem Complemento, Vila Mariana, São Paulo/SP, Brasil, 04014-000",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1597.95",
+      "areaPublicada": "1597.95",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6333",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Análises e Diagnósticos",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-cdb-ana-rosa",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Emprendimento Pueri Domus",
+      "enderecoPublicado": "Rua Ministro Godoi, 1697, Sem Complemento, Perdizes, Sao Paulo/SP, Brasil, 05015-001",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "8016",
+      "areaPublicada": "8016",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.2978",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-emprendimento-pueri-domus",
+      "coordenadas": {
+        "lat": "-23.543339",
+        "lng": "-46.676259",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "1697, Rua Ministro Godói, Sumaré, Perdizes, São Paulo, Região Sudeste, 05015-000, Brasil",
+        "osm": "node/9936274839",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Ministro Godoi, 1697, Sao Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "CD Mercado Livre",
+      "enderecoPublicado": "Rod. Anhanguera, 28, Sem Complemento, Cravinhos, Cravinhos/SP, Brasil, 14140-000",
+      "cidade": "Cravinhos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "38383.26",
+      "areaPublicada": "38383.26",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.0314",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "66.1834"
+        }
+      ],
+      "id": "alzr11-cd-mercado-livre",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Galpao Femsa",
+      "enderecoPublicado": "Avenida Dos Estados, S/n, Sem Complemento, Vila Metalurgica, Santo Andre/SP, Brasil, 09220-570",
+      "cidade": "Santo Andre",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "36740",
+      "areaPublicada": "36740",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.1249",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bebidas",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-galpao-femsa",
+      "coordenadas": {
+        "lat": "-23.617037",
+        "lng": "-46.543246",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida dos Estados, 2º Subdistrito, Santo André, São Paulo, Região Sudeste, 09220-570, Brasil",
+        "osm": "way/706082728",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Dos Estados, Santo Andre, SP, Brasil"
+      }
+    },
+    {
+      "nome": "CDB - Morumbi",
+      "enderecoPublicado": "Rua Pasquale Gallupi, 7, Sem Complemento, Paraisópolis, São Paulo/SP, Brasil, 05660-000",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "5741",
+      "areaPublicada": "5741",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.0012",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Análises e Diagnósticos",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-cdb-morumbi",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Dasa - Ascendino Reis",
+      "enderecoPublicado": "Avenida Professor Ascendino Reis, 549, Sem Complemento, Vila Clementino, Sao Paulo/SP, Brasil, 04027-000",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "2283.66",
+      "areaPublicada": "2283.66",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.0403",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Análises e Diagnósticos",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-dasa-ascendino-reis",
+      "coordenadas": {
+        "lat": "-23.598646",
+        "lng": "-46.650664",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Professor Ascendino Reis, Mirandópolis, Saúde, São Paulo, Região Sudeste, 04027-000, Brasil",
+        "osm": "way/944349403",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Professor Ascendino Reis, 549, Sao Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "OBA Hortifruti - SJRP",
+      "enderecoPublicado": "Avenida Presidente Juscelino Kubitschek De Oliveira, 3530, Sem Complemento, Jardim Moysés Miguel Haddad, São José Do Rio Preto/SP, Brasil, 15093-215",
+      "cidade": "São José Do Rio Preto",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "3150",
+      "areaPublicada": "3150",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.4208",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "76.2530"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "17.0965"
+        }
+      ],
+      "id": "alzr11-oba-hortifruti-sjrp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Dasa - Sumare",
+      "enderecoPublicado": "Avenida Sumare, 1500, Sem Complemento, Perdizes, Sao Paulo/SP, Brasil, 05016-110",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "5227.43",
+      "areaPublicada": "5227.43",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.7874",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Análises e Diagnósticos",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "alzr11-dasa-sumare",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

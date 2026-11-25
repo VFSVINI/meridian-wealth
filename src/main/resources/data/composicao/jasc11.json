@@ -1,0 +1,438 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "JASC11",
+  "nomeDoFundo": "Jasc Renda Fii Rl",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "67643e968240f70f254ab4e57a3dbbff7b5a10bf567bd203492f673d2565e711"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 9,
+    "semCoordenadas": 8
+  },
+  "cnpj": "40.886.241/0001-02",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 2. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código JASC11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRJASCCTF007), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Strip Mall P4",
+      "enderecoPublicado": "Rua Quinze De Novembro, 202, Sem Complemento, Itaoca, Fortaleza/CE, Brasil, 60421-076",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "9017",
+      "areaPublicada": "9017",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "10.2000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-strip-mall-p4",
+      "coordenadas": {
+        "lat": "-3.768386",
+        "lng": "-38.558423",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "202, Rua 15 de Novembro, Montese, Fortaleza, Ceará, Região Nordeste, 60421-050, Brasil",
+        "osm": "way/1104436370",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Quinze De Novembro, 202, Fortaleza, CE, Brasil"
+      }
+    },
+    {
+      "nome": "Lagoa",
+      "enderecoPublicado": "Avenida Bernardo Manuel, 11000, Sem Complemento, Mondubim, Fortaleza/CE, Brasil, 60761-740",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "14150",
+      "areaPublicada": "14150",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "6.6000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-lagoa",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Sargento Herminio 2",
+      "enderecoPublicado": "Avenida Cearenses, 2851, Sem Complemento, Presidente Kennedy, Fortaleza/CE, Brasil, 60355-504",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "4523",
+      "areaPublicada": "4523",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "6.5000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-sargento-herminio-2",
+      "coordenadas": {
+        "lat": "-3.730627",
+        "lng": "-38.566939",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Cearenses, Presidente Kennedy, Fortaleza, Ceará, Região Nordeste, 60355-504, Brasil",
+        "osm": "way/916863114",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Cearenses, 2851, Fortaleza, CE, Brasil"
+      }
+    },
+    {
+      "nome": "Francisco Sa",
+      "enderecoPublicado": "Avenida Francisco Sa, 2670, Sem Complemento, Jacarecanga, Fortaleza/CE, Brasil, 60310-000",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "5201.61",
+      "areaPublicada": "5201.61",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "6.2000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-francisco-sa",
+      "coordenadas": {
+        "lat": "-3.719357",
+        "lng": "-38.549163",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "2670, Avenida Francisco Sá, Jacarecanga, Fortaleza, Ceará, Região Nordeste, 60310-000, Brasil",
+        "osm": "way/1241938597",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Francisco Sa, 2670, Fortaleza, CE, Brasil"
+      }
+    },
+    {
+      "nome": "Loja de Rua - Bezerra de Menezes nº 1409",
+      "enderecoPublicado": "Avenida Bezerra De Menezes, 1409, Sem Complemento, Parquelandia, Fortaleza/CE, Brasil, 60325-004",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "292.45",
+      "areaPublicada": "292.45",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0.6000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-loja-de-rua-bezerra-de-menezes-no-1409",
+      "coordenadas": {
+        "lat": "-3.734549",
+        "lng": "-38.557240",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Drogasil, 1409, Avenida Bezerra de Menezes, Parquelândia, Fortaleza, Ceará, Região Nordeste, 60325-004, Brasil",
+        "osm": "way/1120758365",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Bezerra De Menezes, 1409, Fortaleza, CE, Brasil"
+      }
+    },
+    {
+      "nome": "Loja de Rua - Santos Dumont nº 3030",
+      "enderecoPublicado": "Avenida Santos Dumont - De 2400 A 4998 - Lado Par, 3030, Sem Complemento, Aldeota, Fortaleza/CE, Brasil, 60150-162",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "290.96",
+      "areaPublicada": "290.96",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "3.3000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-loja-de-rua-santos-dumont-no-3030",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Maraponga",
+      "enderecoPublicado": "Avenida Godofredo Maciel, 2540, Sem Complemento, Maraponga, Fortaleza/CE, Brasil, 60710-684",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "6039",
+      "areaPublicada": "6039",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "6.9000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-maraponga",
+      "coordenadas": {
+        "lat": "-3.797290",
+        "lng": "-38.571151",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "2540, Avenida Godofredo Maciel, Maraponga, Fortaleza, Ceará, Região Nordeste, 60710-684, Brasil",
+        "osm": "node/9254263245",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Godofredo Maciel, 2540, Fortaleza, CE, Brasil"
+      }
+    },
+    {
+      "nome": "Loja de Rua - Bernardo Manuel nº 207",
+      "enderecoPublicado": "Avenida Bernardo Manuel - Ate 7801 - Lado Impar, 207, Sem Complemento, Serrinha, Fortaleza/CE, Brasil, 60741-605",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "235.5",
+      "areaPublicada": "235.5",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0.7000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-loja-de-rua-bernardo-manuel-no-207",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Sargento Herminio",
+      "enderecoPublicado": "Avenida Sargento Herminio Sampaio, 2411, Sem Complemento, São Gerardo, Fortaleza/CE, Brasil, 60320-105",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "11175",
+      "areaPublicada": "11175",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "10.5000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-sargento-herminio",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Maraponga 2",
+      "enderecoPublicado": "Vila Castro, 2540, Sem Complemento, Vila Peri, Fortaleza/CE, Brasil, 60730-190",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "2100.65",
+      "areaPublicada": "2100.65",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "4.3000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-maraponga-2",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Eusebio",
+      "enderecoPublicado": "Rodovia Ce-040, S/n, Sem Complemento, Coaçu, Eusébio/CE, Brasil, 61760-908",
+      "cidade": "Eusébio",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "7873",
+      "areaPublicada": "7873",
+      "vacanciaPercentual": "94.0093",
+      "percentualDaReceitaDoFundo": "12.3000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-eusebio",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Sao Joao",
+      "enderecoPublicado": "Avenida Santos Dumont, 1169, Sem Complemento, Aldeota, Fortaleza/CE, Brasil, 60150-161",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "4496.05",
+      "areaPublicada": "4496.05",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "5.5000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-sao-joao",
+      "coordenadas": {
+        "lat": "-3.730721",
+        "lng": "-38.513179",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Pão de Açúcar, 1169, Avenida Santos Dumont, Aldeota, Fortaleza, Ceará, Região Nordeste, 60150-161, Brasil",
+        "osm": "node/11066020327",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Santos Dumont, 1169, Fortaleza, CE, Brasil"
+      }
+    },
+    {
+      "nome": "Paulista",
+      "enderecoPublicado": "Avenida Antonio Cabral De Souza, 1660, Sem Complemento, Maranguape I, Paulista/PE, Brasil, 53444-360",
+      "cidade": "Paulista",
+      "uf": "PE",
+      "tipo": null,
+      "areaM2": "9497",
+      "areaPublicada": "9497",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "11",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-paulista",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Lago Jacarey",
+      "enderecoPublicado": "Avenida Pedro Lazar, 877, Sem Complemento, Cambeba, Fortaleza/CE, Brasil, 60822-240",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "2593.66",
+      "areaPublicada": "2593.66",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "3.6000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-lago-jacarey",
+      "coordenadas": {
+        "lat": "-3.806504",
+        "lng": "-38.488917",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Pedro Lazar, Parque Iracema, Fortaleza, Ceará, Região Nordeste, 60822-220, Brasil",
+        "osm": "way/771208593",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Pedro Lazar, 877, Fortaleza, CE, Brasil"
+      }
+    },
+    {
+      "nome": "Caxanga",
+      "enderecoPublicado": "Avenida Caxanga, 3942, Sem Complemento, Iputinga, Recife/PE, Brasil, 50731-005",
+      "cidade": "Recife",
+      "uf": "PE",
+      "tipo": null,
+      "areaM2": "7703",
+      "areaPublicada": "7703",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "8.5000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-caxanga",
+      "coordenadas": {
+        "lat": "-8.030872",
+        "lng": "-34.956688",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Caxangá, Jardim Petrópolis, Várzea, Recife, Pernambuco, Região Nordeste, 50731-900, Brasil",
+        "osm": "way/136667235",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Caxanga, 3942, Recife, PE, Brasil"
+      }
+    },
+    {
+      "nome": "Loja de Rua - Washington Soares",
+      "enderecoPublicado": "Avenida Washington Soares, 3535, Sem Complemento, Edson Queiroz, Fortaleza/CE, Brasil, 60811-341",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "250",
+      "areaPublicada": "250",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "1.6000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-loja-de-rua-washington-soares",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Loja de Rua - Treze de Maio",
+      "enderecoPublicado": "Avenida Deputado Oswaldo Studart, 62, Sem Complemento, Fátima, Fortaleza/CE, Brasil, 60411-260",
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "315",
+      "areaPublicada": "315",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "1.7000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "jasc11-loja-de-rua-treze-de-maio",
+      "coordenadas": {
+        "lat": "-3.753257",
+        "lng": "-38.527796",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Deputado Oswaldo Studart, Fátima, Fortaleza, Ceará, Região Nordeste, 60411-230, Brasil",
+        "osm": "way/24404333",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Deputado Oswaldo Studart, 62, Fortaleza, CE, Brasil"
+      }
+    }
+  ]
+}

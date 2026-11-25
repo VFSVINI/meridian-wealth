@@ -1,0 +1,71 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "GTWR11",
+  "nomeDoFundo": "Fundo De Investimento Imobiliário Green Towers",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "d91bf4cca878133b886472f72639e67bfe7ced8f8b434590dbf4adb3164b5594"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 3
+  },
+  "cnpj": "23.740.527/0001-58",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código GTWR11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRGTWRCTF003), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edificio de Escritório - Torre II (Central)",
+      "enderecoPublicado": "Setor de Autarquias Norte - Quadra 5 - Lote B - Brasilia / DF",
+      "cidade": "Brasilia",
+      "uf": "DF",
+      "tipo": null,
+      "areaM2": "57717.61",
+      "areaPublicada": "57717.61",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "gtwr11-edificio-de-escritorio-torre-ii-central",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Edificio de Escritório - Torre I (Sul)",
+      "enderecoPublicado": "Setor de Autarquias Norte - Quadra 5 - Lote B - Brasilia / DF",
+      "cidade": "Brasilia",
+      "uf": "DF",
+      "tipo": null,
+      "areaM2": "50215.36",
+      "areaPublicada": "50215.36",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "gtwr11-edificio-de-escritorio-torre-i-sul",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Edificio de Escritório - Torre III (Norte)",
+      "enderecoPublicado": "Setor de Autarquias Norte - Quadra 5 - Lote B - Brasilia / DF",
+      "cidade": "Brasilia",
+      "uf": "DF",
+      "tipo": null,
+      "areaM2": "55145.89",
+      "areaPublicada": "55145.89",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "gtwr11-edificio-de-escritorio-torre-iii-norte",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

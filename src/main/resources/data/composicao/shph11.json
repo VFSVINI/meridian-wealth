@@ -1,0 +1,58 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "SHPH11",
+  "nomeDoFundo": "Shopping Pátio Higienópolis Fii De Responsabilidade Limitada",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "6d375b8ebeb58cf5a40c3adf5476c1d73d8dc5572884605b31ab70cdeb6a19cd"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "03.507.519/0001-59",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código SHPH11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRSHPHCTF008), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Shopping Center",
+      "enderecoPublicado": "Rua Dr. Veiga Filho, 133, Higienópolis, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "34511.88",
+      "areaPublicada": "34511.88",
+      "vacanciaPercentual": "2.4151",
+      "percentualDaReceitaDoFundo": "97.2380",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviço",
+          "percentualDaReceitaDoImovel": "1.9137"
+        },
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "98.0863"
+        }
+      ],
+      "id": "shph11-shopping-center",
+      "coordenadas": {
+        "lat": "-23.541156",
+        "lng": "-46.657236",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "133, Rua Doutor Veiga Filho, Higienópolis, Consolação, São Paulo, Região Sudeste, 01229-001, Brasil",
+        "osm": "node/8332307262",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Dr. Veiga Filho, 133, Higienópolis, São Paulo - SP, Brasil"
+      }
+    }
+  ]
+}

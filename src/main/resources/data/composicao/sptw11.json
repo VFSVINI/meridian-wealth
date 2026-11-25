@@ -1,0 +1,54 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "SPTW11",
+  "nomeDoFundo": "Sp Downtown Fundo De Investimento Imobiliário - Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "d130c8a84eae007f19694233608391943b54d9d0948e37dafcc3646a8877f1be"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "15.538.445/0001-05",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código SPTW11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRSPTWCTF002), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edificio Comercial Badaró",
+      "enderecoPublicado": "Rua Líbero Badaró, 633/641 e Avenida, Prestes Maia, 98/114 - Centro - São Paulo/ SP - Brasil",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "13437.27",
+      "areaPublicada": "13437.27",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "94.9174",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comercial",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "sptw11-edificio-comercial-badaro",
+      "coordenadas": {
+        "lat": "-23.546234",
+        "lng": "-46.636127",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Líbero Badaró, Glicério, Sé, São Paulo, Região Sudeste, 01009-000, Brasil",
+        "osm": "way/425691429",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Líbero Badaró, São Paulo, SP, Brasil"
+      }
+    }
+  ]
+}

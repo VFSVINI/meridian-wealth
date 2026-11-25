@@ -1,0 +1,926 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "FZDA11",
+  "nomeDoFundo": "Tane Fzmg Fiagro",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2025.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2025-12-31",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "a6763b630ca5f53c8eeacdce1e94754497146543d5fc841e80530c4a3bdeb8eb"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 45
+  },
+  "cnpj": "59.680.687/0001-04",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 31/12/2025, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código FZDA11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRFZDACTF008), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Matrícula 43682 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "168300",
+      "areaPublicada": "168300",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.3200",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-43682-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 16817 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "333900",
+      "areaPublicada": "333900",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6400",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-16817-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 42421 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "229800",
+      "areaPublicada": "229800",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.4400",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-42421-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 17673 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "48400",
+      "areaPublicada": "48400",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.0900",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-17673-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 43645 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1275059",
+      "areaPublicada": "1275059",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.4400",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-43645-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 17671 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "188700",
+      "areaPublicada": "188700",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.3600",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-17671-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 16125 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "37400",
+      "areaPublicada": "37400",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.0700",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-16125-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 2344 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "50000",
+      "areaPublicada": "50000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-2344-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 43636 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "75000",
+      "areaPublicada": "75000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1400",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-43636-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 14158 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "47285",
+      "areaPublicada": "47285",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.0900",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-14158-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 16122 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "481176",
+      "areaPublicada": "481176",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.9200",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-16122-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 18655 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "16200",
+      "areaPublicada": "16200",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.0300",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-18655-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 16543 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "52186",
+      "areaPublicada": "52186",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-16543-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 7878 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "120000",
+      "areaPublicada": "120000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2300",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-7878-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 12159 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1221000",
+      "areaPublicada": "1221000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.3400",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-12159-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 52873 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "435600",
+      "areaPublicada": "435600",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.8300",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-52873-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 12717 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "178295",
+      "areaPublicada": "178295",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.3400",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-12717-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 490 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "103800",
+      "areaPublicada": "103800",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-490-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 13597 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "18730",
+      "areaPublicada": "18730",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.0400",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-13597-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 43629 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "100500",
+      "areaPublicada": "100500",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1900",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-43629-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 14087 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "187500",
+      "areaPublicada": "187500",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.3600",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-14087-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 42621 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "3206987",
+      "areaPublicada": "3206987",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.1400",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-42621-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 3950 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "634600",
+      "areaPublicada": "634600",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.2100",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-3950-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 15735 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "7376500",
+      "areaPublicada": "7376500",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "14.1100",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-15735-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 7893 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2222800",
+      "areaPublicada": "2222800",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.2500",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-7893-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 32811 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "100000",
+      "areaPublicada": "100000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1900",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-32811-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 10837 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "6228",
+      "areaPublicada": "6228",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.0100",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-10837-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 16239 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "640400",
+      "areaPublicada": "640400",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.2300",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-16239-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 16121 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1602540",
+      "areaPublicada": "1602540",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.0700",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-16121-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 12793 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "139104",
+      "areaPublicada": "139104",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2700",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-12793-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 21560 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2508500",
+      "areaPublicada": "2508500",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.8000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-21560-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 21405 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "484000",
+      "areaPublicada": "484000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.9300",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-21405-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 7894 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "16121664",
+      "areaPublicada": "16121664",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "30.8400",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-7894-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 7924 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "3470000",
+      "areaPublicada": "3470000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.6400",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-7924-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 7903 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "350000",
+      "areaPublicada": "350000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6700",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-7903-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 12814 - Cartório Três Maria / MG",
+      "enderecoPublicado": "Zona Rural do Município de Três Marias",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "3540605",
+      "areaPublicada": "3540605",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.7700",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-12814-cartorio-tres-maria-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 17672 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "100000",
+      "areaPublicada": "100000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1900",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-17672-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 3970 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "400000",
+      "areaPublicada": "400000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.7700",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-3970-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 15604 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2217300",
+      "areaPublicada": "2217300",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.2400",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-15604-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 17839 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "96800",
+      "areaPublicada": "96800",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1900",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-17839-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 16065 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "72600",
+      "areaPublicada": "72600",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1400",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-16065-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 16124 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "36800",
+      "areaPublicada": "36800",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.0700",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-16124-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 16542 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "310800",
+      "areaPublicada": "310800",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.5900",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-16542-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 13882 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "824742",
+      "areaPublicada": "824742",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.5800",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-13882-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Matrícula 19415 - Cartório Curvelo / MG",
+      "enderecoPublicado": "Zona Rural do Município de Felixlândia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "440000",
+      "areaPublicada": "440000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.8400",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "fzda11-matricula-19415-cartorio-curvelo-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

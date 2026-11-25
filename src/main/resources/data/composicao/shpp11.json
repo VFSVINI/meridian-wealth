@@ -1,0 +1,54 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "SHPP11",
+  "nomeDoFundo": "Shop Pt Paulista Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "f0a89827f69f043f153b09061417113f670a1d899472eb8ef82fb08ff73f6b3f"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 1
+  },
+  "cnpj": "59.090.726/0001-05",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código SHPP11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRSHPPCTF001), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Shopping Patio Paulista",
+      "enderecoPublicado": "Rua Treze De Maio, 1947, Sem Complemento, Bela Vista, São Paulo/SP, Brasil, 01327-900",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "80000",
+      "areaPublicada": "80000",
+      "vacanciaPercentual": "1.7700",
+      "percentualDaReceitaDoFundo": "76.4573",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "31.1845"
+        },
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "33.4607"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "35.3548"
+        }
+      ],
+      "id": "shpp11-shopping-patio-paulista",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

@@ -1,0 +1,358 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "TJKB11",
+  "nomeDoFundo": "Tjk Renda Imobiliaria Fii - Responsabilidade Limitada",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "ee260591ce8c3821030a68bfe69b4faad46aff472d09c6d6f74290813ce6cd36"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 6,
+    "semCoordenadas": 7
+  },
+  "cnpj": "39.714.024/0001-48",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código TJKB11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRTJKBCTF006), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Ed. Neolink",
+      "enderecoPublicado": "Avenida Ayrton Senna, nº 2500, Jacarepaguá - RJ",
+      "cidade": "Jacarepaguá",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "433.1",
+      "areaPublicada": "433.1",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.3792",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Clínica Oncológica",
+          "percentualDaReceitaDoImovel": "100"
+        },
+        {
+          "setor": "Clínica Oncológica",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "tjkb11-ed-neolink-1",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Ed. Neolink",
+      "enderecoPublicado": "Avenida Ayrton Senna, nº 2500, Jacarepaguá - RJ",
+      "cidade": "Jacarepaguá",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "1565.9",
+      "areaPublicada": "1565.9",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.3713",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Clínica Oncológica",
+          "percentualDaReceitaDoImovel": "100"
+        },
+        {
+          "setor": "Clínica Oncológica",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "tjkb11-ed-neolink-2",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Napoleão Barros",
+      "enderecoPublicado": "Rua Loefgreen e Rua Napoleão de Barros, Lotes 301 e 301-A - Vila Mariana - São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1668.07",
+      "areaPublicada": "1668.07",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.2663",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Pesquisa",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "tjkb11-napoleao-barros",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Edifício Mykonos - escritório 51 e 52",
+      "enderecoPublicado": "Rua Gomes de Carvalho, 1356, Vila Olímpia - São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "572.07",
+      "areaPublicada": "572.07",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.8989",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Consultório médico",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "tjkb11-edificio-mykonos-escritorio-51-e-52",
+      "coordenadas": {
+        "lat": "-23.594388",
+        "lng": "-46.690743",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Gomes de Carvalho, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04551-060, Brasil",
+        "osm": "way/96482028",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Gomes de Carvalho, 1356, Vila Olímpia - São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Ed.Barra Privat",
+      "enderecoPublicado": "Avenida Armando Lombardi, nº 400  Jacarepaguá - RJ",
+      "cidade": null,
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "2406.91",
+      "areaPublicada": "2406.91",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.9514",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educação Médica",
+          "percentualDaReceitaDoImovel": "100"
+        },
+        {
+          "setor": "Educação Médica",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "tjkb11-ed-barra-privat-1",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Avenida Brasil",
+      "enderecoPublicado": "Avenida Brasil, 350, Jardim Paulista, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1200",
+      "areaPublicada": "1200",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.5711",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Medicina Diagnóstica",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "tjkb11-avenida-brasil",
+      "coordenadas": {
+        "lat": "-23.576739",
+        "lng": "-46.663905",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "350, Avenida Brasil, Jardins, Jardim Paulista, São Paulo, Região Sudeste, 01432-020, Brasil",
+        "osm": "node/2529920267",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Brasil, 350, Jardim Paulista, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Padre Machado",
+      "enderecoPublicado": "Rua Padre Machado nº 1040/1100 - Vila Mariana - São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "8583.91",
+      "areaPublicada": "8583.91",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "15.7800",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Pesquisa",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "tjkb11-padre-machado",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Ed.Barra Privat",
+      "enderecoPublicado": "Avenida Armando Lombardi, nº 400  Jacarepaguá - RJ",
+      "cidade": null,
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "954",
+      "areaPublicada": "954",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.2010",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educação Médica",
+          "percentualDaReceitaDoImovel": "100"
+        },
+        {
+          "setor": "Educação Médica",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "tjkb11-ed-barra-privat-2",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Borba Gato",
+      "enderecoPublicado": "Avenida Adolfo Pinheiro, 2366, Santo Amaro, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "5919",
+      "areaPublicada": "5919",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.3421",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Medicina Diagnóstica",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "tjkb11-borba-gato",
+      "coordenadas": {
+        "lat": "-23.634316",
+        "lng": "-46.693170",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "2366, Avenida Adolfo Pinheiro, Jardim Petrópolis, Santo Amaro, São Paulo, Região Sudeste, 04701-200, Brasil",
+        "osm": "way/1391907263",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Adolfo Pinheiro, 2366, Santo Amaro, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Centro de tratamento de Olhos",
+      "enderecoPublicado": "R. Desemb. Nelson Nunes Guimarães,  esquina com R. Camboriú - Joinville - SC",
+      "cidade": "Joinville",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "10200.72",
+      "areaPublicada": "10200.72",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "7.8794",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Centro de Tratamento de Olhos",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "tjkb11-centro-de-tratamento-de-olhos",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Marselhesa",
+      "enderecoPublicado": "Rua Marselhesa, 700, Vila Mariana, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "4509",
+      "areaPublicada": "4509",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "7.7134",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Pesquisa",
+          "percentualDaReceitaDoImovel": "100"
+        },
+        {
+          "setor": "Medicina Diagnóstica",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "tjkb11-marselhesa-1",
+      "coordenadas": {
+        "lat": "-23.597205",
+        "lng": "-46.641299",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Marselhesa, Vila Clementino, Vila Mariana, São Paulo, Região Sudeste, 04020-060, Brasil",
+        "osm": "way/776369349",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Marselhesa, 700, Vila Mariana, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Marselhesa",
+      "enderecoPublicado": "Rua Marselhesa, 500, Vila Mariana, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "6408.56",
+      "areaPublicada": "6408.56",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "15.0758",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Pesquisa",
+          "percentualDaReceitaDoImovel": "100"
+        },
+        {
+          "setor": "Medicina Diagnóstica",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "tjkb11-marselhesa-2",
+      "coordenadas": {
+        "lat": "-23.596861",
+        "lng": "-46.641327",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Instituto do Sono, 500, Rua Marselhesa, Vila Clementino, Vila Mariana, São Paulo, Região Sudeste, 04020-060, Brasil",
+        "osm": "node/5141916723",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Marselhesa, 500, Vila Mariana, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Tatuapé",
+      "enderecoPublicado": "Rua Vilela, 800, Tatuapé, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "6356",
+      "areaPublicada": "6356",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "8.5704",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Medicina Diagnóstica",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "tjkb11-tatuape",
+      "coordenadas": {
+        "lat": "-23.541417",
+        "lng": "-46.566234",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "CDB Medicina Diagnóstica, 800, Rua Vilela, Vila Luzitana, Tatuapé, São Paulo, Região Sudeste, 03314-000, Brasil",
+        "osm": "way/585558232",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Vilela, 800, Tatuapé, São Paulo - SP, Brasil"
+      }
+    }
+  ]
+}

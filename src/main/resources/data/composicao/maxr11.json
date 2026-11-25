@@ -1,0 +1,177 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "MAXR11",
+  "nomeDoFundo": "Max Retail Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "832ba6acf2df07b4aebd1b6ec61e06c3a9d7cb0e527886bdbd80884c61a5b652"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 4,
+    "semCoordenadas": 3
+  },
+  "cnpj": "11.274.415/0001-70",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código MAXR11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRMAXRCTF009), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Imovel de Brasilia",
+      "enderecoPublicado": "Quadra 13, 13, Lotes 18 E 19 Scs - Sc/sul, Del Lago I (itapoã), Brasília/DF, Brasil, 71591-215",
+      "cidade": "Brasília",
+      "uf": "DF",
+      "tipo": null,
+      "areaM2": "3618.19",
+      "areaPublicada": "3618.19",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "11.0471",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "maxr11-imovel-de-brasilia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Imovel de Taguatinga",
+      "enderecoPublicado": "Csa 1 Lote 02/17, 01, Lotes 02,03,04,16,17 - Csa 01 - Quadra D, Taguatinga Sul (taguatinga), Brasília/DF, Brasil, 72015-902",
+      "cidade": "Brasília",
+      "uf": "DF",
+      "tipo": null,
+      "areaM2": "10461",
+      "areaPublicada": "10461",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "7.3800",
+      "setoresDosInquilinos": [],
+      "id": "maxr11-imovel-de-taguatinga",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Imovel de Joao Pessoa",
+      "enderecoPublicado": "Parque Solon De Lucena, 563, Matriculas 1832 / 26236 / 26285, Centro, João Pessoa/PB, Brasil, 58013-131",
+      "cidade": "João Pessoa",
+      "uf": "PB",
+      "tipo": null,
+      "areaM2": "13474.6",
+      "areaPublicada": "13474.6",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "maxr11-imovel-de-joao-pessoa",
+      "coordenadas": {
+        "lat": "-7.118295",
+        "lng": "-34.879486",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Parque Solon de Lucena, Centro, João Pessoa, Paraíba, Região Nordeste, 58013-150, Brasil",
+        "osm": "way/244952168",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Parque Solon De Lucena, 563, João Pessoa, PB, Brasil"
+      }
+    },
+    {
+      "nome": "Imovel de Manaus",
+      "enderecoPublicado": "Avenida Eduardo Ribeiro, 442, Sem Complemento, Centro, Manaus/AM, Brasil, 69010-000",
+      "cidade": "Manaus",
+      "uf": "AM",
+      "tipo": null,
+      "areaM2": "8355.15",
+      "areaPublicada": "8355.15",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "24.1904",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "89.3849"
+        },
+        {
+          "setor": "Alimentos Processados",
+          "percentualDaReceitaDoImovel": "10.6151"
+        }
+      ],
+      "id": "maxr11-imovel-de-manaus",
+      "coordenadas": {
+        "lat": "-3.132462",
+        "lng": "-60.024117",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Eduardo Ribeiro, Centro, Manaus, Amazonas, Região Norte, 69010-000, Brasil",
+        "osm": "way/483052384",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Eduardo Ribeiro, 442, Manaus, AM, Brasil"
+      }
+    },
+    {
+      "nome": "Imovel de Vitoria",
+      "enderecoPublicado": "Avenida Princesa Isabel, 475, Sem Complemento, Centro, Vitória/ES, Brasil, 29010-365",
+      "cidade": "Vitória",
+      "uf": "ES",
+      "tipo": null,
+      "areaM2": "8097.61",
+      "areaPublicada": "8097.61",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.2175",
+      "setoresDosInquilinos": [],
+      "id": "maxr11-imovel-de-vitoria",
+      "coordenadas": {
+        "lat": "-20.319349",
+        "lng": "-40.330385",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "475, Avenida Princesa Isabel, Centro, Região Administrativa I - Centro, Vitória, Espírito Santo, Região Sudeste, 29010-280, Brasil",
+        "osm": "way/51465754",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Princesa Isabel, 475, Vitória, ES, Brasil"
+      }
+    },
+    {
+      "nome": "Imovel de Belem",
+      "enderecoPublicado": "Avenida Presidente Vargas, 940, Sem Complemento, Campina, Belém/PA, Brasil, 66017-000",
+      "cidade": "Belém",
+      "uf": "PA",
+      "tipo": null,
+      "areaM2": "8780.88",
+      "areaPublicada": "8780.88",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "9.3948",
+      "setoresDosInquilinos": [],
+      "id": "maxr11-imovel-de-belem",
+      "coordenadas": {
+        "lat": "-1.453173",
+        "lng": "-48.494481",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Presidente Vargas, Campina, Belém, Pará, Região Norte, 66017-901, Brasil",
+        "osm": "way/407068892",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Presidente Vargas, 940, Belém, PA, Brasil"
+      }
+    },
+    {
+      "nome": "Imovel de Maceio",
+      "enderecoPublicado": "Av. Duque De Caxias / Avenida Da Paz, 1792, Sem Complemento, Centro, Maceio/AL, Brasil, 57020-440",
+      "cidade": "Maceio",
+      "uf": "AL",
+      "tipo": null,
+      "areaM2": "6873",
+      "areaPublicada": "6873",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "maxr11-imovel-de-maceio",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

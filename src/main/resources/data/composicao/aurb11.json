@@ -1,0 +1,78 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "AURB11",
+  "nomeDoFundo": "Alianza Urban Hub Renda Fii Resp Limitad",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "3dfa2b7182b2194d1efa56c684942458063aabd0594297539572bdebb927c0ba"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 1
+  },
+  "cnpj": "41.076.823/0001-88",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código AURB11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRAURBCTF008), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "UrbanHub Guarulhos",
+      "enderecoPublicado": "Estrada Da Olaria, 640, Sem Complemento, Vila Pires, Guarulhos/SP, Brasil, 00007-271",
+      "cidade": "Guarulhos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "21128.56",
+      "areaPublicada": "21128.56",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "52.0398",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "90.0149"
+        }
+      ],
+      "id": "aurb11-urbanhub-guarulhos",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "UrbanHub Maua",
+      "enderecoPublicado": "Avenida Papa Joao Xxiii, 3.580, Sem Complemento, Loteamento Industrial Coral, Maua/SP, Brasil, 09370-800",
+      "cidade": "Maua",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "55410.05",
+      "areaPublicada": "55410.05",
+      "vacanciaPercentual": "8",
+      "percentualDaReceitaDoFundo": "47.9602",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "51.4673"
+        },
+        {
+          "setor": "Diversos",
+          "percentualDaReceitaDoImovel": "38.5702"
+        }
+      ],
+      "id": "aurb11-urbanhub-maua",
+      "coordenadas": {
+        "lat": "-23.676123",
+        "lng": "-46.469667",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Papa João XXIII, Vila Noêmia, Vila Assis Brasil, Mauá, São Paulo, Região Sudeste, 09370-800, Brasil",
+        "osm": "way/168946946",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Papa Joao Xxiii, 3.580, Maua, SP, Brasil"
+      }
+    }
+  ]
+}

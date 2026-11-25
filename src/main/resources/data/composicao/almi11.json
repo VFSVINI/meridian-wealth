@@ -1,0 +1,66 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "ALMI11",
+  "nomeDoFundo": "Torre Almirante Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "9858342bf6d18bcf5ac6f9ba5fbdad3c5f679d41f7ae8cb0ffaccf071310b63e"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "07.122.725/0001-00",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código ALMI11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRALMICTF003), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edificio Torre Almirante",
+      "enderecoPublicado": "Avenida Almirante Barroso, 81, Sem Complemento, Centro, Rio De Janeiro/RJ, Brasil, 20031-004",
+      "cidade": "Rio De Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "41813",
+      "areaPublicada": "41813",
+      "vacanciaPercentual": "91.8945",
+      "percentualDaReceitaDoFundo": "68.7753",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Fundos",
+          "percentualDaReceitaDoImovel": "24.8326"
+        },
+        {
+          "setor": "Serviços Financeiros Diversos",
+          "percentualDaReceitaDoImovel": "22.3060"
+        },
+        {
+          "setor": "Serviços Diversos",
+          "percentualDaReceitaDoImovel": "11.9513"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "18.8973"
+        }
+      ],
+      "id": "almi11-edificio-torre-almirante",
+      "coordenadas": {
+        "lat": "-22.907321",
+        "lng": "-43.175290",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Edifício Torre Almirante, 81, Avenida Almirante Barroso, Castelo, Centro, Rio de Janeiro, Região Sudeste, 20031-004, Brasil",
+        "osm": "way/181375555",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Almirante Barroso, 81, Rio De Janeiro, RJ, Brasil"
+      }
+    }
+  ]
+}

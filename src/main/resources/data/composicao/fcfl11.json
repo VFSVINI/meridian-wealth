@@ -1,0 +1,54 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "FCFL11",
+  "nomeDoFundo": "Campus Faria Lim Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "322e125a1d1339817dc9da0b25dcea646d1ca991ab10f248fb9d02e7aa23a8d3"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "11.602.654/0001-01",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código FCFL11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRFCFLCTF009), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Insper Instituto de Ensino e Pesquisa",
+      "enderecoPublicado": "Rua Quata, 300, Sem Complemento, Vila Olímpia, São Paulo/SP, Brasil, 04546-042",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "30967.97",
+      "areaPublicada": "30967.97",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "84.3961",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "95.4389"
+        }
+      ],
+      "id": "fcfl11-insper-instituto-de-ensino-e-pesquisa",
+      "coordenadas": {
+        "lat": "-23.598725",
+        "lng": "-46.676430",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Insper, 300, Rua Quatá, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04546-042, Brasil",
+        "osm": "way/124962732",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Quata, 300, São Paulo, SP, Brasil"
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "CBOP11",
+  "nomeDoFundo": "Castello Branco Office Park  - Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "460ca645f9c3b7a697ac12302216e6ffe1ad521633847306c75019bea6687a5b"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "17.144.039/0001-85",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código CBOP11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRCBOPCTF001), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edifício Jatobá - 50%",
+      "enderecoPublicado": "Avenida Marcos Penteado Ulhôa Rodrigues, 939, Tamboré, Barueri - SP",
+      "cidade": "Barueri",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "16739.0649",
+      "areaPublicada": "16739.0649",
+      "vacanciaPercentual": "23.1994",
+      "percentualDaReceitaDoFundo": "97.5569",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Marketing",
+          "percentualDaReceitaDoImovel": "12.8182"
+        },
+        {
+          "setor": "Auditoria",
+          "percentualDaReceitaDoImovel": "13.7496"
+        },
+        {
+          "setor": "Locação de equipamentos",
+          "percentualDaReceitaDoImovel": "15.2348"
+        },
+        {
+          "setor": "Aviação",
+          "percentualDaReceitaDoImovel": "49.2118"
+        }
+      ],
+      "id": "cbop11-edificio-jatoba-50",
+      "coordenadas": {
+        "lat": "-23.506703",
+        "lng": "-46.833402",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Marcos Penteado de Ulhoa Rodrigues, Centro Empresarial Tamboré, Alphaville, Barueri, São Paulo, Região Sudeste, 06460-030, Brasil",
+        "osm": "way/924637241",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Marcos Penteado Ulhôa Rodrigues, 939, Tamboré, Barueri - SP, Brasil"
+      }
+    }
+  ]
+}

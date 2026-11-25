@@ -1,0 +1,154 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "RNGO11",
+  "nomeDoFundo": "Fundo De Investimento Imobiliário Rio Negro",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "09db9f5064f89ae2812afe9c209b92c702e6ea54a498a7ef1b121df933f8ee08"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 4,
+    "semCoordenadas": 0
+  },
+  "cnpj": "15.006.286/0001-90",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código RNGO11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRRNGOCTF003), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edificio Padauiri",
+      "enderecoPublicado": "Alameda Rio Negro, 585- Alphaville Industrial, Barueri- SP",
+      "cidade": "Barueri",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "17735.81",
+      "areaPublicada": "17735.81",
+      "vacanciaPercentual": "15.3000",
+      "percentualDaReceitaDoFundo": "45.8777",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Serviço:",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rngo11-edificio-padauiri",
+      "coordenadas": {
+        "lat": "-23.495512",
+        "lng": "-46.848588",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Alameda Rio Negro, Alphaville Residencial 1, Alphaville, Barueri, São Paulo, Região Sudeste, 06453-046, Brasil",
+        "osm": "way/975251292",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Rio Negro, 585- Alphaville Industrial, Barueri- SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edificio Demini",
+      "enderecoPublicado": "Alameda Rio Negro, 585- Alphaville Industrial, Barueri- SP",
+      "cidade": "Barueri",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "17759.59",
+      "areaPublicada": "17759.59",
+      "vacanciaPercentual": "23.6300",
+      "percentualDaReceitaDoFundo": "36.8959",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "39.8885"
+        },
+        {
+          "setor": "Serviço:",
+          "percentualDaReceitaDoImovel": "60.1115"
+        }
+      ],
+      "id": "rngo11-edificio-demini",
+      "coordenadas": {
+        "lat": "-23.495512",
+        "lng": "-46.848588",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Alameda Rio Negro, Alphaville Residencial 1, Alphaville, Barueri, São Paulo, Região Sudeste, 06453-046, Brasil",
+        "osm": "way/975251292",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Rio Negro, 585- Alphaville Industrial, Barueri- SP, Brasil"
+      }
+    },
+    {
+      "nome": "Outros",
+      "enderecoPublicado": "Alameda Rio Negro, 585- Alphaville Industrial, Barueri- SP",
+      "cidade": "Barueri",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "3107.53",
+      "areaPublicada": "3107.53",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "11.9323",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "10.6301"
+        },
+        {
+          "setor": "Serviço:",
+          "percentualDaReceitaDoImovel": "89.3699"
+        }
+      ],
+      "id": "rngo11-outros",
+      "coordenadas": {
+        "lat": "-23.495512",
+        "lng": "-46.848588",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Alameda Rio Negro, Alphaville Residencial 1, Alphaville, Barueri, São Paulo, Região Sudeste, 06453-046, Brasil",
+        "osm": "way/975251292",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Rio Negro, 585- Alphaville Industrial, Barueri- SP, Brasil"
+      }
+    },
+    {
+      "nome": "Estacionamento",
+      "enderecoPublicado": "Alameda Rio Negro, 585- Alphaville Industrial, Barueri- SP",
+      "cidade": "Barueri",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "17905.38",
+      "areaPublicada": "17905.38",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.2077",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "46.0970"
+        },
+        {
+          "setor": "Serviço:",
+          "percentualDaReceitaDoImovel": "53.9030"
+        }
+      ],
+      "id": "rngo11-estacionamento",
+      "coordenadas": {
+        "lat": "-23.495512",
+        "lng": "-46.848588",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Alameda Rio Negro, Alphaville Residencial 1, Alphaville, Barueri, São Paulo, Região Sudeste, 06453-046, Brasil",
+        "osm": "way/975251292",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Rio Negro, 585- Alphaville Industrial, Barueri- SP, Brasil"
+      }
+    }
+  ]
+}

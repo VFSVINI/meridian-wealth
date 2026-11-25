@@ -1,0 +1,90 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "NEWL11",
+  "nomeDoFundo": "Newport Logistica Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "dfe202b5ec820c708306b4e8101c773909b8e73b33cfb22a25a325d8ac300b07"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 2
+  },
+  "cnpj": "32.527.626/0001-47",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código NEWL11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRNEWLCTF004), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "NewPort Log Caxias do Sul",
+      "enderecoPublicado": "Rodovia RSC 453, nº 32503 - Caxias do Sul",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "40719",
+      "areaPublicada": "40719",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "23.4829",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Indústria de Transformação",
+          "percentualDaReceitaDoImovel": "100"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "newl11-newport-log-caxias-do-sul",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "NewPort Log Goiania",
+      "enderecoPublicado": "Rua Iza Costa, 1104 - Goiania",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "70318",
+      "areaPublicada": "70318",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "51.3819",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Cosméticos",
+          "percentualDaReceitaDoImovel": "37.8640"
+        },
+        {
+          "setor": "Farmaceutico",
+          "percentualDaReceitaDoImovel": "14.7222"
+        },
+        {
+          "setor": "Higiene",
+          "percentualDaReceitaDoImovel": "47.4138"
+        }
+      ],
+      "id": "newl11-newport-log-goiania",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

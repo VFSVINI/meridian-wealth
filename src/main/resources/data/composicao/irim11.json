@@ -1,0 +1,49 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "IRIM11",
+  "nomeDoFundo": "Iridium Cri Fii Rl",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "401861a180c817e081217d020c9df6a7852e554d60f3480b976dae78599edc9d"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "41.076.564/0001-95",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código IRIM11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRIRIMCTF003), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edificio Villa Jardim Sul - unidades 2505 2806 2902 2908",
+      "enderecoPublicado": "Rua Da Constituicao, 161, , Loteamento Jambalaia Ii, Rondonópolis/MT, Brasil, 78700-535",
+      "cidade": "Rondonópolis",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "30449.88",
+      "areaPublicada": "30449.88",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "irim11-edificio-villa-jardim-sul-unidades-2505-2806-2902-2908",
+      "coordenadas": {
+        "lat": "-16.467175",
+        "lng": "-54.619178",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua da Constituição, Loteamento Jambalaia, Rondonópolis, Mato Grosso, Região Centro-Oeste, 78700-403, Brasil",
+        "osm": "way/526919346",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Da Constituicao, 161, Rondonópolis, MT, Brasil"
+      }
+    }
+  ]
+}

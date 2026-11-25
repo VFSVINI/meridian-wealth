@@ -1,0 +1,66 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "BMLC11",
+  "nomeDoFundo": "Bm Brascan Lajes Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "2f5e96bf58355421644987a70627a1948db97044bd339f4878fd9fb381fd1c01"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "14.376.247/0001-11",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código BMLC11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRBMLCCTF004), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edificio Torre Rio Sul",
+      "enderecoPublicado": "Rua Lauro Muller, 116, 21º, 27º, 28º E 40º Andares, Botafogo, Rio De Janeiro/RJ, Brasil, 22290-160",
+      "cidade": "Rio De Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "5889",
+      "areaPublicada": "5889",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "99.8866",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços Diversos",
+          "percentualDaReceitaDoImovel": "16.8944"
+        },
+        {
+          "setor": "Telecomunicações",
+          "percentualDaReceitaDoImovel": "21.0178"
+        },
+        {
+          "setor": "Petróleo, Gás e Biocombustíveis",
+          "percentualDaReceitaDoImovel": "24.2876"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "33.8597"
+        }
+      ],
+      "id": "bmlc11-edificio-torre-rio-sul",
+      "coordenadas": {
+        "lat": "-22.957350",
+        "lng": "-43.176285",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Consulado-Geral da Bélgica, 116, Rua Lauro Müller, Botafogo, Rio de Janeiro, Região Sudeste, 22290-160, Brasil",
+        "osm": "node/4302181784",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Lauro Muller, 116, Rio De Janeiro, RJ, Brasil"
+      }
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "LASC11",
+  "nomeDoFundo": "Legatus Fii Rl",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "4ce33d07a1ca86fb46e46962c98911acb5678e064bc1b6309047edb0ef4a925d"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 1
+  },
+  "cnpj": "30.248.158/0001-46",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código LASC11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRLASCCTF003), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área.",
+    "1 imóvel do Informe não trazem área positiva e não aparecem aqui."
+  ],
+  "ativos": [
+    {
+      "nome": "Consorcio Parque Shopping Belem",
+      "enderecoPublicado": "Rodovia Augusto Montenegro, 4300, Sem Complemento, Mangueirão, Belém/PA, Brasil, 66640-000",
+      "cidade": "Belém",
+      "uf": "PA",
+      "tipo": null,
+      "areaM2": "17246.79",
+      "areaPublicada": "17246.79",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "73.6400",
+      "setoresDosInquilinos": [],
+      "id": "lasc11-consorcio-parque-shopping-belem",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "Boulevard Shopping Campos",
+      "enderecoPublicado": "Rua Doutor Silvio Bastos Tavares, 268, Sem Complemento, Parque Leopoldina, Campos Dos Goytacazes/RJ, Brasil, 28051-250",
+      "cidade": "Campos Dos Goytacazes",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "1242",
+      "areaPublicada": "1242",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "26.3600",
+      "setoresDosInquilinos": [],
+      "id": "lasc11-boulevard-shopping-campos",
+      "coordenadas": {
+        "lat": "-21.756948",
+        "lng": "-41.348432",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Doutor Silvio Bastos Tavares, Parque Julião Nogueira, Campos dos Goytacazes, Rio de Janeiro, Região Sudeste, 28051-250, Brasil",
+        "osm": "way/852582513",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Doutor Silvio Bastos Tavares, 268, Campos Dos Goytacazes, RJ, Brasil"
+      }
+    }
+  ]
+}
