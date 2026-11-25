@@ -9,3 +9,4 @@ target/
 !.env.example
 *.pem
 *.key
+__pycache__/
