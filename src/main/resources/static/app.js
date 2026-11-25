@@ -506,26 +506,26 @@ const IC={home:'M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',mercad
  simulador:'M5 8h14M5 16h14M9 4l-4 4 4 4M15 12l4 4-4 4',mapa:'M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11zM12 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
  composicao:'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5',montecarlo:'M3 17c4-8 6-8 9-4s6 0 9-8',correlacao:'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z',stress:'M13 2L4 14h7l-1 8 9-12h-7z',
  glossario:'M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM5 17a3 3 0 0 1 3-3h11',alertas:'M6 17V11a6 6 0 1 1 12 0v6l2 2H4zM10 21h4',config:'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19 12l2-1-2-4-2 .5-1.5-1L15 4h-4l-.5 2.5-1.5 1-2-.5-2 4 2 1v2l-2 1 2 4 2-.5 1.5 1L11 20h4l.5-2.5 1.5-1 2 .5 2-4-2-1z',
- saude:'M3 12h4l3-8 4 16 3-8h4',shopping:'M4 7h16l-1.5 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8zM8 7a4 4 0 0 1 8 0',privacidade:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4'};
-const NAV=[['VISÃO GERAL',[['home','Painel inicial'],['mercados','Mercados']]],
- ['ANÁLISE',[['cockpit','Cockpit do ativo'],['radar','Radar de relatórios'],['brasil','Brasil: juros e inflação'],['geo','Geopolítica e teses']]],
- ['PATRIMÔNIO',[['carteira','Minha Carteira'],['shopping','Shopping financeiro'],['perfil','Perfil e carteira modelo'],['simulador','Simulador pré-ordem'],['mapa','Mapa de ativos reais'],['composicao','Composição (Raio-X)']]],
- ['RISCO',[['montecarlo','Monte Carlo'],['correlacao','Correlação e concentração'],['stress','Stress testing','sob pedido']]],
- ['APRENDER',[['glossario','Glossário']]],
- ['CONTA',[['alertas','Alertas','sob pedido'],['config','Configurações','item #11 e #15'],['saude','Saúde dos dados'],['privacidade','Privacidade e termos']]]];
+ cripto:'M2 12c3-6 7-6 10 0s7 6 10 0M12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z',oportunidades:'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z',academia:'M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM5 17a3 3 0 0 1 3-3h11',saude:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4',shopping:'M4 7h16l-1.5 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8zM8 7a4 4 0 0 1 8 0',privacidade:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4'};
+const NAV=[['EXPLORAR',[['home','Início'],['mercados','Mercados'],['cripto','Cripto 24h','item #54'],['oportunidades','Oportunidades','item #55'],['cockpit','Ativo']]],
+ ['ENTENDER',[['academia','Academia','item #49'],['brasil','Brasil: juros'],['geo','Geopolítica'],['glossario','Glossário']]],
+ ['SIMULAR',[['carteira','Minha Carteira'],['perfil','Perfil'],['shopping','Shopping'],['mapa','Mapa de ativos'],['montecarlo','Risco'],['simulador','Simulador'],['saude','Saúde dos dados']]],
+ ['MAIS',[['radar','Radar de relatórios'],['correlacao','Correlação e concentração'],['composicao','Composição (Raio-X)'],['stress','Stress testing','sob pedido'],['alertas','Alertas','sob pedido'],['config','Configurações','item #11 e #15'],['privacidade','Privacidade e termos']]]];
 const icon=id=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${IC[id]||''}"/></svg>`;
 const PAGES=new Set([...document.querySelectorAll('.page')].map(p=>p.dataset.page));
 function buildNav(){
   $('#nav').innerHTML=NAV.map(([g,items])=>`<h3>${g}</h3>`+items.map(([id,label,soon])=>{
     if(id==='glossario')return `<button type="button" class="item" id="glossBtn" title="Glossário didático das métricas">${icon(id)}<span class="lbl">${label}</span></button>`;
-    if(soon)return `<a class="soon" role="link" aria-disabled="true" title="Chega com o ${soon} do roadmap: ainda não existe dado real para esta página" tabindex="-1">${icon(id)}<span class="lbl">${label}</span><span class="tagsm">${soon}</span></a>`;
+    if(soon)return `<a class="soon" role="link" aria-disabled="true" title="Chega com o ${soon} do roadmap: ainda não existe dado real para esta página" tabindex="-1">${icon(id)}<span class="lbl">${label}</span><span class="tagsm">em breve</span></a>`;
     return `<a href="#/${id}" data-nav="${id}" title="${label}">${icon(id)}<span class="lbl">${label}</span></a>`}).join('')).join('')
   +`<div class="foot"><div class="real"><b><i></i>Dados reais</b><span>Ferramenta analítica e educacional</span></div><button type="button" class="item" id="navCollapse" aria-label="Recolher ou expandir o menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><span class="lbl">Recolher</span></button></div>`;
 }
 const PAGE_TITLE={};NAV.forEach(([,it])=>it.forEach(([id,label])=>PAGE_TITLE[id]=label));
 function go(id){location.hash='#/'+id}
+let lastRoute=null;
 function route(){
   let id=(location.hash.match(/^#\/([a-z]+)/)||[])[1];if(!PAGES.has(id))id='home';
+  if(lastRoute&&lastRoute!==id)document.dispatchEvent(new Event('mw:warp'));lastRoute=id;   /* salto de velocidade da luz entre páginas (stars.js) */
   document.querySelectorAll('.page').forEach(p=>{p.hidden=p.dataset.page!==id});
   document.querySelectorAll('#nav a[data-nav]').forEach(a=>{if(a.dataset.nav===id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
   document.title=(PAGE_TITLE[id]||'Painel')+' · MeridianWealth';
@@ -568,14 +568,8 @@ $('#palList').addEventListener('click',e=>{const b=e.target.closest('button');if
   if(b.dataset.pg){if(b.dataset.pg==='glossario')openGloss();else go(b.dataset.pg)}else if(b.dataset.as){select(b.dataset.as);go('cockpit')}});
 $('#pal').addEventListener('click',e=>{if(e.target===$('#pal'))$('#pal').close()});
 addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();palOpen()}});
-/* saudação pelo horário de Brasília: 0h–4h59 madrugada, 5h–11h59 dia, 12h–17h59 tarde, 18h em diante noite */
-function greeting(h){return h<5?'Boa madrugada':h<12?'Bom dia':h<18?'Boa tarde':'Boa noite'}
 /* painel inicial: só dado real, com frescor e fonte */
 function renderHome(){
-  const now=new Date(),tz={timeZone:'America/Sao_Paulo'};
-  const h=Number(now.toLocaleTimeString('pt-BR',{hour:'2-digit',hourCycle:'h23',...tz}).slice(0,2));
-  $('#hmH1').textContent=greeting(h);
-  $('#hmDate').textContent=now.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric',...tz}).toUpperCase()+' · '+now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',...tz})+' (BRASÍLIA)';
   const live=universe.filter(u=>hasData(rows[u.symbol]));
   const sig=live.filter(u=>rows[u.symbol].assessment).sort((a,b)=>Math.abs(rows[b.symbol].assessment.score)-Math.abs(rows[a.symbol].assessment.score)).slice(0,3);
   $('#hmSignals').innerHTML=sig.length?sig.map(u=>{const r=rows[u.symbol],a=r.assessment,s=SIG[a.signal];
@@ -584,6 +578,29 @@ function renderHome(){
   const mv=live.map(u=>{const c=rows[u.symbol].candle;return {u,r:rows[u.symbol],chg:c.close/c.open-1}}).sort((a,b)=>Math.abs(b.chg)-Math.abs(a.chg)).slice(0,6);
   $('#hmMovers').innerHTML=mv.length?mv.map(({u,r,chg})=>`<tr class="row" data-s="${esc(u.symbol)}"><td><b class="mono">${esc(u.symbol)}</b><div class="src">${esc(u.name)}</div></td><td class="n">${f(r.candle.close,r.candle.close<10?4:2)}<div class="src">${esc(u.currency||'')}</div></td><td class="n ${chg>=0?'up':'dn'}">${chg>=0?'+':''}${f(chg*100)}%</td><td>${freshChip(r)}<div class="src">${esc(r.source)} · ${quoteWhen(r)}</div></td></tr>`).join('')
     :'<tr><td colspan="4" class="mute">Sem cotação real agora.</td></tr>';
+  renderRead(live);
 }
+/* "A leitura em uma frase" da página inicial: o ativo em destaque é o primeiro com dado real e sinal calculado (PETR4 quando houver); preço, variação, fonte e
+   gráfico são os reais, a frase é a tradução do sinal do motor (regra publicada) e o selo diz que é análise, não ordem. Nada é inventado: sem dado, o cartão diz isso. */
+const SIG_TXT={BUY_DIP_WINDOW:'O preço recuou para uma zona que o motor costuma tratar como janela. Esperar uma confirmação é a leitura mais cautelosa.',ACCUMULATE:'Os sinais estão a favor, sem exagero. Entrar aos poucos costuma ser mais prudente do que de uma vez.',HOLD_RIDE_TREND:'Tendência em curso. Manter e acompanhar é a leitura mais cautelosa.',TAKE_PROFIT_WINDOW:'O preço subiu bastante em pouco tempo. Realizar parte do ganho é uma leitura comum nesta fase.',SELL_EXIT_SETUP:'Tendência de queda com perda de força. Reduzir exposição é a leitura mais cautelosa.',HIGH_RISK_WAIT:'Há sinais a favor e contra neste momento. Aguardar mais um pouco costuma ser mais prudente do que decidir agora.'};
+let readSym=null,readSpark='';
+function sparkSvg(cs){
+  const v=cs.map(c=>c.close).filter(x=>Number.isFinite(x));if(v.length<3)return '';
+  const lo=Math.min(...v),hi=Math.max(...v),W=400,H=140,sx=i=>i/(v.length-1)*W,sy=x=>H-6-(x-lo)/((hi-lo)||1)*(H-14);
+  const d=v.map((x,i)=>(i?'L':'M')+sx(i).toFixed(1)+' '+sy(x).toFixed(1)).join('');
+  const up=v[v.length-1]>=v[0],col=up?'var(--up)':'var(--down)';
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Preço de fechamento dos últimos ${v.length} pregões, de ${f(v[0],2)} a ${f(v[v.length-1],2)}"><defs><linearGradient id="rdg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${col}" stop-opacity=".32"/><stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs><path d="${d}L${W} ${H}L0 ${H}Z" fill="url(#rdg)"/><path d="${d}" fill="none" stroke="${col}" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>`;
+}
+async function renderRead(live){
+  const box=$('#hmReadBody');if(!box)return;
+  const pick=live.find(u=>u.symbol==='PETR4'&&rows[u.symbol].assessment)||live.find(u=>rows[u.symbol].assessment);
+  if(!pick){box.innerHTML='<p class="cs-r-txt mute">Sem dado real suficiente para uma leitura agora. Quando houver cotação, ela aparece aqui com fonte e horário.</p>';return}
+  const r=rows[pick.symbol],c=r.candle,chg=c.close/c.open-1,s=SIG[r.assessment.signal];
+  if(readSym!==pick.symbol){readSym=pick.symbol;readSpark='';try{readSpark=sparkSvg((await j(`/api/candles/${pick.symbol}?limit=60`))||[])}catch(e){readSpark=''}}
+  box.innerHTML=`<div class="cs-r-top"><div><p class="cs-r-sym">${esc(pick.symbol)}</p><p class="cs-r-name">${esc(pick.name)}</p></div><div><div class="cs-r-px num">${esc(pick.currency==='USD'?'US$ ':'R$ ')}${f(c.close,c.close<10?4:2)}</div><div class="cs-r-chg num ${chg>=0?'up':'dn'}">${chg>=0?'+':''}${f(chg*100)}%</div></div></div>
+   <div class="cs-r-chart">${readSpark}</div><p class="cs-r-txt"><b>${esc(s[0])}.</b> ${esc(SIG_TXT[r.assessment.signal]||'')}</p>
+   <div class="cs-chips"><span class="cs-chip cy">Fonte: ${esc(r.source)}</span><span class="cs-chip">${quoteWhen(r)}</span><span class="cs-chip am">análise, não ordem</span></div>`;
+}
+$('#hmAcademia').onclick=()=>openGloss();$('#hmAcademia2').onclick=()=>openGloss();
 ['hmSignals','hmMovers'].forEach(id=>$('#'+id).addEventListener('click',e=>{const t=e.target.closest('[data-s]');if(t){select(t.dataset.s);go('cockpit')}}));
 loadStatus();init().catch(e=>{setLive('off','falha ao iniciar');console.error(e)});

@@ -78,7 +78,7 @@ class ShellContractTest {
     }
 
     @Test void honestyNoticesAndAccessibilityHooksArePresent() {
-        assertThat(html).contains("Não executa ordens e não é recomendação de investimento").contains("Nenhum preço é simulado");
+        assertThat(html).contains("Não é ordem nem recomendação de investimento").contains("Nenhum preço é simulado");
         assertThat(html).contains("prefers-reduced-motion").contains("class=\"skip\"").contains("aria-current");
         assertThat(html).contains("SIMULAÇÃO").contains("TESES ILUSTRATIVAS");
     }

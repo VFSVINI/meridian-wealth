@@ -84,12 +84,11 @@ class VisualFoundationTest {
     }
 
     @Test
-    void theGreetingFollowsTheHourIncludingTheSmallHours() throws IOException {
-        String js = StaticPage.file("app.js");
-        assertThat(js).contains("function greeting(h){return h<5?'Boa madrugada':h<12?'Bom dia':h<18?'Boa tarde':'Boa noite'}");
-        assertThat(js).contains("$('#hmH1').textContent=greeting(h)");
-        // com hour12:false alguns navegadores devolvem "24" à meia-noite e a saudação cairia em "Boa noite"; h23 vai de 00 a 23
-        assertThat(js).contains("hourCycle:'h23'").doesNotContain("hour12:false");
+    void theHomeIsAPresentationWithoutAGreetingOrAToyObject() throws IOException {
+        // no protótipo Cosmos a página inicial apresenta a plataforma (o relógio e a saudação saíram) e não tem objeto 3D para "arrastar"
+        String js = StaticPage.file("app.js"), html = StaticPage.file("index.html");
+        assertThat(js).doesNotContain("function greeting(").doesNotContain("hmH1").doesNotContain("hmDate").doesNotContain("hour12:false");
+        assertThat(html).doesNotContain("Arraste para girar</span></div>").doesNotContain("heroCanvas");
     }
 
     @Test

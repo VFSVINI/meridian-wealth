@@ -1,0 +1,110 @@
+/* Cosmos (item #47, ADR 033): o protótipo aprovado do Claude Design (docs/design/cosmos). Vem DEPOIS do app.css e troca os tokens, a tipografia e o shell;
+   as páginas seguintes (itens #48 a #56) vão se apoiando nestes tokens. Fontes servidas pelo projeto (SIL OFL 1.1, licenças em /fonts), subconjunto latino. */
+@font-face{font-family:"Big Shoulders Display";font-style:normal;font-weight:100 900;font-display:swap;src:url("/fonts/big-shoulders-display-latin-variable-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url("/fonts/inter-latin-variable-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{--bg:#04070e;--panel:#0a1024;--panel-2:#0e1630;--popover:#111b3a;--line:#18223f;--line-2:#26335a;
+--text:#eaedfb;--text-2:#a9b3d1;--text-3:#8792b3;--gold:#ffb340;--gold-2:#ffd488;--up:#38dd9c;--down:#ff6d82;--warn:#ffb340;--info:#55d6ff;
+--gold-fg:#1c1100;--gold-grad:linear-gradient(180deg,#ffc45f,#ffa11f);--cyan:#55d6ff;--violet:#a98bff;
+--display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+--serif:var(--display);--sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+--radius:12px;--r:10px;--nav-w:252px;--top-h:64px;color-scheme:dark}
+:root[data-theme="ivory"]{--bg:#f4f0e6;--panel:#fffdf8;--panel-2:#f7f2e5;--popover:#ffffff;--line:#d8cfb8;--line-2:#a99d7c;
+--text:#161a26;--text-2:#40485c;--text-3:#586079;--gold:#8a5a00;--gold-2:#6e4800;--up:#0a6b59;--down:#a63a34;--warn:#8a5a00;--info:#1f5f9a;
+--gold-fg:#fff8e8;--gold-grad:linear-gradient(180deg,#b57a12,#8a5a00);--cyan:#1f5f9a;--violet:#5b43b8}
+
+/* fundo: espaço profundo com dois brilhos suaves (verde-azulado à esquerda, âmbar embaixo à direita) e a tela das estrelas */
+body{background:var(--bg);font-family:var(--sans);position:relative}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:radial-gradient(ellipse 40% 34% at 6% 28%,rgba(36,118,126,.22),transparent 70%),radial-gradient(ellipse 36% 30% at 92% 78%,rgba(255,150,40,.10),transparent 70%)}
+:root[data-theme="ivory"] body::before{display:none}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+:root[data-theme="ivory"] #stars{display:none}
+
+/* barra superior */
+.top{background:rgba(4,7,14,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);height:var(--top-h)}
+:root[data-theme="ivory"] .top{background:rgba(244,240,230,.88)}
+.brand svg{width:36px;height:36px}
+.brand .wm{font:800 26px/1 var(--display);letter-spacing:.03em;text-transform:uppercase}
+.brand .wm small{font:600 9.5px/1 var(--sans);letter-spacing:.42em;margin-top:4px;color:var(--gold)}
+.search{border-radius:999px;height:42px;background:rgba(10,16,36,.7);border-color:var(--line-2);font-size:15px;max-width:600px}
+:root[data-theme="ivory"] .search{background:var(--panel)}
+.search:hover,.search:focus-visible{border-color:var(--gold)}
+.pill.live{border-color:rgba(56,221,156,.5);color:var(--up);background:rgba(56,221,156,.08)}
+
+/* menu lateral por seções */
+.nav{background:rgba(4,7,14,.55);border-right:1px solid var(--line);padding:var(--s5) var(--s3)}
+:root[data-theme="ivory"] .nav{background:rgba(244,240,230,.7)}
+.nav h3{font:700 11px var(--sans);letter-spacing:.26em;margin:var(--s5) var(--s3) var(--s2)}
+.nav a,.nav button.item{padding:11px var(--s3);border-radius:12px;font-size:15px;color:var(--text);font-weight:500}
+.nav a svg,.nav button.item svg{width:20px;height:20px;stroke:var(--text-2)}
+.nav a:hover,.nav button.item:hover{background:rgba(255,255,255,.04)}
+.nav a[aria-current="page"]{background:rgba(255,179,64,.10);color:var(--gold);border-color:rgba(255,179,64,.45);box-shadow:none}
+.nav a[aria-current="page"] svg{stroke:var(--gold)}
+.nav{overflow-x:hidden}.nav .real{background:rgba(10,16,36,.6)}
+.nav .soon{opacity:.6}.nav .tagsm{font-size:10px;letter-spacing:.04em;padding:1px 8px;color:var(--text-2);border-color:var(--line-2)}
+body.collapsed .nav .tagsm{display:none}
+
+/* conteúdo: títulos de cinema (uma pergunta por tela) */
+.content{max-width:1560px}
+.ph h1,.cs-title,.cs-h2{font-family:var(--display);text-transform:none}
+.ph h1{font-weight:800;font-size:clamp(34px,4.6vw,66px);line-height:.96;letter-spacing:.005em;text-transform:uppercase;margin:0 0 var(--s3)}
+.ph .lede{font-size:clamp(15px,1.4vw,19px);max-width:70ch}
+.eyebrow,.cs-eyebrow,.cs-kicker{font:700 12px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:0 0 var(--s3)}
+.card{background:linear-gradient(180deg,rgba(14,22,48,.78),rgba(10,16,36,.78));border-color:var(--line);border-radius:14px}
+:root[data-theme="ivory"] .card{background:var(--panel)}
+.card.gold{border-color:rgba(255,179,64,.5)}
+button.ghost,.ghost{border-radius:999px}
+footer.cs-legal{display:flex;gap:var(--s3);align-items:flex-start;padding:var(--s4) var(--s6);border-top:1px solid var(--line);background:rgba(4,7,14,.7);color:var(--text-2);font-size:13px;margin-top:var(--s6)}
+:root[data-theme="ivory"] footer.cs-legal{background:rgba(244,240,230,.9)}
+footer.cs-legal svg{width:18px;height:18px;flex:none;margin-top:2px;fill:none;stroke:var(--text-3);stroke-width:1.6}
+footer.cs-legal p{margin:0;max-width:150ch}footer.cs-legal b{color:var(--text)}
+
+/* Início: apresentação */
+.cs-hero{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.85fr);gap:clamp(20px,3vw,48px);align-items:start;padding:clamp(8px,2vw,28px) 0 var(--s6)}
+.cs-title{font-weight:800;font-size:clamp(46px,6.6vw,108px);line-height:.9;margin:0 0 var(--s5);text-transform:uppercase;color:#eef1ff;letter-spacing:.004em;max-width:7.6em}
+:root[data-theme="ivory"] .cs-title{color:var(--text)}
+.cs-title em{font-style:normal;background:linear-gradient(90deg,#ffd488,#ffa11f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cs-lede{font-size:clamp(17px,1.7vw,24px);line-height:1.5;color:var(--text-2);margin:0 0 var(--s5);max-width:34em}
+.cs-cta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s5)}
+.cs-btn{display:inline-flex;align-items:center;gap:var(--s3);padding:16px 30px;border-radius:999px;border:0;background:var(--gold-grad);color:var(--gold-fg);font:600 17px var(--mono);text-decoration:none;box-shadow:0 8px 32px rgba(255,161,31,.32);transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.cs-btn:hover{transform:translateY(-2px);box-shadow:0 12px 38px rgba(255,161,31,.45)}
+.cs-btn svg,.cs-step a svg,.cs-step button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cs-link{background:transparent;border:0;padding:8px 4px;color:var(--text);font:600 15px var(--sans);cursor:pointer}
+.cs-link:hover{color:var(--gold)}
+.cs-read{border:1px solid rgba(255,179,64,.55);border-radius:20px;background:linear-gradient(180deg,rgba(14,22,48,.92),rgba(8,13,30,.92));padding:clamp(18px,2vw,28px);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.cs-read-k{display:flex;align-items:center;gap:var(--s2);margin:0 0 var(--s4);font:700 12px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--text-2)}
+.cs-read-k svg{width:18px;height:18px;fill:none;stroke:var(--text-2);stroke-width:1.6;stroke-linejoin:round}
+.cs-r-top{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--s3)}
+.cs-r-sym{font:700 24px var(--sans);margin:0}.cs-r-name{color:var(--text-3);font-size:14px;margin:2px 0 0}
+.cs-r-px{font:500 26px var(--sans);text-align:right;font-variant-numeric:tabular-nums}.cs-r-chg{font-size:13px;text-align:right}
+.cs-r-chart{margin:var(--s4) 0 var(--s3);height:150px}.cs-r-chart svg{width:100%;height:100%;display:block}
+.cs-r-txt{font-size:clamp(16px,1.5vw,20px);line-height:1.45;margin:0 0 var(--s4)}
+.cs-chips{display:flex;flex-wrap:wrap;gap:var(--s2)}
+.cs-chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;border:1px solid var(--line-2);padding:4px 12px;font-size:12.5px;font-weight:600;color:var(--text-2)}
+.cs-chip.cy{border-color:rgba(85,214,255,.6);color:var(--cyan);background:rgba(85,214,255,.08)}
+.cs-chip.am{border-color:rgba(255,179,64,.6);color:var(--gold);background:rgba(255,179,64,.08)}
+.cs-sec{margin:clamp(28px,5vw,72px) 0}
+.cs-kicker{color:var(--cyan)}
+.cs-h2{font-weight:700;font-size:clamp(32px,4vw,52px);line-height:1;margin:0 0 var(--s5);letter-spacing:.005em;color:var(--text);display:block;text-transform:none}
+.cs-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.cs-step{background:linear-gradient(180deg,rgba(14,22,48,.8),rgba(8,13,30,.8));border:1px solid var(--line);border-radius:18px;padding:var(--s5) var(--s5) var(--s5);display:flex;flex-direction:column;gap:var(--s3)}
+:root[data-theme="ivory"] .cs-step,:root[data-theme="ivory"] .cs-trust article,:root[data-theme="ivory"] .cs-read{background:var(--panel)}
+.cs-n{font:800 64px/1 var(--display);color:transparent;-webkit-text-stroke:1.5px var(--gold)}
+.cs-step h3{font:700 22px var(--sans);margin:0}.cs-step p{margin:0;color:var(--text-2);font-size:16px;line-height:1.55;flex:1}
+.cs-step a,.cs-step button{display:inline-flex;align-items:center;gap:var(--s2);align-self:flex-start;background:transparent;border:0;padding:4px 0;color:var(--gold);font:600 15px var(--sans);text-decoration:none;cursor:pointer}
+.cs-step a:hover,.cs-step button:hover{color:var(--gold-2)}
+.cs-trust{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4)}
+.cs-trust article{display:flex;gap:var(--s4);align-items:flex-start;background:linear-gradient(180deg,rgba(14,22,48,.8),rgba(8,13,30,.8));border:1px solid var(--line);border-radius:16px;padding:var(--s4) var(--s5)}
+.cs-ic{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:12px;border:1px solid var(--line-2)}
+.cs-ic svg{width:22px;height:22px;fill:none;stroke:var(--cyan);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.cs-trust h3{font:700 19px var(--sans);margin:0 0 4px}.cs-trust p{margin:0;color:var(--text-2);font-size:15px;line-height:1.5}
+.cs-tag{display:inline-block;border:1px dashed rgba(255,179,64,.7);color:var(--gold);border-radius:999px;padding:0 9px;font-size:13px;font-weight:600}
+.cs-legacy{margin-top:var(--s6)}
+@media(max-width:980px){.cs-hero{grid-template-columns:1fr}.cs-steps{grid-template-columns:1fr}.cs-trust{grid-template-columns:1fr}.cs-title{font-size:clamp(44px,15vw,88px)}}
+@media(max-width:700px){footer.cs-legal{padding:var(--s4)}.brand .wm{font-size:22px}}
+@media print{#stars,body::before{display:none}}
+
+/* transição entre páginas: velocidade da luz. O céu (stars.js) estica as estrelas; a página que chega vem de longe, clareando, e assenta. Sem movimento reduzido, nada disso roda. */
+.fx .page.enter{animation:irisIn .6s cubic-bezier(.2,.7,.2,1) backwards}
+@keyframes irisIn{0%{opacity:0;transform:scale(.92) translateZ(0);filter:blur(10px) brightness(1.9)}55%{opacity:1;filter:blur(2px) brightness(1.25)}100%{opacity:1;transform:none;filter:none}}
