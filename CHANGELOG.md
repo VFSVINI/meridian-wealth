@@ -6,6 +6,15 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #47 do roadmap, Milestone 8: Cosmos)
+- **Fundação visual do protótipo Cosmos** (as telas do Claude Design estão em `docs/design/cosmos/`): tokens do tema escuro (fundo espacial, âmbar e ciano) e do Ivory, títulos de cinema em **Big Shoulders Display**, texto em **Inter** e números em **IBM Plex Mono** (fontes OFL servidas pelo projeto, hash fixado em teste), barra superior e menu por seções (Explorar, Entender, Simular, Mais) e rodapé legal fixo.
+- **Céu vivo** no fundo: estrelas que derivam e reagem ao ponteiro, nebulosas que orbitam e o **salto de velocidade da luz** entre uma página e outra. Tudo parado com `prefers-reduced-motion`; nenhum dado é desenhado nem animado.
+- **Nova página Início**: apresentação ("Entenda o mercado antes de decidir"), três passos e "por que confiar". O cartão "A leitura em uma frase" usa **dado real** (cotação, fonte, horário, últimos 60 fechamentos e a tradução do sinal do motor).
+
+### Alterado (item #47)
+- A moeda 3D e a saudação por horário saíram da página inicial; o globo de pregões, os sinais do dia, os maiores movimentos e as notícias foram para o fim de Mercados até a repaginação (item #48).
+- Cormorant Garamond e Figtree deixaram o projeto.
+
 ### Adicionado (item #43 do roadmap, bloco 3D)
 - **Alocação em 3D** em Minha Carteira: uma **rosca 3D** com o anel de fora nas **classes de ativo** (os percentuais exatos da API, os mesmos da legenda e do treemap 2D) e o anel de dentro nas **posições** (peso no valor em reais de hoje; posições sem valor em reais ficam de fora e isso é dito). Passar o mouse numa fatia a destaca e mostra o nome, o percentual e, nas posições, o valor. Câmera orbital compartilhada; a lista, o treemap e a tabela de posições são a alternativa. ADR 032.
 - **Privacidade:** ao sair da conta o módulo esquece a carteira, esvazia a cena e troca o texto de acessibilidade por um genérico; um novo login monta a cena do zero.

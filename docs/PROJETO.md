@@ -114,6 +114,20 @@ Aberto em 2026-11-23, a partir do primeiro uso do site no ar (feedback do dono d
 - [x] **#45** Microinterações e transições (Issue #68, ADR 027): transição "íris" entre telas, cartões que se inclinam em 3D com brilho que segue o ponteiro e revelação ao rolar, tudo desligado com `prefers-reduced-motion`. **Contadores de preço que sobem de zero ficaram de fora de propósito:** o ADR 004 proíbe preço animado. Mini-gráficos que se desenham entram com os cartões de Mercados (#31).
 - [ ] **#46** Fundo vivo sutil (linhas e partículas) em páginas escolhidas, só se couber no orçamento de desempenho medido.
 
+### Milestone 8 — Cosmos: o protótipo aprovado do Claude Design
+Aberto em 2026-11-24. O dono achou o site no ar com informação demais e telas feias, gerou o protótipo "Cosmos" no Claude Design (PNGs em `docs/design-prototipo/cosmos/`, a referência **obrigatória** e fiel: layout, gráficos, transições, tipografia) e pediu fidelidade total mais ideias novas. Direção: fundo de espaço com estrelas, âmbar e ciano, título de cinema em fonte condensada, uma pergunta por tela, cartões em grade, curso em módulos, nenhum texto de brinquedo. **Choque com o ADR 004:** o protótipo mostra ticks e números de "exemplo"; no produto tudo é dado real com fonte, e o que não existe vira "não informado". Itens, um PR cada, com a sua Issue:
+- [x] **#47** (Issue #80, ADR 033) Fundação Cosmos: fontes locais (OFL), tokens do tema escuro e Ivory, campo de estrelas em canvas, barra superior e menu por seções (Explorar, Entender, Simular), rodapé legal fixo e a **página Início** (apresentação, três passos, por que confiar), sem a moeda 3D. O fundo tem **céu vivo** (estrelas e nebulosas que se mexem e reagem ao ponteiro) e a troca de página é um **salto de velocidade da luz**; os gráficos em estilo sistema solar (órbita da carteira no Simulador, constelação de fontes na Saúde dos dados, galáxia de moedas no Cripto 24h) usam o `kit3d` nos itens #53 e #54.
+- [ ] **#48** Mercados (lista com mini-gráficos e destaque que troca sozinho, filtros, Lista/Tabela/Mapa) e **Ativo** ("a leitura em uma frase", camadas Entrada/Alvos/Invalidação, "Conheça o ativo").
+- [ ] **#49** Academia: curso em módulos com capítulos, quiz e progresso salvo no navegador.
+- [ ] **#50** Brasil: juros e inflação com gráficos históricos reais do Banco Central, "no seu bolso", juro real e linha do tempo do Copom.
+- [ ] **#51** Geopolítica: mapa de risco por país, passo a passo, quatro termômetros e notícias com link para a matéria.
+- [ ] **#52** Minha Carteira (rosca e mapa das posições), Perfil em sete perguntas e Shopping com comparador.
+- [ ] **#53** Mapa de ativos (Mundo e Brasil), Risco (Monte Carlo com paisagem de probabilidades), Simulador pré-ordem ("órbita da carteira") e Saúde dos dados ("constelação de fontes").
+- [ ] **#54** Cripto 24h com dado real (relógio de 24 horas, galáxia de moedas, dominância, medo e ganância), só com fonte conectada.
+- [ ] **#55** Oportunidades por perfil: radar de janelas com regra publicada, nunca previsão.
+- [ ] **#56** Celular e Ivory de todas as páginas, estados de primeira classe, e as telas da série anterior que o Cosmos não redesenhou (Radar de relatórios, Stress test, Alertas e calendário, Configurações, Onboarding), absorvendo o #35.
+O catálogo de ativos (**#33**) segue como prioridade em paralelo: sem ele a busca do protótipo não cobre tudo o que é negociado.
+
 ### Milestone 6 — Extensões Premium (só sob pedido)
 - [ ] **#22** Central de alertas · [ ] **#23** Rebalanceamento assistido · [ ] **#24** Calendário de renda passiva · [ ] **#25** Apuração de impostos · [ ] **#26** Backtest avançado · [ ] **#27** Stress testing · [ ] **#28** Research Studio · [ ] **#29** Importação e reconciliação.
 
