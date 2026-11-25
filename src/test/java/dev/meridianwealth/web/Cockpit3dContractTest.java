@@ -11,7 +11,7 @@ class Cockpit3dContractTest {
 
     @Test
     void onlyTheKitCreatesTheWebglRendererSoEverySceneGetsPauseAndContextLossHandling() throws IOException {
-        for (String f : new String[] {"hero3d.js", "cockpit3d.js"}) {
+        for (String f : new String[] {"cockpit3d.js", "globe3d.js", "montecarlo3d.js", "correlacao3d.js", "carteira3d.js"}) {
             assertThat(StaticPage.file(f)).as(f).doesNotContain("new THREE.WebGLRenderer").contains("createStage(").contains("from '/kit3d.js'");
         }
         String kit = StaticPage.file("kit3d.js");
