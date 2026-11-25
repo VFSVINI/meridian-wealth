@@ -23,13 +23,16 @@ function assetPickerFilter(items, term, limit) {
   return scored.slice(0, limit).map(x => x[1]);
 }
 
-function mountAssetPicker(host, items, onPick) {
+/**
+ * @param remote opcional: async (texto) => ativos do catálogo completo (item #33); aparecem depois dos locais, sem repetir símbolo, com a etiqueta "catálogo"
+ */
+function mountAssetPicker(host, items, onPick, remote) {
   const id = host.id || 'ap' + Math.random().toString(36).slice(2, 7);
   host.classList.add('combo');
   host.innerHTML = '<input type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="' + id + '-lb" aria-label="Ativo: digite o símbolo ou o nome" autocomplete="off" spellcheck="false" placeholder="Digite o símbolo ou o nome do ativo">'
     + '<ul id="' + id + '-lb" role="listbox" hidden></ul>';
   const input = host.querySelector('input'), list = host.querySelector('ul');
-  let current = null, shown = [], active = -1;
+  let current = null, shown = [], active = -1, seq = 0, timer = 0;
   const label = u => u.symbol + ' · ' + u.name;
   const meta = u => [u.assetClass, u.exchange].filter(Boolean).join(' · ');
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
@@ -40,7 +43,7 @@ function mountAssetPicker(host, items, onPick) {
   }
   function paint() {
     list.innerHTML = shown.length
-      ? shown.map((u, i) => '<li role="option" id="' + id + '-o' + i + '" data-i="' + i + '"' + (i === active ? ' aria-selected="true"' : '') + '><b>' + esc(u.symbol) + '</b> <span>' + esc(u.name) + '</span><small>' + esc(meta(u)) + '</small></li>').join('')
+      ? shown.map((u, i) => '<li role="option" id="' + id + '-o' + i + '" data-i="' + i + '"' + (i === active ? ' aria-selected="true"' : '') + '><b>' + esc(u.symbol) + '</b> <span>' + esc(u.name) + '</span><small>' + esc(meta(u)) + (u.catalog ? ' · catálogo' : '') + '</small></li>').join('')
       : '<li class="none" role="presentation">Nenhum ativo encontrado para essa busca</li>';
     if (active >= 0) input.setAttribute('aria-activedescendant', id + '-o' + active); else input.removeAttribute('aria-activedescendant');
     const el = list.querySelector('[aria-selected="true"]');
@@ -50,6 +53,23 @@ function mountAssetPicker(host, items, onPick) {
     shown = assetPickerFilter(items, term, 60);
     active = shown.length ? 0 : -1;
     list.hidden = false; input.setAttribute('aria-expanded', 'true'); paint();
+    /* catálogo completo: busca depois de uma pausa na digitação, e uma resposta velha nunca sobrescreve a mais nova */
+    clearTimeout(timer);
+    const t = String(term || '').trim();
+    if (!remote || t.length < 2) return;
+    const mine = ++seq;
+    timer = setTimeout(async () => {
+      let more = [];
+      try { more = await remote(t); } catch (e) { more = []; }
+      if (mine !== seq || list.hidden) return;
+      const have = new Set(shown.map(u => u.symbol));
+      const extra = more.filter(u => !have.has(u.symbol)).map(u => Object.assign({}, u, {catalog: true}));
+      if (!extra.length) return;
+      const keep = active >= 0 && shown[active] ? shown[active].symbol : null;
+      shown = shown.concat(extra).slice(0, 80);
+      active = Math.max(0, keep ? shown.findIndex(u => u.symbol === keep) : 0);
+      paint();
+    }, 220);
   }
   function pick(u) {
     if (!u) return;

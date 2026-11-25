@@ -544,9 +544,34 @@ $('#navCollapse').onclick=()=>{const c=document.body.classList.toggle('collapsed
 $('#theme').onclick=()=>{const r=document.documentElement,n=r.dataset.theme==='ivory'?'dark':'ivory';r.dataset.theme=n;try{localStorage.setItem('mw-theme',n)}catch(e){}draw()};
 /* seletor de ativo das páginas de análise (todos sincronizados com o ativo selecionado) */
 function buildPickers(){
-  document.querySelectorAll('.symPick').forEach(s=>{mountAssetPicker(s,universe,sym=>select(sym));if(sel)s.setAsset(sel)});
+  document.querySelectorAll('.symPick').forEach(s=>{mountAssetPicker(s,universe,sym=>openAsset(sym).then(ok=>{if(ok)select(sym)}),catalogSearch);if(sel)s.setAsset(sel)});
 }
 function syncPick(){document.querySelectorAll('.symPick').forEach(s=>{if(sel&&s.setAsset)s.setAsset(sel)})}
+/* ---------- catálogo de ativos negociados (item #33): qualquer ativo da B3 e dos EUA abre sob demanda, com dado real ou com o aviso de que não há ---------- */
+async function catalogSearch(q){
+  const hits=await j('/api/catalog/search?limit=20&q='+encodeURIComponent(q));
+  return hits.map(h=>h.instrument);
+}
+function note(msg){
+  let el=$('#toast');
+  if(!el){el=document.createElement('div');el.id='toast';el.className='cs-toast';el.setAttribute('role','status');document.body.appendChild(el)}
+  el.textContent=msg;el.classList.add('on');clearTimeout(note.t);note.t=setTimeout(()=>el.classList.remove('on'),6000);
+}
+/** Garante que o ativo está acompanhado (preço, histórico e sinal do motor). Devolve false, com o motivo na tela, se não há dado real. */
+async function openAsset(sym){
+  if(rows[sym]&&universe.some(u=>u.symbol===sym))return true;
+  try{
+    const r=await fetch('/api/catalog/'+encodeURIComponent(sym)+'/track',{method:'POST'});
+    if(r.status===429){note('Muitas aberturas seguidas. Espere um minuto e tente de novo.');return false}
+    if(!r.ok){note(r.status===503?`Sem dado real para ${sym} agora: nenhum provedor respondeu. Nada foi inventado.`:`Não achei o ativo ${sym}.`);return false}
+    const inst=await r.json();
+    if(!universe.some(u=>u.symbol===inst.symbol))universe.push(inst);
+    const ov=await j('/api/overview');
+    ov.ticks.forEach(t=>{if(!rows[t.symbol]||t.symbol===inst.symbol)rows[t.symbol]={...t,flash:''}});
+    buildPickers();
+    return true;
+  }catch(e){note('Falha ao abrir o ativo. Tente de novo.');return false}
+}
 /* busca rápida (Ctrl+K): páginas e ativos */
 function palOpen(){const d=$('#pal');if(!d.open)d.showModal();$('#palQ').value='';palRender();$('#palQ').focus()}
 function palRender(){
@@ -557,6 +582,22 @@ function palRender(){
   $('#palList').innerHTML=(hitP.length?'<li class="grp">PÁGINAS</li>'+hitP.map(p=>`<li><button type="button" data-pg="${p.id}">${esc(p.label)}</button></li>`).join(''):'')
    +(hitA.length?'<li class="grp">ATIVOS</li>'+hitA.map(u=>`<li><button type="button" data-as="${esc(u.symbol)}"><b class="mono">${esc(u.symbol)}</b><span class="mute">${esc(u.name)}</span></button></li>`).join(''):'')
    ||'<li class="grp">Nada encontrado</li>';
+  palRemote(q);
+}
+let palSeq=0,palTimer=0;
+/* acrescenta ao fim da lista os ativos do catálogo completo que ainda não estão no universo acompanhado */
+function palRemote(q){
+  clearTimeout(palTimer);
+  if(q.length<2)return;
+  const mine=++palSeq;
+  palTimer=setTimeout(async()=>{
+    let hits=[];try{hits=await catalogSearch(q)}catch(e){return}
+    if(mine!==palSeq||!$('#pal').open)return;
+    const have=new Set(universe.map(u=>u.symbol));
+    const more=hits.filter(u=>!have.has(u.symbol)).slice(0,10);
+    if(!more.length)return;
+    $('#palList').insertAdjacentHTML('beforeend','<li class="grp">CATÁLOGO COMPLETO</li>'+more.map(u=>`<li><button type="button" data-as="${esc(u.symbol)}"><b class="mono">${esc(u.symbol)}</b><span class="mute">${esc(u.name)}</span></button></li>`).join(''));
+  },220);
 }
 $('#searchBtn').onclick=palOpen;
 $('#palQ').addEventListener('input',palRender);
@@ -565,7 +606,7 @@ $('#palQ').addEventListener('keydown',e=>{const bs=[...document.querySelectorAll
 $('#palList').addEventListener('keydown',e=>{const bs=[...document.querySelectorAll('#palList button')],i=bs.indexOf(document.activeElement);
   if(e.key==='ArrowDown'&&bs[i+1]){e.preventDefault();bs[i+1].focus()}if(e.key==='ArrowUp'){e.preventDefault();(bs[i-1]||$('#palQ')).focus()}});
 $('#palList').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;$('#pal').close();
-  if(b.dataset.pg){if(b.dataset.pg==='glossario')openGloss();else go(b.dataset.pg)}else if(b.dataset.as){select(b.dataset.as);go('cockpit')}});
+  if(b.dataset.pg){if(b.dataset.pg==='glossario')openGloss();else go(b.dataset.pg)}else if(b.dataset.as){const sym=b.dataset.as;openAsset(sym).then(ok=>{if(ok){select(sym);go('cockpit')}})}});
 $('#pal').addEventListener('click',e=>{if(e.target===$('#pal'))$('#pal').close()});
 addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();palOpen()}});
 /* painel inicial: só dado real, com frescor e fonte */
