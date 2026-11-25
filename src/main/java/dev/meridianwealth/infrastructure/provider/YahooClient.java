@@ -74,17 +74,18 @@ public class YahooClient implements ProviderStatusSource {
                 // barra é aproveitada, com o close do meta, e apenas se a cotação for do mesmo dia da barra.
                 boolean lastBar = i == ts.size() - 1;
                 boolean sameDay = metaTime > 0 && sameLocalDay(barTime, metaTime, zone);
-                if (lastBar && sameDay && !Double.isNaN(metaPrice) && hasNumber(q, "open", i)) {
-                    double o = q.path("open").path(i).asDouble();
-                    double hi = Math.max(num(q, "high", i, o), metaPrice);
-                    double lo = Math.min(num(q, "low", i, o), metaPrice);
+                /* antes do pregão a Yahoo manda a barra do dia com abertura e mínima 0 (medido em FIIs): sem abertura real a barra não é aproveitada */
+                if (lastBar && sameDay && !Double.isNaN(metaPrice) && price(q, "open", i, 0) > 0) {
+                    double o = price(q, "open", i, 0);
+                    double hi = Math.max(price(q, "high", i, o), metaPrice);
+                    double lo = Math.min(price(q, "low", i, o), metaPrice);
                     out.add(new Candle(barTime, o, hi, lo, metaPrice, num(q, "volume", i, 0)));
                 }
                 continue;
             }
             double c = close.asDouble();
-            out.add(new Candle(barTime, num(q, "open", i, c), num(q, "high", i, c),
-                    num(q, "low", i, c), c, num(q, "volume", i, 0)));
+            out.add(new Candle(barTime, price(q, "open", i, c), price(q, "high", i, c),
+                    price(q, "low", i, c), c, num(q, "volume", i, 0)));
         }
         double price = metaPrice;
         long t = metaTime;
@@ -109,6 +110,15 @@ public class YahooClient implements ProviderStatusSource {
     private static boolean hasNumber(JsonNode q, String field, int i) {
         JsonNode n = q.path(field).path(i);
         return !n.isNull() && !n.isMissingNode();
+    }
+
+    /**
+     * Preço de uma barra: nulo ou não positivo vira o fechamento. Antes da abertura a Yahoo manda a barra do dia com abertura e mínima 0 (medido
+     * em FIIs como HGLG11 e XPSF11): aceitar o zero dava variação infinita na tela e uma mínima falsa no gráfico.
+     */
+    private static double price(JsonNode q, String field, int i, double fallback) {
+        double v = num(q, field, i, fallback);
+        return v > 0 ? v : fallback;
     }
 
     private static double num(JsonNode q, String field, int i, double fallback) {
