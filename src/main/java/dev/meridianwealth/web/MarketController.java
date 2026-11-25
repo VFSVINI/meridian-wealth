@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -46,6 +47,22 @@ public class MarketController {
 
     @GetMapping("/universe")
     public List<Instrument> universe() { return market.universe(); }
+
+    /** Linha da busca: o ativo, o rótulo do tipo e se já está acompanhado (com preço e sinal) ou se abre sob demanda. */
+    public record CatalogHit(Instrument instrument, boolean tracked) {}
+
+    /** Busca qualquer ativo negociado (item #33) por símbolo ou nome; só cadastro, nenhum preço. */
+    @GetMapping("/catalog/search")
+    public List<CatalogHit> searchCatalog(@RequestParam @jakarta.validation.constraints.Size(max = 60) String q,
+                                          @RequestParam(defaultValue = "15") @Min(1) @Max(40) int limit) {
+        return market.search(q, limit).stream().map(i -> new CatalogHit(i, market.isTracked(i.symbol()))).toList();
+    }
+
+    /** Passa a acompanhar um ativo do catálogo: busca o histórico real e o motor calcula o sinal. 404 se não existe, 503 se não há dado real. */
+    @PostMapping("/catalog/{symbol}/track")
+    public Instrument track(@PathVariable @jakarta.validation.constraints.Pattern(regexp = "[A-Za-z0-9.^=-]{1,12}") String symbol) {
+        return market.track(symbol.toUpperCase(java.util.Locale.ROOT));
+    }
 
     /** Estado do pregão das bolsas do universo: aberto/fechado, motivo (feriado, fim de semana) e hora local. */
     @GetMapping("/markets")

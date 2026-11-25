@@ -72,7 +72,8 @@ public class ApiRateLimitFilter extends OncePerRequestFilter {
             over = cache.incrementWindow("rl:ip:" + ip, Duration.ofMinutes(1)) > anonymousPerMinute;
         }
         if (!over && authRoute) over = cache.incrementWindow("rl:auth:" + ip, Duration.ofMinutes(1)) > authPerMinute;
-        boolean heavyRoute = path.startsWith("/api/risk/") || path.startsWith("/api/me/risk/");
+        boolean heavyRoute = path.startsWith("/api/risk/") || path.startsWith("/api/me/risk/")
+                || (path.startsWith("/api/catalog/") && path.endsWith("/track"));
         if (!over && heavyRoute) over = cache.incrementWindow("rl:heavy:" + (who != null ? who.userId() : ip), Duration.ofMinutes(1)) > heavyPerMinute;
         if (over) {
             res.setStatus(429);

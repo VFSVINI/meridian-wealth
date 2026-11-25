@@ -130,6 +130,23 @@ public class LiveMarketData implements MarketDataPort {
     public List<Instrument> universe() { return Universe.instruments(); }
 
     @Override
+    public Optional<Instrument> find(String symbol) { return Universe.resolve(symbol).map(Universe.Entry::instrument); }
+
+    @Override
+    public List<Instrument> search(String query, int limit) {
+        List<Instrument> out = new java.util.ArrayList<>();
+        String q = Catalog.fold(query == null ? "" : query.trim());
+        if (q.isEmpty()) return out;
+        /* o universo curado vem primeiro; o catálogo completa (sem repetir símbolo) */
+        for (Instrument i : Universe.instruments()) if (Catalog.fold(i.symbol() + " " + i.name()).contains(q)) out.add(i);
+        for (Catalog.Entry c : Catalog.search(query, limit)) {
+            if (out.size() >= limit) break;
+            if (!Universe.curated(c.instrument().symbol())) out.add(c.instrument());
+        }
+        return out.size() > limit ? out.subList(0, limit) : out;
+    }
+
+    @Override
     public MacroSnapshot macro() { return macro.current(); }
 
     @Override
