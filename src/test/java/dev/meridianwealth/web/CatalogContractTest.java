@@ -20,7 +20,7 @@ class CatalogContractTest {
     @Test
     void openingAnAssetTracksItOnTheServerAndExplainsWhenThereIsNoRealData() throws IOException {
         String js = StaticPage.file("app.js");
-        assertThat(js).contains("async function catalogSearch(q)").contains("/api/catalog/search?limit=20&q=").contains("async function openAsset(sym)")
+        assertThat(js).contains("async function catalogSearch(q)").contains("/api/catalog/search?limit=20&q=").contains("async function openAsset(sym,force)")
                 .contains("'/api/catalog/'+encodeURIComponent(sym)+'/track',{method:'POST'}");
         assertThat(js).contains("r.status===503").contains("Nada foi inventado.").contains("r.status===429");
         assertThat(js).as("os seletores e a busca rápida abrem o ativo antes de selecioná-lo").contains("openAsset(sym).then(ok=>{if(ok)select(sym)}),catalogSearch")
