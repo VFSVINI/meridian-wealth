@@ -80,8 +80,19 @@ public final class Universe {
 
     public static List<Instrument> instruments() { return ALL.stream().map(Entry::instrument).toList(); }
 
+    /** Cadastro do ativo: o universo curado tem prioridade; depois vem o catálogo (item #33). */
     public static Entry entry(String symbol) {
-        return ALL.stream().filter(x -> x.instrument().symbol().equals(symbol)).findFirst()
-                .orElseThrow(() -> new NoSuchElementException(symbol));
+        return resolve(symbol).orElseThrow(() -> new NoSuchElementException(symbol));
+    }
+
+    public static java.util.Optional<Entry> resolve(String symbol) {
+        for (Entry x : ALL) if (x.instrument().symbol().equals(symbol)) return java.util.Optional.of(x);
+        return Catalog.find(symbol).map(c -> new Entry(c.instrument(), c.symbols()));
+    }
+
+    /** Só o universo curado (acompanhado desde a partida). */
+    public static boolean curated(String symbol) {
+        for (Entry x : ALL) if (x.instrument().symbol().equals(symbol)) return true;
+        return false;
     }
 }
