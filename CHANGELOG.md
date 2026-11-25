@@ -6,6 +6,11 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #34 do roadmap)
+- **Composição e mapa de todos os FIIs com imóveis na CVM**: 167 fundos e 1.220 imóveis do Informe Trimestral (dados abertos da CVM, fonte oficial), com 466 coordenadas confirmadas pela geocodificação conservadora e o motivo de cada imóvel sem coordenada. O ticker é ligado ao CNPJ pelo ISIN do próprio Informe, conferido com o catálogo e o nome; fundo duvidoso fica de fora. O tipo do imóvel fica em branco porque a CVM não o publica.
+- **Mapa para centenas de fundos**: busca do fundo pelo código, filtros por UF e tipo, lista que mostra 60 por vez, fontes resumidas e comparação dos 15 maiores do filtro.
+- As respostas JSON do servidor passam a sair comprimidas (a composição inteira foi de 1,17 MB para 161 KB).
+
 ### Adicionado (item #33 do roadmap)
 - **Catálogo de ativos negociados**: 14 013 ativos (ações, FIIs, ETFs e BDRs da B3 e ações e ETFs dos EUA), entre eles o XPSF11, que não aparecia. O catálogo guarda só cadastro (nenhum preço); fontes: Nasdaq Trader e brapi, geradas por `scripts/build-catalog.py`.
 - **Busca de qualquer ativo** no seletor e no Ctrl+K (símbolo ou nome, sem acento), marcada "catálogo". Ao abrir um ativo, o servidor busca o histórico real e **o motor calcula o sinal dele** como o dos demais; sem dado real o ativo não entra e a tela diz isso. Até 40 ativos sob demanda; a rota de abertura tem limite próprio.
