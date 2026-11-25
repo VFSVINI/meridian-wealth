@@ -6,6 +6,13 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #33 do roadmap)
+- **Catálogo de ativos negociados**: 14 013 ativos (ações, FIIs, ETFs e BDRs da B3 e ações e ETFs dos EUA), entre eles o XPSF11, que não aparecia. O catálogo guarda só cadastro (nenhum preço); fontes: Nasdaq Trader e brapi, geradas por `scripts/build-catalog.py`.
+- **Busca de qualquer ativo** no seletor e no Ctrl+K (símbolo ou nome, sem acento), marcada "catálogo". Ao abrir um ativo, o servidor busca o histórico real e **o motor calcula o sinal dele** como o dos demais; sem dado real o ativo não entra e a tela diz isso. Até 40 ativos sob demanda; a rota de abertura tem limite próprio.
+
+### Corrigido (item #33)
+- Antes da abertura do pregão a Yahoo manda a barra do dia com abertura e mínima 0 (medido em HGLG11 e XPSF11): o parser aceitava o zero e a variação do dia daria infinito. Agora esses preços viram o fechamento e a barra sem abertura real não é usada.
+
 ### Adicionado (item #47 do roadmap, Milestone 8: Cosmos)
 - **Fundação visual do protótipo Cosmos** (as telas do Claude Design estão em `docs/design/cosmos/`): tokens do tema escuro (fundo espacial, âmbar e ciano) e do Ivory, títulos de cinema em **Big Shoulders Display**, texto em **Inter** e números em **IBM Plex Mono** (fontes OFL servidas pelo projeto, hash fixado em teste), barra superior e menu por seções (Explorar, Entender, Simular, Mais) e rodapé legal fixo.
 - **Céu vivo** no fundo: estrelas que derivam e reagem ao ponteiro, nebulosas que orbitam e o **salto de velocidade da luz** entre uma página e outra. Tudo parado com `prefers-reduced-motion`; nenhum dado é desenhado nem animado.
