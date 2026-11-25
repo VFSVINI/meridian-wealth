@@ -22,7 +22,7 @@ class CosmosFoundationTest {
     void theStarFieldIsOnlyAmbientNeverWritesTextAndStopsWithReducedMotionOrAHiddenTab() throws IOException {
         String js = StaticPage.file("stars.js"), html = StaticPage.file("index.html");
         assertThat(html).contains("<canvas id=\"stars\" aria-hidden=\"true\"></canvas>").contains("<script src=\"/stars.js\"></script>");
-        assertThat(js).contains("(prefers-reduced-motion: reduce)").contains("document.hidden").contains("visibilitychange").contains("now - last >= 33");
+        assertThat(js).contains("(prefers-reduced-motion: reduce)").contains("document.hidden").contains("visibilitychange").contains("dt >= 33");
         assertThat(js).contains("addEventListener('pointermove'").contains("'mw:warp'").contains("function nebulae()");
         assertThat(StaticPage.file("app.js")).contains("document.dispatchEvent(new Event('mw:warp'))");
         assertThat(StaticPage.file("cosmos.css")).contains("@keyframes irisIn{0%{opacity:0;transform:scale(.92)");
