@@ -91,7 +91,8 @@
   addEventListener('resize', () => { build(); wake(); });
   addEventListener('scroll', () => { sy = scrollY; if (!raf) draw(); }, {passive: true});
   addEventListener('pointermove', e => { ptr.tx = e.clientX / w * 2 - 1; ptr.ty = e.clientY / h * 2 - 1; ptr.px = e.clientX; ptr.py = e.clientY; }, {passive: true});
-  addEventListener('pointerleave', () => { ptr.tx = 0; ptr.ty = 0; ptr.px = -999; ptr.py = -999; });
+  /* o mouse saiu da página: pointerout no document sem relatedTarget (o pointerleave não chega à window) */
+  document.addEventListener('pointerout', e => { if (!e.relatedTarget) { ptr.tx = 0; ptr.ty = 0; ptr.px = -999; ptr.py = -999; } });
   /* a troca de página pede o salto: o roteador dispara mw:warp */
   document.addEventListener('mw:warp', () => { if (reduced.matches || ivory() || document.hidden) return; warpStart = performance.now(); warp = .01; if (!raf) wake(); });
   document.addEventListener('visibilitychange', wake);

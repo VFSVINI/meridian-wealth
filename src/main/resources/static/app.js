@@ -583,7 +583,7 @@ function renderHome(){
 /* "A leitura em uma frase" da página inicial: o ativo em destaque é o primeiro com dado real e sinal calculado (PETR4 quando houver); preço, variação, fonte e
    gráfico são os reais, a frase é a tradução do sinal do motor (regra publicada) e o selo diz que é análise, não ordem. Nada é inventado: sem dado, o cartão diz isso. */
 const SIG_TXT={BUY_DIP_WINDOW:'O preço recuou para uma zona que o motor costuma tratar como janela. Esperar uma confirmação é a leitura mais cautelosa.',ACCUMULATE:'Os sinais estão a favor, sem exagero. Entrar aos poucos costuma ser mais prudente do que de uma vez.',HOLD_RIDE_TREND:'Tendência em curso. Manter e acompanhar é a leitura mais cautelosa.',TAKE_PROFIT_WINDOW:'O preço subiu bastante em pouco tempo. Realizar parte do ganho é uma leitura comum nesta fase.',SELL_EXIT_SETUP:'Tendência de queda com perda de força. Reduzir exposição é a leitura mais cautelosa.',HIGH_RISK_WAIT:'Há sinais a favor e contra neste momento. Aguardar mais um pouco costuma ser mais prudente do que decidir agora.'};
-let readSym=null,readSpark='';
+let readSym=null,readSpark='',readHtml='';
 function sparkSvg(cs){
   const v=cs.map(c=>c.close).filter(x=>Number.isFinite(x));if(v.length<3)return '';
   const lo=Math.min(...v),hi=Math.max(...v),W=400,H=140,sx=i=>i/(v.length-1)*W,sy=x=>H-6-(x-lo)/((hi-lo)||1)*(H-14);
@@ -594,12 +594,13 @@ function sparkSvg(cs){
 async function renderRead(live){
   const box=$('#hmReadBody');if(!box)return;
   const pick=live.find(u=>u.symbol==='PETR4'&&rows[u.symbol].assessment)||live.find(u=>rows[u.symbol].assessment);
-  if(!pick){box.innerHTML='<p class="cs-r-txt mute">Sem dado real suficiente para uma leitura agora. Quando houver cotação, ela aparece aqui com fonte e horário.</p>';return}
+  if(!pick){readHtml='';box.innerHTML='<p class="cs-r-txt mute">Sem dado real suficiente para uma leitura agora. Quando houver cotação, ela aparece aqui com fonte e horário.</p>';return}
   const r=rows[pick.symbol],c=r.candle,chg=c.close/c.open-1,s=SIG[r.assessment.signal];
   if(readSym!==pick.symbol){readSym=pick.symbol;readSpark='';try{readSpark=sparkSvg((await j(`/api/candles/${pick.symbol}?limit=60`))||[])}catch(e){readSpark=''}}
-  box.innerHTML=`<div class="cs-r-top"><div><p class="cs-r-sym">${esc(pick.symbol)}</p><p class="cs-r-name">${esc(pick.name)}</p></div><div><div class="cs-r-px num">${esc(pick.currency==='USD'?'US$ ':'R$ ')}${f(c.close,c.close<10?4:2)}</div><div class="cs-r-chg num ${chg>=0?'up':'dn'}">${chg>=0?'+':''}${f(chg*100)}%</div></div></div>
+  const html=`<div class="cs-r-top"><div><p class="cs-r-sym">${esc(pick.symbol)}</p><p class="cs-r-name">${esc(pick.name)}</p></div><div><div class="cs-r-px num">${esc(pick.currency==='USD'?'US$ ':'R$ ')}${f(c.close,c.close<10?4:2)}</div><div class="cs-r-chg num ${chg>=0?'up':'dn'}">${chg>=0?'+':''}${f(chg*100)}%</div></div></div>
    <div class="cs-r-chart">${readSpark}</div><p class="cs-r-txt"><b>${esc(s[0])}.</b> ${esc(SIG_TXT[r.assessment.signal]||'')}</p>
    <div class="cs-chips"><span class="cs-chip cy">Fonte: ${esc(r.source)}</span><span class="cs-chip">${quoteWhen(r)}</span><span class="cs-chip am">análise, não ordem</span></div>`;
+  if(html!==readHtml){readHtml=html;box.innerHTML=html}   /* só reescreve quando algo mudou: sem piscar e sem releitura para leitor de tela */
 }
 $('#hmAcademia').onclick=()=>openGloss();$('#hmAcademia2').onclick=()=>openGloss();
 ['hmSignals','hmMovers'].forEach(id=>$('#'+id).addEventListener('click',e=>{const t=e.target.closest('[data-s]');if(t){select(t.dataset.s);go('cockpit')}}));
