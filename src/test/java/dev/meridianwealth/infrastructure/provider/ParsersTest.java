@@ -23,6 +23,26 @@ class ParsersTest {
         assertThat(c.tsMillis()).isEqualTo(1_700_000_200_000L);
     }
 
+    @Test void yahooBarWithZeroOpenAndLowBeforeTheOpenUsesTheCloseInsteadOfAFalseZero() throws IOException {
+        // medido em 2026-11-25: a barra do dia, antes do pregão, vinha com open 0.0 e low 0.0 (e o app calculava close/open - 1 = infinito)
+        String json = "{\"chart\":{\"result\":[{\"meta\":{\"regularMarketPrice\":5.66,\"regularMarketTime\":1700000200},"
+                + "\"timestamp\":[1700000000,1700086400],\"indicators\":{\"quote\":[{"
+                + "\"open\":[5.7,0.0],\"high\":[5.84,5.66],\"low\":[5.61,0.0],\"close\":[5.73,5.66],\"volume\":[286816,0]}]}}]}}";
+        var last = YahooClient.parseChart(json).candles().get(1);
+        assertThat(last.open()).isEqualTo(5.66);
+        assertThat(last.low()).isEqualTo(5.66);
+        assertThat(last.high()).isEqualTo(5.66);
+        assertThat(last.close() / last.open() - 1).isZero();
+    }
+    @Test void yahooOpenDayBarWithoutARealOpenIsNotUsed() throws IOException {
+        // barra do dia sem fechamento (pregão ainda não abriu) e com open 0.0 / low 0.0: não vira candle com mínima falsa
+        String json = "{\"chart\":{\"result\":[{\"meta\":{\"regularMarketPrice\":140.8,\"regularMarketTime\":1700086500,\"timezone\":\"UTC\",\"exchangeTimezoneName\":\"UTC\"},"
+                + "\"timestamp\":[1700000000,1700086400],\"indicators\":{\"quote\":[{"
+                + "\"open\":[141.8,0.0],\"high\":[141.8,140.8],\"low\":[139.7,0.0],\"close\":[140.69,null],\"volume\":[135647,0]}]}}]}}";
+        var candles = YahooClient.parseChart(json).candles();
+        assertThat(candles).hasSize(1);
+        assertThat(candles.get(0).low()).isEqualTo(139.7);
+    }
     @Test void yahooErrorPayloadThrows() {
         assertThatThrownBy(() -> YahooClient.parseChart("{\"chart\":{\"result\":null,\"error\":{}}}")).isInstanceOf(IOException.class);
     }
