@@ -34,4 +34,12 @@ class CatalogContractTest {
         assertThat(html).contains("Qualquer ativo negociado na B3 ou nos EUA").contains("ações, FIIs, ETFs e BDRs");
         assertThat(StaticPage.file("cosmos.css")).contains(".cs-toast{position:fixed");
     }
+
+    @Test
+    void ifTheServerForgotAnOnDemandAssetTheSelectionReopensItOnceInsteadOfFailingSilently() throws IOException {
+        // medido: depois de reiniciar o servidor, openAsset devolvia true sem chamar e o select lançava 404; agora reabre com force e tenta de novo uma vez
+        String js = StaticPage.file("app.js");
+        assertThat(js).contains("async function openAsset(sym,force)").contains("if(!force&&rows[sym]&&universe.some(u=>u.symbol===sym))return true;")
+                .contains("if(await openAsset(sym,true)){try{got=await load()}catch(e2){got=null}}").contains("if(got){candles=got[0];A=got[1]}else{candles=[];A=null}");
+    }
 }

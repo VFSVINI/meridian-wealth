@@ -112,7 +112,16 @@ async function select(sym){
   sel=sym;selecting=true;syncPick();
   const r=rows[sym];
   try{
-    if(hasData(r)){const [c,a]=await Promise.all([j(`/api/candles/${sym}?limit=400`),j(`/api/assessment/${sym}`).catch(()=>null)]);if(sel!==sym)return;candles=c;A=a}
+    if(hasData(r)){
+      const load=()=>Promise.all([j(`/api/candles/${sym}?limit=400`),j(`/api/assessment/${sym}`).catch(()=>null)]);
+      let got=null;
+      try{got=await load()}
+      catch(e){   /* o servidor pode ter reiniciado ou expulsado o ativo aberto sob demanda: reabre e tenta de novo uma vez */
+        if(await openAsset(sym,true)){try{got=await load()}catch(e2){got=null}}
+      }
+      if(sel!==sym)return;
+      if(got){candles=got[0];A=got[1]}else{candles=[];A=null}
+    }
     else{candles=[];A=null}
   }finally{selecting=false}
   $('#btOut').innerHTML='<span class="mute">Rode o backtest para este ativo.</span>';
@@ -558,8 +567,8 @@ function note(msg){
   el.textContent=msg;el.classList.add('on');clearTimeout(note.t);note.t=setTimeout(()=>el.classList.remove('on'),6000);
 }
 /** Garante que o ativo está acompanhado (preço, histórico e sinal do motor). Devolve false, com o motivo na tela, se não há dado real. */
-async function openAsset(sym){
-  if(rows[sym]&&universe.some(u=>u.symbol===sym))return true;
+async function openAsset(sym,force){
+  if(!force&&rows[sym]&&universe.some(u=>u.symbol===sym))return true;
   try{
     const r=await fetch('/api/catalog/'+encodeURIComponent(sym)+'/track',{method:'POST'});
     if(r.status===429){note('Muitas aberturas seguidas. Espere um minuto e tente de novo.');return false}
