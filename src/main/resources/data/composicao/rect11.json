@@ -19,7 +19,8 @@
   "avisos": [
     "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
     "O código RECT11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRRECTCTF000), conferido com o catálogo de ativos e o nome do fundo.",
-    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área.",
+    "Em 1 imóvel (Canopus Corporate Alphaville) os setores publicados somam mais de 100% da receita do imóvel: inconsistência do próprio Informe, mostrada como foi publicada."
   ],
   "ativos": [
     {

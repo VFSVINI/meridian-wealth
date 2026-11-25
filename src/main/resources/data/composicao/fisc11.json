@@ -8,7 +8,7 @@
     "tipo": "OFICIAL",
     "referenciaDosDados": "2026-09-30",
     "consultadoEm": "2026-11-25",
-    "sha256DoTextoExtraido": "c1e4715577e95c2313d61a65745f8089f4a53b0cf20ca16041fe49c171fc69e0"
+    "sha256DoTextoExtraido": "f55944258116ec41c53819bcd1c38447b8a64c942e93aeba93cd94fe5fa68297"
   },
   "resumoDaGeocodificacao": {
     "comCoordenadas": 1,
@@ -19,7 +19,8 @@
   "avisos": [
     "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
     "O código FISC11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRFISCCTF008), conferido com o catálogo de ativos e o nome do fundo.",
-    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área.",
+    "3 linhas do Informe repetem o nome de um imóvel (andares ou unidades): os setores dos inquilinos são publicados por nome e, como não dá para saber de qual linha são, ficam sem setores informados nelas."
   ],
   "ativos": [
     {
@@ -32,28 +33,7 @@
       "areaPublicada": "16015.43",
       "vacanciaPercentual": "0.7667",
       "percentualDaReceitaDoFundo": "58.2229",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Móveis e decoração",
-          "percentualDaReceitaDoImovel": "34.3182"
-        },
-        {
-          "setor": "Educação Cursos",
-          "percentualDaReceitaDoImovel": "27.6564"
-        },
-        {
-          "setor": "Pet Shop",
-          "percentualDaReceitaDoImovel": "15.5403"
-        },
-        {
-          "setor": "escritórios",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Estacionamento",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "fisc11-emp-com-sc-401-square-corporate-t-lagoa-campeche-jurere-1",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -88,28 +68,7 @@
       "areaPublicada": "8297.01",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "15.4159",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Móveis e decoração",
-          "percentualDaReceitaDoImovel": "34.3182"
-        },
-        {
-          "setor": "Educação Cursos",
-          "percentualDaReceitaDoImovel": "27.6564"
-        },
-        {
-          "setor": "Pet Shop",
-          "percentualDaReceitaDoImovel": "15.5403"
-        },
-        {
-          "setor": "escritórios",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Estacionamento",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "fisc11-emp-com-sc-401-square-corporate-t-lagoa-campeche-jurere-2",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -124,28 +83,7 @@
       "areaPublicada": "2769.8",
       "vacanciaPercentual": "8.1667",
       "percentualDaReceitaDoFundo": "11.4789",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Móveis e decoração",
-          "percentualDaReceitaDoImovel": "34.3182"
-        },
-        {
-          "setor": "Educação Cursos",
-          "percentualDaReceitaDoImovel": "27.6564"
-        },
-        {
-          "setor": "Pet Shop",
-          "percentualDaReceitaDoImovel": "15.5403"
-        },
-        {
-          "setor": "escritórios",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Estacionamento",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "fisc11-emp-com-sc-401-square-corporate-t-lagoa-campeche-jurere-3",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"

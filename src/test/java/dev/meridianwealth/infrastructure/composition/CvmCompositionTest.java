@@ -69,4 +69,21 @@ class CvmCompositionTest {
         assertThat(xplg.assets().size()).isGreaterThan(10);
         assertThat(xplg.assets()).anyMatch(a -> !a.tenantSectors().isEmpty());
     }
+
+    @Test void sectorsAreNeverMultipliedByRepeatedPropertyNamesAndInconsistentSourceSumsAreFlagged() {
+        // medido: nomes repetidos recebiam os setores de todas as linhas (FLMA11 chegava a 1.600%); agora ficam sem setores, com aviso
+        for (FundComposition f : cvm()) {
+            boolean over100 = false;
+            java.math.BigDecimal revenue = java.math.BigDecimal.ZERO;
+            for (RealAsset a : f.assets()) {
+                java.math.BigDecimal sectors = a.tenantSectors().stream().map(s -> s.percentOfPropertyRevenue()).reduce(java.math.BigDecimal.ZERO, java.math.BigDecimal::add);
+                if (sectors.compareTo(new java.math.BigDecimal("100.5")) > 0) over100 = true;
+                assertThat(sectors.doubleValue()).as(f.fundSymbol() + " " + a.name()).isLessThan(110.0);
+                if (a.revenueSharePercent() != null) revenue = revenue.add(a.revenueSharePercent());
+            }
+            if (over100) assertThat(f.notices()).as(f.fundSymbol()).anyMatch(n -> n.contains("setores publicados somam mais de 100%"));
+            if (revenue.compareTo(new java.math.BigDecimal("100.5")) > 0) assertThat(f.notices()).as(f.fundSymbol()).anyMatch(n -> n.contains("acima de 100%"));
+        }
+        assertThat(repo.find("FLMA11").orElseThrow().notices()).anyMatch(n -> n.contains("repetem o nome de um imóvel"));
+    }
 }

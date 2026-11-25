@@ -8,7 +8,7 @@
     "tipo": "OFICIAL",
     "referenciaDosDados": "2026-09-30",
     "consultadoEm": "2026-11-25",
-    "sha256DoTextoExtraido": "9dd491a3d8eb2ebc2b8e2348f851bf0877c218ba507ad15843aa0afb90284b1b"
+    "sha256DoTextoExtraido": "944e5511a4ec3b76f7d27cd7fdd3301f5673f1e464c1564269abdc5c0fe75a89"
   },
   "resumoDaGeocodificacao": {
     "comCoordenadas": 0,
@@ -19,7 +19,8 @@
   "avisos": [
     "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
     "O código EDFO11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BREDFOCTF004), conferido com o catálogo de ativos e o nome do fundo.",
-    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área.",
+    "8 linhas do Informe repetem o nome de um imóvel (andares ou unidades): os setores dos inquilinos são publicados por nome e, como não dá para saber de qual linha são, ficam sem setores informados nelas."
   ],
   "ativos": [
     {
@@ -32,40 +33,7 @@
       "areaPublicada": "926.68",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "36.0380",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Holding de instituição não financeira",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "edfo11-edificio-ourinvest-1",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -80,40 +48,7 @@
       "areaPublicada": "292.1",
       "vacanciaPercentual": "100",
       "percentualDaReceitaDoFundo": "0",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Holding de instituição não financeira",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "edfo11-edificio-ourinvest-2",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -128,40 +63,7 @@
       "areaPublicada": "388.1",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "14.5243",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Holding de instituição não financeira",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "edfo11-edificio-ourinvest-3",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -176,40 +78,7 @@
       "areaPublicada": "350.17",
       "vacanciaPercentual": "100",
       "percentualDaReceitaDoFundo": "0",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Holding de instituição não financeira",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "edfo11-edificio-ourinvest-4",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -224,40 +93,7 @@
       "areaPublicada": "1366.11",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "49.4376",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Holding de instituição não financeira",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "edfo11-edificio-ourinvest-5",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -272,40 +108,7 @@
       "areaPublicada": "292.1",
       "vacanciaPercentual": "100",
       "percentualDaReceitaDoFundo": "0",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Holding de instituição não financeira",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "edfo11-edificio-ourinvest-6",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -320,40 +123,7 @@
       "areaPublicada": "292.1",
       "vacanciaPercentual": "100",
       "percentualDaReceitaDoFundo": "0",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Holding de instituição não financeira",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "edfo11-edificio-ourinvest-7",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -368,40 +138,7 @@
       "areaPublicada": "292.1",
       "vacanciaPercentual": "100",
       "percentualDaReceitaDoFundo": "0",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Vago",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Holding de instituição não financeira",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        },
-        {
-          "setor": "Banco múltiplo sem carteira comercial",
-          "percentualDaReceitaDoImovel": "0"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "edfo11-edificio-ourinvest-8",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
