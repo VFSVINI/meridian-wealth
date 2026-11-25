@@ -8,7 +8,7 @@
     "tipo": "OFICIAL",
     "referenciaDosDados": "2026-09-30",
     "consultadoEm": "2026-11-25",
-    "sha256DoTextoExtraido": "fbdc46c1743188f2e5b5ffeddd0adb2823c77f12fa1f151820ff11796486c095"
+    "sha256DoTextoExtraido": "5f34c0270390fefce99c9e7f575210eaa8482412cb2b59be20b96a5e25408121"
   },
   "resumoDaGeocodificacao": {
     "comCoordenadas": 0,
@@ -19,7 +19,8 @@
   "avisos": [
     "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
     "O código FLMA11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRFLMACTF009), conferido com o catálogo de ativos e o nome do fundo.",
-    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área.",
+    "16 linhas do Informe repetem o nome de um imóvel (andares ou unidades): os setores dos inquilinos são publicados por nome e, como não dá para saber de qual linha são, ficam sem setores informados nelas."
   ],
   "ativos": [
     {
@@ -32,72 +33,7 @@
       "areaPublicada": "432.3",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "2.4485",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-1",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -112,72 +48,7 @@
       "areaPublicada": "1784.6",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "11.5461",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-2",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -192,72 +63,7 @@
       "areaPublicada": "405.22",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "2.4501",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-3",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -272,72 +78,7 @@
       "areaPublicada": "432.3",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "2.7093",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-4",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -352,72 +93,7 @@
       "areaPublicada": "432.3",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "4.9851",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-5",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -432,72 +108,7 @@
       "areaPublicada": "432.3",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "2.9382",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-6",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -512,72 +123,7 @@
       "areaPublicada": "395.6",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "2.3919",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-7",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -592,72 +138,7 @@
       "areaPublicada": "395.6",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "2.4747",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-8",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -672,72 +153,7 @@
       "areaPublicada": "460",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "5.0910",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-9",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -752,72 +168,7 @@
       "areaPublicada": "411.13",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "2.4293",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-10",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -832,72 +183,7 @@
       "areaPublicada": "11398.8",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "40.5750",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-11",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -912,72 +198,7 @@
       "areaPublicada": "432.3",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "4.9851",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-12",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -992,72 +213,7 @@
       "areaPublicada": "460",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "2.3420",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-13",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -1072,72 +228,7 @@
       "areaPublicada": "460",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "1.9615",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-14",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -1152,72 +243,7 @@
       "areaPublicada": "460",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "2.7643",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-15",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -1232,72 +258,7 @@
       "areaPublicada": "460",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "4.2792",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Gerenciamento de espaços",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Serviços financeiros",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Hotelaria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia da Informação",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Tecnologia",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Consultoria",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Franquia de Cosmeticos",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "flma11-ed-continental-square-faria-lima-16",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"

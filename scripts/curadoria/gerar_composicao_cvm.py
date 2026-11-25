@@ -166,6 +166,7 @@ def main():
         if ticker in CURADOS:
             continue
         ref, versao = ultima[cnpj]
+        repetidos = {n for n, q in __import__("collections").Counter(r["Nome_Imovel"] for r in linhas).items() if q > 1}
         ativos, usados, vistos, sem = [], [], {}, 0
         for r in linhas:
             try:
@@ -179,7 +180,8 @@ def main():
             end = None if end in ("", "-") else end
             cidade, uf, cep = local_cvm(end)
             ss = []
-            for s in setores.get((cnpj, ref, versao, r["Nome_Imovel"]), []):
+            # nome repetido no mesmo fundo (andares ou unidades): os setores são publicados por nome e não dá para saber de qual linha são
+            for s in ([] if r["Nome_Imovel"] in repetidos else setores.get((cnpj, ref, versao, r["Nome_Imovel"]), [])):
                 if s["Setor_Atuacao"].strip() not in ("", "-"):
                     ss.append({"setor": s["Setor_Atuacao"].strip(), "percentualDaReceitaDoImovel": pct(s["Percentual_Receita_Imovel"])})
                 usados.append(s)
@@ -227,6 +229,17 @@ def main():
                   "área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
                   f"O código {ticker} foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica ({isins[cnpj]}), conferido com o catálogo de ativos e o nome do fundo.",
                   "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."]
+        if repetidos:
+            avisos.append(f"{sum(1 for r in linhas if r['Nome_Imovel'] in repetidos)} linhas do Informe repetem o nome de um imóvel (andares ou unidades): "
+                          "os setores dos inquilinos são publicados por nome e, como não dá para saber de qual linha são, ficam sem setores informados nelas.")
+        acima = [a["nome"] for a in ativos if sum((Decimal(x["percentualDaReceitaDoImovel"]) for x in a["setoresDosInquilinos"]
+                                                   if x["percentualDaReceitaDoImovel"] is not None), Decimal(0)) > Decimal("100.5")]
+        if acima:
+            avisos.append(f"Em {len(acima)} imóve{'l' if len(acima) == 1 else 'is'} ({', '.join(acima[:3])}) os setores publicados somam mais de 100% da receita do imóvel: "
+                          "inconsistência do próprio Informe, mostrada como foi publicada.")
+        soma = sum((Decimal(a["percentualDaReceitaDoFundo"]) for a in ativos if a["percentualDaReceitaDoFundo"] is not None), Decimal(0))
+        if soma > Decimal("100.5"):
+            avisos.append(f"A soma dos percentuais de receita publicados por imóvel é {soma.quantize(Decimal('0.1'))}%, acima de 100%: inconsistência do próprio Informe, mostrada como foi publicada.")
         if sem:
             avisos.append(f"{sem} imóve{'l' if sem == 1 else 'is'} do Informe não trazem área positiva e não aparecem aqui.")
         doc = {"versaoDoEsquema": 1, "fundo": ticker, "nomeDoFundo": titulo(nomes[cnpj]), "fonte": fonte,

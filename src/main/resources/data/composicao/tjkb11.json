@@ -8,7 +8,7 @@
     "tipo": "OFICIAL",
     "referenciaDosDados": "2026-09-30",
     "consultadoEm": "2026-11-25",
-    "sha256DoTextoExtraido": "ee260591ce8c3821030a68bfe69b4faad46aff472d09c6d6f74290813ce6cd36"
+    "sha256DoTextoExtraido": "c9258ffd2210f9aa107a945d581bf1463c7aab6ddebfd8b7208627724aac48cb"
   },
   "resumoDaGeocodificacao": {
     "comCoordenadas": 6,
@@ -19,7 +19,8 @@
   "avisos": [
     "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
     "O código TJKB11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRTJKBCTF006), conferido com o catálogo de ativos e o nome do fundo.",
-    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área.",
+    "6 linhas do Informe repetem o nome de um imóvel (andares ou unidades): os setores dos inquilinos são publicados por nome e, como não dá para saber de qual linha são, ficam sem setores informados nelas."
   ],
   "ativos": [
     {
@@ -32,16 +33,7 @@
       "areaPublicada": "433.1",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "0.3792",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Clínica Oncológica",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Clínica Oncológica",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "tjkb11-ed-neolink-1",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
@@ -56,16 +48,7 @@
       "areaPublicada": "1565.9",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "1.3713",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Clínica Oncológica",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Clínica Oncológica",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "tjkb11-ed-neolink-2",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
@@ -128,16 +111,7 @@
       "areaPublicada": "2406.91",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "2.9514",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação Médica",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação Médica",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "tjkb11-ed-barra-privat-1",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -200,16 +174,7 @@
       "areaPublicada": "954",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "1.2010",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Educação Médica",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Educação Médica",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "tjkb11-ed-barra-privat-2",
       "coordenadas": null,
       "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
@@ -272,16 +237,7 @@
       "areaPublicada": "4509",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "7.7134",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Pesquisa",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Medicina Diagnóstica",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "tjkb11-marselhesa-1",
       "coordenadas": {
         "lat": "-23.597205",
@@ -304,16 +260,7 @@
       "areaPublicada": "6408.56",
       "vacanciaPercentual": "0",
       "percentualDaReceitaDoFundo": "15.0758",
-      "setoresDosInquilinos": [
-        {
-          "setor": "Pesquisa",
-          "percentualDaReceitaDoImovel": "100"
-        },
-        {
-          "setor": "Medicina Diagnóstica",
-          "percentualDaReceitaDoImovel": "100"
-        }
-      ],
+      "setoresDosInquilinos": [],
       "id": "tjkb11-marselhesa-2",
       "coordenadas": {
         "lat": "-23.596861",
