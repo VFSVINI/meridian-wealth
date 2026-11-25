@@ -48,6 +48,8 @@ public class MarketService {
     private static final Duration BACKTEST_TTL = Duration.ofMinutes(10);
     private static final int HISTORY_BARS = 500;
     private static final int MAX_BARS = 1500;
+    /** Ativos do catálogo acompanhados sob demanda (além do universo curado): limite de memória e de chamadas aos provedores. */
+    static final int MAX_TRACKED = 40;
 
     private static final class Series {
         final Instrument instrument;
@@ -88,6 +90,8 @@ public class MarketService {
     /** Estado mutável: só o escritor (sob {@code writeLock}) o toca. */
     private final Map<String, Series> series = new LinkedHashMap<>();
     private final Object writeLock = new Object();
+    /** Símbolos acompanhados sob demanda, do mais antigo ao mais recente. Só o escritor (sob {@code writeLock}) o toca. */
+    private final java.util.LinkedHashSet<String> tracked = new java.util.LinkedHashSet<>();
     /** Snapshot imutável publicado atomicamente; é o que as leituras enxergam. */
     private volatile Map<String, View> views = Map.of();
     private volatile MacroSnapshot macro = MacroSnapshot.unavailable();
@@ -138,21 +142,68 @@ public class MarketService {
                     LOG.log(Level.WARNING, "{0}: sem dado em tempo real e sem dado gravado", symbol);
                     return;
                 }
-                Series s = series.get(symbol);
-                s.candles.clear();
-                s.candles.addAll(h.candles());
-                s.source = h.source();
-                s.freshness = h.freshness();
-                s.quoteTime = h.quoteTime();
-                s.open = data.marketOpen(symbol);
-                LOG.log(Level.INFO, "{0}: {1} barras reais via {2} ({3})", symbol, h.candles().size(), h.source(),
-                        h.freshness().label());
+                install(series.get(symbol), symbol, h);
             });
             publish();
         }
     }
 
-    public List<Instrument> universe() { return data.universe(); }
+    private void install(Series s, String symbol, HistoryResult h) {
+        s.candles.clear();
+        s.candles.addAll(h.candles());
+        s.source = h.source();
+        s.freshness = h.freshness();
+        s.quoteTime = h.quoteTime();
+        s.open = data.marketOpen(symbol);
+        LOG.log(Level.INFO, "{0}: {1} barras reais via {2} ({3})", symbol, h.candles().size(), h.source(), h.freshness().label());
+    }
+
+    /** O universo curado e, depois dele, os ativos do catálogo que alguém abriu e seguem acompanhados (até {@value #MAX_TRACKED}). */
+    public List<Instrument> universe() { return views.values().stream().map(View::instrument).toList(); }
+
+    /**
+     * Acompanha sob demanda um ativo negociado do catálogo (item #33): busca o histórico real, passa a atualizá-lo a cada ciclo e, com barras
+     * suficientes, o motor já calcula o sinal dele como o dos demais. O histórico é buscado fora do lock; sem dado real o ativo NÃO entra
+     * (nada é inventado). Passando de {@value #MAX_TRACKED} ativos sob demanda, sai o que foi aberto há mais tempo (o curado nunca sai).
+     *
+     * @throws NoSuchElementException se o símbolo não existe no catálogo
+     * @throws DataUnavailableException se nenhum provedor devolveu dado real
+     */
+    public Instrument track(String symbol) {
+        View known = views.get(symbol);
+        if (known != null) {
+            synchronized (writeLock) {
+                if (tracked.remove(symbol)) tracked.add(symbol);   /* aberto de novo: passa a ser o mais recente */
+            }
+            return known.instrument();
+        }
+        Instrument inst = data.find(symbol).orElseThrow(() -> new NoSuchElementException(symbol));
+        HistoryResult h = data.history(symbol, HISTORY_BARS);
+        if (!h.available()) {
+            throw new DataUnavailableException(symbol, DataStatus.UNAVAILABLE,
+                    "Sem dado em tempo real para " + symbol + ": nenhum provedor respondeu e não há dado real gravado.");
+        }
+        synchronized (writeLock) {
+            if (!series.containsKey(symbol)) {
+                Series s = new Series(inst);
+                install(s, symbol, h);
+                series.put(symbol, s);
+                tracked.add(symbol);
+                while (tracked.size() > MAX_TRACKED) {
+                    String oldest = tracked.iterator().next();
+                    tracked.remove(oldest);
+                    series.remove(oldest);
+                }
+                publish();
+            }
+        }
+        return inst;
+    }
+
+    /** Busca por símbolo ou nome no catálogo de ativos negociados; {@code tracked} diz o que já está acompanhado. */
+    public List<Instrument> search(String query, int limit) { return data.search(query, limit); }
+
+    public boolean isTracked(String symbol) { return views.containsKey(symbol); }
 
     /** Último radar macro obtido (indisponível quando nenhum provedor respondeu). */
     public MacroSnapshot macro() { return macro; }

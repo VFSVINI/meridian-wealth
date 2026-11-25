@@ -35,6 +35,13 @@ class MarketServiceTest {
 
         @Override public List<Instrument> universe() { return UNIVERSE; }
 
+        /** Ativos do catálogo (fora do universo curado) que o teste liberar. */
+        final List<Instrument> catalog = new ArrayList<>();
+
+        @Override public Optional<Instrument> find(String symbol) {
+            return java.util.stream.Stream.concat(UNIVERSE.stream(), catalog.stream()).filter(i -> i.symbol().equals(symbol)).findFirst();
+        }
+
         @Override public HistoryResult history(String symbol, int bars) {
             return histories.getOrDefault(symbol, HistoryResult.empty());
         }
@@ -231,5 +238,69 @@ class MarketServiceTest {
 
     @Test void backtestOnInstrumentWithoutDataIsRefused() {
         assertThatThrownBy(() -> service.backtest("MSFT", 35, 30, 250)).isInstanceOf(DataUnavailableException.class);
+    }
+
+    private void listed(String symbol, long seed) {
+        data.catalog.add(Instrument.of(symbol, "Fundo " + symbol, Exchange.B3, "FII", "imobiliario", "BRL", null));
+        data.histories.put(symbol, real(seed, "brapi", Freshness.DELAYED));
+    }
+
+    @Test void trackingACatalogAssetLoadsRealHistoryAndTheEngineAssessesItLikeTheOthers() {
+        listed("XPSF11", 7);
+        assertThat(service.isTracked("XPSF11")).isFalse();
+        assertThat(service.track("XPSF11").symbol()).isEqualTo("XPSF11");
+        assertThat(service.isTracked("XPSF11")).isTrue();
+        assertThat(service.universe()).extracting(Instrument::symbol).contains("XPSF11");
+        assertThat(service.candles("XPSF11", 500)).hasSize(300);
+        assertThat(service.assessment("XPSF11").signal()).isNotNull();   // o sinal do motor existe para o ativo acompanhado sob demanda
+        assertThat(tick(service.overview(), "XPSF11").source()).isEqualTo("brapi");
+    }
+
+    @Test void anAssetWithoutRealDataIsNotTrackedAndNothingIsInvented() {
+        data.catalog.add(Instrument.of("SEMDADO11", "Sem dado", Exchange.B3, "FII", "imobiliario", "BRL", null));
+        assertThatThrownBy(() -> service.track("SEMDADO11")).isInstanceOf(DataUnavailableException.class).hasMessageContaining("Sem dado em tempo real");
+        assertThat(service.isTracked("SEMDADO11")).isFalse();
+        assertThat(service.universe()).extracting(Instrument::symbol).doesNotContain("SEMDADO11");
+    }
+
+    @Test void aSymbolOutsideTheCatalogIsNotFound() {
+        assertThatThrownBy(() -> service.track("NAOEXISTE")).isInstanceOf(java.util.NoSuchElementException.class);
+    }
+
+    @Test void trackingAnAlreadyKnownAssetDoesNotFetchAgain() {
+        data.histories.put("AAPL", real(3, "stooq", Freshness.END_OF_DAY));
+        service.loadHistories();
+        data.histories.clear();                         // se buscasse de novo, não haveria dado
+        assertThat(service.track("AAPL").symbol()).isEqualTo("AAPL");
+        assertThat(service.candles("AAPL", 10)).hasSize(10);
+    }
+
+    @Test void onDemandAssetsAreCappedAndTheOldestLeavesWhileTheCuratedUniverseNeverDoes() {
+        data.histories.put("SPY", real(1, "stooq", Freshness.END_OF_DAY));
+        service.loadHistories();
+        int total = MarketService.MAX_TRACKED + 3;
+        for (int i = 0; i < total; i++) {
+            listed("FUN" + i + "11", 100 + i);
+            service.track("FUN" + i + "11");
+        }
+        assertThat(service.isTracked("FUN011")).as("o mais antigo saiu").isFalse();
+        assertThat(service.isTracked("FUN211")).isFalse();
+        assertThat(service.isTracked("FUN311")).isTrue();
+        assertThat(service.isTracked("SPY")).as("curado nunca sai").isTrue();
+        assertThat(service.universe()).hasSize(UNIVERSE.size() + MarketService.MAX_TRACKED);
+    }
+
+    @Test void openingATrackedAssetAgainMakesItTheMostRecentSoItSurvivesTheCap() {
+        listed("KEEP11", 5);
+        service.track("KEEP11");
+        for (int i = 0; i < MarketService.MAX_TRACKED - 1; i++) {
+            listed("N" + i + "AA11", 200 + i);
+            service.track("N" + i + "AA11");
+        }
+        service.track("KEEP11");                         // reaberto: vira o mais recente
+        listed("EXTRA11", 9);
+        service.track("EXTRA11");                        // estoura o limite: sai o mais antigo, que agora é o N0AA11
+        assertThat(service.isTracked("KEEP11")).isTrue();
+        assertThat(service.isTracked("N0AA11")).isFalse();
     }
 }
