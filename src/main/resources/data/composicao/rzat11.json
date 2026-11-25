@@ -1,0 +1,210 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "RZAT11",
+  "nomeDoFundo": "Riza Arctium Fii Rl",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "40c41f25892e0ebc77b59af4d583e6e44209a2ebb78c7bb508d17135db368193"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 3,
+    "semCoordenadas": 5
+  },
+  "cnpj": "28.267.696/0001-36",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código RZAT11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRRZATCTF009), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Garagem Oeste",
+      "enderecoPublicado": "Avenida Presidente Kubitschek, 260, Sem Complemento, Jardim Presidente, Goiânia/GO, Brasil, 74353-250",
+      "cidade": "Goiânia",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "68667",
+      "areaPublicada": "68667",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "10.8000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Transporte",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzat11-garagem-oeste",
+      "coordenadas": {
+        "lat": "-16.740353",
+        "lng": "-49.328365",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Presidente Juscelino Kubitschek, Jardim Presidente, Goiânia, Goiás, Região Centro-Oeste, 74353-250, Brasil",
+        "osm": "way/46520194",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Presidente Kubitschek, 260, Goiânia, GO, Brasil"
+      }
+    },
+    {
+      "nome": "Total Ville Planaltina",
+      "enderecoPublicado": "Brasilia, Quadra 24, Módulo 1, Setor Habitacional Mestre D'armas (planaltina), Brasília/DF, Brasil, 00073-405",
+      "cidade": "Brasília",
+      "uf": "DF",
+      "tipo": null,
+      "areaM2": "7510.47",
+      "areaPublicada": "7510.47",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.1098",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzat11-total-ville-planaltina",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Galpao Caucaia - Stock Teck",
+      "enderecoPublicado": "Rodovia Br020, 527, Sem Complemento, Campo Grande, Caucaia/CE, Brasil, 61663-015",
+      "cidade": "Caucaia",
+      "uf": "CE",
+      "tipo": null,
+      "areaM2": "5606",
+      "areaPublicada": "5606",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "2.9987",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzat11-galpao-caucaia-stock-teck",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Imovel Andorinha - Campo Grande",
+      "enderecoPublicado": "Avenida Costa E Silva, 1275, Sem Complemento, Vila Progresso, Campo Grande/MS, Brasil, 79050-410",
+      "cidade": "Campo Grande",
+      "uf": "MS",
+      "tipo": null,
+      "areaM2": "10541.98",
+      "areaPublicada": "10541.98",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "1.2585",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Transporte",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzat11-imovel-andorinha-campo-grande",
+      "coordenadas": {
+        "lat": "-20.492898",
+        "lng": "-54.613613",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Costa e Silva, América, Campo Grande, Mato Grosso do Sul, Região Centro-Oeste, 79050-010, Brasil",
+        "osm": "way/380698884",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Costa E Silva, 1275, Campo Grande, MS, Brasil"
+      }
+    },
+    {
+      "nome": "Empreendimento Votorantim - Splice",
+      "enderecoPublicado": "Avenida Juscelino Kubitschek De Oliveira, 154, Blocos A, B, C, Centro, Votorantim/SP, Brasil, 18110-901",
+      "cidade": "Votorantim",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "13719.34",
+      "areaPublicada": "13719.34",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "7.9103",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Computadores e Equipamentos",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzat11-empreendimento-votorantim-splice",
+      "coordenadas": {
+        "lat": "-23.530473",
+        "lng": "-47.448318",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Juscelino Kubitschek de Oliveira, Jardim Angelo Vial, Votorantim, Sorocaba, São Paulo, Região Sudeste, 18110-008, Brasil",
+        "osm": "way/753615190",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Juscelino Kubitschek De Oliveira, 154, Votorantim, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Galpao Voar - Gleba A",
+      "enderecoPublicado": "Avenida Perimetral Norte, 10002, Sem Complemento, Setor Vila João Vaz, Goiania/GO, Brasil, 74583-285",
+      "cidade": "Goiania",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "93592.28",
+      "areaPublicada": "93592.28",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "9.0979",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Holdings Diversificadas",
+          "percentualDaReceitaDoImovel": "82.2042"
+        }
+      ],
+      "id": "rzat11-galpao-voar-gleba-a",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Imovel Visolux - Parque Industrial - Maringa - PR",
+      "enderecoPublicado": "Rodovia Pr-317, S/n, Km 01, Parque Industrial, Maringá/PR, Brasil, 87065-005",
+      "cidade": "Maringá",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "9060.45",
+      "areaPublicada": "9060.45",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "4.6168",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Holdings Diversificadas",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzat11-imovel-visolux-parque-industrial-maringa-pr",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Imovel Mirassol - Posto Monte Carlo",
+      "enderecoPublicado": "Avenida Santos Dumont, 4235, Loteamento Jardim Marilu, Vila Aeroporto, Mirassol/SP, Brasil, 15135-160",
+      "cidade": "Mirassol",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "8512",
+      "areaPublicada": "8512",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "3.1098",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Petróleo, Gás e Biocombustíveis",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzat11-imovel-mirassol-posto-monte-carlo",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

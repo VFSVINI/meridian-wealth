@@ -1,0 +1,82 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "HLOG11",
+  "nomeDoFundo": "Hedge Logística Fundo De Investimento Imobiliário",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "c06cebf18d50c9b54370119f880b26f00157d9fb858dc9800300b1a3bbc3e027"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 2
+  },
+  "cnpj": "27.486.542/0001-72",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código HLOG11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRHLOGCTF008), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Ciltog Viracopos",
+      "enderecoPublicado": "Galpão na Rodovia Miguel Melhado Campos, SP-324, Km 81,5, Itupeva - SP",
+      "cidade": "Itupeva",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "138869.54760578",
+      "areaPublicada": "138869.54760578",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "55.6430",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Energia Fotovoltaica",
+          "percentualDaReceitaDoImovel": "41.4226"
+        },
+        {
+          "setor": "Bens de Consumo",
+          "percentualDaReceitaDoImovel": "28.3547"
+        },
+        {
+          "setor": "Varejista",
+          "percentualDaReceitaDoImovel": "10.8992"
+        }
+      ],
+      "id": "hlog11-ciltog-viracopos",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Condomínio Citlog Sul de Minas",
+      "enderecoPublicado": "Rua Citlog, 333, Bairro Aeroporto, Varginha - MG",
+      "cidade": "Varginha",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "66304.15",
+      "areaPublicada": "66304.15",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "31.5632",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comèsticos & Perfumaria",
+          "percentualDaReceitaDoImovel": "41.5265"
+        },
+        {
+          "setor": "Farmacêutico",
+          "percentualDaReceitaDoImovel": "39.5788"
+        },
+        {
+          "setor": "Operador Logístico",
+          "percentualDaReceitaDoImovel": "11.3764"
+        }
+      ],
+      "id": "hlog11-condominio-citlog-sul-de-minas",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

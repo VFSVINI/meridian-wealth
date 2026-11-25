@@ -1,0 +1,124 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "HSLG11",
+  "nomeDoFundo": "Hsi Logística Fundo De Investimento Imobiliário",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "0010c8bb20f3e54e90d925075b2852fb0cf70e3570f1dbc5b44010ad24490c1d"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 5
+  },
+  "cnpj": "32.903.621/0001-71",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código HSLG11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRHSLGCTF009), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Galpão Logístico Contagem - MG",
+      "enderecoPublicado": "Rodovia Municipal Vereador Joaquim Costa, nº 2000, no município de Contagem, Estado de Minas Gerais",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "92000",
+      "areaPublicada": "92000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "20.2900",
+      "setoresDosInquilinos": [],
+      "id": "hslg11-galpao-logistico-contagem-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Galpão Logístico São José dos Pinhais - PR",
+      "enderecoPublicado": "Rod. BR 116 (Contorno Leste), nº 7000, no município de São José dos Pinhais, Estado do Paraná,",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "74200",
+      "areaPublicada": "74200",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "11.1300",
+      "setoresDosInquilinos": [],
+      "id": "hslg11-galpao-logistico-sao-jose-dos-pinhais-pr",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Galpão Logístico Itapevi - SP",
+      "enderecoPublicado": "Rodovia Coronel PM Nelson Tranchesi, números 740 e 990, no município de Itapevi, Estado de São Paulo",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "84800",
+      "areaPublicada": "84800",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "14.8900",
+      "setoresDosInquilinos": [],
+      "id": "hslg11-galpao-logistico-itapevi-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Galpão Logístico Arujá - SP",
+      "enderecoPublicado": "Avenida Comendador Masatoshi Shinmyo, nº 300, no município de Arujá, estado de São Paulo",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "139600",
+      "areaPublicada": "139600",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "23.9400",
+      "setoresDosInquilinos": [],
+      "id": "hslg11-galpao-logistico-aruja-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Galpão Logístico Manaus - AM",
+      "enderecoPublicado": "Avenida Torquato Tapajós, 5709 - Novo Israel, Manaus - AM",
+      "cidade": "Manaus",
+      "uf": "AM",
+      "tipo": null,
+      "areaM2": "66200",
+      "areaPublicada": "66200",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "12.8700",
+      "setoresDosInquilinos": [],
+      "id": "hslg11-galpao-logistico-manaus-am",
+      "coordenadas": {
+        "lat": "-3.000420",
+        "lng": "-60.031533",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Torquato Tapajós, Comunidade Jesus Me Deu, Tarumã, Manaus, Amazonas, Região Norte, 69000-000, Brasil",
+        "osm": "way/497162247",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Torquato Tapajós, Manaus, AM, Brasil"
+      }
+    },
+    {
+      "nome": "Galpão Logístico BTS Meli Araucária",
+      "enderecoPublicado": "Rodovia PR-423, 3301, Bairro Boqueirão, Cidade de Araucária, Estado do Paraná",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "327120",
+      "areaPublicada": "327120",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "13.2500",
+      "setoresDosInquilinos": [],
+      "id": "hslg11-galpao-logistico-bts-meli-araucaria",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

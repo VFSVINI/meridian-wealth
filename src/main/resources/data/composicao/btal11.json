@@ -1,0 +1,225 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "BTAL11",
+  "nomeDoFundo": "Btgp Agro Log Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2025.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2025-12-31",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "f62c3f103160e5a541e4897f5d13a6235f103a6c0ce43a450020a65e5332453f"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 3,
+    "semCoordenadas": 6
+  },
+  "cnpj": "36.642.244/0001-15",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 31/12/2025, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código BTAL11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRBTALCTF003), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "TERMINAL PORTUARIO DO ESPIRITO SANTO SA",
+      "enderecoPublicado": "Rua Rio Verde, 101, Sem Complemento, Paul, Vila Velha/ES, Brasil, 29115-210",
+      "cidade": "Vila Velha",
+      "uf": "ES",
+      "tipo": null,
+      "areaM2": "4436.44",
+      "areaPublicada": "4436.44",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "8.9303",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btal11-terminal-portuario-do-espirito-santo-sa",
+      "coordenadas": {
+        "lat": "-20.327198",
+        "lng": "-40.336550",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Rio Verde, Atalaia, Região 03 - Grande Aribiri, Argolas, Vila Velha, Espírito Santo, Região Sudeste, 29115-210, Brasil",
+        "osm": "way/127350236",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Rio Verde, 101, Vila Velha, ES, Brasil"
+      }
+    },
+    {
+      "nome": "Imovel Ibema",
+      "enderecoPublicado": "Br 277, Km 533, Centro De Recebimento De Grão I.riedi, Colonia Murillo, Ibema/PR, Brasil, 85478-000",
+      "cidade": "Ibema",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "4897.48",
+      "areaPublicada": "4897.48",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "btal11-imovel-ibema",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Cascavel - Estrada da Pedreira - PR",
+      "enderecoPublicado": "Estrada Da Pedreira, 151, Sem Complemento, 14 De Novembro, Cascavel/PR, Brasil, 85804-180",
+      "cidade": "Cascavel",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "9380.09",
+      "areaPublicada": "9380.09",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.8260",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btal11-cascavel-estrada-da-pedreira-pr",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "Salete Palotina - PR",
+      "enderecoPublicado": "Rodovia Pr 364, Km 579, Sem Complemento, , Palotina/PR, Brasil, 85950-000",
+      "cidade": "Palotina",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "6996.44",
+      "areaPublicada": "6996.44",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.6195",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btal11-salete-palotina-pr",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Itumbiara - COMFRIO",
+      "enderecoPublicado": "Avenida Presidente Tancredo De Almeida Neves, 1171, Sem Complemento, Karfan, Itumbiara/GO, Brasil, 75516-475",
+      "cidade": "Itumbiara",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "19977.1",
+      "areaPublicada": "19977.1",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "8.9899",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agropecuária",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btal11-itumbiara-comfrio",
+      "coordenadas": {
+        "lat": "-18.400405",
+        "lng": "-49.208179",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Presidente Tancredo de Almeida Neves, Afonso Pena, Itumbiara, Goiás, Região Centro-Oeste, 75516-350, Brasil",
+        "osm": "way/311342000",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Presidente Tancredo De Almeida Neves, 1171, Itumbiara, GO, Brasil"
+      }
+    },
+    {
+      "nome": "Perola - Maripa - PR",
+      "enderecoPublicado": "Rodovia Pr 182, Km 34 - Maripa/pr, Km 34, Sem Complemento, Perola Independente , Maripa/PR, Brasil, 85958-000",
+      "cidade": "Maripa",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "7126.93",
+      "areaPublicada": "7126.93",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.2119",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btal11-perola-maripa-pr",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Armazem Graneleiro - nova Ubirata - MT",
+      "enderecoPublicado": "Rodovia Br 242, Km 75, S/n, Sem Complemento, Zona Rural, Nova Ubirata/MT, Brasil, 78888-000",
+      "cidade": "Nova Ubirata",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "25000",
+      "areaPublicada": "25000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "12.7094",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Petróleo, Gás e Biocombustíveis",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btal11-armazem-graneleiro-nova-ubirata-mt",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Imovel Toledo",
+      "enderecoPublicado": "Rodovia Br467, Br 163, Km 256.5, Jardim Europa, Toledo/PR, Brasil, 85907-060",
+      "cidade": "Toledo",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "12861.92",
+      "areaPublicada": "12861.92",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "7.4765",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btal11-imovel-toledo",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Terminal Intermodal de Transbordo - IturamaMG",
+      "enderecoPublicado": "Rua Frutal 689, 689, Sem Complemento, Centro, Iturama/MG, Brasil, 38280-971",
+      "cidade": "Iturama",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "153876.39",
+      "areaPublicada": "153876.39",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "17.5785",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "btal11-terminal-intermodal-de-transbordo-ituramamg",
+      "coordenadas": {
+        "lat": "-19.729680",
+        "lng": "-50.196594",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Frutal, Iturama, Minas Gerais, Região Sudeste, Brasil",
+        "osm": "way/166560819",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Frutal 689, 689, Iturama, MG, Brasil"
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "TSER11",
+  "nomeDoFundo": "Prime Offices Fundo De Investimento Imobiliário - Resp Ltda",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "3c804041f1f184163950d592b98141f3dcf38c6d03018f3c6cb3cc5f6b0df33a"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 2
+  },
+  "cnpj": "34.847.042/0001-84",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código TSER11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRTSERCTF006), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "TORRE V - ED. ARAUCARIA",
+      "enderecoPublicado": "Alameda Araguaia, nº 2550 e Avenida Marcos Penteado de Ulhôa Rodrigues, nº 939 - Alphaville",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "92075.8",
+      "areaPublicada": "92075.8",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "100",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "tser11-torre-v-ed-araucaria",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "OSCAR FREIRE OFFICES",
+      "enderecoPublicado": "Avenida Rebouças, 1111 e Rua Chabad, 116",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "5265.57",
+      "areaPublicada": "5265.57",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "tser11-oscar-freire-offices",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

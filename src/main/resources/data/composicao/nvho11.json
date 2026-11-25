@@ -1,0 +1,186 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "NVHO11",
+  "nomeDoFundo": "Fundo De Investimento Imobiliario - Fii Novo Horizonte",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "6b1484b5e3df40f904cb35d0b5457e0af4585421ff337c76edd3e413e51a6acf"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 4,
+    "semCoordenadas": 0
+  },
+  "cnpj": "17.025.970/0001-44",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código NVHO11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRNVHOCTF003), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Hospital São Luiz - BLOCO D",
+      "enderecoPublicado": "Rua Doutor Alceu de Campos Rodrigues, 95, Itaim Bibi, São Paulo, SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "5820.73",
+      "areaPublicada": "5820.73",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "19",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Apartamento",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Raio X",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Radiologia",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Ressonancia Magnetica",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "nvho11-hospital-sao-luiz-bloco-d",
+      "coordenadas": {
+        "lat": "-23.590838",
+        "lng": "-46.673758",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Hospital e Maternidade São Luiz, 95, Rua Doutor Alceu de Campos Rodrigues, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04544-000, Brasil",
+        "osm": "way/828106699",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Doutor Alceu de Campos Rodrigues, 95, Itaim Bibi, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Hospital São Luiz - BLOCO B",
+      "enderecoPublicado": "Rua Desembargador Aguiar Valim, Itaim Bibi, São Paulo, SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "9897.05",
+      "areaPublicada": "9897.05",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "33",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Area de isolamento",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Banco de Leite",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "UTI neo natal",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Centro Cirurgico",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "nvho11-hospital-sao-luiz-bloco-b",
+      "coordenadas": {
+        "lat": "-23.591289",
+        "lng": "-46.674124",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Desembargador Aguiar Valim, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04544-000, Brasil",
+        "osm": "way/27579081",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Desembargador Aguiar Valim, Itaim Bibi, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Hospital São Luiz - BLOCO C e E",
+      "enderecoPublicado": "Rua Doutor Alceu de Campos Rodrigues, 95, Itaim Bibi, São Paulo, SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "7121.25",
+      "areaPublicada": "7121.25",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "23",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Sala de Ultrason",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Endoscopia",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Leitos maternidade",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "UTI",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "nvho11-hospital-sao-luiz-bloco-c-e-e",
+      "coordenadas": {
+        "lat": "-23.590838",
+        "lng": "-46.673758",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Hospital e Maternidade São Luiz, 95, Rua Doutor Alceu de Campos Rodrigues, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04544-000, Brasil",
+        "osm": "way/828106699",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Doutor Alceu de Campos Rodrigues, 95, Itaim Bibi, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Hospital São Luiz - BLOCO A",
+      "enderecoPublicado": "Rua Doutor Alceu de Campos Rodrigues, 95, Itaim Bibi, São Paulo, SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "7520.15",
+      "areaPublicada": "7520.15",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "25",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Lanchonete",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "UTI",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Berçário",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Apartamentos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "nvho11-hospital-sao-luiz-bloco-a",
+      "coordenadas": {
+        "lat": "-23.590838",
+        "lng": "-46.673758",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Hospital e Maternidade São Luiz, 95, Rua Doutor Alceu de Campos Rodrigues, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04544-000, Brasil",
+        "osm": "way/828106699",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Doutor Alceu de Campos Rodrigues, 95, Itaim Bibi, São Paulo, SP, Brasil"
+      }
+    }
+  ]
+}

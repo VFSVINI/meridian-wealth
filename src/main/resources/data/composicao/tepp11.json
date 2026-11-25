@@ -1,0 +1,186 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "TEPP11",
+  "nomeDoFundo": "Fii Tellus Prop",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "818e52c6ddcb4a7cbf4e23bcede8ff59aa58b5b5ce64b038998ffb7efc7d105f"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 3,
+    "semCoordenadas": 3
+  },
+  "cnpj": "26.681.370/0001-25",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código TEPP11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRTEPPCTF006), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Ed Faria Lima 1355",
+      "enderecoPublicado": "Avenida Brigadeiro Faria Lima, 1355, Sem Complemento, Jardim Paulistano, São Paulo/SP, Brasil, 01452-002",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "5761.194",
+      "areaPublicada": "5761.194",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "9.5508",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços Financeiros Diversos",
+          "percentualDaReceitaDoImovel": "23.5498"
+        },
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "76.4502"
+        }
+      ],
+      "id": "tepp11-ed-faria-lima-1355",
+      "coordenadas": {
+        "lat": "-23.569454",
+        "lng": "-46.691252",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "1355, Avenida Brigadeiro Faria Lima, Jardim Europa, Pinheiros, São Paulo, Região Sudeste, 01452-002, Brasil",
+        "osm": "way/450151768",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Brigadeiro Faria Lima, 1355, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Imovel GPA - Brigadeiro Luis Antonio",
+      "enderecoPublicado": "Avenida Brigadeiro Luis Antonio, 3142, Sem Complemento, Jardim Paulista, São Paulo/SP, Brasil, 01402-000",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "11224.79",
+      "areaPublicada": "11224.79",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "8.6564",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "tepp11-imovel-gpa-brigadeiro-luis-antonio",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Edificio Torre Sul",
+      "enderecoPublicado": "Rua James Joule, 65, Sem Complemento, Cidade Monções, São Paulo/SP, Brasil, 04576-080",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "11034.04875",
+      "areaPublicada": "11034.04875",
+      "vacanciaPercentual": "4.9124",
+      "percentualDaReceitaDoFundo": "9.4989",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "76.6000"
+        },
+        {
+          "setor": "Tecnologia",
+          "percentualDaReceitaDoImovel": "23.4000"
+        }
+      ],
+      "id": "tepp11-edificio-torre-sul",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Shopping Top Center",
+      "enderecoPublicado": "Avenida Paulista, 854, Sem Complemento, Bela Vista, Sao Paulo/SP, Brasil, 01311-100",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "15574.21",
+      "areaPublicada": "15574.21",
+      "vacanciaPercentual": "18.1669",
+      "percentualDaReceitaDoFundo": "9.3318",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "63.0137"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "36.9863"
+        }
+      ],
+      "id": "tepp11-shopping-top-center",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Edificio Parque Cultural Paulista",
+      "enderecoPublicado": "Avenida Paulista, 37, Sem Complemento, Bela Vista, São Paulo/SP, Brasil, 01311-902",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1118.56",
+      "areaPublicada": "1118.56",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.4227",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "tepp11-edificio-parque-cultural-paulista",
+      "coordenadas": {
+        "lat": "-23.571099",
+        "lng": "-46.645175",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Casa das Rosas, 37, Avenida Paulista, Paraíso, Vila Mariana, São Paulo, Região Sudeste, 01311-903, Brasil",
+        "osm": "way/301601819",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Paulista, 37, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edificio Fujitsu",
+      "enderecoPublicado": "Rua Treze De Maio, 1633, Sem Complemento, Bela Vista, São Paulo/SP, Brasil, 01327-001",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "4985",
+      "areaPublicada": "4985",
+      "vacanciaPercentual": "59.5667",
+      "percentualDaReceitaDoFundo": "1.2726",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "29.9555"
+        },
+        {
+          "setor": "Construção Civil",
+          "percentualDaReceitaDoImovel": "70.0445"
+        }
+      ],
+      "id": "tepp11-edificio-fujitsu",
+      "coordenadas": {
+        "lat": "-23.567430",
+        "lng": "-46.644147",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "1633, Rua Treze de Maio, Morro dos Ingleses, Bela Vista, São Paulo, Região Sudeste, 01327-001, Brasil",
+        "osm": "way/1171586421",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Treze De Maio, 1633, São Paulo, SP, Brasil"
+      }
+    }
+  ]
+}

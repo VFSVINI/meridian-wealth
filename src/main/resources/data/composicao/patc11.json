@@ -1,0 +1,126 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "PATC11",
+  "nomeDoFundo": "Patria Edificios Corporativos Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "df3d959a198e830a67abf3969ac36a3007bb2c23735c429dd4fadf754dfd7e4e"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 2,
+    "semCoordenadas": 2
+  },
+  "cnpj": "30.048.651/0001-12",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código PATC11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRPATCCTF002), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edifício Cetenco Plaza",
+      "enderecoPublicado": "Avenida Paulista, 1.842 - São Paulo",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1152",
+      "areaPublicada": "1152",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Financeiro",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "patc11-edificio-cetenco-plaza",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Edifício Sky Corporate",
+      "enderecoPublicado": "R. Gomes de Carvalho, 1996, Vila Olímpia, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "2689.52",
+      "areaPublicada": "2689.52",
+      "vacanciaPercentual": "50",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Consultoria",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "patc11-edificio-sky-corporate",
+      "coordenadas": {
+        "lat": "-23.594388",
+        "lng": "-46.690743",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Gomes de Carvalho, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04551-060, Brasil",
+        "osm": "way/96482028",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Gomes de Carvalho, 1996, Vila Olímpia, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edifício RM Square",
+      "enderecoPublicado": "Rua Pascoal Pais, 525 - São Paulo",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2615",
+      "areaPublicada": "2615",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "patc11-edificio-rm-square",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Edifício Central Vila Olímpia",
+      "enderecoPublicado": "Alameda Vicente Pinzon, 51, Vila Olímpia, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1298",
+      "areaPublicada": "1298",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Mobilidade",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "patc11-edificio-central-vila-olimpia",
+      "coordenadas": {
+        "lat": "-23.596732",
+        "lng": "-46.686555",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Alameda Vicente Pinzon, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04548-040, Brasil",
+        "osm": "way/743709390",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Vicente Pinzon, 51, Vila Olímpia, São Paulo - SP, Brasil"
+      }
+    }
+  ]
+}

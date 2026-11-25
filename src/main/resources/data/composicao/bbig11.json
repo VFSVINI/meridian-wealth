@@ -1,0 +1,118 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "BBIG11",
+  "nomeDoFundo": "Bb Premium Malls Fii De Responsabilidade Limitada",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "8bd145c5dbacf59e9af37185b4dd37d3736d62c0375d437d2e91b34905621e96"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 2,
+    "semCoordenadas": 1
+  },
+  "cnpj": "54.375.187/0001-37",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código BBIG11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRBBIGCTF004), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Shopping Pátio Higienópolis",
+      "enderecoPublicado": "Rua Dr. Veiga Filho, 133, Higienópolis, São Paulo - 01229-001",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "34141",
+      "areaPublicada": "34141",
+      "vacanciaPercentual": "1.9333",
+      "percentualDaReceitaDoFundo": "14.5216",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Artigos Para O Lar",
+          "percentualDaReceitaDoImovel": "10.9164"
+        },
+        {
+          "setor": "Food & Beverage",
+          "percentualDaReceitaDoImovel": "14.6095"
+        },
+        {
+          "setor": "Moda",
+          "percentualDaReceitaDoImovel": "37.6264"
+        }
+      ],
+      "id": "bbig11-shopping-patio-higienopolis",
+      "coordenadas": {
+        "lat": "-23.540087",
+        "lng": "-46.659427",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Doutor Veiga Filho, Higienópolis, Consolação, São Paulo, Região Sudeste, 01229-001, Brasil",
+        "osm": "way/935537748",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Dr. Veiga Filho, 01229-001, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping RioSul",
+      "enderecoPublicado": "Rua Lauro Müller, 116 - Botafogo, Rio de Janeiro - RJ, 22290-070",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "51839.3333333333",
+      "areaPublicada": "51839.3333333333",
+      "vacanciaPercentual": "1.2000",
+      "percentualDaReceitaDoFundo": "63.0933",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Food & Beverage",
+          "percentualDaReceitaDoImovel": "14.5270"
+        },
+        {
+          "setor": "Moda",
+          "percentualDaReceitaDoImovel": "38.1132"
+        }
+      ],
+      "id": "bbig11-shopping-riosul",
+      "coordenadas": {
+        "lat": "-22.957515",
+        "lng": "-43.177989",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "116, Rua Lauro Müller, Botafogo, Rio de Janeiro, Região Sudeste, 22290-160, Brasil",
+        "osm": "node/7070406765",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Lauro Müller, 116 - Botafogo, Rio de Janeiro - RJ, 22290-070, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Pátio Paulista",
+      "enderecoPublicado": "Rua Treze de Maio, 1947 - Bela Vista, São Paulo - 01327-900",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "38134",
+      "areaPublicada": "38134",
+      "vacanciaPercentual": "1.1000",
+      "percentualDaReceitaDoFundo": "10.2948",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Food & Beverage",
+          "percentualDaReceitaDoImovel": "17.9253"
+        },
+        {
+          "setor": "Moda",
+          "percentualDaReceitaDoImovel": "34.0243"
+        }
+      ],
+      "id": "bbig11-shopping-patio-paulista",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

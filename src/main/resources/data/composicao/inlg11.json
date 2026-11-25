@@ -1,0 +1,94 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "INLG11",
+  "nomeDoFundo": "Inter Logístico Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "6bf88c655ed647bc3710052b2ae612b47eb9b5b4f3a98a6b16d782f5aaf794b0"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 3
+  },
+  "cnpj": "34.598.181/0001-11",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código INLG11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRINLGCTF008), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "LOG Rio Campo Grande",
+      "enderecoPublicado": "RODOVIA BR 262, nº 222 VILA BETANIA CEP: 29.136-930VIANA/ES",
+      "cidade": null,
+      "uf": "ES",
+      "tipo": null,
+      "areaM2": "11157.66",
+      "areaPublicada": "11157.66",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "8.9231",
+      "setoresDosInquilinos": [],
+      "id": "inlg11-log-rio-campo-grande",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "LOG Viana",
+      "enderecoPublicado": "RUA AMÂNCIO GAIOLLI, 426 - ÁGUA CHATA CEP:07.251-250 - GUARULHOS - SP",
+      "cidade": "GUARULHOS",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "48789.51",
+      "areaPublicada": "48789.51",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "41.0712",
+      "setoresDosInquilinos": [],
+      "id": "inlg11-log-viana",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "LOG Contagem I",
+      "enderecoPublicado": "RUA SIMAO ANTONIO, 255 - CINCAOCEP: 32.371-610 - CONTAGEM - MG",
+      "cidade": "CONTAGEM",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "27017.97",
+      "areaPublicada": "27017.97",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "27.4177",
+      "setoresDosInquilinos": [],
+      "id": "inlg11-log-contagem-i",
+      "coordenadas": {
+        "lat": "-19.920997",
+        "lng": "-44.046876",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Simão Antônio, Regional Eldorado, Do Comércio, Contagem, Minas Gerais, Região Sudeste, 32371-610, Brasil",
+        "osm": "way/511190801",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "RUA SIMAO ANTONIO, CONTAGEM, MG, Brasil"
+      }
+    },
+    {
+      "nome": "LOG Gaiolli",
+      "enderecoPublicado": "AV. BRASIL, n.41.432 LOT 1 PARTE 2 PAL 48862 LOT 1 PARTE 1PAL 48862Bairro CAMPO GRANDE - Rio de Janeiro - RJ- CEP: 23.078-001",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "26390.49",
+      "areaPublicada": "26390.49",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "22.0427",
+      "setoresDosInquilinos": [],
+      "id": "inlg11-log-gaiolli",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

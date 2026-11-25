@@ -1,0 +1,49 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "GCRI11",
+  "nomeDoFundo": "Galapagos Cri Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "bce9300bf8b8fbf54e6a7cfe2dbbe76a0826a81386215baef1e9cd3e4ff4a791"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "38.293.897/0001-61",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código GCRI11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRGCRICTF008), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Jardim Petrella Brooklin",
+      "enderecoPublicado": "RUA PASCOAL PAIS, 494/498 - VILA CORDEIRO - SÃO PAULO - SP",
+      "cidade": "SÃO PAULO",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "3495.28",
+      "areaPublicada": "3495.28",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "gcri11-jardim-petrella-brooklin",
+      "coordenadas": {
+        "lat": "-23.617257",
+        "lng": "-46.686825",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Pascoal Pais, Brooklin Novo, Itaim Bibi, São Paulo, Região Sudeste, 04566-062, Brasil",
+        "osm": "way/27292877",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "RUA PASCOAL PAIS, SÃO PAULO, SP, Brasil"
+      }
+    }
+  ]
+}

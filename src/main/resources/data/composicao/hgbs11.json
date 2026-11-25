@@ -1,0 +1,610 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "HGBS11",
+  "nomeDoFundo": "Hedge Brasil Shopping Fundo De Investimento Imobiliário",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "39e6a4566ab988563d5129365871f182c21c99683798d540fb886415706b6b58"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 13,
+    "semCoordenadas": 2
+  },
+  "cnpj": "08.431.747/0001-06",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código HGBS11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRHGBSCTF000), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Franca Shopping - 0,3673897836%",
+      "enderecoPublicado": "Av. Rio Negro, 1.100, Franca - SP",
+      "cidade": "Franca",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "18955.1",
+      "areaPublicada": "18955.1",
+      "vacanciaPercentual": "8.2494",
+      "percentualDaReceitaDoFundo": "0.0264",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hgbs11-franca-shopping-0-3673897836",
+      "coordenadas": {
+        "lat": "-20.548101",
+        "lng": "-47.415121",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Rio Negro, Jardim Roselândia, Jardim Califórnia, Estação, Franca, São Paulo, Região Sudeste, 14406-005, Brasil",
+        "osm": "way/160119074",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Rio Negro, 1.100, Franca - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Villa Lobos - 15%",
+      "enderecoPublicado": "Av. das Nações Unidas, 4777, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "28388.73",
+      "areaPublicada": "28388.73",
+      "vacanciaPercentual": "2.8679",
+      "percentualDaReceitaDoFundo": "2.6732",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hgbs11-shopping-villa-lobos-15",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Tivoli Shopping - 59%",
+      "enderecoPublicado": "Av. Santa Barbara, 777 - Vila Mollon IV, Santa Bárbara D'Oeste - SP",
+      "cidade": "Santa Bárbara D'Oeste",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "25779",
+      "areaPublicada": "25779",
+      "vacanciaPercentual": "1.7535",
+      "percentualDaReceitaDoFundo": "3.9990",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hgbs11-tivoli-shopping-59",
+      "coordenadas": {
+        "lat": "-22.749187",
+        "lng": "-47.374388",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Santa Bárbara, Jardim Pérola, Santa Bárbara d'Oeste, São Paulo, Região Sudeste, 13454-026, Brasil",
+        "osm": "way/990150836",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Santa Barbara, Santa Bárbara D'Oeste, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Center Penha - 87,5628%",
+      "enderecoPublicado": "R Dr. João Ribeiro, 304 - Penha de França, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "29778.51",
+      "areaPublicada": "29778.51",
+      "vacanciaPercentual": "3.2757",
+      "percentualDaReceitaDoFundo": "6.1392",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hgbs11-shopping-center-penha-87-5628",
+      "coordenadas": {
+        "lat": "-23.525178",
+        "lng": "-46.546752",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Shopping Center Penha, 304, Rua Doutor João Ribeiro, Jardim América da Penha, Penha, São Paulo, Região Sudeste, 03634-000, Brasil",
+        "osm": "way/382929913",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R Dr. João Ribeiro, 304 - Penha de França, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Santana Parque Shopping - 15%",
+      "enderecoPublicado": "Rua Conselheiro Moreira de Barros, 2.780, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "24630.24",
+      "areaPublicada": "24630.24",
+      "vacanciaPercentual": "7.9400",
+      "percentualDaReceitaDoFundo": "1.0395",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hgbs11-santana-parque-shopping-15",
+      "coordenadas": {
+        "lat": "-23.484689",
+        "lng": "-46.641714",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Conselheiro Moreira de Barros, Lauzane Paulista, Mandaqui, São Paulo, Região Sudeste, 02430-001, Brasil",
+        "osm": "way/229951980",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Conselheiro Moreira de Barros, 2.780, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Goiabeiras Shopping - 53,99%",
+      "enderecoPublicado": "Av. José Monteiro Figueiredo, 500 - Duque de Caxias, Cuiabá - MT",
+      "cidade": "Cuiabá",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "25830.88",
+      "areaPublicada": "25830.88",
+      "vacanciaPercentual": "17.0313",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hgbs11-goiabeiras-shopping-53-99",
+      "coordenadas": {
+        "lat": "-15.588198",
+        "lng": "-56.112442",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Goiabeiras Shopping, 500, Avenida José Monteiro de Figueiredo - Doutor Zelito, Duque de Caxias, Cuiabá, Mato Grosso, Região Centro-Oeste, 78043-300, Brasil",
+        "osm": "way/155879637",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. José Monteiro Figueiredo, 500 - Duque de Caxias, Cuiabá - MT, Brasil"
+      }
+    },
+    {
+      "nome": "Capim Dourado Shopping - 60%",
+      "enderecoPublicado": "Q. 107 Norte Avenida NS 5, s/n - Plano Diretor Norte, Palmas - TO",
+      "cidade": "Palmas",
+      "uf": "TO",
+      "tipo": null,
+      "areaM2": "39001.63",
+      "areaPublicada": "39001.63",
+      "vacanciaPercentual": "1.9568",
+      "percentualDaReceitaDoFundo": "5.1872",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hgbs11-capim-dourado-shopping-60",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "São Bernardo Plaza Shopping - 35%",
+      "enderecoPublicado": "Av. Rotary, 624 - Centro, São Bernardo do Campo - SP",
+      "cidade": "São Bernardo do Campo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "42954.19",
+      "areaPublicada": "42954.19",
+      "vacanciaPercentual": "8.0508",
+      "percentualDaReceitaDoFundo": "3.3511",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hgbs11-sao-bernardo-plaza-shopping-35",
+      "coordenadas": {
+        "lat": "-23.721883",
+        "lng": "-46.540213",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Rotary, Centro, São Bernardo do Campo, São Paulo, Região Sudeste, 04247-020, Brasil",
+        "osm": "way/941842813",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Rotary, 624 - Centro, São Bernardo do Campo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Praça da Moça - 23,06%",
+      "enderecoPublicado": "Rua Manoel da Nobrega, 712, Centro, Diadema - SP",
+      "cidade": "Diadema",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "31367.77",
+      "areaPublicada": "31367.77",
+      "vacanciaPercentual": "3.0886",
+      "percentualDaReceitaDoFundo": "2.2099",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hgbs11-shopping-praca-da-moca-23-06",
+      "coordenadas": {
+        "lat": "-23.694048",
+        "lng": "-46.625590",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Manoel da Nóbrega, Chácara Húngara, Centro, Diadema, São Paulo, Região Sudeste, 09910-720, Brasil",
+        "osm": "way/426852397",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Manoel da Nobrega, 712, Centro, Diadema - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Mooca Plaza Shopping - 20%",
+      "enderecoPublicado": "Rua Cap. Pacheco e Chaves, 313 - Mooca, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "42066.51",
+      "areaPublicada": "42066.51",
+      "vacanciaPercentual": "2.2844",
+      "percentualDaReceitaDoFundo": "3.8481",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hgbs11-mooca-plaza-shopping-20",
+      "coordenadas": {
+        "lat": "-23.579740",
+        "lng": "-46.594246",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Mooca Plaza Shopping, 313, Rua Capitão Pacheco e Chaves, Mooca, Vila Prudente, São Paulo, Região Sudeste, 03126-000, Brasil",
+        "osm": "way/236296034",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Cap. Pacheco e Chaves, 313 - Mooca, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Jaraguá Araraquara - 25%",
+      "enderecoPublicado": "Avenida Alberto Benassi, 2.270, Jardim dos Manacas, Araraquara, SP",
+      "cidade": "Araraquara",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "21145.88",
+      "areaPublicada": "21145.88",
+      "vacanciaPercentual": "4.2524",
+      "percentualDaReceitaDoFundo": "1.4144",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hgbs11-shopping-jaragua-araraquara-25",
+      "coordenadas": {
+        "lat": "-21.786306",
+        "lng": "-48.220708",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Alberto Benassi, Loteamento Industrial São Caetano, Jardim Vale do Sol, Araraquara, São Paulo, Região Sudeste, 14803-036, Brasil",
+        "osm": "way/221672393",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Alberto Benassi, 2.270, Araraquara, SP, Brasil"
+      }
+    },
+    {
+      "nome": "ParkShopping São Caetano - 20%",
+      "enderecoPublicado": "Alameda Terracota, 545 - Cerâmica, São Caetano do Sul - SP, 09531-190",
+      "cidade": "São Caetano do Sul",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "39251.7",
+      "areaPublicada": "39251.7",
+      "vacanciaPercentual": "2.4558",
+      "percentualDaReceitaDoFundo": "4.0739",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hgbs11-parkshopping-sao-caetano-20",
+      "coordenadas": {
+        "lat": "-23.623943",
+        "lng": "-46.580923",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Alameda Terracota, Cerâmica, São Caetano do Sul, São Paulo, Região Sudeste, 09531-190, Brasil",
+        "osm": "way/167086628",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Terracota, 545 - Cerâmica, São Caetano do Sul - SP, 09531-190, Brasil"
+      }
+    },
+    {
+      "nome": "Boulevard Shopping Bauru - 100%",
+      "enderecoPublicado": "Rua Marcondes Salgado, Quadra 11, Bauru - SP",
+      "cidade": "Bauru",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "34550.03",
+      "areaPublicada": "34550.03",
+      "vacanciaPercentual": "5.0068",
+      "percentualDaReceitaDoFundo": "6.7406",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hgbs11-boulevard-shopping-bauru-100",
+      "coordenadas": {
+        "lat": "-22.318582",
+        "lng": "-49.071564",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua General Marcondes Salgado, Jardim Santana, Vila Flores, Bauru, São Paulo, Região Sudeste, 17010-160, Brasil",
+        "osm": "way/548879842",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Marcondes Salgado, Quadra 11, Bauru - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Jardim Sul - 80%",
+      "enderecoPublicado": "Av. Giovanni Gronchi, 5819, Morumbi, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "28740.81",
+      "areaPublicada": "28740.81",
+      "vacanciaPercentual": "2.2802",
+      "percentualDaReceitaDoFundo": "9.8609",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hgbs11-shopping-jardim-sul-80",
+      "coordenadas": {
+        "lat": "-23.595106",
+        "lng": "-46.717847",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Giovanni Gronchi, Cidade Jardim, Morumbi, São Paulo, Região Sudeste, 05651-001, Brasil",
+        "osm": "way/4558786",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Giovanni Gronchi, 5819, Morumbi, São Paulo/SP, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping West Plaza - 70%",
+      "enderecoPublicado": "Av. Francisco Matarazzo s/n, Bloco B, São Paulo, SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "35059.48",
+      "areaPublicada": "35059.48",
+      "vacanciaPercentual": "8.7365",
+      "percentualDaReceitaDoFundo": "2.8480",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "hgbs11-shopping-west-plaza-70",
+      "coordenadas": {
+        "lat": "-23.530782",
+        "lng": "-46.665702",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Francisco Matarazzo, Barra Funda, São Paulo, Região Sudeste, 05001-000, Brasil",
+        "osm": "way/483287311",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Francisco Matarazzo s/n, São Paulo, SP, Brasil"
+      }
+    }
+  ]
+}

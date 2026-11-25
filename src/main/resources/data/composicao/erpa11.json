@@ -1,0 +1,46 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "ERPA11",
+  "nomeDoFundo": "Europa 105 Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "cc37178065f392024a5f131a34af488169c800589680bc07d1b102ceb0ec6899"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 1
+  },
+  "cnpj": "31.469.385/0001-64",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código ERPA11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRERPACTF002), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Europa 105",
+      "enderecoPublicado": "Avenida Europa, 105 - Jardim Paulista",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "3325.38",
+      "areaPublicada": "3325.38",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "100",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Financeiro",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "erpa11-europa-105",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

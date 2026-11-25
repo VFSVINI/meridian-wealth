@@ -1,0 +1,378 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "BRCO11",
+  "nomeDoFundo": "Bresco Logistica Fundo De Investimento Imobiliário",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "c3877bc37a65f5840886c725780026ed6aa40e61e4ccbcedb59d6662918b874d"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 4,
+    "semCoordenadas": 10
+  },
+  "cnpj": "20.748.515/0001-81",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código BRCO11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRBRCOCTF007), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Bresco Embu",
+      "enderecoPublicado": "Avenida Helio Ossamu Daikuara nº 1.135,  Embu das Artes - SP",
+      "cidade": "Embu das Artes",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "18081.75",
+      "areaPublicada": "18081.75",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.5052",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "brco11-bresco-embu",
+      "coordenadas": {
+        "lat": "-23.640203",
+        "lng": "-46.836508",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Hélio Ossamu Daikuara, Embuema, Parque Industrial Ramos de Freitas, Embu das Artes, São Paulo, Região Sudeste, 06816-000, Brasil",
+        "osm": "way/264084738",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Helio Ossamu Daikuara 1.135, Embu das Artes - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Bresco Viracopos",
+      "enderecoPublicado": "Rua Sergio Fernandes Borges Soares, 1000 - Campinas - SP",
+      "cidade": "Campinas",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "88366.28",
+      "areaPublicada": "88366.28",
+      "vacanciaPercentual": "0.4070",
+      "percentualDaReceitaDoFundo": "20.1938",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "71.9116"
+        },
+        {
+          "setor": "Industrial",
+          "percentualDaReceitaDoImovel": "21.0615"
+        },
+        {
+          "setor": "Operador Logístico",
+          "percentualDaReceitaDoImovel": "7.1356"
+        }
+      ],
+      "id": "brco11-bresco-viracopos",
+      "coordenadas": {
+        "lat": "-23.002414",
+        "lng": "-47.113403",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Sergio Fernandes Borges Soares, Ouro Verde, Campinas, São Paulo, Região Sudeste, 13054-709, Brasil",
+        "osm": "way/571479119",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Sergio Fernandes Borges Soares, 1000 - Campinas - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Bresco Murici",
+      "enderecoPublicado": "Rod. BR 104 km 57, s/n - Murici - AL",
+      "cidade": "Murici",
+      "uf": "AL",
+      "tipo": null,
+      "areaM2": "50291.37",
+      "areaPublicada": "50291.37",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.2323",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bens de Consumo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "brco11-bresco-murici",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "HUB Natura Itupeva",
+      "enderecoPublicado": "Rodovia Dom Gabriel Paulino Bueno Couto nº 1936 - Itupeva - SP",
+      "cidade": "Itupeva",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "34844.95",
+      "areaPublicada": "34844.95",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "8.6023",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bens de Consumo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "brco11-hub-natura-itupeva",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "Bresco Osasco",
+      "enderecoPublicado": "Rua Henry Ford, 803 - Osasco - SP",
+      "cidade": "Osasco",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "29637.31",
+      "areaPublicada": "29637.31",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.5227",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Operador Logistico",
+          "percentualDaReceitaDoImovel": "30.3566"
+        },
+        {
+          "setor": "Bens de Consumo",
+          "percentualDaReceitaDoImovel": "30.1046"
+        },
+        {
+          "setor": "Industrial",
+          "percentualDaReceitaDoImovel": "23.5613"
+        },
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "15.9775"
+        }
+      ],
+      "id": "brco11-bresco-osasco",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Bresco Contagem",
+      "enderecoPublicado": "Avenida Wilson Tavares Ribeiro, nº 1.651 - Contagem - MG",
+      "cidade": "Contagem",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "72941.44",
+      "areaPublicada": "72941.44",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "10.8835",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Operador logístico",
+          "percentualDaReceitaDoImovel": "27.1851"
+        },
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "57.6715"
+        },
+        {
+          "setor": "Industrial",
+          "percentualDaReceitaDoImovel": "11.4939"
+        },
+        {
+          "setor": "Outros.",
+          "percentualDaReceitaDoImovel": "3.6495"
+        }
+      ],
+      "id": "brco11-bresco-contagem",
+      "coordenadas": {
+        "lat": "-19.876422",
+        "lng": "-44.051114",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Wilson Tavares Ribeiro, Chácaras Cotia, Regional Nacional, Contagem, Minas Gerais, Região Sudeste, 32145-678, Brasil",
+        "osm": "way/667570871",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Wilson Tavares Ribeiro, 1.651 - Contagem - MG, Brasil"
+      }
+    },
+    {
+      "nome": "Whirlpool São Paulo",
+      "enderecoPublicado": "Rua Olympia Semeraro, nº 381, 675 e 737, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "50952.46",
+      "areaPublicada": "50952.46",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "9.0548",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bens de Consumo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "brco11-whirlpool-sao-paulo",
+      "coordenadas": {
+        "lat": "-23.642059",
+        "lng": "-46.592690",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Olympia Semeraro, Vila Liviero, Jardim Santa Cruz, Sacomã, São Paulo, Região Sudeste, 04182-020, Brasil",
+        "osm": "way/162157125",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Olympia Semeraro, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Bresco Simões Filho",
+      "enderecoPublicado": "Via de Acesso II da BR 324 - Simões Filho - BA",
+      "cidade": "Simões Filho",
+      "uf": "BA",
+      "tipo": null,
+      "areaM2": "26543.13",
+      "areaPublicada": "26543.13",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.7047",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Operador Logístico",
+          "percentualDaReceitaDoImovel": "36.6662"
+        },
+        {
+          "setor": "Industrial",
+          "percentualDaReceitaDoImovel": "19.4769"
+        },
+        {
+          "setor": "Bens de Consumo",
+          "percentualDaReceitaDoImovel": "43.8569"
+        }
+      ],
+      "id": "brco11-bresco-simoes-filho",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BRF Londrina",
+      "enderecoPublicado": "Rua Eugênia S. do Rosário, 2800, Londrina - PR",
+      "cidade": "Londrina",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "23173",
+      "areaPublicada": "23173",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.0284",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bens de Consumo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "brco11-brf-londrina",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Bresco Resende",
+      "enderecoPublicado": "Avenida D com acesso a Rodovia Presidente Dutra, KM 298, Resende - RJ",
+      "cidade": "Resende",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "25487.73",
+      "areaPublicada": "25487.73",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.1948",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "brco11-bresco-resende",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Bresco Canoas",
+      "enderecoPublicado": "Avenida Tabai-Canoas (BR 386), nº 1.200, Canoas - RS",
+      "cidade": "Canoas",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "33295.87",
+      "areaPublicada": "33295.87",
+      "vacanciaPercentual": "27.1776",
+      "percentualDaReceitaDoFundo": "3.1760",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bens de Consumo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "brco11-bresco-canoas",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Bresco Itupeva",
+      "enderecoPublicado": "Rodovia Dom Gabriel Paulino Bueno Couto, nº 1606, Itupeva - SP",
+      "cidade": "Itupeva",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "38964.93",
+      "areaPublicada": "38964.93",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.0084",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bens de Consumo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "brco11-bresco-itupeva",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "GPA CD04 São Paulo",
+      "enderecoPublicado": "Estrada Turística do Jaraguá, nº 50, Jaraguá, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "35510.4",
+      "areaPublicada": "35510.4",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "7.1609",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "brco11-gpa-cd04-sao-paulo",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "Bresco Bahia",
+      "enderecoPublicado": "Rod. BA-535. km 23, Lauro de Freitas - BA",
+      "cidade": "Lauro de Freitas",
+      "uf": "BA",
+      "tipo": null,
+      "areaM2": "58714.9",
+      "areaPublicada": "58714.9",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "10.7323",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "brco11-bresco-bahia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

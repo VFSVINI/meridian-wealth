@@ -1,0 +1,82 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "AIEC11",
+  "nomeDoFundo": "Arch Edificios Corporativos Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "fc25887fbfafc642bf23d113bb2f32844b9c2bfb6310ceddc0ccf3c841822462"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 2,
+    "semCoordenadas": 0
+  },
+  "cnpj": "35.765.826/0001-26",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código AIEC11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRAIECCTF009), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Rochavera - Torre D",
+      "enderecoPublicado": "Avenida das Nações Unidas, 14.171 - Chucri Zaidan - São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "14648",
+      "areaPublicada": "14648",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Industrial (Quimica)",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "aiec11-rochavera-torre-d",
+      "coordenadas": {
+        "lat": "-23.622083",
+        "lng": "-46.701450",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida das Nações Unidas, Chácara Santo Antônio, Santo Amaro, São Paulo, Região Sudeste, 04794-000, Brasil",
+        "osm": "way/532530668",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida das Nações Unidas, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Standard Building",
+      "enderecoPublicado": "Avenida Presidente Wilson, 118 - Centro - Rio de Janeiro - RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "8341",
+      "areaPublicada": "8341",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educacional",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "aiec11-standard-building",
+      "coordenadas": {
+        "lat": "-22.910703",
+        "lng": "-43.172660",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Presidente Wilson, Castelo, Centro, Rio de Janeiro, Região Sudeste, 20030-021, Brasil",
+        "osm": "way/783216745",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Presidente Wilson, 118 - Centro - Rio de Janeiro - RJ, Brasil"
+      }
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "FPAB11",
+  "nomeDoFundo": "Fii Proj Agua Branca",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "d9637886f00030b81a39f061981593c9bd36484d16479a0b5bd1820173f9bdd6"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 2,
+    "semCoordenadas": 0
+  },
+  "cnpj": "03.251.720/0001-18",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código FPAB11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRFPABCTF011), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Centro Empresarial Agua Branca - Torre Los Angeles",
+      "enderecoPublicado": "Avenida Francisco Matarazzo, 1500, Sem Complemento, Água Branca, São Paulo/SP, Brasil, 05001-100",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "17905.45",
+      "areaPublicada": "17905.45",
+      "vacanciaPercentual": "15.0190",
+      "percentualDaReceitaDoFundo": "50.9945",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços Diversos",
+          "percentualDaReceitaDoImovel": "28.4298"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "28.0217"
+        },
+        {
+          "setor": "Telecomunicações",
+          "percentualDaReceitaDoImovel": "15.0898"
+        },
+        {
+          "setor": "Serviços Médico - Hospitalares",
+          "percentualDaReceitaDoImovel": "14.2446"
+        }
+      ],
+      "id": "fpab11-centro-empresarial-agua-branca-torre-los-angeles",
+      "coordenadas": {
+        "lat": "-23.525898",
+        "lng": "-46.676590",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Centro Empresarial Agua Branca New York / Los Angeles, 1500, Avenida Francisco Matarazzo, Barra Funda, São Paulo, Região Sudeste, 05001-200, Brasil",
+        "osm": "way/1058113234",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Francisco Matarazzo, 1500, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Centro Empresarial Agua Branca - Torre New York",
+      "enderecoPublicado": "Avenida Francisco Matarazzo, 1500, Sem Complemento, Água Branca, São Paulo/SP, Brasil, 05001-100",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "17905.45",
+      "areaPublicada": "17905.45",
+      "vacanciaPercentual": "23.3228",
+      "percentualDaReceitaDoFundo": "37.4493",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços Médico - Hospitalares",
+          "percentualDaReceitaDoImovel": "19.5803"
+        },
+        {
+          "setor": "Serviços Diversos",
+          "percentualDaReceitaDoImovel": "30.9250"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "13.3007"
+        }
+      ],
+      "id": "fpab11-centro-empresarial-agua-branca-torre-new-york",
+      "coordenadas": {
+        "lat": "-23.525898",
+        "lng": "-46.676590",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Centro Empresarial Agua Branca New York / Los Angeles, 1500, Avenida Francisco Matarazzo, Barra Funda, São Paulo, Região Sudeste, 05001-200, Brasil",
+        "osm": "way/1058113234",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Francisco Matarazzo, 1500, São Paulo, SP, Brasil"
+      }
+    }
+  ]
+}

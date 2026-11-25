@@ -1,0 +1,58 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "RENV11",
+  "nomeDoFundo": "Cpv Energia Fundo De Investimento Imobiliário Resp Limitada",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "9fd7bab7ad383411231018c9604b8f552811536428c9336da748387d7b626460"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 1
+  },
+  "cnpj": "54.174.907/0001-04",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código RENV11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRRENVCTF003), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Usina Solar Alexânia",
+      "enderecoPublicado": "BR-060 KM 62, Margem Esquerda",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "20979",
+      "areaPublicada": "20979",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "renv11-usina-solar-alexania",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

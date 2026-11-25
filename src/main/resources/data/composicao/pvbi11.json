@@ -1,0 +1,264 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "PVBI11",
+  "nomeDoFundo": "Vbi Prime Fii Rl",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "d7c0045654e06f9f2a76c67a42e7cf9a366ab2745ee3823ab1d3e2b49f098a49"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 4,
+    "semCoordenadas": 4
+  },
+  "cnpj": "35.652.102/0001-76",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 2. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código PVBI11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRPVBICTF003), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Empreendimento The One",
+      "enderecoPublicado": "Rua Ministro Jesuino Cardoso, 454, Sem Complemento, Vila Nova Conceicao, Sao Paulo/SP, Brasil, 04544-051",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1610",
+      "areaPublicada": "1610",
+      "vacanciaPercentual": "16.8845",
+      "percentualDaReceitaDoFundo": "9.6503",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Instituição Financeira",
+          "percentualDaReceitaDoImovel": "50.7842"
+        },
+        {
+          "setor": "Alimentício",
+          "percentualDaReceitaDoImovel": "10.2441"
+        },
+        {
+          "setor": "Mídia",
+          "percentualDaReceitaDoImovel": "16.3964"
+        }
+      ],
+      "id": "pvbi11-empreendimento-the-one",
+      "coordenadas": {
+        "lat": "-23.591996",
+        "lng": "-46.679375",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Ministro Jesuíno Cardoso, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04544-050, Brasil",
+        "osm": "way/369907185",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Ministro Jesuino Cardoso, 454, Sao Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edificio Faria Lima 4440  (VBI FL 4440)",
+      "enderecoPublicado": "Avenida Brigadeiro Faria Lima, 4440, Sem Complemento, Itaim Bibi, São Paulo/SP, Brasil, 04538-132",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "22111.73",
+      "areaPublicada": "22111.73",
+      "vacanciaPercentual": "17.1086",
+      "percentualDaReceitaDoFundo": "8.9035",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Gestora de Recursos",
+          "percentualDaReceitaDoImovel": "13.8024"
+        },
+        {
+          "setor": "E-commerce",
+          "percentualDaReceitaDoImovel": "14.2460"
+        },
+        {
+          "setor": "Seguradora",
+          "percentualDaReceitaDoImovel": "13.1795"
+        },
+        {
+          "setor": "Instituição Financeira",
+          "percentualDaReceitaDoImovel": "61.1298"
+        }
+      ],
+      "id": "pvbi11-edificio-faria-lima-4440-vbi-fl-4440",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Condominio The One",
+      "enderecoPublicado": "Rua Ministro Jesuino Cardoso, 454, 1º, 2º, 7º E 10º Pavimentos, Vila Nova Conceicao, Sao Paulo/SP, Brasil, 04544-051",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "12740.37",
+      "areaPublicada": "12740.37",
+      "vacanciaPercentual": "20.0424",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "pvbi11-condominio-the-one",
+      "coordenadas": {
+        "lat": "-23.591996",
+        "lng": "-46.679375",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Ministro Jesuíno Cardoso, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04544-050, Brasil",
+        "osm": "way/369907185",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Ministro Jesuino Cardoso, 454, Sao Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Condominio Edificio Vera Cruz II",
+      "enderecoPublicado": "Rua Elvira Ferraz, 68, Sem Complemento, Vila Olímpia, São Paulo/SP, Brasil, 04552-040",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "23344.76",
+      "areaPublicada": "23344.76",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "8.9076",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Indústria",
+          "percentualDaReceitaDoImovel": "36.1672"
+        },
+        {
+          "setor": "Energia",
+          "percentualDaReceitaDoImovel": "37.5575"
+        },
+        {
+          "setor": "Instituição Financeira",
+          "percentualDaReceitaDoImovel": "26.2753"
+        }
+      ],
+      "id": "pvbi11-condominio-edificio-vera-cruz-ii",
+      "coordenadas": {
+        "lat": "-23.594849",
+        "lng": "-46.681332",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Elvira Ferraz, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04552-040, Brasil",
+        "osm": "way/369907183",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Elvira Ferraz, 68, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Vila Olimpia Corporate",
+      "enderecoPublicado": "Rua Fidencio Ramos, 302, Sem Complemento, Vila Olimpia, Sao Paulo/SP, Brasil, 04551-010",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "17282.16",
+      "areaPublicada": "17282.16",
+      "vacanciaPercentual": "17.6843",
+      "percentualDaReceitaDoFundo": "8.6377",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "30.3513"
+        },
+        {
+          "setor": "Instituição Financeira",
+          "percentualDaReceitaDoImovel": "12.7166"
+        },
+        {
+          "setor": "Saúde",
+          "percentualDaReceitaDoImovel": "25.9337"
+        }
+      ],
+      "id": "pvbi11-vila-olimpia-corporate",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Union Faria Lima",
+      "enderecoPublicado": "Rua Leopoldo Couto Magalhaes Junior, 822, Sem Complemento, Itaim Bibi, Sao Paulo/SP, Brasil, 04542-000",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "50000",
+      "areaPublicada": "50000",
+      "vacanciaPercentual": "47.2305",
+      "percentualDaReceitaDoFundo": "4.6997",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Instituição Financeira",
+          "percentualDaReceitaDoImovel": "58.8260"
+        },
+        {
+          "setor": "Escritório de Advocacia",
+          "percentualDaReceitaDoImovel": "14.2400"
+        },
+        {
+          "setor": "Energia",
+          "percentualDaReceitaDoImovel": "15.8008"
+        },
+        {
+          "setor": "Gestora de Recursos",
+          "percentualDaReceitaDoImovel": "11.1332"
+        }
+      ],
+      "id": "pvbi11-union-faria-lima",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Edificio Cidade Jardim",
+      "enderecoPublicado": "Avenida Cidade Jardim, 803, Sem Complemento, Itaim Bibi, Sao Paulo/SP, Brasil, 01453-000",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "100553.83",
+      "areaPublicada": "100553.83",
+      "vacanciaPercentual": "44.4987",
+      "percentualDaReceitaDoFundo": "10.3086",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Instituição Financeira",
+          "percentualDaReceitaDoImovel": "31.3344"
+        },
+        {
+          "setor": "Gestora de Recursos",
+          "percentualDaReceitaDoImovel": "48.9685"
+        },
+        {
+          "setor": "Advocacia",
+          "percentualDaReceitaDoImovel": "19.6971"
+        }
+      ],
+      "id": "pvbi11-edificio-cidade-jardim",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Edificio Park Tower",
+      "enderecoPublicado": "Avenida Brigadeiro Luis Antonio, 3521, Sem Complemento, Jardim Paulista, Sao Paulo/SP, Brasil, 01401-001",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "16633.11",
+      "areaPublicada": "16633.11",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "30.2548",
+      "setoresDosInquilinos": [],
+      "id": "pvbi11-edificio-park-tower",
+      "coordenadas": {
+        "lat": "-23.575724",
+        "lng": "-46.656912",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Centro Administrativo Prevent Senior, 3521, Avenida Brigadeiro Luís Antônio, Moema, São Paulo, Região Sudeste, 01401-001, Brasil",
+        "osm": "way/1225461847",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Brigadeiro Luis Antonio, 3521, Sao Paulo, SP, Brasil"
+      }
+    }
+  ]
+}

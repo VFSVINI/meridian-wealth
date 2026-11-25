@@ -1,0 +1,54 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "PRSV11",
+  "nomeDoFundo": "Presidente Vargas Fundo De Investimento Imobiliário",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "e83c829fbecb050ca7485cefb248f3842348b3d0a0aea07c73ed4c411ee662a5"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "11.281.322/0001-72",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código PRSV11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRPRSVCTF008), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edifício Torre Boa Vista",
+      "enderecoPublicado": "Avenida Presidente Vargas, 850, Centro, Rio de Janeiro - RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "10082.05",
+      "areaPublicada": "10082.05",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "0,0000%",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "prsv11-edificio-torre-boa-vista",
+      "coordenadas": {
+        "lat": "-22.907771",
+        "lng": "-43.198234",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Presidente Vargas, Cidade Nova, Rio de Janeiro, Região Sudeste, 20230-250, Brasil",
+        "osm": "way/227140215",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Presidente Vargas, 850, Centro, Rio de Janeiro - RJ, Brasil"
+      }
+    }
+  ]
+}

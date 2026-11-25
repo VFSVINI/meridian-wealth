@@ -1,0 +1,110 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "VSHO11",
+  "nomeDoFundo": "Fundo De Investimento Imobiliário Votorantim Shopping",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "70df8114ef3561af96aabe726b1b441fc21e9e6ea03aae928e4ef00801c6663b"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 3,
+    "semCoordenadas": 0
+  },
+  "cnpj": "23.740.595/0001-17",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código VSHO11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRVSHOCTF002), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Shopping Bay Market",
+      "enderecoPublicado": "Av. Visconde do Rio Branco, 360 - Centro, Niterói - RJ",
+      "cidade": "Niterói",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "25972",
+      "areaPublicada": "25972",
+      "vacanciaPercentual": "23.4800",
+      "percentualDaReceitaDoFundo": "28.8798",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Lojas",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "vsho11-shopping-bay-market",
+      "coordenadas": {
+        "lat": "-22.888699",
+        "lng": "-43.124530",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Visconde do Rio Branco, Centro, Região Praias da Baía, Niterói, Rio de Janeiro, Região Sudeste, 24030-078, Brasil",
+        "osm": "way/270843985",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Visconde do Rio Branco, 360 - Centro, Niterói - RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Valinhos",
+      "enderecoPublicado": "Rua Paiquerê, 200 - Jardim Paiquere, Valinhos - SP",
+      "cidade": "Valinhos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "28647.64",
+      "areaPublicada": "28647.64",
+      "vacanciaPercentual": "8.1100",
+      "percentualDaReceitaDoFundo": "28.7290",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Lojas",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "vsho11-shopping-valinhos",
+      "coordenadas": {
+        "lat": "-22.981824",
+        "lng": "-47.018367",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Paiquere, Condomínio Portal do Quiririm, Residencial São Luiz, Recreio dos Cafezais, Valinhos, São Paulo, Região Sudeste, 13271-600, Brasil",
+        "osm": "way/148012925",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Paiquerê, Valinhos, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Hortolândia",
+      "enderecoPublicado": "Rua José Camilo de Camargo, 5 - Remanso Campineiro, Hortolândia - SP",
+      "cidade": "Hortolândia",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "31273.1",
+      "areaPublicada": "31273.1",
+      "vacanciaPercentual": "2.1100",
+      "percentualDaReceitaDoFundo": "41.3912",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Lojas",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "vsho11-shopping-hortolandia",
+      "coordenadas": {
+        "lat": "-22.863092",
+        "lng": "-47.213534",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Shopping Hortolândia, 5, Rua José Camilo de Camargo, Jardim das Paineiras, Remanso Campineiro, Hortolândia, São Paulo, Região Sudeste, 13184-494, Brasil",
+        "osm": "way/239537128",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua José Camilo de Camargo, 5 - Remanso Campineiro, Hortolândia - SP, Brasil"
+      }
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "KNHF11",
+  "nomeDoFundo": "Kinea Hedge Fund Fii Responsabilidade Limitada",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "fc6ccc958ffa61d367e408591f044047a029c8dde7cbb96d992123f02cd11638"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 4,
+    "semCoordenadas": 1
+  },
+  "cnpj": "42.754.342/0001-47",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código KNHF11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRKNHFCTF004), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edifício HL Faria Lima",
+      "enderecoPublicado": "Avenida Horácio Lafer, 160, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "3162.918",
+      "areaPublicada": "3162.918",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.7352",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "knhf11-edificio-hl-faria-lima",
+      "coordenadas": {
+        "lat": "-23.587660",
+        "lng": "-46.682788",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Horácio Lafer, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04542-001, Brasil",
+        "osm": "way/944782621",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Horácio Lafer, 160, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edifício Condomínio São Luiz, Torre I, II e III",
+      "enderecoPublicado": "Avenida Presidente Juscelino Kubitschek, 1.830, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "15083.02",
+      "areaPublicada": "15083.02",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "8.6620",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços",
+          "percentualDaReceitaDoImovel": "85.3980"
+        },
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "12.6129"
+        }
+      ],
+      "id": "knhf11-edificio-condominio-sao-luiz-torre-i-ii-e-iii",
+      "coordenadas": {
+        "lat": "-23.588994",
+        "lng": "-46.676344",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Presidente Juscelino Kubitschek, Vila Olímpia, Itaim Bibi, São Paulo, Região Sudeste, 04543-121, Brasil",
+        "osm": "way/1080619394",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Presidente Juscelino Kubitschek, 1.830, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Shopping Uberaba",
+      "enderecoPublicado": "Avenida Santa Beatriz da Silva, 1501 - São Benedito Uberaba MG",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "7919.5",
+      "areaPublicada": "7919.5",
+      "vacanciaPercentual": "2.5000",
+      "percentualDaReceitaDoFundo": "2.6473",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "knhf11-shopping-uberaba",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Suíte nº: 740 Cidade Matarazzo",
+      "enderecoPublicado": "Alameda Rio Claro, 190, Bela Vista, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "162.35",
+      "areaPublicada": "162.35",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "knhf11-suite-no-740-cidade-matarazzo",
+      "coordenadas": {
+        "lat": "-23.561219",
+        "lng": "-46.652820",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "190, Alameda Rio Claro, Morro dos Ingleses, Bela Vista, São Paulo, Região Sudeste, 01405-100, Brasil",
+        "osm": "node/11387714409",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Rio Claro, 190, Bela Vista, São Paulo/SP, Brasil"
+      }
+    },
+    {
+      "nome": "Suíte nº: 1048 Cidade Matarazzo",
+      "enderecoPublicado": "Alameda Rio Claro, 190, Bela Vista, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "125.38",
+      "areaPublicada": "125.38",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "knhf11-suite-no-1048-cidade-matarazzo",
+      "coordenadas": {
+        "lat": "-23.561219",
+        "lng": "-46.652820",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "190, Alameda Rio Claro, Morro dos Ingleses, Bela Vista, São Paulo, Região Sudeste, 01405-100, Brasil",
+        "osm": "node/11387714409",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Rio Claro, 190, Bela Vista, São Paulo/SP, Brasil"
+      }
+    }
+  ]
+}

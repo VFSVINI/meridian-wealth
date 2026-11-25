@@ -1,0 +1,262 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "ZAVI11",
+  "nomeDoFundo": "Fii Zavit Real Estate Fund",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "fcf1ffcb0cb1258fa70833ee4373b5d763e7ea924a47d91989b17db1b482d213"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 2,
+    "semCoordenadas": 5
+  },
+  "cnpj": "40.575.940/0001-23",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código ZAVI11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRZAVICTF004), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "SERRA_TAGIA",
+      "enderecoPublicado": "Rodovia ES-010, n 3.917 - Jardim Limoeiro - Serra-ES, CEP 29163-370",
+      "cidade": "Serra",
+      "uf": "ES",
+      "tipo": null,
+      "areaM2": "7748.64",
+      "areaPublicada": "7748.64",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "8.3725",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "AutomotivoSetor2",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "zavi11-serra-tagia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "ALVOAR",
+      "enderecoPublicado": "Avenida Fernão Dias, nº 2003, Lagoa da Prata - MG, CEP 35591-378",
+      "cidade": "Lagoa da Prata",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "35127.93",
+      "areaPublicada": "35127.93",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "25.4289",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Alimentício",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "zavi11-alvoar",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "SANTA LUZIA",
+      "enderecoPublicado": "Rua Santa Luzia, 579, Vila Santa Luzia, Taboão da Serra - SP, CEP 06754-005",
+      "cidade": "Taboão da Serra",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "892.64",
+      "areaPublicada": "892.64",
+      "vacanciaPercentual": "50",
+      "percentualDaReceitaDoFundo": "0.4240",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Educação",
+          "percentualDaReceitaDoImovel": "50"
+        }
+      ],
+      "id": "zavi11-santa-luzia",
+      "coordenadas": {
+        "lat": "-23.606226",
+        "lng": "-46.754440",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Santa Luzia, Centro, Taboão da Serra, São Paulo, Região Sudeste, 06754-005, Brasil",
+        "osm": "way/126985006",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Santa Luzia, 579, Taboão da Serra, SP, Brasil"
+      }
+    },
+    {
+      "nome": "IMO COPOBRAS",
+      "enderecoPublicado": "Av. Moita Bonita, nº 266, Guarulhos - SP, CEP 07270-395",
+      "cidade": "Guarulhos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "11548.35",
+      "areaPublicada": "11548.35",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "16.8396",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Embalagens",
+          "percentualDaReceitaDoImovel": "100"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "zavi11-imo-copobras",
+      "coordenadas": {
+        "lat": "-23.462258",
+        "lng": "-46.427147",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Moita Bonita, Jardim Presidente Dutra, Vila Pires, Jardim Presidente Dutra, Guarulhos, São Paulo, Região Sudeste, 07270-260, Brasil",
+        "osm": "way/492158321",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Moita Bonita, Guarulhos, SP, Brasil"
+      }
+    },
+    {
+      "nome": "IMOV NISSEI",
+      "enderecoPublicado": "Rodovia Contorno Norte, nº 305, Colombo-PR, CEP 83402-335",
+      "cidade": "Colombo",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "15993.45",
+      "areaPublicada": "15993.45",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "18.0598",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Famacêutico",
+          "percentualDaReceitaDoImovel": "100"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "zavi11-imov-nissei",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BASSANO RS",
+      "enderecoPublicado": "Rua Attílio Bilibio, nº 685, Nova Bassano - RS, CEP 95340-000",
+      "cidade": "Nova Bassano",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "31648.86",
+      "areaPublicada": "31648.86",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "21.0998",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Construção",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "zavi11-bassano-rs",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "ED TABAPUA",
+      "enderecoPublicado": "Rua Tabapuã, 41, Itaim Bibi, São Paulo - SP, CEP 04533-010",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "2884.51",
+      "areaPublicada": "2884.51",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "9.2582",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Publicidade",
+          "percentualDaReceitaDoImovel": "17.6562"
+        },
+        {
+          "setor": "Investimentos",
+          "percentualDaReceitaDoImovel": "10.4469"
+        },
+        {
+          "setor": "Securitizadora",
+          "percentualDaReceitaDoImovel": "24.0999"
+        },
+        {
+          "setor": "Tecnologia e Comunicação",
+          "percentualDaReceitaDoImovel": "40.3655"
+        }
+      ],
+      "id": "zavi11-ed-tabapua",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

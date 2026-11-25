@@ -1,0 +1,66 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "DPRO11",
+  "nomeDoFundo": "Devant Properties Fundo De Investimento Imobiliário",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "172f80cefb58183bd0992e719f9f325fc940dab27a49b49a8aa5ecf36cb5cfab"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "42.922.127/0001-08",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código DPRO11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRDPROCTF005), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "GALPÃO  ITAPEVI SP",
+      "enderecoPublicado": "Av. Prof. Vernon Krieble, 455 - Itaqui, Itapevi - SP, 06696-070",
+      "cidade": "Itapevi",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "16259",
+      "areaPublicada": "16259",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "100",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "dpro11-galpao-itapevi-sp",
+      "coordenadas": {
+        "lat": "-23.524701",
+        "lng": "-46.939356",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Professor Vernon Krieble, Centro Logistico Itapevi, Jardim Nova Itapevi, Itapevi, São Paulo, Região Sudeste, 06696-070, Brasil",
+        "osm": "way/174912479",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Prof. Vernon Krieble, Itapevi, SP, Brasil"
+      }
+    }
+  ]
+}

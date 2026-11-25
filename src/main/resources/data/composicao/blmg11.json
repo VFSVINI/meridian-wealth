@@ -1,0 +1,46 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "BLMG11",
+  "nomeDoFundo": "Bluemacaw Logística Fundo Investimento",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "2963dba117eda2318badc32d3945fd62bd7e8d9e34b016404c3e9c476ff7e665"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 1
+  },
+  "cnpj": "34.081.637/0001-71",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código BLMG11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRBLMGCTF005), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "22164-_3",
+      "enderecoPublicado": "Rua do Uruguai, nº 43, 55 a 59, 47, 06, 382, sub-distrito dos Mares, Salvador, Bahia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "11136.41",
+      "areaPublicada": "11136.41",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "0",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "blmg11-22164-3",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "CEOC11",
+  "nomeDoFundo": "Ceo Cyrela Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "56d659a3d0820fba67123c753e8b74a5f1f794d7dbf63bfc084d05cd54ce8fa3"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 1
+  },
+  "cnpj": "15.799.397/0001-09",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código CEOC11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRCEOCCTF003), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "CEO Corporate Executive Offices",
+      "enderecoPublicado": "Avenida Joao Cabral De Mello Neto, 850, 2º, 3º, 4º, 8º, 9º,10º,11º E 12º Andares, Barra Da Tijuca, Rio De Janeiro/RJ, Brasil, 22775-057",
+      "cidade": "Rio De Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "14279.7",
+      "areaPublicada": "14279.7",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "100",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Telecomunicações",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "ceoc11-ceo-corporate-executive-offices",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

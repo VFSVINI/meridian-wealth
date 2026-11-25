@@ -1,0 +1,122 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "SEQR11",
+  "nomeDoFundo": "Sequóia Iii Renda Imobiliária Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "896db0d15c171f6048cd5cfd2f10cd79cf0c64c88835c76174260329ade1e2c7"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 2,
+    "semCoordenadas": 2
+  },
+  "cnpj": "09.517.273/0001-82",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código SEQR11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRSEQRCTF002), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "SANT ANTONIO",
+      "enderecoPublicado": "Rua Walter Martins da Silva, 500, Santo Antônio da Patrula - RS, CEP: 95500-000",
+      "cidade": "Santo Antônio da Patrula",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "11818",
+      "areaPublicada": "11818",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "26.0038",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Industral automotivo",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "seqr11-sant-antonio",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "LOJA HABITAR",
+      "enderecoPublicado": "Rua Nova York, 245, São Paulo - SP, CEP: 04560-000",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "3494.47",
+      "areaPublicada": "3494.47",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "14.3652",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo Alimentar",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "seqr11-loja-habitar",
+      "coordenadas": {
+        "lat": "-23.615325",
+        "lng": "-46.684838",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "245, Rua Nova York, Brooklin Novo, Itaim Bibi, São Paulo, Região Sudeste, 04560-000, Brasil",
+        "osm": "way/1383650058",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Nova York, 245, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "MADUREIRA",
+      "enderecoPublicado": "Rua Ewbank da Câmara, 48, Rio de Janeiro - RJ, CEP: 21310-150",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "12201",
+      "areaPublicada": "12201",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "31.0882",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Contact Center",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "seqr11-madureira",
+      "coordenadas": {
+        "lat": "-22.876303",
+        "lng": "-43.341359",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Ewbank da Câmara, Madureira, Rio de Janeiro, Região Sudeste, 21310-150, Brasil",
+        "osm": "way/314790441",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Ewbank da Câmara, 48, Rio de Janeiro, RJ, Brasil"
+      }
+    },
+    {
+      "nome": "POLO JANDIRA",
+      "enderecoPublicado": "Rua José Albino Pereira,  342, Jandira - SP, CEP: 06612-001",
+      "cidade": "Jandira",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "10329",
+      "areaPublicada": "10329",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "28.5428",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Logístico/Alimentos",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "seqr11-polo-jandira",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

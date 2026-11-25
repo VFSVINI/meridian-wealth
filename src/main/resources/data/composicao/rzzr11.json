@@ -1,0 +1,249 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "RZZR11",
+  "nomeDoFundo": "Raizz Renda Log Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "9bbfbf3fe514d0d4db110ec554a6df15e8336954f127869e2bba9b3465c7d302"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 10
+  },
+  "cnpj": "35.652.278/0001-28",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código RZZR11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRRZZRCTF000), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Galpao Raizz Uberlandia",
+      "enderecoPublicado": "Anel Viario Ayrton Senna, S/n, Sem Complemento, Distrito Industrial, Uberlândia/MG, Brasil, 38402-329",
+      "cidade": "Uberlândia",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "154946.77",
+      "areaPublicada": "154946.77",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "rzzr11-galpao-raizz-uberlandia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Imovel Itajai - SC",
+      "enderecoPublicado": "Rua Jose Lana, 850, Sem Complemento, Brilhante I, Itajai/SC, Brasil, 88318-290",
+      "cidade": "Itajai",
+      "uf": "SC",
+      "tipo": null,
+      "areaM2": "210609.28",
+      "areaPublicada": "210609.28",
+      "vacanciaPercentual": "32.0120",
+      "percentualDaReceitaDoFundo": "8.1904",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Transporte",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzzr11-imovel-itajai-sc",
+      "coordenadas": {
+        "lat": "-26.999599",
+        "lng": "-48.810373",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua José Lana, Brilhante, Itajaí, Santa Catarina, Região Sul, 88318-251, Brasil",
+        "osm": "way/400525945",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Jose Lana, 850, Itajai, SC, Brasil"
+      }
+    },
+    {
+      "nome": "Imovel - Lucas Rio Verde",
+      "enderecoPublicado": "Setor 2, Setor 2, S/n, Lote 08b3, Setor 2, Lucas Do Rio Verde/MT, Brasil, 78455-000",
+      "cidade": "Lucas Do Rio Verde",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "100000",
+      "areaPublicada": "100000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "7.5001",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzzr11-imovel-lucas-rio-verde",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "CENTRO DE ARMAZENAMENTO E DISTRIBUICAO DA AURORA",
+      "enderecoPublicado": "Avenida Pl Do Brasil, 3001, Sem Complemento, Fontes, Aruja/SP, Brasil, 07415-000",
+      "cidade": "Aruja",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "191766920",
+      "areaPublicada": "191766920",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "13.4221",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentos Processados",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzzr11-centro-de-armazenamento-e-distribuicao-da-aurora",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Imovel Conde - Paraiba",
+      "enderecoPublicado": "Km 101, Da Br-101, 101, Sem Complemento, , Conde/PB, Brasil, 58322-000",
+      "cidade": "Conde",
+      "uf": "PB",
+      "tipo": null,
+      "areaM2": "12847.3",
+      "areaPublicada": "12847.3",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.2674",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzzr11-imovel-conde-paraiba",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Galpao - Quatro Barras",
+      "enderecoPublicado": "Avenida Prefeito Domingos Mocelin Neto, 2600, 555, Sem Complemento, Borda Do Campo, Quatro Barras/PR, Brasil, 83425-970",
+      "cidade": "Quatro Barras",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "38082",
+      "areaPublicada": "38082",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.1297",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Automóveis e Motocicletas",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzzr11-galpao-quatro-barras",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Imovel Viana",
+      "enderecoPublicado": "Estrada Ladeira Grande, S/n, Área 01-a, Parque Industrial, Viana/ES, Brasil, 29136-537",
+      "cidade": "Viana",
+      "uf": "ES",
+      "tipo": null,
+      "areaM2": "15037.29",
+      "areaPublicada": "15037.29",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.0735",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comércio e Distribuição",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzzr11-imovel-viana",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Imovel Querencia",
+      "enderecoPublicado": "Estrada R-1, Na Esquina Com A Estrada R-4, S/n, Sem Complemento, , Querencia/MT, Brasil, 78643-000",
+      "cidade": "Querencia",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "5716.7",
+      "areaPublicada": "5716.7",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.2950",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Transporte",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzzr11-imovel-querencia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "CD Seara Ribeirao das Neves - R2MN",
+      "enderecoPublicado": "Rua Alexandre Barreto Cavalcante, 74, Lote 01b Quadra 07, Alterosa, Ribeirao Das Neves/MG, Brasil, 33821-105",
+      "cidade": "Ribeirao Das Neves",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "36250.63",
+      "areaPublicada": "36250.63",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.6622",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentos Processados",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzzr11-cd-seara-ribeirao-das-neves-r2mn",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Imovel - Cuiaba",
+      "enderecoPublicado": "Rodovia Dos Imigrantes, Km 501, Sem Complemento, Distrito Industrial, Cuiaba/MT, Brasil, 78098-325",
+      "cidade": "Cuiaba",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "21870.36",
+      "areaPublicada": "21870.36",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.9726",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzzr11-imovel-cuiaba",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "Imovel Vitoria da Conquista",
+      "enderecoPublicado": "Avenida Anel De Contorno, S/n, Lote J-13b, Ayrton Senna, Vitoria Da Conquista/BA, Brasil, 45057-000",
+      "cidade": "Vitoria Da Conquista",
+      "uf": "BA",
+      "tipo": null,
+      "areaM2": "20000",
+      "areaPublicada": "20000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.7725",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentos Processados",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rzzr11-imovel-vitoria-da-conquista",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "KORE11",
+  "nomeDoFundo": "Kinea Oportunidades Real Estate Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "6a0d4a9eeab627893381c393926d6e35df228a290bae03528a4b06c90cd41b96"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 4,
+    "semCoordenadas": 0
+  },
+  "cnpj": "52.219.978/0001-42",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código KORE11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRKORECTF012), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Morumbi Office Tower",
+      "enderecoPublicado": "Avenida Roque Petroni Junior, 999, Jardim das Acacias, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "18478.993",
+      "areaPublicada": "18478.993",
+      "vacanciaPercentual": "1.1339",
+      "percentualDaReceitaDoFundo": "18.3107",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços",
+          "percentualDaReceitaDoImovel": "20.8539"
+        },
+        {
+          "setor": "Indústria",
+          "percentualDaReceitaDoImovel": "19.6433"
+        }
+      ],
+      "id": "kore11-morumbi-office-tower",
+      "coordenadas": {
+        "lat": "-23.623592",
+        "lng": "-46.696818",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Morumbi Office Tower, 999, Avenida Roque Petroni Júnior, Chácara Santo Antônio, Santo Amaro, São Paulo, Região Sudeste, 04705-010, Brasil",
+        "osm": "way/954942096",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Roque Petroni Junior, 999, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Alameda Santos",
+      "enderecoPublicado": "Alameda Santos, 2477, Jardim Paulista, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "6467.71",
+      "areaPublicada": "6467.71",
+      "vacanciaPercentual": "0.3992",
+      "percentualDaReceitaDoFundo": "7.4753",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços",
+          "percentualDaReceitaDoImovel": "74.2549"
+        }
+      ],
+      "id": "kore11-alameda-santos",
+      "coordenadas": {
+        "lat": "-23.557381",
+        "lng": "-46.663495",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Edifício Vivest, 2477, Alameda Santos, Cerqueira César, Jardim Paulista, São Paulo, Região Sudeste, 01419-101, Brasil",
+        "osm": "way/412845031",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Santos, 2477, Jardim Paulista, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Corporate Plaza",
+      "enderecoPublicado": "Rua Alexandre Dumas, 2100, Santo Amaro, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "10489.07",
+      "areaPublicada": "10489.07",
+      "vacanciaPercentual": "1.2028",
+      "percentualDaReceitaDoFundo": "6.7373",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços",
+          "percentualDaReceitaDoImovel": "9.4793"
+        }
+      ],
+      "id": "kore11-corporate-plaza",
+      "coordenadas": {
+        "lat": "-23.629972",
+        "lng": "-46.707268",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Edificio Corporate Plaza, 2100, Rua Alexandre Dumas, Chácara Santo Antônio, Santo Amaro, São Paulo, Região Sudeste, 04717-004, Brasil",
+        "osm": "way/894430924",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Alexandre Dumas, 2100, Santo Amaro, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Centro Empresarial Botafogo",
+      "enderecoPublicado": "Praia de Botafogo, 300, Botafogo, Rio de Janeiro - RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "23439.78",
+      "areaPublicada": "23439.78",
+      "vacanciaPercentual": "1.4438",
+      "percentualDaReceitaDoFundo": "49.5384",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Indústria",
+          "percentualDaReceitaDoImovel": "9.2898"
+        },
+        {
+          "setor": "Serviços",
+          "percentualDaReceitaDoImovel": "36.3827"
+        }
+      ],
+      "id": "kore11-centro-empresarial-botafogo",
+      "coordenadas": {
+        "lat": "-22.944403",
+        "lng": "-43.182622",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "300, Praia de Botafogo, Botafogo, Rio de Janeiro, Região Sudeste, 22250-040, Brasil",
+        "osm": "way/997751387",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Praia de Botafogo, 300, Botafogo, Rio de Janeiro - RJ, Brasil"
+      }
+    }
+  ]
+}

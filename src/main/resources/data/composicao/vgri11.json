@@ -1,0 +1,138 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "VGRI11",
+  "nomeDoFundo": "Valora Renda Imobiliaria Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "5291a84ddf1f160988ac72c37fe6f43847e90c205c16779634138f8a5e8f1d71"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 2,
+    "semCoordenadas": 2
+  },
+  "cnpj": "53.656.482/0001-07",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código VGRI11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRVGRICTF008), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "VOLKSWAGEN",
+      "enderecoPublicado": "Rua Volkswagens, 291, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "12560",
+      "areaPublicada": "12560",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Automobilistico",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "vgri11-volkswagen",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "BURITY",
+      "enderecoPublicado": "Av. Indianópolis, 3096, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "10550",
+      "areaPublicada": "10550",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "vgri11-burity",
+      "coordenadas": {
+        "lat": "-23.625030",
+        "lng": "-46.645824",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "3096, Avenida Indianópolis, Planalto Paulista, Saúde, São Paulo, Região Sudeste, 04069-050, Brasil",
+        "osm": "way/1034514280",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Indianópolis, 3096, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "TRANSATLANT",
+      "enderecoPublicado": "Rua Verbo Divino, 1488, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "4241.11",
+      "areaPublicada": "4241.11",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Corporativo",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "vgri11-transatlant",
+      "coordenadas": {
+        "lat": "-23.630805",
+        "lng": "-46.709097",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Centro Empresarial Transatlântico, 1488, Rua Verbo Divino, Chácara Santo Antônio, Santo Amaro, São Paulo, Região Sudeste, 04719-002, Brasil",
+        "osm": "way/358727993",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Verbo Divino, 1488, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "PAULISTA",
+      "enderecoPublicado": "Av. Paulista, 1374",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "10879",
+      "areaPublicada": "10879",
+      "vacanciaPercentual": "14.7000",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Financeiro",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Comercial",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "vgri11-paulista",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

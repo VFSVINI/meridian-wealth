@@ -1,0 +1,298 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "VINO11",
+  "nomeDoFundo": "Vinci Offices Fundo De Investimento Imobiliário",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "85c941a782db0a1105d15bdbdb04b441ceab36f3bfd78c8004269dd0f44a6ca6"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 8,
+    "semCoordenadas": 1
+  },
+  "cnpj": "12.516.185/0001-70",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código VINO11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRVINOCTF001), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "BM336",
+      "enderecoPublicado": "Av. Bartolomeu Mitre, 336 CEP: 22.431-002 Rio de Janeiro - RJ - Brasil",
+      "cidade": null,
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "4916",
+      "areaPublicada": "4916",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "12",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Energia",
+          "percentualDaReceitaDoImovel": "10.4000"
+        },
+        {
+          "setor": "Financeiro",
+          "percentualDaReceitaDoImovel": "74.9000"
+        },
+        {
+          "setor": "Seguros",
+          "percentualDaReceitaDoImovel": "14.8000"
+        }
+      ],
+      "id": "vino11-bm336",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "BMA Corporate",
+      "enderecoPublicado": "Largo do Ibam, 1, Humaitá, Rio de Janeiro/RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "8264",
+      "areaPublicada": "8264",
+      "vacanciaPercentual": "4.9290",
+      "percentualDaReceitaDoFundo": "13",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Saúde",
+          "percentualDaReceitaDoImovel": "32.8000"
+        },
+        {
+          "setor": "Escritório de Advocacia",
+          "percentualDaReceitaDoImovel": "67.2000"
+        }
+      ],
+      "id": "vino11-bma-corporate",
+      "coordenadas": {
+        "lat": "-22.958866",
+        "lng": "-43.197014",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Insituto Brasileiro de Administração Municipal, 1, Largo Ibam, Botafogo, Rio de Janeiro, Região Sudeste, 22271-080, Brasil",
+        "osm": "way/255915098",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Largo do Ibam, 1, Humaitá, Rio de Janeiro/RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Sede Globo SP",
+      "enderecoPublicado": "Rua Evandro Carlos de Andrade, 160, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "39050",
+      "areaPublicada": "39050",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "56.7700",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comunicação e Mídia",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "vino11-sede-globo-sp",
+      "coordenadas": {
+        "lat": "-23.615150",
+        "lng": "-46.697693",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Globo São Paulo, 160, Rua Evandro Carlos de Andrade, Brooklin Novo, Itaim Bibi, São Paulo, Região Sudeste, 04583-115, Brasil",
+        "osm": "way/1324687501",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Evandro Carlos de Andrade, 160, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "Haddock  Lobo",
+      "enderecoPublicado": "Rua Haddock Lobo, nº 347,  São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "8140",
+      "areaPublicada": "8140",
+      "vacanciaPercentual": "55.4566",
+      "percentualDaReceitaDoFundo": "4.1900",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Cosméticos",
+          "percentualDaReceitaDoImovel": "22.1000"
+        },
+        {
+          "setor": "Seguros",
+          "percentualDaReceitaDoImovel": "21.2000"
+        },
+        {
+          "setor": "Saúde",
+          "percentualDaReceitaDoImovel": "11.7000"
+        },
+        {
+          "setor": "Tecnologia",
+          "percentualDaReceitaDoImovel": "30.9000"
+        }
+      ],
+      "id": "vino11-haddock-lobo",
+      "coordenadas": {
+        "lat": "-23.556578",
+        "lng": "-46.659990",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Wizard, 347, Rua Haddock Lobo, Consolação, São Paulo, Região Sudeste, 01414-001, Brasil",
+        "osm": "node/4913151134",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Haddock Lobo, 347, São Paulo - SP, Brasil"
+      }
+    },
+    {
+      "nome": "LAB 1404",
+      "enderecoPublicado": "Rua Mourato Coelho, 1404, na Vila Madalena, São Paulo/SP.",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "6874",
+      "areaPublicada": "6874",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.3800",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Comunicação e Mídia",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "vino11-lab-1404",
+      "coordenadas": {
+        "lat": "-23.556051",
+        "lng": "-46.692485",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Escola Britânica de Artes Criativas, 1404, Rua Mourato Coelho, Vila Madalena, Pinheiros, São Paulo, Região Sudeste, 05417-002, Brasil",
+        "osm": "way/712292203",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Mourato Coelho, 1404, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Oscar Freire 585",
+      "enderecoPublicado": "Rua Oscar Freire, 585, Jardim Paulista, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "6145",
+      "areaPublicada": "6145",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.1800",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Tecnologia",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "vino11-oscar-freire-585",
+      "coordenadas": {
+        "lat": "-23.567149",
+        "lng": "-46.664407",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Oscar Freire, Cerqueira César, Jardim Paulista, São Paulo, Região Sudeste, 01426-000, Brasil",
+        "osm": "way/230784033",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Oscar Freire, 585, Jardim Paulista, São Paulo/SP, Brasil"
+      }
+    },
+    {
+      "nome": "Brooklyn Business Square",
+      "enderecoPublicado": "Rua Jaceru, 154, Vila Gertrudes, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "5379",
+      "areaPublicada": "5379",
+      "vacanciaPercentual": "19.8328",
+      "percentualDaReceitaDoFundo": "3.8800",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Coworking",
+          "percentualDaReceitaDoImovel": "47.9000"
+        },
+        {
+          "setor": "Tecnologia",
+          "percentualDaReceitaDoImovel": "52.1000"
+        }
+      ],
+      "id": "vino11-brooklyn-business-square",
+      "coordenadas": {
+        "lat": "-23.622961",
+        "lng": "-46.694309",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Jaceru, Brooklin Novo, Itaim Bibi, São Paulo, Região Sudeste, 04707-000, Brasil",
+        "osm": "way/27257894",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Jaceru, 154, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Vita Corá",
+      "enderecoPublicado": "Rua Corá, 2175, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "6450",
+      "areaPublicada": "6450",
+      "vacanciaPercentual": "24.4346",
+      "percentualDaReceitaDoFundo": "1.5000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Coworking",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "vino11-vita-cora",
+      "coordenadas": {
+        "lat": "-23.535612",
+        "lng": "-46.715717",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "2175, Rua Cerro Corá, Boaçava, Alto de Pinheiros, São Paulo, Região Sudeste, 05083-140, Brasil",
+        "osm": "way/996638729",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Corá, 2175, São Paulo/SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edíficio Cardeal Corporate",
+      "enderecoPublicado": "Rua Cardeal Arcoverde nº 563, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "2682",
+      "areaPublicada": "2682",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.1000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educação",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "vino11-edificio-cardeal-corporate",
+      "coordenadas": {
+        "lat": "-23.555752",
+        "lng": "-46.678394",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "563, Rua Cardeal Arcoverde, Vila Madalena, Jardim Paulista, São Paulo, Região Sudeste, 05407-000, Brasil",
+        "osm": "node/5739290144",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Cardeal Arcoverde 563, São Paulo - SP, Brasil"
+      }
+    }
+  ]
+}

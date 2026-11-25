@@ -1,0 +1,714 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "BNFS11",
+  "nomeDoFundo": "Banrisul Novas Fronteiras Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "2181c65ea0506a4e9bc425863d27bb9e67706fa047c90e2b6fec064c5f2000e1"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 14,
+    "semCoordenadas": 4
+  },
+  "cnpj": "15.570.431/0001-60",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 2. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código BNFS11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRBNFSCTF000), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "MAT 29.031 - SANTA ROSA - CRUZEIRO",
+      "enderecoPublicado": "Av. Flores da Cunha, 175 - Santa Rosa-RS",
+      "cidade": "Santa Rosa",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "503.67",
+      "areaPublicada": "503.67",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.3700",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-29-031-santa-rosa-cruzeiro",
+      "coordenadas": {
+        "lat": "-27.863503",
+        "lng": "-54.434121",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Flores da Cunha, ÁREA MISTA 1, Cruzeiro, Santa Rosa, Rio Grande do Sul, Região Sul, 98789-188, Brasil",
+        "osm": "way/445076877",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Flores da Cunha, 175 - Santa Rosa-RS, Brasil"
+      }
+    },
+    {
+      "nome": "MAT 7.797 - ESTEIO",
+      "enderecoPublicado": "Av. Padre Claret  1104 - Esteio-RS",
+      "cidade": "Esteio",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "475.7",
+      "areaPublicada": "475.7",
+      "vacanciaPercentual": "4.8516",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-7-797-esteio",
+      "coordenadas": {
+        "lat": "-29.848654",
+        "lng": "-51.146109",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Padre Claret, Primavera, Esteio, Rio Grande do Sul, Região Sul, 93226-430, Brasil",
+        "osm": "way/905872376",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Padre Claret 1104 - Esteio-RS, Brasil"
+      }
+    },
+    {
+      "nome": "MAT 631 - CRUZ ALTA",
+      "enderecoPublicado": "Av. Venancio Aires, 1745 - Cruz Alta-RS",
+      "cidade": "Cruz Alta",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "937.02",
+      "areaPublicada": "937.02",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "20.9700",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-631-cruz-alta",
+      "coordenadas": {
+        "lat": "-28.646810",
+        "lng": "-53.606594",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "1745, Avenida Venâncio Aires, Centro Histórico, Brenner, Cruz Alta, Rio Grande do Sul, Região Sul, 98010-377, Brasil",
+        "osm": "node/13645824029",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Venancio Aires, 1745 - Cruz Alta-RS, Brasil"
+      }
+    },
+    {
+      "nome": "MAT 169.816 - BELÉM NOVO",
+      "enderecoPublicado": "Av. Cecilio Monza, 10827 - Porto Alegre-RS",
+      "cidade": "Porto Alegre",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "558.7",
+      "areaPublicada": "558.7",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.9000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-169-816-belem-novo",
+      "coordenadas": {
+        "lat": "-30.208209",
+        "lng": "-51.180648",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Doutor Cecilio Monza, Belém Novo, Porto Alegre, Rio Grande do Sul, Região Sul, 91780-060, Brasil",
+        "osm": "way/27145689",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Cecilio Monza, Porto Alegre, RS, Brasil"
+      }
+    },
+    {
+      "nome": "MAT 4.337 - QUARAI",
+      "enderecoPublicado": "Rua Baltazar Brum, 320 - Quarai-RS",
+      "cidade": "Quarai",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "475.7",
+      "areaPublicada": "475.7",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "8.8600",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-4-337-quarai",
+      "coordenadas": {
+        "lat": "-30.385989",
+        "lng": "-56.451590",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Baltazar Brum, Bairro Centro, Quaraí, Rio Grande do Sul, Região Sul, 97560-970, Brasil",
+        "osm": "way/734588033",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Baltazar Brum, 320 - Quarai-RS, Brasil"
+      }
+    },
+    {
+      "nome": "MAT 22.527 - VACARIA",
+      "enderecoPublicado": "Rua Moreira Paz 591 - Vacaria-RS",
+      "cidade": "Vacaria",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "916.54",
+      "areaPublicada": "916.54",
+      "vacanciaPercentual": "9.3478",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-22-527-vacaria",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "MAT 16.557 - TAQUARI",
+      "enderecoPublicado": "Rua Osvaldo Aranha, 2396 - Taquari-RS",
+      "cidade": "Taquari",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "788.17",
+      "areaPublicada": "788.17",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.4500",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-16-557-taquari",
+      "coordenadas": {
+        "lat": "-29.799155",
+        "lng": "-51.865180",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Osvaldo Aranha, Centro, Taquari, Rio Grande do Sul, Região Sul, 95860-000, Brasil",
+        "osm": "way/123386966",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Osvaldo Aranha, 2396 - Taquari-RS, Brasil"
+      }
+    },
+    {
+      "nome": "MAT 3.889 - SÃO LEOPOLDO - CAMPINAS",
+      "enderecoPublicado": "Rua Henrique Bier, 1125 - Sao Leopoldo-RS",
+      "cidade": "Sao Leopoldo",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "477.94",
+      "areaPublicada": "477.94",
+      "vacanciaPercentual": "4.8745",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-3-889-sao-leopoldo-campinas",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "MAT 97.354 - VILA IPIRANGA",
+      "enderecoPublicado": "Av do Forte, 1128 - Porto Alegre-RS",
+      "cidade": "Porto Alegre",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "506.29",
+      "areaPublicada": "506.29",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "8.4400",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-97-354-vila-ipiranga",
+      "coordenadas": {
+        "lat": "-30.014698",
+        "lng": "-51.152739",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida do Forte, Cristo Redentor, Porto Alegre, Rio Grande do Sul, Região Sul, 91370-380, Brasil",
+        "osm": "way/263044974",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av do Forte, 1128 - Porto Alegre-RS, Brasil"
+      }
+    },
+    {
+      "nome": "MAT 76.048 - SÃO LEOPOLDO - SCHARLAU",
+      "enderecoPublicado": "Av. Tomaz Edison, 2615  - Sao Leopoldo-RS",
+      "cidade": "Sao Leopoldo",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "568.02",
+      "areaPublicada": "568.02",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.4200",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-76-048-sao-leopoldo-scharlau",
+      "coordenadas": {
+        "lat": "-29.774006",
+        "lng": "-51.160235",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Tomaz Edison, Vicentina, São Leopoldo, Rio Grande do Sul, Região Sul, 93025-120, Brasil",
+        "osm": "way/936283140",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Tomaz Edison, 2615 - Sao Leopoldo-RS, Brasil"
+      }
+    },
+    {
+      "nome": "MAT 5.526 - GENERAL CÂMARA",
+      "enderecoPublicado": "Rua Jose Do Patrocinio, 165 - General Camara-RS",
+      "cidade": "General Camara",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "373.3",
+      "areaPublicada": "373.3",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.0500",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-5-526-general-camara",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "MAT 13.178 - RIO GRANDE - CASSINO",
+      "enderecoPublicado": "Av. Atlantica, 537 - Rio Grande,RS",
+      "cidade": "Rio Grande",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "403.45",
+      "areaPublicada": "403.45",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.5700",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-13-178-rio-grande-cassino",
+      "coordenadas": {
+        "lat": "-32.186447",
+        "lng": "-52.161527",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Banrisul, 537, Avenida Atlântica, Balneário Cassino, Rio Grande, Rio Grande do Sul, Região Sul, 96207-490, Brasil",
+        "osm": "way/802337515",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Atlantica, 537 - Rio Grande,RS, Brasil"
+      }
+    },
+    {
+      "nome": "MAT 28.843 - TANCREDO NEVES",
+      "enderecoPublicado": "Rua Maranhao 280 - Santa Maria-RS",
+      "cidade": "Santa Maria",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "498.3",
+      "areaPublicada": "498.3",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.6900",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-28-843-tancredo-neves",
+      "coordenadas": {
+        "lat": "-29.693363",
+        "lng": "-53.874557",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Banrisul, 280, Rua Maranhão, Parque Residencial Pinheiro Machado, Pinheiro Machado, Sede, Santa Maria, Rio Grande do Sul, Região Sul, 97030-350, Brasil",
+        "osm": "node/4646288819",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Maranhao 280 - Santa Maria-RS, Brasil"
+      }
+    },
+    {
+      "nome": "SAPIRANGA",
+      "enderecoPublicado": "Av. 20 de Setembro, 3755 - Sapiranga-RS",
+      "cidade": "Sapiranga",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "922.02",
+      "areaPublicada": "922.02",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "11.6327",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-sapiranga",
+      "coordenadas": {
+        "lat": "-29.631166",
+        "lng": "-50.981585",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida 20 de Setembro, Sapiranga, Rio Grande do Sul, Região Sul, 93815-016, Brasil",
+        "osm": "way/543043564",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. 20 de Setembro, 3755 - Sapiranga-RS, Brasil"
+      }
+    },
+    {
+      "nome": "MAT 25.246 - SAPIRANGA",
+      "enderecoPublicado": "Av. 20 de Setembro, 3755 - Sapiranga-RS",
+      "cidade": "Sapiranga",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "922.02",
+      "areaPublicada": "922.02",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "20",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-25-246-sapiranga",
+      "coordenadas": {
+        "lat": "-29.631166",
+        "lng": "-50.981585",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida 20 de Setembro, Sapiranga, Rio Grande do Sul, Região Sul, 93815-016, Brasil",
+        "osm": "way/543043564",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. 20 de Setembro, 3755 - Sapiranga-RS, Brasil"
+      }
+    },
+    {
+      "nome": "MAT 36.124 - PAROBÉ",
+      "enderecoPublicado": "Rua Odorico Mosmann, 257 - Parobe-RS",
+      "cidade": "Parobe",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "513.03",
+      "areaPublicada": "513.03",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.8200",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-36-124-parobe",
+      "coordenadas": {
+        "lat": "-29.632561",
+        "lng": "-50.833086",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Odorico Mosmann, Parobé, Rio Grande do Sul, Região Sul, 95630-000, Brasil",
+        "osm": "way/154000703",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Odorico Mosmann, 257 - Parobe-RS, Brasil"
+      }
+    },
+    {
+      "nome": "MAT 74.790 - ARROIO DO SAL",
+      "enderecoPublicado": "Av. Assis Brasil,  657 - Arroio do Sal-RS",
+      "cidade": "Arroio do Sal",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "421.54",
+      "areaPublicada": "421.54",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.4600",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-74-790-arroio-do-sal",
+      "coordenadas": {
+        "lat": "-29.550667",
+        "lng": "-49.886538",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Assis Brasil, Centro, Arroio do Sal, Rio Grande do Sul, Região Sul, 95585-000, Brasil",
+        "osm": "way/509264604",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Assis Brasil, 657 - Arroio do Sal-RS, Brasil"
+      }
+    },
+    {
+      "nome": "MAT 15.002 - SÃO GABRIEL",
+      "enderecoPublicado": "Av. Julio de Castillhos, 303 - Sao Gabriel-RS",
+      "cidade": "Sao Gabriel",
+      "uf": "RS",
+      "tipo": null,
+      "areaM2": "465.43",
+      "areaPublicada": "465.43",
+      "vacanciaPercentual": "4.7469",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Setor1",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "bnfs11-mat-15-002-sao-gabriel",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

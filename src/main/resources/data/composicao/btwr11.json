@@ -1,0 +1,46 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "BTWR11",
+  "nomeDoFundo": "Btowers Fundo Investimento Imobiliario",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "f18f25b2ffbfb2bfa52a49af0b14445d9fe8ba851a26a1def4c473dff6177c04"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 1
+  },
+  "cnpj": "20.132.453/0001-89",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código BTWR11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRBTWRCTF004), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "BROOKFIELD",
+      "enderecoPublicado": "Rua Qd. B-27, Av. Dep. Jamel Cecílio, 56 - Jardim Goiás, Goiânia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "19746.95",
+      "areaPublicada": "19746.95",
+      "vacanciaPercentual": "8",
+      "percentualDaReceitaDoFundo": "99.4000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Tecnologia e Serviços",
+          "percentualDaReceitaDoImovel": "0.2380"
+        }
+      ],
+      "id": "btwr11-brookfield",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

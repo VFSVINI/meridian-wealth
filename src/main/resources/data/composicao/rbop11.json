@@ -1,0 +1,82 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "RBOP11",
+  "nomeDoFundo": "Fundo De Investimento Imobiliário Rb Oportunidades - Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "cb1bfe0d9b7d9c3a5e0e0fe02218138abcf4b8b58c78ed0909c3d93a69334bd5"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 2,
+    "semCoordenadas": 0
+  },
+  "cnpj": "13.500.306/0001-59",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código RBOP11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRRBOPCTF009), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Loja - Edifício Manhattan Tower",
+      "enderecoPublicado": "Avenida Rio Branco, 89, Centro, Rio de Janeiro/RJ",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "748",
+      "areaPublicada": "748",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "19.2343",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbop11-loja-edificio-manhattan-tower",
+      "coordenadas": {
+        "lat": "-22.910426",
+        "lng": "-43.175708",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Rio Branco, Castelo, Centro, Rio de Janeiro, Região Sudeste, 20040-917, Brasil",
+        "osm": "way/56722059",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Rio Branco, 89, Centro, Rio de Janeiro/RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Edifício Bravo! BH",
+      "enderecoPublicado": "Rua Rio de Janeiro, 654, Belo Horizonte/MG",
+      "cidade": "Belo Horizonte",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "15684.008",
+      "areaPublicada": "15684.008",
+      "vacanciaPercentual": "72.8700",
+      "percentualDaReceitaDoFundo": "27.9191",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbop11-edificio-bravo-bh",
+      "coordenadas": {
+        "lat": "-19.917268",
+        "lng": "-43.938111",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Rio de Janeiro, Centro, Regional Centro-Sul, Belo Horizonte, Minas Gerais, Região Sudeste, 30160-040, Brasil",
+        "osm": "way/280413803",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Rio de Janeiro, 654, Belo Horizonte/MG, Brasil"
+      }
+    }
+  ]
+}

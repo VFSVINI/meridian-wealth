@@ -1,0 +1,74 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "RBRS11",
+  "nomeDoFundo": "Rio Bravo Renda Residencial Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "8835dbd12619b5d30ff168e2b705eb637050b6444b8cc126c3de504c1c1766e1"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 1
+  },
+  "cnpj": "36.517.660/0001-91",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código RBRS11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRRBRSCTF006), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Urbic Sabia",
+      "enderecoPublicado": "Av. Sabiá, 641, Indianápolis, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "2427.38",
+      "areaPublicada": "2427.38",
+      "vacanciaPercentual": "31.5753",
+      "percentualDaReceitaDoFundo": "58.3015",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbrs11-urbic-sabia",
+      "coordenadas": {
+        "lat": "-23.601915",
+        "lng": "-46.663634",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "641, Avenida Sabiá, Indianópolis, Moema, São Paulo, Região Sudeste, 04515-000, Brasil",
+        "osm": "way/1109056413",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Sabiá, 641, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Urbic Tomas Alves",
+      "enderecoPublicado": "Rua Dr. Tomás Alves, 172 e 184, Vila Mariana, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1237.09",
+      "areaPublicada": "1237.09",
+      "vacanciaPercentual": "20.1000",
+      "percentualDaReceitaDoFundo": "26.8512",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbrs11-urbic-tomas-alves",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "SPG211",
+  "nomeDoFundo": "Spgm Ii Fundo De Investimento Imobiliário",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "f8307bbafc1cfdda5be3374caa95743a83d142a02494adee2d025f807aa369fa"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 2
+  },
+  "cnpj": "57.077.139/0001-50",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código SPG211 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRSPG2CTF013), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "VALMET",
+      "enderecoPublicado": "KM 24, 3 da Rodovia MG-010, Fazenda do Barreiro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "65078",
+      "areaPublicada": "65078",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "71.8083",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Logístico",
+          "percentualDaReceitaDoImovel": "10"
+        }
+      ],
+      "id": "spg211-valmet",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "BETIM",
+      "enderecoPublicado": "Lote n° 05 e nº 6 da quadra n° 11, do loteamento denominado \"Parque Industrial de Betim\", município de Betim, Minas Gerais.",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "10343.35",
+      "areaPublicada": "10343.35",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "28.1917",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Logístico",
+          "percentualDaReceitaDoImovel": "10"
+        }
+      ],
+      "id": "spg211-betim",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

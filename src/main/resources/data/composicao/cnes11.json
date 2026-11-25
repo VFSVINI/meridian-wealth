@@ -1,0 +1,58 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "CNES11",
+  "nomeDoFundo": "Cenesp Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "e90568e95ca1b645d6438520b7b437b857095c6463db3dd89f66a81db1c86e5d"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "13.551.286/0001-45",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código CNES11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRCNESCTF001), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edificio Cenesp",
+      "enderecoPublicado": "Avenida Maria Coelho Aguiar, 215, Sem Complemento, Jardim Sao Luis, Sao Paulo/SP, Brasil, 05805-000",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "300000",
+      "areaPublicada": "300000",
+      "vacanciaPercentual": "54.6282",
+      "percentualDaReceitaDoFundo": "91.0627",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços Financeiros Diversos",
+          "percentualDaReceitaDoImovel": "52.3058"
+        },
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "20.9198"
+        }
+      ],
+      "id": "cnes11-edificio-cenesp",
+      "coordenadas": {
+        "lat": "-23.654954",
+        "lng": "-46.735679",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Maria Coelho Aguiar, 1297, Avenida Maria Coelho de Aguiar, Jardim São Luís, São Paulo, Região Sudeste, 05805-000, Brasil",
+        "osm": "node/8149402289",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Maria Coelho Aguiar, 215, Sao Paulo, SP, Brasil"
+      }
+    }
+  ]
+}

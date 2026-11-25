@@ -1,0 +1,186 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "ZAGH11",
+  "nomeDoFundo": "Zagros Multiestratégia Fii Responsabilidade Limitada",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "7c43562f8e8156b8aa67488d7c74bdf2dc6c3c8b93c0ed41da00d866dd433c42"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 5,
+    "semCoordenadas": 1
+  },
+  "cnpj": "45.188.066/0001-95",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código ZAGH11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRZAGHCTF007), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "IMÓVEL REBOUÇAS",
+      "enderecoPublicado": "Rua Capote Valente, nº 39, Pinheiros, CEP 05409-000, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1222.9",
+      "areaPublicada": "1222.9",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "8.8849",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços financeiros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "zagh11-imovel-reboucas",
+      "coordenadas": {
+        "lat": "-23.559812",
+        "lng": "-46.673980",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Capote Valente, Vila Madalena, Jardim Paulista, São Paulo, Região Sudeste, 05409-000, Brasil",
+        "osm": "way/426507060",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Capote Valente, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Hotel Ibis Budget Guarulhos Aeroporto",
+      "enderecoPublicado": "Avenida Lauro de Gusmão Silveira, nº 1.125, Parque Industrial Jardim São Geraldo, CEP 07.140-010, na cidade de Guarulhos, Estado de São Paulo",
+      "cidade": "Guarulhos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1095.73",
+      "areaPublicada": "1095.73",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "10.0488",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Hotelaria",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "zagh11-hotel-ibis-budget-guarulhos-aeroporto",
+      "coordenadas": {
+        "lat": "-23.438821",
+        "lng": "-46.501333",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Lauro de Gusmão Silveira, Parque Santo Agostinho, Taboão, Guarulhos, São Paulo, Região Sudeste, 07140-010, Brasil",
+        "osm": "way/81797895",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Lauro de Gusmão Silveira, Guarulhos, SP, Brasil"
+      }
+    },
+    {
+      "nome": "IMÓVEL BOX 298",
+      "enderecoPublicado": "Rua Wisard, nº 298, Vila Madalena, CEP 05434-080, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1174",
+      "areaPublicada": "1174",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.0886",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Mídia e entretenimento",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "zagh11-imovel-box-298",
+      "coordenadas": {
+        "lat": "-23.555348",
+        "lng": "-46.689741",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Wisard, Vila Madalena, Pinheiros, São Paulo, Região Sudeste, 05434-080, Brasil",
+        "osm": "way/172747396",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Wisard, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "IMÓVEL ITOWER",
+      "enderecoPublicado": "Alameda Xingu, nº 350, Alphaville, CEP 06455-030, Barueri/SP",
+      "cidade": "Barueri",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "2278.8",
+      "areaPublicada": "2278.8",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "10.0858",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Tecnologia e telecomunicações",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "zagh11-imovel-itower",
+      "coordenadas": {
+        "lat": "-23.504776",
+        "lng": "-46.854390",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Alameda Xingu, Jardim Santa Cecília, Alphaville, Barueri, São Paulo, Região Sudeste, 06455-030, Brasil",
+        "osm": "way/248878620",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Xingu, Barueri, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edifício Atlântico Office - Macaé",
+      "enderecoPublicado": "Av. Rui Barbosa, nº 2390, Praia Campista, CEP 27970-020, Macaé /RJ",
+      "cidade": "Macaé",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "7463.71",
+      "areaPublicada": "7463.71",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "14.4900",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educação",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "zagh11-edificio-atlantico-office-macae",
+      "coordenadas": {
+        "lat": "-22.373819",
+        "lng": "-41.777797",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Rui Barbosa, Centro, Macaé, Rio de Janeiro, Região Sudeste, 27910-110, Brasil",
+        "osm": "way/143964373",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Rui Barbosa, Macaé, RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Escola Ética",
+      "enderecoPublicado": "Avenida Santos Dumont, 234, cidade de Londrina, Paraná",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "3690.35",
+      "areaPublicada": "3690.35",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "7.2047",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educação",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "zagh11-escola-etica",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

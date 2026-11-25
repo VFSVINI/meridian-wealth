@@ -1,0 +1,1562 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "RBVA11",
+  "nomeDoFundo": "Rio Bravo Renda Varejo Fii De Responsabilidade Limitada",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "56befacdd3101ecd0bbc63017bffe592856cb343fcd71fed9fab714230d6bb47"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 2,
+    "semCoordenadas": 74
+  },
+  "cnpj": "15.576.907/0001-70",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código RBVA11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRRBVACTF006), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Renner - Oscar Freire - São Paulo/SP",
+      "enderecoPublicado": "Rua Oscar Freire, 585, Jardins",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2045",
+      "areaPublicada": "2045",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.4941",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vestuário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-renner-oscar-freire-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "- Centro Histórico - Porto Alegre/RS",
+      "enderecoPublicado": "Rua 7 de Setembro, 1100",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2223.93",
+      "areaPublicada": "2223.93",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vago",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-centro-historico-porto-alegre-rs",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas - Assis - São Paulo/SP",
+      "enderecoPublicado": "Avenida Rui Barbosa, 205, Loja, Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2266.77",
+      "areaPublicada": "2266.77",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6736",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vestuário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-pernambucanas-assis-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "- Santo Antônio - Recife/PE",
+      "enderecoPublicado": "Rua Imperador Dom Pedro II, 255",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2343.25",
+      "areaPublicada": "2343.25",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vago",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-santo-antonio-recife-pe",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Mutinga - Osasco/SP",
+      "enderecoPublicado": "Avenida das Esmeraldas, 512",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "830.7",
+      "areaPublicada": "830.7",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vago",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-mutinga-osasco-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "- Duque de Caxias - São Paulo/SP",
+      "enderecoPublicado": "Av. Duque de Caxias, 200 - Sta. Ifigênia",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2309.54",
+      "areaPublicada": "2309.54",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Academia",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-duque-de-caxias-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Estácio - Santa Cruz - Rio de Janeiro/RJ",
+      "enderecoPublicado": "Rua General Olímpio, 100, Santa Cruz, Rio de Janeiro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "16207.63",
+      "areaPublicada": "16207.63",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.9438",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educacional",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-estacio-santa-cruz-rio-de-janeiro-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Loja Monsenhor Celso - Curitiba/PR",
+      "enderecoPublicado": "Rua Marechal Deodoro, 195",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "780.095",
+      "areaPublicada": "780.095",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.0707",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Saúde & Bem estar",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-loja-monsenhor-celso-curitiba-pr",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "GPA - Parnamirim - Recife/PE",
+      "enderecoPublicado": "Rua Desembargador Góes Cavalcante, 261",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "4513.2",
+      "areaPublicada": "4513.2",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.0347",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentício",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-gpa-parnamirim-recife-pe",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas - Ipiranga - São Paulo/SP",
+      "enderecoPublicado": "Rua Silva Bueno, 2374, Loja, Ipiranga",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1000",
+      "areaPublicada": "1000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6190",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vestuário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-pernambucanas-ipiranga-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Centro - Jundiaí/SP",
+      "enderecoPublicado": "R. Barao de Jundiai, 884",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2770.46",
+      "areaPublicada": "2770.46",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vago",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-centro-jundiai-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "GPA - Vila Rossi e Borchi - Campinas/SP",
+      "enderecoPublicado": "Av. Barão de Itapura, 2233",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "3367.56",
+      "areaPublicada": "3367.56",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.8705",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentício",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-gpa-vila-rossi-e-borchi-campinas-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Floriano Peixoto - Centro - Fortaleza/CE",
+      "enderecoPublicado": "Rua Floriano Peixoto, 915",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2373.85",
+      "areaPublicada": "2373.85",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.9851",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-floriano-peixoto-centro-fortaleza-ce",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "- Ouvidor - Rio de Janeiro/RJ",
+      "enderecoPublicado": "Av. Rio Branco, 115",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1343.2",
+      "areaPublicada": "1343.2",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vago",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-ouvidor-rio-de-janeiro-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Parque Maria Helena - Suzano/SP",
+      "enderecoPublicado": "Avenida Vereador João Batista Fitipaldi, 115",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "575.63",
+      "areaPublicada": "575.63",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.3788",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-parque-maria-helena-suzano-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Super Nosso - Centro - Belo Horizonte/MG",
+      "enderecoPublicado": "Av. João Pinheiro, 500",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "4114.22",
+      "areaPublicada": "4114.22",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.5322",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentício",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-super-nosso-centro-belo-horizonte-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pinheiros - São Paulo/SP",
+      "enderecoPublicado": "Rua Paes Leme, 250/258",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "909.6",
+      "areaPublicada": "909.6",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0.2325",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vago",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-pinheiros-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Cogna - São Bernardo do Campo - São Bernardo do Campo/SP",
+      "enderecoPublicado": "Avenida Doutor Rudge Ramos, 1501, Rudge Ramos",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "24270.27",
+      "areaPublicada": "24270.27",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.9373",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educacional",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-cogna-sao-bernardo-do-campo-sao-bernardo-do-campo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Avenida Chile - Rio de Janeiro/RJ",
+      "enderecoPublicado": "Av. República do Chile, nº 230",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "762.32",
+      "areaPublicada": "762.32",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.2429",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-avenida-chile-rio-de-janeiro-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Vila Mascote - São Paulo/SP",
+      "enderecoPublicado": "Av. Santa Catarina, 287",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "753.36",
+      "areaPublicada": "753.36",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.4882",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-vila-mascote-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Ipanema - Rio de Janeiro/RJ",
+      "enderecoPublicado": "Rua Visconde de Pirajá, 127",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "642.35",
+      "areaPublicada": "642.35",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.6199",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-ipanema-rio-de-janeiro-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "GPA - Centro - Guarujá/SP",
+      "enderecoPublicado": "Estrada do Pernambuco, 500",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2489.5",
+      "areaPublicada": "2489.5",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.7641",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentício",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-gpa-centro-guaruja-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Cogna - Turu - São Luis/MA",
+      "enderecoPublicado": "Avenida São Luís Rei de França, 32, Turu",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "26181.9",
+      "areaPublicada": "26181.9",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.0844",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educacional",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-cogna-turu-sao-luis-ma",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - 14 bis - Rio de Janeiro/RJ",
+      "enderecoPublicado": "Av. Marechal Câmara, nº 160",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1082.246",
+      "areaPublicada": "1082.246",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.5204",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-14-bis-rio-de-janeiro-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Guarapiranga - São Paulo/SP",
+      "enderecoPublicado": "Av. de Pinedo, 228",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1312.5",
+      "areaPublicada": "1312.5",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6344",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-guarapiranga-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Meier - Rio de Janeiro/RJ",
+      "enderecoPublicado": "Rua Dias da Cruz, 28-A",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1319.52",
+      "areaPublicada": "1319.52",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.1566",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-meier-rio-de-janeiro-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Cogna - Jardim Europa - Cuiabá/MT",
+      "enderecoPublicado": "Avenida Manoel José de Arruda, 3100",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "14556.013",
+      "areaPublicada": "14556.013",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.8426",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educacional",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-cogna-jardim-europa-cuiaba-mt",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "M3Storage - Italianos - São Paulo/SP",
+      "enderecoPublicado": "Rua dos Italianos, 609",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "521",
+      "areaPublicada": "521",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-m3storage-italianos-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "- Paulista  - São Paulo/SP",
+      "enderecoPublicado": "Av. Paulista, 436",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2857.24",
+      "areaPublicada": "2857.24",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Academia",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-paulista-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "- Ed. Olivetti Paulista - São Paulo/SP",
+      "enderecoPublicado": "Av Paulista 447 Loja",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "701",
+      "areaPublicada": "701",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentício",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-ed-olivetti-paulista-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Plano&Plano - Centro - São Bernardo do Campo/SP",
+      "enderecoPublicado": "R. Marechal Deodoro, 460",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1491.12",
+      "areaPublicada": "1491.12",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.5699",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-plano-plano-centro-sao-bernardo-do-campo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Grupo Ultra - Berrini - São Paulo/SP",
+      "enderecoPublicado": "Av Eng. Luiz Carlos Berrini, 1307",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1032.26",
+      "areaPublicada": "1032.26",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2196",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Academia",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-grupo-ultra-berrini-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Cogna - Funcionários - Belo Horizonte/MG",
+      "enderecoPublicado": "Rua dos Timbiras, 1375, Boa Viagem",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "5500.74",
+      "areaPublicada": "5500.74",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.0205",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educacional",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-cogna-funcionarios-belo-horizonte-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas - Santa Fé do Sul - São Paulo/SP",
+      "enderecoPublicado": "Rua Sete, 825, Loja, Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1019.67",
+      "areaPublicada": "1019.67",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2864",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vestuário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-pernambucanas-santa-fe-do-sul-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Centro - Nova Iguaçu/RJ",
+      "enderecoPublicado": "Av. Marechal Floriano Peixoto, nº 2.370",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2615.65",
+      "areaPublicada": "2615.65",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.6556",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-centro-nova-iguacu-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "GPA - Pinheiros  - São Paulo/SP",
+      "enderecoPublicado": "Rua Alves Guimarães, 50",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2666.93",
+      "areaPublicada": "2666.93",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.8072",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentício",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-gpa-pinheiros-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas - Curitiba - Paraná/PR",
+      "enderecoPublicado": "Avenida República Argentina, 4044, Loja",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1930.31",
+      "areaPublicada": "1930.31",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.5939",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vestuário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-pernambucanas-curitiba-parana-pr",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Imperador - São Paulo/SP",
+      "enderecoPublicado": "Av. do Imperador, 3892",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1024.8",
+      "areaPublicada": "1024.8",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.5045",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-imperador-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Taipas - São Paulo/SP",
+      "enderecoPublicado": "Estrada de Taipas, 355",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1335.1",
+      "areaPublicada": "1335.1",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.7679",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-taipas-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "PBKids - Avenida Rebouças - São Paulo/SP",
+      "enderecoPublicado": "Avenida Rebouças, nº 2538, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "455",
+      "areaPublicada": "455",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2432",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-pbkids-avenida-reboucas-sao-paulo-sp",
+      "coordenadas": {
+        "lat": "-23.567550",
+        "lng": "-46.684400",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "2538, Avenida Rebouças, Jardim Europa, Pinheiros, São Paulo, Região Sudeste, 05402-400, Brasil",
+        "osm": "node/5578970451",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Rebouças, 2538, São Paulo/SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pedro I - Centro - Fortaleza/CE",
+      "enderecoPublicado": "Rua Pedro I, 373",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2582.15",
+      "areaPublicada": "2582.15",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vago",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-pedro-i-centro-fortaleza-ce",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "- São Mateus - São Paulo/SP",
+      "enderecoPublicado": "Av. Mateo Bei, 3286",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2048",
+      "areaPublicada": "2048",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "1.0908",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vago",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-sao-mateus-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "GPA - Centro - São Bernardo do Campo/SP",
+      "enderecoPublicado": "Rua Santa Filomena, nºs 677, 687 e 697, Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2365.19",
+      "areaPublicada": "2365.19",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6500",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentício",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-gpa-centro-sao-bernardo-do-campo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Cipo Guaçu - Embu Guaçu/SP",
+      "enderecoPublicado": "Rua Sesefredo Klein Doll, 12",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "548.68",
+      "areaPublicada": "548.68",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.0680",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-cipo-guacu-embu-guacu-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas - Franca - São Paulo/SP",
+      "enderecoPublicado": "Rua Major Claudiano, 1800, Loja, Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "4359.67",
+      "areaPublicada": "4359.67",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.4309",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vestuário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-pernambucanas-franca-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Páteo do Colégio - São Paulo/SP",
+      "enderecoPublicado": "Lg. Páteo do Colégio, 1",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1221",
+      "areaPublicada": "1221",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.8951",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-pateo-do-colegio-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Itaú - Leblon - Rio de Janeiro/RJ",
+      "enderecoPublicado": "Av. Afrânio de Melo Franco, 131",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "864.07",
+      "areaPublicada": "864.07",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.2555",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-itau-leblon-rio-de-janeiro-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Cogna - Centro - Betim/MG",
+      "enderecoPublicado": "Avenida Presidente Kubitschek, 227, Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "26083.07",
+      "areaPublicada": "26083.07",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.9498",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educacional",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-cogna-centro-betim-mg",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "- Centro - Rio de Janeiro/RJ",
+      "enderecoPublicado": "Rua da Quitanda, 70",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1796.61",
+      "areaPublicada": "1796.61",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vago",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-centro-rio-de-janeiro-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Leme - Rio de Janeiro/RJ",
+      "enderecoPublicado": "Rua Antônio Vieira, 24 - Loja A",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "787.49",
+      "areaPublicada": "787.49",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.4039",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-leme-rio-de-janeiro-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Recreio dos Bandeirantes - Rio de Janeiro/RJ",
+      "enderecoPublicado": "Av. das Américas, 15.545",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1260.49",
+      "areaPublicada": "1260.49",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.3094",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-recreio-dos-bandeirantes-rio-de-janeiro-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "- Candelária - Rio de Janeiro/RJ",
+      "enderecoPublicado": "Rua Buenos Aires, 48",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1065.71",
+      "areaPublicada": "1065.71",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vago",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-candelaria-rio-de-janeiro-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Ânima - Consolação - São Paulo/SP",
+      "enderecoPublicado": "Rua da Consolação, 2320",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "569",
+      "areaPublicada": "569",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2877",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educacional",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-anima-consolacao-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Rio do A - Campo Grande/RJ",
+      "enderecoPublicado": "Est. Rio do A, 1131",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "576.03",
+      "areaPublicada": "576.03",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.9723",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-rio-do-a-campo-grande-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Centro - Santo André/SP",
+      "enderecoPublicado": "Rua. Senador Flaquer, 305",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "6084.54",
+      "areaPublicada": "6084.54",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-centro-santo-andre-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "GPA - Asa Sul  - Brasilia/DF",
+      "enderecoPublicado": "EQ 406/407-SUL - Lote 1 - Brasília - DF",
+      "cidade": "Brasília",
+      "uf": "DF",
+      "tipo": null,
+      "areaM2": "2601",
+      "areaPublicada": "2601",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6457",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentício",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-gpa-asa-sul-brasilia-df",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "- Presidente Wilson - Rio de Janeiro/RJ",
+      "enderecoPublicado": "Av. Rio Branco, 311-B",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "742.59",
+      "areaPublicada": "742.59",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vago",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-presidente-wilson-rio-de-janeiro-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Portobello - Jardins - São Paulo/SP",
+      "enderecoPublicado": "Alameda Gabriel Monteiro, 1193",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1645.07",
+      "areaPublicada": "1645.07",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.0407",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Casa e Construção",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-portobello-jardins-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Jardim da Saúde - São Paulo/SP",
+      "enderecoPublicado": "Av. do Cursino, 1348",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1836.4",
+      "areaPublicada": "1836.4",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.8198",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-jardim-da-saude-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Geo cosméticos - Centro - Jundiaí/SP",
+      "enderecoPublicado": "R. Barao de Jundiai, 884",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2653.42",
+      "areaPublicada": "2653.42",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.4612",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-geo-cosmeticos-centro-jundiai-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Cogna - Santo André - Santo André/SP",
+      "enderecoPublicado": "Rua Coronel Abílio Soares, 163, Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "7627.8",
+      "areaPublicada": "7627.8",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.3348",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educacional",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-cogna-santo-andre-santo-andre-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Assaí - Jardim Apolo - São José dos Campos/SP",
+      "enderecoPublicado": "Avenida Jorge Zarur, 100",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "32286.47",
+      "areaPublicada": "32286.47",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.3160",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentício",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-assai-jardim-apolo-sao-jose-dos-campos-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "GPA - Brooklin - São Paulo/SP",
+      "enderecoPublicado": "Av. Padre Antônio Jose Dos Santos, 872",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "3820",
+      "areaPublicada": "3820",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.3032",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentício",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-gpa-brooklin-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "M3Storage - Centro - Santos/SP",
+      "enderecoPublicado": "Praça Visconde de Mauá, 20",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2438.68",
+      "areaPublicada": "2438.68",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-m3storage-centro-santos-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Goodbe - Monções - São Paulo/SP",
+      "enderecoPublicado": "Av. Sto. Amaro, 3332",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "617.95",
+      "areaPublicada": "617.95",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Academia",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-goodbe-moncoes-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "M3Storage - Nova Paulista - São Paulo/SP",
+      "enderecoPublicado": "Av. Paulista, 726 - L1",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "693.32",
+      "areaPublicada": "693.32",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2294",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-m3storage-nova-paulista-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Centauro - Paulista  - São Paulo/SP",
+      "enderecoPublicado": "Av. Paulista, 1.227",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2550.89",
+      "areaPublicada": "2550.89",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.5314",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Esportivo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-centauro-paulista-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Corporativo Monsenhor Celso - Curitiba/PR",
+      "enderecoPublicado": "Rua Marechal Deodoro, 195",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1311.3",
+      "areaPublicada": "1311.3",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1465",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Corporativo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-corporativo-monsenhor-celso-curitiba-pr",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Assaí - Guarulhos - Guarulhos/SP",
+      "enderecoPublicado": "Avenida Salgado Filho, 1301 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "20952.12",
+      "areaPublicada": "20952.12",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.8827",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentício",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-assai-guarulhos-guarulhos-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Bandeira - Rio de Janeiro/RJ",
+      "enderecoPublicado": "Rua Mariz e Barros, 79",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1940.92",
+      "areaPublicada": "1940.92",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.7320",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-bandeira-rio-de-janeiro-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Santander - Vila Santa Cecília - Volta Redonda/RJ",
+      "enderecoPublicado": "Rua 12, 239",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2565.61",
+      "areaPublicada": "2565.61",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.7194",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-santander-vila-santa-cecilia-volta-redonda-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "GPA - Tatuapé - São Paulo/SP",
+      "enderecoPublicado": "Rua Serra do Japi, 647",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "5161.42",
+      "areaPublicada": "5161.42",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.8007",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentício",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-gpa-tatuape-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Caixa - Pedro Vicente - São Paulo/SP",
+      "enderecoPublicado": "R. Pedro Vicente, 222",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "814.2",
+      "areaPublicada": "814.2",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.7983",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-caixa-pedro-vicente-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "- Praça Pio X - Rio de Janeiro/RJ",
+      "enderecoPublicado": "Praça Pio X, 78",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1964",
+      "areaPublicada": "1964",
+      "vacanciaPercentual": "100",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Vago",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-praca-pio-x-rio-de-janeiro-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Santander - Liberdade - São Paulo/SP",
+      "enderecoPublicado": "Av. Liberdade, 151",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "5033.16",
+      "areaPublicada": "5033.16",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.2588",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Bancário",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-santander-liberdade-sao-paulo-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pátio Maria Antônia - Higienópolis - São Paulo/SP",
+      "enderecoPublicado": "Rua Maria Antônia, 140, Higienópolis, São Paulo/SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1820.35",
+      "areaPublicada": "1820.35",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.3596",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbva11-patio-maria-antonia-higienopolis-sao-paulo-sp",
+      "coordenadas": {
+        "lat": "-23.547026",
+        "lng": "-46.649979",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "140, Rua Maria Antônia, Higienópolis, Consolação, São Paulo, Região Sudeste, 01222-010, Brasil",
+        "osm": "node/5241416646",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Maria Antônia, 140, Higienópolis, São Paulo/SP, Brasil"
+      }
+    }
+  ]
+}

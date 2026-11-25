@@ -1,0 +1,586 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "RZTR11",
+  "nomeDoFundo": "Fundo De Investimento Imobiliário Riza Terrax",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "f3347c3c216ec3149b64cace2d8ba2a38e8ca363c43461680b080e1f2f40c8de"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 28
+  },
+  "cnpj": "36.501.128/0001-86",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 2. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código RZTR11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRRZTRCTF003), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "FAZENDA FLORIDA - TO",
+      "enderecoPublicado": "Chapada da Natividade - TO",
+      "cidade": "Chapada da Natividade",
+      "uf": "TO",
+      "tipo": null,
+      "areaM2": "2015439.3",
+      "areaPublicada": "2015439.3",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.5700",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-fazenda-florida-to",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. BURITI - MT",
+      "enderecoPublicado": "Zona rural de São Jose do Xingú/MT",
+      "cidade": "Zona rural de São Jose do Xingú",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "33540000",
+      "areaPublicada": "33540000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.8432",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-buriti-mt",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZENDA ENGENHO/FLORESTA - TO",
+      "enderecoPublicado": "Santa Rosa do Tocantins - TO",
+      "cidade": "Santa Rosa do Tocantins",
+      "uf": "TO",
+      "tipo": null,
+      "areaM2": "997608.4",
+      "areaPublicada": "997608.4",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.8500",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-fazenda-engenho-floresta-to",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. NOSSA SENHORA DA APARECIDA - MA",
+      "enderecoPublicado": "Zona rural de Sambaíba /MA",
+      "cidade": "Zona rural de Sambaíba",
+      "uf": "MA",
+      "tipo": null,
+      "areaM2": "14939127",
+      "areaPublicada": "14939127",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.9946",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-nossa-senhora-da-aparecida-ma",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZENDA NASARÉ SUL - MA",
+      "enderecoPublicado": "Riachão - MA",
+      "cidade": "Riachão",
+      "uf": "MA",
+      "tipo": null,
+      "areaM2": "2353019.6",
+      "areaPublicada": "2353019.6",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.5600",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-fazenda-nasare-sul-ma",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZENDA JORDÃOZINHO - PR",
+      "enderecoPublicado": "Guarapuava - PR",
+      "cidade": "Guarapuava",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "873462.4",
+      "areaPublicada": "873462.4",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.3100",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-fazenda-jordaozinho-pr",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. SAN FRANCISCO - GLEBA COSME NORTE",
+      "enderecoPublicado": "Canarana - MT",
+      "cidade": "Canarana",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "37818272",
+      "areaPublicada": "37818272",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.0100",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-san-francisco-gleba-cosme-norte",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. CRISTALINA - MT",
+      "enderecoPublicado": "Zona rural de Campo Verde/MT",
+      "cidade": "Zona rural de Campo Verde",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "13630000",
+      "areaPublicada": "13630000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.5901",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-cristalina-mt",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. SANTA CLARA - PI",
+      "enderecoPublicado": "Zona rural de Bom Jesus/PI",
+      "cidade": "Zona rural de Bom Jesus",
+      "uf": "PI",
+      "tipo": null,
+      "areaM2": "122720000",
+      "areaPublicada": "122720000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "7.4545",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-santa-clara-pi",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. STO ANTÔNIO DO OURO - BA",
+      "enderecoPublicado": "Zona rural de Formosa do Rio Preto/BA",
+      "cidade": "Zona rural de Formosa do Rio Preto",
+      "uf": "BA",
+      "tipo": null,
+      "areaM2": "72230000",
+      "areaPublicada": "72230000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.7852",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-sto-antonio-do-ouro-ba",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. PORANGA II - MT",
+      "enderecoPublicado": "Zona rural de Sorriso/MT",
+      "cidade": "Zona rural de Sorriso",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "25220000",
+      "areaPublicada": "25220000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.6267",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-poranga-ii-mt",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. PARANATINGA 1 - MT",
+      "enderecoPublicado": "Zona rural de Sorriso/MT",
+      "cidade": "Zona rural de Sorriso",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "82350000",
+      "areaPublicada": "82350000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "24.0666",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-paranatinga-1-mt",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. SAN FRANCISCO - GLEBA RECREIO DO NORTE",
+      "enderecoPublicado": "Canarana - MT",
+      "cidade": "Canarana",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "53463248",
+      "areaPublicada": "53463248",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-san-francisco-gleba-recreio-do-norte",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. VALE DO RIO CELESTE - MT",
+      "enderecoPublicado": "Zona rural de Nova Ubiratã/MT",
+      "cidade": "Zona rural de Nova Ubiratã",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "20840000",
+      "areaPublicada": "20840000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.4739",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-vale-do-rio-celeste-mt",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. FRANCISCO DUMONT",
+      "enderecoPublicado": "Serra do Cabral/MG",
+      "cidade": "Serra do Cabral",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "29290000",
+      "areaPublicada": "29290000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-francisco-dumont",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZENDA MIRAI - MA",
+      "enderecoPublicado": "Alto Parnaíba - MA",
+      "cidade": "Alto Parnaíba",
+      "uf": "MA",
+      "tipo": null,
+      "areaM2": "544883.3",
+      "areaPublicada": "544883.3",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-fazenda-mirai-ma",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. RIO BONITO - MT",
+      "enderecoPublicado": "Zona rural de Canarana/MT",
+      "cidade": "Zona rural de Canarana",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "49029791",
+      "areaPublicada": "49029791",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.7949",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-rio-bonito-mt",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. RIO BALSAS - MA",
+      "enderecoPublicado": "Balsas - MA",
+      "cidade": "Balsas",
+      "uf": "MA",
+      "tipo": null,
+      "areaM2": "5596873",
+      "areaPublicada": "5596873",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.5200",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-rio-balsas-ma",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZENDA CHAPADAO DA SERRA - MA",
+      "enderecoPublicado": "Sambaíba - MA",
+      "cidade": "Sambaíba",
+      "uf": "MA",
+      "tipo": null,
+      "areaM2": "3763747.6",
+      "areaPublicada": "3763747.6",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.3200",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-fazenda-chapadao-da-serra-ma",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. PONTE DE PEDRAS - GO",
+      "enderecoPublicado": "Zona rural de Serranópolis/GO",
+      "cidade": "Zona rural de Serranópolis",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "6568300",
+      "areaPublicada": "6568300",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.2020",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-ponte-de-pedras-go",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. SAN FRANCISCO - GLEBA SAN PEDRO",
+      "enderecoPublicado": "Canarana - MT",
+      "cidade": "Canarana",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "22687777",
+      "areaPublicada": "22687777",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.8100",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-san-francisco-gleba-san-pedro",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. SÃO MARTINHO 1, 2, 3 e 4 - MT",
+      "enderecoPublicado": "Zona rural de Sorriso/MT",
+      "cidade": "Zona rural de Sorriso",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "33740000",
+      "areaPublicada": "33740000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "7.2412",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-sao-martinho-1-2-3-e-4-mt",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. SÃO FRANCISCO - MA",
+      "enderecoPublicado": "Zona rural de Buriticupu/MA",
+      "cidade": "Zona rural de Buriticupu",
+      "uf": "MA",
+      "tipo": null,
+      "areaM2": "15270000",
+      "areaPublicada": "15270000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.9300",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-sao-francisco-ma",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. ROMA",
+      "enderecoPublicado": "Tupiratins - TO",
+      "cidade": "Tupiratins",
+      "uf": "TO",
+      "tipo": null,
+      "areaM2": "76760970",
+      "areaPublicada": "76760970",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-roma",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. SAN FRANCISCO - GLEBA BOAZUDA",
+      "enderecoPublicado": "Canarana - MT",
+      "cidade": "Canarana",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "15420000",
+      "areaPublicada": "15420000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.2300",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-san-francisco-gleba-boazuda",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZ. BONITO - GO",
+      "enderecoPublicado": "Zona rural de Serranópolis/GO",
+      "cidade": "Zona rural de Serranópolis",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "16472800",
+      "areaPublicada": "16472800",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.4565",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-faz-bonito-go",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZENDA BOM JARDIM - GO",
+      "enderecoPublicado": "Montividiu - GO",
+      "cidade": "Montividiu",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "969681.2",
+      "areaPublicada": "969681.2",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.6300",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-fazenda-bom-jardim-go",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "FAZENDAS SAN PEDRO (GLEBAS: SP, CN, BO E RN) - MT",
+      "enderecoPublicado": "Canarana - MT",
+      "cidade": "Canarana",
+      "uf": "MT",
+      "tipo": null,
+      "areaM2": "12939909.8",
+      "areaPublicada": "12939909.8",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Agronegócio",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "rztr11-fazendas-san-pedro-glebas-sp-cn-bo-e-rn-mt",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

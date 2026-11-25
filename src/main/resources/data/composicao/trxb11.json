@@ -1,0 +1,318 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "TRXB11",
+  "nomeDoFundo": "Trx Real Estate Ii Fundo De Investimento Imobiliário - Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "a82c87dfe4037f97f3e0f3a37176563978009868f268a6ee17e28011fa22d873"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 9,
+    "semCoordenadas": 2
+  },
+  "cnpj": "36.368.925/0001-37",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código TRXB11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRTRXBCTF002), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "ASSAÍ - JEQUIÉ",
+      "enderecoPublicado": "Avenida Cesar Borges, s/nº, São Judas Tadeu - Jequié/BA",
+      "cidade": "Jequié",
+      "uf": "BA",
+      "tipo": null,
+      "areaM2": "22700",
+      "areaPublicada": "22700",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "trxb11-assai-jequie",
+      "coordenadas": {
+        "lat": "-13.852554",
+        "lng": "-40.072391",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Cesar Borges, Parque das Algarobas, Jequié, Bahia, Região Nordeste, 45203-084, Brasil",
+        "osm": "way/223410238",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Cesar Borges, Jequié, BA, Brasil"
+      }
+    },
+    {
+      "nome": "EXTRA RIO DAS OSTRAS",
+      "enderecoPublicado": "Rodovia Amaral Peixoto, s/nº, Jardim Campomar - Rio das Ostras/RJ",
+      "cidade": "Rio das Ostras",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "9600",
+      "areaPublicada": "9600",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "trxb11-extra-rio-das-ostras",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "ASSAÍ - GOIANIA INDEPENDENCIA",
+      "enderecoPublicado": "Avenida Independência, s/nº, Setor Central - Goiânia/GO",
+      "cidade": "Goiânia",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "21647",
+      "areaPublicada": "21647",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "trxb11-assai-goiania-independencia",
+      "coordenadas": {
+        "lat": "-16.663902",
+        "lng": "-49.260362",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Independência, Setor Central, Goiânia, Goiás, Região Centro-Oeste, 74045-155, Brasil",
+        "osm": "way/279819862",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Independência, s/, Setor Central - Goiânia/GO, Brasil"
+      }
+    },
+    {
+      "nome": "ASSAÍ - CAMPINA GRANDE",
+      "enderecoPublicado": "Avenida Assis Chateaubriand, 1110, Liberdade - Campina Grande/PB",
+      "cidade": "Campina Grande",
+      "uf": "PB",
+      "tipo": null,
+      "areaM2": "34833",
+      "areaPublicada": "34833",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "trxb11-assai-campina-grande",
+      "coordenadas": {
+        "lat": "-7.230959",
+        "lng": "-35.889175",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Assis Chateubriand, Liberdade, Campina Grande, Paraíba, Região Nordeste, 58414-255, Brasil",
+        "osm": "way/29472960",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Assis Chateaubriand, 1110, Liberdade - Campina Grande/PB, Brasil"
+      }
+    },
+    {
+      "nome": "EXTRA ARARUAMA",
+      "enderecoPublicado": "Rua México, 160, Centro - Araruama/RJ",
+      "cidade": "Araruama",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "4826.36",
+      "areaPublicada": "4826.36",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "trxb11-extra-araruama",
+      "coordenadas": {
+        "lat": "-22.873048",
+        "lng": "-42.335069",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua México, Centro, Araruama, Rio de Janeiro, Região Sudeste, 28979-144, Brasil",
+        "osm": "way/299397317",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua México, 160, Centro - Araruama/RJ, Brasil"
+      }
+    },
+    {
+      "nome": "EXTRA -  RECIFE",
+      "enderecoPublicado": "ua Benfica, 715, Madalena - Recife/PE",
+      "cidade": "Recife",
+      "uf": "PE",
+      "tipo": null,
+      "areaM2": "30542",
+      "areaPublicada": "30542",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "trxb11-extra-recife",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "ASSAÍ - PAULO AFONSO",
+      "enderecoPublicado": "Avenida do Aeroporto, 13, Jardim Bahia - Paulo Afonso/BA",
+      "cidade": "Paulo Afonso",
+      "uf": "BA",
+      "tipo": null,
+      "areaM2": "24377",
+      "areaPublicada": "24377",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "trxb11-assai-paulo-afonso",
+      "coordenadas": {
+        "lat": "-9.398639",
+        "lng": "-38.239031",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Assaí Atacadista, 13, Avenida do Aeroporto, Jardim Bahia, Paulo Afonso, Bahia, Região Nordeste, 48604-005, Brasil",
+        "osm": "way/669573113",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida do Aeroporto, 13, Jardim Bahia - Paulo Afonso/BA, Brasil"
+      }
+    },
+    {
+      "nome": "PÃO DE AÇUCAR - GOIANIA",
+      "enderecoPublicado": "Avenida República do Líbano, Quadra 56 - Setor 56, Setor Oeste - Goiânia/GO",
+      "cidade": "Goiânia",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "4307.2",
+      "areaPublicada": "4307.2",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "trxb11-pao-de-acucar-goiania",
+      "coordenadas": {
+        "lat": "-16.682130",
+        "lng": "-49.266372",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida República do Líbano, Setor Oeste, Goiânia, Goiás, Região Centro-Oeste, 74125-125, Brasil",
+        "osm": "way/245538979",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida República do Líbano, Goiânia, GO, Brasil"
+      }
+    },
+    {
+      "nome": "ASSAÍ - SANTO ANDRÉ",
+      "enderecoPublicado": "Avenida Capitão Mário Toledo de Camargo, 5855, Vila Luzita - Santo André/SP",
+      "cidade": "Santo André",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "9823.53",
+      "areaPublicada": "9823.53",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "trxb11-assai-santo-andre",
+      "coordenadas": {
+        "lat": "-23.703937",
+        "lng": "-46.504219",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Assaí Atacadista, 5855, Avenida Capitão Mário Toledo de Camargo, Vila Luzita, Santo André, São Paulo, Região Sudeste, 09171-005, Brasil",
+        "osm": "way/326477962",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Capitão Mário Toledo de Camargo, 5855, Vila Luzita - Santo André/SP, Brasil"
+      }
+    },
+    {
+      "nome": "ASSAÍ - GOIANIA  JD. EUROPA",
+      "enderecoPublicado": "Avenida Milão, Quadra 50/51 - Lotes 1, 1/15 e 1/19, Jardim Europa - Goiânia/GO",
+      "cidade": "Goiânia",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "15782",
+      "areaPublicada": "15782",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "trxb11-assai-goiania-jd-europa",
+      "coordenadas": {
+        "lat": "-16.709140",
+        "lng": "-49.326893",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Milão, Celina Park, Goiânia, Goiás, Região Centro-Oeste, 74373-270, Brasil",
+        "osm": "way/119440063",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Milão, Goiânia, GO, Brasil"
+      }
+    },
+    {
+      "nome": "PÃO DE AÇUCAR - ARACAJU",
+      "enderecoPublicado": "Rua José Seabra Batista, 30, Jardins - Aracaju/SE",
+      "cidade": "Aracaju",
+      "uf": "SE",
+      "tipo": null,
+      "areaM2": "5706.24",
+      "areaPublicada": "5706.24",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Alimentação",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "trxb11-pao-de-acucar-aracaju",
+      "coordenadas": {
+        "lat": "-10.941806",
+        "lng": "-37.056312",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua José Seabra Batista, Bairro Garcia, Jardins, Aracaju, Sergipe, Região Nordeste, 49025-330, Brasil",
+        "osm": "way/429366262",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua José Seabra Batista, 30, Jardins - Aracaju/SE, Brasil"
+      }
+    }
+  ]
+}

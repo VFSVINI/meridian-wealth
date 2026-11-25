@@ -1,0 +1,54 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "MIDW11",
+  "nomeDoFundo": "Midway Mall Fundo De Investimento Imobiliário Rl",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "cdeddaf0168168546944e55b75cb463d8c3795cf4f172a0dd676a7d1444cbf14"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "63.992.956/0001-37",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código MIDW11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRMIDWCTF004), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Midway Shopping Center Ltda",
+      "enderecoPublicado": "Av. Nevaldo Rocha, 3775 - Tirol, Natal - RN, 59015-450",
+      "cidade": "Natal",
+      "uf": "RN",
+      "tipo": null,
+      "areaM2": "67000",
+      "areaPublicada": "67000",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "86.6300",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Shopping Center",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "midw11-midway-shopping-center-ltda",
+      "coordenadas": {
+        "lat": "-5.811139",
+        "lng": "-35.206192",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Midway Mall Shopping, 3775, Avenida Nevaldo Rocha, Tirol, Zona Leste, Natal, Rio Grande do Norte, Região Nordeste, 59015-900, Brasil",
+        "osm": "way/1395965599",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Nevaldo Rocha, 3775 - Tirol, Natal - RN, 59015-450, Brasil"
+      }
+    }
+  ]
+}

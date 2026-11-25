@@ -1,0 +1,2274 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "HGRU11",
+  "nomeDoFundo": "Pátria Renda Urbana - Fundo De Investimento Imobiliário",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "458265c9084048675e9beccc992778cbfefe9c2f97bc6a49ac4e6d010e4ee4df"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 36,
+    "semCoordenadas": 62
+  },
+  "cnpj": "29.641.226/0001-53",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código HGRU11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRHGRUCTF002), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Pernambucanas Palmas",
+      "enderecoPublicado": "Praça Bom Jesus, 154, Palmas, PR",
+      "cidade": "Palmas",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "892.62",
+      "areaPublicada": "892.62",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1130",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-palmas",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Sam's Club Barigui",
+      "enderecoPublicado": "Rod. Curitiba Ponta Grossa, km 65, Barigui, PR",
+      "cidade": "Barigui",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "13565",
+      "areaPublicada": "13565",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.8442",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-sam-s-club-barigui",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Mineirão Juiz de fora",
+      "enderecoPublicado": "Av.Garcia Rodrigues Paes(Acesso Norte),s/n-Área C4, Joquei Clube II, Juiz de Fora, MG",
+      "cidade": "Juiz de Fora",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "7692",
+      "areaPublicada": "7692",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6697",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-mineirao-juiz-de-fora",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Pernambucanas Taquarituba",
+      "enderecoPublicado": "R. Dr. Ataliba Leonel, 671, Taquarituba, SP",
+      "cidade": "Taquarituba",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "510",
+      "areaPublicada": "510",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.0940",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-taquarituba",
+      "coordenadas": {
+        "lat": "-23.542036",
+        "lng": "-49.243790",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Doutor Ataliba Leonel, Jardim Dona Carmélia, Taquarituba, São Paulo, Região Sudeste, 18740-000, Brasil",
+        "osm": "way/219595178",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Dr. Ataliba Leonel, 671, Taquarituba, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Mirandópolis",
+      "enderecoPublicado": "R. Nove De Julho, 1223, Mirandópolis, SP",
+      "cidade": "Mirandópolis",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "641.05",
+      "areaPublicada": "641.05",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1167",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-mirandopolis",
+      "coordenadas": {
+        "lat": "-21.140392",
+        "lng": "-51.095598",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Nove de Julho, Mirandópolis, São Paulo, Região Sudeste, 16800-000, Brasil",
+        "osm": "way/183350546",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Nove De Julho, 1223, Mirandópolis, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Ituverava",
+      "enderecoPublicado": "Av. Dr. Soares De Oliveira, 280 e 272, 282 e 284 e Rua Dr. Getúlio Vargas, 305, Ituverava, SP",
+      "cidade": "Ituverava",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1098.62",
+      "areaPublicada": "1098.62",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2170",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-ituverava",
+      "coordenadas": {
+        "lat": "-20.336824",
+        "lng": "-47.780351",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Doutor Soares de Oliveira, Ituverava, São Paulo, Região Sudeste, 14500-000, Brasil",
+        "osm": "way/855240175",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Dr. Soares De Oliveira, Ituverava, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Sendas Foz do Iguaçu",
+      "enderecoPublicado": "Av. Paraná, 4195, Conjunto A, Foz do Iguaçu, PR",
+      "cidade": "Foz do Iguaçu",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "6983",
+      "areaPublicada": "6983",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6345",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-sendas-foz-do-iguacu",
+      "coordenadas": {
+        "lat": "-25.510882",
+        "lng": "-54.575211",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Assaí Atacadista, 4195, Avenida Paraná, Foz do Iguaçu, Paraná, Região Sul, 85860-290, Brasil",
+        "osm": "way/306042045",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Paraná, 4195, Foz do Iguaçu, PR, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Aquidauana",
+      "enderecoPublicado": "Rua Sete de Setembro, 585 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1836.52",
+      "areaPublicada": "1836.52",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1054",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-aquidauana",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Caraguatatuba",
+      "enderecoPublicado": "Praça Dr. Cândido Mota, 145 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2549.59",
+      "areaPublicada": "2549.59",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.3220",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-caraguatatuba",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Muzambinho",
+      "enderecoPublicado": "Av. Dr. Américo Luz, 172 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "790.7",
+      "areaPublicada": "790.7",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1131",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-muzambinho",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Palmas",
+      "enderecoPublicado": "Av. Joaquim Teotônio Segurado, s/n",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "15789",
+      "areaPublicada": "15789",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.8582",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-palmas",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Jardim",
+      "enderecoPublicado": "Av. Duque de Caxias, 436 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "867.28",
+      "areaPublicada": "867.28",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.0641",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-jardim",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Marília",
+      "enderecoPublicado": "R. São Luiz, 693, Marília, SP",
+      "cidade": "Marília",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "760.5",
+      "areaPublicada": "760.5",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1586",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-marilia",
+      "coordenadas": {
+        "lat": "-22.215970",
+        "lng": "-49.951034",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua São Luiz, Palmital, Fragata, Marília, São Paulo, Região Sudeste, 17500-012, Brasil",
+        "osm": "way/126576860",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. São Luiz, 693, Marília, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Mineirão João Pessoa",
+      "enderecoPublicado": "Rod. BR 230 - Km. 27, s/nº , Esplanada, João Pessoa, PB",
+      "cidade": "João Pessoa",
+      "uf": "PB",
+      "tipo": null,
+      "areaM2": "8508",
+      "areaPublicada": "8508",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.7125",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-mineirao-joao-pessoa",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Pernambucanas Olímpia",
+      "enderecoPublicado": "Praça Rui Barbosa, 157, Olímpia, SP",
+      "cidade": "Olímpia",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1209.95",
+      "areaPublicada": "1209.95",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2087",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-olimpia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Pernambucanas Barra Bonita",
+      "enderecoPublicado": "R. Um De Março, 129, Barra Bonita, SP",
+      "cidade": "Barra Bonita",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "990.23",
+      "areaPublicada": "990.23",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1705",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-barra-bonita",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Estácio Salvador",
+      "enderecoPublicado": "Rua Xingu, 179, Stiep, BA",
+      "cidade": "Stiep",
+      "uf": "BA",
+      "tipo": null,
+      "areaM2": "32808",
+      "areaPublicada": "32808",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.4363",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educação",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-estacio-salvador",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Mineirão Natal",
+      "enderecoPublicado": "Rua Lúcia Viveiros, 4511, Neópolis, Natal, RN",
+      "cidade": "Natal",
+      "uf": "RN",
+      "tipo": null,
+      "areaM2": "8613",
+      "areaPublicada": "8613",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.8371",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-mineirao-natal",
+      "coordenadas": {
+        "lat": "-5.863587",
+        "lng": "-35.215286",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Lúcia Viveiros, Conjunto Monte Belo, Zona Sul, Natal, Rio Grande do Norte, Região Nordeste, 59066-180, Brasil",
+        "osm": "way/41194452",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Lúcia Viveiros, 4511, Neópolis, Natal, RN, Brasil"
+      }
+    },
+    {
+      "nome": "Camaçari",
+      "enderecoPublicado": "Av. Jorge Amado, s/n",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "12732",
+      "areaPublicada": "12732",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.8025",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-camacari",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Carapicuíba",
+      "enderecoPublicado": "Av. Rui Barbosa, 447, Carapicuíba, SP",
+      "cidade": "Carapicuíba",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1564.16",
+      "areaPublicada": "1564.16",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.4102",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-carapicuiba",
+      "coordenadas": {
+        "lat": "-23.524065",
+        "lng": "-46.822970",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Viela Rui Barbosa, Cohab I, Vila Municipal, Carapicuíba, São Paulo, Região Sudeste, 06328-360, Brasil",
+        "osm": "way/1056068323",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Rui Barbosa, 447, Carapicuíba, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Jacarezinho",
+      "enderecoPublicado": "R. Paraná, 889 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1218.24",
+      "areaPublicada": "1218.24",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.0947",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-jacarezinho",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Itapecerica Da Serra",
+      "enderecoPublicado": "Ladeira Capitão Moraes, 49, Itapecerica da Serra, SP",
+      "cidade": "Itapecerica da Serra",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1450.2",
+      "areaPublicada": "1450.2",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1991",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-itapecerica-da-serra",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Loja Taubaté",
+      "enderecoPublicado": "Av. Dom Pedro I, E-630",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "12950",
+      "areaPublicada": "12950",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.9346",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-loja-taubate",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Ed. Angelica",
+      "enderecoPublicado": "Av. Angélica, 2563, Bela Vista, SP",
+      "cidade": "Bela Vista",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "4849",
+      "areaPublicada": "4849",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.1876",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educação",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-ed-angelica",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Pernambucanas Jundiaí",
+      "enderecoPublicado": "R. Barão De Jundiai, 736, 740 e 744, Jundiaí, SP",
+      "cidade": "Jundiaí",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1505.08",
+      "areaPublicada": "1505.08",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2841",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-jundiai",
+      "coordenadas": {
+        "lat": "-23.189187",
+        "lng": "-46.883802",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Barão de Jundiaí, Vila Pacheco, Vila Tito, Vila Argos, Jundiaí, São Paulo, Região Sudeste, 13201-060, Brasil",
+        "osm": "way/24334715",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Barão De Jundiai, 736, Jundiaí, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Sam's Club Radial Leste",
+      "enderecoPublicado": "Rua Padre Adelino, 685, Belém, SP",
+      "cidade": "Belém",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "14050.62",
+      "areaPublicada": "14050.62",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.9889",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-sam-s-club-radial-leste",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Atacadão São Carlos",
+      "enderecoPublicado": "Rua Miguel Petroni, 5.170, D.F. Embare Cabeceira do Can Can, São Carlos, SP",
+      "cidade": "São Carlos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "8336",
+      "areaPublicada": "8336",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6118",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-atacadao-sao-carlos",
+      "coordenadas": {
+        "lat": "-21.983926",
+        "lng": "-47.926721",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Miguel Petroni, Arnon de Melo (São Carlos V), Condomínio Residencial Eldorado, São Carlos, São Paulo, Região Sudeste, 13563-470, Brasil",
+        "osm": "way/46270786",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Miguel Petroni, 5.170, São Carlos, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Mauá",
+      "enderecoPublicado": "Av. Barão De Mauá, 74, Mauá, SP",
+      "cidade": "Mauá",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1354.6",
+      "areaPublicada": "1354.6",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2035",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-maua",
+      "coordenadas": {
+        "lat": "-23.667340",
+        "lng": "-46.428136",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Barão de Mauá, Jardim Cleide, Vila Ana, Jardim Maringá, Mauá, São Paulo, Região Sudeste, 09340-440, Brasil",
+        "osm": "way/947789039",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Barão De Mauá, 74, Mauá, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Lins",
+      "enderecoPublicado": "R. Vinte E Um De Abril, 162, Lins, SP",
+      "cidade": "Lins",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1196.76",
+      "areaPublicada": "1196.76",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1954",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-lins",
+      "coordenadas": {
+        "lat": "-21.674948",
+        "lng": "-49.749908",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Vinte e Um de Abril, Residencial Florestan Fernandes, Ribeiro, Lins, São Paulo, Região Sudeste, 16400-060, Brasil",
+        "osm": "way/178693657",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Vinte E Um De Abril, 162, Lins, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Mineirão Uberlândia",
+      "enderecoPublicado": "Rod. BR 050 Km 73, nº 7085, Fazenda Buriti, Uberlândia, MG",
+      "cidade": "Uberlândia",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "6698",
+      "areaPublicada": "6698",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6515",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-mineirao-uberlandia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Una Aimorés",
+      "enderecoPublicado": "Rua dos Aimorés, 1451",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "9738",
+      "areaPublicada": "9738",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.8096",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educação",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-una-aimores",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Dracena",
+      "enderecoPublicado": "Av. Presidente Roosevelt, 902, Dracena, SP",
+      "cidade": "Dracena",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1216.19",
+      "areaPublicada": "1216.19",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2266",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-dracena",
+      "coordenadas": {
+        "lat": "-21.486406",
+        "lng": "-51.542801",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Presidente Roosevelt, Jardim Nova Era, Dracena, São Paulo, Região Sudeste, 17900-000, Brasil",
+        "osm": "way/91177315",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Presidente Roosevelt, 902, Dracena, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Rondonópolis",
+      "enderecoPublicado": "Av. Bandeirantes, nº 4.335",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "14415",
+      "areaPublicada": "14415",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.2188",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-rondonopolis",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Presidente Epitácio",
+      "enderecoPublicado": "Av. Presidente Vargas, 670, Presidente Epitácio, SP",
+      "cidade": "Presidente Epitácio",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "871.62",
+      "areaPublicada": "871.62",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1379",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-presidente-epitacio",
+      "coordenadas": {
+        "lat": "-21.769580",
+        "lng": "-52.112980",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Presidente Vargas, Centro, Presidente Epitácio, São Paulo, Região Sudeste, 19470-000, Brasil",
+        "osm": "way/190753682",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Presidente Vargas, 670, Presidente Epitácio, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Iguatú",
+      "enderecoPublicado": "Av. Carlos Roberto Costa, 180",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "11257",
+      "areaPublicada": "11257",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.3686",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-iguatu",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Sam's Club Morumbi",
+      "enderecoPublicado": "Av. Professor Francisco Morato, 2585, Butantã, SP",
+      "cidade": "Butantã",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "24291.79",
+      "areaPublicada": "24291.79",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.2776",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-sam-s-club-morumbi",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Walmart Joaquina Ramalho",
+      "enderecoPublicado": "Av. Joaquina Ramalho, 340, Vila Guilherme, SP",
+      "cidade": "Vila Guilherme",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "29639.55",
+      "areaPublicada": "29639.55",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.3799",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-walmart-joaquina-ramalho",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Universidade de Mogi das Cruzes",
+      "enderecoPublicado": "Av. Imperatriz Leopoldina, 550, Vila Leopoldina, São Paulo, SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "23298.34",
+      "areaPublicada": "23298.34",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.7763",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educação",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-universidade-de-mogi-das-cruzes",
+      "coordenadas": {
+        "lat": "-23.525441",
+        "lng": "-46.736543",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Universidade Mogi das Cruzes, 550, Avenida Imperatriz Leopoldina, Vila Leopoldina, São Paulo, Região Sudeste, 05305-000, Brasil",
+        "osm": "node/609954917",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Imperatriz Leopoldina, 550, Vila Leopoldina, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Itapetininga",
+      "enderecoPublicado": "R. Campos Sales, 703, Itapetininga, SP",
+      "cidade": "Itapetininga",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1826.11",
+      "areaPublicada": "1826.11",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2716",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-itapetininga",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Pernambucanas Passos",
+      "enderecoPublicado": "R. Presidente Antonio Carlos, 160, Passos, MG",
+      "cidade": "Passos",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "985.15",
+      "areaPublicada": "985.15",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1919",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-passos",
+      "coordenadas": {
+        "lat": "-20.720170",
+        "lng": "-46.609660",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Presidente Antônio Carlos, Centro, Passos, Minas Gerais, Região Sudeste, 37900-153, Brasil",
+        "osm": "way/260681252",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Presidente Antonio Carlos, 160, Passos, MG, Brasil"
+      }
+    },
+    {
+      "nome": "Colégio POP",
+      "enderecoPublicado": "Praça Padre Aleixo Monteiro Mafra, 18",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "4225.76",
+      "areaPublicada": "4225.76",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.4104",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educação",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-colegio-pop",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Sete Quedas",
+      "enderecoPublicado": "Av. Mate Laranjeiras, 496, Guaíra - PR, PR",
+      "cidade": null,
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "1335.17",
+      "areaPublicada": "1335.17",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1145",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-sete-quedas",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Pereira Barreto",
+      "enderecoPublicado": "Av. Brasil, 1168, Pereira Barreto, SP",
+      "cidade": "Pereira Barreto",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "783.46",
+      "areaPublicada": "783.46",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1351",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-pereira-barreto",
+      "coordenadas": {
+        "lat": "-20.647565",
+        "lng": "-51.108463",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Brasil, Pereira Barreto, São Paulo, Região Sudeste, 15370-442, Brasil",
+        "osm": "way/245969728",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Brasil, 1168, Pereira Barreto, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Arapiraca",
+      "enderecoPublicado": "Rua Maria Genusir Soares, nº 308",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "11503",
+      "areaPublicada": "11503",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.5825",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-arapiraca",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Adamantina",
+      "enderecoPublicado": "Av. Rio Branco, 511, Adamantina, SP",
+      "cidade": "Adamantina",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "771.23",
+      "areaPublicada": "771.23",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1426",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-adamantina",
+      "coordenadas": {
+        "lat": "-21.690335",
+        "lng": "-51.071767",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Rio Branco, Vila Cicma, Adamantina, São Paulo, Região Sudeste, 17808-360, Brasil",
+        "osm": "way/187884391",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Rio Branco, 511, Adamantina, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Apiaí",
+      "enderecoPublicado": "R. Dr. Gabriel Rib. Dos Santos, 40, Apiaí, SP",
+      "cidade": "Apiaí",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "790.98",
+      "areaPublicada": "790.98",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1610",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-apiai",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Sam's Club São José dos Campos",
+      "enderecoPublicado": "Av. Cassiano Ricardo, 1993, Jardim Alvorada, SP",
+      "cidade": "Jardim Alvorada",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "7549.23",
+      "areaPublicada": "7549.23",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.6369",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-sam-s-club-sao-jose-dos-campos",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Pernambucanas Foz do Iguaçu",
+      "enderecoPublicado": "Av. Brasil, 1.015 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "3524.82",
+      "areaPublicada": "3524.82",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2343",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-foz-do-iguacu",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Jaboticabal",
+      "enderecoPublicado": "Rua Barão do Rio Branco, 665 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1560.95",
+      "areaPublicada": "1560.95",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1912",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-jaboticabal",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Itapira",
+      "enderecoPublicado": "R. José Bonifácio, 48, Itapira, SP",
+      "cidade": "Itapira",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "992.09",
+      "areaPublicada": "992.09",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1637",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-itapira",
+      "coordenadas": {
+        "lat": "-22.439230",
+        "lng": "-46.825751",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua José Bonifácio, Centro, Itapira, São Paulo, Região Sudeste, 13970-341, Brasil",
+        "osm": "way/615437076",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. José Bonifácio, 48, Itapira, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Bh - Centro",
+      "enderecoPublicado": "R. São Paulo, 540/546/552 e 566, Belo Horizonte, MG",
+      "cidade": "Belo Horizonte",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "4908.68",
+      "areaPublicada": "4908.68",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.7281",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-bh-centro",
+      "coordenadas": {
+        "lat": "-19.914706",
+        "lng": "-43.938780",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua São Paulo, Centro, Regional Centro-Sul, Belo Horizonte, Minas Gerais, Região Sudeste, 30160-040, Brasil",
+        "osm": "way/510486902",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. São Paulo, Belo Horizonte, MG, Brasil"
+      }
+    },
+    {
+      "nome": "Sam's Club Granja Viana",
+      "enderecoPublicado": "Rod. Raposo Tavares, 23.033, Granja Viana, SP",
+      "cidade": "Granja Viana",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "24235.14",
+      "areaPublicada": "24235.14",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.1417",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-sam-s-club-granja-viana",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Pernambucanas Bandeirantes",
+      "enderecoPublicado": "Av. Bandeirantes, 892, Bandeirantes, PR",
+      "cidade": "Bandeirantes",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "1068.2",
+      "areaPublicada": "1068.2",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.0874",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-bandeirantes",
+      "coordenadas": {
+        "lat": "-23.108263",
+        "lng": "-50.374426",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Bandeirantes, Bandeirantes, Paraná, Região Sul, 86360-034, Brasil",
+        "osm": "way/186827646",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Bandeirantes, 892, Bandeirantes, PR, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Pindamonhangaba",
+      "enderecoPublicado": "R. Deputado Claro César, 200, Pindamonhangaba, SP",
+      "cidade": "Pindamonhangaba",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1999.87",
+      "areaPublicada": "1999.87",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.4017",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-pindamonhangaba",
+      "coordenadas": {
+        "lat": "-22.923892",
+        "lng": "-45.462225",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Deputado Claro César, Vila Santa Clara, Centro, Pindamonhangaba, São Paulo, Região Sudeste, 12401-010, Brasil",
+        "osm": "way/101799449",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Deputado Claro César, 200, Pindamonhangaba, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Itú",
+      "enderecoPublicado": "R. Floriano Peixoto, 963, 967, 971 e 975, Itu, SP",
+      "cidade": "Itu",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1552.11",
+      "areaPublicada": "1552.11",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2255",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-itu",
+      "coordenadas": {
+        "lat": "-23.262833",
+        "lng": "-47.299478",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Floriano Peixoto, Centro, Itu, São Paulo, Região Sudeste, 13300-060, Brasil",
+        "osm": "way/360814720",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Floriano Peixoto, 963, Itu, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Capão Bonito",
+      "enderecoPublicado": "R. Floriano Peixoto, 575, Capão Bonito, SP",
+      "cidade": "Capão Bonito",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "718.94",
+      "areaPublicada": "718.94",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1116",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-capao-bonito",
+      "coordenadas": {
+        "lat": "-24.006528",
+        "lng": "-48.352184",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Floriano Peixoto, Centro, Capão Bonito, São Paulo, Região Sudeste, 18300-005, Brasil",
+        "osm": "way/226322223",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Floriano Peixoto, 575, Capão Bonito, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Registro",
+      "enderecoPublicado": "Av. Prof. Jonas Banks Leite, 497 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "3020.96",
+      "areaPublicada": "3020.96",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.3066",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-registro",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Walmart Indianópolis",
+      "enderecoPublicado": "Av. Jabaquara, 2979, Mirandópolis, SP",
+      "cidade": "Mirandópolis",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "24345.2",
+      "areaPublicada": "24345.2",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.2916",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-walmart-indianopolis",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Pernambucanas Ribeirão Preto - Campos Elíseos",
+      "enderecoPublicado": "Av. da Saudade, 1.119/1.129 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2330.62",
+      "areaPublicada": "2330.62",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.3031",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-ribeirao-preto-campos-eliseos",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Petrópolis",
+      "enderecoPublicado": "Estrada União e Indústria, 870",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "14196",
+      "areaPublicada": "14196",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.2005",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-petropolis",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Mineirão Uberaba",
+      "enderecoPublicado": "Av. Coronel Cacildo Arantes, 50, Parque Hiléia, Uberaba, MG",
+      "cidade": "Uberaba",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "7972",
+      "areaPublicada": "7972",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.5900",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-mineirao-uberaba",
+      "coordenadas": {
+        "lat": "-19.755725",
+        "lng": "-47.976771",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Coronel Cacildo Arantes, Vila Umuarama, Uberaba, Minas Gerais, Região Sudeste, 38040-450, Brasil",
+        "osm": "way/377781364",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Coronel Cacildo Arantes, 50, Uberaba, MG, Brasil"
+      }
+    },
+    {
+      "nome": "São Luis",
+      "enderecoPublicado": "Av. Jerônimo de Albuquerque, 260",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "7867.87",
+      "areaPublicada": "7867.87",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.7965",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-sao-luis",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Itapeva",
+      "enderecoPublicado": "R. Dr. Pinheiro, 294/312, Itapeva, SP",
+      "cidade": "Itapeva",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1958.78",
+      "areaPublicada": "1958.78",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2641",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-itapeva",
+      "coordenadas": {
+        "lat": "-23.976980",
+        "lng": "-48.876346",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Doutor Pinheiro, Jardim Belvedere, Bom Jesus, Itapeva, São Paulo, Região Sudeste, 18401-200, Brasil",
+        "osm": "way/199226467",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Dr. Pinheiro, 294/312, Itapeva, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Barretos",
+      "enderecoPublicado": "R. Vinte, 776, Barretos, SP",
+      "cidade": "Barretos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1516.87",
+      "areaPublicada": "1516.87",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.3513",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-barretos",
+      "coordenadas": {
+        "lat": "-20.541836",
+        "lng": "-48.578969",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Vinte, Jockey Club, Barretos, São Paulo, Região Sudeste, 14787-276, Brasil",
+        "osm": "way/884702530",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Vinte, 776, Barretos, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Itararé",
+      "enderecoPublicado": "Rua Amazonas Ribas, 402 e R. São Pedro, 1213, Itararé, SP",
+      "cidade": "Itararé",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1161.17",
+      "areaPublicada": "1161.17",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1975",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-itarare",
+      "coordenadas": {
+        "lat": "-24.107642",
+        "lng": "-49.337155",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Amazonas Ribas, Jardim Regina, Itararé, São Paulo, Região Sudeste, 18460-023, Brasil",
+        "osm": "way/234671195",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Amazonas Ribas, Itararé, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas São Paulo - Teodoro Sampaio",
+      "enderecoPublicado": "Rua Teodoro Sampaio, 2.160 - Pinheiros",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "4887.67",
+      "areaPublicada": "4887.67",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.7800",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-sao-paulo-teodoro-sampaio",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Hines Leroy Merlin",
+      "enderecoPublicado": "Av. Dom Pedro I, 1100, Taubaté, SP",
+      "cidade": "Taubaté",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "21481.825",
+      "areaPublicada": "21481.825",
+      "vacanciaPercentual": "22.6965",
+      "percentualDaReceitaDoFundo": "2.0507",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-hines-leroy-merlin",
+      "coordenadas": {
+        "lat": "-23.016951",
+        "lng": "-45.525395",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Atacadão posto 13, 1100, Avenida Dom Pedro I, Parque Três Marias, 2º Subdistrito, Taubaté, São Paulo, Região Sudeste, 12071-651, Brasil",
+        "osm": "way/772278933",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Dom Pedro I, 1100, Taubaté, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Itanhaém",
+      "enderecoPublicado": "Av. Condessa D'Vimieiros, 17, Itanhaém, SP",
+      "cidade": "Itanhaém",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1462.41",
+      "areaPublicada": "1462.41",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1228",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-itanhaem",
+      "coordenadas": {
+        "lat": "-24.184780",
+        "lng": "-46.788703",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Pernambucanas, 17, Avenida Condessa de Vimieiros, Jardim Laranjeiras, Itanhaém, São Paulo, Região Sudeste, 11740-000, Brasil",
+        "osm": "way/439367742",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Condessa D'Vimieiros, 17, Itanhaém, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Guarapuava",
+      "enderecoPublicado": "Rua XV de Novembro, 7.795 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "3802.42",
+      "areaPublicada": "3802.42",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.3291",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-guarapuava",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas São Paulo - Tucuruvi",
+      "enderecoPublicado": "Av. Tucuruvi, 400 - Tucuruvi",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2750",
+      "areaPublicada": "2750",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.3128",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-sao-paulo-tucuruvi",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "IBMEC - RJ",
+      "enderecoPublicado": "Av. Armando Lombardi, 940, Barra da Tijuca, RJ",
+      "cidade": "Barra da Tijuca",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "8040",
+      "areaPublicada": "8040",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.5472",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educação",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-ibmec-rj",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Pernambucanas Jales",
+      "enderecoPublicado": "Av. Francisco Jales, 2.367 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1310.35",
+      "areaPublicada": "1310.35",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1632",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-jales",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Tatuí",
+      "enderecoPublicado": "Praça Da Matriz, 106, Tatuí, SP",
+      "cidade": "Tatuí",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "2027.76",
+      "areaPublicada": "2027.76",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.3041",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-tatui",
+      "coordenadas": {
+        "lat": "-23.348373",
+        "lng": "-47.849138",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Praça da Matriz, Jardim Rosa Garcia, Centro, Tatuí, São Paulo, Região Sudeste, 18270-020, Brasil",
+        "osm": "way/395862955",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Praça Da Matriz, 106, Tatuí, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Botucatu",
+      "enderecoPublicado": "Rua Amando de Barros, 470 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2422.42",
+      "areaPublicada": "2422.42",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2547",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-botucatu",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Escola Parque",
+      "enderecoPublicado": "Rua Pedra de Itauna, 111",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "5588",
+      "areaPublicada": "5588",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.0413",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educação",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-escola-parque",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Ribeirão Preto",
+      "enderecoPublicado": "R. General Osório, 323, Ribeirão Preto, SP",
+      "cidade": "Ribeirão Preto",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "6305.13",
+      "areaPublicada": "6305.13",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.6818",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-ribeirao-preto",
+      "coordenadas": {
+        "lat": "-21.174364",
+        "lng": "-47.810450",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "323, Rua General Osório, Centro, Ribeirão Preto, São Paulo, Região Sudeste, 14010-000, Brasil",
+        "osm": "way/308827476",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. General Osório, 323, Ribeirão Preto, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Cruzeiro",
+      "enderecoPublicado": "Av. Dr. Jorge Tibiriça, 565, Cruzeiro, SP",
+      "cidade": "Cruzeiro",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1724.11",
+      "areaPublicada": "1724.11",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1439",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-cruzeiro",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Pernambucanas Amparo",
+      "enderecoPublicado": "R. Treze De Maio, 0186, Amparo, SP",
+      "cidade": "Amparo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "829.51",
+      "areaPublicada": "829.51",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1634",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-amparo",
+      "coordenadas": {
+        "lat": "-22.702230",
+        "lng": "-46.767503",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "186, Rua 13 de Maio, Centro, Jardim Bela Vista, Jardim Alberto, Amparo, São Paulo, Região Sudeste, 13900-380, Brasil",
+        "osm": "way/246449561",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Treze De Maio, 0186, Amparo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Paulista 2.000",
+      "enderecoPublicado": "Avenida Paulista, 1.998/2.000, São Paulo, SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "6089",
+      "areaPublicada": "6089",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.2262",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Educação",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-paulista-2-000",
+      "coordenadas": {
+        "lat": "-23.556860",
+        "lng": "-46.661412",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Paulista, Consolação, São Paulo, Região Sudeste, 01310-300, Brasil",
+        "osm": "way/230783567",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Avenida Paulista, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas São Paulo - Rua Direita",
+      "enderecoPublicado": "Rua Direita, 226 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "2611.29",
+      "areaPublicada": "2611.29",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.5988",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-sao-paulo-rua-direita",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Sam's Club Atuba",
+      "enderecoPublicado": "Estrada do Ribeira, 144, Atuba, PR",
+      "cidade": "Atuba",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "10131",
+      "areaPublicada": "10131",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.1059",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-sam-s-club-atuba",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Pernambucanas Carlos De Campos",
+      "enderecoPublicado": "Rua Sete de Setembro, 608 e 617, Piraju, SP",
+      "cidade": "Piraju",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1058.68",
+      "areaPublicada": "1058.68",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1765",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-carlos-de-campos",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Guanambi",
+      "enderecoPublicado": "Estrada Lagoa Patos (BR 030), km 6",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "10806",
+      "areaPublicada": "10806",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.2953",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-guanambi",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Pirassununga",
+      "enderecoPublicado": "Rua Duque de Caxias, 1.412 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1445.12",
+      "areaPublicada": "1445.12",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1650",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-pirassununga",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Ituiutaba",
+      "enderecoPublicado": "Rua Vinte e Dois, 798 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "806",
+      "areaPublicada": "806",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.0966",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-ituiutaba",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Mineirão Contagem",
+      "enderecoPublicado": "Rod. Fernão Dias, 3700 - Km 3,5, Riacho Pedras, Contagem, MG",
+      "cidade": "Contagem",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "15740",
+      "areaPublicada": "15740",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.0876",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-mineirao-contagem",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Pernambucanas Paranaguá",
+      "enderecoPublicado": "R. Xv De Novembro, 0352, Paranaguá, PR",
+      "cidade": "Paranaguá",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "2409.94",
+      "areaPublicada": "2409.94",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2765",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-paranagua",
+      "coordenadas": {
+        "lat": "-25.519798",
+        "lng": "-48.505525",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua XV de Novembro, Centro Histórico, Paranaguá, Paraná, Região Sul, 83203-000, Brasil",
+        "osm": "way/97390524",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Xv De Novembro, 0352, Paranaguá, PR, Brasil"
+      }
+    },
+    {
+      "nome": "Pernambucanas Telêmaco Borba",
+      "enderecoPublicado": "Av. Horácio Klabin, 205 e 215, Telêmaco Borba , PR",
+      "cidade": "Telêmaco Borba",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "1193.8",
+      "areaPublicada": "1193.8",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1313",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-telemaco-borba",
+      "coordenadas": {
+        "lat": "-24.328904",
+        "lng": "-50.626760",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Horácio Klabin, Alto das Oliveiras, Telêmaco Borba, Paraná, Região Sul, 84261-350, Brasil",
+        "osm": "way/337117535",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Horácio Klabin, 205 e 215, Telêmaco Borba , PR, Brasil"
+      }
+    },
+    {
+      "nome": "Sam's Club Campinas",
+      "enderecoPublicado": "Rod. Dom Pedro I, km 132, Parque Imperador, SP",
+      "cidade": "Parque Imperador",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "15776.24",
+      "areaPublicada": "15776.24",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.2073",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-sam-s-club-campinas",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Pernambucanas Paranaíba",
+      "enderecoPublicado": "Rua Coronel Carlos, 1.595 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1823.51",
+      "areaPublicada": "1823.51",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1205",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-paranaiba",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Taquaritinga",
+      "enderecoPublicado": "Rua Prudente de Moraes, 485 - Centro",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1160.54",
+      "areaPublicada": "1160.54",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1356",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-taquaritinga",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Atacadão Londrina Cambé",
+      "enderecoPublicado": "Rod. Melo Peixoto, 1314 - BR 369 - Km.159, Pq.Maracanã, Cambé, PR",
+      "cidade": "Cambé",
+      "uf": "PR",
+      "tipo": null,
+      "areaM2": "6585",
+      "areaPublicada": "6585",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.5384",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-atacadao-londrina-cambe",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Pernambucanas Guaíra",
+      "enderecoPublicado": "R. Dez, 482, Guaíra, SP",
+      "cidade": "Guaíra",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "908.65",
+      "areaPublicada": "908.65",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.1828",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-guaira",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Curitiba",
+      "enderecoPublicado": "Av. Juscelino Kubitschek de Oliveira, 2511",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "12880",
+      "areaPublicada": "12880",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "2.4537",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-curitiba",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas Araguari",
+      "enderecoPublicado": "R. Rui Barbosa, 0226, Araguari, MG",
+      "cidade": "Araguari",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "1414.2",
+      "areaPublicada": "1414.2",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.2219",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-araguari",
+      "coordenadas": {
+        "lat": "-18.650919",
+        "lng": "-48.192524",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Rui Barbosa, Centro, Araguari, Minas Gerais, Região Sudeste, 38440-122, Brasil",
+        "osm": "way/170994763",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "R. Rui Barbosa, 0226, Araguari, MG, Brasil"
+      }
+    },
+    {
+      "nome": "Rio Branco",
+      "enderecoPublicado": "Rua São João, 2500, Floresta",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "7710",
+      "areaPublicada": "7710",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-rio-branco",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Castanhal",
+      "enderecoPublicado": "Av. Presidente Vargas, 5600",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "11070",
+      "areaPublicada": "11070",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "1.2537",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-castanhal",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Pernambucanas São  Paulo - Brooklin",
+      "enderecoPublicado": "Rua Joaquim Nabuco, 112/126 - Brooklin",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1056.82",
+      "areaPublicada": "1056.82",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0.4433",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Varejo",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "hgru11-pernambucanas-sao-paulo-brooklin",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

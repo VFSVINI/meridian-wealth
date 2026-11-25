@@ -1,0 +1,123 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "CPOF11",
+  "nomeDoFundo": "Capitânia Office Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "d1e7e41ce3c89be851b3b1567597d63106da2e868ee1a8cf395460e2e0d2db2c"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 3,
+    "semCoordenadas": 1
+  },
+  "cnpj": "48.916.699/0001-60",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código CPOF11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRCPOFCTF002), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Edificio Leblon",
+      "enderecoPublicado": "Rua Almirante Guilhem, 378, Sem Complemento, Leblon, Rio De Janeiro/RJ, Brasil, 22440-000",
+      "cidade": "Rio De Janeiro",
+      "uf": "RJ",
+      "tipo": null,
+      "areaM2": "3693",
+      "areaPublicada": "3693",
+      "vacanciaPercentual": "13.5552",
+      "percentualDaReceitaDoFundo": "21.0495",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "58.6719"
+        },
+        {
+          "setor": "Petróleo, Gás e Biocombustíveis",
+          "percentualDaReceitaDoImovel": "20.1512"
+        },
+        {
+          "setor": "Holdings Diversificadas",
+          "percentualDaReceitaDoImovel": "14.0740"
+        }
+      ],
+      "id": "cpof11-edificio-leblon",
+      "coordenadas": {
+        "lat": "-22.984109",
+        "lng": "-43.218812",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Rua Almirante Guilhem, Leblon, Rio de Janeiro, Região Sudeste, 22440-032, Brasil",
+        "osm": "way/19109586",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Almirante Guilhem, 378, Rio De Janeiro, RJ, Brasil"
+      }
+    },
+    {
+      "nome": "Condominio Edificio Alamedas",
+      "enderecoPublicado": "Alameda Santos, 1039, Sem Complemento, Cerqueira César, São Paulo/SP, Brasil, 01419-001",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "2320",
+      "areaPublicada": "2320",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.3620",
+      "setoresDosInquilinos": [],
+      "id": "cpof11-condominio-edificio-alamedas",
+      "coordenadas": {
+        "lat": "-23.566087",
+        "lng": "-46.653098",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "1039, Alameda Santos, Cerqueira César, Jardim Paulista, São Paulo, Região Sudeste, 01419-001, Brasil",
+        "osm": "way/1117323432",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Santos, 1039, São Paulo, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Edificio Novo São Paulo",
+      "enderecoPublicado": "RUA PRUDENTE CORREIA",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "1718",
+      "areaPublicada": "1718",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "0",
+      "setoresDosInquilinos": [],
+      "id": "cpof11-edificio-novo-sao-paulo",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Condominio Modulo Reboucas",
+      "enderecoPublicado": "Rua Capote Valente, 39, Sem Complemento, Pinheiros, Sao Paulo/SP, Brasil, 05409-000",
+      "cidade": "Sao Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "4867",
+      "areaPublicada": "4867",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "3.8794",
+      "setoresDosInquilinos": [],
+      "id": "cpof11-condominio-modulo-reboucas",
+      "coordenadas": {
+        "lat": "-23.561045",
+        "lng": "-46.673505",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "Nubank, 39, Rua Capote Valente, Vila Madalena, Pinheiros, São Paulo, Região Sudeste, 05409-000, Brasil",
+        "osm": "way/411539082",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Rua Capote Valente, 39, Sao Paulo, SP, Brasil"
+      }
+    }
+  ]
+}

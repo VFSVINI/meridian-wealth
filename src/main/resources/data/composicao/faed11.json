@@ -1,0 +1,122 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "FAED11",
+  "nomeDoFundo": "Anhanguera Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "aecd95eea725fb55b779dcfc1d0b92eabc9560838a5dad05b353025ec0c75eab"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 2,
+    "semCoordenadas": 2
+  },
+  "cnpj": "11.179.118/0001-45",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código FAED11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRFAEDCTF003), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Anhanguera Educacional - Valinhos 2",
+      "enderecoPublicado": "Alameda Maria Tereza, 4198, Sem Complemento, Dois Córregos, Valinhos/SP, Brasil, 13278-181",
+      "cidade": "Valinhos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "7700",
+      "areaPublicada": "7700",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.4900",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "faed11-anhanguera-educacional-valinhos-2",
+      "coordenadas": {
+        "lat": "-23.007311",
+        "lng": "-47.016175",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Alameda Maria Tereza, Dois Córregos, Valinhos, São Paulo, Região Sudeste, 13278-181, Brasil",
+        "osm": "way/147333266",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Maria Tereza, 4198, Valinhos, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Anhanguera Educacional - Taboao da Serra",
+      "enderecoPublicado": "Rodovia Regis Bittencourt, 199, Sem Complemento, Centro, Taboão Da Serra/SP, Brasil, 06768-000",
+      "cidade": "Taboão Da Serra",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "17922.8",
+      "areaPublicada": "17922.8",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "51.8200",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "faed11-anhanguera-educacional-taboao-da-serra",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Anhanguera Educacional - Valinhos",
+      "enderecoPublicado": "Alameda Maria Tereza, 4266, Sem Complemento, Dois Córregos, Valinhos/SP, Brasil, 13278-181",
+      "cidade": "Valinhos",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "12441.45",
+      "areaPublicada": "12441.45",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "34.4800",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "faed11-anhanguera-educacional-valinhos",
+      "coordenadas": {
+        "lat": "-23.007311",
+        "lng": "-47.016175",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Alameda Maria Tereza, Dois Córregos, Valinhos, São Paulo, Região Sudeste, 13278-181, Brasil",
+        "osm": "way/147333266",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Alameda Maria Tereza, 4266, Valinhos, SP, Brasil"
+      }
+    },
+    {
+      "nome": "Imóvel sem nome publicado",
+      "enderecoPublicado": "Anhanguera Educacional - Leme",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "7184.93",
+      "areaPublicada": "7184.93",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "8.2100",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Outros",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "faed11-imovel-sem-nome-publicado",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

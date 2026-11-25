@@ -1,0 +1,62 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "BLMO11",
+  "nomeDoFundo": "Vbi Office Fund Ii Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "e58b6ffcfa10d15bb35666d9a1cae147e8776ec70fe30621ff335f93d00500f0"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "34.895.894/0001-47",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código BLMO11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRBLMOCTF009), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Torre Oeste",
+      "enderecoPublicado": "Av. das Nações Unidas, nº 12.901, São Paulo - SP",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "7893",
+      "areaPublicada": "7893",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "94.6000",
+      "setoresDosInquilinos": [
+        {
+          "setor": "E-commerce",
+          "percentualDaReceitaDoImovel": "47.0009"
+        },
+        {
+          "setor": "Saúde",
+          "percentualDaReceitaDoImovel": "28.9096"
+        },
+        {
+          "setor": "Financeiro",
+          "percentualDaReceitaDoImovel": "16.3966"
+        }
+      ],
+      "id": "blmo11-torre-oeste",
+      "coordenadas": {
+        "lat": "-23.624554",
+        "lng": "-46.705913",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida das Nações Unidas, Chácara Santo Antônio, Santo Amaro, São Paulo, Região Sudeste, 04713-002, Brasil",
+        "osm": "way/459613590",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. das Nações Unidas, 12.901, São Paulo - SP, Brasil"
+      }
+    }
+  ]
+}

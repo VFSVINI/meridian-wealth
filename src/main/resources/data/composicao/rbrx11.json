@@ -1,0 +1,49 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "RBRX11",
+  "nomeDoFundo": "Patria Plus Mult Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "a516d48cee43ff04afaa9917b417e0d125cfd91709a51721bb25e0f80c2e6cf7"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "41.088.458/0001-21",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código RBRX11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRRBRXCTF006), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Kalea Jardins",
+      "enderecoPublicado": "RUA DA CONSOLACAO, 3290 - CERQUEIRA CÉSAR - SÃO PAULO - SP",
+      "cidade": "SÃO PAULO",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "1042.03098",
+      "areaPublicada": "1042.03098",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "rbrx11-kalea-jardins",
+      "coordenadas": {
+        "lat": "-23.560981",
+        "lng": "-46.668659",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "ENDERECO",
+        "enderecoEncontrado": "3290, Rua da Consolação, Cerqueira César, Jardim Paulista, São Paulo, Região Sudeste, 01416-000, Brasil",
+        "osm": "node/6820490564",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "RUA DA CONSOLACAO, 3290 - CERQUEIRA CÉSAR - SÃO PAULO - SP, Brasil"
+      }
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "MCLO11",
+  "nomeDoFundo": "Mauá Capital Logística Fii - Responsabilidade Limitada",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "41261a99ae75e94483e33b990170ebb63c15dee923d29ede7989be60645e7291"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 4
+  },
+  "cnpj": "57.466.934/0001-30",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código MCLO11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRMCLOCTF015), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "RIBEIRÃO PRETO - CASA BAHIA",
+      "enderecoPublicado": "Avenida Patriarca, nº 5355 - Parque Ribeirão Preto - CEP 14031-580, cidade de Ribeirão Preto, Estado de São Paulo.",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "35558",
+      "areaPublicada": "35558",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "5.3853",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Eletronico, Móveis e Eletrodomesticos",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "mclo11-ribeirao-preto-casa-bahia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "JUNDIAÍ - CASA BAHIA",
+      "enderecoPublicado": "Rodovia Anhanguera, km 52 + 350m e Rodovia Presidente Tancredo Neves, km 58, Bairro Castanho, CEP 13203-850, cidade de Jundiaí, Estado de São Paulo.",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "313314",
+      "areaPublicada": "313314",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "43.3521",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Eletronico, Móveis e Eletrodomesticos",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "mclo11-jundiai-casa-bahia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "CAJAMAR - CAPITAL BRASILEIRO",
+      "enderecoPublicado": "Via de Acesso Sul Km 34, Rodovia Anhanguera, S/Nº, Bairro Empresarial Mirim, complemento Km 34+368 ao Km 35, CEP 07.754-200",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "76120",
+      "areaPublicada": "76120",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "21.8654",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Automobilistico",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "mclo11-cajamar-capital-brasileiro",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "DUQUE DE CAXIAS- CASA BAHIA",
+      "enderecoPublicado": "Av. Automóvel Clube, 7.543 - Duque de Caxias",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "209442",
+      "areaPublicada": "209442",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "29.3969",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Eletronico, Móveis e Eletrodomesticos",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "mclo11-duque-de-caxias-casa-bahia",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

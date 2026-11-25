@@ -1,0 +1,142 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "RBRL11",
+  "nomeDoFundo": "Pátria Logística Ii Fii",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2025.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2025-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "93df8ebf0e331c9aee082f0444f939417f1df1cccdc2723d54237bb738c736ac"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 5
+  },
+  "cnpj": "35.705.463/0001-33",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2025, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código RBRL11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRRBRLCTF001), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Galpão Hortolândia II",
+      "enderecoPublicado": "Est Carlos Roberto Prataviera, nº 650, Hortolândia, Comarca de Sumaré/SP",
+      "cidade": "Comarca de Sumaré",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "43123.34",
+      "areaPublicada": "43123.34",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "10.1030",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Higiene e Limpeza",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbrl11-galpao-hortolandia-ii",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Galpão Extrema II",
+      "enderecoPublicado": "Estrada Municipal Luiz Lopes Neto, nº 21, Bairro dos Tenentes -  Extrema/MG",
+      "cidade": "Extrema",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "77106.32",
+      "areaPublicada": "77106.32",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "31.6688",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Transporte & Logistica",
+          "percentualDaReceitaDoImovel": "51.1426"
+        },
+        {
+          "setor": "Vestuario & Textil",
+          "percentualDaReceitaDoImovel": "26.8790"
+        },
+        {
+          "setor": "Bens de Consumo",
+          "percentualDaReceitaDoImovel": "14.7734"
+        },
+        {
+          "setor": "Farmacêutica",
+          "percentualDaReceitaDoImovel": "7.2050"
+        }
+      ],
+      "id": "rbrl11-galpao-extrema-ii",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Galpão Extrema I",
+      "enderecoPublicado": "Estrada Municipal Vargem do João Pinto nº 450, Gleba 1 -  Extrema/MG",
+      "cidade": "Extrema",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "37600.25",
+      "areaPublicada": "37600.25",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "16.0059",
+      "setoresDosInquilinos": [
+        {
+          "setor": "E-commerce",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbrl11-galpao-extrema-i",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Galpão Hortolândia I",
+      "enderecoPublicado": "Condomínio Tech Town, unid nº7,  Rodovia SP 101, Hortolândia, Comarca de Sumaré/SP",
+      "cidade": "Comarca de Sumaré",
+      "uf": "SP",
+      "tipo": null,
+      "areaM2": "15349.29",
+      "areaPublicada": "15349.29",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "4.5202",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Tecnologia",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "rbrl11-galpao-hortolandia-i",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "Galpão WT RBR LOG",
+      "enderecoPublicado": "Rod. Presidente Tancredo Neves, km45",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "61119.82",
+      "areaPublicada": "61119.82",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "10.8037",
+      "setoresDosInquilinos": [
+        {
+          "setor": "E-commerce",
+          "percentualDaReceitaDoImovel": "79.6160"
+        },
+        {
+          "setor": "Automobilístico",
+          "percentualDaReceitaDoImovel": "20.3840"
+        }
+      ],
+      "id": "rbrl11-galpao-wt-rbr-log",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

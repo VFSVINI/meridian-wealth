@@ -1,0 +1,86 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "TGAR11",
+  "nomeDoFundo": "Fii Tg Ativo Real",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "8950b75cb9bcdfeaf54742a5245f9d2eac90dcdd35186405ab5e46551ce23c57"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 4
+  },
+  "cnpj": "25.032.881/0001-53",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código TGAR11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRTGARCTF009), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "SOLANGE",
+      "enderecoPublicado": "Rodovia dos Romeiros, s/n, Trindade - GO",
+      "cidade": "Trindade",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "32250",
+      "areaPublicada": "32250",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "tgar11-solange",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "a via publicada é uma rodovia ou estrada e o OpenStreetMap só localiza a via, não o número: o ponto poderia estar a quilômetros do imóvel"
+    },
+    {
+      "nome": "PORTAL DO LAGO",
+      "enderecoPublicado": "Portal do Lago I e II, Catalão - GO",
+      "cidade": "Catalão",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "1000",
+      "areaPublicada": "1000",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "tgar11-portal-do-lago",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "MARIA MADALENA",
+      "enderecoPublicado": "Rodovia GO-060, s/n, Turvânia- GO",
+      "cidade": "Turvânia",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "1200",
+      "areaPublicada": "1200",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "tgar11-maria-madalena",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    },
+    {
+      "nome": "NOVA CANAA",
+      "enderecoPublicado": "Ruas NC-07 e NC-08, s/n, Trindade - GO",
+      "cidade": "Trindade",
+      "uf": "GO",
+      "tipo": null,
+      "areaM2": "1560",
+      "areaPublicada": "1560",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "tgar11-nova-canaa",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "nenhum resultado do OpenStreetMap bateu com cidade, estado, CEP e rua publicados"
+    }
+  ]
+}

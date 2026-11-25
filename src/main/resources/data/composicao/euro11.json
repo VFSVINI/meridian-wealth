@@ -1,0 +1,137 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "EURO11",
+  "nomeDoFundo": "F.I.I Europar Responsabilidade Limitada",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2026.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2026-09-30",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "49380d70c7f31dfd9fd2a6b0728f6b288188991c12daba4cf7dc248de316997b"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 0,
+    "semCoordenadas": 4
+  },
+  "cnpj": "05.437.916/0001-27",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 30/09/2026, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código EURO11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BREUROCTF011), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Centro de Distribuição Anhanguera, km 17",
+      "enderecoPublicado": "Rodovia Anhanguera Km. 17",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "3400",
+      "areaPublicada": "3400",
+      "vacanciaPercentual": null,
+      "percentualDaReceitaDoFundo": null,
+      "setoresDosInquilinos": [],
+      "id": "euro11-centro-de-distribuicao-anhanguera-km-17",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Centro de Distribuição -Rio de Janeiro",
+      "enderecoPublicado": "Rua Sargento Aquino, 135/Rua Comandante Vergueiro da Cruz, 206",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "6404.61",
+      "areaPublicada": "6404.61",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "9.7154",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Logistica",
+          "percentualDaReceitaDoImovel": "100"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "euro11-centro-de-distribuicao-rio-de-janeiro",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Centro de Distribuição Anhanguera - CDA",
+      "enderecoPublicado": "Rodovia Anhanguera , S/N KM 17,5",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "27111.03",
+      "areaPublicada": "27111.03",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "76.2040",
+      "setoresDosInquilinos": [
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Logistica",
+          "percentualDaReceitaDoImovel": "100"
+        }
+      ],
+      "id": "euro11-centro-de-distribuicao-anhanguera-cda",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    },
+    {
+      "nome": "Torre de Elevadores - Interlagos - SP",
+      "enderecoPublicado": "Av. Interlagos, 4.455",
+      "cidade": null,
+      "uf": null,
+      "tipo": null,
+      "areaM2": "3298",
+      "areaPublicada": "3298",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "6.6419",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Serviços",
+          "percentualDaReceitaDoImovel": "100"
+        },
+        {
+          "setor": "Setor2",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "SetorN",
+          "percentualDaReceitaDoImovel": "0"
+        },
+        {
+          "setor": "Setor3",
+          "percentualDaReceitaDoImovel": "0"
+        }
+      ],
+      "id": "euro11-torre-de-elevadores-interlagos-sp",
+      "coordenadas": null,
+      "coordenadasMotivoAusencia": "o endereço publicado não traz a cidade nem o CEP"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "versaoDoEsquema": 1,
+  "fundo": "HDEL11",
+  "nomeDoFundo": "Hedge Desenvolvimento Logístico Fundo De Inv Imob",
+  "fonte": {
+    "nome": "Informe Trimestral de FII, dados abertos da CVM (arquivos imovel e imovel_renda_acabado_inquilino)",
+    "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_2025.zip",
+    "tipo": "OFICIAL",
+    "referenciaDosDados": "2025-12-31",
+    "consultadoEm": "2026-11-25",
+    "sha256DoTextoExtraido": "6dd5b89bb7e13b6550748ad53fa079b867400572211068119497761689aa803d"
+  },
+  "resumoDaGeocodificacao": {
+    "comCoordenadas": 1,
+    "semCoordenadas": 0
+  },
+  "cnpj": "44.514.162/0001-13",
+  "rotuloDaArea": "Área (m²)",
+  "avisos": [
+    "Fonte: Informe Trimestral de FII nos dados abertos da CVM, base 31/12/2025, versão 1. A CVM publica nome, endereço, área, vacância, inadimplência, participação na receita e setores dos inquilinos; não publica o tipo do imóvel nem o nome dos inquilinos.",
+    "O código HDEL11 foi ligado ao CNPJ pelo código ISIN que o próprio Informe publica (BRHDELCTF006), conferido com o catálogo de ativos e o nome do fundo.",
+    "O Informe separa imóveis para renda e para venda, acabados e em construção: esta lista traz todos os que informam área."
+  ],
+  "ativos": [
+    {
+      "nome": "Condomínio Citlog Sul de Minas",
+      "enderecoPublicado": "Av. Porto Seco, 1.540, Aeroporto - Varginha - MG",
+      "cidade": "Varginha",
+      "uf": "MG",
+      "tipo": null,
+      "areaM2": "78542.74",
+      "areaPublicada": "78542.74",
+      "vacanciaPercentual": "0",
+      "percentualDaReceitaDoFundo": "57.8431",
+      "setoresDosInquilinos": [
+        {
+          "setor": "Automotivo",
+          "percentualDaReceitaDoImovel": "22.3825"
+        },
+        {
+          "setor": "Farmacêutico",
+          "percentualDaReceitaDoImovel": "46.3813"
+        }
+      ],
+      "id": "hdel11-condominio-citlog-sul-de-minas",
+      "coordenadas": {
+        "lat": "-21.588492",
+        "lng": "-45.460422",
+        "metodo": "OSM_NOMINATIM",
+        "precisao": "VIA",
+        "enderecoEncontrado": "Avenida Porto Seco, Varginha, Minas Gerais, Região Sudeste, 37062-180, Brasil",
+        "osm": "way/1201259449",
+        "geocodificadoEm": "2026-11-25",
+        "consulta": "Av. Porto Seco, 1.540, Varginha, MG, Brasil"
+      }
+    }
+  ]
+}
