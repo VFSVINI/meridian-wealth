@@ -108,3 +108,7 @@ footer.cs-legal p{margin:0;max-width:150ch}footer.cs-legal b{color:var(--text)}
 /* transição entre páginas: velocidade da luz. O céu (stars.js) estica as estrelas; a página que chega vem de longe, clareando, e assenta. Sem movimento reduzido, nada disso roda. */
 .fx .page.enter{animation:irisIn .6s cubic-bezier(.2,.7,.2,1) backwards}
 @keyframes irisIn{0%{opacity:0;transform:scale(.92) translateZ(0);filter:blur(10px) brightness(1.9)}55%{opacity:1;filter:blur(2px) brightness(1.25)}100%{opacity:1;transform:none;filter:none}}
+
+/* aviso curto (catálogo: ativo sem dado real, limite de aberturas) */
+.cs-toast{position:fixed;left:50%;bottom:calc(var(--s5) + 40px);transform:translate(-50%,12px);z-index:80;max-width:min(560px,calc(100vw - 32px));padding:12px 20px;border-radius:14px;border:1px solid rgba(255,179,64,.55);background:var(--popover);color:var(--text);font-size:14px;box-shadow:0 14px 40px rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .25s var(--ease),transform .25s var(--ease)}
+.cs-toast.on{opacity:1;transform:translate(-50%,0)}
