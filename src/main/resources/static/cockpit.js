@@ -3,7 +3,7 @@
    a partir deles (mesma conta do motor: 20 barras e 2σ; 50 barras). Depende de app.js (candles, A, sel, $, f, esc, go).
    Gráfico © TradingView, Inc. (https://www.tradingview.com/), Apache License 2.0. */
 const LW=window.LightweightCharts;
-const CK={chart:null,candle:null,volume:null,bbU:null,bbL:null,bbM:null,sma:null,lines:[],sym:null,key:null,sig:'',range:'6M',show:{bb:true,sma:true,zones:true},byTime:new Map()};
+const CK={chart:null,candle:null,volume:null,bbU:null,bbL:null,bbM:null,sma:null,lines:[],sym:null,key:null,sig:'',range:'6M',mode:'area',lineHost:null,show:{bb:false,sma:false,entry:true,targets:true,invalid:true},byTime:new Map()};
 /* formata um tempo já deslocado (ver ckBars): o valor é a hora local do navegador escrita como se fosse UTC */
 const ckWhen=(t,o)=>new Date(t*1000).toLocaleString('pt-BR',{timeZone:'UTC',...o});
 const CK_DAYS={'1M':31,'3M':92,'6M':183,'1A':366};
@@ -20,11 +20,13 @@ function ckEnsure(){
   CK.chart=LW.createChart(el,{autoSize:true,layout:{background:{type:'solid',color:'transparent'},attributionLogo:false,textColor:k.text,fontFamily:'IBM Plex Mono, ui-monospace, monospace',fontSize:11},
     grid:{vertLines:{color:k.line},horzLines:{color:k.line}},rightPriceScale:{borderColor:k.line},timeScale:{borderColor:k.line,timeVisible:true,secondsVisible:false,rightOffset:4},
     crosshair:{mode:LW.CrosshairMode.Normal},localization:{locale:'pt-BR'}});
-  CK.candle=CK.chart.addCandlestickSeries({upColor:k.up,downColor:k.down,wickUpColor:k.up,wickDownColor:k.down,borderVisible:false,priceLineVisible:true});
+  CK.area=CK.chart.addAreaSeries({lineColor:k.gold,topColor:withAlpha(k.gold,'55'),bottomColor:withAlpha(k.gold,'00'),lineWidth:2,priceLineVisible:true,lastValueVisible:true,crosshairMarkerVisible:true,visible:CK.mode==='area'});
+  CK.candle=CK.chart.addCandlestickSeries({upColor:k.up,downColor:k.down,wickUpColor:k.up,wickDownColor:k.down,borderVisible:false,priceLineVisible:true,visible:CK.mode==='candle'});
   CK.volume=CK.chart.addHistogramSeries({priceFormat:{type:'volume'},priceScaleId:'vol',lastValueVisible:false,priceLineVisible:false});
   CK.chart.priceScale('vol').applyOptions({scaleMargins:{top:.82,bottom:0}});
   const line=(color,w=1,style=0)=>CK.chart.addLineSeries({color,lineWidth:w,lineStyle:style,lastValueVisible:false,priceLineVisible:false,crosshairMarkerVisible:false});
   CK.bbU=line(k.info,1,2);CK.bbL=line(k.info,1,2);CK.bbM=line(withAlpha(k.info,'88'),1,0);CK.sma=line(k.gold,2,0);
+  [CK.bbU,CK.bbL,CK.bbM].forEach(s=>s.applyOptions({visible:CK.show.bb}));CK.sma.applyOptions({visible:CK.show.sma});   /* começam como os botões estão */
   CK.chart.subscribeCrosshairMove(p=>inspect(p&&p.time?p.time:null));
   return true;
 }
@@ -55,6 +57,7 @@ function applyTheme(){
   const k=ckColors();
   CK.chart.applyOptions({layout:{textColor:k.text},grid:{vertLines:{color:k.line},horzLines:{color:k.line}},rightPriceScale:{borderColor:k.line},timeScale:{borderColor:k.line}});
   CK.candle.applyOptions({upColor:k.up,downColor:k.down,wickUpColor:k.up,wickDownColor:k.down});
+  CK.area.applyOptions({lineColor:k.gold,topColor:withAlpha(k.gold,'55'),bottomColor:withAlpha(k.gold,'00')});
   CK.bbU.applyOptions({color:k.info});CK.bbL.applyOptions({color:k.info});CK.bbM.applyOptions({color:withAlpha(k.info,'88')});CK.sma.applyOptions({color:k.gold});
 }
 function applyRange(){
@@ -67,25 +70,34 @@ function applyVisibility(){
   syncLines(true);
 }
 /* níveis do motor de timing: zona de entrada, zona de realização, alvos e invalidação */
-function levelsSig(){return A?[sel,A.signal,A.score,A.entryLow,A.entryHigh,A.invalidation,A.target1,A.target2,A.price,A.atr,CK.show.zones].join('|'):''}
+function levelsSig(){return A?[sel,A.signal,A.score,A.entryLow,A.entryHigh,A.invalidation,A.target1,A.target2,A.price,A.atr,CK.show.entry,CK.show.targets,CK.show.invalid,CK.mode].join('|'):''}
+/* as linhas pendem da série que está à vista (área ou velas): série oculta esconde as suas linhas */
 function syncLines(force){
   const sig=levelsSig();
   if(!force&&sig===CK.sig)return;
   CK.sig=sig;
-  CK.lines.forEach(l=>CK.candle.removePriceLine(l));CK.lines=[];
-  if(!A||!CK.show.zones)return;
-  const k=ckColors(),add=(price,color,title,style=2)=>CK.lines.push(CK.candle.createPriceLine({price:Number(price),color,lineWidth:1,lineStyle:style,axisLabelVisible:true,title}));
-  if(A.score>=20&&A.signal!=='HIGH_RISK_WAIT'){add(A.entryLow,k.up,'Entrada');add(A.entryHigh,k.up,'Entrada')}
-  if(A.signal==='TAKE_PROFIT_WINDOW'||A.signal==='SELL_EXIT_SETUP'){add(A.price-A.atr,k.warn,'Realização');add(A.price+A.atr,k.warn,'Realização')}
-  add(A.invalidation,k.down,'Invalidação');add(A.target1,k.warn,'Alvo 1');add(A.target2,k.warn,'Alvo 2');
+  if(CK.lineHost)CK.lines.forEach(l=>CK.lineHost.removePriceLine(l));
+  CK.lines=[];
+  CK.lineHost=CK.mode==='area'?CK.area:CK.candle;
+  if(!A)return;
+  const k=ckColors(),add=(price,color,title,style=2)=>CK.lines.push(CK.lineHost.createPriceLine({price:Number(price),color,lineWidth:1,lineStyle:style,axisLabelVisible:true,title}));
+  if(CK.show.entry&&A.score>=20&&A.signal!=='HIGH_RISK_WAIT'){add(A.entryLow,k.up,'Entrada');add(A.entryHigh,k.up,'Entrada')}
+  if(CK.show.targets&&(A.signal==='TAKE_PROFIT_WINDOW'||A.signal==='SELL_EXIT_SETUP')){add(A.price-A.atr,k.warn,'Realização');add(A.price+A.atr,k.warn,'Realização')}
+  if(CK.show.invalid)add(A.invalidation,k.down,'Invalidação');
+  if(CK.show.targets){add(A.target1,k.warn,'Alvo 1');add(A.target2,k.warn,'Alvo 2')}
+}
+function applyMode(){
+  CK.candle.applyOptions({visible:CK.mode==='candle'});CK.area.applyOptions({visible:CK.mode==='area'});
+  syncLines(true);
 }
 function draw(){
   if(!ckEnsure())return;
   const bars=ckBars();CK.bars=bars;
-  if(!bars.length){[CK.candle,CK.volume,CK.bbU,CK.bbL,CK.bbM,CK.sma].forEach(s=>s.setData([]));CK.sym=null;CK.key=null;renderTable();inspect(null);return}
+  if(!bars.length){[CK.candle,CK.area,CK.volume,CK.bbU,CK.bbL,CK.bbM,CK.sma].forEach(s=>s.setData([]));CK.sym=null;CK.key=null;renderTable();inspect(null);return}
   const k=ckColors(),key=bars.length+':'+bars[0].t,fresh=CK.sym!==sel;
   if(fresh||CK.key!==key){
     CK.candle.setData(bars.map(c=>({time:c.t,open:c.open,high:c.high,low:c.low,close:c.close})));
+    CK.area.setData(bars.map(c=>({time:c.t,value:c.close})));
     CK.volume.setData(bars.map(c=>({time:c.t,value:c.volume||0,color:withAlpha(c.close>=c.open?k.up:k.down,'66')})));
     const bb=bollinger(bars);
     CK.bbU.setData(bb.map(b=>({time:b.t,value:b.u})));CK.bbL.setData(bb.map(b=>({time:b.t,value:b.l})));CK.bbM.setData(bb.map(b=>({time:b.t,value:b.m})));
@@ -96,6 +108,7 @@ function draw(){
     // tick: só a última barra muda
     const c=bars[bars.length-1],bb=bollinger(bars.slice(-20)),b=bb[bb.length-1];
     CK.candle.update({time:c.t,open:c.open,high:c.high,low:c.low,close:c.close});
+    CK.area.update({time:c.t,value:c.close});
     CK.volume.update({time:c.t,value:c.volume||0,color:withAlpha(c.close>=c.open?k.up:k.down,'66')});
     if(b){CK.bbU.update({time:c.t,value:b.u});CK.bbL.update({time:c.t,value:b.l});CK.bbM.update({time:c.t,value:b.m});CK.byTime.set(c.t,b)}
     const s=smaSeries(bars.slice(-50));if(s.length)CK.sma.update(s[s.length-1]);
@@ -133,6 +146,8 @@ function renderTable(){
 document.addEventListener('click',e=>{
   const r=e.target.closest('button[data-ckr]');
   if(r){CK.range=r.dataset.ckr;document.querySelectorAll('button[data-ckr]').forEach(b=>b.setAttribute('aria-pressed',String(b===r)));if(CK.chart)applyRange();ckEmit();return}
+  const m=e.target.closest('button[data-ckm]');
+  if(m){CK.mode=m.dataset.ckm;document.querySelectorAll('button[data-ckm]').forEach(b=>b.setAttribute('aria-pressed',String(b===m)));if(CK.chart)applyMode();return}
   const t=e.target.closest('button[data-ckt]');
   if(t){const on=t.getAttribute('aria-pressed')!=='true';CK.show[t.dataset.ckt]=on;t.setAttribute('aria-pressed',String(on));if(CK.chart)applyVisibility();return}
   if(e.target.closest('#ckTableBtn')){const w=$('#ckTable'),b=$('#ckTableBtn');w.hidden=!w.hidden;b.setAttribute('aria-expanded',String(!w.hidden));b.textContent=w.hidden?'Ver como tabela':'Ocultar tabela';renderTable();return}
