@@ -505,7 +505,7 @@ const IC={home:'M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',mercad
  glossario:'M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM5 17a3 3 0 0 1 3-3h11',alertas:'M6 17V11a6 6 0 1 1 12 0v6l2 2H4zM10 21h4',config:'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19 12l2-1-2-4-2 .5-1.5-1L15 4h-4l-.5 2.5-1.5 1-2-.5-2 4 2 1v2l-2 1 2 4 2-.5 1.5 1L11 20h4l.5-2.5 1.5-1 2 .5 2-4-2-1z',
  cripto:'M2 12c3-6 7-6 10 0s7 6 10 0M12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z',oportunidades:'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z',academia:'M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM5 17a3 3 0 0 1 3-3h11',saude:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4',shopping:'M4 7h16l-1.5 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8zM8 7a4 4 0 0 1 8 0',privacidade:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4'};
 const NAV=[['EXPLORAR',[['home','Início'],['mercados','Mercados'],['cripto','Cripto 24h','item #54'],['oportunidades','Oportunidades','item #55'],['cockpit','Ativo']]],
- ['ENTENDER',[['academia','Academia','item #49'],['brasil','Brasil: juros'],['geo','Geopolítica'],['glossario','Glossário']]],
+ ['ENTENDER',[['academia','Academia'],['brasil','Brasil: juros'],['geo','Geopolítica']]],
  ['SIMULAR',[['carteira','Minha Carteira'],['perfil','Perfil'],['shopping','Shopping'],['mapa','Mapa de ativos'],['montecarlo','Risco'],['simulador','Simulador'],['saude','Saúde dos dados']]],
  ['MAIS',[['radar','Radar de relatórios'],['correlacao','Correlação e concentração'],['composicao','Composição (Raio-X)'],['stress','Stress testing','sob pedido'],['alertas','Alertas','sob pedido'],['config','Configurações','item #11 e #15'],['privacidade','Privacidade e termos']]]];
 const icon=id=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${IC[id]||''}"/></svg>`;
@@ -633,5 +633,5 @@ async function renderRead(live){
    <div class="cs-chips"><span class="cs-chip cy">Fonte: ${esc(r.source)}</span><span class="cs-chip">${quoteWhen(r)}</span><span class="cs-chip am">análise, não ordem</span></div>`;
   if(html!==readHtml){readHtml=html;box.innerHTML=html}   /* só reescreve quando algo mudou: sem piscar e sem releitura para leitor de tela */
 }
-$('#hmAcademia').onclick=()=>openGloss();$('#hmAcademia2').onclick=()=>openGloss();
+$('#hmAcademia').onclick=()=>go('academia');$('#hmAcademia2').onclick=()=>go('academia');
 loadStatus();init().catch(e=>{setLive('off','falha ao iniciar');console.error(e)});
