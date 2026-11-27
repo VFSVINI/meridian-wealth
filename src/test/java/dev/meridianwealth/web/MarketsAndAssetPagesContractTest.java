@@ -70,4 +70,13 @@ class MarketsAndAssetPagesContractTest {
         assertThat(ck).contains("if(CK.show.entry&&A.score>=20").contains("if(CK.show.invalid)add(A.invalidation,k.down,'Invalidação')").contains("if(CK.show.targets){add(A.target1,k.warn,'Alvo 1');add(A.target2,k.warn,'Alvo 2')}");
         assertThat(ck).as("as linhas pendem da série à vista").contains("CK.lineHost=CK.mode==='area'?CK.area:CK.candle;");
     }
+
+    @Test
+    void redrawingOnEachQuoteKeepsKeyboardFocusAndScrollSkipsUnchangedHtmlAndTheDetailIsNotALiveRegion() throws IOException {
+        // medido: a cada cotação a lista e o painel eram reescritos (11 vezes em 2 s) e o foco ia para o BODY; o painel era aria-live
+        String js = StaticPage.file("mercados.js"), html = StaticPage.file("index.html");
+        assertThat(js).contains("function paint(el, html)").contains("if (painted.get(el) === html) return;").contains("for (const k of ['mks', 'mkr', 'mko', 'mkc'])").contains("b.focus({preventScroll: true})").contains("el.scrollTop = top;");
+        assertThat(js).as("nenhuma escrita direta fora do paint").doesNotContain("$('#mkDetail').innerHTML").doesNotContain("$('#mkItems').innerHTML").doesNotContain("$('#list').innerHTML");
+        assertThat(html).contains("<div class=\"mk-detail\" id=\"mkDetail\">").doesNotContain("id=\"mkDetail\" aria-live");
+    }
 }
