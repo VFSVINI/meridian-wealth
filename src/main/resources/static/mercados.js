@@ -34,6 +34,21 @@
   const withData = list => list.filter(u => hasData(rows[u.symbol]));
   const money = (u, v) => (u.currency === 'USD' ? 'US$ ' : u.currency === 'BRL' ? 'R$ ' : '') + f(v, v < 10 ? 4 : 2);
 
+  /* Escreve num trecho só se o HTML mudou e devolve o foco ao mesmo botão (e a rolagem): a cada cotação nova a tela se redesenha, e sem isso quem usa o teclado
+     perdia o foco uma vez por segundo. */
+  const painted = new WeakMap();
+  function paint(el, html) {
+    if (painted.get(el) === html) return;
+    const a = document.activeElement;
+    let again = null;
+    if (a && el.contains(a) && a.dataset) {
+      for (const k of ['mks', 'mkr', 'mko', 'mkc']) if (a.dataset[k] !== undefined) { again = '[data-' + k + '="' + CSS.escape(a.dataset[k]) + '"]'; break; }
+    }
+    const top = el.scrollTop;
+    el.innerHTML = html; painted.set(el, html); el.scrollTop = top;
+    if (again) { const b = el.querySelector(again); if (b) b.focus({preventScroll: true}); }
+  }
+
   /* ---------- peças de desenho ---------- */
   function sparkSvg(vals) {
     if (!vals || vals.length < 2) return '';
@@ -65,13 +80,13 @@
   function pills() {
     const counts = {todos: universe.filter(u => rows[u.symbol]).length};
     universe.forEach(u => { if (rows[u.symbol]) counts[clsOf(u)] = (counts[clsOf(u)] || 0) + 1; });
-    $('#mkPills').innerHTML = CLASSES.filter(([k]) => counts[k]).map(([k, l]) =>
-      `<button type="button" class="mk-pill" data-mkc="${k}" aria-pressed="${MK.cls === k}">${esc(l)} <small>${counts[k]}</small></button>`).join('');
+    paint($('#mkPills'), CLASSES.filter(([k]) => counts[k]).map(([k, l]) =>
+      `<button type="button" class="mk-pill" data-mkc="${k}" aria-pressed="${MK.cls === k}">${esc(l)} <small>${counts[k]}</small></button>`).join(''));
   }
 
   function items(list) {
     $('#mkCount').textContent = list.length + ' ATIVO' + (list.length === 1 ? '' : 'S');
-    $('#mkItems').innerHTML = list.map(u => {
+    paint($('#mkItems'), list.map(u => {
       const r = rows[u.symbol], on = u.symbol === MK.feat;
       if (!hasData(r)) {
         return `<li><button type="button" class="mk-item" data-mks="${esc(u.symbol)}" aria-pressed="${on}"><span class="mk-id"><b>${esc(u.symbol)}</b><small>${esc(u.name)}</small></span><span class="mk-nodata">sem dado em tempo real</span></button></li>`;
@@ -80,7 +95,7 @@
       return `<li><button type="button" class="mk-item" data-mks="${esc(u.symbol)}" aria-pressed="${on}"><span class="mk-id"><b>${esc(u.symbol)}</b><small>${esc(u.name)}</small></span>`
         + `<span class="mk-spark">${sparkSvg(MK.spark[u.symbol])}</span><span class="mk-px"><b class="num">${f(c.close, c.close < 10 ? 2 : 2)}</b>`
         + `<small class="num ${chg == null ? '' : chg >= 0 ? 'up' : 'dn'}">${chg == null ? 'não informado' : (chg >= 0 ? '+' : '') + f(chg * 100) + '%'}</small></span></button></li>`;
-    }).join('') || '<li class="mute mk-none">Nenhum ativo com esses filtros.</li>';
+    }).join('') || '<li class="mute mk-none">Nenhum ativo com esses filtros.</li>');
   }
 
   function metricCards(A) {
@@ -93,34 +108,34 @@
 
   function detail(list) {
     const u = universe.find(x => x.symbol === MK.feat), r = u && rows[u.symbol];
-    if (!u || !r) { $('#mkDetail').innerHTML = '<p class="mute">Escolha um ativo na lista.</p>'; return; }
+    if (!u || !r) { paint($('#mkDetail'), '<p class="mute">Escolha um ativo na lista.</p>'); return; }
     if (!hasData(r)) {
-      $('#mkDetail').innerHTML = `<div class="mk-dh"><div><h2>${esc(u.symbol)}</h2><p>${esc(u.name)}</p></div></div><p class="mute">Nenhum provedor respondeu para ${esc(u.symbol)} e não há dado real gravado. Nada é estimado.</p>`;
+      paint($('#mkDetail'), `<div class="mk-dh"><div><h2>${esc(u.symbol)}</h2><p>${esc(u.name)}</p></div></div><p class="mute">Nenhum provedor respondeu para ${esc(u.symbol)} e não há dado real gravado. Nada é estimado.</p>`);
       return;
     }
     const c = r.candle, chg = c.open > 0 ? c.close / c.open - 1 : null, A = r.assessment, cs = MK.candles[u.symbol] || [];
     const last = cs[cs.length - 1];
     const read = A ? `<div class="mk-read"><div class="mk-readh"><span class="mk-badge ${SIG[A.signal][1]}">${esc(SIG[A.signal][0])}</span><span class="cs-chip am">análise, não ordem</span></div><p>${esc(SIG_TXT[A.signal] || '')}</p></div>`
       : '<div class="mk-read"><p class="mute">Dados reais insuficientes para o motor de sinais neste ativo.</p></div>';
-    $('#mkDetail').innerHTML = `<div class="mk-dh"><div><h2>${esc(u.symbol)}</h2><p>${esc(u.name)} · ${esc(u.assetClass)} · ${esc(EXS[u.exchange] || u.exchange || '')}</p></div>`
+    paint($('#mkDetail'), `<div class="mk-dh"><div><h2>${esc(u.symbol)}</h2><p>${esc(u.name)} · ${esc(u.assetClass)} · ${esc(EXS[u.exchange] || u.exchange || '')}</p></div>`
       + `<div class="mk-dp"><b class="num">${money(u, c.close)}</b><small class="num ${chg == null ? '' : chg >= 0 ? 'up' : 'dn'}">${chg == null ? 'variação não informada' : (chg >= 0 ? '+' : '') + f(chg * 100) + '%'}</small></div></div>`
       + `<div class="mk-chips">${freshChip(r)}<span class="cs-chip cy">Fonte: ${esc(r.source)}</span><span class="cs-chip">${esc(quoteWhen(r))}</span>${isStale(r) ? '<span class="cs-chip dn">desatualizada</span>' : ''}</div>`
       + `<div class="mk-ranges" role="group" aria-label="Período do gráfico">${Object.keys(RANGE_BARS).map(k => `<button type="button" data-mkr="${k}" aria-pressed="${MK.range === k}">${k}</button>`).join('')}</div>`
       + `<div class="mk-chart">${cs.length ? candleSvg(cs, u) : '<span class="skel"></span>'}</div>`
       + (last ? `<p class="mk-ohlc num">${esc(new Date(last.time).toLocaleDateString('pt-BR'))} <span>A ${f(last.open, 4)}</span> <span>Máx ${f(last.high, 4)}</span> <span>Mín ${f(last.low, 4)}</span> <span class="${last.close >= last.open ? 'up' : 'dn'}">F ${f(last.close, 4)}</span></p>` : '')
       + read + (A ? metricCards(A) : '')
-      + `<div class="mk-foot"><span>Indicadores e leitura calculados aqui sobre dados reais. Não é ordem nem recomendação.</span><button type="button" class="mk-btn go" data-mko="${esc(u.symbol)}">Abrir análise completa <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>`;
+      + `<div class="mk-foot"><span>Indicadores e leitura calculados aqui sobre dados reais. Não é ordem nem recomendação.</span><button type="button" class="mk-btn go" data-mko="${esc(u.symbol)}">Abrir análise completa <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>`);
   }
 
   function table(list) {
-    $('#list').innerHTML = list.map(u => {
+    paint($('#list'), list.map(u => {
       const r = rows[u.symbol], sel0 = u.symbol === sel ? 'sel' : '';
       if (!hasData(r)) return `<tr class="row ${sel0}" data-s="${esc(u.symbol)}"><td><b class="mono">${esc(u.symbol)}</b><div class="src"><i class="dot ${r.marketOpen ? 'on' : ''}"></i>sem fonte</div></td><td colspan="3" class="mute" style="font-size:12px">sem dado em tempo real</td></tr>`;
       const c = r.candle, chg = c.open > 0 ? c.close / c.open - 1 : null, s = r.assessment ? SIG[r.assessment.signal] : null;
       return `<tr class="row ${sel0}" data-s="${esc(u.symbol)}"><td><b class="mono">${esc(u.symbol)}</b><div class="src"><i class="dot ${r.marketOpen ? 'on' : ''}"></i>${esc(r.source)} · ${esc(quoteWhen(r))}</div><div>${freshChip(r)}${isStale(r) ? ' <span class="fresh dn">desatualizada</span>' : ''}</div></td>`
         + `<td class="n ${r.flash || ''}">${f(c.close, c.close < 10 ? 4 : 2)}<div class="src">${esc(u.currency || '')}</div></td><td class="n ${chg == null ? '' : chg >= 0 ? 'up' : 'dn'}">${chg == null ? 'não informado' : (chg >= 0 ? '+' : '') + f(chg * 100) + '%'}</td>`
         + `<td>${s ? `<span class="chip ${s[1]}">${esc(s[0])}</span><div class="num mute" style="font-size:11px">${r.assessment.score > 0 ? '+' : ''}${r.assessment.score}</div>` : '<span class="mute" style="font-size:11px">dados insuficientes</span>'}</td></tr>`;
-    }).join('') || '<tr><td colspan="4" class="mute">Nenhum ativo com esses filtros.</td></tr>';
+    }).join('') || '<tr><td colspan="4" class="mute">Nenhum ativo com esses filtros.</td></tr>');
   }
 
   /* ---------- dados sob demanda ---------- */
