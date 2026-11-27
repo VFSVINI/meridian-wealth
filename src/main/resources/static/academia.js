@@ -113,7 +113,7 @@
     return true;
   }
 
-  function render() {
+  function render(inPlace) {
     if (!onPage() || !AC.data) return;
     const {m, c} = parts();
     let view = 'Home';
@@ -122,7 +122,7 @@
     else home();
     ['Home', 'Module', 'Chapter'].forEach(v => { $('#ac' + v).hidden = v !== view; });
     document.title = (view === 'Home' ? 'Academia' : $('#ac' + view + ' h1').textContent) + ' · MeridianWealth';
-    if (view !== 'Home') window.scrollTo(0, 0);
+    if (view !== 'Home' && !inPlace) window.scrollTo(0, 0);   /* só a troca de módulo ou capítulo vai ao topo; responder o quiz redesenha no lugar */
   }
   async function boot() {
     if (AC.data || AC.loading) return;
@@ -143,9 +143,10 @@
     (AC.state.ans[c] = AC.state.ans[c] || {})[q] = Number(r.value);
     if (chap.c.quiz.every((qq, k) => AC.state.ans[c][k] === qq.c)) AC.state.done[c] = true;
     save();
-    const open = document.activeElement && document.activeElement.name;
-    render();
-    const again = document.querySelector('.ac-quiz input[name="' + open + '"]:checked');
+    const y = window.scrollY, name = r.name, value = r.value;
+    render(true);
+    window.scrollTo(0, y);
+    const again = document.querySelector('.ac-quiz input[name="' + name + '"][value="' + value + '"]');
     if (again) again.focus({preventScroll: true});
   });
   addEventListener('hashchange', () => { if ((location.hash.match(/^#\/([a-z]+)/) || [])[1] === 'academia') boot().then(render); });

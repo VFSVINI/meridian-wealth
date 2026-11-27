@@ -126,4 +126,12 @@ class AcademiaContentTest {
         String js = StaticPage.file("academia.js");
         assertThat(js).contains("function order(n, seed)").contains("order(q.o.length, c.id + ':' + k)").contains("value=\"${j}\"").contains("AC.state.ans[c][k] === qq.c");
     }
+
+    @Test
+    void answeringTheQuizRedrawsInPlaceKeepingScrollAndFocusAndOnlyChangingChapterGoesToTheTop() throws IOException {
+        // medido: responder o quiz rolava a página de 880 px para 0 (render() sempre ia ao topo); agora só a troca de módulo ou capítulo vai
+        String js = StaticPage.file("academia.js");
+        assertThat(js).contains("function render(inPlace)").contains("if (view !== 'Home' && !inPlace) window.scrollTo(0, 0);").contains("render(true);").contains("window.scrollTo(0, y);");
+        assertThat(js).contains("input[name=\"' + name + '\"][value=\"' + value + '\"]").contains("again.focus({preventScroll: true})");
+    }
 }
