@@ -53,6 +53,10 @@ public class JdbcRefreshTokenStore implements RefreshTokenStore {
 
     private Rotation rotateOnce(String presentedHash, String nextHash, Instant nextExpiresAt, Instant now) {
         return tx.execute(status -> {
+            // todas as rotações do MESMO token se enfileiram aqui, antes de tocar em qualquer linha. Sem isso, os perdedores de uma corrida acordavam
+            // juntos e todos apagavam a mesma família, travando linhas e a fila de tuplas em ordens diferentes (medido no CI: ciclo de quatro conexões,
+            // "deadlock detected"). O lock é de transação (solto no commit ou rollback), então funciona também atrás de pooler em modo transação.
+            jdbc.query("SELECT pg_advisory_xact_lock(hashtext(?))", rs -> null, presentedHash);
             List<Entry> consumed = jdbc.query("UPDATE refresh_tokens SET used = TRUE WHERE token_hash = ? AND used = FALSE AND expires_at > ? "
                     + "RETURNING token_hash, family_id, user_id, expires_at", (rs, i) -> new Entry(rs.getString(1).trim(), rs.getString(2),
                     rs.getObject(3, UUID.class), rs.getTimestamp(4).toInstant()), presentedHash, Timestamp.from(now));

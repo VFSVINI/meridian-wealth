@@ -6,6 +6,9 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Corrigido (rotação de refresh token)
+- **Deadlock na rotação concorrente do mesmo refresh token** (visto uma vez no CI, com um ciclo de quatro conexões no PostgreSQL): os perdedores de uma corrida acordavam juntos e todos apagavam a mesma família, travando linhas e a fila de tuplas em ordens diferentes. A repetição da transação (3 tentativas) já existia, mas com muitos perdedores ainda podia estourar. Agora toda rotação começa com um lock consultivo de transação pelo hash do token apresentado, então as rotações do **mesmo** token se enfileiram antes de tocar em qualquer linha (rotações de outros tokens não esperam); a repetição segue como rede de segurança. Teste determinístico: com o lock segurado por outra transação, a rotação espera; sem a correção ele falha.
+
 ### Adicionado (item #34 do roadmap)
 - **Composição e mapa de todos os FIIs com imóveis na CVM**: 167 fundos e 1.220 imóveis do Informe Trimestral (dados abertos da CVM, fonte oficial), com 466 coordenadas confirmadas pela geocodificação conservadora e o motivo de cada imóvel sem coordenada. O ticker é ligado ao CNPJ pelo ISIN do próprio Informe, conferido com o catálogo e o nome; fundo duvidoso fica de fora. O tipo do imóvel fica em branco porque a CVM não o publica.
 - **Mapa para centenas de fundos**: busca do fundo pelo código, filtros por UF e tipo, lista que mostra 60 por vez, fontes resumidas e comparação dos 15 maiores do filtro.

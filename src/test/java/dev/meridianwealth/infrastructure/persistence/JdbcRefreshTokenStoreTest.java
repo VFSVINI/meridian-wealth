@@ -72,4 +72,37 @@ class JdbcRefreshTokenStoreTest extends RefreshTokenStoreContract {
         org.assertj.core.api.Assertions.assertThatThrownBy(() -> never.rotate(hash("x"), hash("y"), Instant.now().plusSeconds(900), Instant.now()))
                 .isInstanceOf(org.springframework.dao.PessimisticLockingFailureException.class);
     }
+
+    /**
+     * Prova da serialização: uma transação segura o lock consultivo do token; a rotação desse mesmo token espera por ele (nenhuma linha é tocada antes)
+     * e só termina depois que o lock é solto. Rotações de OUTRO token não esperam. É isto que impede os perdedores de uma corrida de apagarem a
+     * mesma família ao mesmo tempo e se travarem (deadlock medido no CI).
+     */
+    @Test void rotationsOfTheSameTokenQueueBehindEachOtherWhileOtherTokensDoNot() throws Exception {
+        UUID u = newUser();
+        store.save(new RefreshTokenStore.Entry(hash("mesmo"), "fam1", u, Instant.now().plusSeconds(600)));
+        store.save(new RefreshTokenStore.Entry(hash("outro"), "fam2", u, Instant.now().plusSeconds(600)));
+        var tm = new DataSourceTransactionManager(PostgresDb.dataSource());
+        var holder = new org.springframework.transaction.support.TransactionTemplate(tm);
+        java.util.concurrent.CountDownLatch locked = new java.util.concurrent.CountDownLatch(1), release = new java.util.concurrent.CountDownLatch(1);
+        var exec = java.util.concurrent.Executors.newFixedThreadPool(2);
+        try {
+            var holding = exec.submit(() -> holder.executeWithoutResult(st -> {
+                jdbc.query("SELECT pg_advisory_xact_lock(hashtext(?))", rs -> null, hash("mesmo"));
+                locked.countDown();
+                try { release.await(); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+            }));
+            assertThat(locked.await(10, java.util.concurrent.TimeUnit.SECONDS)).isTrue();
+            var waiting = exec.submit(() -> store.rotate(hash("mesmo"), hash("m2"), Instant.now().plusSeconds(900), Instant.now()));
+            assertThat(store.rotate(hash("outro"), hash("o2"), Instant.now().plusSeconds(900), Instant.now())).as("outro token não espera").isInstanceOf(RefreshTokenStore.Rotation.Rotated.class);
+            Thread.sleep(700);
+            assertThat(waiting.isDone()).as("a rotação do mesmo token espera o lock").isFalse();
+            release.countDown();
+            holding.get(10, java.util.concurrent.TimeUnit.SECONDS);
+            assertThat(waiting.get(10, java.util.concurrent.TimeUnit.SECONDS)).isInstanceOf(RefreshTokenStore.Rotation.Rotated.class);
+        } finally {
+            release.countDown();
+            exec.shutdownNow();
+        }
+    }
 }
