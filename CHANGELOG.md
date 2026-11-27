@@ -6,6 +6,13 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #49 do roadmap, Milestone 8: Cosmos)
+- **Academia**: o glossário em lista virou um **curso em 9 módulos e 26 capítulos** (Fundamentos, Renda variável, Renda fixa, FIIs, Cripto, Câmbio e commodities, Indicadores técnicos, Risco e carteira, Macro e geopolítica). Cada capítulo tem ideia central, diagrama, exemplo hipotético, "por que importa para o seu dinheiro" e mini-quiz; o cartão "Seu progresso" mostra os capítulos concluídos, salvos só no navegador.
+- Um teste confere a estrutura do curso, as contas dos exemplos e a ausência de promessa de retorno e de recomendação.
+
+### Alterado (item #49)
+- O menu "Entender" passa a ter a Academia no lugar do Glossário (o glossário segue na Academia e nos botões "?" dos indicadores); os botões do Início levam à Academia.
+
 ### Adicionado (item #48 do roadmap, Milestone 8: Cosmos)
 - **Mercados no visual do protótipo**: "Como estão os mercados agora?", busca, pílulas por classe com contagem, visões Lista, Tabela e Mapa (o globo de pregões), lista com mini-gráfico real e **ativo em destaque que troca sozinho a cada 7 segundos** (com "Pausar troca", e sem troca automática com movimento reduzido), com candles, selos de frescor e fonte, leitura em uma frase, RSI, volatilidade e média de 50 dias.
 - **Ativo no visual do protótipo**: "SÍMBOLO: o que o gráfico diz?", chips para trocar de ativo, cartão **"A leitura em uma frase"** (sinal, confiança, por quê e o que mudaria), gráfico em Área ou Velas com camadas independentes de Entrada, Alvos e Invalidação, "Conheça o ativo antes de decidir" em cinco abas e o restante do cockpit atrás de "Ver análise completa".

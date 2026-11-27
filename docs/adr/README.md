@@ -41,3 +41,4 @@ ADRs aceitos não são reescritos; uma mudança de rumo gera um ADR novo que sub
 | [034](034-catalogo-de-ativos-negociados.md) | Catálogo de ativos negociados e abertura sob demanda com sinal do motor | Aceito | 2026-11-25 |
 | [035](035-composicao-de-todos-os-fiis-pela-cvm.md) | Composição e mapa de todos os FIIs com imóveis publicados na CVM | Aceito | 2026-11-25 |
 | [036](036-mercados-e-ativo-no-visual-cosmos.md) | Mercados e Ativo no visual Cosmos | Aceito | 2026-11-27 |
+| [037](037-academia-curso-em-modulos.md) | Academia: curso em módulos com quiz e progresso no navegador | Aceito | 2026-11-28 |
