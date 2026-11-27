@@ -6,6 +6,14 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #48 do roadmap, Milestone 8: Cosmos)
+- **Mercados no visual do protótipo**: "Como estão os mercados agora?", busca, pílulas por classe com contagem, visões Lista, Tabela e Mapa (o globo de pregões), lista com mini-gráfico real e **ativo em destaque que troca sozinho a cada 7 segundos** (com "Pausar troca", e sem troca automática com movimento reduzido), com candles, selos de frescor e fonte, leitura em uma frase, RSI, volatilidade e média de 50 dias.
+- **Ativo no visual do protótipo**: "SÍMBOLO: o que o gráfico diz?", chips para trocar de ativo, cartão **"A leitura em uma frase"** (sinal, confiança, por quê e o que mudaria), gráfico em Área ou Velas com camadas independentes de Entrada, Alvos e Invalidação, "Conheça o ativo antes de decidir" em cinco abas e o restante do cockpit atrás de "Ver análise completa".
+- `GET /api/sparklines`: os fechamentos recentes de todos os ativos acompanhados numa chamada, só dado real.
+
+### Alterado (item #48)
+- Os blocos provisórios da página inicial (sinais do dia, maiores movimentos, notícias e atalhos) saíram de Mercados; as manchetes voltam em Geopolítica (item #51).
+
 ### Corrigido (rotação de refresh token)
 - **Deadlock na rotação concorrente do mesmo refresh token** (visto uma vez no CI, com um ciclo de quatro conexões no PostgreSQL): os perdedores de uma corrida acordavam juntos e todos apagavam a mesma família, travando linhas e a fila de tuplas em ordens diferentes. A repetição da transação (3 tentativas) já existia, mas com muitos perdedores ainda podia estourar. Agora toda rotação começa com um lock consultivo de transação pelo hash do token apresentado, então as rotações do **mesmo** token se enfileiram antes de tocar em qualquer linha (rotações de outros tokens não esperam); a repetição segue como rede de segurança. Teste determinístico: com o lock segurado por outra transação, a rotação espera; sem a correção ele falha.
 
