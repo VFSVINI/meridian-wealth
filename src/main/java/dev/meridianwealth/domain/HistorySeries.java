@@ -6,24 +6,26 @@ package dev.meridianwealth.domain;
  * comercial de venda, que coincide com o PTAX de venda (5,7446 nas duas fontes em 26/11/2026).
  */
 public enum HistorySeries {
-    SELIC_TARGET("selic", 432, "Meta Selic definida pelo Copom", "% a.a.", true),
-    CDI_ANNUAL("cdiAnnual", 4389, "CDI anualizado (base 252)", "% a.a.", false),
-    IPCA_12M("ipca12m", 13522, "IPCA, acumulado em 12 meses", "% em 12 meses", false),
-    IPCA_MONTHLY("ipcaMonthly", 433, "IPCA, variação mensal", "% no mês", false),
-    PTAX_SELL("ptax", 1, "Dólar PTAX (venda)", "R$ por US$", false);
+    SELIC_TARGET("selic", 432, "Meta Selic definida pelo Copom", "% a.a.", true, RateSeries.Periodicity.DAILY),
+    CDI_ANNUAL("cdiAnnual", 4389, "CDI anualizado (base 252)", "% a.a.", false, RateSeries.Periodicity.DAILY),
+    IPCA_12M("ipca12m", 13522, "IPCA, acumulado em 12 meses", "% em 12 meses", false, RateSeries.Periodicity.MONTHLY),
+    IPCA_MONTHLY("ipcaMonthly", 433, "IPCA, variação mensal", "% no mês", false, RateSeries.Periodicity.MONTHLY),
+    PTAX_SELL("ptax", 1, "Dólar PTAX (venda)", "R$ por US$", false, RateSeries.Periodicity.DAILY);
 
     private final String key;
     private final int sgsCode;
     private final String label;
     private final String unit;
     private final boolean forwardFilled;
+    private final RateSeries.Periodicity periodicity;
 
-    HistorySeries(String key, int sgsCode, String label, String unit, boolean forwardFilled) {
+    HistorySeries(String key, int sgsCode, String label, String unit, boolean forwardFilled, RateSeries.Periodicity periodicity) {
         this.key = key;
         this.sgsCode = sgsCode;
         this.label = label;
         this.unit = unit;
         this.forwardFilled = forwardFilled;
+        this.periodicity = periodicity;
     }
 
     public String key() { return key; }
@@ -36,6 +38,9 @@ public enum HistorySeries {
 
     /** A série repete o valor vigente: a data de cada ponto é "vigente em", não a de uma publicação. */
     public boolean forwardFilled() { return forwardFilled; }
+
+    /** Frequência de publicação, a mesma tolerância dos indicadores (diária 5 dias, mensal 75): passou disso sem ponto novo, o Banco Central parou de publicar. */
+    public RateSeries.Periodicity periodicity() { return periodicity; }
 
     public String source() { return "BCB/SGS " + sgsCode; }
 }

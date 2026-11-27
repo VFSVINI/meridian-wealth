@@ -73,7 +73,10 @@ public class BrazilHistoryService {
             if (s == HistorySeries.SELIC_TARGET) decisions = decisions(h);
             List<RateHistory.Point> pts = h.since(today.minusMonths(CHART_MONTHS));
             if (pts.isEmpty()) { missing.add(s); continue; }
-            out.put(s, new Series(s, pts, h.fetchedAt(), Duration.between(c.get().loadedAt(), now).compareTo(TTL.multipliedBy(2)) > 0));
+            boolean fetchOld = Duration.between(c.get().loadedAt(), now).compareTo(TTL.multipliedBy(2)) > 0;
+            // além da nossa consulta, vale a idade da publicação (séries preenchidas para a frente, como a meta Selic, não usam a data como idade)
+            boolean publicationStopped = !s.forwardFilled() && java.time.temporal.ChronoUnit.DAYS.between(pts.get(pts.size() - 1).date(), today) > s.periodicity().toleranceDays();
+            out.put(s, new Series(s, pts, h.fetchedAt(), fetchOld || publicationStopped));
         }
         return new View(now, out, List.copyOf(missing), decisions, comparison(out));
     }
