@@ -1,6 +1,7 @@
 package dev.meridianwealth.config;
 
 import dev.meridianwealth.application.BacktestService;
+import dev.meridianwealth.application.BrazilHistoryService;
 import dev.meridianwealth.application.BrazilRatesService;
 import dev.meridianwealth.application.CompositionService;
 import dev.meridianwealth.application.ReportsService;
@@ -12,6 +13,7 @@ import dev.meridianwealth.application.ThesisService;
 import dev.meridianwealth.application.StatusService;
 import dev.meridianwealth.application.StreamService;
 import dev.meridianwealth.application.port.BacktestCache;
+import dev.meridianwealth.application.port.BrazilHistoryPort;
 import dev.meridianwealth.application.port.BrazilRatesPort;
 import dev.meridianwealth.application.port.CacheStore;
 import dev.meridianwealth.application.port.FundamentalsPort;
@@ -67,6 +69,11 @@ public class ApplicationConfig {
     @Bean
     BrazilRatesService brazilRatesService(BrazilRatesPort rates, Clock brasiliaClock) {
         return new BrazilRatesService(rates, brasiliaClock);
+    }
+
+    @Bean
+    BrazilHistoryService brazilHistoryService(BrazilHistoryPort history, Clock brasiliaClock) {
+        return new BrazilHistoryService(history, brasiliaClock);
     }
 
     @Bean

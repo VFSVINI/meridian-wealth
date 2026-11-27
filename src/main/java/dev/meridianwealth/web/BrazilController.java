@@ -1,8 +1,12 @@
 package dev.meridianwealth.web;
 
+import dev.meridianwealth.application.BrazilHistoryService;
 import dev.meridianwealth.application.BrazilRatesService;
+import dev.meridianwealth.domain.HistorySeries;
 import java.time.Instant;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,9 +23,36 @@ public class BrazilController {
 
     public record RatesView(String today, String fetchedAt, String notice, List<RateView> items) {}
 
-    private final BrazilRatesService rates;
+    public record PointView(String date, String value) {}
 
-    public BrazilController(BrazilRatesService rates) { this.rates = rates; }
+    public record SeriesView(String key, String label, String unit, String source, String dateLabel, String lastDate, String lastValue, boolean stale, String fetchedAt,
+                             List<PointView> points) {}
+
+    public record DecisionView(String date, String from, String to, String direction) {}
+
+    public record ComparisonView(String key, String label, String nominal, String real, String rule) {}
+
+    public record HistoryView(String asOf, String notice, Map<String, SeriesView> series, List<String> unavailable, List<DecisionView> decisions, List<ComparisonView> comparison) {}
+
+    private final BrazilRatesService rates;
+    private final BrazilHistoryService history;
+
+    public BrazilController(BrazilRatesService rates, BrazilHistoryService history) {
+        this.rates = rates;
+        this.history = history;
+    }
+
+    /** Histórico de 12 meses das séries oficiais, as mudanças da meta Selic em 24 meses e o juro real; o que o Banco Central não entregou vem em {@code unavailable}. */
+    @GetMapping("/history")
+    public HistoryView history() {
+        BrazilHistoryService.View v = history.view();
+        Map<String, SeriesView> series = new LinkedHashMap<>();
+        v.series().forEach((k, s) -> series.put(k.key(), new SeriesView(k.key(), k.label(), k.unit(), k.source(), k.forwardFilled() ? "vigente em" : "referência", s.last().date().toString(),
+                s.last().value().toPlainString(), s.stale(), s.fetchedAt().toString(), s.points().stream().map(p -> new PointView(p.date().toString(), p.value().toPlainString())).toList())));
+        return new HistoryView(v.asOf().toString(), "Dados oficiais do Banco Central do Brasil (SGS), na data de referência de cada ponto. Ferramenta analítica: não é recomendação financeira.", series,
+                v.unavailable().stream().map(HistorySeries::key).toList(), v.decisions().stream().map(d -> new DecisionView(d.date().toString(), d.from().toPlainString(), d.to().toPlainString(), d.direction())).toList(),
+                v.comparison().stream().map(c -> new ComparisonView(c.key(), c.label(), c.nominal().toPlainString(), c.real().toPlainString(), c.rule())).toList());
+    }
 
     @GetMapping("/rates")
     public RatesView rates() {
