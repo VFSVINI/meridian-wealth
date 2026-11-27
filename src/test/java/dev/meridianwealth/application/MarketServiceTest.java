@@ -303,4 +303,16 @@ class MarketServiceTest {
         assertThat(service.isTracked("KEEP11")).isTrue();
         assertThat(service.isTracked("N0AA11")).isFalse();
     }
+
+    @Test void sparklinesCarryTheLastRealClosesInTimeOrderAndSkipAssetsWithoutData() {
+        data.histories.put("SPY", real(1, "stooq", Freshness.END_OF_DAY));
+        service.loadHistories();
+        var all = service.candles("SPY", 500);
+        var sp = service.sparklines(30);
+        assertThat(sp).containsOnlyKeys("SPY");                           // AAPL e MSFT não têm dado real: ficam de fora
+        assertThat(sp.get("SPY")).hasSize(30);
+        assertThat(sp.get("SPY")[29]).isEqualTo(all.get(all.size() - 1).close());
+        assertThat(sp.get("SPY")[0]).isEqualTo(all.get(all.size() - 30).close());
+        assertThat(service.sparklines(5000).get("SPY")).as("pede mais do que existe: devolve tudo o que há").hasSize(all.size());
+    }
 }

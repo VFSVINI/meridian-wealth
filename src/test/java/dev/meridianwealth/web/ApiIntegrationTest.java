@@ -401,4 +401,19 @@ class ApiIntegrationTest {
         assertThat(rest.getForEntity("/v3/api-docs", String.class).getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(rest.getForEntity("/actuator/health", String.class).getStatusCode()).isEqualTo(HttpStatus.OK);
     }
+
+    @Test void sparklinesServeTheLastRealClosesOfEveryAssetWithDataInOneCall() {
+        @SuppressWarnings("unchecked")
+        Map<String, List<Number>> sp = rest.getForObject("/api/sparklines?bars=30", Map.class);
+        assertThat(sp).containsKeys("SPY", "AAPL");                       // as duas com dado real gravado nas fixtures
+        assertThat(sp.get("SPY")).hasSize(30);
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> ticks = (List<Map<String, Object>>) rest.getForObject("/api/overview", Map.class).get("ticks");
+        for (Map<String, Object> t : ticks) {
+            // só tem série quem tem candle real; quem não tem fica de fora, nunca com série inventada
+            assertThat(sp.containsKey((String) t.get("symbol"))).as((String) t.get("symbol")).isEqualTo(t.get("candle") != null);
+        }
+        assertThat(rest.getForEntity("/api/sparklines?bars=4", String.class).getStatusCode().value()).as("limite mínimo").isEqualTo(400);
+        assertThat(rest.getForEntity("/api/sparklines?bars=121", String.class).getStatusCode().value()).as("limite máximo").isEqualTo(400);
+    }
 }
