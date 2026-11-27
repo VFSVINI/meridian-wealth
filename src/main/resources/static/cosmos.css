@@ -286,3 +286,48 @@ h3.sub .src{letter-spacing:0;text-transform:none;font-weight:400}
 @media(max-width:1180px){.ac-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ac-prog{grid-column:1/-1;grid-row:1}}
 @media(max-width:900px){.ac-body{grid-template-columns:1fr}.ac-fig{position:static}}
 @media(max-width:560px){.ac-grid{grid-template-columns:1fr}.ac-bar{grid-template-columns:1fr auto}.ac-bar i{grid-column:1/-1;grid-row:2}}
+
+/* Brasil: juros e inflação (item #50) */
+.br-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4);margin-top:var(--s5)}
+.br-card,.br-panel{border:1px solid var(--line);border-radius:18px;padding:clamp(16px,2vw,24px);background:linear-gradient(180deg,rgba(14,22,48,.85),rgba(8,13,30,.85));min-width:0}
+:root[data-theme="ivory"] .br-card,:root[data-theme="ivory"] .br-panel,:root[data-theme="ivory"] .br-academy{background:var(--panel)}
+.br-card.selic{border-color:rgba(255,179,64,.55)}
+.br-k{display:flex;flex-wrap:wrap;gap:var(--s2);align-items:center;justify-content:space-between;margin:0 0 var(--s2);font:700 12px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--text-2)}
+.br-k .cs-chip{letter-spacing:0;text-transform:none;font-weight:600;font-size:12px}
+.br-v{display:block;font:500 clamp(30px,3vw,42px)/1.1 var(--mono);margin:var(--s2) 0 2px}
+.br-s{margin:0 0 var(--s3);color:var(--text-3);font-size:14px}
+.br-chart{position:relative;padding:0 0 0 0;margin-top:var(--s2)}
+.br-chart svg{width:100%;height:150px;display:block;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.br-chart .line{fill:none;stroke:var(--gold);stroke-width:2.2;stroke-linejoin:round}
+.br-card.ipca12m .br-chart .line{stroke:var(--cyan)}.br-card.ptax .br-chart .line{stroke:var(--up)}
+.br-chart .fill{fill:rgba(255,179,64,.16)}.br-card.ptax .br-chart .fill{fill:rgba(56,221,156,.14)}
+.br-yt,.br-yb{position:absolute;left:6px;font:11px var(--mono);color:var(--text-3);background:rgba(4,7,14,.55);padding:0 4px;border-radius:4px}
+.br-yt{top:6px}.br-yb{bottom:22px}
+.br-xa{display:flex;justify-content:space-between;margin-top:6px;font:11px var(--mono);color:var(--text-3)}
+.br-sec{margin-top:clamp(28px,4vw,56px)}
+.br-explain{margin-top:var(--s4);border:1px solid var(--line);border-radius:18px;padding:clamp(16px,2vw,28px);background:linear-gradient(180deg,rgba(14,22,48,.85),rgba(8,13,30,.85))}
+:root[data-theme="ivory"] .br-explain{background:var(--panel)}
+.br-explain h3{font:700 22px var(--sans);margin:0 0 var(--s2)}.br-explain>p{margin:0 0 var(--s4);color:var(--text-2);font-size:17px;line-height:1.55;max-width:70ch}
+.br-boxes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s3)}
+.br-boxes>div{border-radius:14px;padding:var(--s4)}.br-boxes .pocket{border:1px dashed rgba(255,179,64,.6);background:rgba(255,179,64,.05)}.br-boxes .ex{border:1px solid var(--line-2)}
+.br-boxes span{display:block;font:700 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}.br-boxes .pocket span{color:var(--gold)}.br-boxes .ex span{color:var(--cyan)}
+.br-boxes p{margin:0;font-size:15.5px;line-height:1.55}
+.br-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:var(--s4);margin:var(--s5) 0}
+.br-pk{display:flex;flex-wrap:wrap;gap:var(--s2);align-items:center;justify-content:space-between;margin:0 0 var(--s4);font:700 12px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--text-2)}
+.br-pk .cs-chip{letter-spacing:0;text-transform:none;font-weight:600}
+.br-bars{display:grid;gap:var(--s3)}
+.br-bar{display:grid;grid-template-columns:minmax(110px,1fr) 2fr auto;grid-template-areas:"n b v" "n b r";align-items:center;column-gap:var(--s3);font-size:14.5px}
+.br-bar span{grid-area:n;color:var(--text)}.br-bar i{grid-area:b;display:block;height:14px;border-radius:7px;background:var(--cyan);min-width:4px}
+.br-bar.savings i{background:#8f9bd0}.br-bar.cdb100 i{background:var(--gold)}.br-bar.ipca i{background:var(--down)}
+.br-bar b{grid-area:v;font-weight:600;text-align:right}.br-bar small{grid-area:r;text-align:right;font-size:12px;color:var(--text-3)}.br-bar small.up{color:var(--up)}.br-bar small.dn{color:var(--down)}
+.br-tl{list-style:none;margin:0;padding:0 0 0 var(--s4);border-left:1px solid var(--line-2);display:grid;gap:var(--s4)}
+.br-tl li{position:relative;display:grid;gap:2px}
+.br-tl li::before{content:"";position:absolute;left:calc(-1 * var(--s4) - 5px);top:4px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--gold)}
+.br-tl li.fall::before{border-color:var(--cyan)}
+.br-tl time{font:600 13px var(--mono);color:var(--gold)}.br-tl li.fall time{color:var(--cyan)}.br-tl b{font:600 16px var(--sans)}.br-tl small{color:var(--text-3);font-size:13.5px}
+.br-academy{display:flex;align-items:center;gap:var(--s4);padding:var(--s4) var(--s5);border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,rgba(14,22,48,.85),rgba(8,13,30,.85));color:var(--text);text-decoration:none;margin-bottom:var(--s4)}
+.br-academy:hover,.br-academy:focus-visible{border-color:rgba(255,179,64,.65)}
+.br-academy svg{width:22px;height:22px;fill:none;stroke:var(--gold);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.br-academy span{flex:1;display:flex;flex-direction:column}.br-academy b{font:600 17px var(--sans)}.br-academy small{color:var(--text-3);font-size:14px}
+@media(max-width:1100px){.br-cards{grid-template-columns:1fr}.br-two{grid-template-columns:1fr}}
+@media(max-width:640px){.br-boxes{grid-template-columns:1fr}.br-bar{grid-template-columns:1fr auto;grid-template-areas:"n v" "b b" "r r"}}
