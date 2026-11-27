@@ -73,6 +73,12 @@ public class MarketController {
                 .map(ex -> MarketHours.status(ex, now)).toList();
     }
 
+    /** Fechamentos recentes de todos os ativos acompanhados (mini-gráficos de Mercados): só dado real, ativo sem histórico não aparece. */
+    @GetMapping("/sparklines")
+    public Map<String, double[]> sparklines(@RequestParam(defaultValue = "30") @Min(5) @Max(120) int bars) {
+        return market.sparklines(bars);
+    }
+
     @GetMapping("/overview")
     public TickBatch overview() { return market.overview(); }
 

@@ -205,6 +205,23 @@ public class MarketService {
 
     public boolean isTracked(String symbol) { return views.containsKey(symbol); }
 
+    /**
+     * Fechamentos recentes de cada ativo acompanhado, numa chamada só (mini-gráficos da lista de Mercados). Só dado real do snapshot: ativo sem barras
+     * fica de fora, nunca com série inventada. As últimas {@code bars} barras, na ordem do tempo.
+     */
+    public java.util.Map<String, double[]> sparklines(int bars) {
+        java.util.Map<String, double[]> out = new LinkedHashMap<>();
+        views.forEach((sym, v) -> {
+            List<Candle> c = v.candles();
+            if (c.size() < 2) return;
+            int from = Math.max(0, c.size() - bars);
+            double[] closes = new double[c.size() - from];
+            for (int i = from; i < c.size(); i++) closes[i - from] = c.get(i).close();
+            out.put(sym, closes);
+        });
+        return out;
+    }
+
     /** Último radar macro obtido (indisponível quando nenhum provedor respondeu). */
     public MacroSnapshot macro() { return macro; }
 
