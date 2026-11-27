@@ -416,4 +416,23 @@ class ApiIntegrationTest {
         assertThat(rest.getForEntity("/api/sparklines?bars=4", String.class).getStatusCode().value()).as("limite mínimo").isEqualTo(400);
         assertThat(rest.getForEntity("/api/sparklines?bars=121", String.class).getStatusCode().value()).as("limite máximo").isEqualTo(400);
     }
+
+    @SuppressWarnings("unchecked")
+    @Test void brazilHistoryServesRealSeriesAsExactTextAndNeverEstimatesWhatIsMissing() {
+        Map<String, Object> h = rest.getForObject("/api/brazil/history", Map.class);
+        Map<String, Map<String, Object>> series = (Map<String, Map<String, Object>>) h.get("series");
+        List<String> missing = (List<String>) h.get("unavailable");
+        // cada série ou chegou ou está listada como indisponível: nenhuma some em silêncio (os dados gravados envelhecem; o contrato não)
+        java.util.Set<String> all = new java.util.TreeSet<>(series.keySet());
+        all.addAll(missing);
+        assertThat(all).containsExactlyInAnyOrder("selic", "cdiAnnual", "ipca12m", "ipcaMonthly", "ptax");
+        series.values().forEach(s -> {
+            assertThat((String) s.get("source")).startsWith("BCB/SGS ");
+            assertThat((String) s.get("lastValue")).matches("\\d+(\\.\\d+)?");           // texto exato, sem notação científica
+            assertThat((List<?>) s.get("points")).isNotEmpty();
+        });
+        assertThat((String) h.get("notice")).contains("Banco Central").contains("não é recomendação");
+        assertThat((List<?>) h.get("decisions")).isNotNull();
+        assertThat((List<?>) h.get("comparison")).isNotNull();
+    }
 }
