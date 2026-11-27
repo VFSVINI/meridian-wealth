@@ -65,16 +65,20 @@
     </section>
 
     <section class="page" data-page="mercados" hidden>
-      <div class="ph"><p class="eyebrow">Visão geral</p><h1>Mercados</h1><p class="lede">Os ativos acompanhados, com o selo de frescor e a fonte de cada cotação. Clique numa linha para abrir o cockpit. <b>Qualquer ativo negociado na B3 ou nos EUA</b> (ações, FIIs, ETFs e BDRs) abre pela busca: use o campo do topo ou Ctrl K.</p></div>
-      <div class="card">
-        <div class="filters">
-          <select id="region" aria-label="Região"><option value="">Todas as regiões</option><option>EUA</option><option>Brasil</option><option>Europa</option><option>Ásia</option><option>Oceania</option><option>Oriente Médio/África</option><option>Cripto</option><option>Global</option></select>
-          <select id="sigf" aria-label="Sinal"><option value="">Todos os sinais</option></select>
-          <input id="q" type="search" placeholder="Filtrar por símbolo ou nome" aria-label="Filtrar ativos">
+      <div class="ph"><p class="eyebrow">Mercados</p><h1>Como estão os mercados agora?</h1><p class="lede" id="mkLede">Um ativo em destaque troca sozinho a cada 7 segundos. Escolha qualquer um na lista para ver o gráfico e a leitura dele. Qualquer ativo negociado na B3 ou nos EUA abre pela busca do topo (Ctrl K).</p></div>
+      <label class="mk-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Buscar por símbolo ou nome (PETR4, Bitcoin, dólar...)" aria-label="Filtrar os ativos acompanhados"></label>
+      <div class="mk-pills" id="mkPills" role="group" aria-label="Classe do ativo"></div>
+      <div class="mk-views" role="group" aria-label="Forma de ver os ativos"><button type="button" class="mk-view" data-mkv="lista" aria-pressed="true">Lista</button><button type="button" class="mk-view" data-mkv="tabela" aria-pressed="false">Tabela</button><button type="button" class="mk-view" data-mkv="mapa" aria-pressed="false">Mapa</button></div>
+      <div id="mkLista" class="mk-split">
+        <div class="mk-list"><div class="mk-list-h"><b id="mkCount">—</b><span>toque para ver o gráfico</span></div><ul id="mkItems" class="mk-items"></ul></div>
+        <div class="mk-side">
+          <div class="mk-auto"><span class="mk-auto-tag" id="mkAutoTag"><i></i>Destaque automático</span><span class="mk-auto-txt" id="mkAutoTxt">Troca a cada 7 segundos</span><button type="button" id="mkPause" class="mk-btn">Pausar troca</button></div>
+          <div class="mk-prog" aria-hidden="true"><i id="mkProg"></i></div>
+          <div class="mk-detail" id="mkDetail" aria-live="polite"><span class="skel"></span></div>
         </div>
-        <table><thead><tr><th>Ativo</th><th class="n">Preço</th><th class="n">Barra</th><th>Sinal</th></tr></thead><tbody id="list"></tbody></table>
       </div>
-      <div class="cs-legacy">
+      <div id="mkTabela" hidden><div class="card"><table><thead><tr><th>Ativo</th><th class="n">Preço</th><th class="n">Barra</th><th>Sinal</th></tr></thead><tbody id="list"></tbody></table></div></div>
+      <div id="mkMapa" hidden>
       <div class="card globe-card"><h2>Pregões agora <span class="src" style="text-transform:none;letter-spacing:0;margin-left:auto">Estado calculado no servidor, com os feriados oficiais</span></h2>
         <div class="globe-grid">
           <div class="globe-stage" id="globeStage"><canvas id="globeCanvas" tabindex="0" role="img" aria-label="Globo 3D das bolsas. A lista ao lado traz o estado de todas em texto."></canvas>
@@ -83,30 +87,20 @@
             <div id="globeSel" class="globe-sel" aria-live="polite">Clique numa bolsa no globo ou na lista para ver o estado dela e os ativos do universo.</div>
             <p class="src">Posição das bolsas: cidade de cada uma. Dia e noite: posição do Sol calculada do horário UTC (aproximada). * calendário de feriados não verificado.</p></div>
         </div></div>
-      <div class="grid-home">
-        <div>
-          <div class="card"><h2>Sinais do dia <span class="src" style="text-transform:none;letter-spacing:0;margin-left:auto">Leitura mecânica dos números publicados</span></h2><div class="sig-cards" id="hmSignals"><span class="skel"></span></div></div>
-          <div class="card"><h2>Maiores movimentos <a href="#/mercados" style="margin-left:auto;font-size:12px;letter-spacing:0;text-transform:none">Abrir mercados</a></h2>
-            <table><thead><tr><th>Ativo</th><th class="n">Preço</th><th class="n">Variação</th><th>Frescor e fonte</th></tr></thead><tbody id="hmMovers"></tbody></table></div>
-        </div>
-        <div>
-          <div class="card"><h2>Notícias de risco <span class="tag info">de terceiros</span></h2><div id="hmNews" class="mute">carregando…</div></div>
-          <div class="card"><h2>Atalhos</h2><div class="shortcuts">
-            <a href="#/cockpit">Abrir o cockpit de um ativo</a><a href="#/simulador">Simular uma ordem hipotética</a><a href="#/geo">Traduzir a carteira em exposição geopolítica</a><a href="#/radar">Ver o radar de relatórios</a></div></div>
-        </div>
-      </div>
       </div>
     </section>
-
     <section class="page" data-page="cockpit" hidden>
-      <div class="ph"><p class="eyebrow">Análise</p><h1>Cockpit do ativo</h1><p class="lede">Preço, sinal de timing e o porquê de cada fator. Leitura analítica: não é ordem nem recomendação.</p></div>
-      <div class="symbar"><label>Ativo</label><div class="symPick" id="pickCockpit"></div></div>
-      <div class="grid2">
-        <div>
+      <div class="ph"><p class="eyebrow" id="ckEyebrow">Ativo</p><h1 id="ckTitle">Ativo: o que o gráfico diz?</h1><p class="lede" id="ckLede">Uma leitura simples primeiro; o detalhe fica logo abaixo, se você quiser.</p></div>
+      <div class="ck-other"><span class="ck-other-l">Ver outro ativo</span><div class="mk-pills" id="ckChips" role="group" aria-label="Trocar de ativo"></div></div>
+      <div class="symbar"><label>Buscar ativo</label><div class="symPick" id="pickCockpit"></div></div>
+      <section class="ck-read" id="ckRead" aria-label="A leitura em uma frase"><span class="skel"></span></section>
+      <div class="ck-chartcard">
           <div class="head"><span class="sym" id="hSym">—</span><span class="mute" id="hName"></span><span class="px" id="hPx"></span><span class="num" id="hChg"></span></div>
           <div class="prov" id="hProv" aria-live="polite"></div>
           <div class="ck-bar"><div class="chips" role="group" aria-label="Período do gráfico"><button type="button" class="fchip" data-ckr="1M" aria-pressed="false">1M</button><button type="button" class="fchip" data-ckr="3M" aria-pressed="false">3M</button><button type="button" class="fchip" data-ckr="6M" aria-pressed="true">6M</button><button type="button" class="fchip" data-ckr="1A" aria-pressed="false">1A</button></div>
-            <div class="chips" role="group" aria-label="Camadas do gráfico"><button type="button" class="fchip" data-ckt="bb" aria-pressed="true">Bollinger</button><button type="button" class="fchip" data-ckt="sma" aria-pressed="true">SMA50</button><button type="button" class="fchip" data-ckt="zones" aria-pressed="true">Zonas e níveis</button><button type="button" class="fchip" id="ck3dBtn" aria-pressed="false" aria-controls="ck3d">Gráfico 3D</button></div></div>
+            <div class="chips" role="group" aria-label="Forma do gráfico"><button type="button" class="fchip" data-ckm="area" aria-pressed="true">Área</button><button type="button" class="fchip" data-ckm="candle" aria-pressed="false">Velas</button></div></div>
+          <div class="ck-bar"><div class="chips" role="group" aria-label="Níveis do motor no gráfico"><button type="button" class="fchip" data-ckt="entry" aria-pressed="true">Entrada</button><button type="button" class="fchip" data-ckt="targets" aria-pressed="true">Alvos</button><button type="button" class="fchip" data-ckt="invalid" aria-pressed="true">Invalidação</button></div>
+            <div class="chips" role="group" aria-label="Camadas técnicas"><button type="button" class="fchip" data-ckt="bb" aria-pressed="false">Bollinger</button><button type="button" class="fchip" data-ckt="sma" aria-pressed="false">Média 50</button><button type="button" class="fchip" id="ck3dBtn" aria-pressed="false" aria-controls="ck3d">Gráfico 3D</button></div></div>
           <div class="chartwrap"><div id="chart" class="lwc" role="img" aria-label="Gráfico de candles com volume, média de 50 barras, bandas de Bollinger e os níveis do motor de timing. Use a tabela abaixo para ler os preços."></div>
             <div id="ck3d" class="lwc ck3d" hidden><canvas id="ck3dCanvas" tabindex="0" role="img" aria-label="Terreno 3D do histórico real do ativo. Use a tabela para ler os preços."></canvas>
               <div class="c3d-ctl"><button type="button" id="ck3dIn" aria-label="Aproximar">+</button><button type="button" id="ck3dOut" aria-label="Afastar">−</button><button type="button" id="ck3dReset" aria-label="Restaurar a câmera">⟲</button></div>
@@ -117,6 +111,11 @@
           <div class="ck-tools"><button type="button" id="ckTableBtn" aria-expanded="false" aria-controls="ckTable">Ver como tabela</button><button type="button" id="ckExport">Exportar imagem</button><button type="button" class="primary" id="ckSim">Simular compra ou venda</button></div>
           <div id="ckTable" hidden></div>
           <div class="src">Gráfico © <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView</a> (Lightweight Charts, Apache 2.0). Bollinger e SMA50 calculadas aqui sobre os candles reais. Nada aqui é ordem: a plataforma não executa ordens.</div>
+      </div>
+      <section class="ck-know" id="ckKnow" aria-label="Conheça o ativo antes de decidir"><span class="skel"></span></section>
+      <details class="ck-full" id="ckFull"><summary><span>Ver análise completa</span><small>sinal, fatores, métricas, microeconomia, backtest e histórico</small></summary>
+      <div class="grid2">
+        <div>
           <div class="card" style="margin-top:var(--s4)"><h2>Por que este sinal e este momento</h2><ul class="why" id="why"></ul></div>
           <div class="card"><h2>Backtest analítico <span class="tag">projeção</span></h2>
             <div class="bt">
@@ -136,6 +135,7 @@
           <div class="card"><h2>Histórico de sinais</h2><div id="sigHist" class="mute" style="font-size:12.5px">—</div></div>
         </div>
       </div>
+      </details>
     </section>
 
     <section class="page" data-page="radar" hidden>
@@ -329,6 +329,8 @@
 <script src="/stars.js"></script>
 <script src="/fx.js"></script>
 <script src="/app.js"></script>
+<script src="/mercados.js"></script>
+<script src="/ativo.js"></script>
 <script src="/auth.js"></script>
 <script src="/carteira.js"></script>
 <script src="/mapa.js"></script>

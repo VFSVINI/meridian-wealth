@@ -9,7 +9,6 @@ const SIDE={COMPRA:'var(--up)',VENDA:'var(--warn)',ALERTA:'var(--dn)'};
 const FRESH={REAL_TIME:['tempo real','up'],DELAYED:['~15 min','warn'],END_OF_DAY:['fechamento','ice'],STORED:['último dado real gravado','dn']};
 let universe=[],rows={},sel=null,candles=[],A=null,es=null,ws=null,paused=false,selecting=false;
 
-Object.entries(SIG).forEach(([k,v])=>$('#sigf').insertAdjacentHTML('beforeend',`<option value="${k}">${v[0]}</option>`));
 
 async function j(u){const r=await fetch(u);if(!r.ok)throw new Error(u);return r.json()}
 const dt=ms=>new Date(ms).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
@@ -25,7 +24,7 @@ async function init(){
   tryRenderSimulator();tryRenderLens();
   const ov=await j('/api/overview');
   ov.ticks.forEach(t=>rows[t.symbol]={...t,flash:''});
-  renderMode(ov);renderMacro(ov.macro);renderHome();
+  renderMode(ov);renderMacro(ov.macro);renderHome();renderList();
   const first=universe.find(u=>hasData(rows[u.symbol]))||universe[0];
   await select(first.symbol);
   connect();
@@ -77,19 +76,8 @@ function onTick(b){
   renderList();renderDetail();draw();renderHome();
 }
 
-function renderList(){
-  const rg=$('#region').value,sg=$('#sigf').value,q=$('#q').value.trim().toLowerCase();
-  const html=universe.filter(u=>{const r=rows[u.symbol];return (!rg||u.region===rg)&&r&&(!sg||(r.assessment&&r.assessment.signal===sg))&&(!q||(u.symbol+u.name).toLowerCase().includes(q))})
-   .map(u=>{const r=rows[u.symbol];
-    if(!hasData(r))return `<tr class="row ${u.symbol===sel?'sel':''}" data-s="${u.symbol}"><td><b class="mono">${u.symbol}</b><div class="src"><i class="dot ${r.marketOpen?'on':''}"></i>sem fonte</div></td>
-      <td colspan="3" class="mute" style="font-size:12px">sem dado em tempo real</td></tr>`;
-    const c=r.candle,chg=c.close/c.open-1,s=r.assessment?SIG[r.assessment.signal]:null;
-    const when=quoteWhen(r);
-    return `<tr class="row ${u.symbol===sel?'sel':''}" data-s="${u.symbol}"><td><b class="mono">${u.symbol}</b><div class="src"><i class="dot ${r.marketOpen?'on':''}"></i>${r.source} · ${when}</div><div>${freshChip(r)}${isStale(r)?' <span class="fresh dn">desatualizada</span>':''}</div></td>
-    <td class="n ${r.flash}">${f(c.close,c.close<10?4:2)}<div class="src">${u.currency||''}</div></td><td class="n ${chg>=0?'up':'dn'}">${chg>=0?'+':''}${f(chg*100)}%</td>
-    <td>${s?`<span class="chip ${s[1]}">${s[0]}</span><div class="num mute" style="font-size:11px">${r.assessment.score>0?'+':''}${r.assessment.score}</div>`:'<span class="mute" style="font-size:11px">dados insuficientes</span>'}</td></tr>`}).join('');
-  $('#list').innerHTML=html||'<tr><td colspan="4" class="mute">Nenhum ativo com esses filtros.</td></tr>';
-}
+/* a página de Mercados (mercados.js) desenha a lista, o destaque e a tabela: aqui só se avisa que os preços mudaram */
+function renderList(){document.dispatchEvent(new Event('mw:mk-render'))}
 
 function renderProv(){
   const r=rows[sel];if(!r){$('#hProv').innerHTML='';return}
@@ -106,7 +94,6 @@ function renderProv(){
 }
 setInterval(renderProv,1000);
 $('#list').addEventListener('click',e=>{const tr=e.target.closest('tr[data-s]');if(tr){select(tr.dataset.s);go('cockpit')}});
-['region','sigf','q'].forEach(id=>$('#'+id).addEventListener('input',renderList));
 
 async function select(sym){
   sel=sym;selecting=true;syncPick();
@@ -426,6 +413,7 @@ setInterval(loadStatus,10000);setInterval(()=>{if(sel&&!paused){loadMicro();load
 
 function renderDetail(){
   const u=universe.find(x=>x.symbol===sel);if(!u)return;
+  document.dispatchEvent(new Event('mw:ativo-render'));   /* ativo.js: título, chips, leitura em uma frase e "conheça o ativo" */
   $('#hSym').textContent=sel;$('#hName').textContent=u.name+' · '+u.assetClass+' · '+(EXS[u.exchange]||u.exchange||'')+' · '+(u.currency||'');
   renderProv();
   const c=candles[candles.length-1];
@@ -475,7 +463,7 @@ function renderMacro(m){
      ?`<div style="margin:2px 0 6px">Índice de risco macro: <b class="num ${m.riskScore>.5?'dn':'up'}">${f(m.riskScore*100,0)}/100</b> <span class="src">${m.source}</span></div>`
      :'<div class="mute" style="margin:2px 0 6px">Sem dado macro em tempo real: o motor não aplica ajuste macro.</div>')
    +(sec?`<div class="mute" style="font-size:11px;margin-bottom:4px">Setores pressionados</div>${sec}`:'')+news;
-  $('#hmNews').innerHTML=news||'<span class="mute">Sem manchetes de risco agora.</span>';
+  if($('#hmNews'))$('#hmNews').innerHTML=news||'<span class="mute">Sem manchetes de risco agora.</span>';
 }
 
 $('#pause').onclick=async()=>{
@@ -577,7 +565,7 @@ async function openAsset(sym,force){
     if(!universe.some(u=>u.symbol===inst.symbol))universe.push(inst);
     const ov=await j('/api/overview');
     ov.ticks.forEach(t=>{if(!rows[t.symbol]||t.symbol===inst.symbol)rows[t.symbol]={...t,flash:''}});
-    buildPickers();
+    buildPickers();renderList();
     return true;
   }catch(e){note('Falha ao abrir o ativo. Tente de novo.');return false}
 }
@@ -621,13 +609,6 @@ addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()===
 /* painel inicial: só dado real, com frescor e fonte */
 function renderHome(){
   const live=universe.filter(u=>hasData(rows[u.symbol]));
-  const sig=live.filter(u=>rows[u.symbol].assessment).sort((a,b)=>Math.abs(rows[b.symbol].assessment.score)-Math.abs(rows[a.symbol].assessment.score)).slice(0,3);
-  $('#hmSignals').innerHTML=sig.length?sig.map(u=>{const r=rows[u.symbol],a=r.assessment,s=SIG[a.signal];
-    return `<button type="button" class="sig-card" data-s="${esc(u.symbol)}"><div class="sy">${esc(u.symbol)} ${freshChip(r)}</div><div class="st">${s[0]}</div><div class="num ${s[1]}">Score ${a.score>0?'+':''}${a.score}</div><div class="src">${esc(r.source)} · ${quoteWhen(r)}</div></button>`}).join('')
-    :'<span class="mute">Sem dado real suficiente para calcular sinais agora.</span>';
-  const mv=live.map(u=>{const c=rows[u.symbol].candle;return {u,r:rows[u.symbol],chg:c.close/c.open-1}}).sort((a,b)=>Math.abs(b.chg)-Math.abs(a.chg)).slice(0,6);
-  $('#hmMovers').innerHTML=mv.length?mv.map(({u,r,chg})=>`<tr class="row" data-s="${esc(u.symbol)}"><td><b class="mono">${esc(u.symbol)}</b><div class="src">${esc(u.name)}</div></td><td class="n">${f(r.candle.close,r.candle.close<10?4:2)}<div class="src">${esc(u.currency||'')}</div></td><td class="n ${chg>=0?'up':'dn'}">${chg>=0?'+':''}${f(chg*100)}%</td><td>${freshChip(r)}<div class="src">${esc(r.source)} · ${quoteWhen(r)}</div></td></tr>`).join('')
-    :'<tr><td colspan="4" class="mute">Sem cotação real agora.</td></tr>';
   renderRead(live);
 }
 /* "A leitura em uma frase" da página inicial: o ativo em destaque é o primeiro com dado real e sinal calculado (PETR4 quando houver); preço, variação, fonte e
@@ -653,5 +634,4 @@ async function renderRead(live){
   if(html!==readHtml){readHtml=html;box.innerHTML=html}   /* só reescreve quando algo mudou: sem piscar e sem releitura para leitor de tela */
 }
 $('#hmAcademia').onclick=()=>openGloss();$('#hmAcademia2').onclick=()=>openGloss();
-['hmSignals','hmMovers'].forEach(id=>$('#'+id).addEventListener('click',e=>{const t=e.target.closest('[data-s]');if(t){select(t.dataset.s);go('cockpit')}}));
 loadStatus();init().catch(e=>{setLive('off','falha ao iniciar');console.error(e)});

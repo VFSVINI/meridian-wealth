@@ -31,7 +31,7 @@ class CatalogContractTest {
     void theQuickSearchAddsTheCatalogResultsAtTheEndAndTheHintExplainsEveryListedAssetOpens() throws IOException {
         String js = StaticPage.file("app.js"), html = StaticPage.file("index.html");
         assertThat(js).contains("function palRemote(q)").contains("CATÁLOGO COMPLETO").contains("if(mine!==palSeq||!$('#pal').open)return;");
-        assertThat(html).contains("Qualquer ativo negociado na B3 ou nos EUA").contains("ações, FIIs, ETFs e BDRs");
+        assertThat(html).contains("Qualquer ativo negociado na B3 ou nos EUA abre pela busca do topo (Ctrl K)");
         assertThat(StaticPage.file("cosmos.css")).contains(".cs-toast{position:fixed");
     }
 
