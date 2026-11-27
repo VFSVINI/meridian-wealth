@@ -1,0 +1,347 @@
+{
+  "versao": 1,
+  "aviso": "Conteúdo educativo. Os exemplos numéricos são hipotéticos, servem para ensinar a conta e não são previsão nem recomendação de investimento.",
+  "modulos": [
+    {
+      "id": "m1", "titulo": "Fundamentos", "icone": "book",
+      "resumo": "O que é investir, risco, retorno e juros compostos.",
+      "capitulos": [
+        {
+          "id": "m1c1", "titulo": "O que é investir", "minutos": 3,
+          "blocos": [
+            {"t": "A ideia central", "p": "Investir é abrir mão de usar um dinheiro hoje para que ele cresça e compre mais coisas no futuro. Em troca, você aceita esperar e, quase sempre, correr algum risco."},
+            {"t": "De onde vem o rendimento", "p": "O dinheiro rende porque alguém o usa e paga por isso: um banco empresta, uma empresa produz e lucra, um prédio é alugado. O rendimento é o pagamento por esse uso."}
+          ],
+          "diagrama": {"tipo": "flow", "titulo": "O caminho do dinheiro investido", "passos": ["Você poupa uma parte da renda", "O dinheiro é aplicado em algo que o usa", "Esse uso gera um rendimento (ou uma perda)", "Você usa o resultado no futuro"]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Maria guarda R$ 500 por mês. Em vez de deixar na gaveta, ela aplica. A gaveta só guarda os R$ 500; a aplicação, se der certo, devolve os R$ 500 mais o que o dinheiro rendeu enquanto esteve emprestado a alguém."},
+          "importa": "Dinheiro parado perde poder de compra com a inflação. Investir é a forma de tentar, com consciência do risco, manter e aumentar o que você consegue comprar no futuro.",
+          "quiz": [{"q": "Por que um investimento pode render?", "o": ["Porque alguém usa o dinheiro e paga por isso", "Porque o governo garante lucro a todo investidor", "Porque o dinheiro cresce sozinho com o tempo"], "c": 0, "e": "O rendimento é o pagamento pelo uso do dinheiro (juros, lucro, aluguel). Nenhum investimento cresce sozinho nem tem lucro garantido por definição."}]
+        },
+        {
+          "id": "m1c2", "titulo": "Risco e retorno", "minutos": 4,
+          "blocos": [
+            {"t": "A regra básica", "p": "Em média, quanto maior o retorno que se espera, maior o risco que é preciso aceitar. Não existe retorno alto, seguro e imediato ao mesmo tempo: quando alguém promete isso, desconfie."},
+            {"t": "O que é risco", "p": "Risco não é só perder tudo. É a chance de o resultado ser diferente do esperado: o preço oscilar, o rendimento ser menor, a empresa ou o emissor não pagar, ou você precisar do dinheiro numa hora ruim."}
+          ],
+          "diagrama": {"tipo": "scatter", "titulo": "Ilustração: risco e retorno esperado (sem números reais)", "pontos": [{"r": 12, "g": 12, "n": "Renda fixa curta"}, {"r": 35, "g": 40, "n": "Fundos imobiliários"}, {"r": 60, "g": 62, "n": "Ações"}, {"r": 90, "g": 85, "n": "Cripto"}], "x": "risco", "y": "retorno esperado"},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Dois amigos têm R$ 10.000. Um escolhe um título de renda fixa e sabe quanto terá no fim do prazo. O outro escolhe ações: pode terminar com bem mais, mas também pode ver o valor cair 30% no meio do caminho. Nenhum dos dois está certo ou errado; cada um aceitou um risco diferente."},
+          "importa": "Escolher um investimento sem olhar o risco é escolher no escuro. O seu perfil e o seu prazo definem quanto risco faz sentido para você.",
+          "quiz": [{"q": "O que normalmente acompanha a chance de um retorno maior?", "o": ["Um risco maior", "Uma garantia maior", "Um prazo menor"], "c": 0, "e": "Em média, mais retorno esperado vem com mais risco. Promessas de retorno alto sem risco são um sinal de alerta."}]
+        },
+        {
+          "id": "m1c3", "titulo": "Juros compostos e inflação", "minutos": 5,
+          "blocos": [
+            {"t": "Juros sobre juros", "p": "Nos juros compostos, o rendimento de cada período é somado ao capital e passa a render também. Por isso o tempo pesa tanto: o crescimento acelera."},
+            {"t": "Inflação come parte do ganho", "p": "A taxa que você vê é a nominal. O ganho real é o que sobra depois de descontar a inflação. Se o investimento rende 10% e os preços sobem 4%, o seu poder de compra cresce menos de 10%."}
+          ],
+          "diagrama": {"tipo": "compound", "titulo": "R$ 1.000 a 10% ao ano por 10 anos: juros simples e compostos (hipotético)", "principal": 1000, "taxa": 0.10, "anos": 10},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "R$ 1.000 a 10% ao ano por 10 anos viram R$ 2.593,74 com juros compostos; com juros simples seriam R$ 2.000,00. Se a inflação média for 4% ao ano, o ganho real é de cerca de 5,77% ao ano (1,10 dividido por 1,04, menos 1)."},
+          "importa": "Começar cedo e manter o investimento por muito tempo importa mais do que acertar o melhor momento. E olhar só a taxa nominal engana: o que vale é o ganho depois da inflação.",
+          "quiz": [{"q": "Um investimento rende 10% e a inflação é 4% no mesmo período. O ganho real é:", "o": ["Exatamente 6%", "Cerca de 5,77%", "10%, a inflação não importa"], "c": 1, "e": "O ganho real é (1,10 / 1,04) − 1, cerca de 5,77%. A subtração simples (6%) é só uma aproximação."}]
+        }
+      ]
+    },
+    {
+      "id": "m2", "titulo": "Renda variável", "icone": "trend",
+      "resumo": "Ações, dividendos, múltiplos e como ler um balanço.",
+      "capitulos": [
+        {
+          "id": "m2c1", "titulo": "Ações e dividendos", "minutos": 4,
+          "blocos": [
+            {"t": "O que é uma ação", "p": "Uma ação é uma pequena parte de uma empresa. Quem compra vira sócio na proporção do que comprou e participa, em tese, dos lucros e do valor que a empresa criar."},
+            {"t": "Duas formas de ganhar", "p": "Dividendos são a parte do lucro que a empresa distribui aos sócios. A valorização é a diferença entre o preço de compra e o de venda. Nenhuma das duas é garantida."}
+          ],
+          "diagrama": {"tipo": "flow", "titulo": "Do lucro da empresa ao seu bolso", "passos": ["A empresa vende e tem lucro", "Parte do lucro vira dividendo", "O resto é reinvestido no negócio", "O preço da ação reflete o que o mercado espera do futuro"]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Uma ação custa R$ 20 e a empresa paga R$ 1,00 por ação em dividendos no ano. O dividend yield é 1,00 / 20 = 5% ao ano. Se no ano seguinte ela pagar menos, o yield cai: dividendo não é promessa."},
+          "importa": "Ação é a classe em que você mais participa do sucesso de uma empresa, e também a que mais oscila. Só coloque aqui o dinheiro que pode esperar anos.",
+          "quiz": [{"q": "Dividend yield é:", "o": ["O dividendo anual dividido pelo preço da ação", "O lucro total da empresa", "A garantia mínima de rendimento"], "c": 0, "e": "É a relação entre o que a ação pagou em dividendos no período e o preço dela. Muda de ano para ano."}]
+        },
+        {
+          "id": "m2c2", "titulo": "Múltiplos: o preço é caro ou barato?", "minutos": 4,
+          "blocos": [
+            {"t": "Comparar preço com resultado", "p": "O preço de uma ação sozinho não diz nada. Os múltiplos comparam o preço com o que a empresa ganha ou possui. O mais famoso é o P/L: preço dividido pelo lucro por ação."},
+            {"t": "Cuidados", "p": "Um P/L baixo pode ser oportunidade ou sinal de problemas; um P/L alto pode indicar crescimento esperado ou exagero. Compare sempre empresas do mesmo setor e olhe mais de um indicador."}
+          ],
+          "diagrama": {"tipo": "bars", "titulo": "P/L de três ações fictícias (hipotético)", "barras": [{"n": "Ação A", "v": 8}, {"n": "Ação B", "v": 15}, {"n": "Ação C", "v": 30}], "unidade": "vezes o lucro"},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Uma ação custa R$ 30 e a empresa lucra R$ 3 por ação ao ano: P/L = 30 / 3 = 10. Se o lucro ficasse igual, seriam 10 anos de lucro para igualar o preço pago."},
+          "importa": "Múltiplos ajudam a não pagar qualquer preço por uma boa empresa. Mas nenhum número isolado decide: eles são ponto de partida para perguntas, não resposta.",
+          "quiz": [{"q": "P/L de 10 significa que o preço é:", "o": ["10 vezes o lucro anual por ação", "10% do lucro da empresa", "Sempre uma pechincha"], "c": 0, "e": "P/L é preço dividido por lucro por ação. Se é barato ou caro depende do setor, do crescimento e dos riscos."}]
+        },
+        {
+          "id": "m2c3", "titulo": "Como ler um balanço", "minutos": 5,
+          "blocos": [
+            {"t": "Duas fotografias", "p": "O balanço patrimonial mostra o que a empresa tem (ativos), o que deve (passivos) e o que sobra para os sócios (patrimônio líquido). A demonstração de resultado mostra quanto entrou e saiu num período."},
+            {"t": "Perguntas simples", "p": "A empresa lucra? O lucro cresce? A dívida cabe no que ela gera de caixa? A margem (o lucro como parte da receita) está estável? Essas quatro perguntas já dizem muito."}
+          ],
+          "diagrama": {"tipo": "flow", "titulo": "Da receita à margem líquida", "passos": ["Receita (o que entrou com as vendas)", "Menos custos e despesas", "Lucro líquido", "Margem líquida = lucro dividido pela receita"]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "A empresa vendeu R$ 100 milhões e teve R$ 80 milhões em custos e despesas. O lucro foi R$ 20 milhões e a margem líquida, 20%. Se o lucro caísse para R$ 10 milhões com a mesma receita, a margem seria 10%: a empresa ficou menos eficiente."},
+          "importa": "Quem entende o balanço compra uma empresa, não um código na tela. Você não precisa ser contador: basta saber se ela lucra, deve demais ou está piorando.",
+          "quiz": [{"q": "Margem líquida de 20% quer dizer que:", "o": ["De cada R$ 100 vendidos sobram R$ 20 de lucro", "A empresa cresceu 20%", "A dívida é de 20%"], "c": 0, "e": "Margem líquida é o lucro líquido dividido pela receita."}]
+        }
+      ]
+    },
+    {
+      "id": "m3", "titulo": "Renda fixa", "icone": "coin",
+      "resumo": "Tesouro, CDB, prefixado, pós-fixado e inflação.",
+      "capitulos": [
+        {
+          "id": "m3c1", "titulo": "Tesouro, CDB, prefixado e pós-fixado", "minutos": 5,
+          "blocos": [
+            {"t": "Você empresta, eles pagam", "p": "Na renda fixa você empresta dinheiro ao governo (títulos do Tesouro) ou a um banco (CDB, LCI, LCA) e recebe de volta com juros no prazo combinado. A regra do rendimento é conhecida na compra."},
+            {"t": "Três formas de combinar o juro", "p": "Prefixado: a taxa é fixa e você sabe o valor final. Pós-fixado: acompanha uma taxa do mercado, como a Selic ou o CDI. Atrelado à inflação: paga a inflação mais uma taxa fixa."},
+            {"t": "Proteção", "p": "O Tesouro é garantido pelo governo federal. CDB, LCI e LCA têm cobertura do FGC até R$ 250 mil por CPF e por instituição, dentro das regras do fundo."}
+          ],
+          "diagrama": {"tipo": "cols", "titulo": "Como o juro é definido", "colunas": [{"n": "Prefixado", "t": "Taxa fixa combinada na compra. Você sabe o valor no vencimento."}, {"n": "Pós-fixado", "t": "Acompanha a Selic ou o CDI. O rendimento muda conforme a taxa básica."}, {"n": "Atrelado ao IPCA", "t": "Paga a inflação do período mais uma taxa fixa."}]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Com o CDI em 10% ao ano, R$ 10.000 num CDB que paga 100% do CDI rendem cerca de R$ 1.000 em um ano, antes do imposto. Se o CDI cair para 8%, o mesmo CDB rende cerca de R$ 800."},
+          "importa": "Renda fixa é a base de segurança de muita gente, mas não é igual para todos os produtos: prazo, liquidez, garantia e a forma do juro mudam o resultado.",
+          "quiz": [{"q": "Um título pós-fixado:", "o": ["Acompanha uma taxa do mercado, como a Selic ou o CDI", "Tem taxa fixa definida na compra", "Paga sempre o mesmo valor"], "c": 0, "e": "Pós-fixado varia com a taxa de referência; prefixado tem a taxa travada na compra."}]
+        },
+        {
+          "id": "m3c2", "titulo": "Inflação e juro real", "minutos": 4,
+          "blocos": [
+            {"t": "O que é o juro real", "p": "É o ganho acima da inflação. Um título que paga 12% quando a inflação é 8% entrega, em poder de compra, bem menos do que parece."},
+            {"t": "Tesouro IPCA+", "p": "Esse título paga a variação do IPCA mais uma taxa combinada na compra. A parte fixa é o juro real que você trava; a parte do IPCA protege o poder de compra."}
+          ],
+          "diagrama": {"tipo": "bars", "titulo": "IPCA+ hipotético: inflação 4% e taxa 6%", "barras": [{"n": "Inflação (IPCA)", "v": 4}, {"n": "Taxa fixa", "v": 6}, {"n": "Total nominal", "v": 10.24}], "unidade": "% ao ano"},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Com IPCA de 4% e taxa fixa de 6%, o rendimento nominal é 1,04 × 1,06 − 1 = 10,24% ao ano. Os 6% são o ganho real; os outros 4,24 pontos repõem a inflação e o efeito composto."},
+          "importa": "Para objetivos de longo prazo, como aposentadoria, proteger o poder de compra importa tanto quanto render. O juro real mostra se você está de fato avançando.",
+          "quiz": [{"q": "Juro real é:", "o": ["O rendimento depois de descontar a inflação", "A taxa que o banco mostra na propaganda", "A Selic do dia"], "c": 0, "e": "Juro real é o ganho acima da inflação, em poder de compra."}]
+        }
+      ]
+    },
+    {
+      "id": "m4", "titulo": "FIIs", "icone": "building",
+      "resumo": "Fundos imobiliários, cotas, rendimentos e vacância.",
+      "capitulos": [
+        {
+          "id": "m4c1", "titulo": "O que é um fundo imobiliário", "minutos": 4,
+          "blocos": [
+            {"t": "Imóveis em cotas", "p": "Um fundo imobiliário (FII) reúne o dinheiro de muitos investidores para comprar imóveis, como shoppings e galpões, ou títulos ligados a imóveis. Você compra cotas, negociadas na bolsa."},
+            {"t": "Tijolo e papel", "p": "Fundos de tijolo possuem imóveis e vivem de aluguel. Fundos de papel investem em títulos de crédito imobiliário (como os CRIs) e vivem dos juros. Há também os que misturam os dois."}
+          ],
+          "diagrama": {"tipo": "flow", "titulo": "Como o FII chega ao seu bolso", "passos": ["Muitos investidores compram cotas", "O fundo compra imóveis ou títulos imobiliários", "Aluguéis e juros entram no caixa do fundo", "O rendimento é distribuído aos cotistas"]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Com R$ 100 você compra uma cota. Você não é dono de uma sala num prédio: é dono de uma fração minúscula de vários imóveis, com um gestor cuidando deles."},
+          "importa": "FIIs permitem investir em imóveis com pouco dinheiro e sem lidar com inquilino. Em troca, o preço da cota oscila todos os dias, como o de uma ação.",
+          "quiz": [{"q": "Ao comprar uma cota de FII você:", "o": ["Compra uma fração de um conjunto de imóveis ou títulos", "Vira dono de um imóvel específico", "Empresta dinheiro ao governo"], "c": 0, "e": "A cota representa uma fração do patrimônio do fundo."}]
+        },
+        {
+          "id": "m4c2", "titulo": "Rendimentos e vacância", "minutos": 4,
+          "blocos": [
+            {"t": "De onde vem o rendimento", "p": "Em fundos de tijolo, vem dos aluguéis menos as despesas. Por isso o rendimento muda: se há imóveis vagos (vacância) ou inquilinos sem pagar (inadimplência), o fundo recebe menos."},
+            {"t": "Como ler os números", "p": "Rendimento mensal dividido pelo preço da cota dá o rendimento do mês. Vacância é a parte dos imóveis sem inquilino; quanto maior, menos aluguel entra."}
+          ],
+          "diagrama": {"tipo": "split", "titulo": "Vacância física de 20% (hipotético)", "segmentos": [{"n": "Ocupado", "v": 80}, {"n": "Vago", "v": 20}]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Uma cota de R$ 100 paga R$ 0,80 por mês: 0,8% ao mês. Em 12 meses seriam R$ 9,60, ou 9,6% ao ano, se o rendimento ficasse igual. Se a vacância sobe e o rendimento cai para R$ 0,60, o ano rende R$ 7,20."},
+          "importa": "O rendimento de um FII não é fixo como o de um título. Conhecer vacância e inadimplência ajuda a entender se o rendimento atual é sustentável.",
+          "quiz": [{"q": "Se a vacância dos imóveis aumenta, o rendimento tende a:", "o": ["Cair, porque entra menos aluguel", "Subir, porque sobra mais espaço", "Ficar igual sempre"], "c": 0, "e": "Imóvel vazio não paga aluguel, então há menos para distribuir."}]
+        },
+        {
+          "id": "m4c3", "titulo": "P/VP: o preço da cota", "minutos": 4,
+          "blocos": [
+            {"t": "Preço e valor patrimonial", "p": "O valor patrimonial da cota é quanto vale o patrimônio do fundo dividido pelo número de cotas. O P/VP compara o preço de mercado da cota com esse valor."},
+            {"t": "Como interpretar", "p": "P/VP abaixo de 1 indica que a cota está negociada com desconto sobre o patrimônio; acima de 1, com ágio. Desconto pode ser oportunidade ou refletir problemas nos imóveis."}
+          ],
+          "diagrama": {"tipo": "scale", "titulo": "P/VP: desconto e ágio", "min": 0.7, "max": 1.3, "marca": 0.9, "rotuloMarca": "0,90 (exemplo)", "zonas": [{"de": 0.7, "ate": 1.0, "n": "desconto"}, {"de": 1.0, "ate": 1.3, "n": "ágio"}]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "O valor patrimonial da cota é R$ 100 e ela é negociada a R$ 90: P/VP = 90 / 100 = 0,90, um desconto de 10%. Isso não garante que vá subir: o mercado pode estar desconfiando da qualidade dos imóveis."},
+          "importa": "Comprar com desconto soa bom, mas o preço é só um lado. O P/VP serve para fazer perguntas sobre o fundo, junto com vacância, rendimento e qualidade dos ativos.",
+          "quiz": [{"q": "P/VP de 0,90 significa que a cota:", "o": ["Está negociada 10% abaixo do valor patrimonial", "Vai subir 10%", "Rende 0,90% ao mês"], "c": 0, "e": "P/VP é o preço dividido pelo valor patrimonial. 0,90 é um desconto de 10%, sem garantia de alta."}]
+        }
+      ]
+    },
+    {
+      "id": "m5", "titulo": "Cripto", "icone": "eye",
+      "resumo": "Como funcionam, custódia e por que oscilam tanto.",
+      "capitulos": [
+        {
+          "id": "m5c1", "titulo": "Como funcionam as criptomoedas", "minutos": 4,
+          "blocos": [
+            {"t": "Sem banco no meio", "p": "Criptoativos são registros digitais mantidos por uma rede de computadores, sem um emissor central. As transações são validadas pela própria rede e ficam num registro público chamado blockchain."},
+            {"t": "Mercado que não fecha", "p": "Diferente da bolsa, o mercado de cripto funciona 24 horas por dia, todos os dias. Preços mudam de madrugada, no fim de semana e em feriados."}
+          ],
+          "diagrama": {"tipo": "flow", "titulo": "Uma transação em cripto", "passos": ["Você pede a transferência", "A rede de computadores valida", "A transação entra num bloco do registro público", "O saldo muda para os dois lados"]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Você envia um valor em cripto para outra pessoa num domingo à noite. Não há expediente bancário: a rede valida e registra. Se o endereço estiver errado, ninguém pode desfazer."},
+          "importa": "Cripto é um mercado novo, sem garantia de nenhum órgão e com regras ainda em construção. Entender como funciona evita erros caros.",
+          "quiz": [{"q": "O mercado de cripto:", "o": ["Funciona 24 horas, todos os dias", "Fecha aos fins de semana como a bolsa", "É garantido pelo FGC"], "c": 0, "e": "Cripto negocia sem parar, e não tem a garantia do FGC."}]
+        },
+        {
+          "id": "m5c2", "titulo": "Custódia e segurança", "minutos": 4,
+          "blocos": [
+            {"t": "Quem guarda a chave", "p": "Quem controla a chave privada controla o saldo. Na corretora (custódia de terceiros) a empresa guarda a chave por você; numa carteira própria, a responsabilidade é sua."},
+            {"t": "Golpes são o maior risco comum", "p": "Promessas de lucro garantido, sites falsos e pedidos da chave ou da frase de recuperação são golpes. Ninguém legítimo pede sua chave privada."}
+          ],
+          "diagrama": {"tipo": "cols", "titulo": "Onde guardar", "colunas": [{"n": "Na corretora", "t": "Mais simples. Você depende da empresa e da segurança dela."}, {"n": "Carteira própria", "t": "Você guarda a chave. Perdeu a chave ou a frase de recuperação, perdeu o saldo."}]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Alguém recebe uma mensagem dizendo que precisa informar a frase de recuperação para validar a conta. É golpe: quem tem a frase tem acesso a tudo, e a transação não volta."},
+          "importa": "Em cripto, segurança é responsabilidade sua. Não existe a quem recorrer se você entregar a chave ou perdê-la.",
+          "quiz": [{"q": "Quem pede sua frase de recuperação:", "o": ["Está tentando aplicar um golpe", "É o suporte oficial, pode informar", "Faz parte da regra do mercado"], "c": 0, "e": "Nenhum serviço legítimo precisa da sua frase de recuperação ou chave privada."}]
+        },
+        {
+          "id": "m5c3", "titulo": "Por que oscilam tanto", "minutos": 4,
+          "blocos": [
+            {"t": "Preço guiado por expectativa", "p": "Muitas criptomoedas não geram lucro nem aluguel. O preço depende de quanta gente quer comprar, da confiança e das notícias. Por isso variações de 5% ou mais num só dia são comuns."},
+            {"t": "A matemática da queda", "p": "Perder 50% exige ganhar 100% para voltar ao ponto de partida. Quanto maior a queda, mais difícil a recuperação. Por isso tamanho de posição importa."}
+          ],
+          "diagrama": {"tipo": "bars", "titulo": "A queda de 50% e a volta ao início (hipotético)", "barras": [{"n": "Início", "v": 100}, {"n": "Depois de cair 50%", "v": 50}, {"n": "Após subir 100%", "v": 100}], "unidade": "valor do investimento"},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "R$ 1.000 caem 50% e viram R$ 500. Para voltar a R$ 1.000 é preciso dobrar: subir 100%. Uma queda de 50% só se recupera com uma alta de 100%."},
+          "importa": "Se uma parte grande do patrimônio está em algo que cai pela metade com facilidade, a recuperação pode levar anos. Use só uma fração que você aceita perder.",
+          "quiz": [{"q": "Depois de uma queda de 50%, para voltar ao valor inicial é preciso subir:", "o": ["100%", "50%", "25%"], "c": 0, "e": "R$ 500 precisam dobrar para voltar a R$ 1.000: alta de 100%."}]
+        }
+      ]
+    },
+    {
+      "id": "m6", "titulo": "Câmbio e commodities", "icone": "scale",
+      "resumo": "Dólar, ouro, petróleo e o efeito no seu bolso.",
+      "capitulos": [
+        {
+          "id": "m6c1", "titulo": "O dólar e o seu bolso", "minutos": 4,
+          "blocos": [
+            {"t": "Preço de uma moeda em outra", "p": "O câmbio diz quantos reais custa um dólar. Ele sobe e desce com juros, economia, comércio e confiança no país."},
+            {"t": "Onde você sente", "p": "Dólar mais alto encarece importados, viagens e dívidas em dólar, e favorece quem recebe em dólar, como empresas exportadoras."}
+          ],
+          "diagrama": {"tipo": "bars", "titulo": "Produto de US$ 100 (hipotético)", "barras": [{"n": "Dólar a R$ 5,00", "v": 500}, {"n": "Dólar a R$ 5,50", "v": 550}], "unidade": "R$"},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "O dólar sobe de R$ 5,00 para R$ 5,50: alta de 10%. Um produto importado de US$ 100 passa de R$ 500 para R$ 550 sem que o preço em dólar tenha mudado."},
+          "importa": "Mesmo quem nunca comprou dólar sente o câmbio no preço de eletrônicos, combustíveis e passagens. Entender o câmbio ajuda a entender a inflação.",
+          "quiz": [{"q": "Se o dólar sobe e o preço em dólar de um produto não muda, o preço em reais:", "o": ["Sobe", "Cai", "Fica igual"], "c": 0, "e": "O mesmo valor em dólar custa mais reais quando o dólar sobe."}]
+        },
+        {
+          "id": "m6c2", "titulo": "Ouro e petróleo", "minutos": 4,
+          "blocos": [
+            {"t": "Ouro: o refúgio", "p": "Em momentos de medo e incerteza, muita gente procura o ouro como proteção. Ele não paga juros nem dividendos: seu valor depende de quanta gente o quer."},
+            {"t": "Petróleo: energia e inflação", "p": "O preço do petróleo influencia combustíveis, fretes e, por consequência, quase tudo que se compra. Ele sobe e desce com oferta, demanda e conflitos."}
+          ],
+          "diagrama": {"tipo": "cols", "titulo": "Dois termômetros do mundo", "colunas": [{"n": "Ouro", "t": "Costuma ser procurado em crises. Não gera renda, só o preço."}, {"n": "Petróleo", "t": "Afeta combustíveis e inflação. Sensível a oferta, demanda e conflitos."}]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Um conflito ameaça a oferta de petróleo: o preço sobe, o frete encarece e produtos ficam mais caros semanas depois. Ao mesmo tempo, investidores com medo podem comprar ouro."},
+          "importa": "Os preços de ouro e petróleo ajudam a ler o humor do mundo e a prever pressões de preços no seu dia a dia.",
+          "quiz": [{"q": "O ouro paga dividendos?", "o": ["Não, só o preço dele varia", "Sim, todo mês", "Sim, a cada ano"], "c": 0, "e": "O ouro não gera renda; o ganho vem apenas da variação do preço."}]
+        },
+        {
+          "id": "m6c3", "titulo": "Commodities e empresas", "minutos": 4,
+          "blocos": [
+            {"t": "Quem vende matéria-prima", "p": "Empresas de mineração, petróleo e agronegócio vendem produtos cotados em dólar. Quando o preço da commodity sobe, a receita tende a subir."},
+            {"t": "O efeito do câmbio", "p": "Se a empresa tem custos em reais e vende em dólar, um dólar mais alto aumenta a receita em reais. Por isso essas ações costumam reagir ao câmbio e ao preço da commodity."}
+          ],
+          "diagrama": {"tipo": "flow", "titulo": "Do dólar ao resultado de uma exportadora", "passos": ["O dólar sobe", "A empresa vende em dólar e recebe mais reais", "Os custos em reais não mudam na mesma proporção", "O lucro em reais tende a subir"]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Uma empresa vende US$ 10 milhões. Com o dólar a R$ 5,00, recebe R$ 50 milhões; a R$ 5,50, recebe R$ 55 milhões. Se os custos em reais são os mesmos, os R$ 5 milhões a mais viram lucro."},
+          "importa": "Conhecer de onde vem a receita de uma empresa ajuda a entender por que o preço da ação reage a notícias de câmbio e matérias-primas.",
+          "quiz": [{"q": "Uma exportadora com custos em reais, quando o dólar sobe, tende a:", "o": ["Ter mais receita em reais", "Ter menos receita em reais", "Não sentir nada"], "c": 0, "e": "A mesma venda em dólar rende mais reais, enquanto os custos em reais seguem iguais."}]
+        }
+      ]
+    },
+    {
+      "id": "m7", "titulo": "Indicadores técnicos", "icone": "chart",
+      "resumo": "Candles, médias, RSI, MACD e medidas de risco sem mistério.",
+      "capitulos": [
+        {
+          "id": "m7c1", "titulo": "Candles e médias móveis", "minutos": 4,
+          "blocos": [
+            {"t": "Um candle conta o dia", "p": "Cada candle resume um período: onde o preço abriu, o máximo, o mínimo e onde fechou. O corpo mostra abertura e fechamento; os pavios, os extremos."},
+            {"t": "Média móvel", "p": "A média móvel de N períodos é a média dos últimos N fechamentos. Ela suaviza o ruído e mostra a direção: preço acima da média costuma indicar tendência de alta."}
+          ],
+          "diagrama": {"tipo": "candle", "titulo": "Anatomia de um candle de alta"},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Fechamentos de 10, 11 e 12: a média de 3 períodos é (10 + 11 + 12) / 3 = 11. Se o preço fecha em 13, ele está acima da média e a média sobe a 12."},
+          "importa": "Candles e médias são a linguagem do gráfico. Entender o que cada um mostra evita ler mais do que há ali.",
+          "quiz": [{"q": "O corpo de um candle mostra:", "o": ["A abertura e o fechamento do período", "O volume negociado", "O máximo e o mínimo"], "c": 0, "e": "O corpo vai da abertura ao fechamento; máximo e mínimo são os pavios."}]
+        },
+        {
+          "id": "m7c2", "titulo": "RSI e MACD", "minutos": 5,
+          "blocos": [
+            {"t": "RSI: força recente", "p": "O RSI vai de 0 a 100 e compara as altas e baixas recentes (em geral 14 períodos). Acima de 70 indica movimento esticado para cima; abaixo de 30, esticado para baixo."},
+            {"t": "MACD: direção do ritmo", "p": "O MACD é a diferença entre duas médias móveis exponenciais (12 e 26 períodos). Quando ele cruza a sua linha de sinal, o ritmo da tendência pode estar mudando."}
+          ],
+          "diagrama": {"tipo": "scale", "titulo": "RSI de 0 a 100", "min": 0, "max": 100, "marca": 45, "rotuloMarca": "45 (neutro, exemplo)", "zonas": [{"de": 0, "ate": 30, "n": "sobrevendido"}, {"de": 30, "ate": 70, "n": "neutro"}, {"de": 70, "ate": 100, "n": "sobrecomprado"}]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Um ativo sobe vários dias seguidos e o RSI vai a 78. Isso diz que a alta foi forte e rápida, não que vá cair amanhã: em tendências fortes o RSI pode ficar alto por semanas."},
+          "importa": "Indicadores descrevem o passado recente. Nenhum prevê o futuro; servem para dar contexto, junto com o resto da análise.",
+          "quiz": [{"q": "RSI acima de 70 significa que:", "o": ["A alta recente foi forte e o ativo pode estar esticado", "O preço vai cair com certeza", "O ativo está barato"], "c": 0, "e": "É um aviso de movimento esticado, não uma previsão."}]
+        },
+        {
+          "id": "m7c3", "titulo": "Volatilidade, drawdown e outras medidas de risco", "minutos": 5,
+          "blocos": [
+            {"t": "Quanto oscila", "p": "A volatilidade mede o quanto os retornos variam. Quanto maior, mais o preço balança. Ela costuma ser mostrada em base anual."},
+            {"t": "O pior momento", "p": "Drawdown é a queda do último topo até o fundo. Sharpe compara o retorno acima da renda fixa com a volatilidade. O VaR estima a perda que, historicamente, não seria superada em 95% dos dias."}
+          ],
+          "diagrama": {"tipo": "bars", "titulo": "Drawdown de 30% (hipotético)", "barras": [{"n": "Topo", "v": 100}, {"n": "Fundo", "v": 70}], "unidade": "valor"},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Um ativo foi de 100 a 70 e depois se recuperou até 90. O drawdown máximo foi 30%, mesmo que hoje a queda desde o topo seja de 10%."},
+          "importa": "Rentabilidade sem risco é só metade da história. O drawdown mostra a dor que você teria passado, e ajuda a saber se aguentaria.",
+          "quiz": [{"q": "Drawdown é:", "o": ["A queda de um topo até o fundo seguinte", "O lucro máximo do período", "A média dos preços"], "c": 0, "e": "Mede a pior queda a partir de um pico."}]
+        }
+      ]
+    },
+    {
+      "id": "m8", "titulo": "Risco e carteira", "icone": "shield",
+      "resumo": "Diversificação, correlação e tamanho de posição.",
+      "capitulos": [
+        {
+          "id": "m8c1", "titulo": "Diversificação", "minutos": 4,
+          "blocos": [
+            {"t": "Não colocar tudo no mesmo lugar", "p": "Diversificar é dividir o dinheiro entre ativos que não reagem do mesmo jeito. Quando um cai, outro pode subir ou cair menos, o que reduz as oscilações da carteira."},
+            {"t": "Não elimina o risco", "p": "A diversificação reduz o risco específico de um ativo, mas não o risco do mercado inteiro. Em crises fortes, quase tudo cai junto."}
+          ],
+          "diagrama": {"tipo": "split", "titulo": "Carteira 50/50 (hipotético)", "segmentos": [{"n": "Ativo A (−20%)", "v": 50}, {"n": "Ativo B (+10%)", "v": 50}]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Metade em um ativo que cai 20% e metade em um que sobe 10%: 0,5 × (−20%) + 0,5 × 10% = −5%. Quem tivesse tudo no primeiro perderia 20%."},
+          "importa": "Diversificar é a defesa mais barata contra erros e imprevistos: ninguém acerta sempre qual ativo vai bem.",
+          "quiz": [{"q": "Carteira 50/50 com um ativo a −20% e outro a +10% tem retorno de:", "o": ["−5%", "−10%", "+10%"], "c": 0, "e": "0,5 × (−20) + 0,5 × 10 = −5."}]
+        },
+        {
+          "id": "m8c2", "titulo": "Correlação", "minutos": 4,
+          "blocos": [
+            {"t": "Andam juntos ou não", "p": "A correlação vai de −1 a +1. Perto de +1, os ativos sobem e descem juntos; perto de 0, um não ajuda a prever o outro; perto de −1, andam em sentido oposto."},
+            {"t": "Cuidados", "p": "Correlação mede o passado e muda, sobretudo em crises. E correlação não é causa: dois ativos podem andar juntos sem que um influencie o outro."}
+          ],
+          "diagrama": {"tipo": "scale", "titulo": "Correlação de −1 a +1", "min": -1, "max": 1, "marca": 0.2, "rotuloMarca": "+0,2 (exemplo)", "zonas": [{"de": -1, "ate": -0.3, "n": "sentidos opostos"}, {"de": -0.3, "ate": 0.3, "n": "pouca relação"}, {"de": 0.3, "ate": 1, "n": "andam juntos"}]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Duas ações de bancos têm correlação de +0,85: quando uma cai, a outra tende a cair também, então ter as duas diversifica pouco. Já uma ação e o ouro, com correlação perto de zero, diversificam mais."},
+          "importa": "Ter muitos ativos não é diversificar se todos andam juntos. A correlação mostra se a variedade é real. Na plataforma, quando falta dado para calcular, aparece 'não informado', nunca zero.",
+          "quiz": [{"q": "Correlação de +0,9 entre dois ativos indica que:", "o": ["Eles tendem a subir e cair juntos", "Eles se anulam", "Um causa o movimento do outro"], "c": 0, "e": "Perto de +1 significa que andam juntos; não prova relação de causa."}]
+        },
+        {
+          "id": "m8c3", "titulo": "Tamanho de posição e Monte Carlo", "minutos": 5,
+          "blocos": [
+            {"t": "Quanto em cada ativo", "p": "Quanto você coloca em um ativo importa tanto quanto qual ativo escolhe. Concentrar demais faz um único erro pesar muito na carteira inteira."},
+            {"t": "Projeção não é previsão", "p": "A simulação de Monte Carlo roda muitos cenários aleatórios a partir de hipóteses de retorno e volatilidade para mostrar uma faixa de resultados possíveis. É uma projeção sobre premissas, nunca uma promessa."}
+          ],
+          "diagrama": {"tipo": "split", "titulo": "Concentração em um só ativo (hipotético)", "segmentos": [{"n": "Um ativo (25%)", "v": 25}, {"n": "O resto da carteira (75%)", "v": 75}]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Com 25% da carteira em um ativo que cai 40%, a carteira perde 10% só por isso (25% × 40%). Com 5% nele, a mesma queda custaria 2%. A plataforma avisa quando um ativo passa de 25% da carteira."},
+          "importa": "Você pode errar na escolha e ainda assim se proteger no tamanho. E lembre: cenários simulados mostram possibilidades, não o que vai acontecer.",
+          "quiz": [{"q": "Uma simulação de Monte Carlo mostra:", "o": ["Uma faixa de resultados possíveis a partir de hipóteses", "O resultado certo do futuro", "O retorno garantido"], "c": 0, "e": "É uma projeção sobre premissas, com o selo 'projeção' na plataforma."}]
+        }
+      ]
+    },
+    {
+      "id": "m9", "titulo": "Macro e geopolítica", "icone": "globe",
+      "resumo": "Juros, inflação, conflitos e como chegam ao preço.",
+      "capitulos": [
+        {
+          "id": "m9c1", "titulo": "Selic, inflação e o seu dinheiro", "minutos": 5,
+          "blocos": [
+            {"t": "O freio da inflação", "p": "Quando a inflação sobe demais, o Banco Central sobe a Selic, a taxa básica de juros. Juros mais altos encarecem o crédito, esfriam o consumo e ajudam a segurar os preços."},
+            {"t": "Efeitos nos investimentos", "p": "Selic alta torna a renda fixa mais atrativa e costuma pressionar ações e fundos imobiliários, porque o dinheiro tem uma alternativa segura que paga mais."}
+          ],
+          "diagrama": {"tipo": "flow", "titulo": "Do aumento da inflação à queda dos preços", "passos": ["A inflação sobe", "O Banco Central sobe a Selic", "Crédito e financiamentos ficam mais caros", "O consumo desacelera e a inflação tende a cair"]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Com a Selic a 14%, um financiamento fica mais caro e um título pós-fixado rende mais. Se a Selic cair para 10%, a prestação diminui, mas o título passa a render menos."},
+          "importa": "A taxa de juros é o preço do dinheiro: ela mexe na prestação da casa, no rendimento da poupança e no preço das ações. Acompanhá-la é acompanhar o seu bolso.",
+          "quiz": [{"q": "Quando o Banco Central sobe a Selic, o crédito tende a ficar:", "o": ["Mais caro", "Mais barato", "Igual"], "c": 0, "e": "Selic mais alta encarece o crédito e esfria o consumo."}]
+        },
+        {
+          "id": "m9c2", "titulo": "Conflitos e preços: do evento à carteira", "minutos": 5,
+          "blocos": [
+            {"t": "A cadeia em quatro passos", "p": "Um fato novo no mundo (conflito, sanção, eleição, decisão de banco central) muda as expectativas, as expectativas movem os preços e os preços chegam à sua carteira."},
+            {"t": "Por que setores reagem diferente", "p": "Um conflito que ameaça a oferta de energia ajuda quem vende energia e pressiona quem a consome. Cada ativo é afetado de um jeito."}
+          ],
+          "diagrama": {"tipo": "flow", "titulo": "Evento, expectativa, preço, carteira", "passos": ["Evento: algo acontece no mundo", "Expectativa: o mercado reage ao que pode vir", "Preço: os preços mudam", "Carteira: o efeito chega aos seus ativos"]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "Uma sanção reduz a oferta de gás na Europa. O preço do gás sobe, a indústria europeia fica mais cara e pode produzir menos. Quem investe em energia pode ver alta; quem investe em indústria europeia, pressão."},
+          "importa": "Você não precisa prever conflitos. Basta saber como o efeito chega aos seus ativos e não ter tudo exposto ao mesmo risco.",
+          "quiz": [{"q": "Na cadeia geopolítica, o que vem logo depois do evento?", "o": ["A expectativa do mercado", "O lucro da empresa", "O dividendo"], "c": 0, "e": "Evento, expectativa, preço e carteira: o mercado reage primeiro ao que espera."}]
+        },
+        {
+          "id": "m9c3", "titulo": "Termômetros: VIX, dólar e juro dos EUA", "minutos": 4,
+          "blocos": [
+            {"t": "Quatro números para acompanhar", "p": "O VIX mede o medo no mercado americano. O índice do dólar (DXY) mostra a força do dólar frente a outras moedas. O juro de 10 anos dos EUA é a referência global do custo do dinheiro. O índice de risco macro da plataforma resume o conjunto."},
+            {"t": "Como ler", "p": "VIX alto indica estresse; dólar forte tende a pressionar países emergentes; juro americano alto atrai dinheiro para os EUA. Nenhum deles prevê o futuro: dão o clima do dia."}
+          ],
+          "diagrama": {"tipo": "cols", "titulo": "Os termômetros", "colunas": [{"n": "VIX", "t": "O medo do mercado. Alto, indica estresse."}, {"n": "DXY", "t": "A força do dólar. Forte, pressiona emergentes."}, {"n": "Juro de 10 anos (EUA)", "t": "O custo do dinheiro no mundo."}, {"n": "Risco macro", "t": "Índice da plataforma, uma projeção com fontes à vista."}]},
+          "exemplo": {"titulo": "Exemplo hipotético", "texto": "O VIX sobe forte e o dólar se valoriza no mesmo dia: o mercado está com medo e procura segurança. Ações de países emergentes costumam sofrer nesses dias."},
+          "importa": "Esses números mostram o ambiente em que seus investimentos operam. Um mau dia nos termômetros explica muitas quedas que não têm a ver com o ativo em si.",
+          "quiz": [{"q": "O VIX alto indica:", "o": ["Estresse e medo no mercado", "Calma e otimismo", "Que o dólar vai cair"], "c": 0, "e": "O VIX sobe quando os investidores esperam grandes oscilações."}]
+        }
+      ]
+    }
+  ]
+}
