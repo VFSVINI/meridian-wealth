@@ -155,4 +155,15 @@ class BrazilHistoryServiceTest {
         service.view();
         assertThat(port.calls.get()).as("passada a espera, só as duas séries que faltam são tentadas").isEqualTo(afterFirst + 2);
     }
+
+    @Test void aSeriesWhosePublicationStoppedIsMarkedStaleEvenThoughOurFetchIsFresh() {
+        // dólar com o último ponto 20 dias atrás e IPCA com o último mês há 150 dias: o Banco Central parou de publicar, e a nossa consulta (agora) está em dia
+        port.data.put(HistorySeries.PTAX_SELL, List.of(p("2026-11-02", "5.50"), p("2026-11-07", "5.60")));
+        port.data.put(HistorySeries.IPCA_12M, List.of(p("2026-05-01", "4.40"), p("2026-06-01", "4.50")));
+        port.data.put(HistorySeries.SELIC_TARGET, List.of(p("2026-11-01", "13.75"), p("2026-11-26", "13.75")));
+        var v = service.view();
+        assertThat(v.series().get(HistorySeries.PTAX_SELL).stale()).as("diária com mais de 5 dias sem ponto novo").isTrue();
+        assertThat(v.series().get(HistorySeries.IPCA_12M).stale()).as("mensal com mais de 75 dias sem ponto novo").isTrue();
+        assertThat(v.series().get(HistorySeries.SELIC_TARGET).stale()).as("a Selic é preenchida para a frente: a data não mede a idade").isFalse();
+    }
 }
