@@ -6,6 +6,13 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #50 do roadmap, Milestone 8: Cosmos)
+- **Brasil: juros e inflação no visual do protótipo**: três cartões com **gráfico histórico real de 12 meses** (meta Selic, IPCA em 12 meses e dólar PTAX), "O que isso muda no seu bolso" em abas (Selic, Inflação, Dólar) com contas simples sobre o valor real mais recente, **juro real** em barras (poupança pela regra legal, Tesouro Selic, CDB a 100% do CDI e inflação) e a **linha do tempo das mudanças reais da meta Selic**, com o caminho para a Academia.
+- `GET /api/brazil/history`: séries oficiais do Banco Central como texto exato, com data de cada ponto; cache de 30 minutos, último dado bom se o Banco Central falha e espera antes de repetir uma consulta que falhou. O que não chega vem como indisponível, nunca estimado.
+
+### Alterado (item #50)
+- A lista de indicadores oficiais da página Brasil ficou recolhida em "Todos os indicadores oficiais".
+
 ### Adicionado (item #49 do roadmap, Milestone 8: Cosmos)
 - **Academia**: o glossário em lista virou um **curso em 9 módulos e 26 capítulos** (Fundamentos, Renda variável, Renda fixa, FIIs, Cripto, Câmbio e commodities, Indicadores técnicos, Risco e carteira, Macro e geopolítica). Cada capítulo tem ideia central, diagrama, exemplo hipotético, "por que importa para o seu dinheiro" e mini-quiz; o cartão "Seu progresso" mostra os capítulos concluídos, salvos só no navegador.
 - Um teste confere a estrutura do curso, as contas dos exemplos e a ausência de promessa de retorno e de recomendação.
