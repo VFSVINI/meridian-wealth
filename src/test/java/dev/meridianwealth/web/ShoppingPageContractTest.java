@@ -47,5 +47,6 @@ class ShoppingPageContractTest {
         assertThat(json).doesNotContainPattern("(?i)\\bD\\+\\d").doesNotContainPattern("(?i)(cdb|lci|lca)\\s+\\d").doesNotContainPattern("\\d\\s*%\\s*(a\\.a|ao ano)").doesNotContain("garantido");
         String js = StaticPage.file("shopping.js");
         assertThat(js).contains("Selecione até 3").contains("SH.pick.length<3").contains("não informado");
+        assertThat(js).as("se o catálogo falha, os cartões dizem isso em vez de ficar carregando para sempre").contains("$('#shCards').innerHTML=m");
     }
 }

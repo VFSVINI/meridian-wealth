@@ -27,7 +27,7 @@ async function loadShopping(){
     }
     if(!SH.cls){const c=await fetch('/data/shopping.json');if(!c.ok)throw new Error('shopping');SH.cls=await c.json()}
     renderShopping();renderCards();
-  }catch(e){$('#shTable').innerHTML='<p class="mute">Não foi possível carregar o catálogo agora.</p>'}
+  }catch(e){const m='<p class="mute">Não foi possível carregar o catálogo agora. Tente de novo em instantes.</p>';$('#shTable').innerHTML=m;$('#shCards').innerHTML=m}
   finally{SH.loading=false}
 }
 function renderShopping(){
