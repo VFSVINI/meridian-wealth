@@ -223,6 +223,30 @@
       </div>
     </section>
 
+    <section class="page" data-page="cripto" hidden>
+      <div class="ph"><p class="eyebrow">Cripto · 24 horas, todos os dias</p><h1>O que está acontecendo no cripto agora, a qualquer hora?</h1><p class="lede">Cripto negocia sem parar, de madrugada e no fim de semana. Veja o ritmo do dia, as moedas lado a lado e o que mudou.</p></div>
+      <section class="cr-card cr-gold"><p class="gp-k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg><span>Ao vivo</span><span class="cs-chip cy" id="crSrc">conectando…</span><span class="mk-pills cr-tabs" id="crTabs" role="group" aria-label="Moeda ao vivo"></span></p>
+        <div class="banner-info">Cotações reais pelo stream da bolsa conectada, com fonte e horário. O gráfico mostra os preços desde que você abriu a página; o stream não traz negócio a negócio nem o lado de compra e venda.</div>
+        <div class="cr-livegrid"><div><div class="cr-price" id="crPrice"></div><div id="crChart" class="cr-chart"></div><p class="cr-stats" id="crStats"></p></div>
+          <div><p class="sh-k">Últimas cotações</p><ul class="cr-trades" id="crTrades" aria-live="off"></ul></div></div></section>
+      <div class="cr-two">
+        <section class="cr-card"><p class="gp-k"><span>Preço da moeda escolhida</span><span class="mk-pills cr-tabs" id="crRanges" role="group" aria-label="Período"></span></p><p id="crPriceHead" class="cr-ph"></p><div id="crPriceBox" class="cr-chart"></div><p class="src" id="crPriceNote"></p></section>
+        <section class="cr-card"><p class="gp-k"><span>24/7 contra horário comercial</span></p><div id="crOpen"></div><p class="src">As bolsas abertas vêm do estado real de cada pregão nas cotações. Cripto não tem sede nem horário.</p></section>
+      </div>
+      <div class="cr-two cr-two-b">
+        <section class="cr-card cr-gold"><p class="gp-k"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg><span>Sistema de moedas</span><span class="mk-pills cr-tabs" id="crWin" role="group" aria-label="Janela da variação"></span></p>
+          <div id="crGal" class="cr-gal"><span class="skel"></span></div>
+          <div class="cr-leg2"><span>queda</span><i class="cr-ramp"></i><span>alta</span><span class="src">tamanho = volume negociado em 24 h · o centro é a moeda de maior volume · valor de mercado não é fonte do projeto</span></div></section>
+        <aside class="cr-card cr-gold" id="crDet" aria-live="polite"><span class="skel"></span></aside>
+      </div>
+      <div class="cr-two">
+        <section class="cr-card"><p class="gp-k"><span>Participação no volume</span></p><div id="crDon"></div><p class="src">Quanto cada moeda representa do volume negociado em 24 h entre as moedas listadas aqui. Não é a dominância por valor de mercado.</p></section>
+        <section class="cr-card"><p class="gp-k"><span>Medo e ganância</span><span class="cs-chip">em breve</span></p><p class="src">O índice de medo e ganância precisa de uma fonte conectada, que ainda não existe no projeto. Enquanto isso, esta tela não mostra número nenhum: nada é inventado.</p></section>
+      </div>
+      <section class="cr-card"><p class="gp-k"><span>Todas as moedas</span><span class="src" id="crCount" style="margin-left:auto;text-transform:none;letter-spacing:0"></span></p><div id="crTbl"><span class="skel"></span></div>
+        <p class="src">Variação de 24 h: fechamento sobre a abertura da barra do dia. Variação de 7 dias: fechamentos diários. A variação de 1 hora não aparece porque o projeto não guarda histórico por hora.</p></section>
+    </section>
+
     <section class="page" data-page="mapa" hidden>
       <div class="ph"><p class="eyebrow">Mapa de ativos</p><h1>Onde estão os ativos que eu acompanho?</h1><p class="lede">Bolsas do mundo e imóveis dos fundos do Brasil no mapa. Toque num lugar para ver os ativos e como estão hoje.</p></div>
       <div class="gp-tabs"><div class="mk-pills" role="group" aria-label="Mapa"><button type="button" class="mk-pill" data-mpt="mundo" aria-pressed="true">Mundo</button><button type="button" class="mk-pill" data-mpt="brasil" aria-pressed="false">Brasil</button></div><div class="mk-pills" id="mwKinds" role="group" aria-label="Classe de ativo"></div></div>
@@ -450,6 +474,7 @@
 <script src="/simulador.js"></script>
 <script src="/risco.js"></script>
 <script src="/mundo.js"></script>
+<script src="/cripto.js"></script>
 <script src="/auth.js"></script>
 <script src="/carteira.js"></script>
 <script src="/mapa.js"></script>

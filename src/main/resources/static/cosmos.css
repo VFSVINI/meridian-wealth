@@ -506,3 +506,30 @@ h3.sub .src{letter-spacing:0;text-transform:none;font-weight:400}
 @keyframes mw-flow{to{stroke-dashoffset:-72}}
 @media(prefers-reduced-motion:reduce){.mw-arc{animation:none}}
 @media(max-width:1100px){.mw-grid{grid-template-columns:1fr}}
+
+/* Cripto 24h (item #54) */
+.cr-card{border:1px solid var(--line);border-radius:16px;padding:var(--s4);background:linear-gradient(180deg,rgba(14,22,48,.85),rgba(8,13,30,.85));min-width:0;margin-bottom:var(--s3)}
+.cr-gold{border-color:rgba(255,179,64,.5)}:root[data-theme="ivory"] .cr-card{background:var(--panel)}
+.cr-tabs{margin:0 0 0 auto;gap:var(--s2)}.cr-tabs .mk-pill{padding:6px 14px;font-size:14px}
+.cr-livegrid{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(220px,1fr);gap:var(--s4);margin-top:var(--s3)}
+.cr-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s3)}.cr-price b{font:500 clamp(30px,4vw,48px) var(--mono);color:var(--up)}.cr-price small{color:var(--text-3);font-size:14px}
+.cr-chart{margin-top:var(--s2)}.cr-chart svg{display:block;width:100%;height:auto;aspect-ratio:640/220}.cr-stats{display:flex;flex-wrap:wrap;gap:var(--s4);margin:var(--s2) 0 0;font:12px var(--mono);color:var(--text-3)}.cr-stats b{color:var(--text-2);font-weight:500}
+.cr-trades{list-style:none;margin:0;padding:0}.cr-trades li{display:grid;grid-template-columns:auto 1fr auto;gap:var(--s3);padding:7px 4px;border-top:1px solid var(--line);font-size:14px}.cr-trades li:first-child{border-top:0}.cr-trades b{font-weight:500}
+.cr-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s3)}.cr-two-b{grid-template-columns:minmax(0,1.4fr) minmax(280px,1fr)}
+.cr-ph{margin:var(--s2) 0 0;font-size:15px}.cr-ph b{font:500 24px var(--mono)}
+.cr-24{margin:0 0 var(--s2);font-size:16px;color:var(--text-2)}.cr-24 b{color:var(--text)}
+.cr-gal svg{display:block;width:100%;height:auto}
+.cr-ring{fill:none;stroke:var(--line-2);stroke-dasharray:2 5}
+.cr-orb .cr-pl{transform-origin:280px 220px;animation:sv-spin var(--d) linear infinite}.cr-ctr{transform-box:fill-box;transform-origin:center;animation:sv-spin var(--d) linear infinite reverse}
+.cr-gal:hover .cr-pl,.cr-gal:hover .cr-ctr,.cr-gal:focus-within .cr-pl,.cr-gal:focus-within .cr-ctr{animation-play-state:paused}
+.cr-p{cursor:pointer;stroke:#04070e;stroke-width:2;filter:drop-shadow(0 0 6px rgba(255,255,255,.25));fill-opacity:.9}.cr-p.pick{stroke:#fff;stroke-width:2.5}.cr-p:focus-visible{outline:2px solid var(--gold);outline-offset:3px}.cr-sun{filter:drop-shadow(0 0 22px rgba(255,179,64,.7))}
+.cr-pt{font:700 10px var(--sans);fill:#06101c;pointer-events:none}.cr-pt.big{font-size:20px}
+.cr-leg2{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center;margin-top:var(--s2);font:12px var(--mono);color:var(--text-3)}.cr-ramp{display:block;width:120px;height:8px;border-radius:4px;background:linear-gradient(90deg,#ff6d82,#9aa6c4,#38dd9c)}
+.cr-dh h3{margin:0 0 var(--s2);font:800 clamp(22px,2.4vw,30px)/1.1 var(--display);letter-spacing:.03em;text-transform:uppercase}.cr-about{margin:0 0 var(--s3);color:var(--text-2);font-size:16px}
+.cr-kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s3);margin-bottom:var(--s3)}.cr-kv span{display:block;font:700 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}.cr-kv b{display:block;margin-top:2px;font:500 19px var(--mono)}
+.cr-don{display:grid;grid-template-columns:minmax(150px,210px) 1fr;gap:var(--s4);align-items:center}.cr-don svg{width:100%;height:auto}.cr-dv{font:500 13px var(--mono);fill:var(--text)}.cr-dl{font:12px var(--sans);fill:var(--text-3)}
+.cr-leg{list-style:none;margin:0;padding:0;display:grid;gap:var(--s2)}.cr-leg li{display:grid;grid-template-columns:12px 1fr auto;gap:var(--s2);align-items:center;font-size:15px}.cr-leg i{width:10px;height:10px;border-radius:3px}
+.cr-mini{width:90px;height:28px}
+@media(prefers-reduced-motion:reduce){.cr-pl,.cr-ctr{animation:none}}
+@media(max-width:1100px){.cr-two,.cr-two-b,.cr-livegrid{grid-template-columns:1fr}}
+@media(max-width:700px){.cr-don{grid-template-columns:1fr}.cr-pt{font-size:15px}.cr-pt.big{font-size:28px}.cr-kv{grid-template-columns:1fr 1fr}}
