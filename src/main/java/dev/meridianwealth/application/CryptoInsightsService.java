@@ -10,6 +10,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Supplier;
 
 /**
@@ -25,15 +26,17 @@ public class CryptoInsightsService {
     public record View(HourlyVolume.Profile hourly, String hourlySource, String zone, FearGreed fearGreed, Instant asOf, List<String> unavailable) {}
 
     private static final class Slot<T> {
-        T value;
-        Instant fetchedAt;
-        Instant retryAt = Instant.MIN;
+        volatile T value;
+        volatile Instant fetchedAt;
+        volatile Instant retryAt = Instant.MIN;
     }
 
     private final CryptoInsightsPort port;
     private final Clock clock;
     private final Slot<HourlyVolume.Profile> hourly = new Slot<>();
-    private String hourlySource;
+    private volatile String hourlySource;
+    /** Só uma visita busca nas fontes por vez; as outras recebem na hora o que já está guardado em vez de esperar uma consulta lenta. */
+    private final ReentrantLock refreshing = new ReentrantLock();
     private final Slot<FearGreed> fear = new Slot<>();
 
     public CryptoInsightsService(CryptoInsightsPort port, Clock clock) {
@@ -41,14 +44,20 @@ public class CryptoInsightsService {
         this.clock = clock;
     }
 
-    public synchronized View view() {
+    public View view() {
         Instant now = clock.instant();
-        refresh(hourly, now, () -> port.hourly(SYMBOL).map(h -> {
-            HourlyVolume.Profile p = HourlyVolume.profile(h.bars(), BRASILIA, now.toEpochMilli());
-            if (p != null) hourlySource = h.source();
-            return Optional.ofNullable(p);
-        }).orElse(Optional.empty()));
-        refresh(fear, now, port::fearGreed);
+        if (refreshing.tryLock()) {
+            try {
+                refresh(hourly, now, () -> port.hourly(SYMBOL).map(h -> {
+                    HourlyVolume.Profile p = HourlyVolume.profile(h.bars(), BRASILIA, now.toEpochMilli());
+                    if (p != null) hourlySource = h.source();
+                    return Optional.ofNullable(p);
+                }).orElse(Optional.empty()));
+                refresh(fear, now, port::fearGreed);
+            } finally {
+                refreshing.unlock();
+            }
+        }
         List<String> missing = new ArrayList<>();
         if (hourly.value == null) missing.add("hourly");
         if (fear.value == null) missing.add("fearGreed");

@@ -104,4 +104,25 @@ class CryptoInsightsServiceTest {
         };
         assertThat(new CryptoInsightsService(thin, new MutableClock(NOW)).view().unavailable()).contains("hourly");
     }
+
+    @Test void aSlowSourceDoesNotMakeEveryOtherVisitWait() throws Exception {
+        java.util.concurrent.CountDownLatch inside = new java.util.concurrent.CountDownLatch(1), release = new java.util.concurrent.CountDownLatch(1);
+        CryptoInsightsPort slow = new CryptoInsightsPort() {
+            @Override public Optional<Hourly> hourly(String symbol) {
+                inside.countDown();
+                try { release.await(); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+                return Optional.empty();
+            }
+
+            @Override public Optional<FearGreed> fearGreed() { return Optional.empty(); }
+        };
+        CryptoInsightsService s = new CryptoInsightsService(slow, new MutableClock(NOW));
+        Thread first = new Thread(s::view);
+        first.start();
+        assertThat(inside.await(5, java.util.concurrent.TimeUnit.SECONDS)).isTrue();
+        CryptoInsightsService.View other = java.util.concurrent.CompletableFuture.supplyAsync(s::view).get(2, java.util.concurrent.TimeUnit.SECONDS);
+        assertThat(other.unavailable()).as("a segunda visita volta na hora, sem esperar a fonte lenta").containsExactly("hourly", "fearGreed");
+        release.countDown();
+        first.join(5000);
+    }
 }
