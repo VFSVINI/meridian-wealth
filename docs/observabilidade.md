@@ -48,6 +48,35 @@ max by (provider) (meridianwealth_provider_circuit) == 2
 O acumulado é desde a partida do processo; por isso use `rate` e `increase`, que tratam o reinício. Os *scrapes* são de quem opera o
 Prometheus: o projeto só expõe.
 
+## Logs em JSON
+
+Por padrão o log sai em texto, com o correlation-id entre colchetes. Com o perfil `json-logs` (`SPRING_PROFILES_ACTIVE=json-logs`) cada evento sai como
+**uma linha de JSON** (`@timestamp`, `level`, `logger_name`, `message`, `stack_trace` e tudo que estiver no MDC, como `correlationId`) mais o campo fixo
+`service`: pronto para qualquer agregador de logs, e dá para filtrar uma requisição inteira pelo `correlationId`. A configuração está em
+`src/main/resources/logback-spring.xml`. No Render, basta acrescentar `SPRING_PROFILES_ACTIVE=json-logs` às variáveis de ambiente.
+
+```json
+{"@timestamp":"2026-11-28T04:16:51-03:00","message":"http GET /api/status -> 200 (3 ms)","logger_name":"meridianwealth.http","level":"INFO","correlationId":"teste-json-123","service":"meridianwealth"}
+```
+
+## Pilha local: Prometheus e Grafana (sem custo)
+
+Em `ops/observability/` há um Compose com Prometheus (coleta a cada 30 s, guarda 15 dias), Grafana com o painel **MeridianWealth · visão geral** já provisionado e
+as regras de alerta (`alerts.yml`). Nada sai da sua máquina e não há conta em nuvem.
+
+1. Suba o app com um token (`MW_METRICS_TOKEN`, 24 caracteres ou mais): `$env:MW_METRICS_TOKEN = '<token>'; ./mvnw spring-boot:run`.
+2. Grave o mesmo token em `ops/observability/secrets/metrics-token` (a pasta é ignorada pelo Git).
+3. `docker compose -f ops/observability/docker-compose.yml up -d`.
+4. Abra o Grafana em <http://localhost:3000> (usuário `admin`, senha `admin` ou `GRAFANA_ADMIN_PASSWORD`) e o Prometheus em <http://localhost:9090>.
+
+O painel mostra requisições por segundo e p95 por rota, erros 5xx, taxa de falha, latência e circuito de cada provedor, chamadas por hora (para comparar com as
+cotas dos planos gratuitos), acertos do cache, heap, CPU, conexões do banco e eventos da carteira. Os alertas cobrem app fora do ar, circuito aberto por 5 minutos,
+provedor falhando mais da metade das chamadas, 5xx e heap acima de 90%. A CI valida o Compose e a configuração com o `promtool` a cada mudança, e um teste confere que
+todo painel e todo alerta consultam só métricas que a aplicação realmente expõe.
+
+Para observar o serviço no Render sem abrir a porta de métricas ao mundo, mantenha o `MW_METRICS_TOKEN` só no painel do Render e rode o Prometheus local apontando
+`targets` para o endereço público do serviço (o endpoint continua exigindo o token).
+
 ## Health checks
 
 | Caminho | O que verifica | Quando derruba |
