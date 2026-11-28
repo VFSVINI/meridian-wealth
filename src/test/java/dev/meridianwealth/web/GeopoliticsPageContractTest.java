@@ -35,6 +35,12 @@ class GeopoliticsPageContractTest {
     }
 
     @Test
+    void theAutoRefreshRedrawsOnlyWhatChangedAndKeepsKeyboardFocus() throws IOException {
+        String js = StaticPage.file("geo.js");
+        assertThat(js).contains("if (el.dataset.h === html) return;").contains("n.focus({preventScroll: true})").contains("paint($('#gpMap'), svg)").contains("paint($('#gpNews'),");
+    }
+
+    @Test
     void theMapDrawsFromTheBundledNaturalEarthFileAndListensToTheMacroEvent() throws IOException {
         String js = StaticPage.file("geo.js");
         assertThat(js).contains("/data/countries.geojson").contains("mw:macro");
