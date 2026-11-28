@@ -135,6 +135,14 @@ Aberto em 2026-11-29, depois do redesenho Cosmos (itens #47 a #56). Combinado co
 - [ ] **#59** "Pergunte à Academia": RAG sobre o corpus próprio (capítulos da Academia, glossário e regras do motor), começando por busca por palavras (BM25) e comparando com embeddings, com perguntas de teste rotuladas (acerto da busca, fidelidade da resposta e recusa a pedir recomendação). IA gratuita atrás de uma porta, só texto público, com cache, cota por usuário e degradação honesta quando a cota acaba.
 - [ ] **#60** Agente com ferramentas ("Pergunte aos dados"): chama as APIs existentes (cotação, sinal, composição, juros, correlação), cita fonte e horário de cada número, mostra as consultas feitas e recusa recomendação; só se #58 e #59 ficarem sólidos. Dados da carteira só com consentimento claro.
 
+### Milestone 10 — DevOps e plataforma, sem custo
+- [ ] **#61** Observabilidade: Spring Actuator com métricas Prometheus, logs estruturados em JSON, painel Grafana (plano gratuito ou `docker compose` local) e alertas simples de saúde.
+- [ ] **#62** Deploy automático: workflow que publica a imagem no GHCR e aciona o *deploy hook* do Render, com verificação de saúde depois; migração do banco já coberta pelo Flyway.
+- [ ] **#63** Infraestrutura como código (Terraform) descrevendo o ambiente, **sem aplicar** em nuvem paga; ADR comparando Render e Neon com GCP Cloud Run (custo, cartão, camada gratuita). Nada migra para o GCP sem decisão sua.
+
+### Transversal — Guia de estudo para entrevista
+- [ ] **#64** `docs/estudo/`: um guia por assunto (arquitetura hexagonal, motor de sinais, dados reais e proveniência, segurança, testes e CI, frontend sem build, Cosmos, IA/RAG, DevOps), cada um com o problema, a decisão, a alternativa descartada, "explique em 1 minuto" e as perguntas prováveis do entrevistador. Cresce a cada item entregue; um teste confere que todo ADR aparece no guia.
+
 ### Milestone 6 — Extensões Premium (só sob pedido)
 - [ ] **#22** Central de alertas · [ ] **#23** Rebalanceamento assistido · [ ] **#24** Calendário de renda passiva · [ ] **#25** Apuração de impostos · [ ] **#26** Backtest avançado · [ ] **#27** Stress testing · [ ] **#28** Research Studio · [ ] **#29** Importação e reconciliação.
 
