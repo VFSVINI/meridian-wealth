@@ -49,3 +49,4 @@ ADRs aceitos não são reescritos; uma mudança de rumo gera um ADR novo que sub
 | [042](042-cripto-relogio-e-medo-e-ganancia-com-fontes-publicas.md) | Cripto 24h: relógio de 24 horas e medo e ganância com fontes públicas | Aceito | 2026-11-28 |
 | [043](043-observabilidade-local-com-prometheus-e-grafana.md) | Observabilidade: logs em JSON e pilha local Prometheus + Grafana | Aceito | 2026-11-28 |
 | [044](044-deploy-automatico-sob-comando.md) | Deploy automático sob comando, com o commit no ar conferido | Aceito | 2026-11-28 |
+| [045](045-infraestrutura-como-codigo-e-comparacao-de-nuvens.md) | Infraestrutura como código sem aplicar e comparação de nuvens | Aceito | 2026-11-28 |
