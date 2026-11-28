@@ -46,3 +46,4 @@ ADRs aceitos não são reescritos; uma mudança de rumo gera um ADR novo que sub
 | [039](039-geopolitica-mapa-de-risco-por-pais.md) | Geopolítica: mapa de risco por país a partir das manchetes | Aceito | 2026-11-27 |
 | [040](040-questionario-de-perfil-com-sete-perguntas.md) | Questionário de perfil com sete perguntas, uma por tela | Aceito | 2026-11-28 |
 | [041](041-paineis-de-risco-saude-e-mapa-sobre-dado-real.md) | Painéis de Risco, Saúde dos dados, Simulador e Mapa sobre dado real | Aceito | 2026-11-28 |
+| [042](042-cripto-relogio-e-medo-e-ganancia-com-fontes-publicas.md) | Cripto 24h: relógio de 24 horas e medo e ganância com fontes públicas | Aceito | 2026-11-28 |
