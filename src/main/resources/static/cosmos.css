@@ -487,3 +487,22 @@ h3.sub .src{letter-spacing:0;text-transform:none;font-weight:400}
 .rk-r.fin .rk-fill{fill:rgba(255,179,64,.5)}.rk-r.fin .rk-line{stroke:#ffc45f;stroke-width:2.4}.rk-r.pick .rk-line{stroke:#fff;stroke-width:2.4}.rk-med{fill:none;stroke:#55d6ff;stroke-dasharray:2 5;stroke-width:1.6}
 @media(prefers-reduced-motion:no-preference){.rk-r{animation:rk-in .5s var(--ease) both}}@keyframes rk-in{from{opacity:0}to{opacity:1}}
 @media(max-width:700px){.rk-nums{grid-template-columns:1fr}.rk-ringbox{grid-template-columns:1fr;justify-items:center}.rk-sl{grid-template-columns:1fr}}
+
+/* Mapa de ativos, aba Mundo (item #53) */
+.mw-grid{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(280px,1fr);gap:var(--s3);align-items:start}
+.mw-card{border:1px solid var(--line);border-radius:16px;padding:var(--s4);background:linear-gradient(180deg,rgba(14,22,48,.85),rgba(8,13,30,.85));min-width:0}
+.mw-card:first-child{border-color:rgba(255,179,64,.5)}:root[data-theme="ivory"] .mw-card{background:var(--panel)}
+.mw-map{border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at center,#07101f,#04070e);border:1px solid var(--line)}.mw-map svg{display:block;width:100%;height:auto}
+.mw-c{fill:#0b1427;stroke:#1d2a4a;stroke-width:.6}.mw-c.has{stroke:rgba(255,255,255,.18)}
+.mw-arc{fill:none;stroke:rgba(85,214,255,.55);stroke-width:1.2;stroke-dasharray:3 6;animation:mw-flow 6s linear infinite}
+.mw-b{cursor:pointer;stroke:#04070e;stroke-width:2;fill-opacity:.9;filter:drop-shadow(0 0 8px currentColor);transition:r .2s var(--ease)}.mw-dot.pick .mw-b{stroke:#fff;stroke-width:2.5}.mw-b:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.mw-leg{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center;margin:var(--s3) 0 var(--s2);font:12px var(--mono);color:var(--text-3)}.mw-ramp{display:block;width:120px;height:8px;border-radius:4px;background:linear-gradient(90deg,rgba(255,109,130,.8),rgba(120,130,170,.35),rgba(56,221,156,.8))}
+.mw-nd{display:inline-flex;align-items:center;gap:6px}.mw-nd i{display:block;width:14px;height:14px;border:1px dashed var(--line-2);background:#0b1427}
+.mw-sh{display:flex;justify-content:space-between;align-items:center;gap:var(--s2);margin-bottom:var(--s3)}.mw-sh h3{margin:0;font:700 12px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--text-2)}
+.mw-list{list-style:none;margin:0 0 var(--s3);padding:0;max-height:430px;overflow:auto}.mw-list li+li{border-top:1px solid var(--line)}
+.mw-list button{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);width:100%;padding:12px 6px;background:transparent;border:0;color:var(--text);text-align:left;cursor:pointer}.mw-list button:hover,.mw-list button:focus-visible{background:rgba(255,179,64,.07)}
+.mw-list b{display:block;font:700 17px var(--sans)}.mw-list small{display:block;margin-top:2px;color:var(--text-3);font-size:13px}.mw-list .num{font:500 15px var(--mono)}
+.mw-note{margin-top:var(--s3);padding:var(--s4);border:1px solid var(--line);border-radius:16px;background:rgba(14,22,48,.5)}.mw-note p{margin:var(--s2) 0 0;color:var(--text-2);font-size:15px}
+@keyframes mw-flow{to{stroke-dashoffset:-72}}
+@media(prefers-reduced-motion:reduce){.mw-arc{animation:none}}
+@media(max-width:1100px){.mw-grid{grid-template-columns:1fr}}
