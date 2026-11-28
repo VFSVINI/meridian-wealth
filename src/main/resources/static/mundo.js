@@ -11,7 +11,15 @@
   const MW = {geo: null, paths: null, kind: 'todos', pick: 'B3', loading: false, tab: 'mundo'};
   const W = 1000, H = 520;
   const onPage = () => { const p = document.querySelector('[data-page="mapa"]'); return !!p && !p.hidden; };
-  const paint = (el, html) => { if (el && el.dataset.h !== html) { el.innerHTML = html; el.dataset.h = html; } };
+  /* só redesenha se o HTML mudou e devolve o foco ao mesmo elemento: as cotações mudam o tempo todo e o teclado não pode perder o lugar */
+  const paint = (el, html) => {
+    if (!el || el.dataset.h === html) return;
+    const a = document.activeElement; let key = '';
+    if (a && el.contains(a) && a.dataset) for (const k of ['mwx', 'mwa', 'mwk']) if (a.dataset[k] !== undefined) { key = `[data-${k}="${CSS.escape(a.dataset[k])}"]`; break; }
+    const top = el.scrollTop;
+    el.innerHTML = html; el.dataset.h = html; el.scrollTop = top;
+    if (key) { const n = el.querySelector(key); if (n) n.focus({preventScroll: true}); }
+  };
   const ND = '<span class="gap">não informado</span>';
   const money = (u, v) => (u.currency === 'USD' ? 'US$ ' : u.currency === 'BRL' ? 'R$ ' : '') + f(v, v < 10 ? 4 : 2);
 
