@@ -10,6 +10,8 @@ FROM eclipse-temurin:21-jre-alpine
 RUN addgroup -S app && adduser -S app -G app
 WORKDIR /app
 COPY --from=build /src/target/meridian-wealth.jar app.jar
+ARG GIT_COMMIT=desconhecido
+ENV GIT_COMMIT=$GIT_COMMIT
 USER app
 EXPOSE 8080
 HEALTHCHECK --interval=15s --timeout=3s --start-period=90s \
