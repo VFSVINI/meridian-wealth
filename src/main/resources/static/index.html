@@ -311,8 +311,27 @@
     </section>
 
     <section class="page" data-page="simulador" hidden>
-      <div class="ph"><p class="eyebrow">Patrimônio</p><h1>Simulador pré-ordem</h1><p class="lede">O efeito de uma compra ou venda hipotética na concentração, no risco e na aderência ao perfil, antes e depois.</p></div>
-      <div class="card rx sim" style="max-width:860px"><h2>Simulação <span class="tag">simulação</span></h2><div id="sm" class="mute" style="font-size:12.5px">carregando…</div></div>
+      <div class="ph"><p class="eyebrow">Simulador pré-ordem</p><h1>O que muda se eu registrar essa operação?</h1><p class="lede">Teste uma ideia no papel: peso na carteira e perdas em cenários de queda. Depois, registre a operação na sua Carteira.</p></div>
+      <div class="banner-info"><b>Simulação.</b> O MeridianWealth não executa ordens: aqui você simula e registra. Os valores usam a carteira que você informar (ou a sua carteira salva) e nenhuma cotação é inventada.</div>
+      <div class="sm-grid">
+        <section class="sm-card"><p class="gp-k"><span>Sua ideia</span></p>
+          <p class="sm-l">Ativo</p><div class="mk-pills" id="smAssets" role="group" aria-label="Ativo da ordem"></div>
+          <p class="sm-l">Tipo de registro</p><div class="mk-pills" id="smSides" role="group" aria-label="Compra ou venda"></div>
+          <p class="sm-l">Valor da simulação</p><div class="mk-pills" id="smAmts" role="group" aria-label="Valor da ordem"></div>
+          <label class="sm-l" for="smCustom">ou outro valor, em reais</label><input id="smCustom" type="number" min="1" step="1" inputmode="decimal" placeholder="R$ 7.500" class="sm-in">
+          <button type="button" class="primary sm-go" id="smRun">Simular de novo</button>
+          <p class="src" id="smRef"></p><p class="dn" id="smMsg" role="status"></p></section>
+        <section class="sm-card sm-orbit"><p class="gp-k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg><span>Órbita da carteira</span></p>
+          <div id="smOrbit" class="sm-sky"><span class="skel"></span></div><div class="sm-lg" id="smLegend"></div></section>
+      </div>
+      <section class="sm-card" aria-label="Resumo"><p class="gp-k"><span>Resumo</span></p><div id="smSum"><span class="skel"></span></div></section>
+      <div class="sm-two">
+        <section class="sm-card"><p class="gp-k"><span>E se cair?</span><span class="cs-chip am">cenário</span></p><div id="smFall"></div><p class="src">Cenário hipotético, não previsão: perda aproximada sobre a posição neste ativo depois da ordem, em cada queda.</p></section>
+        <section class="sm-card"><p class="gp-k"><span>Concentração</span></p><div id="smConc" class="sm-conc"></div></section>
+      </div>
+      <ul class="note" id="smFind"></ul><p class="src" id="smAss"></p>
+      <details class="ck-full"><summary><span>Modo avançado: carteira completa, perfil e todas as métricas</span><small>informe suas posições, escolha um perfil e veja antes e depois</small></summary>
+        <div style="padding:0 clamp(16px,2vw,26px) var(--s4)"><div class="card rx sim" style="max-width:860px"><h2>Simulação <span class="tag">simulação</span></h2><div id="sm" class="mute" style="font-size:12.5px">carregando…</div></div></div></details>
     </section>
 
     <section class="page" data-page="composicao" hidden>
@@ -401,6 +420,7 @@
 <script src="/brasil.js"></script>
 <script src="/geo.js"></script>
 <script src="/saude.js"></script>
+<script src="/simulador.js"></script>
 <script src="/auth.js"></script>
 <script src="/carteira.js"></script>
 <script src="/mapa.js"></script>
