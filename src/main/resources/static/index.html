@@ -224,7 +224,21 @@
     </section>
 
     <section class="page" data-page="mapa" hidden>
-      <div class="ph"><p class="eyebrow">Patrimônio</p><h1>Mapa de ativos reais</h1><p class="lede">Os imóveis de todos os fundos imobiliários que publicam a carteira no Informe Trimestral da CVM, com a precisão de cada coordenada à vista. Imóveis sem coordenada ficam na lista e explicam o motivo: nenhuma posição é inventada.</p></div>
+      <div class="ph"><p class="eyebrow">Mapa de ativos</p><h1>Onde estão os ativos que eu acompanho?</h1><p class="lede">Bolsas do mundo e imóveis dos fundos do Brasil no mapa. Toque num lugar para ver os ativos e como estão hoje.</p></div>
+      <div class="gp-tabs"><div class="mk-pills" role="group" aria-label="Mapa"><button type="button" class="mk-pill" data-mpt="mundo" aria-pressed="true">Mundo</button><button type="button" class="mk-pill" data-mpt="brasil" aria-pressed="false">Brasil</button></div><div class="mk-pills" id="mwKinds" role="group" aria-label="Classe de ativo"></div></div>
+      <div id="mwWorld">
+        <div class="mw-grid">
+          <section class="mw-card"><p class="gp-k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11zM12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg><span>Bolsas do mundo</span><span class="cs-chip cy">dado real</span></p>
+            <div class="mw-map" id="mwMap"><span class="skel"></span></div>
+            <div class="mw-leg"><span>queda</span><i class="mw-ramp"></i><span>alta</span><span class="mw-nd"><i></i>sem ativo conectado</span></div>
+            <p class="src">A cor do país é a variação média dos ativos mostrados. Os arcos ligam São Paulo às outras praças. Toque numa bolsa para ver os ativos.</p></section>
+          <aside class="mw-card mw-sd" id="mwSide" aria-live="polite"><span class="skel"></span></aside>
+        </div>
+        <section class="mw-note"><b>Sem lugar no mapa</b><p id="mwOut"></p></section>
+      </div>
+      <div id="mpBrasil" hidden>
+        <p class="src">Os imóveis de todos os fundos imobiliários que publicam a carteira no Informe Trimestral da CVM, com a precisão de cada coordenada à vista. Imóveis sem coordenada ficam na lista e explicam o motivo: nenhuma posição é inventada.</p>
+
       <p id="mpMsg" class="dn" role="status"></p>
       <div class="mp-grid">
         <div>
@@ -240,6 +254,7 @@
       </div>
       <div class="card" id="mpCompare"></div>
       <p class="src">Contorno dos estados: Malha Municipal do IBGE (qualidade mínima, dado público). Coordenadas dos imóveis obtidas pela geocodificação do OpenStreetMap Nominatim, © colaboradores do OpenStreetMap (ODbL); o mapa não carrega mapa-base nem recursos de terceiros. Ferramenta analítica e educacional.</p>
+      </div>
     </section>
 
     <section class="page" data-page="correlacao" hidden>
@@ -434,6 +449,7 @@
 <script src="/saude.js"></script>
 <script src="/simulador.js"></script>
 <script src="/risco.js"></script>
+<script src="/mundo.js"></script>
 <script src="/auth.js"></script>
 <script src="/carteira.js"></script>
 <script src="/mapa.js"></script>
