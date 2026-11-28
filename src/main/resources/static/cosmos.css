@@ -445,4 +445,4 @@ h3.sub .src{letter-spacing:0;text-transform:none;font-weight:400}
 @keyframes sv-spin{to{transform:rotate(360deg)}}@keyframes sv-pulse{50%{filter:drop-shadow(0 0 34px rgba(255,179,64,.95))}}
 @media(prefers-reduced-motion:reduce){.sv-orbit,.sv-ctr,.sv-sun{animation:none}}
 @media(max-width:1100px){.sv-grid{grid-template-columns:1fr}}
-@media(max-width:700px){.sv-kpis,.sv-states{grid-template-columns:1fr}.sv-kv{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.sv-lbl{font-size:19px}.sv-body{r:15px}.sv-star.pick .sv-body{r:19px}.sv-kpis,.sv-states{grid-template-columns:1fr}.sv-kv{grid-template-columns:repeat(2,minmax(0,1fr))}}
