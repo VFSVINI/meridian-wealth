@@ -1,5 +1,6 @@
 package dev.meridianwealth.infrastructure.provider;
 
+import dev.meridianwealth.domain.CountryRisk;
 import dev.meridianwealth.domain.GeoRiskScorer;
 import dev.meridianwealth.domain.MacroSnapshot;
 import dev.meridianwealth.domain.NewsItem;
@@ -33,6 +34,8 @@ public class LiveMacroData {
     private Double geo;
     private List<NewsItem> news = List.of();
     private Map<String, Double> sectors = Map.of();
+    private List<CountryRisk> countries = List.of();
+    private final Map<String, Double> changes = new java.util.HashMap<>();
     private long lastNews;
 
     public LiveMacroData(YahooClient yahoo, FredClient fred, FinnhubClient finnhub, RssNewsClient rss) {
@@ -47,8 +50,8 @@ public class LiveMacroData {
     @Scheduled(fixedDelay = 60_000, initialDelay = 8_000)
     public synchronized void refresh() {
         List<String> got = new ArrayList<>();
-        try { vix = yahoo.lastPrice("^VIX"); got.add("VIX"); } catch (RuntimeException e) { log.debug("VIX: {}", e.getMessage()); }
-        try { usd = yahoo.lastPrice("DX-Y.NYB"); got.add("DXY"); } catch (RuntimeException e) { log.debug("DXY: {}", e.getMessage()); }
+        try { var p = yahoo.lastWithChange("^VIX"); vix = p.price(); setChange("vix", p.change()); got.add("VIX"); } catch (RuntimeException e) { log.debug("VIX: {}", e.getMessage()); }
+        try { var p = yahoo.lastWithChange("DX-Y.NYB"); usd = p.price(); setChange("dxy", p.change()); got.add("DXY"); } catch (RuntimeException e) { log.debug("DXY: {}", e.getMessage()); }
         try {
             y10 = fred.enabled() ? fred.latest("DGS10") : yahoo.lastPrice("^TNX");
             got.add(fred.enabled() ? "Juros 10a (FRED)" : "Juros 10a (Yahoo)");
@@ -61,7 +64,12 @@ public class LiveMacroData {
         if (!news.isEmpty()) got.add("Notícias");
         String top = news.isEmpty() ? "Sem manchetes disponíveis" : news.get(0).title();
         String label = got.isEmpty() ? "SEM DADOS NESTA RODADA" : "REAL: " + String.join(", ", got);
-        snapshot = MacroSnapshot.of(vix, usd, y10, geo, top, label, news, sectors);
+        snapshot = MacroSnapshot.of(vix, usd, y10, geo, top, label, news, sectors, countries, changes);
+    }
+
+    /** A variação do dia só vale quando a fonte permite calculá-la; senão o valor anterior sai (nada de variação velha ao lado de preço novo). */
+    private void setChange(String key, Double change) {
+        if (change == null) changes.remove(key); else changes.put(key, change);
     }
 
     private void refreshNews() {
@@ -70,9 +78,10 @@ public class LiveMacroData {
             try { heads.addAll(finnhub.news()); } catch (RuntimeException e) { log.debug("Notícias Finnhub: {}", e.getMessage()); }
         }
         if (heads.isEmpty()) return;
-        List<NewsItem> scored = heads.stream().map(h -> GeoRiskScorer.score(h.title(), h.source())).toList();
+        List<NewsItem> scored = heads.stream().map(h -> GeoRiskScorer.score(h.title(), h.source(), h.link(), h.publishedAt())).toList();
         geo = GeoRiskScorer.aggregate(scored);
         sectors = GeoRiskScorer.sectorImpact(scored);
+        countries = GeoRiskScorer.countryRisks(scored);   // de TODAS as manchetes pontuadas, não só das oito mostradas
         news = scored.stream().sorted(Comparator.comparingDouble(NewsItem::risk).reversed()).limit(8).toList();
     }
 }

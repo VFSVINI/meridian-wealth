@@ -72,7 +72,8 @@ public class FinnhubClient implements ProviderStatusSource {
         List<Headline> out = new ArrayList<>();
         for (JsonNode n : arr) {
             String h = n.path("headline").asText("");
-            if (!h.isBlank()) out.add(new Headline(h, "Finnhub/" + n.path("source").asText("")));
+            long ts = n.path("datetime").asLong(0);
+            if (!h.isBlank()) out.add(new Headline(h, "Finnhub/" + n.path("source").asText(""), n.path("url").asText(null), ts > 0 ? java.time.Instant.ofEpochSecond(ts) : null));
             if (out.size() >= 25) break;
         }
         return out;
