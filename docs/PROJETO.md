@@ -138,7 +138,7 @@ Aberto em 2026-11-29, depois do redesenho Cosmos (itens #47 a #56). Combinado co
 ### Milestone 10 — DevOps e plataforma, sem custo
 - [x] **#61** (Issue #109, ADR 043) Observabilidade: o Actuator e as métricas Prometheus já existiam (ADR 016); entraram os logs em JSON por perfil, a pilha local Prometheus + Grafana com painel e alertas provisionados, a validação disso na CI e o histograma de latência das rotas.
 - [x] **#62** (Issue #111, ADR 044) Deploy automático sob comando: confirma a CI do commit, publica a imagem no GHCR, aciona o deploy hook do Render e espera o serviço responder com o commit certo (`/actuator/info`); o `autoDeploy` do Render segue desligado.
-- [ ] **#63** Infraestrutura como código (Terraform) descrevendo o ambiente, **sem aplicar** em nuvem paga; ADR comparando Render e Neon com GCP Cloud Run (custo, cartão, camada gratuita). Nada migra para o GCP sem decisão sua.
+- [x] **#63** (Issue #113, ADR 045) Infraestrutura como código (Terraform) descrevendo Render e Neon, sem aplicar; validada na CI (fmt e validate); ADR comparando com o GCP Cloud Run (recomendação: ficar no Render + Neon; nada migra sem decisão do dono).
 
 ### Transversal — Guia de estudo para entrevista
 - [ ] **#64** Guia de estudo para entrevista, **privado: nunca vai para este repositório público**. Fica na pasta local `estudo-privado/` (ignorada pelo Git) e, se você quiser cópia, num repositório privado separado. Um guia por assunto (arquitetura hexagonal, motor de sinais, dados reais, segurança, testes e CI, frontend sem build, Cosmos, IA, DevOps), cada um com o problema, a decisão, a alternativa descartada, "explique em 1 minuto" e as perguntas prováveis. Cresce a cada item entregue.
