@@ -1,0 +1,35 @@
+groups:
+  - name: meridianwealth
+    rules:
+      - alert: MeridianWealthForaDoAr
+        expr: up{job="meridianwealth"} == 0
+        for: 3m
+        labels: {severity: critical}
+        annotations:
+          summary: "O MeridianWealth não responde ao Prometheus há 3 minutos"
+      - alert: ProvedorComCircuitoAberto
+        expr: max by (provider) (meridianwealth_provider_circuit) == 2
+        for: 5m
+        labels: {severity: warning}
+        annotations:
+          summary: "Circuito aberto no provedor {{ $labels.provider }} há 5 minutos (o produto mostra o dado mais antigo com o selo de frescor)"
+      - alert: ProvedorFalhandoMuito
+        expr: |
+          sum by (provider) (rate(meridianwealth_provider_calls_total{outcome="failure"}[10m]))
+            / clamp_min(sum by (provider) (rate(meridianwealth_provider_calls_total{outcome=~"success|failure"}[10m])), 0.0001) > 0.5
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: "Mais da metade das chamadas ao provedor {{ $labels.provider }} falha"
+      - alert: ErrosDeServidorNaApi
+        expr: sum(rate(http_server_requests_seconds_count{status=~"5.."}[5m])) > 0.1
+        for: 5m
+        labels: {severity: warning}
+        annotations:
+          summary: "A API devolve mais de 0,1 erro 5xx por segundo há 5 minutos"
+      - alert: HeapQuaseCheio
+        expr: sum(jvm_memory_used_bytes{area="heap"}) / sum(jvm_memory_max_bytes{area="heap"}) > 0.9
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: "A memória heap está acima de 90% há 10 minutos"
