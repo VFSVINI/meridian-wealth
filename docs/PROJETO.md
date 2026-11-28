@@ -141,7 +141,7 @@ Aberto em 2026-11-29, depois do redesenho Cosmos (itens #47 a #56). Combinado co
 - [ ] **#63** Infraestrutura como código (Terraform) descrevendo o ambiente, **sem aplicar** em nuvem paga; ADR comparando Render e Neon com GCP Cloud Run (custo, cartão, camada gratuita). Nada migra para o GCP sem decisão sua.
 
 ### Transversal — Guia de estudo para entrevista
-- [ ] **#64** `docs/estudo/`: um guia por assunto (arquitetura hexagonal, motor de sinais, dados reais e proveniência, segurança, testes e CI, frontend sem build, Cosmos, IA/RAG, DevOps), cada um com o problema, a decisão, a alternativa descartada, "explique em 1 minuto" e as perguntas prováveis do entrevistador. Cresce a cada item entregue; um teste confere que todo ADR aparece no guia.
+- [ ] **#64** Guia de estudo para entrevista, **privado: nunca vai para este repositório público**. Fica na pasta local `estudo-privado/` (ignorada pelo Git) e, se você quiser cópia, num repositório privado separado. Um guia por assunto (arquitetura hexagonal, motor de sinais, dados reais, segurança, testes e CI, frontend sem build, Cosmos, IA, DevOps), cada um com o problema, a decisão, a alternativa descartada, "explique em 1 minuto" e as perguntas prováveis. Cresce a cada item entregue.
 
 ### Milestone 6 — Extensões Premium (só sob pedido)
 - [ ] **#22** Central de alertas · [ ] **#23** Rebalanceamento assistido · [ ] **#24** Calendário de renda passiva · [ ] **#25** Apuração de impostos · [ ] **#26** Backtest avançado · [ ] **#27** Stress testing · [ ] **#28** Research Studio · [ ] **#29** Importação e reconciliação.
