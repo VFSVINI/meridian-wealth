@@ -27,6 +27,6 @@ class PortfolioPageContractTest {
     @Test
     void missingDataIsNotInformedAndRealizedResultComesOnlyFromRegisteredSales() throws IOException {
         String js = StaticPage.file("carteira.js");
-        assertThat(js).contains("e.entryType==='SELL'&&e.realizedPnlBrl!=null").contains("nenhuma venda registrada").contains("sem cotação para medir").contains("withPnl.length?");
+        assertThat(js).contains("e.entryType==='SELL'&&e.realizedPnlBrl!=null").contains("nenhuma venda registrada").contains("sem cotação para medir").contains("withPnl.length?").contains("200 últimos lançamentos");
     }
 }
