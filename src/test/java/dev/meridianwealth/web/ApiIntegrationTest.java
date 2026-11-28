@@ -417,6 +417,13 @@ class ApiIntegrationTest {
     }
 
     @SuppressWarnings("unchecked")
+    @Test void actuatorInfoIsPublicAndNamesTheCommitSoTheDeployWorkflowCanConfirmWhatIsLive() {
+        Map<String, Object> info = rest.getForObject("/actuator/info", Map.class);
+        assertThat(info.get("commit")).as("sem RENDER_GIT_COMMIT nem GIT_COMMIT o valor é 'desconhecido', nunca ausente").isNotNull();
+        assertThat(((Map<String, Object>) info.get("app")).get("name")).isEqualTo("MeridianWealth");
+    }
+
+    @SuppressWarnings("unchecked")
     @Test void cryptoInsightsServeTheHourlyVolumeProfileAndTheFearGreedIndexFromRealRecordedResponses() {
         Map<String, Object> d = rest.getForObject("/api/crypto/insights", Map.class);
         Map<String, Object> hourly = (Map<String, Object>) d.get("hourly");

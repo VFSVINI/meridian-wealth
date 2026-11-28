@@ -44,7 +44,15 @@ springdoc:
     enabled: ${MW_API_DOCS:false}
   swagger-ui:
     enabled: ${MW_API_DOCS:false}
+info:
+  app:
+    name: MeridianWealth
+  # o Render define RENDER_GIT_COMMIT na hora do deploy; o fluxo de deploy confere que o serviço no ar é o commit pedido
+  commit: ${RENDER_GIT_COMMIT:${GIT_COMMIT:desconhecido}}
 management:
+  info:
+    env:
+      enabled: true
   metrics:
     distribution:
       # histograma de latência das rotas HTTP: o painel do Grafana calcula o p95 sobre ele
