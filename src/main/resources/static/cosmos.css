@@ -331,3 +331,47 @@ h3.sub .src{letter-spacing:0;text-transform:none;font-weight:400}
 .br-academy span{flex:1;display:flex;flex-direction:column}.br-academy b{font:600 17px var(--sans)}.br-academy small{color:var(--text-3);font-size:14px}
 @media(max-width:1100px){.br-cards{grid-template-columns:1fr}.br-two{grid-template-columns:1fr}}
 @media(max-width:640px){.br-boxes{grid-template-columns:1fr}.br-bar{grid-template-columns:1fr auto;grid-template-areas:"n v" "b b" "r r"}}
+
+/* Geopolítica (item #51): mapa de risco, passo a passo, termômetros e notícias */
+.gp-tabs{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center;justify-content:space-between;margin:var(--s4) 0 var(--s3)}
+.gp-tabs .mk-pills{margin:0}
+.gp-grid{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(280px,1fr);gap:var(--s4);align-items:start}
+.gp-mapcard,.gp-side{border:1px solid var(--line);border-radius:18px;padding:clamp(14px,2vw,24px);background:linear-gradient(180deg,rgba(14,22,48,.85),rgba(8,13,30,.85));min-width:0}
+.gp-side{border-color:rgba(255,179,64,.55)}
+:root[data-theme="ivory"] .gp-mapcard,:root[data-theme="ivory"] .gp-side,:root[data-theme="ivory"] .gp-t,:root[data-theme="ivory"] .gp-n,:root[data-theme="ivory"] .gp-step{background:var(--panel)}
+.gp-k,.gp-sk{display:flex;align-items:center;gap:var(--s2);margin:0 0 var(--s3);font:700 12px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--text-2)}
+.gp-k svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}
+.gp-map{border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at center,#07101f,#04070e);border:1px solid var(--line)}
+.gp-map svg{display:block;width:100%;height:auto}
+.gp-c{fill:#0b1427;stroke:#1d2a4a;stroke-width:.6;transition:fill .2s var(--ease)}
+.gp-c.has{cursor:pointer;stroke:rgba(255,179,64,.35)}.gp-c.has:hover,.gp-c.has:focus-visible{stroke:var(--gold);stroke-width:1.4;outline:none}
+.gp-c.pick{stroke:#fff;stroke-width:1.6}
+.gp-dot circle{fill:var(--cyan);fill-opacity:.85;stroke:#04070e;stroke-width:1.5;pointer-events:none}.gp-dot text{font:700 11px var(--sans);fill:#04101c;pointer-events:none}
+.gp-legend{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center;margin:var(--s3) 0 var(--s2);font:12px var(--mono);color:var(--text-3)}
+.gp-ramp{display:block;width:120px;height:8px;border-radius:4px;background:linear-gradient(90deg,rgba(85,214,255,.55),rgba(255,190,70,.75),rgba(255,130,40,.95))}
+.gp-nd{display:inline-flex;align-items:center;gap:6px}.gp-nd i{display:block;width:14px;height:14px;border:1px dashed var(--line-2);background:#0b1427}
+.gp-side h3{font:800 clamp(28px,3vw,40px)/1 var(--display);letter-spacing:.02em;text-transform:uppercase;margin:0 0 var(--s4)}
+.gp-sh{display:flex;justify-content:space-between;align-items:center;gap:var(--s2)}
+.gp-lv{margin:var(--s3) 0 2px;font:700 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.gp-lvv{display:block;font:800 30px/1.1 var(--display);letter-spacing:.02em;text-transform:uppercase;margin-bottom:var(--s2)}.gp-lvv.hi{color:var(--gold)}
+.gp-side p{margin:0 0 4px;font-size:15px}.gp-hl{font:600 17px/1.35 var(--sans)}
+.gp-read{display:inline-flex;align-items:center;gap:6px;margin-top:var(--s2);padding:7px 16px;border:1px solid var(--cyan);border-radius:999px;color:var(--cyan);text-decoration:none;font:600 14px var(--sans)}
+.gp-read:hover,.gp-read:focus-visible{background:rgba(85,214,255,.1)}.gp-read svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.gp-others{display:flex;flex-wrap:wrap;gap:6px;margin-top:var(--s4)}.gp-others .mk-pill{padding:4px 12px;font-size:13px}
+.gp-secs{display:grid;gap:var(--s2)}
+.gp-sec{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:var(--s3);padding:10px var(--s3);border:1px solid var(--line-2);border-radius:10px;background:transparent;color:var(--text);cursor:pointer;text-align:left;overflow:hidden}
+.gp-sec i{position:absolute;left:0;bottom:0;height:3px;background:var(--gold-grad)}.gp-sec[aria-pressed="true"]{border-color:var(--gold);background:rgba(255,179,64,.08)}.gp-sec span{text-transform:capitalize}
+.gp-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3);margin-top:var(--s4)}
+.gp-step{display:flex;flex-direction:column;gap:2px;text-align:left;padding:var(--s3) var(--s4);border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(14,22,48,.8),rgba(8,13,30,.8));color:var(--text);cursor:pointer}
+.gp-step small{font:600 12px var(--mono);color:var(--gold)}.gp-step b{font:700 18px var(--sans)}.gp-step span{color:var(--text-3);font-size:14px}
+.gp-step[aria-pressed="true"]{border-color:rgba(255,179,64,.65);background:rgba(255,179,64,.08)}
+.gp-step-txt{margin:var(--s3) 0 0;padding:var(--s3) var(--s4);border:1px solid var(--line);border-radius:12px;font-size:16px;line-height:1.5;color:var(--text-2)}.gp-step-txt b{color:var(--text)}
+.gp-th{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3);margin-top:var(--s4)}
+.gp-t{border:1px solid var(--line);border-radius:16px;padding:var(--s4);background:linear-gradient(180deg,rgba(14,22,48,.85),rgba(8,13,30,.85))}
+.gp-t p{margin:0 0 var(--s2);color:var(--text-2);font-size:14px}.gp-t>b{display:block;font:500 clamp(26px,2.4vw,34px) var(--mono);margin-bottom:var(--s2)}
+.gp-tf{display:flex;flex-wrap:wrap;gap:var(--s2);align-items:center;font-size:13px}.gp-tf .cs-chip{font-size:11.5px}
+.gp-news{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s3);margin-top:var(--s4)}
+.gp-n{border:1px solid var(--line);border-radius:16px;padding:var(--s4);background:linear-gradient(180deg,rgba(14,22,48,.85),rgba(8,13,30,.85));display:flex;flex-direction:column;gap:var(--s2)}
+.gp-nh{display:flex;justify-content:space-between;gap:var(--s2);margin:0}.gp-n h3{font:600 17px/1.35 var(--sans);margin:0;flex:1}.gp-n .src{margin:0}
+@media(max-width:1100px){.gp-grid{grid-template-columns:1fr}.gp-th{grid-template-columns:repeat(2,minmax(0,1fr))}.gp-news{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.gp-steps,.gp-th,.gp-news{grid-template-columns:1fr}}
