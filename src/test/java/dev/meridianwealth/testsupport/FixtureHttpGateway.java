@@ -56,6 +56,8 @@ public class FixtureHttpGateway implements HttpGateway {
         if (url.contains("olinda.bcb.gov.br/olinda/servico/PTAX") && url.contains("CotacaoDolarPeriodo")) {
             return resource("/fixtures/bcb/ptax-periodo.json");
         }
+        if (url.startsWith("https://api.exchange.coinbase.com/products/BTC-USD/candles")) return resource("/fixtures/crypto/coinbase-candles-1h.json");
+        if (url.startsWith("https://api.alternative.me/fng/")) return resource("/fixtures/crypto/fear-greed.json");
         if (url.contains("stooq.com/q/d/l/")) return resource("/fixtures/stooq/spy.us-bloqueio.html");
         throw new ClientErrorException("HTTP 404 (sem fixture para " + url + ")");
     }

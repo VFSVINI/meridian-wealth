@@ -4,6 +4,8 @@ import dev.meridianwealth.application.BacktestService;
 import dev.meridianwealth.application.BrazilHistoryService;
 import dev.meridianwealth.application.BrazilRatesService;
 import dev.meridianwealth.application.CompositionService;
+import dev.meridianwealth.application.CryptoInsightsService;
+import dev.meridianwealth.application.port.CryptoInsightsPort;
 import dev.meridianwealth.application.ReportsService;
 import dev.meridianwealth.application.port.ReportsPort;
 import dev.meridianwealth.application.port.CompositionPort;
@@ -74,6 +76,11 @@ public class ApplicationConfig {
     @Bean
     BrazilHistoryService brazilHistoryService(BrazilHistoryPort history, Clock brasiliaClock) {
         return new BrazilHistoryService(history, brasiliaClock);
+    }
+
+    @Bean
+    CryptoInsightsService cryptoInsightsService(CryptoInsightsPort port, Clock brasiliaClock) {
+        return new CryptoInsightsService(port, brasiliaClock);
     }
 
     @Bean

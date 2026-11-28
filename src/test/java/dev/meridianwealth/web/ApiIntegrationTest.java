@@ -417,6 +417,24 @@ class ApiIntegrationTest {
     }
 
     @SuppressWarnings("unchecked")
+    @Test void cryptoInsightsServeTheHourlyVolumeProfileAndTheFearGreedIndexFromRealRecordedResponses() {
+        Map<String, Object> d = rest.getForObject("/api/crypto/insights", Map.class);
+        Map<String, Object> hourly = (Map<String, Object>) d.get("hourly");
+        assertThat(hourly.get("source")).isEqualTo("Coinbase");
+        assertThat(hourly.get("zone")).isEqualTo("America/Sao_Paulo");
+        assertThat(hourly.get("symbol")).isEqualTo("BTC");
+        List<Map<String, Object>> hours = (List<Map<String, Object>>) hourly.get("hours");
+        assertThat(hours).hasSize(24);
+        assertThat(hours).allSatisfy(h -> assertThat(((Number) h.get("relative")).doubleValue()).isBetween(0.0, 1.0));
+        assertThat(hours.stream().mapToDouble(h -> ((Number) h.get("relative")).doubleValue()).max().orElse(0)).as("o pico vale 100% de si mesmo").isEqualTo(1.0);
+        Map<String, Object> fg = (Map<String, Object>) d.get("fearGreed");
+        assertThat(fg.get("value")).isEqualTo(10);
+        assertThat(fg.get("label")).isEqualTo("Medo extremo");
+        assertThat(fg.get("source")).isEqualTo("alternative.me");
+        assertThat((List<?>) d.get("unavailable")).isEmpty();
+    }
+
+    @SuppressWarnings("unchecked")
     @Test void brazilHistoryServesRealSeriesAsExactTextAndNeverEstimatesWhatIsMissing() {
         Map<String, Object> h = rest.getForObject("/api/brazil/history", Map.class);
         Map<String, Map<String, Object>> series = (Map<String, Map<String, Object>>) h.get("series");
