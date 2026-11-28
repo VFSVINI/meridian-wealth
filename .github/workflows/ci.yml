@@ -61,6 +61,12 @@ jobs:
             prom/prometheus:v2.55.1 check config /etc/prometheus/prometheus.yml
       - name: Valida os fluxos do GitHub Actions (actionlint)
         run: docker run --rm -v "$PWD:/repo" --workdir /repo rhysd/actionlint:1.7.4 -color
+      - name: Valida o Terraform (fmt e validate; nada é aplicado)
+        run: |
+          tf() { docker run --rm -v "$PWD/infra/terraform:/work" -w /work hashicorp/terraform:1.9.8 "$@"; }
+          tf fmt -check -diff
+          tf init -backend=false -input=false
+          tf validate
       - name: Build da imagem
         run: docker build -t meridian-wealth:ci .
   mutation:
