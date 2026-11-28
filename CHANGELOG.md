@@ -6,6 +6,13 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #53, parte 1: Saúde dos dados, Milestone 8: Cosmos)
+- **Saúde dos dados no visual do protótipo**: "Posso confiar nos números que estou vendo?", três números (fontes saudáveis, ativos com preço e dados não informados), **constelação de fontes** (cada estrela é um provedor que gira devagar em torno do MeridianWealth; anel de dentro = ligados, de fora = desligados ou sem chave) e painel da fonte escolhida com chamadas, sucessos, falhas, barradas, latência média e a taxa de sucesso.
+- Os números vêm do `/api/status`; o servidor ainda não guarda histórico de disponibilidade nem de tempo de resposta, então esses gráficos do protótipo não aparecem (nada é inventado). Os quatro estados das telas (carregando, vazio, desatualizado, erro) aparecem como exemplos rotulados.
+
+### Alterado (item #53, parte 1)
+- O status técnico antigo da ingestão continua, recolhido em "Status técnico completo".
+
 ### Adicionado (item #52, parte 3: Perfil, Milestone 8: Cosmos)
 - **Perfil no visual do protótipo**: "Que tipo de investidor eu sou?", **sete perguntas, uma por tela**, com barra de progresso, Voltar e Próxima; no fim, o perfil, o motivo dos tetos, a carteira modelo e a aderência da carteira, como antes.
 
