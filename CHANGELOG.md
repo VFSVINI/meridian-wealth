@@ -6,6 +6,13 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #53, parte 3: Risco, Milestone 8: Cosmos)
+- **Risco no visual do protótipo**: "Quão longe posso chegar e quanto posso oscilar no caminho?", atalhos de aporte e prazo (a projeção roda sozinha), **cone de patrimônio** com o ruim (1 em 20), o mediano e o bom (1 em 20) do ano escolhido no controle deslizante, anel com a chance da meta e a **paisagem de probabilidades**: uma curva por ano mostra onde terminaram as 5.000 trajetórias, e a montanha se espalha com o tempo.
+- `/api/risk/monte-carlo` e `/api/me/risk/monte-carlo` passam a devolver `density`: limites comuns e, para cada ano, quantas trajetórias caíram em cada uma das 48 faixas de patrimônio (as mesmas trajetórias do cone, nada sorteado no navegador).
+
+### Alterado (item #53, parte 3)
+- Os gráficos anteriores (cone 2D e 3D, distribuição final, meta ano a ano, tabela e premissas) continuam, recolhidos em "Gráficos detalhados".
+
 ### Adicionado (item #53, parte 2: Simulador, Milestone 8: Cosmos)
 - **Simulador no visual do protótipo**: "O que muda se eu registrar essa operação?", escolha de ativo, compra ou venda e valor, e a simulação roda sozinha a cada mudança. **Órbita da carteira**: cada planeta é uma posição (tamanho = peso depois da ordem, cor = classe, anel = volatilidade anualizada real do ativo; sem volatilidade, anel pontilhado), girando devagar e pausando ao passar o mouse. Resumo com quantidade estimada pela cotação de referência (só em reais), peso antes e depois, "E se cair?" em três cenários hipotéticos e a concentração no ativo.
 - A carteira da simulação é a salva do usuário (quando logado) ou a informada no modo avançado; a conta de impacto continua sendo a do servidor (`/api/impact/pre-order`) e nenhuma ordem é enviada ou guardada.
