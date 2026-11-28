@@ -136,7 +136,7 @@ Aberto em 2026-11-29, depois do redesenho Cosmos (itens #47 a #56). Combinado co
 - [ ] **#60** Agente com ferramentas ("Pergunte aos dados"): chama as APIs existentes (cotação, sinal, composição, juros, correlação), cita fonte e horário de cada número, mostra as consultas feitas e recusa recomendação; só se #58 e #59 ficarem sólidos. Dados da carteira só com consentimento claro.
 
 ### Milestone 10 — DevOps e plataforma, sem custo
-- [ ] **#61** Observabilidade: Spring Actuator com métricas Prometheus, logs estruturados em JSON, painel Grafana (plano gratuito ou `docker compose` local) e alertas simples de saúde.
+- [x] **#61** (Issue #109, ADR 043) Observabilidade: o Actuator e as métricas Prometheus já existiam (ADR 016); entraram os logs em JSON por perfil, a pilha local Prometheus + Grafana com painel e alertas provisionados, a validação disso na CI e o histograma de latência das rotas.
 - [ ] **#62** Deploy automático: workflow que publica a imagem no GHCR e aciona o *deploy hook* do Render, com verificação de saúde depois; migração do banco já coberta pelo Flyway.
 - [ ] **#63** Infraestrutura como código (Terraform) descrevendo o ambiente, **sem aplicar** em nuvem paga; ADR comparando Render e Neon com GCP Cloud Run (custo, cartão, camada gratuita). Nada migra para o GCP sem decisão sua.
 

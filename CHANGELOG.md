@@ -6,6 +6,14 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #61, Milestone 10: DevOps sem custo)
+- **Logs em JSON** pelo perfil `json-logs`: uma linha por evento, com `correlationId` e `service`, para qualquer agregador de logs. O formato padrão em texto não muda.
+- **Pilha local de observabilidade** em `ops/observability/`: Prometheus (com o token de métricas lido de um arquivo ignorado pelo Git), Grafana com o painel **visão geral** (tráfego, p95, 5xx, falha, latência e circuito por provedor, chamadas por hora, cache, heap, CPU, banco e eventos) e cinco alertas.
+- A CI valida o Compose e a configuração com o `promtool`; um teste confere que todo painel e todo alerta usam métricas que a aplicação expõe.
+
+### Alterado (item #61)
+- O histograma de latência de `http.server.requests` foi ligado, para o p95 por rota do painel.
+
 ### Adicionado (item #54, parte 2: relógio e medo e ganância, Milestone 8: Cosmos)
 - **Relógio de 24 horas**: 24 barras radiais com o volume médio do Bitcoin em cada hora do dia, no horário de Brasília, o pico em dourado, o ponteiro na hora de agora e o detalhe da hora escolhida. Dado das barras horárias reais da Coinbase (ou Kraken, ou Binance).
 - **Medo e ganância**: velocímetro de 0 a 100 com o rótulo em português e a data, do índice público da alternative.me.
