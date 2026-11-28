@@ -218,34 +218,59 @@ function spHoldingRow(){
 }
 function renderSuitability(){
   const el=$('#sp');if(!SPQ||!SPMP){return}
-  const qs=SPQ.questions.map(q=>`<fieldset class="q"><legend>${esc(q.text)} <span class="ref">${esc(q.dimensionLabel)} · ${esc(q.legalRef)}</span></legend>${q.options.map(o=>`<label><input type="radio" name="q_${esc(q.id)}" value="${esc(o.id)}"> ${esc(o.text)}</label>`).join('')}</fieldset>`).join('');
   el.className='';el.style.fontSize='12px';
   el.innerHTML=`<div class="src">Suas respostas e valores não são gravados nem enviados a terceiros: o cálculo acontece nesta aplicação e o resultado some ao recarregar a página.</div>
   <div class="banner-info" id="spBanner" hidden>Sua conta ainda não tem perfil de investidor. Responda o questionário e salve o resultado para ver a aderência da sua carteira.</div>
-  <details><summary><b>Descobrir meu perfil</b> <span class="mute">9 perguntas</span></summary><form id="spForm">${qs}<button type="submit">Calcular perfil</button> <span id="spErr" class="dn"></span></form></details>
+  <div id="spWiz" class="pf-wiz"></div><span id="spErr" class="dn" role="alert"></span>
   <div id="spRes"></div>
   <details style="margin-top:8px"><summary><b>Carteiras modelo</b> <span class="mute">metas por perfil</span></summary>${SPMP.portfolios.map(p=>`<h2 style="margin-top:12px;font-size:13px">${esc(p.profileLabel)}</h2>${spTargets(p)}`).join('')}</details>
   <div class="src" style="margin-top:8px">${esc(SPQ.disclaimer)} Faixas da nota (0 a 100): ${Object.entries(SPQ.scoreBands).map(([k,v])=>esc(k==='CONSERVATIVE'?'conservador':k==='MODERATE'?'moderado':k==='BOLD'?'arrojado':'agressivo')+' '+esc(v)).join('; ')}. Metas ilustrativas definidas pelo produto, sem fonte externa.</div>`;
   if(typeof profileBanner==='function')profileBanner();
-  $('#spForm').addEventListener('submit',async e=>{
-    e.preventDefault();$('#spErr').textContent='';
-    const answers={};SPQ.questions.forEach(q=>{const c=document.querySelector(`input[name="q_${q.id}"]:checked`);if(c)answers[q.id]=c.value});
-    if(Object.keys(answers).length<SPQ.questions.length){$('#spErr').textContent='Responda todas as perguntas.';return}
-    try{
-      const r=await fetch('/api/suitability/evaluate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({answers})});
-      const d=await r.json();if(!r.ok)throw new Error(d.error||'erro');
-      SPPROFILE=d.profile;
-      $('#spRes').innerHTML=`<div style="margin:10px 0"><span class="pf">${esc(d.profileLabel)}</span> <span class="mute">nota ${f(d.score,2)} de 100${d.profile!==d.scoreProfile?' · pela nota seria '+esc(d.scoreProfileLabel):''}</span></div>
-      ${d.appliedCaps.length?'<ul class="note">'+d.appliedCaps.map(c=>'<li>'+esc(c)+'</li>').join('')+'</ul>':''}
-      <div id="spSave" style="margin:10px 0"></div><div class="src">Meta da carteira modelo ${esc(d.profileLabel)}:</div>${spTargets(d.modelPortfolio)}
-      <div style="margin-top:12px"><b>Aderência da minha carteira</b><div id="spHold">${spHoldingRow()}</div>
-      <button type="button" id="spAdd">+ posição</button> <button type="button" id="spCalc">Calcular aderência</button> <span id="spErr2" class="dn"></span></div><div id="spAd"></div>`;
-      $('#spAdd').onclick=()=>$('#spHold').insertAdjacentHTML('beforeend',spHoldingRow());
-      offerSaveProfile(SPPROFILE);
-      $('#spCalc').onclick=spAdherence;
-    }catch(err){$('#spErr').textContent=err.message}
-  });
+  spWiz();
 }
+/* questionário em uma pergunta por tela (item #52): as respostas ficam só na memória desta página até o envio */
+const SPW={i:0,a:{}};
+function spWiz(focusFirst){
+  const box=$('#spWiz');if(!box||!SPQ)return;
+  const qs=SPQ.questions,q=qs[SPW.i],last=SPW.i===qs.length-1,cur=SPW.a[q.id];
+  box.hidden=false;
+  box.innerHTML=`<div class="pf-prog" aria-hidden="true">${qs.map((_,k)=>`<i class="${k<=SPW.i?'on':''}"></i>`).join('')}</div>
+    <div class="pf-meta"><span>Pergunta ${SPW.i+1} de ${qs.length}</span><span>Nenhuma resposta é certa ou errada</span></div>
+    <fieldset class="pf-q"><legend><h2 class="pf-t">${esc(q.text)}</h2></legend>${q.options.map(o=>`<label class="pf-o"><input type="radio" name="pq" value="${esc(o.id)}"${cur===o.id?' checked':''}><span>${esc(o.text)}</span></label>`).join('')}</fieldset>
+    <p class="src">${esc(q.dimensionLabel)} · ${esc(q.legalRef)}</p>
+    <div class="pf-nav"><button type="button" class="ghost" id="pfBack"${SW_BACK(SPW.i)}>Voltar</button><button type="button" class="primary" id="pfNext"${cur?'':' disabled'}>${last?'Ver meu perfil':'Próxima'}</button></div>`;
+  if(focusFirst){const t=box.querySelector('input:checked')||box.querySelector('input');if(t)t.focus()}
+}
+const SW_BACK=i=>i?'':' disabled';
+async function spSubmit(){
+  $('#spErr').textContent='';
+  const answers={...SPW.a};
+  if(Object.keys(answers).length<SPQ.questions.length){$('#spErr').textContent='Responda todas as perguntas.';return}
+  try{
+    const r=await fetch('/api/suitability/evaluate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({answers})});
+    const d=await r.json();if(!r.ok)throw new Error(d.error||'erro');
+    SPPROFILE=d.profile;
+    $('#spWiz').hidden=true;
+    $('#spRes').innerHTML=`<div style="margin:10px 0"><span class="pf">${esc(d.profileLabel)}</span> <span class="mute">nota ${f(d.score,2)} de 100${d.profile!==d.scoreProfile?' · pela nota seria '+esc(d.scoreProfileLabel):''}</span></div>
+    ${d.appliedCaps.length?'<ul class="note">'+d.appliedCaps.map(c=>'<li>'+esc(c)+'</li>').join('')+'</ul>':''}
+    <div id="spSave" style="margin:10px 0"></div><div class="src">Meta da carteira modelo ${esc(d.profileLabel)}:</div>${spTargets(d.modelPortfolio)}
+    <div style="margin-top:12px"><b>Aderência da minha carteira</b><div id="spHold">${spHoldingRow()}</div>
+    <button type="button" id="spAdd">+ posição</button> <button type="button" id="spCalc">Calcular aderência</button> <span id="spErr2" class="dn"></span></div><div id="spAd"></div>
+    <p style="margin-top:12px"><button type="button" id="pfRedo" class="ghost">Refazer o questionário</button></p>`;
+    $('#spAdd').onclick=()=>$('#spHold').insertAdjacentHTML('beforeend',spHoldingRow());
+    offerSaveProfile(SPPROFILE);
+    $('#spCalc').onclick=spAdherence;
+    $('#pfRedo').onclick=()=>{SPW.i=0;SPW.a={};$('#spRes').innerHTML='';spWiz(true)};
+  }catch(err){$('#spErr').textContent=err.message}
+}
+document.addEventListener('change',e=>{
+  if(!e.target.matches||!e.target.matches('#spWiz input[name="pq"]'))return;
+  SPW.a[SPQ.questions[SPW.i].id]=e.target.value;$('#pfNext').disabled=false;
+});
+document.addEventListener('click',e=>{
+  if(e.target.closest('#pfBack')){if(SPW.i>0){SPW.i--;spWiz(true)}return}
+  if(e.target.closest('#pfNext')){if(!SPW.a[SPQ.questions[SPW.i].id])return;if(SPW.i<SPQ.questions.length-1){SPW.i++;spWiz(true)}else spSubmit()}
+});
 async function spAdherence(){
   $('#spErr2').textContent='';
   const holdings=[...document.querySelectorAll('#spHold .hold')].map(h=>({type:h.querySelector('select').value,valueBrl:h.querySelector('input').value})).filter(h=>h.valueBrl!=='');

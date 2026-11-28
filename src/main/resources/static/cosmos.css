@@ -404,3 +404,15 @@ h3.sub .src{letter-spacing:0;text-transform:none;font-weight:400}
 #shCmpBody th[scope="row"]{text-align:left;color:var(--text-3);font:700 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
 @media(max-width:1100px){.sh-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.sh-grid{grid-template-columns:1fr}.sh-f{grid-template-columns:1fr}}
+
+/* Perfil (item #52, parte 3): questionário em uma pergunta por tela */
+.pf-card{max-width:860px;border:1px solid var(--line);border-radius:18px;padding:clamp(16px,3vw,32px);background:linear-gradient(180deg,rgba(14,22,48,.85),rgba(8,13,30,.85))}
+:root[data-theme="ivory"] .pf-card{background:var(--panel)}
+.pf-prog{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:var(--s2);margin-bottom:var(--s2)}.pf-prog i{height:4px;border-radius:2px;background:var(--line-2)}.pf-prog i.on{background:var(--gold-grad)}
+.pf-meta{display:flex;justify-content:space-between;gap:var(--s3);flex-wrap:wrap;color:var(--text-3);font-size:13px}
+.pf-q{border:0;margin:var(--s4) 0 var(--s2);padding:0;min-width:0;display:grid;gap:var(--s3)}.pf-q legend{padding:0;margin-bottom:var(--s3)}
+.pf-t{margin:0;font:800 clamp(26px,3.4vw,40px)/1.05 var(--display);letter-spacing:.01em}
+.pf-o{display:flex;align-items:center;gap:var(--s3);padding:16px 18px;border:1px solid var(--line-2);border-radius:14px;cursor:pointer;font-size:16px;line-height:1.35;background:transparent}
+.pf-o:hover{border-color:var(--gold)}.pf-o:has(input:checked){border-color:var(--gold);background:rgba(255,179,64,.08)}.pf-o:has(input:focus-visible){outline:2px solid var(--gold);outline-offset:2px}
+.pf-o input{width:20px;height:20px;accent-color:var(--gold);flex:none}
+.pf-nav{display:flex;justify-content:space-between;align-items:center;margin-top:var(--s4)}.pf-nav button:disabled{opacity:.45;cursor:not-allowed}
