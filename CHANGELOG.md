@@ -6,6 +6,11 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #54, parte 2: relógio e medo e ganância, Milestone 8: Cosmos)
+- **Relógio de 24 horas**: 24 barras radiais com o volume médio do Bitcoin em cada hora do dia, no horário de Brasília, o pico em dourado, o ponteiro na hora de agora e o detalhe da hora escolhida. Dado das barras horárias reais da Coinbase (ou Kraken, ou Binance).
+- **Medo e ganância**: velocímetro de 0 a 100 com o rótulo em português e a data, do índice público da alternative.me.
+- `GET /api/crypto/insights` com os dois, cache de 15 minutos, último dado bom e "indisponível" quando a fonte não responde. ADR 042 registra por que a Yahoo não serve para o volume horário (mais da metade das barras do Bitcoin vem com volume zero).
+
 ### Adicionado (item #54, parte 1: Cripto 24h, Milestone 8: Cosmos)
 - **Cripto 24h no visual do protótipo**: "O que está acontecendo no cripto agora, a qualquer hora?", gráfico **ao vivo** (BTC, ETH ou SOL, amostrado a cada segundo do preço do stream da bolsa conectada, com fonte), últimas cotações, preço de 7 e 30 dias, **sistema de moedas** (centro = moeda de maior volume; tamanho = volume em 24 h; cor = variação de 24 h ou 7 dias; planetas que giram devagar), detalhe da moeda com texto educativo, participação no volume, 24/7 contra horário comercial (bolsas abertas agora, pelo estado real do pregão) e tabela das 12 moedas.
 - **Oito moedas a mais** no universo (BNB, DOGE, ADA, AVAX, LINK, DOT, LTC e TRX), com pares na Binance, na Coinbase e na Kraken quando existem; a página Mercados também as lista.
