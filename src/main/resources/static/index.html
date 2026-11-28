@@ -262,15 +262,26 @@
     </section>
 
     <section class="page" data-page="montecarlo" hidden>
-      <div class="ph"><p class="eyebrow">Risco</p><h1>Monte Carlo e metas <span class="tag">projeção</span></h1><p class="lede">O cone patrimonial e a chance de bater uma meta, a partir das premissas ao lado ou dos retornos reais da sua carteira. É projeção: não é cotação e não promete retorno.</p></div>
+      <div class="ph"><p class="eyebrow">Risco</p><h1>Quão longe posso chegar e quanto posso oscilar no caminho?</h1><p class="lede">Projeções com milhares de cenários e a relação entre os seus ativos. Tudo é hipótese, nunca promessa.</p></div>
+      <div class="gp-tabs"><div class="mk-pills" role="group" aria-label="Seção de risco"><a class="mk-pill" href="#/montecarlo" aria-current="page" aria-pressed="true">Monte Carlo</a><a class="mk-pill" href="#/correlacao" aria-pressed="false">Correlação e concentração</a></div><span class="cs-chip am">projeção</span></div>
       <div class="banner-info" id="mcLabel">PROJEÇÃO: não é cotação nem promessa de retorno. A plataforma não executa ordens.</div>
       <div class="mc-grid">
         <div class="card">
           <h2>Parâmetros</h2>
           <div class="tabs" role="tablist" aria-label="Origem dos retornos"><button type="button" role="tab" data-mcm="manual" aria-selected="true">Premissas manuais</button><button type="button" role="tab" data-mcm="portfolio" aria-selected="false">Minha carteira</button></div>
+          <p class="sm-l">Aporte mensal</p><div class="mk-pills" id="rk-aporte" role="group" aria-label="Aporte mensal"></div><p class="sm-l">Prazo</p><div class="mk-pills" id="rk-prazo" role="group" aria-label="Prazo"></div>
           <form id="mcForm" novalidate></form>
         </div>
         <div id="mcResult" hidden>
+          <section class="rk-card rk-gold"><p class="gp-k"><span>Cone de patrimônio</span><span class="cs-chip am">projeção</span></p>
+            <div class="rk-nums" id="rkNums"></div><div id="rkCone" class="rk-svg"></div>
+            <div class="rk-sl"><label for="rkYear">Arraste para outro ano</label><input type="range" id="rkYear" min="0" max="15" step="1" value="15"><span id="rkYearTxt"></span></div>
+            <div class="rk-lg" id="rkLegend"></div>
+            <div class="rk-ringbox"><div id="rkRing"></div><p class="src" id="rkNote"></p></div></section>
+          <section class="rk-card"><p class="gp-k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg><span>Paisagem de probabilidades</span><span class="cs-chip am">projeção</span></p>
+            <p class="rk-intro">Cada curva é o conjunto de resultados possíveis num ano. Quanto mais alta num ponto, mais trajetórias terminaram ali. Com o tempo a montanha se espalha: mais chance de ir longe e de ir mal. A linha pontilhada liga as medianas.</p>
+            <div id="rkLand" class="rk-svg"></div><p class="src">Do patrimônio de hoje, à esquerda, ao maior valor do último ano, à direita. Mesmas trajetórias do cone, contadas por faixa.</p></section>
+          <details class="ck-full" id="rkMore"><summary><span>Gráficos detalhados</span><small>cone 2D e 3D, distribuição final, meta ano a ano, tabela e premissas</small></summary><div style="padding:0 clamp(16px,2vw,26px) var(--s4)">
           <div class="card gold"><h2>Cone patrimonial · percentis 5, 25, 50, 75 e 95 <span class="tag">projeção</span><span class="chips"><button type="button" class="fchip" id="mc3dBtn" aria-pressed="false" aria-controls="mc3d">Cone 3D</button></span></h2>
             <div id="mcKpi"></div>
             <div id="mcCone" class="echart" style="height:360px" role="img" aria-label="Cone patrimonial: percentis 5, 25, 50, 75 e 95 do patrimônio projetado ao longo dos anos. A tabela abaixo traz os mesmos números."></div>
@@ -286,6 +297,7 @@
           </div>
           <div class="card" id="mcCoverage" hidden></div>
           <div class="card"><h2>Premissas desta projeção</h2><ul class="note" id="mcAssume"></ul><div class="src" id="mcNote"></div></div>
+          </div></details>
         </div>
       </div>
     </section>
@@ -421,6 +433,7 @@
 <script src="/geo.js"></script>
 <script src="/saude.js"></script>
 <script src="/simulador.js"></script>
+<script src="/risco.js"></script>
 <script src="/auth.js"></script>
 <script src="/carteira.js"></script>
 <script src="/mapa.js"></script>
