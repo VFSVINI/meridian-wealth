@@ -52,6 +52,28 @@ curl -s https://<nome>.onrender.com/actuator/health/liveness
 
 Deve responder `{"status":"UP"}` (a primeira chamada depois de uma pausa demora). O `/actuator/health` agregado pode dizer `DEGRADED` (HTTP 200) enquanto falta dado de algum provedor: é normal (ver docs/observabilidade.md). Depois: abrir a página, entrar em modo demonstração, criar uma conta, salvar uma posição e **reiniciar o serviço** (*Manual Deploy > Restart*): a conta e a posição precisam continuar lá, o que prova que estão no Neon e não em memória.
 
+## Deploy automático (opcional): GitHub Actions + deploy hook
+
+O Render continua com `autoDeploy: false`: nada é publicado a cada push. O fluxo [`deploy.yml`](../.github/workflows/deploy.yml) faz o deploy **quando você manda**
+(Actions > deploy > *Run workflow*) ou quando você publica uma release:
+
+1. **Confirma a CI** do commit (a verificação "Build, testes, cobertura e estilo" precisa estar verde); sem isso, nada é publicado.
+2. **Publica a imagem** no GitHub Container Registry (`ghcr.io/<dono>/meridian-wealth`), marcada com o commit e como `latest`.
+3. **Aciona o deploy hook** do Render e **espera** o serviço responder em `/actuator/info` com **esse commit** (até 15 minutos, por causa da partida a frio).
+
+Configuração, uma vez só:
+
+| Onde | O quê |
+|---|---|
+| Render > serviço > Settings > **Deploy Hook** | copie a URL (ela contém uma chave: trate como senha) |
+| GitHub > Settings > Secrets and variables > Actions > **Secrets** | `RENDER_DEPLOY_HOOK_URL` = a URL do hook |
+| mesma tela, aba **Variables** | `RENDER_SERVICE_URL` = `https://<nome>.onrender.com` |
+| GitHub > Settings > Environments > `production` (opcional) | exija a sua aprovação antes de cada deploy |
+
+O Render roda a imagem **construída por ele** a partir do `Dockerfile` do repositório; a imagem do GHCR é um artefato de release (serve para `docker run`, para o Compose
+e para quem quiser rodar o projeto sem compilar). A conferência do commit usa `RENDER_GIT_COMMIT`, que o Render define no deploy; **isso só será confirmado no primeiro
+deploy pelo fluxo**: se o serviço mostrar `desconhecido`, o fluxo falha com a mensagem de espera esgotada e o `/actuator/info` diz o que o Render entregou.
+
 ## Atrás do proxy do Render
 
 O tráfego chega ao contêiner por um proxy do Render. Sem `MW_TRUSTED_PROXIES`, todos os visitantes aparecem com o IP do proxy e dividem **um único balde**: 300 requisições por minuto no geral e **apenas 10 por minuto nas rotas pesadas** (Monte Carlo e correlação), ou seja, o site inteiro, somados todos os visitantes, faz 10 simulações por minuto (medido: da 11ª chamada em diante, 429). Por isso configurar `MW_TRUSTED_PROXIES` é **obrigatório antes de divulgar o endereço**. Além disso, o cookie de sessão não recebe o atributo `Secure` (o servidor não sabe que a conexão original é HTTPS). Veja o ponto 1 abaixo para descobrir o endereço do proxy. Não ligue `MW_FORCE_HTTPS` antes de o proxy ser confiável: sem isso o redirecionamento entraria em laço.

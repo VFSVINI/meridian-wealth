@@ -6,6 +6,11 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #62, Milestone 10: DevOps sem custo)
+- **Fluxo de deploy** (`deploy.yml`) sob comando ou ao publicar uma release: confirma que a CI passou no commit, publica a imagem no GHCR (marcada com o commit) e aciona o deploy hook do Render, esperando o serviço responder com **esse commit**. O `autoDeploy` do Render segue desligado.
+- `/actuator/info` (público) agora traz o nome do app e o commit no ar (`RENDER_GIT_COMMIT` ou `GIT_COMMIT`); a imagem recebe o commit por `ARG GIT_COMMIT`.
+- A CI passou a rodar o `actionlint` sobre os fluxos do GitHub Actions.
+
 ### Adicionado (item #61, Milestone 10: DevOps sem custo)
 - **Logs em JSON** pelo perfil `json-logs`: uma linha por evento, com `correlationId` e `service`, para qualquer agregador de logs. O formato padrão em texto não muda.
 - **Pilha local de observabilidade** em `ops/observability/`: Prometheus (com o token de métricas lido de um arquivo ignorado pelo Git), Grafana com o painel **visão geral** (tráfego, p95, 5xx, falha, latência e circuito por provedor, chamadas por hora, cache, heap, CPU, banco e eventos) e cinco alertas.
