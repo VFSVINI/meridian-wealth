@@ -6,6 +6,13 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #53, parte 4: Mapa de ativos, Milestone 8: Cosmos)
+- **Mapa de ativos no visual do protótipo**: "Onde estão os ativos que eu acompanho?", abas **Mundo** e **Brasil** e filtro por classe (Todos, Ações, FIIs, ETFs). Na aba Mundo, as bolsas dos ativos acompanhados sobre o mapa-múndi: cor do país = variação média dos ativos, tamanho da bolha = quantidade de ativos, arcos ligando São Paulo às outras praças, e painel da bolsa escolhida com preço, variação e se o pregão está aberto. Cripto, câmbio e commodities ficam de fora, ditos; país sem ativo conectado fica tracejado e "não informado".
+- A aba Brasil é o mapa dos imóveis dos fundos que já existia. ADR 041 registra as decisões do #53.
+
+### Alterado (item #53, parte 4)
+- O mapa dos imóveis dos fundos passou para dentro da aba Brasil.
+
 ### Adicionado (item #53, parte 3: Risco, Milestone 8: Cosmos)
 - **Risco no visual do protótipo**: "Quão longe posso chegar e quanto posso oscilar no caminho?", atalhos de aporte e prazo (a projeção roda sozinha), **cone de patrimônio** com o ruim (1 em 20), o mediano e o bom (1 em 20) do ano escolhido no controle deslizante, anel com a chance da meta e a **paisagem de probabilidades**: uma curva por ano mostra onde terminaram as 5.000 trajetórias, e a montanha se espalha com o tempo.
 - `/api/risk/monte-carlo` e `/api/me/risk/monte-carlo` passam a devolver `density`: limites comuns e, para cada ano, quantas trajetórias caíram em cada uma das 48 faixas de patrimônio (as mesmas trajetórias do cone, nada sorteado no navegador).
