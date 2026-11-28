@@ -6,6 +6,10 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #52, parte 2: Shopping, Milestone 8: Cosmos)
+- **Shopping no visual do protótipo**: "Que tipo de investimento combina comigo?", filtro por risco, oito cartões de classes (Tesouro Selic, CDB, LCI e LCA, Ações, FIIs, ETFs, Fundos e Criptoativos) com o que é, para quem serve, liquidez e proteção, e **comparação de até três classes lado a lado**, com indexador, rendimento e a referência oficial do Banco Central.
+- Texto educativo em `data/shopping.json`; a proteção segue as regras do FGC já verificadas e a liquidez é descrita em termos gerais, sem prazo de liquidação nem taxa de produto inventados. O catálogo completo e as referências ficaram recolhidos.
+
 ### Adicionado (item #52, parte 1: Minha Carteira, Milestone 8: Cosmos)
 - **Minha Carteira no visual do protótipo**: "Quanto eu tenho, onde e com que risco?", abas Visão geral, Posições e Lançamentos, três números (patrimônio, resultado não realizado e realizado das vendas registradas), rosca da alocação por classe e **mapa das posições** proporcional ao peso em reais.
 - Roadmap: Milestone 10 (DevOps sem custo) e o guia de estudo para entrevista (#64, privado, fora do repositório).

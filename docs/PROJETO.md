@@ -121,7 +121,7 @@ Aberto em 2026-11-24. O dono achou o site no ar com informação demais e telas 
 - [x] **#49** (Issue #90, ADR 037) Academia: curso em módulos com capítulos, quiz e progresso salvo no navegador.
 - [x] **#50** (Issue #92, ADR 038) Brasil: juros e inflação com gráficos históricos reais do Banco Central, "no seu bolso", juro real e linha do tempo do Copom.
 - [x] **#51** (Issue #94, ADR 039) Geopolítica: mapa de risco por país, passo a passo, quatro termômetros e notícias com link para a matéria.
-- [ ] **#52** Minha Carteira (rosca e mapa das posições), Perfil em sete perguntas e Shopping com comparador. **Parte 1 feita (Issue #96): Minha Carteira.** Faltam Perfil (muda o questionário de nove para sete perguntas: decisão de produto) e Shopping.
+- [ ] **#52** Minha Carteira (rosca e mapa das posições), Perfil em sete perguntas e Shopping com comparador. **Partes feitas (Issue #96): Minha Carteira e Shopping.** Falta o Perfil (muda o questionário de nove para sete perguntas: decisão de produto).
 - [ ] **#53** Mapa de ativos (Mundo e Brasil), Risco (Monte Carlo com paisagem de probabilidades), Simulador pré-ordem ("órbita da carteira") e Saúde dos dados ("constelação de fontes").
 - [ ] **#54** Cripto 24h com dado real (relógio de 24 horas, galáxia de moedas, dominância, medo e ganância), só com fonte conectada.
 - [ ] **#55** Oportunidades por perfil: radar de janelas com regra publicada, nunca previsão.
