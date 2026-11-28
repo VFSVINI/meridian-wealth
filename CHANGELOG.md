@@ -6,6 +6,13 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #53, parte 2: Simulador, Milestone 8: Cosmos)
+- **Simulador no visual do protótipo**: "O que muda se eu registrar essa operação?", escolha de ativo, compra ou venda e valor, e a simulação roda sozinha a cada mudança. **Órbita da carteira**: cada planeta é uma posição (tamanho = peso depois da ordem, cor = classe, anel = volatilidade anualizada real do ativo; sem volatilidade, anel pontilhado), girando devagar e pausando ao passar o mouse. Resumo com quantidade estimada pela cotação de referência (só em reais), peso antes e depois, "E se cair?" em três cenários hipotéticos e a concentração no ativo.
+- A carteira da simulação é a salva do usuário (quando logado) ou a informada no modo avançado; a conta de impacto continua sendo a do servidor (`/api/impact/pre-order`) e nenhuma ordem é enviada ou guardada.
+
+### Alterado (item #53, parte 2)
+- O simulador antigo (carteira completa, perfil e tabela antes e depois) continua, recolhido em "Modo avançado".
+
 ### Adicionado (item #53, parte 1: Saúde dos dados, Milestone 8: Cosmos)
 - **Saúde dos dados no visual do protótipo**: "Posso confiar nos números que estou vendo?", três números (fontes saudáveis, ativos com preço e dados não informados), **constelação de fontes** (cada estrela é um provedor que gira devagar em torno do MeridianWealth; anel de dentro = ligados, de fora = desligados ou sem chave) e painel da fonte escolhida com chamadas, sucessos, falhas, barradas, latência média e a taxa de sucesso.
 - Os números vêm do `/api/status`; o servidor ainda não guarda histórico de disponibilidade nem de tempo de resposta, então esses gráficos do protótipo não aparecem (nada é inventado). Os quatro estados das telas (carregando, vazio, desatualizado, erro) aparecem como exemplos rotulados.
