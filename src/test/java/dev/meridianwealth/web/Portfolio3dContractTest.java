@@ -49,7 +49,7 @@ class Portfolio3dContractTest {
     @Test
     void theCardKeepsTheListTreemapAndTableAlternativesAndUsesTheSharedKit() throws IOException {
         String html = StaticPage.file("index.html"), c3 = StaticPage.file("carteira3d.js");
-        assertThat(html).contains("id=\"ct3dCard\" hidden").contains("id=\"ct3dCanvas\" tabindex=\"0\" role=\"img\"").contains("id=\"ctAllocWrap\"").contains("id=\"ctPos\"")
+        assertThat(html).contains("id=\"ct3dCard\" data-ctg=\"visao\" hidden").contains("id=\"ct3dCanvas\" tabindex=\"0\" role=\"img\"").contains("id=\"ctDonut\"").contains("id=\"ctPos\"")
                 .contains("<script type=\"module\" src=\"/carteira3d.js\"></script>");
         assertThat(c3).doesNotContain("new THREE.WebGLRenderer").contains("createStage(").contains("createOrbit(kit, canvas").contains("if (!kit || !data || kit.lost) return;");
     }
