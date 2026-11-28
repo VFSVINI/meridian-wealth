@@ -6,6 +6,12 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #52, parte 3: Perfil, Milestone 8: Cosmos)
+- **Perfil no visual do protótipo**: "Que tipo de investidor eu sou?", **sete perguntas, uma por tela**, com barra de progresso, Voltar e Próxima; no fim, o perfil, o motivo dos tetos, a carteira modelo e a aderência da carteira, como antes.
+
+### Alterado (item #52, parte 3)
+- O questionário passou de nove para **sete perguntas** (ADR 040): necessidade de caixa e reserva de emergência viraram uma pergunta, e produtos e tempo de experiência outra. Nota máxima de 28 pontos, faixas e tetos iguais; perfis já salvos continuam válidos.
+
 ### Adicionado (item #52, parte 2: Shopping, Milestone 8: Cosmos)
 - **Shopping no visual do protótipo**: "Que tipo de investimento combina comigo?", filtro por risco, oito cartões de classes (Tesouro Selic, CDB, LCI e LCA, Ações, FIIs, ETFs, Fundos e Criptoativos) com o que é, para quem serve, liquidez e proteção, e **comparação de até três classes lado a lado**, com indexador, rendimento e a referência oficial do Banco Central.
 - Texto educativo em `data/shopping.json`; a proteção segue as regras do FGC já verificadas e a liquidez é descrita em termos gerais, sem prazo de liquidação nem taxa de produto inventados. O catálogo completo e as referências ficaram recolhidos.
