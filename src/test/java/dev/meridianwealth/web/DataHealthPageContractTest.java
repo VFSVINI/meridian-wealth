@@ -32,5 +32,6 @@ class DataHealthPageContractTest {
         String js = StaticPage.file("saude.js"), css = StaticPage.file("cosmos.css");
         assertThat(js).contains("tabindex=\"0\" role=\"button\"").contains("aria-label=\"Constelação de fontes").contains("e.key === 'Enter'");
         assertThat(css).contains("@media(prefers-reduced-motion:reduce){.sv-orbit,.sv-ctr,.sv-sun{animation:none}}").contains("animation-play-state:paused");
+        assertThat(css).as("no celular o SVG encolhe para metade: rótulos e estrelas crescem para continuar legíveis").contains(".sv-lbl{font-size:19px}");
     }
 }
