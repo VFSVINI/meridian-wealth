@@ -105,15 +105,14 @@ class ApiIntegrationTest {
 
     private static Map<String, String> boldestAnswers() {
         return new java.util.HashMap<>(Map.of("HORIZON", "OVER_10Y", "DRAWDOWN", "BUY_MORE", "PURPOSE", "GROW", "INCOME", "LARGE_SURPLUS",
-                "WEALTH_SHARE", "UNDER_30", "LIQUIDITY_NEED", "NO", "EMERGENCY_RESERVE", "OVER_6M", "FAMILIARITY", "COMPLEX",
-                "EXPERIENCE", "OVER_5Y"));
+                "WEALTH_SHARE", "UNDER_30", "LIQUIDITY_RESERVE", "OVER_6M", "KNOWLEDGE", "ADVANCED"));
     }
 
     @Test void suitabilityQuestionnaireCitesTheLawAndTheLimitation() {
         Map<?, ?> q = rest.getForObject("/api/suitability/questionnaire", Map.class);
-        assertThat((List<?>) q.get("questions")).hasSize(9);
+        assertThat((List<?>) q.get("questions")).hasSize(7);
         assertThat((String) q.get("disclaimer")).contains("não substitui a análise de um profissional habilitado");
-        assertThat(q.get("maxTotalPoints")).isEqualTo(36);
+        assertThat(q.get("maxTotalPoints")).isEqualTo(28);
         assertThat((List<?>) q.get("caps")).hasSize(4);
     }
 

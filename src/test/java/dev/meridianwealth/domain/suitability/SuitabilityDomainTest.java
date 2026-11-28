@@ -33,7 +33,7 @@ class SuitabilityDomainTest {
     }
 
     @Test void questionnaireCoversTheThreeLegalDimensionsWithConsistentOptions() {
-        assertThat(Questionnaire.QUESTIONS).hasSize(9);
+        assertThat(Questionnaire.QUESTIONS).hasSize(7);
         assertThat(Questionnaire.QUESTIONS.stream().map(q -> q.dimension()).collect(Collectors.toSet()))
                 .containsExactlyInAnyOrder(Questionnaire.Dimension.values());
         for (Question q : Questionnaire.QUESTIONS) {
@@ -44,7 +44,7 @@ class SuitabilityDomainTest {
             // pontos crescem com o risco aceito
             for (int i = 1; i < q.options().size(); i++) assertThat(q.options().get(i).points()).isGreaterThan(q.options().get(i - 1).points());
         }
-        assertThat(Questionnaire.maxTotalPoints()).isEqualTo(36);
+        assertThat(Questionnaire.maxTotalPoints()).isEqualTo(28);
     }
 
     @Test void everyCapPointsToARealQuestionAndOption() {
@@ -84,7 +84,7 @@ class SuitabilityDomainTest {
         SuitabilityEngine.Result min = SuitabilityEngine.evaluate(allLowest());
         assertThat(min.score()).isEqualByComparingTo("0");
         assertThat(min.profile()).isEqualTo(InvestorProfile.CONSERVATIVE);
-        assertThat(min.answers()).hasSize(9).allSatisfy(a -> assertThat(a.points()).isZero());
+        assertThat(min.answers()).hasSize(7).allSatisfy(a -> assertThat(a.points()).isZero());
     }
 
     @Test void scoreBandsAreHalfOpenAtTheDocumentedLimits() {
@@ -97,15 +97,17 @@ class SuitabilityDomainTest {
     }
 
     @Test void nearBoundaryPointTotalsLandOnTheExpectedSideWithTwoDecimals() {
-        // 36 pontos = 100%: 10 -> 27,78 (conservador); 11 -> 30,56 (moderado); 19 -> 52,78; 20 -> 55,56 (arrojado); 28 -> 77,78; 29 -> 80,56
-        assertThat(withTotal(10).score()).isEqualByComparingTo("27.78");
-        assertThat(withTotal(10).profile()).isEqualTo(InvestorProfile.CONSERVATIVE);
-        assertThat(withTotal(11).profile()).isEqualTo(InvestorProfile.MODERATE);
-        assertThat(withTotal(19).profile()).isEqualTo(InvestorProfile.MODERATE);
-        assertThat(withTotal(20).score()).isEqualByComparingTo("55.56");
-        assertThat(withTotal(20).profile()).isEqualTo(InvestorProfile.BOLD);
-        assertThat(withTotal(28).profile()).isEqualTo(InvestorProfile.BOLD);
-        assertThat(withTotal(29).profile()).isEqualTo(InvestorProfile.AGGRESSIVE);
+        // 28 pontos = 100%: 8 -> 28,57 (conservador); 9 -> 32,14 (moderado); 15 -> 53,57; 16 -> 57,14 (arrojado); 22 -> 78,57; 23 -> 82,14 (agressivo)
+        assertThat(withTotal(8).score()).isEqualByComparingTo("28.57");
+        assertThat(withTotal(8).profile()).isEqualTo(InvestorProfile.CONSERVATIVE);
+        assertThat(withTotal(9).score()).isEqualByComparingTo("32.14");
+        assertThat(withTotal(9).profile()).isEqualTo(InvestorProfile.MODERATE);
+        assertThat(withTotal(15).profile()).isEqualTo(InvestorProfile.MODERATE);
+        assertThat(withTotal(16).score()).isEqualByComparingTo("57.14");
+        assertThat(withTotal(16).profile()).isEqualTo(InvestorProfile.BOLD);
+        assertThat(withTotal(22).profile()).isEqualTo(InvestorProfile.BOLD);
+        assertThat(withTotal(23).score()).isEqualByComparingTo("82.14");
+        assertThat(withTotal(23).profile()).isEqualTo(InvestorProfile.AGGRESSIVE);
     }
 
     /** Busca respostas que somam exatamente {@code total} pontos sem acionar nenhum teto (para isolar a faixa da nota). */
@@ -131,18 +133,22 @@ class SuitabilityDomainTest {
 
     @Test void aShortHorizonCapsAnOtherwiseAggressiveProfileAndSaysWhy() {
         SuitabilityEngine.Result r = SuitabilityEngine.evaluate(answers("HORIZON"));
-        assertThat(r.score()).isEqualByComparingTo("88.89");
+        assertThat(r.score()).isEqualByComparingTo("85.71");
         assertThat(r.scoreProfile()).isEqualTo(InvestorProfile.AGGRESSIVE);
         assertThat(r.profile()).isEqualTo(InvestorProfile.CONSERVATIVE);
         assertThat(r.appliedCaps()).hasSize(1).first().asString().contains("Horizonte de até 1 ano").contains("Teto: CONSERVADOR");
     }
 
     @Test void theLowestCapWinsAndEachAppliedCapIsListed() {
-        SuitabilityEngine.Result r = SuitabilityEngine.evaluate(answers("EMERGENCY_RESERVE", "LIQUIDITY_NEED"));
+        SuitabilityEngine.Result r = SuitabilityEngine.evaluate(answers("HORIZON", "DRAWDOWN"));
         assertThat(r.profile()).isEqualTo(InvestorProfile.CONSERVATIVE);
         assertThat(r.appliedCaps()).hasSize(2);
-        SuitabilityEngine.Result moderate = SuitabilityEngine.evaluate(answers("EMERGENCY_RESERVE"));
+        Map<String, String> noReserve = answers();
+        noReserve.put("LIQUIDITY_RESERVE", "NO_RESERVE");
+        SuitabilityEngine.Result moderate = SuitabilityEngine.evaluate(noReserve);
         assertThat(moderate.profile()).isEqualTo(InvestorProfile.MODERATE);
+        assertThat(moderate.appliedCaps()).hasSize(1).first().asString().contains("Sem reserva de emergência");
+        assertThat(SuitabilityEngine.evaluate(answers("LIQUIDITY_RESERVE")).profile()).isEqualTo(InvestorProfile.CONSERVATIVE);
         assertThat(SuitabilityEngine.evaluate(answers("DRAWDOWN")).profile()).isEqualTo(InvestorProfile.MODERATE);
     }
 
@@ -159,7 +165,7 @@ class SuitabilityDomainTest {
         missing.remove("INCOME");
         assertThatThrownBy(() -> SuitabilityEngine.evaluate(missing)).hasMessageContaining("sem resposta").hasMessageContaining("INCOME");
         Map<String, String> unknown = answers();
-        unknown.remove("INCOME");  // mantém 9 chaves para chegar à checagem de pergunta desconhecida
+        unknown.remove("INCOME");  // mantém 7 chaves para chegar à checagem de pergunta desconhecida
         unknown.put("EXTRA", "X");
         assertThatThrownBy(() -> SuitabilityEngine.evaluate(unknown)).hasMessageContaining("desconhecida");
         Map<String, String> invalid = answers();
