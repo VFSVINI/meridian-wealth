@@ -6,6 +6,13 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #52, parte 1: Minha Carteira, Milestone 8: Cosmos)
+- **Minha Carteira no visual do protótipo**: "Quanto eu tenho, onde e com que risco?", abas Visão geral, Posições e Lançamentos, três números (patrimônio, resultado não realizado e realizado das vendas registradas), rosca da alocação por classe e **mapa das posições** proporcional ao peso em reais.
+- Roadmap: Milestone 10 (DevOps sem custo) e o guia de estudo para entrevista (#64).
+
+### Alterado (item #52)
+- Os cartões existentes (aderência, rosca 3D, posições, livro e ganho por posição) continuam, agrupados nas abas; a alocação em treemap foi trocada pela rosca.
+
 ### Adicionado (item #51 do roadmap, Milestone 8: Cosmos)
 - **Geopolítica no visual do protótipo**: mapa-múndi com o risco por país segundo as manchetes reais (abas Risco macro, Setores pressionados e Manchetes), painel do país com a manchete de maior risco e link, passo a passo Evento → Expectativa → Preço → Carteira, quatro termômetros (VIX, dólar DXY, juro de 10 anos, índice de risco) e notícias com título, fonte, horário e link para a matéria.
 - País sem manchete aparece como "não informado", nunca como risco zero; o método é publicado e não é um índice oficial.
