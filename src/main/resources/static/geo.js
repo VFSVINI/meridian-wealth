@@ -42,6 +42,13 @@
     });
   }
 
+  /* Redesenha só se o HTML mudou e devolve o foco ao mesmo elemento: o radar atualiza sozinho e não pode tirar o teclado de quem navega. */
+  function paint(el, html) {
+    if (el.dataset.h === html) return;
+    const a = document.activeElement, key = a && el.contains(a) ? (a.tagName === 'A' ? `a[href="${CSS.escape(a.getAttribute('href'))}"]` : ['data-iso', 'data-gps', 'data-gpc'].map(k => a.hasAttribute(k) ? `[${k}="${a.getAttribute(k)}"]` : '').join('')) : '';
+    el.innerHTML = html; el.dataset.h = html;
+    if (key) { const n = el.querySelector(key); if (n) n.focus({preventScroll: true}); }
+  }
   const risks = () => { const m = new Map(); ((GP.macro && GP.macro.countries) || []).forEach(c => m.set(c.iso3, c)); return m; };
   const ago = iso => {
     if (!iso) return 'horário não informado';
@@ -62,38 +69,39 @@
   function map() {
     if (!GP.paths) return;
     const rk = risks();
-    $('#gpMap').innerHTML = GP.paths.map(p => {
+    let svg = GP.paths.map(p => {
       const c = rk.get(p.iso), hit = !!(GP.sector && c && c.sectors.includes(GP.sector)), f0 = fill(c, hit);
       const label = c ? `${c.name}: risco ${level(c.risk).toLowerCase()} nas manchetes (${c.headlines} manchete${c.headlines === 1 ? '' : 's'})` : `${p.name}: não informado`;
       return `<path d="${p.d}" data-iso="${p.iso}" class="gp-c${c ? ' has' : ''}${GP.pick === p.iso ? ' pick' : ''}" ${f0 ? `style="fill:${f0}"` : ''} ${c ? `tabindex="0" role="button" aria-label="${esc(label)}"` : ''}><title>${esc(label)}</title></path>`;
     }).join('');
     if (GP.tab === 'manchetes') {
-      $('#gpMap').insertAdjacentHTML('beforeend', GP.paths.filter(p => rk.has(p.iso)).map(p => {
+      svg += (GP.paths.filter(p => rk.has(p.iso)).map(p => {
         const c = rk.get(p.iso);
         return `<g class="gp-dot" data-iso="${p.iso}"><circle cx="${p.cx.toFixed(1)}" cy="${p.cy.toFixed(1)}" r="${(7 + 3 * Math.min(c.headlines, 4)).toFixed(0)}"/><text x="${p.cx.toFixed(1)}" y="${(p.cy + 4).toFixed(1)}" text-anchor="middle">${c.headlines}</text></g>`;
       }).join(''));
     }
+    paint($('#gpMap'), svg);
     $('#gpMapTitle').textContent = {risco: 'Risco por país nas manchetes', setores: 'Países ligados ao setor escolhido', manchetes: 'Países com manchetes agora'}[GP.tab];
   }
 
   function side() {
     const m = GP.macro, rk = risks();
-    if (!m) { $('#gpSide').innerHTML = '<p class="mute">Sem resposta do radar macro agora. Nada é estimado.</p>'; return; }
+    if (!m) { paint($('#gpSide'), '<p class="mute">Sem resposta do radar macro agora. Nada é estimado.</p>'); return; }
     if (GP.tab === 'setores') {
       const secs = Object.entries(m.sectorImpact || {}).sort((a, b) => b[1] - a[1]);
-      $('#gpSide').innerHTML = `<p class="gp-sk">Setores pressionados</p>` + (secs.length
+      paint($('#gpSide'), `<p class="gp-sk">Setores pressionados</p>` + (secs.length
         ? `<div class="gp-secs">${secs.map(([k, v]) => `<button type="button" class="gp-sec" data-gps="${esc(k)}" aria-pressed="${GP.sector === k}"><span>${esc(k)}</span><i style="width:${Math.round(v * 100)}%"></i><b class="num">${Math.round(v * 100)}</b></button>`).join('')}</div><p class="src">Impacto de 0 a 100: soma do risco das manchetes do setor. Escolha um setor para ver os países ligados a ele no mapa.</p>`
-        : '<p class="mute">Nenhuma manchete pressiona um setor agora. <b>não informado</b>.</p>');
+        : '<p class="mute">Nenhuma manchete pressiona um setor agora. <b>não informado</b>.</p>'));
       return;
     }
     const c = GP.pick ? rk.get(GP.pick) : [...rk.values()][0];
-    if (!c) { $('#gpSide').innerHTML = `<p class="gp-sk">Nenhum país com manchete</p><p class="mute">As manchetes recentes não citam nenhum país da lista. Os países ficam como ${ND}, nunca como risco zero.</p>`; return; }
+    if (!c) { paint($('#gpSide'), `<p class="gp-sk">Nenhum país com manchete</p><p class="mute">As manchetes recentes não citam nenhum país da lista. Os países ficam como ${ND}, nunca como risco zero.</p>`); return; }
     GP.pick = GP.pick || c.iso3;
-    $('#gpSide').innerHTML = `<div class="gp-sh"><p class="gp-sk">${esc(c.region)}</p><span class="cs-chip">${c.headlines} manchete${c.headlines === 1 ? '' : 's'}</span></div><h3>${esc(c.name)}</h3>`
+    paint($('#gpSide'), `<div class="gp-sh"><p class="gp-sk">${esc(c.region)}</p><span class="cs-chip">${c.headlines} manchete${c.headlines === 1 ? '' : 's'}</span></div><h3>${esc(c.name)}</h3>`
       + `<p class="gp-lv">Nível de risco nas manchetes</p><b class="gp-lvv ${c.risk >= 0.5 ? 'hi' : ''}">${level(c.risk)}</b>`
       + `<p class="gp-lv">Setores pressionados</p><p>${c.sectors.length ? esc(c.sectors.join(', ')) : ND}</p>`
       + `<p class="gp-lv">Manchete de maior risco</p><p class="gp-hl">${esc(c.top.title)}</p><p class="src">${esc(c.top.source)} · ${esc(ago(c.top.publishedAt))}</p>${link(c.top)}`
-      + `<div class="gp-others">${[...rk.values()].slice(0, 12).map(x => `<button type="button" class="mk-pill" data-gpc="${x.iso3}" aria-pressed="${x.iso3 === GP.pick}">${esc(x.name)}</button>`).join('')}</div>`;
+      + `<div class="gp-others">${[...rk.values()].slice(0, 12).map(x => `<button type="button" class="mk-pill" data-gpc="${x.iso3}" aria-pressed="${x.iso3 === GP.pick}">${esc(x.name)}</button>`).join('')}</div>`);
   }
 
   function steps() {
@@ -107,18 +115,18 @@
       + `<div class="gp-tf">${chg == null ? '<span class="src">variação do dia não informada</span>' : `<span class="num ${chg >= 0 ? 'up' : 'dn'}">${chg >= 0 ? '+' : ''}${num(chg * 100)}%</span>`}<span class="cs-chip ${chip[1]}">${esc(chip[0])}</span></div></article>`;
     if (!m) { $('#gpTh').innerHTML = '<p class="mute">Sem resposta do radar macro agora.</p>'; return; }
     const ch = m.changes || {};
-    $('#gpTh').innerHTML = card('VIX', 'vix', m.vix, ch.vix, ['Yahoo · atrasado ~15 min', 'cy'])
+    paint($('#gpTh'), card('VIX', 'vix', m.vix, ch.vix, ['Yahoo · atrasado ~15 min', 'cy'])
       + card('DXY', 'dollar-index', m.dollarIndex, ch.dxy, ['Yahoo · atrasado ~15 min', 'cy'])
       + card('Juro de 10 anos (EUA)', 'yield-10y', m.yield10y, null, [(m.source || '').includes('FRED') ? 'FRED · fechamento' : 'Yahoo · atrasado ~15 min', 'cy'], 'pct')
-      + `<article class="gp-t"><p>Índice de risco macro ${GL('geo-risk')}</p><b class="num">${m.available ? Math.round(m.riskScore * 100) + ' de 100' : ND}</b><div class="gp-tf"><span class="src">média do VIX e das manchetes</span><span class="cs-chip am">índice da plataforma</span></div></article>`;
+      + `<article class="gp-t"><p>Índice de risco macro ${GL('geo-risk')}</p><b class="num">${m.available ? Math.round(m.riskScore * 100) + ' de 100' : ND}</b><div class="gp-tf"><span class="src">média do VIX e das manchetes</span><span class="cs-chip am">índice da plataforma</span></div></article>`);
   }
 
   function news() {
     const list = ((GP.macro && GP.macro.news) || []).slice(0, 6), rk = risks();
-    $('#gpNews').innerHTML = list.length ? list.map(n => {
+    paint($('#gpNews'), list.length ? list.map(n => {
       const c = (n.countries || []).map(i => rk.get(i)).find(Boolean);
       return `<article class="gp-n"><p class="gp-nh"><span class="cs-chip cy">${esc(c ? c.name : 'Mundo')}</span><span class="cs-chip">risco ${esc(level(n.risk).toLowerCase())}</span></p><h3>${esc(n.title)}</h3><p class="src">${esc(n.source)} · ${esc(ago(n.publishedAt))}</p>${link(n)}</article>`;
-    }).join('') : '<p class="mute">Sem manchetes de risco agora. <b>não informado</b>.</p>';
+    }).join('') : '<p class="mute">Sem manchetes de risco agora. <b>não informado</b>.</p>');
   }
 
   function render() {
@@ -132,7 +140,7 @@
     try {
       if (!GP.geo) { const r = await fetch('/data/countries.geojson'); if (!r.ok) throw new Error('countries'); GP.geo = await r.json(); GP.paths = buildPaths(); }
       if (!GP.macro) { const o = await (await fetch('/api/overview')).json(); GP.macro = o.macro; }
-    } catch (e) { $('#gpSide').innerHTML = '<p class="mute">Não foi possível carregar o mapa agora. Tente de novo em instantes.</p>'; }
+    } catch (e) { paint($('#gpSide'), '<p class="mute">Não foi possível carregar o mapa agora. Tente de novo em instantes.</p>'); }
     finally { GP.loading = false; }
     render();
   }
