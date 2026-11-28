@@ -16,3 +16,11 @@ estudo-privado/
 
 # token do Prometheus local (o mesmo MW_METRICS_TOKEN): nunca no Git
 ops/observability/secrets/
+
+# Terraform: estado e variáveis locais contêm segredos (senha do banco, segredo do JWT)
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+*.auto.tfvars
+crash.log
