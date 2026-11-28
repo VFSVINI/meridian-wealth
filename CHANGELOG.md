@@ -8,7 +8,7 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ### Adicionado (item #52, parte 1: Minha Carteira, Milestone 8: Cosmos)
 - **Minha Carteira no visual do protótipo**: "Quanto eu tenho, onde e com que risco?", abas Visão geral, Posições e Lançamentos, três números (patrimônio, resultado não realizado e realizado das vendas registradas), rosca da alocação por classe e **mapa das posições** proporcional ao peso em reais.
-- Roadmap: Milestone 10 (DevOps sem custo) e o guia de estudo para entrevista (#64).
+- Roadmap: Milestone 10 (DevOps sem custo) e o guia de estudo para entrevista (#64, privado, fora do repositório).
 
 ### Alterado (item #52)
 - Os cartões existentes (aderência, rosca 3D, posições, livro e ganho por posição) continuam, agrupados nas abas; a alocação em treemap foi trocada pela rosca.

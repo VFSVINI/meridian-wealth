@@ -10,3 +10,6 @@ target/
 *.pem
 *.key
 __pycache__/
+
+# guia de estudo para entrevista: privado, nunca publicar
+estudo-privado/
