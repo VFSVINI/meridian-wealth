@@ -470,3 +470,20 @@ h3.sub .src{letter-spacing:0;text-transform:none;font-weight:400}
 @media(prefers-reduced-motion:reduce){.sm-r,.sm-c,.sm-sun{animation:none}}
 @media(max-width:1000px){.sm-grid,.sm-two{grid-template-columns:1fr}}
 @media(max-width:640px){.sm-kv{grid-template-columns:1fr}.sm-pl{font-size:16px}}
+
+/* Risco (item #53): cone por ano e paisagem de probabilidades */
+.rk-card{border:1px solid var(--line);border-radius:16px;padding:var(--s4);background:linear-gradient(180deg,rgba(14,22,48,.85),rgba(8,13,30,.85));min-width:0;margin-bottom:var(--s3)}
+.rk-gold{border-color:rgba(255,179,64,.5)}:root[data-theme="ivory"] .rk-card{background:var(--panel)}
+.rk-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s3);margin-bottom:var(--s2)}.rk-nums span{display:block;font:700 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}.rk-nums b{display:block;margin-top:2px;font:500 clamp(20px,2.6vw,32px) var(--mono)}
+.rk-svg svg{display:block;width:100%;height:auto}
+.rk-b1{fill:rgba(143,168,255,.18)}.rk-b2{fill:rgba(255,179,64,.28)}.rk-mline{fill:none;stroke:#ffb340;stroke-width:3;stroke-linejoin:round}.rk-goal{stroke:#55d6ff;stroke-dasharray:6 5;stroke-width:1.6}
+.rk-year{stroke:var(--text-3);stroke-dasharray:3 4}.rk-dot{fill:var(--bg,#04070e);stroke:var(--text-2);stroke-width:2}.rk-dot.m{stroke:#ffb340;fill:#ffb340}
+.rk-sl{display:grid;grid-template-columns:auto 1fr auto;gap:var(--s3);align-items:center;margin-top:var(--s3);font:700 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}.rk-sl input{accent-color:var(--gold);width:100%}.rk-sl span{font:500 14px var(--sans);letter-spacing:0;text-transform:none;color:var(--text)}
+.rk-lg{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s2);font:12px var(--mono);color:var(--text-3)}.rk-lg span{display:inline-flex;align-items:center;gap:6px}.rk-lg i{display:block;width:12px;height:10px;border-radius:3px}
+.rk-ringbox{display:grid;grid-template-columns:140px 1fr;gap:var(--s4);align-items:center;margin-top:var(--s4)}.rk-ringbox svg{width:140px;height:140px}.rk-ringbox .src{margin:0}#rkRing .src{margin:4px 0 0;text-align:center}
+.rk-trk{stroke:var(--line-2)}.rk-rv{font:800 30px var(--display);fill:var(--text)}
+.rk-intro{margin:0 0 var(--s3);color:var(--text-2);font-size:15px;max-width:70ch}
+.rk-base{stroke:rgba(143,168,255,.45);stroke-width:1}.rk-fill{fill:rgba(255,179,64,.16);stroke:none}.rk-line{fill:none;stroke:#8fa8ff;stroke-width:1.6;stroke-linejoin:round}
+.rk-r.fin .rk-fill{fill:rgba(255,179,64,.5)}.rk-r.fin .rk-line{stroke:#ffc45f;stroke-width:2.4}.rk-r.pick .rk-line{stroke:#fff;stroke-width:2.4}.rk-med{fill:none;stroke:#55d6ff;stroke-dasharray:2 5;stroke-width:1.6}
+@media(prefers-reduced-motion:no-preference){.rk-r{animation:rk-in .5s var(--ease) both}}@keyframes rk-in{from{opacity:0}to{opacity:1}}
+@media(max-width:700px){.rk-nums{grid-template-columns:1fr}.rk-ringbox{grid-template-columns:1fr;justify-items:center}.rk-sl{grid-template-columns:1fr}}
