@@ -154,7 +154,7 @@ class CryptoStreamManagerTest {
 
         net.send(BINANCE, "{\"stream\":\"btcusdt@miniTicker\",\"data\":{\"e\":\"24hrMiniTicker\",\"E\":1795225436018,\"s\":\"BTCUSDT\",\"c\":\"59008.11\"}}");
         net.send(BINANCE, "{\"stream\":\"xrpusdt@miniTicker\",\"data\":{\"e\":\"24hrMiniTicker\",\"E\":1795225437000,\"s\":\"XRPUSDT\",\"c\":\"0.9063\"}}");
-        net.send(BINANCE, "{\"stream\":\"dogeusdt@miniTicker\",\"data\":{\"e\":\"24hrMiniTicker\",\"E\":1795225437000,\"s\":\"DOGEUSDT\",\"c\":\"0.1\"}}");
+        net.send(BINANCE, "{\"stream\":\"shibusdt@miniTicker\",\"data\":{\"e\":\"24hrMiniTicker\",\"E\":1795225437000,\"s\":\"SHIBUSDT\",\"c\":\"0.1\"}}");
 
         assertThat(quotes).containsExactly(new Quote("BTC", 59008.11, 1795225436018L, "Binance WS"),
                 new Quote("XRP", 0.9063, 1795225437000L, "Binance WS"));
