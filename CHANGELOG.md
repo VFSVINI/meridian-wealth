@@ -6,6 +6,11 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #54, parte 1: Cripto 24h, Milestone 8: Cosmos)
+- **Cripto 24h no visual do protótipo**: "O que está acontecendo no cripto agora, a qualquer hora?", gráfico **ao vivo** (BTC, ETH ou SOL, amostrado a cada segundo do preço do stream da bolsa conectada, com fonte), últimas cotações, preço de 7 e 30 dias, **sistema de moedas** (centro = moeda de maior volume; tamanho = volume em 24 h; cor = variação de 24 h ou 7 dias; planetas que giram devagar), detalhe da moeda com texto educativo, participação no volume, 24/7 contra horário comercial (bolsas abertas agora, pelo estado real do pregão) e tabela das 12 moedas.
+- **Oito moedas a mais** no universo (BNB, DOGE, ADA, AVAX, LINK, DOT, LTC e TRX), com pares na Binance, na Coinbase e na Kraken quando existem; a página Mercados também as lista.
+- Sem fonte no projeto, não aparecem: negócio a negócio e lado de compra e venda (o stream só traz o preço), valor de mercado (por isso volume em 24 h), variação de 1 hora e o índice de medo e ganância (marcado como em breve).
+
 ### Adicionado (item #53, parte 4: Mapa de ativos, Milestone 8: Cosmos)
 - **Mapa de ativos no visual do protótipo**: "Onde estão os ativos que eu acompanho?", abas **Mundo** e **Brasil** e filtro por classe (Todos, Ações, FIIs, ETFs). Na aba Mundo, as bolsas dos ativos acompanhados sobre o mapa-múndi: cor do país = variação média dos ativos, tamanho da bolha = quantidade de ativos, arcos ligando São Paulo às outras praças, e painel da bolsa escolhida com preço, variação e se o pregão está aberto. Cripto, câmbio e commodities ficam de fora, ditos; país sem ativo conectado fica tracejado e "não informado".
 - A aba Brasil é o mapa dos imóveis dos fundos que já existia. ADR 041 registra as decisões do #53.
