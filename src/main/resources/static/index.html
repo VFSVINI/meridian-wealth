@@ -360,8 +360,24 @@
     </section>
 
     <section class="page" data-page="saude" hidden>
-      <div class="ph"><p class="eyebrow">Conta</p><h1>Saúde dos dados</h1><p class="lede">Estado de cada provedor de dados: circuito, sucessos e falhas, cache e conexões do stream.</p></div>
-      <div class="card" style="max-width:760px"><h2>Status da ingestão</h2><div id="status" class="mute" style="font-size:13px">carregando…</div></div>
+      <div class="ph"><p class="eyebrow">Saúde dos dados</p><h1>Posso confiar nos números que estou vendo?</h1><p class="lede">Cada fonte, quantas chamadas deram certo e quanto demoram. Veja também como cada estado aparece nas telas.</p></div>
+      <div class="sv-kpis" id="svKpis"><span class="skel"></span></div>
+      <div class="sv-grid">
+        <section class="sv-card"><p class="gp-k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg><span>Constelação de fontes</span><span class="src" style="margin-left:auto;text-transform:none;letter-spacing:0">toque numa estrela</span></p>
+          <div class="sv-sky" id="svSky"></div>
+          <div class="sv-legend"><span><i class="sv-d up"></i>no ar</span><span><i class="sv-d warn"></i>tentando de novo</span><span><i class="sv-d dn"></i>fora do ar</span><span><i class="sv-d off"></i>desligado ou sem chave (anel de fora)</span></div></section>
+        <aside class="sv-card sv-sd" id="svSide" aria-live="polite"><span class="skel"></span></aside>
+      </div>
+      <p class="src">Os números são contados pelo servidor desde que ele ligou. O servidor ainda não guarda histórico de disponibilidade nem de tempo de resposta, então esses gráficos não aparecem: nada é inventado.</p>
+      <section class="cs-sec" aria-labelledby="svStH"><p class="cs-kicker">Como cada estado aparece nas telas</p><h2 class="cs-h2" id="svStH">Carregando, vazio, desatualizado e erro</h2>
+        <div class="sv-states">
+          <article class="sv-card"><p class="sv-k">Carregando</p><span class="skel"></span><span class="skel" style="width:70%"></span></article>
+          <article class="sv-card"><p class="sv-k">Vazio</p><p class="sv-st"><b>Sem dado para este período</b></p><p class="src">Mostramos "não informado", nunca zero.</p></article>
+          <article class="sv-card"><p class="sv-k">Desatualizado</p><p class="sv-note am">Última atualização há 3 horas. Os preços podem ter mudado.</p></article>
+          <article class="sv-card"><p class="sv-k">Erro</p><p class="sv-note dn">Não foi possível buscar a fonte. Mantemos o último valor com o horário dele.</p></article>
+        </div><p class="src">Exemplos de como cada estado aparece, com texto ilustrativo.</p></section>
+      <details class="ck-full"><summary><span>Status técnico completo</span><small>circuito, sucessos e falhas, cache e conexões</small></summary>
+        <div style="padding:0 clamp(16px,2vw,26px) var(--s4)"><div class="card" style="max-width:760px"><h2>Status da ingestão</h2><div id="status" class="mute" style="font-size:13px">carregando…</div></div></div></details>
     </section>
 
   </main>
@@ -384,6 +400,7 @@
 <script src="/academia.js"></script>
 <script src="/brasil.js"></script>
 <script src="/geo.js"></script>
+<script src="/saude.js"></script>
 <script src="/auth.js"></script>
 <script src="/carteira.js"></script>
 <script src="/mapa.js"></script>

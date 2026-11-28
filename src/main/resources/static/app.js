@@ -416,6 +416,7 @@ $('#glossX').addEventListener('click',()=>$('#gloss').close());
 $('#glossQ').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();document.querySelectorAll('#gloss details').forEach(x=>{x.hidden=!!q&&!x.dataset.t.includes(q)})});
 async function loadStatus(){
   const st=await j('/api/status').catch(()=>null);if(!st)return;
+  document.dispatchEvent(new CustomEvent('mw:status',{detail:st}));
   const c={CLOSED:'up',HALF_OPEN:'warn',OPEN:'dn',CONECTADO:'up',RECONECTANDO:'warn',DESLIGADO:'mute'};
   $('#status').innerHTML=st.providers.map(p=>`<div style="display:flex;justify-content:space-between"><span>${p.name}${p.enabled?'':' (sem chave)'}</span><span class="${p.enabled?c[p.circuit]:'mute'}">${p.circuit}</span><span class="num mute">${p.successes}/${p.failures}</span></div>${p.detail?`<div class="src" style="margin:-1px 0 5px">${p.detail}</div>`:''}`).join('')
    +`<div style="margin-top:6px">Cache: <b>${st.cache}</b> · Banco: <b>${st.persistence?'ligado':'desligado'}</b></div><div>Conexões: ${(st.channels||[]).map(c=>c.name+' '+c.clients).join(' · ')}</div>`;
