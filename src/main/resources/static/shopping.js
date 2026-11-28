@@ -1,7 +1,7 @@
 /* Shopping financeiro (item #17): os tipos de ativo da taxonomia lado a lado, com as referências oficiais do Banco Central.
    Não há ofertas de emissores no projeto, então nenhuma taxa de produto é mostrada (nada é inventado): o catálogo diz o que cada tipo é e a referência
    oficial que o indexador dele acompanha. Depende de app.js (helpers $, esc, f, go) e carteira.js (openOp). */
-const SH={types:null,rates:null,cat:'ALL',q:'',loading:false};
+const SH={types:null,rates:null,cat:'ALL',q:'',loading:false,cls:null,risk:'ALL',pick:[]};
 const SH_REFS=['selicTarget','cdiAnnual','ipca12m','ipcaMonthly','ptaxSell'];
 function shRate(key){return SH.rates&&SH.rates.items.find(i=>i.key===key)}
 function shFmt(i){if(!i||i.value==null)return null;const d=Math.min(4,(String(i.value).split('.')[1]||'').length);return Number(i.value).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d})+' '+esc(i.unit)}
@@ -25,7 +25,8 @@ async function loadShopping(){
       const [t,r]=await Promise.all([fetch('/api/taxonomy').then(x=>{if(!x.ok)throw new Error('taxonomy');return x.json()}),fetch('/api/brazil/rates').then(x=>x.ok?x.json():null).catch(()=>null)]);
       SH.types=t.filter(x=>x.investable);SH.rates=r;
     }
-    renderShopping();
+    if(!SH.cls){const c=await fetch('/data/shopping.json');if(!c.ok)throw new Error('shopping');SH.cls=await c.json()}
+    renderShopping();renderCards();
   }catch(e){$('#shTable').innerHTML='<p class="mute">Não foi possível carregar o catálogo agora.</p>'}
   finally{SH.loading=false}
 }
@@ -53,3 +54,34 @@ document.addEventListener('click',e=>{
 document.addEventListener('input',e=>{if(e.target.id==='shQ'){SH.q=e.target.value;renderShopping();$('#shQ').focus()}});
 function onShoppingRoute(){if((location.hash.match(/^#\/([a-z]+)/)||[])[1]==='shopping')loadShopping()}
 addEventListener('hashchange',onShoppingRoute);onShoppingRoute();
+
+/* cartões de classes (item #52): texto educativo em /data/shopping.json; o que a taxonomia sabe (indexador, rendimento) e a referência oficial vêm da API */
+const RISK_CHIP={'Baixo':'up','Médio':'cy','Alto':'am','Muito alto':'am'};
+function renderCards(){
+  if(!SH.cls)return;
+  const list=SH.cls.classes.filter(c=>SH.risk==='ALL'||c.risk===SH.risk);
+  const full=SH.pick.length>=3;
+  $('#shCards').innerHTML=list.length?list.map(c=>{const on=SH.pick.includes(c.key);
+    return `<article class="sh-card"><div class="sh-h"><h3>${esc(c.name)}</h3><span class="cs-chip ${RISK_CHIP[c.risk]||''}">${esc(c.risk)}</span></div><p class="sh-w">${esc(c.what)}</p>
+      <p class="sh-k">Para quem</p><p>${esc(c.forWho)}</p>
+      <div class="sh-f"><div><p class="sh-k">Liquidez</p><p>${esc(c.liquidity)}</p></div><div><p class="sh-k">Proteção</p><p>${esc(c.protection)}</p></div></div>
+      <button type="button" class="sh-cmp" data-shk="${esc(c.key)}" aria-pressed="${on}"${!on&&full?' disabled':''}>${on?'Remover da comparação':'Comparar'}</button></article>`}).join(''):'<p class="mute">Nenhuma classe com esse nível de risco.</p>';
+  $('#shHint').textContent=SH.pick.length?`${SH.pick.length} de 3 selecionadas`:'Selecione até 3 classes para comparar lado a lado';
+  $('#shSrc').textContent='Texto educativo da plataforma, não recomendação. '+SH.cls.note;
+  renderCompare();
+}
+function renderCompare(){
+  const box=$('#shCompare'),cs=SH.pick.map(k=>SH.cls.classes.find(c=>c.key===k)).filter(Boolean);
+  box.hidden=cs.length<2;if(cs.length<2)return;
+  const ty=c=>c.type&&SH.types.find(t=>t.key===c.type);
+  const nd='<span class="gap">não informado</span>';
+  const row=(l,f)=>`<tr><th scope="row">${l}</th>${cs.map(c=>`<td>${f(c)}</td>`).join('')}</tr>`;
+  $('#shCmpBody').innerHTML=`<table class="shtbl"><thead><tr><th></th>${cs.map(c=>`<th>${esc(c.name)}</th>`).join('')}</tr></thead><tbody>
+    ${row('Risco (didático)',c=>`<span class="cs-chip ${RISK_CHIP[c.risk]||''}">${esc(c.risk)}</span>`)}${row('O que é',c=>esc(c.what))}${row('Para quem',c=>esc(c.forWho))}${row('Liquidez',c=>esc(c.liquidity))}${row('Proteção',c=>esc(c.protection))}
+    ${row('Indexador',c=>{const t=ty(c);return t?esc(t.indexerLabel):nd})}${row('Rendimento',c=>{const t=ty(c);return t?esc(t.incomeLabel):nd})}
+    ${row('Referência oficial',c=>{const t=ty(c);return t?shReference(t):nd})}</tbody></table>`;
+}
+document.addEventListener('click',e=>{
+  const r=e.target.closest('[data-shr]');if(r){SH.risk=r.dataset.shr;document.querySelectorAll('[data-shr]').forEach(b=>b.setAttribute('aria-pressed',String(b===r)));renderCards();return}
+  const k=e.target.closest('[data-shk]');if(k){const i=SH.pick.indexOf(k.dataset.shk);if(i>=0)SH.pick.splice(i,1);else if(SH.pick.length<3)SH.pick.push(k.dataset.shk);renderCards();const n=document.querySelector(`[data-shk="${CSS.escape(k.dataset.shk)}"]`);if(n)n.focus({preventScroll:true})}
+});

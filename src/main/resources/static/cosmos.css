@@ -391,3 +391,16 @@ h3.sub .src{letter-spacing:0;text-transform:none;font-weight:400}
 .ct-tile b{font:700 14px var(--sans);color:var(--c)}.ct-tile span{font:13px var(--mono);color:var(--text-2)}
 @media(max-width:1100px){.ct-vis{grid-template-columns:1fr}}
 @media(max-width:700px){.ct-kpis{grid-template-columns:1fr}.ct-donut{grid-template-columns:1fr}}
+
+/* Shopping (item #52, parte 2): cartões de classes e comparação */
+.sh-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s3);margin-bottom:var(--s4)}
+.sh-card{display:flex;flex-direction:column;gap:var(--s2);border:1px solid var(--line);border-radius:16px;padding:var(--s4);background:linear-gradient(180deg,rgba(14,22,48,.85),rgba(8,13,30,.85));min-width:0}
+:root[data-theme="ivory"] .sh-card{background:var(--panel)}
+.sh-h{display:flex;justify-content:space-between;align-items:center;gap:var(--s2)}.sh-h h3{margin:0;font:700 20px var(--sans)}
+.sh-w{margin:0;color:var(--text-2);font-size:15px}.sh-card p{margin:0}.sh-k{font:700 11px var(--sans)!important;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-top:var(--s2)!important}
+.sh-f{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);flex:1}
+.sh-cmp{margin-top:var(--s2);padding:10px;border:1px solid var(--line-2);border-radius:999px;background:transparent;color:var(--text);font:500 15px var(--sans);cursor:pointer}
+.sh-cmp:hover:not(:disabled),.sh-cmp:focus-visible{border-color:var(--gold)}.sh-cmp[aria-pressed="true"]{border-color:var(--gold);color:var(--gold);background:rgba(255,179,64,.08)}.sh-cmp:disabled{opacity:.45;cursor:not-allowed}
+#shCmpBody th[scope="row"]{text-align:left;color:var(--text-3);font:700 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+@media(max-width:1100px){.sh-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.sh-grid{grid-template-columns:1fr}.sh-f{grid-template-columns:1fr}}
