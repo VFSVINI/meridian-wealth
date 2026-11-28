@@ -67,7 +67,7 @@ function weights(){
 }
 function renderCarteira(){
   const s=CT.sum;if(!s)return;
-  renderTotal(s);renderAlloc(s);renderAdherence();renderPositions(s);renderBook();renderPnl(s);
+  renderKpis(s);renderTotal(s);renderAlloc(s);renderPosMap(s);renderAdherence();renderPositions(s);renderBook();renderPnl(s);
   ctEmit();
 }
 /* a rosca 3D (carteira3d.js) lê os MESMOS números da lista e da tabela: classes (percentuais da API) e posições com valor em reais */
@@ -101,15 +101,42 @@ function chart(id){
   if(!c){c=echarts.init(el,null,{renderer:'canvas'});CT.charts[id]=c}
   return c;
 }
+const COS_COL={RENDA_VARIAVEL:'#ffb340',FUNDOS:'#55d6ff',CRIPTO:'#b48cff',RENDA_FIXA_PUBLICA:'#8fa8ff',RENDA_FIXA_PRIVADA:'#5b7cf0',CAMBIO_E_COMMODITIES:'#38dd9c'};
+const cosCol=c=>COS_COL[c]||'#9aa6c4';
+/* rosca da alocação por classe: os percentuais vêm da API (byClass), nada é recalculado nem inventado */
 function renderAlloc(s){
-  const el=$('#ctAllocWrap');
-  if(!s.byClass.length){el.innerHTML='<p class="mute">Sem posições com valor em reais para mostrar a alocação.</p>';disposeChart('ctTreemap');return}
-  el.innerHTML='<div id="ctTreemap" class="echart" role="img" aria-label="Alocação por classe de ativo, em percentual do patrimônio"></div><ul class="legendlist" id="ctAllocList"></ul>';
-  const k=chartColors(),c=chart('ctTreemap');
-  if(c)c.setOption({animation:false,tooltip:{formatter:p=>`${esc(p.name)}: ${f(p.value,2)}%`},series:[{type:'treemap',roam:false,nodeClick:false,breadcrumb:{show:false},width:'100%',height:'100%',
-    itemStyle:{borderColor:k.panel,borderWidth:2,gapWidth:2},label:{show:true,color:'#f3f1ea',fontFamily:'IBM Plex Mono, monospace',fontSize:13,formatter:p=>`${p.name}\n${f(p.value,2)}%`},
-    data:s.byClass.map(w=>({name:w.label,value:Number(w.percent),itemStyle:{color:CAT_COL[w.category]||'#46505f'}}))}]},true);
-  $('#ctAllocList').innerHTML=s.byClass.map(w=>`<li><i style="background:${CAT_COL[w.category]||'#46505f'}"></i>${esc(w.label)}<b class="num">${f(w.percent,2)}%</b></li>`).join('');
+  const el=$('#ctDonut');
+  if(!s.byClass.length){el.innerHTML='<p class="mute">Sem posições com valor em reais para mostrar a alocação.</p>';return}
+  const R=62,C=2*Math.PI*R;let off=0;
+  const arcs=s.byClass.map(w=>{const len=Math.max(0,Number(w.percent))/100*C,a=`<circle cx="100" cy="100" r="${R}" fill="none" stroke="${cosCol(w.category)}" stroke-width="30" stroke-dasharray="${len.toFixed(2)} ${(C-len).toFixed(2)}" stroke-dashoffset="${(-off).toFixed(2)}" transform="rotate(-90 100 100)"><title>${esc(w.label)}: ${f(w.percent,2)}%</title></circle>`;off+=len;return a}).join('');
+  el.innerHTML=`<div class="ct-donut"><svg viewBox="0 0 200 200" role="img" aria-label="Alocação por classe de ativo, em percentual do patrimônio">${arcs}<text x="100" y="97" text-anchor="middle" class="ct-dv">${esc(BRL(s.totalCurrentValueBrl))}</text><text x="100" y="116" text-anchor="middle" class="ct-dl">total</text></svg>
+    <ul class="ct-leg">${s.byClass.map(w=>`<li><i style="background:${cosCol(w.category)}"></i><span>${esc(w.label)}</span><b class="num">${f(w.percent,1)}%</b></li>`).join('')}</ul></div>`;
+}
+/* mapa das posições: retângulos proporcionais ao peso no valor em reais; posição sem valor em reais não entra */
+function layoutTree(items,x,y,w,h,out){
+  if(!items.length)return;
+  if(items.length===1){out.push({...items[0],x,y,w,h});return}
+  const tot=items.reduce((a,i)=>a+i.v,0);let acc=0,k=0;
+  while(k<items.length-1&&acc+items[k].v<tot/2)acc+=items[k++].v;
+  if(k===0)acc=items[k++].v;
+  const A=items.slice(0,k),B=items.slice(k),fa=acc/tot;
+  if(w>=h){layoutTree(A,x,y,w*fa,h,out);layoutTree(B,x+w*fa,y,w*(1-fa),h,out)}
+  else{layoutTree(A,x,y,w,h*fa,out);layoutTree(B,x,y+h*fa,w,h*(1-fa),out)}
+}
+function renderPosMap(s){
+  const el=$('#ctPosMap'),ws=weights().filter(x=>x.w!=null&&x.w>0).sort((a,b)=>b.w-a.w);
+  if(!ws.length){el.innerHTML='<p class="mute">Nenhuma posição com valor em reais: <span class="gap">não informado</span>.</p>';return}
+  const out=[];layoutTree(ws.map(x=>({v:x.w,l:x.l})),0,0,100,100,out);
+  el.innerHTML=`<div class="ct-tree" role="list" aria-label="Mapa das posições, em percentual do patrimônio">${out.map(r=>{const p=r.l.position,cat=p.category||p.type;
+    return `<div class="ct-tile" role="listitem" style="left:${r.x.toFixed(2)}%;top:${r.y.toFixed(2)}%;width:${r.w.toFixed(2)}%;height:${r.h.toFixed(2)}%;--c:${cosCol(cat)}" title="${esc(p.symbol||p.label)}: ${f(r.v*100,1)}%"><b>${esc(p.symbol||p.label)}</b><span>${f(r.v*100,0)}%</span></div>`}).join('')}</div>`;
+}
+function renderKpis(s){
+  const withPnl=s.positions.filter(l=>l.unrealizedPnlBrl!=null),pnl=withPnl.reduce((a,l)=>a+Number(l.unrealizedPnlBrl),0),cost=withPnl.length===s.positions.length?Number(s.totalCostBasisBrl||0):0;
+  const sells=CT.entries.filter(e=>e.entryType==='SELL'&&e.realizedPnlBrl!=null),real=sells.reduce((a,e)=>a+Number(e.realizedPnlBrl),0);
+  const k=(t,v,sub)=>`<article class="ct-kpi"><p>${t}</p><b class="num">${v}</b><small>${sub}</small></article>`;
+  $('#ctKpis').innerHTML=k('Patrimônio total',s.positions.length?BRL(s.totalCurrentValueBrl):NI,'soma das posições ao preço de fechamento')
+    +k('Resultado não realizado',withPnl.length?`<span class="${pnl>=0?'up':'dn'}">${signed(pnl,BRL)}</span>`:NI,withPnl.length&&cost>0?`${signed(pnl/cost*100,v=>f(v,1)+'%')} sobre o custo`:'sem cotação para medir')
+    +k('Resultado realizado',sells.length?`<span class="${real>=0?'up':'dn'}">${signed(real,BRL)}</span>`:BRL(0),sells.length?'das vendas registradas':'nenhuma venda registrada');
 }
 function disposeChart(id){if(CT.charts[id]){CT.charts[id].dispose();delete CT.charts[id]}}
 function renderAdherence(){
@@ -245,6 +272,7 @@ $('#opForm').addEventListener('submit',submitOp);
 $('#opX').onclick=()=>$('#op').close();
 $('#op').addEventListener('click',e=>{if(e.target===$('#op'))$('#op').close()});
 $('#op').addEventListener('close',()=>{if(lastFocus&&lastFocus.focus)try{lastFocus.focus()}catch(e){}});
+document.getElementById('ctTabs').addEventListener('click',e=>{const t=e.target.closest('[data-ctt]');if(!t)return;$('#ctBody').dataset.tab=t.dataset.ctt;document.querySelectorAll('[data-ctt]').forEach(b=>{b.setAttribute('aria-pressed',String(b===t));b.setAttribute('aria-selected',String(b===t))});Object.values(CT.charts).forEach(c=>c.resize())});
 $('#ctPos').addEventListener('click',e=>{const b=e.target.closest('button[data-op]');if(b)openOp(b.dataset.op,b.dataset.id)});
 $('#ctBook').addEventListener('click',e=>{const b=e.target.closest('button[data-f]');if(b){CT.filter=b.dataset.f;renderBook()}});
 

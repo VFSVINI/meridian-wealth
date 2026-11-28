@@ -196,25 +196,30 @@
     </section>
 
     <section class="page" data-page="carteira" hidden>
-      <div class="ph"><p class="eyebrow">Patrimônio</p><h1>Minha Carteira</h1><p class="lede">Suas posições multi-ativo com preço médio ponderado, em reais ou dólares. Cada valor usa a cotação real (com fonte e horário) e o PTAX do Banco Central; o que não tem dado fica "não informado".</p><div class="actions" id="ctActions"></div></div>
+      <div class="ph"><p class="eyebrow">Minha carteira</p><h1>Quanto eu tenho, onde e com que risco?</h1><p class="lede">Um registro seu, com valores ao preço de fechamento. Comece pela visão geral e abra os detalhes quando quiser. O que não tem dado fica "não informado".</p></div>
+      <div class="gp-tabs"><div class="mk-pills" id="ctTabs" role="tablist" aria-label="Seções da carteira"><button type="button" class="mk-pill" role="tab" data-ctt="visao" aria-pressed="true">Visão geral</button><button type="button" class="mk-pill" role="tab" data-ctt="posicoes" aria-pressed="false">Posições</button><button type="button" class="mk-pill" role="tab" data-ctt="lancamentos" aria-pressed="false">Lançamentos</button></div><div class="actions" id="ctActions"></div></div>
       <p id="ctMsg" class="src" role="status" aria-live="polite"></p>
       <div class="card" id="ctGate" hidden></div>
-      <div id="ctBody" hidden>
-        <div class="ct-top">
+      <div id="ctBody" data-tab="visao" hidden>
+        <div class="ct-kpis" id="ctKpis" data-ctg="visao"></div>
+        <div class="ct-vis" data-ctg="visao">
+          <section class="ct-card"><p class="gp-k"><span>Alocação por classe</span><span class="cs-chip cy">dado real</span></p><div id="ctDonut"></div></section>
+          <section class="ct-card"><p class="gp-k"><span>Mapa das posições</span><span class="cs-chip cy">dado real</span></p><div id="ctPosMap"></div></section>
+        </div>
+        <div class="ct-top" data-ctg="visao">
           <div class="card gold" id="ctTotal"></div>
-          <div class="card"><h2>Alocação por classe <span class="tag info">dado real</span></h2><div id="ctAllocWrap"></div></div>
           <div class="card" id="ctRadarCard" hidden><h2>Meta e atual</h2><div id="ctRadar" class="echart" role="img" aria-label="Radar: meta do perfil contra a carteira, por classe"></div></div>
         </div>
-        <div class="card" id="ct3dCard" hidden><h2>Alocação em 3D <span class="tag info">dado real</span></h2>
+        <div class="card" id="ct3dCard" data-ctg="visao" hidden><h2>Alocação em 3D <span class="tag info">dado real</span></h2>
           <div id="ct3d" class="lwc ck3d"><canvas id="ct3dCanvas" tabindex="0" role="img" aria-label="Rosca 3D da alocação da carteira. A lista de classes e a tabela de posições trazem os mesmos números."></canvas>
             <div class="c3d-ctl"><button type="button" id="ct3dIn" aria-label="Aproximar">+</button><button type="button" id="ct3dOut" aria-label="Afastar">−</button><button type="button" id="ct3dReset" aria-label="Restaurar a câmera">⟲</button></div>
             <div class="c3d-hint">Anel de fora: classes · anel de dentro: posições com valor em reais · arraste para girar · Ctrl + roda para zoom</div>
             <div id="ct3dTip" class="c3d-tip" hidden></div><p id="ct3dNote" class="c3d-note" hidden></p></div>
           <p class="src">O anel de fora traz os percentuais por classe da carteira; o de dentro, o peso de cada posição no valor em reais de hoje (posições sem valor em reais ficam de fora). A lista e a tabela de posições trazem os mesmos números.</p></div>
-        <div class="card" id="ctAdh"></div>
-        <div class="card" id="ctPos"></div>
-        <div class="card" id="ctBook"></div>
-        <div class="card"><h2>Ganho ou perda por posição</h2><div id="ctPnlWrap"></div></div>
+        <div class="card" id="ctAdh" data-ctg="visao"></div>
+        <div class="card" id="ctPos" data-ctg="posicoes"></div>
+        <div class="card" id="ctBook" data-ctg="lancamentos"></div>
+        <div class="card" data-ctg="posicoes"><h2>Ganho ou perda por posição</h2><div id="ctPnlWrap"></div></div>
       </div>
     </section>
 
