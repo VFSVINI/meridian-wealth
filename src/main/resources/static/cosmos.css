@@ -384,7 +384,7 @@ h3.sub .src{letter-spacing:0;text-transform:none;font-weight:400}
 .ct-kpi p{margin:0 0 var(--s2);color:var(--text-2);font-size:14px}.ct-kpi b{display:block;font:500 clamp(24px,2.6vw,34px) var(--mono)}.ct-kpi small{display:block;margin-top:var(--s2);color:var(--text-3);font-size:13px}
 .ct-vis{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:var(--s3);margin-bottom:var(--s3)}
 .ct-donut{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:var(--s4);align-items:center}
-.ct-donut svg{width:100%;height:auto}.ct-dv{font:500 15px var(--mono);fill:var(--text)}.ct-dl{font:12px var(--sans);fill:var(--text-3)}
+.ct-donut svg{width:100%;height:auto}.ct-dv{font:500 13px var(--mono);fill:var(--text)}.ct-dl{font:12px var(--sans);fill:var(--text-3)}
 .ct-leg{list-style:none;margin:0;padding:0;display:grid;gap:var(--s2)}.ct-leg li{display:grid;grid-template-columns:12px 1fr auto;gap:var(--s2);align-items:center;font-size:15px}.ct-leg i{width:10px;height:10px;border-radius:3px}
 .ct-tree{position:relative;height:320px;border-radius:12px;overflow:hidden}
 .ct-tile{position:absolute;box-sizing:border-box;padding:10px 12px;border:2px solid var(--bg,#04070e);border-radius:10px;background:color-mix(in srgb,var(--c) 22%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 55%,transparent);overflow:hidden;display:flex;flex-direction:column;gap:2px}

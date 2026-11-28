@@ -109,7 +109,7 @@ function renderAlloc(s){
   if(!s.byClass.length){el.innerHTML='<p class="mute">Sem posições com valor em reais para mostrar a alocação.</p>';return}
   const R=62,C=2*Math.PI*R;let off=0;
   const arcs=s.byClass.map(w=>{const len=Math.max(0,Number(w.percent))/100*C,a=`<circle cx="100" cy="100" r="${R}" fill="none" stroke="${cosCol(w.category)}" stroke-width="30" stroke-dasharray="${len.toFixed(2)} ${(C-len).toFixed(2)}" stroke-dashoffset="${(-off).toFixed(2)}" transform="rotate(-90 100 100)"><title>${esc(w.label)}: ${f(w.percent,2)}%</title></circle>`;off+=len;return a}).join('');
-  el.innerHTML=`<div class="ct-donut"><svg viewBox="0 0 200 200" role="img" aria-label="Alocação por classe de ativo, em percentual do patrimônio">${arcs}<text x="100" y="97" text-anchor="middle" class="ct-dv">${esc(BRL(s.totalCurrentValueBrl))}</text><text x="100" y="116" text-anchor="middle" class="ct-dl">total</text></svg>
+  el.innerHTML=`<div class="ct-donut"><svg viewBox="0 0 200 200" role="img" aria-label="Alocação por classe de ativo, em percentual do patrimônio">${arcs}<text x="100" y="97" text-anchor="middle" class="ct-dv">${esc('R$ '+f(s.totalCurrentValueBrl,0))}</text><text x="100" y="116" text-anchor="middle" class="ct-dl">total</text></svg>
     <ul class="ct-leg">${s.byClass.map(w=>`<li><i style="background:${cosCol(w.category)}"></i><span>${esc(w.label)}</span><b class="num">${f(w.percent,1)}%</b></li>`).join('')}</ul></div>`;
 }
 /* mapa das posições: retângulos proporcionais ao peso no valor em reais; posição sem valor em reais não entra */
@@ -136,7 +136,7 @@ function renderKpis(s){
   const k=(t,v,sub)=>`<article class="ct-kpi"><p>${t}</p><b class="num">${v}</b><small>${sub}</small></article>`;
   $('#ctKpis').innerHTML=k('Patrimônio total',s.positions.length?BRL(s.totalCurrentValueBrl):NI,'soma das posições ao preço de fechamento')
     +k('Resultado não realizado',withPnl.length?`<span class="${pnl>=0?'up':'dn'}">${signed(pnl,BRL)}</span>`:NI,withPnl.length&&cost>0?`${signed(pnl/cost*100,v=>f(v,1)+'%')} sobre o custo`:'sem cotação para medir')
-    +k('Resultado realizado',sells.length?`<span class="${real>=0?'up':'dn'}">${signed(real,BRL)}</span>`:BRL(0),sells.length?'das vendas registradas':'nenhuma venda registrada');
+    +k('Resultado realizado',sells.length?`<span class="${real>=0?'up':'dn'}">${signed(real,BRL)}</span>`:BRL(0),sells.length?(CT.entries.length>=200?'das vendas entre os 200 últimos lançamentos':'das vendas registradas'):'nenhuma venda registrada');
 }
 function disposeChart(id){if(CT.charts[id]){CT.charts[id].dispose();delete CT.charts[id]}}
 function renderAdherence(){
