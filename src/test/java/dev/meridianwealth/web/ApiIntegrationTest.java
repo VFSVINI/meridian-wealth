@@ -244,7 +244,7 @@ class ApiIntegrationTest {
     @Test void overviewShowsRealSourcesAndExplicitGaps() {
         Map<?, ?> body = rest.getForObject("/api/overview", Map.class);
         assertThat(body.get("mode")).isEqualTo("PARCIAL");
-        assertThat((List<?>) body.get("ticks")).hasSize(33);
+        assertThat((List<?>) body.get("ticks")).hasSize(41);
 
         Map<String, Object> spy = tick("SPY");
         assertThat(spy.get("status")).isEqualTo("LIVE");
@@ -303,7 +303,7 @@ class ApiIntegrationTest {
         assertThat(body.get("cache")).isEqualTo("memory");
         assertThat(body).doesNotContainKeys("flow", "dataMode");
         assertThat((List<?>) body.get("providers")).isNotEmpty();
-        assertThat((List<?>) body.get("instruments")).hasSize(33);
+        assertThat((List<?>) body.get("instruments")).hasSize(41);
     }
 
     @Test void simulatedFlowEndpointNoLongerExists() {
