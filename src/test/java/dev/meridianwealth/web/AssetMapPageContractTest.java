@@ -35,6 +35,7 @@ class AssetMapPageContractTest {
     @Test
     void theBrazilTabResizesTheLeafletMapWhenShownAndTheClassFilterOnlyAppliesToTheWorld() throws IOException {
         String js = StaticPage.file("mundo.js");
+        assertThat(js).as("a cada cotação o mapa se redesenha: o foco volta ao mesmo elemento").contains("n.focus({preventScroll: true})").contains("['mwx', 'mwa', 'mwk']");
         assertThat(js).contains("MP.map.invalidateSize()").contains("$('#mwKinds').hidden = t !== 'mundo';");
         assertThat(StaticPage.file("cosmos.css")).contains("@media(prefers-reduced-motion:reduce){.mw-arc{animation:none}}");
     }
