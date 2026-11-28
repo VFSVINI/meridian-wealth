@@ -291,14 +291,21 @@
     </section>
 
     <section class="page" data-page="shopping" hidden>
-      <div class="ph"><p class="eyebrow">Patrimônio</p><h1>Shopping financeiro</h1><p class="lede">Os tipos de ativo que a plataforma conhece, lado a lado, com o que cada um é (indexador, rendimento, proteção, de onde vem o preço) e as referências oficiais do Banco Central. Para comparar o que cada classe oferece antes de simular.</p></div>
+      <div class="ph"><p class="eyebrow">Shopping financeiro</p><h1>Que tipo de investimento combina comigo?</h1><p class="lede">Entenda o que é cada classe, para quem serve, a liquidez e a proteção. Compare até três lado a lado.</p></div>
+      <div class="gp-tabs"><div class="mk-pills" id="shRisk" role="group" aria-label="Filtrar por risco"><button type="button" class="mk-pill" data-shr="ALL" aria-pressed="true">Todos</button><button type="button" class="mk-pill" data-shr="Baixo" aria-pressed="false">Risco baixo</button><button type="button" class="mk-pill" data-shr="Médio" aria-pressed="false">Risco médio</button><button type="button" class="mk-pill" data-shr="Alto" aria-pressed="false">Risco alto</button></div><span class="src" id="shHint">Selecione até 3 classes para comparar lado a lado</span></div>
+      <div class="sh-grid" id="shCards"><span class="skel"></span></div>
+      <section class="cs-sec" id="shCompare" hidden aria-labelledby="shCmpH"><p class="cs-kicker">Comparar</p><h2 class="cs-h2" id="shCmpH">Lado a lado</h2><div class="scroll" id="shCmpBody"></div></section>
+      <p class="src" id="shSrc"></p>
       <div class="banner-info">Este é um catálogo de tipos e de referências oficiais. <b>A plataforma não tem ofertas de emissores</b> (taxas de CDB, LCI, debêntures etc.) nem executa ordens: nenhuma taxa de produto é mostrada porque nenhuma é inventada.</div>
+      <details class="ck-full"><summary><span>Todos os tipos do catálogo e as referências oficiais</span><small>indexador, rendimento, proteção e a referência do Banco Central</small></summary>
+        <div style="padding:0 clamp(16px,2vw,26px) var(--s4)">
       <div class="card" id="shRefs"><h2>Referências oficiais agora <span class="tag info">Banco Central</span></h2><span class="skel"></span></div>
       <div class="card"><div class="filters"><div class="chips" id="shCats" role="group" aria-label="Classe"></div><input id="shQ" type="search" placeholder="Filtrar por nome ou código" aria-label="Filtrar tipos de ativo"></div><div id="shTable" class="scroll"></div>
         <div class="src" id="shNote"></div></div>
+        </div></details>
     </section>
 
-    <section class="page" data-page="perfil" hidden>
+<section class="page" data-page="perfil" hidden>
       <div class="ph"><p class="eyebrow">Patrimônio</p><h1>Perfil e carteira modelo</h1><p class="lede">Questionário de suitability e a carteira modelo do seu perfil. Nada é gravado: o resultado some ao recarregar.</p></div>
       <div class="card rx" style="max-width:860px"><h2>Perfil de investidor <span class="tag info">educacional</span></h2><div id="sp" class="mute" style="font-size:12.5px">carregando…</div></div>
     </section>
