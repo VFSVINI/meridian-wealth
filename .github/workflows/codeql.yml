@@ -23,13 +23,13 @@ jobs:
           distribution: temurin
           java-version: 21
           cache: maven
-      - uses: github/codeql-action/init@v3
+      - uses: github/codeql-action/init@v4
         with:
           languages: java-kotlin
           build-mode: manual
           queries: security-extended
       - name: Compila para o CodeQL
         run: ./mvnw -B -DskipTests compile
-      - uses: github/codeql-action/analyze@v3
+      - uses: github/codeql-action/analyze@v4
         with:
           category: "/language:java-kotlin"
