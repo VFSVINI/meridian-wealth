@@ -45,6 +45,9 @@ public class RiskController {
 
     public record Histogram(List<BigDecimal> edges, List<Integer> counts) {}
 
+    /** Densidades por ano (a paisagem de probabilidades): limites comuns e, para cada ano de 0 a N, quantas trajetórias caíram em cada faixa. */
+    public record YearlyDensity(List<BigDecimal> edges, List<List<Integer>> counts) {}
+
     public record CoverageView(String label, String assetKey, BigDecimal valueBrl, BigDecimal weightPercent, String treatment, String reason, String currency) {}
 
     public record StatisticsView(int commonDays, LocalDate from, LocalDate to, BigDecimal annualReturnPercent, BigDecimal annualVolatilityPercent) {}
@@ -52,7 +55,7 @@ public class RiskController {
     public record ProjectionView(String kind, String label, String mode, int paths, int months, BigDecimal initial, BigDecimal monthlyContribution, BigDecimal goal, long seed,
                                  BigDecimal expectedReturnPercent, BigDecimal volatilityPercent, List<Point> points, Histogram histogram, BigDecimal goalProbabilityPercent,
                                  List<BigDecimal> goalProbabilityByYearPercent, BigDecimal probabilityBelowInvestedPercent, BigDecimal totalInvested, BigDecimal mean,
-                                 List<CoverageView> coverage, BigDecimal coveredPercent, StatisticsView statistics, List<String> assumptions, String disclaimer) {}
+                                 List<CoverageView> coverage, BigDecimal coveredPercent, StatisticsView statistics, YearlyDensity density, List<String> assumptions, String disclaimer) {}
 
     public record MatrixDto(List<String> keys, List<String> labels, List<List<BigDecimal>> values, List<List<Integer>> days) {}
 
@@ -122,6 +125,14 @@ public class RiskController {
         for (double e : r.histogramEdges()) edges.add(money(e));
         List<Integer> counts = new ArrayList<>();
         for (int c : r.histogramCounts()) counts.add(c);
+        List<BigDecimal> dEdges = new ArrayList<>();
+        for (double e : r.densityEdges()) dEdges.add(money(e));
+        List<List<Integer>> dCounts = new ArrayList<>();
+        for (int[] row : r.densityCounts()) {
+            List<Integer> line = new ArrayList<>();
+            for (int n : row) line.add(n);
+            dCounts.add(line);
+        }
         List<BigDecimal> byYear = null;
         if (r.goalProbabilityByYear() != null) {
             byYear = new ArrayList<>();
@@ -134,7 +145,7 @@ public class RiskController {
         return new ProjectionView("PROJECTION", o.label(), o.parametric() ? "PARAMETRIC" : "PORTFOLIO_BOOTSTRAP", MonteCarlo.PATHS, o.months(), money(o.initial()), money(o.monthlyContribution()),
                 o.goal() == null ? null : money(o.goal()), o.seed(), pct(o.expectedReturnAnnual()), pct(o.volatilityAnnual()), points, new Histogram(edges, counts),
                 r.goalProbabilityFinal() == null ? null : pct(r.goalProbabilityFinal()), byYear, pct(r.probabilityBelowInvested()), money(r.totalInvested()), money(r.mean()),
-                coverage, o.coveredPercent() == null ? null : BigDecimal.valueOf(o.coveredPercent()).setScale(2, RoundingMode.HALF_EVEN), stats, o.assumptions(), DISCLAIMER);
+                coverage, o.coveredPercent() == null ? null : BigDecimal.valueOf(o.coveredPercent()).setScale(2, RoundingMode.HALF_EVEN), stats, new YearlyDensity(dEdges, dCounts), o.assumptions(), DISCLAIMER);
     }
 
     @RestControllerAdvice(assignableTypes = RiskController.class)

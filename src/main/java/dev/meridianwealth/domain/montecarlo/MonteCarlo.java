@@ -20,6 +20,8 @@ public final class MonteCarlo {
     public static final int PATHS = 5000;
     public static final int MAX_MONTHS = 40 * 12;
     public static final int BINS = 30;
+    /** Faixas das densidades por ano (a "paisagem" de probabilidades): mais finas que o histograma final para a curva ficar suave. */
+    public static final int DENSITY_BINS = 48;
     /** Teto do que o cálculo representa (R$ 100 quintilhões): premissas que o ultrapassam são recusadas em vez de virarem infinito ou NaN. */
     public static final double MAX_VALUE = 1e20;
     public static final double[] LEVELS = {0.05, 0.25, 0.50, 0.75, 0.95};
@@ -54,9 +56,12 @@ public final class MonteCarlo {
      * @param goalProbabilityByYear probabilidade de estar na meta ou acima no fim de cada ano ({@code [0]} é hoje), ou {@code null}
      * @param probabilityBelowInvested probabilidade de terminar abaixo de tudo que foi investido (inicial mais aportes)
      * @param totalInvested inicial mais todos os aportes
+     * @param densityEdges {@link #DENSITY_BINS} {@code + 1} limites comuns a todos os anos, de 0 ao percentil 99 do patrimônio final
+     * @param densityCounts {@code densityCounts[y][b]}: quantas trajetórias estavam na faixa {@code b} no fim do ano {@code y} ({@code [0]} é hoje); quem passa do último limite entra na última faixa
      */
     public record Result(int months, double[][] percentiles, double[] histogramEdges, int[] histogramCounts, Double goalProbabilityFinal,
-                         double[] goalProbabilityByYear, double probabilityBelowInvested, double totalInvested, double mean) {}
+                         double[] goalProbabilityByYear, double probabilityBelowInvested, double totalInvested, double mean, double[] densityEdges,
+                         int[][] densityCounts) {}
 
     private MonteCarlo() {}
 
@@ -66,7 +71,8 @@ public final class MonteCarlo {
         Arrays.fill(value, p.initial());
         double[][] pct = new double[LEVELS.length][p.months() + 1];
         double[] goalByYear = p.goal() == null ? null : new double[p.months() / 12 + 1];
-        record0(value, pct, 0, p.goal(), goalByYear, 0);
+        double[][] yearSamples = new double[p.months() / 12 + 1][];
+        record0(value, pct, 0, p.goal(), goalByYear, 0, yearSamples);
         for (int m = 1; m <= p.months(); m++) {
             for (int i = 0; i < PATHS; i++) {
                 double r = model.nextMonthlyReturn(random);
@@ -74,19 +80,20 @@ public final class MonteCarlo {
                 value[i] = Math.max(0, value[i] * (1 + r)) + p.monthlyContribution();
                 if (!(value[i] <= MAX_VALUE)) throw new IllegalArgumentException("As premissas levam o patrimônio além do que o cálculo representa: reduza o retorno, a volatilidade ou o horizonte");
             }
-            record0(value, pct, m, p.goal(), goalByYear, m % 12 == 0 ? m / 12 : -1);
+            record0(value, pct, m, p.goal(), goalByYear, m % 12 == 0 ? m / 12 : -1, yearSamples);
         }
-        return summarize(p, value, pct, goalByYear);
+        return summarize(p, value, pct, goalByYear, yearSamples);
     }
 
-    private static void record0(double[] value, double[][] pct, int month, Double goal, double[] goalByYear, int year) {
+    private static void record0(double[] value, double[][] pct, int month, Double goal, double[] goalByYear, int year, double[][] yearSamples) {
         double[] s = value.clone();
         Arrays.sort(s);
         for (int l = 0; l < LEVELS.length; l++) pct[l][month] = quantile(s, LEVELS[l]);
         if (goalByYear != null && year >= 0) goalByYear[year] = shareAtOrAbove(s, goal);
+        if (year >= 0) yearSamples[year] = s;
     }
 
-    private static Result summarize(Params p, double[] value, double[][] pct, double[] goalByYear) {
+    private static Result summarize(Params p, double[] value, double[][] pct, double[] goalByYear, double[][] yearSamples) {
         double[] s = value.clone();
         Arrays.sort(s);
         if (!(s[0] >= 0 && s[s.length - 1] <= MAX_VALUE)) throw new IllegalArgumentException("Resultado fora do intervalo que o cálculo representa");
@@ -106,7 +113,18 @@ public final class MonteCarlo {
             if (v < invested) below++;
         }
         Double goalFinal = p.goal() == null ? null : shareAtOrAbove(s, p.goal());
-        return new Result(p.months(), pct, edges, counts, goalFinal, goalByYear, (double) below / PATHS, invested, sum / PATHS);
+        double top = quantile(s, 0.99);
+        if (!(top > 0)) top = 1;
+        double[] dEdges = new double[DENSITY_BINS + 1];
+        for (int b = 0; b <= DENSITY_BINS; b++) dEdges[b] = top * b / DENSITY_BINS;
+        int[][] dCounts = new int[yearSamples.length][DENSITY_BINS];
+        for (int y = 0; y < yearSamples.length; y++) {
+            if (yearSamples[y] == null) continue;
+            for (double v : yearSamples[y]) {
+                dCounts[y][Math.min(DENSITY_BINS - 1, Math.max(0, (int) (v / top * DENSITY_BINS)))]++;
+            }
+        }
+        return new Result(p.months(), pct, edges, counts, goalFinal, goalByYear, (double) below / PATHS, invested, sum / PATHS, dEdges, dCounts);
     }
 
     /** Quantil por interpolação linear entre as duas ordens vizinhas (vetor já ordenado). */

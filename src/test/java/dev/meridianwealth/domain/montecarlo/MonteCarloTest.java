@@ -81,6 +81,34 @@ class MonteCarloTest {
         assertThat(r.histogramEdges()).hasSize(MonteCarlo.BINS + 1).isSorted();
     }
 
+    @Test void theYearlyDensitiesCountEveryPathInEveryYearOnSharedIncreasingEdges() {
+        Result r = MonteCarlo.run(new Params(10_000, 200, 60, null, 5), new ParametricModel(0.07, 0.15));
+        assertThat(r.densityEdges()).hasSize(MonteCarlo.DENSITY_BINS + 1).isSorted();
+        assertThat(r.densityEdges()[0]).isZero();
+        assertThat(r.densityCounts()).as("um conjunto por ano, de 0 a 5").hasNumberOfRows(6);
+        for (int[] year : r.densityCounts()) {
+            assertThat(year).hasSize(MonteCarlo.DENSITY_BINS);
+            assertThat(Arrays.stream(year).sum()).isEqualTo(MonteCarlo.PATHS);
+        }
+        assertThat(Arrays.stream(r.densityCounts()[0]).filter(c -> c > 0).count()).as("hoje todo mundo está no patrimônio inicial: uma única faixa").isEqualTo(1);
+    }
+
+    @Test void theDensitySpreadsOutWithTimeAndWithoutRiskStaysInOneBin() {
+        Result risky = MonteCarlo.run(new Params(100_000, 0, 120, null, 9), new ParametricModel(0.08, 0.25));
+        long early = Arrays.stream(risky.densityCounts()[1]).filter(c -> c > 0).count(), late = Arrays.stream(risky.densityCounts()[10]).filter(c -> c > 0).count();
+        assertThat(late).as("a montanha se espalha com o tempo").isGreaterThan(early);
+        Result flat = MonteCarlo.run(new Params(1_000, 100, 36, null, 1), new ParametricModel(0.12, 0));
+        for (int y = 0; y <= 3; y++) assertThat(Arrays.stream(flat.densityCounts()[y]).filter(c -> c > 0).count()).as("sem volatilidade, ano " + y).isEqualTo(1);
+    }
+
+    @Test void theDensityTopIsThe99thPercentileOfTheFinalWealthAndMassBeyondItLandsInTheLastBin() {
+        Result r = MonteCarlo.run(new Params(10_000, 0, 120, null, 4), new ParametricModel(0.07, 0.30));
+        assertThat(r.densityEdges()[MonteCarlo.DENSITY_BINS]).isCloseTo(r.percentiles()[4][120] * 1.0, within(r.percentiles()[4][120]));
+        assertThat(r.densityEdges()[MonteCarlo.DENSITY_BINS]).isGreaterThan(r.percentiles()[2][120]);
+        int[] last = r.densityCounts()[10];
+        assertThat(last[MonteCarlo.DENSITY_BINS - 1]).as("o 1% mais rico do último ano cai na última faixa").isGreaterThanOrEqualTo((int) (MonteCarlo.PATHS * 0.0095));
+    }
+
     @Test void aLossMakingMarketEndsBelowWhatWasInvested() {
         Result r = MonteCarlo.run(new Params(10_000, 100, 60, null, 5), new ParametricModel(-0.05, 0));
         assertThat(r.probabilityBelowInvested()).isEqualTo(1.0);
