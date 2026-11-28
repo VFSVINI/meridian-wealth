@@ -120,7 +120,7 @@ Aberto em 2026-11-24. O dono achou o site no ar com informação demais e telas 
 - [x] **#48** (Issue #88, ADR 036) Mercados (lista com mini-gráficos e destaque que troca sozinho, filtros, Lista/Tabela/Mapa) e **Ativo** ("a leitura em uma frase", camadas Entrada/Alvos/Invalidação, "Conheça o ativo").
 - [x] **#49** (Issue #90, ADR 037) Academia: curso em módulos com capítulos, quiz e progresso salvo no navegador.
 - [x] **#50** (Issue #92, ADR 038) Brasil: juros e inflação com gráficos históricos reais do Banco Central, "no seu bolso", juro real e linha do tempo do Copom.
-- [ ] **#51** Geopolítica: mapa de risco por país, passo a passo, quatro termômetros e notícias com link para a matéria.
+- [x] **#51** (Issue #94, ADR 039) Geopolítica: mapa de risco por país, passo a passo, quatro termômetros e notícias com link para a matéria.
 - [ ] **#52** Minha Carteira (rosca e mapa das posições), Perfil em sete perguntas e Shopping com comparador.
 - [ ] **#53** Mapa de ativos (Mundo e Brasil), Risco (Monte Carlo com paisagem de probabilidades), Simulador pré-ordem ("órbita da carteira") e Saúde dos dados ("constelação de fontes").
 - [ ] **#54** Cripto 24h com dado real (relógio de 24 horas, galáxia de moedas, dominância, medo e ganância), só com fonte conectada.

@@ -6,6 +6,14 @@ Cada milestone fecha com uma tag `v0.<N>.0` e uma GitHub Release.
 
 ## [Não lançado]
 
+### Adicionado (item #51 do roadmap, Milestone 8: Cosmos)
+- **Geopolítica no visual do protótipo**: mapa-múndi com o risco por país segundo as manchetes reais (abas Risco macro, Setores pressionados e Manchetes), painel do país com a manchete de maior risco e link, passo a passo Evento → Expectativa → Preço → Carteira, quatro termômetros (VIX, dólar DXY, juro de 10 anos, índice de risco) e notícias com título, fonte, horário e link para a matéria.
+- País sem manchete aparece como "não informado", nunca como risco zero; o método é publicado e não é um índice oficial.
+- Mapa a partir do Natural Earth 110m (domínio público), 176 países, com projeção calculada no navegador.
+
+### Alterado (item #51)
+- Notícias passam a carregar link e horário; o VIX e o dólar trazem a variação do dia. O tradutor e o radar da carteira continuam, recolhidos.
+
 ### Adicionado (item #50 do roadmap, Milestone 8: Cosmos)
 - **Brasil: juros e inflação no visual do protótipo**: três cartões com **gráfico histórico real de 12 meses** (meta Selic, IPCA em 12 meses e dólar PTAX), "O que isso muda no seu bolso" em abas (Selic, Inflação, Dólar) com contas simples sobre o valor real mais recente, **juro real** em barras (poupança pela regra legal, Tesouro Selic, CDB a 100% do CDI e inflação) e a **linha do tempo das mudanças reais da meta Selic**, com o caminho para a Academia.
 - `GET /api/brazil/history`: séries oficiais do Banco Central como texto exato, com data de cada ponto; cache de 30 minutos, último dado bom se o Banco Central falha e espera antes de repetir uma consulta que falhou. O que não chega vem como indisponível, nunca estimado.
