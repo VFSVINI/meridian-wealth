@@ -5,6 +5,7 @@ import dev.meridianwealth.application.port.ProviderStatusSource;
 import dev.meridianwealth.infrastructure.resilience.ResilientExecutor;
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -50,10 +51,27 @@ public class RssNewsClient implements ProviderStatusSource {
         NodeList items = d.getElementsByTagName("item");
         List<Headline> out = new ArrayList<>();
         for (int i = 0; i < items.getLength() && out.size() < 15; i++) {
-            NodeList titles = ((org.w3c.dom.Element) items.item(i)).getElementsByTagName("title");
-            if (titles.getLength() > 0) out.add(new Headline(titles.item(0).getTextContent().strip(), source));
+            org.w3c.dom.Element item = (org.w3c.dom.Element) items.item(i);
+            NodeList titles = item.getElementsByTagName("title");
+            if (titles.getLength() == 0) continue;
+            out.add(new Headline(titles.item(0).getTextContent().strip(), source, text(item, "link"), time(text(item, "pubDate"))));
         }
         return out;
+    }
+
+    private static String text(org.w3c.dom.Element item, String tag) {
+        NodeList n = item.getElementsByTagName(tag);
+        return n.getLength() == 0 ? null : n.item(0).getTextContent().strip();
+    }
+
+    /** Horário do feed (RFC 822, como "Fri, 27 Nov 2026 10:00:00 GMT"); ilegível vira nulo, nunca um horário inventado. */
+    static Instant time(String pubDate) {
+        if (pubDate == null || pubDate.isBlank()) return null;
+        try {
+            return java.time.ZonedDateTime.parse(pubDate, java.time.format.DateTimeFormatter.RFC_1123_DATE_TIME).toInstant();
+        } catch (java.time.format.DateTimeParseException e) {
+            return null;
+        }
     }
 
     @Override

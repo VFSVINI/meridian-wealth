@@ -51,6 +51,28 @@ public class YahooClient implements ProviderStatusSource {
 
     public double lastPrice(String symbol) { return chart(symbol, "5d").price(); }
 
+    /** Último preço e a variação sobre o fechamento anterior (fração); a variação é nula quando o histórico não permite calculá-la com segurança. */
+    public record PriceChange(double price, Double change) {}
+
+    public PriceChange lastWithChange(String symbol) {
+        Chart c = chart(symbol, "5d");
+        return new PriceChange(c.price(), dayChange(c));
+    }
+
+    private static final ZoneId NEW_YORK = ZoneId.of("America/New_York");
+
+    /** Preço atual sobre o último fechamento de um dia anterior ao do preço: nulo sem pelo menos um fechamento anterior com valor positivo. */
+    static Double dayChange(Chart c) {
+        List<Candle> cs = c.candles();
+        if (cs.isEmpty() || c.price() <= 0) return null;
+        java.time.LocalDate today = java.time.Instant.ofEpochMilli(c.tsMillis()).atZone(NEW_YORK).toLocalDate();
+        for (int i = cs.size() - 1; i >= 0; i--) {
+            java.time.LocalDate d = java.time.Instant.ofEpochMilli(cs.get(i).time()).atZone(NEW_YORK).toLocalDate();
+            if (d.isBefore(today) && cs.get(i).close() > 0) return c.price() / cs.get(i).close() - 1;
+        }
+        return null;
+    }
+
     public Quote quote(String symbol, String yahooSymbol) {
         Chart c = chart(yahooSymbol, "5d");
         return new Quote(symbol, c.price(), c.tsMillis(), "Yahoo");

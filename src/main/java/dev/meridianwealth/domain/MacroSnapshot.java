@@ -14,15 +14,23 @@ import java.util.Map;
  */
 public record MacroSnapshot(Double vix, Double dollarIndex, Double yield10y, Double geoRisk,
                             String headline, double riskScore, boolean available, String source,
-                            List<NewsItem> news, Map<String, Double> sectorImpact) {
+                            List<NewsItem> news, Map<String, Double> sectorImpact, List<CountryRisk> countries, Map<String, Double> changes) {
 
     public MacroSnapshot {
         news = news == null ? List.of() : List.copyOf(news);
         sectorImpact = sectorImpact == null ? Map.of() : Map.copyOf(sectorImpact);
+        countries = countries == null ? List.of() : List.copyOf(countries);
+        changes = changes == null ? Map.of() : Map.copyOf(changes);
     }
 
     public static MacroSnapshot of(Double vix, Double usd, Double y10, Double geo, String headline,
                                    String source, List<NewsItem> news, Map<String, Double> sectors) {
+        return of(vix, usd, y10, geo, headline, source, news, sectors, List.of(), Map.of());
+    }
+
+    /** {@code changes}: variação do dia (fração) por indicador (vix, dxy), só quando a fonte permite; ausente é "não informado". */
+    public static MacroSnapshot of(Double vix, Double usd, Double y10, Double geo, String headline,
+                                   String source, List<NewsItem> news, Map<String, Double> sectors, List<CountryRisk> countries, Map<String, Double> changes) {
         double sum = 0;
         int parts = 0;
         if (vix != null) {
@@ -35,7 +43,7 @@ public record MacroSnapshot(Double vix, Double dollarIndex, Double yield10y, Dou
         }
         boolean any = vix != null || usd != null || y10 != null || geo != null;
         return new MacroSnapshot(vix, usd, y10, geo, headline, parts == 0 ? 0 : sum / parts, any, source,
-                news, sectors);
+                news, sectors, countries, changes);
     }
 
     /** Nenhum indicador macro disponível. */

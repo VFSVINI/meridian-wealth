@@ -82,6 +82,38 @@ class ParsersTest {
         assertThat(FredClient.parseLatest("{\"observations\":[{\"value\":\".\"},{\"value\":\"4.21\"}]}")).isEqualTo(4.21);
     }
 
+    @Test void rssItemsCarryTheLinkAndThePublicationTimeAndUnreadableTimesBecomeNullNeverInvented() throws Exception {
+        String xml = "<rss xmlns:atom=\"http://www.w3.org/2005/Atom\"><channel><atom:link href=\"https://feed\"/><item><title>Oil jumps</title><link>https://www.bbc.com/news/1</link>"
+                + "<pubDate>Fri, 27 Nov 2026 10:00:00 GMT</pubDate></item><item><title>Sem horário</title><link>https://exemplo.org/2</link><pubDate>ontem de manhã</pubDate></item>"
+                + "<item><title>Sem nada</title></item></channel></rss>";
+        List<Headline> h = RssNewsClient.parse(xml, "BBC");
+        assertThat(h).hasSize(3);
+        assertThat(h.get(0).link()).isEqualTo("https://www.bbc.com/news/1");
+        assertThat(h.get(0).publishedAt()).isEqualTo(java.time.Instant.parse("2026-11-27T10:00:00Z"));
+        assertThat(h.get(1).publishedAt()).as("horário ilegível").isNull();
+        assertThat(h.get(1).link()).isEqualTo("https://exemplo.org/2");
+        assertThat(h.get(2).link()).isNull();
+        assertThat(h.get(2).publishedAt()).isNull();
+    }
+
+    @Test void finnhubNewsKeepTheUrlAndTheEpochTime() throws Exception {
+        List<Headline> h = FinnhubClient.parseNews("[{\"headline\":\"War fears\",\"source\":\"Reuters\",\"url\":\"https://exemplo.org/w\",\"datetime\":1795000000}]");
+        assertThat(h.get(0).link()).isEqualTo("https://exemplo.org/w");
+        assertThat(h.get(0).publishedAt()).isEqualTo(java.time.Instant.ofEpochSecond(1795000000L));
+    }
+
+    @Test void yahooDayChangeUsesTheLastCloseOfAPreviousDayAndIsNullWithoutOne() {
+        long day = 86_400_000L, base = java.time.Instant.parse("2026-11-25T15:00:00Z").toEpochMilli();
+        var candles = List.of(new dev.meridianwealth.domain.Candle(base - day, 20, 21, 19, 20.0, 0), new dev.meridianwealth.domain.Candle(base, 20, 22, 19, 21.0, 0),
+                new dev.meridianwealth.domain.Candle(base + day, 21, 22, 20, 21.5, 0));
+        // preço de hoje (27/11, mesma data da última barra) sobre o fechamento da barra anterior (26/11): 24 / 21 - 1
+        assertThat(YahooClient.dayChange(new YahooClient.Chart(candles, 24.0, base + day))).isCloseTo(24.0 / 21.0 - 1, org.assertj.core.data.Offset.offset(1e-12));
+        // preço mais novo que a última barra: o fechamento da última barra é a referência
+        assertThat(YahooClient.dayChange(new YahooClient.Chart(candles, 24.0, base + 3 * day))).isCloseTo(24.0 / 21.5 - 1, org.assertj.core.data.Offset.offset(1e-12));
+        assertThat(YahooClient.dayChange(new YahooClient.Chart(List.of(candles.get(2)), 24.0, base + day))).as("sem fechamento anterior").isNull();
+        assertThat(YahooClient.dayChange(new YahooClient.Chart(List.of(), 24.0, base))).isNull();
+    }
+
     @Test void rssTitlesAreParsedAndDoctypeIsRejected() throws Exception {
         List<Headline> h = RssNewsClient.parse("<rss><channel><item><title>Ceasefire talks</title></item></channel></rss>", "BBC");
         assertThat(h).extracting(Headline::title).containsExactly("Ceasefire talks");

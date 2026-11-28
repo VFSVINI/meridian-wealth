@@ -47,7 +47,9 @@ public final class GeoRiskScorer {
     private static final List<String> DEESCALATION = List.of("ceasefire", "peace deal", "peace declaration", "peace agreement", "peace accord", "truce", "de-escalat",
             "agreement reached");
 
-    public static NewsItem score(String title, String source) {
+    public static NewsItem score(String title, String source) { return score(title, source, null, null); }
+
+    public static NewsItem score(String title, String source, String link, java.time.Instant publishedAt) {
         String t = title.toLowerCase(Locale.ROOT);
         double risk = 0;
         List<String> sectors = new ArrayList<>();
@@ -61,7 +63,34 @@ public final class GeoRiskScorer {
         if (calm) risk = Math.max(0, risk - 0.6);
         risk = Indicators.clamp(risk, 0, 1);
         double sentiment = calm ? 0.5 : -risk;
-        return new NewsItem(title, source, risk, sentiment, sectors);
+        return new NewsItem(title, source, risk, sentiment, sectors, safeLink(link), publishedAt, GeoRegions.match(title));
+    }
+
+    /** Só endereços http e https viram link (nada de javascript: nem data:); qualquer outra coisa vira nulo. */
+    static String safeLink(String link) {
+        if (link == null) return null;
+        String l = link.strip();
+        return (l.startsWith("https://") || l.startsWith("http://")) && l.length() < 2048 ? l : null;
+    }
+
+    /**
+     * Risco por país a partir de TODAS as manchetes pontuadas (não só as oito mostradas): soma do risco das que citam o país, dividida por duas manchetes fortes,
+     * limitada a 1, com os setores pressionados por elas. País sem manchete não entra: o mapa o mostra como "não informado", nunca como risco zero.
+     */
+    public static List<CountryRisk> countryRisks(List<NewsItem> items) {
+        Map<String, List<NewsItem>> by = new HashMap<>();
+        for (NewsItem n : items) for (String iso : n.countries()) by.computeIfAbsent(iso, k -> new ArrayList<>()).add(n);
+        List<CountryRisk> out = new ArrayList<>();
+        for (GeoRegions.Country c : GeoRegions.all()) {
+            List<NewsItem> ns = by.get(c.iso3());
+            if (ns == null) continue;
+            double risk = Indicators.clamp(ns.stream().mapToDouble(NewsItem::risk).sum() / 2.0, 0, 1);
+            List<String> sectors = ns.stream().flatMap(n -> n.sectors().stream()).distinct().sorted().toList();
+            NewsItem top = ns.stream().max(java.util.Comparator.comparingDouble(NewsItem::risk)).orElseThrow();
+            out.add(new CountryRisk(c.iso3(), c.name(), c.region(), risk, ns.size(), sectors, top));
+        }
+        out.sort(java.util.Comparator.comparingDouble(CountryRisk::risk).reversed().thenComparing(CountryRisk::name));
+        return out;
     }
 
     /** Índice agregado 0..1: média de risco das manchetes e fração de manchetes de risco alto. */
