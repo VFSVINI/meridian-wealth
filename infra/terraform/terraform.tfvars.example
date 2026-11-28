@@ -1,0 +1,4 @@
+# Copie para terraform.tfvars (arquivo ignorado pelo Git) ou use variáveis de ambiente TF_VAR_*. As chaves NÃO entram aqui.
+render_owner_id = "usr-xxxxxxxxxxxxxxxxxxxx"
+# render_api_key  -> TF_VAR_render_api_key
+# neon_api_key    -> TF_VAR_neon_api_key
