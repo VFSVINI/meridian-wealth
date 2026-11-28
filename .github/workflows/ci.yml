@@ -55,7 +55,8 @@ jobs:
           echo "token-de-teste-da-ci-com-mais-de-24-caracteres" > ops/observability/secrets/metrics-token
           docker compose -f ops/observability/docker-compose.yml config -q
           docker run --rm --entrypoint promtool \
-            -v "$PWD/ops/observability:/etc/prometheus:ro" \
+            -v "$PWD/ops/observability/prometheus.yml:/etc/prometheus/prometheus.yml:ro" \
+            -v "$PWD/ops/observability/alerts.yml:/etc/prometheus/alerts.yml:ro" \
             -v "$PWD/ops/observability/secrets/metrics-token:/etc/prometheus/metrics-token:ro" \
             prom/prometheus:v2.55.1 check config /etc/prometheus/prometheus.yml
       - name: Build da imagem
