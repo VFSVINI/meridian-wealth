@@ -114,6 +114,10 @@ abstract class PortfolioApiScenarios {
         assertThat(open.get("mode")).isEqualTo("PARAMETRIC");
         assertThat((List<?>) open.json().get("points")).hasSize(121);
         assertThat(open.get("disclaimer").toString()).contains("não é promessa de retorno");
+        Map<?, ?> density = (Map<?, ?>) open.json().get("density");
+        assertThat((List<?>) density.get("edges")).as("limites comuns da paisagem").hasSize(49);
+        assertThat((List<?>) density.get("counts")).as("uma densidade por ano, de 0 a 10").hasSize(11);
+        assertThat(((List<?>) ((List<?>) density.get("counts")).get(10)).stream().mapToInt(n -> ((Number) n).intValue()).sum()).as("cada ano conta todas as trajetórias").isEqualTo(5000);
         Http.Reply again = http.post("/api/risk/monte-carlo", Map.of("initial", "100000", "monthlyContribution", "1000", "horizonYears", 10, "expectedReturnPercent", "10", "volatilityPercent", "15", "goal", "300000", "seed", 7));
         assertThat(again.body()).as("mesma semente, mesma projeção").isEqualTo(open.body());
         assertThat(http.post("/api/risk/monte-carlo", Map.of("initial", "100000", "horizonYears", 99, "expectedReturnPercent", "10", "volatilityPercent", "15")).status()).isEqualTo(400);
