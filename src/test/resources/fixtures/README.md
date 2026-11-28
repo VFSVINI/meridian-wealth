@@ -28,3 +28,8 @@ para não depender de rede e para validar os parsers contra o contrato verdadeir
 
 Finnhub, FRED e RSS não têm fixture gravada (sem chave ou sem necessidade); os testes usam o formato da documentação pública e dizem isso.
 URLs sem fixture respondem HTTP 404 no `FixtureHttpGateway`, o que exercita o estado "sem dado em tempo real".
+
+| `crypto/coinbase-candles-1h.json` | `https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=3600` (350 barras) | 2026-11-28 |
+| `crypto/kraken-ohlc-1h.json` | `https://api.kraken.com/0/public/OHLC?pair=XBTUSD&interval=60` (721 barras) | 2026-11-28 |
+| `crypto/binance-klines-1h.json` | `https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1h&limit=168` | 2026-11-28 |
+| `crypto/fear-greed.json` | `https://api.alternative.me/fng/?limit=2` | 2026-11-28 |

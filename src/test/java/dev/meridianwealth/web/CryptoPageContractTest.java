@@ -23,8 +23,8 @@ class CryptoPageContractTest {
     @Test
     void whatTheStreamDoesNotCarryIsNotDrawnAndWhatIsNotAProjectSourceIsSaidOutLoud() throws IOException {
         String html = StaticPage.file("index.html"), js = StaticPage.file("cripto.js");
-        assertThat(html).contains("não traz negócio a negócio nem o lado de compra e venda").contains("valor de mercado não é fonte do projeto").contains("Não é a dominância por valor de mercado").contains("nada é inventado");
-        assertThat(html).contains("A variação de 1 hora não aparece porque o projeto não guarda histórico por hora.");
+        assertThat(html).contains("não traz negócio a negócio nem o lado de compra e venda").contains("valor de mercado não é fonte do projeto").contains("Não é a dominância por valor de mercado");
+        assertThat(html).contains("A variação de 1 hora não aparece porque o projeto não guarda preço por hora.");
         assertThat(js).doesNotContain("Math.random").doesNotContain("compra</").contains("não informado").contains("volume negociado em 24 horas");
         assertThat(js).as("preço e volume vêm das cotações da API").contains("rows[u.symbol]").contains("c.volume").contains("/api/sparklines");
     }
@@ -32,7 +32,7 @@ class CryptoPageContractTest {
     @Test
     void theLiveChartNeverStretchesATinyMoveIntoAMountainAndRedrawsKeepKeyboardFocus() throws IOException {
         String js = StaticPage.file("cripto.js");
-        assertThat(js).contains("const min = hi * 0.002;").contains("n.focus({preventScroll: true})").contains("['crl', 'crc', 'crw', 'crr', 'cra']");
+        assertThat(js).contains("const min = hi * 0.002;").contains("n.focus({preventScroll: true})").contains("['crl', 'crc', 'crw', 'crr', 'cra', 'crh']");
         assertThat(StaticPage.file("cosmos.css")).contains("@media(prefers-reduced-motion:reduce){.cr-pl,.cr-ctr{animation:none}}").contains(".cr-gal:hover .cr-pl");
     }
 
@@ -43,5 +43,15 @@ class CryptoPageContractTest {
         String js = StaticPage.file("cripto.js");
         for (String c : coins) assertThat(js).as("texto educativo de " + c).contains("    " + c + ": '");
         assertThat(Universe.all().stream().filter(e -> e.symbols().crypto() != null).allMatch(e -> e.symbols().yahoo() != null && e.symbols().yahoo().endsWith("-USD"))).as("histórico diário de cada moeda pela Yahoo").isTrue();
+    }
+
+    @Test
+    void theClockAndTheFearGreedGaugeComeFromTheInsightsEndpointAndSayWhenTheSourcesFailed() throws IOException {
+        String html = StaticPage.file("index.html"), js = StaticPage.file("cripto.js");
+        assertThat(html).contains("Relógio de 24 horas").contains("id=\"crClock\"").contains("id=\"crFg\"").contains("Fonte: alternative.me").contains("horário de Brasília");
+        assertThat(js).contains("fetch('/api/crypto/insights')").contains("data-crh").contains("As bolsas não entregaram as barras horárias agora").contains("O índice não respondeu agora");
+        assertThat(js).as("hora sem dado fica tracejada, nunca zero").contains("x.relative == null").contains("cr-hb");
+        assertThat(js).as("o relógio também devolve o foco ao redesenhar").contains("'crh'");
+        assertThat(StaticPage.file("README.md".replace("README.md", "cosmos.css"))).contains(".cr-hb.nd");
     }
 }

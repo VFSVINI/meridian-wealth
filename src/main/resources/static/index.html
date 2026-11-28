@@ -230,8 +230,10 @@
         <div class="cr-livegrid"><div><div class="cr-price" id="crPrice"></div><div id="crChart" class="cr-chart"></div><p class="cr-stats" id="crStats"></p></div>
           <div><p class="sh-k">Últimas cotações</p><ul class="cr-trades" id="crTrades" aria-live="off"></ul></div></div></section>
       <div class="cr-two">
+        <section class="cr-card"><p class="gp-k"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Relógio de 24 horas</span><span class="cs-chip cy" id="crClkSrc">dado real</span></p>
+          <div id="crClock" class="cr-clock"><span class="skel"></span></div><div id="crClockTxt"></div>
+          <p class="src">Volume médio do Bitcoin em cada hora do dia, no horário de Brasília, sobre as últimas barras completas de uma hora (até 7 dias). O ponteiro é a hora de agora no seu relógio.</p></section>
         <section class="cr-card"><p class="gp-k"><span>Preço da moeda escolhida</span><span class="mk-pills cr-tabs" id="crRanges" role="group" aria-label="Período"></span></p><p id="crPriceHead" class="cr-ph"></p><div id="crPriceBox" class="cr-chart"></div><p class="src" id="crPriceNote"></p></section>
-        <section class="cr-card"><p class="gp-k"><span>24/7 contra horário comercial</span></p><div id="crOpen"></div><p class="src">As bolsas abertas vêm do estado real de cada pregão nas cotações. Cripto não tem sede nem horário.</p></section>
       </div>
       <div class="cr-two cr-two-b">
         <section class="cr-card cr-gold"><p class="gp-k"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg><span>Sistema de moedas</span><span class="mk-pills cr-tabs" id="crWin" role="group" aria-label="Janela da variação"></span></p>
@@ -239,12 +241,13 @@
           <div class="cr-leg2"><span>queda</span><i class="cr-ramp"></i><span>alta</span><span class="src">tamanho = volume negociado em 24 h · o centro é a moeda de maior volume · valor de mercado não é fonte do projeto</span></div></section>
         <aside class="cr-card cr-gold" id="crDet" aria-live="polite"><span class="skel"></span></aside>
       </div>
-      <div class="cr-two">
+      <div class="cr-three">
         <section class="cr-card"><p class="gp-k"><span>Participação no volume</span></p><div id="crDon"></div><p class="src">Quanto cada moeda representa do volume negociado em 24 h entre as moedas listadas aqui. Não é a dominância por valor de mercado.</p></section>
-        <section class="cr-card"><p class="gp-k"><span>Medo e ganância</span><span class="cs-chip">em breve</span></p><p class="src">O índice de medo e ganância precisa de uma fonte conectada, que ainda não existe no projeto. Enquanto isso, esta tela não mostra número nenhum: nada é inventado.</p></section>
+        <section class="cr-card"><p class="gp-k"><span>Medo e ganância</span><span class="cs-chip cy" id="crFgSrc">dado real</span></p><div id="crFg"><span class="skel"></span></div><p class="src">De 0 (medo extremo) a 100 (ganância extrema). Mede o humor do mercado de cripto, não prevê preço. Fonte: alternative.me.</p></section>
+        <section class="cr-card"><p class="gp-k"><span>24/7 contra horário comercial</span></p><div id="crOpen"></div><p class="src">As bolsas abertas vêm do estado real de cada pregão nas cotações. Cripto não tem sede nem horário.</p></section>
       </div>
       <section class="cr-card"><p class="gp-k"><span>Todas as moedas</span><span class="src" id="crCount" style="margin-left:auto;text-transform:none;letter-spacing:0"></span></p><div id="crTbl"><span class="skel"></span></div>
-        <p class="src">Variação de 24 h: fechamento sobre a abertura da barra do dia. Variação de 7 dias: fechamentos diários. A variação de 1 hora não aparece porque o projeto não guarda histórico por hora.</p></section>
+        <p class="src">Variação de 24 h: fechamento sobre a abertura da barra do dia. Variação de 7 dias: fechamentos diários. A variação de 1 hora não aparece porque o projeto não guarda preço por hora.</p></section>
     </section>
 
     <section class="page" data-page="mapa" hidden>

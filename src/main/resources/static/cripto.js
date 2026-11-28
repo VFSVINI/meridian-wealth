@@ -19,7 +19,7 @@
     LTC: 'Criada como uma "versão mais leve" do Bitcoin, com confirmações mais rápidas.',
     TRX: 'Moeda de uma rede muito usada para movimentar moedas estáveis.'
   };
-  const CR = {coin: 'BTC', win: '24h', range: '7d', live: 'BTC', paused: false, buf: [], trades: [], spark: null, sparkAt: 0, pick: 'BTC', timer: 0};
+  const CR = {ins: null, insAt: 0, hour: null, coin: 'BTC', win: '24h', range: '7d', live: 'BTC', paused: false, buf: [], trades: [], spark: null, sparkAt: 0, pick: 'BTC', timer: 0};
   const onPage = () => { const p = document.querySelector('[data-page="cripto"]'); return !!p && !p.hidden; };
   const ND = '<span class="gap">não informado</span>';
   const usd = v => 'US$ ' + f(v, v >= 100 ? 2 : v >= 1 ? 3 : 4);
@@ -29,7 +29,7 @@
   const paint = (el, html) => {
     if (!el || el.dataset.h === html) return;
     const a = document.activeElement; let key = '';
-    if (a && el.contains(a) && a.dataset) for (const k of ['crl', 'crc', 'crw', 'crr', 'cra']) if (a.dataset[k] !== undefined) { key = `[data-${k}="${CSS.escape(a.dataset[k])}"]`; break; }
+    if (a && el.contains(a) && a.dataset) for (const k of ['crl', 'crc', 'crw', 'crr', 'cra', 'crh']) if (a.dataset[k] !== undefined) { key = `[data-${k}="${CSS.escape(a.dataset[k])}"]`; break; }
     const top = el.scrollTop; el.innerHTML = html; el.dataset.h = html; el.scrollTop = top;
     if (key) { const n = el.querySelector(key); if (n) n.focus({preventScroll: true}); }
   };
@@ -45,6 +45,40 @@
     if (Date.now() - CR.sparkAt < 300000) return;
     CR.sparkAt = Date.now();
     try { const r = await fetch('/api/sparklines'); if (r.ok) CR.spark = await r.json(); } catch (e) { /* sem mini-gráficos: a tela mostra "não informado" */ }
+  }
+
+  /* ---------- relógio de 24 horas e medo e ganância (/api/crypto/insights) ---------- */
+  async function loadIns() {
+    if (Date.now() - CR.insAt < 300000) return;
+    CR.insAt = Date.now();
+    try { const r = await fetch('/api/crypto/insights'); if (r.ok) CR.ins = await r.json(); else CR.insAt = Date.now() - 240000; } catch (e) { CR.insAt = Date.now() - 240000; }
+  }
+  const nowBrt = () => { const p = new Intl.DateTimeFormat('pt-BR', {timeZone: 'America/Sao_Paulo', hour: '2-digit', minute: '2-digit', hour12: false}).formatToParts(new Date()); return {h: Number(p.find(x => x.type === 'hour').value) % 24, m: p.find(x => x.type === 'minute').value}; };
+  function clock() {
+    const hv = CR.ins && CR.ins.hourly, t = nowBrt();
+    if (!hv) { $('#crClock').innerHTML = '<p class="mute">As bolsas não entregaram as barras horárias agora: ' + ND + '. Nada é estimado.</p>'; $('#crClockTxt').innerHTML = ''; return; }
+    $('#crClkSrc').textContent = hv.source;
+    const sel = CR.hour == null ? t.h : CR.hour, cx = 150, cy = 150, r0 = 62, rmax = 118;
+    const bars = hv.hours.map(x => {
+      const a = (x.hour / 24) * Math.PI * 2 - Math.PI / 2, a2 = ((x.hour + 0.86) / 24) * Math.PI * 2 - Math.PI / 2, r1 = x.relative == null ? r0 + 4 : r0 + 6 + (rmax - r0 - 6) * x.relative;
+      const p = (rr, aa) => (cx + rr * Math.cos(aa)).toFixed(1) + ' ' + (cy + rr * Math.sin(aa)).toFixed(1);
+      const fill = x.relative == null ? 'transparent' : x.hour === hv.peakHour ? '#ffb340' : '#8f86e8';
+      return `<path d="M${p(r0, a)}L${p(r1, a)}L${p(r1, a2)}L${p(r0, a2)}Z" fill="${fill}" class="cr-hb${x.hour === sel ? ' sel' : ''}${x.relative == null ? ' nd' : ''}" tabindex="0" role="button" data-crh="${x.hour}" aria-pressed="${x.hour === sel}" aria-label="${x.hour} horas: ${x.relative == null ? 'sem dado' : f(x.relative * 100, 0) + '% do pico'}"><title>${x.hour}h</title></path>`;
+    }).join('');
+    const ang = ((t.h + Number(t.m) / 60) / 24) * Math.PI * 2 - Math.PI / 2;
+    paint($('#crClock'), `<svg viewBox="0 0 300 300" role="group" aria-label="Relógio de 24 horas: cada barra é o volume médio do Bitcoin naquela hora do dia. O texto abaixo traz o mesmo número da hora escolhida.">${bars}`
+      + `<line x1="${cx}" y1="${cy}" x2="${(cx + (rmax + 6) * Math.cos(ang)).toFixed(1)}" y2="${(cy + (rmax + 6) * Math.sin(ang)).toFixed(1)}" class="cr-hand"/><circle cx="${(cx + (rmax + 6) * Math.cos(ang)).toFixed(1)}" cy="${(cy + (rmax + 6) * Math.sin(ang)).toFixed(1)}" r="4" class="cr-hd"/>`
+      + `<text x="${cx}" y="${cy - 14}" text-anchor="middle" class="cr-ck">AGORA</text><text x="${cx}" y="${cy + 12}" text-anchor="middle" class="cr-cv">${String(t.h).padStart(2, '0')}:${t.m}</text><text x="${cx}" y="${cy + 30}" text-anchor="middle" class="cr-ck">cripto aberto</text></svg>`);
+    const hr = hv.hours[sel];
+    $('#crClockTxt').innerHTML = `<p class="cr-cl"><b>Hora ${sel}h</b> · ${hr.relative == null ? 'volume ' + ND : 'volume relativo <b class="num">' + f(hr.relative * 100, 0) + '%</b> do pico (' + big(hr.averageUsd) + ' por hora, média de ' + hr.samples + ' dias)'}.</p><p class="cr-cl">Pico: <b>${hv.peakHour}h</b>. <span class="cr-key"><i style="background:#8f86e8"></i>volume por hora <i style="background:#ffb340"></i>pico</span></p>`;
+  }
+  function fear() {
+    const fg = CR.ins && CR.ins.fearGreed;
+    if (!fg) { $('#crFg').innerHTML = '<p class="mute">O índice não respondeu agora: ' + ND + '. Nada é estimado.</p>'; return; }
+    const v = fg.value, a = Math.PI * (1 - v / 100), nx = 100 + 62 * Math.cos(a), ny = 100 - 62 * Math.sin(a);
+    $('#crFg').innerHTML = `<svg viewBox="0 0 200 120" role="img" aria-label="Medo e ganância: ${v} de 100, ${esc(fg.label || '')}"><defs><linearGradient id="crFgG" x1="0" x2="1"><stop offset="0" stop-color="#ff6d82"/><stop offset=".5" stop-color="#ffc83d"/><stop offset="1" stop-color="#38dd9c"/></linearGradient></defs>`
+      + `<path d="M20 100A80 80 0 0 1 180 100" fill="none" stroke="url(#crFgG)" stroke-width="12" stroke-linecap="round"/><line x1="100" y1="100" x2="${nx.toFixed(1)}" y2="${ny.toFixed(1)}" class="cr-hand"/><circle cx="100" cy="100" r="6" class="cr-hd"/></svg>`
+      + `<p class="cr-fgv num">${v}</p><p class="cr-fgl">${esc(fg.label || '')}</p><p class="src">Atualizado em ${new Date(fg.updatedAt).toLocaleDateString('pt-BR')} · ${esc(fg.source)}.</p>`;
   }
 
   /* ---------- ao vivo ---------- */
@@ -148,19 +182,20 @@
     paint($('#crWin'), ['24h', '7d'].map(k => `<button type="button" class="mk-pill" data-crw="${k}" aria-pressed="${CR.win === k}">${k}</button>`).join(''));
     paint($('#crGal'), galaxy(list)); paint($('#crDet'), detail(list)); paint($('#crDon'), donut(list)); paint($('#crOpen'), openNow()); paint($('#crTbl'), table(list));
     $('#crCount').textContent = `${list.length} moedas · cotação por ${[...new Set(list.map(x => x.r.source))].join(', ') || 'nenhuma fonte conectada'}`;
-    priceChart(list); live();
+    priceChart(list); live(); clock(); fear();
   }
   document.addEventListener('click', e => {
     const l = e.target.closest('[data-crl]'); if (l) { if (l.dataset.crl === 'pause') CR.paused = !CR.paused; else { CR.live = l.dataset.crl; CR.buf = []; CR.trades = []; sample(); } live(); return; }
     const w = e.target.closest('[data-crw]'); if (w) { CR.win = w.dataset.crw; render(); return; }
     const r = e.target.closest('[data-crr]'); if (r) { CR.range = r.dataset.crr; render(); return; }
     const c = e.target.closest('[data-crc]'); if (c) { CR.pick = c.dataset.crc; render(); return; }
+    const hh = e.target.closest('[data-crh]'); if (hh) { CR.hour = Number(hh.dataset.crh); clock(); return; }
     const a = e.target.closest('[data-cra]'); if (a && typeof openAsset === 'function') openAsset(a.dataset.cra);
   });
-  document.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches && e.target.matches('#crGal [data-crc]')) { e.preventDefault(); e.target.dispatchEvent(new MouseEvent('click', {bubbles: true})); } });
-  async function boot() { await loadSpark(); render(); }
+  document.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches && e.target.matches('#crGal [data-crc], #crClock [data-crh]')) { e.preventDefault(); e.target.dispatchEvent(new MouseEvent('click', {bubbles: true})); } });
+  async function boot() { await Promise.all([loadSpark(), loadIns()]); render(); }
   addEventListener('hashchange', () => { if ((location.hash.match(/^#\/([a-z]+)/) || [])[1] === 'cripto') setTimeout(boot, 300); });
   setInterval(sample, 1000);
-  setInterval(() => { if (onPage()) { loadSpark(); render(); } }, 5000);
+  setInterval(() => { if (onPage()) { loadSpark(); loadIns(); render(); } }, 5000);
   setTimeout(() => { if (onPage()) boot(); }, 1500);
 })();
