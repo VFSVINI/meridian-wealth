@@ -59,6 +59,8 @@ jobs:
             -v "$PWD/ops/observability/alerts.yml:/etc/prometheus/alerts.yml:ro" \
             -v "$PWD/ops/observability/secrets/metrics-token:/etc/prometheus/metrics-token:ro" \
             prom/prometheus:v2.55.1 check config /etc/prometheus/prometheus.yml
+      - name: Valida os fluxos do GitHub Actions (actionlint)
+        run: docker run --rm -v "$PWD:/repo" --workdir /repo rhysd/actionlint:1.7.4 -color
       - name: Build da imagem
         run: docker build -t meridian-wealth:ci .
   mutation:
