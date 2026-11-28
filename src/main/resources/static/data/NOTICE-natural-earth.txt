@@ -2,3 +2,8 @@ Natural Earth (ne_110m_land.geojson): dominio publico.
 Fonte: https://github.com/nvkelso/natural-earth-vector (https://www.naturalearthdata.com/about/terms-of-use/)
 "All versions of Natural Earth raster + vector map data found on this website are in the public domain."
 Baixado em 2026-11-24; hash fixado em teste (HeroContractTest/GlobeContractTest).
+
+Natural Earth (countries.geojson, derivado de ne_110m_admin_0_countries.geojson): dominio publico.
+Fonte: https://github.com/nvkelso/natural-earth-vector (licenca em https://github.com/nvkelso/natural-earth-vector/blob/master/LICENSE.md).
+Baixado em 2026-11-27 (839 KB), reduzido por scripts/build-countries.py (so o codigo ADM0_A3 e o nome, duas casas decimais, sem a Antartida: 163 KB).
+SHA-256 do arquivo reduzido: c8481046cf3d3f56733b3c5cc7532ad091c68c854ff1ab137252f80680584993 (fixado em teste).
