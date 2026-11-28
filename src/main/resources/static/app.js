@@ -450,6 +450,7 @@ function renderDetail(){
 }
 
 function renderMacro(m){
+  document.dispatchEvent(new CustomEvent('mw:macro',{detail:m}));   /* geo.js: mapa, termômetros e notícias da página Geopolítica */
   const row=(k,v,txt,pct,c)=>v==null
     ?`<div style="display:flex;justify-content:space-between"><span class="mute">${k}${GLL(k)}</span><span class="mute">sem dado</span></div><div class="bar"></div>`
     :`<div style="display:flex;justify-content:space-between"><span class="mute">${k}${GLL(k)}</span><span class="num">${txt}</span></div><div class="bar"><i style="width:${Math.max(0,Math.min(100,pct))}%;background:${c}"></i></div>`;

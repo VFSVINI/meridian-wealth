@@ -174,11 +174,25 @@
     </section>
 
     <section class="page" data-page="geo" hidden>
-      <div class="ph"><p class="eyebrow">Análise</p><h1>Geopolítica e teses</h1><p class="lede">O radar macro com as manchetes reais e a leitura da sua carteira por lentes institucionais genéricas. As teses são ilustrativas.</p></div>
-      <div class="grid2">
-        <div class="card rx sim"><h2>Tradutor geopolítico e teses <span class="tag">ilustrativo</span></h2><div id="tz" class="mute" style="font-size:12.5px">carregando…</div></div>
-        <div class="card"><h2>Radar macro e geopolítico</h2><div id="macro"></div></div>
+      <div class="ph"><p class="eyebrow">Geopolítica</p><h1>O que acontece no mundo e por que mexe com o meu dinheiro?</h1><p class="lede">Veja o risco por região, entenda o caminho do evento até a carteira e acompanhe quatro termômetros.</p></div>
+      <div class="gp-tabs"><div class="mk-pills" id="gpTabs" role="tablist" aria-label="Camada do mapa"><button type="button" class="mk-pill" role="tab" data-gpt="risco" aria-pressed="true">Risco macro</button><button type="button" class="mk-pill" role="tab" data-gpt="setores" aria-pressed="false">Setores pressionados</button><button type="button" class="mk-pill" role="tab" data-gpt="manchetes" aria-pressed="false">Manchetes</button></div><span class="cs-chip cy" id="gpReal">dados reais</span></div>
+      <div class="gp-grid">
+        <section class="gp-mapcard" aria-label="Mapa-múndi de risco segundo as manchetes"><p class="gp-k"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span id="gpMapTitle">Risco por país nas manchetes</span></p>
+          <div class="gp-map" id="gpMapBox"><svg id="gpMap" viewBox="0 0 1000 520" role="group" aria-label="Mapa-múndi. A lista de países com manchetes está ao lado, em texto."></svg></div>
+          <div class="gp-legend"><span>baixo</span><i class="gp-ramp"></i><span>alto</span><span class="gp-nd"><i></i>não informado</span></div>
+          <p class="src">Risco segundo as manchetes de risco das últimas horas, por palavras-chave (método publicado): não é um índice oficial. País que nenhuma manchete cita fica como "não informado", nunca como risco zero. Toque num país para ver a manchete.</p></section>
+        <aside class="gp-side" id="gpSide" aria-live="polite"><span class="skel"></span></aside>
       </div>
+      <section class="cs-sec" aria-labelledby="gpStepsH"><p class="cs-kicker">Passo a passo</p><h2 class="cs-h2" id="gpStepsH">Por que geopolítica mexe com investimentos</h2>
+        <div class="gp-steps" id="gpSteps" role="tablist" aria-label="Passos"></div><p class="gp-step-txt" id="gpStepTxt"></p></section>
+      <section class="cs-sec" aria-labelledby="gpThH"><p class="cs-kicker">Termômetros</p><h2 class="cs-h2" id="gpThH">Quatro números para acompanhar</h2><div class="gp-th" id="gpTh"><span class="skel"></span></div></section>
+      <section class="cs-sec" aria-labelledby="gpNwH"><p class="cs-kicker">Notícias</p><h2 class="cs-h2" id="gpNwH">O que está no radar</h2><div class="gp-news" id="gpNews"><span class="skel"></span></div>
+        <p class="src">Mostramos só título, fonte e horário. O texto completo fica no site de origem, no link de cada matéria.</p></section>
+      <details class="ck-full"><summary><span>Ver a minha carteira por essas lentes</span><small>tradutor geopolítico e radar macro, ilustrativos</small></summary>
+        <div class="grid2" style="padding:0 clamp(16px,2vw,26px) var(--s4)">
+          <div class="card rx sim"><h2>Tradutor geopolítico e teses <span class="tag">ilustrativo</span></h2><div id="tz" class="mute" style="font-size:12.5px">carregando…</div></div>
+          <div class="card"><h2>Radar macro e geopolítico</h2><div id="macro"></div></div>
+        </div></details>
     </section>
 
     <section class="page" data-page="carteira" hidden>
@@ -357,6 +371,7 @@
 <script src="/ativo.js"></script>
 <script src="/academia.js"></script>
 <script src="/brasil.js"></script>
+<script src="/geo.js"></script>
 <script src="/auth.js"></script>
 <script src="/carteira.js"></script>
 <script src="/mapa.js"></script>
