@@ -13,3 +13,6 @@ __pycache__/
 
 # guia de estudo para entrevista: privado, nunca publicar
 estudo-privado/
+
+# token do Prometheus local (o mesmo MW_METRICS_TOKEN): nunca no Git
+ops/observability/secrets/

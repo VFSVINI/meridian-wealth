@@ -45,6 +45,11 @@ springdoc:
   swagger-ui:
     enabled: ${MW_API_DOCS:false}
 management:
+  metrics:
+    distribution:
+      # histograma de latência das rotas HTTP: o painel do Grafana calcula o p95 sobre ele
+      percentiles-histogram:
+        http.server.requests: true
   endpoints:
     web:
       exposure:
