@@ -44,3 +44,4 @@ ADRs aceitos não são reescritos; uma mudança de rumo gera um ADR novo que sub
 | [037](037-academia-curso-em-modulos.md) | Academia: curso em módulos com quiz e progresso no navegador | Aceito | 2026-11-28 |
 | [038](038-brasil-juros-e-inflacao-com-historico-real.md) | Brasil: juros e inflação com histórico real do Banco Central | Aceito | 2026-11-29 |
 | [039](039-geopolitica-mapa-de-risco-por-pais.md) | Geopolítica: mapa de risco por país a partir das manchetes | Aceito | 2026-11-27 |
+| [040](040-questionario-de-perfil-com-sete-perguntas.md) | Questionário de perfil com sete perguntas, uma por tela | Aceito | 2026-11-28 |

@@ -1,6 +1,6 @@
 # Suitability e carteira modelo
 
-Item #8 do roadmap (Issue #21). Um questionário de 9 perguntas classifica o perfil (CONSERVADOR, MODERADO, ARROJADO ou
+Item #8 do roadmap (Issue #21). Um questionário de 7 perguntas classifica o perfil (CONSERVADOR, MODERADO, ARROJADO ou
 AGRESSIVO), cada perfil tem uma carteira modelo com metas por classe de ativo, e uma carteira informada pelo usuário é medida
 contra a meta (desvio por classe, nota de aderência e radar).
 
@@ -11,7 +11,7 @@ contra a meta (desvio por classe, nota de aderência e radar).
 
 A Resolução CVM 30 (art. 3, lida no PDF oficial em 2026-11-21) manda verificar se o produto é adequado aos **objetivos**, se a
 **situação financeira** é compatível e se o cliente tem o **conhecimento** necessário, e lista os itens mínimos de cada
-dimensão (§1 a §3). As nove perguntas cobrem esses itens e citam o parágrafo de origem. A norma obriga **instituições**; esta
+dimensão (§1 a §3). As sete perguntas cobrem esses itens (duas delas juntam dois itens cada, ver ADR 040) e citam o parágrafo de origem. A norma obriga **instituições**; esta
 ferramenta não recomenda nem executa ordens e **não alega conformidade** com ela: só usa as dimensões como estrutura.
 
 Tudo o mais é **definição do produto**, sem fonte externa: pontos das respostas, faixas da nota, tetos e metas das carteiras.
@@ -25,17 +25,15 @@ Tudo o mais é **definição do produto**, sem fonte externa: pontos das respost
 | Finalidade do investimento | objetivos, §1, III |
 | Renda regular contra despesas | situação financeira, §2, I |
 | Parte do patrimônio que este dinheiro representa | situação financeira, §2, II |
-| Necessidade do dinheiro em 12 meses | situação financeira, §2, III |
-| Reserva de emergência | situação financeira, §2, III |
-| Familiaridade com produtos | conhecimento, §3, I |
-| Tempo investindo em produtos de risco | conhecimento, §3, II |
+| Necessidade do dinheiro em 12 meses e reserva de emergência (uma pergunta) | situação financeira, §2, III |
+| Produtos com que investe e há quanto tempo (uma pergunta) | conhecimento, §3, I e II |
 
-Cada pergunta tem de 3 a 5 opções com 0 a 4 pontos (total máximo 36). `GET /api/suitability/questionnaire` devolve perguntas,
+Cada pergunta tem de 3 a 5 opções com 0 a 4 pontos (total máximo 28). `GET /api/suitability/questionnaire` devolve perguntas,
 pontos, tetos e faixas, para a regra ser inspecionável.
 
 ## Perfil
 
-Nota = pontos × 100 / 36, com 2 casas (`HALF_EVEN`). Faixas: abaixo de 30 **conservador**; de 30 a 54,99 **moderado**; de 55 a
+Nota = pontos × 100 / 28, com 2 casas (`HALF_EVEN`). Faixas: abaixo de 30 **conservador**; de 30 a 54,99 **moderado**; de 55 a
 79,99 **arrojado**; 80 ou mais **agressivo**.
 
 **Tetos** limitam o perfil por respostas incompatíveis com risco alto, qualquer que seja a nota; vale o menor perfil e cada teto

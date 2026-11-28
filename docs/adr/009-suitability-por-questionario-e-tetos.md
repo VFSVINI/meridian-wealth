@@ -1,6 +1,6 @@
 # ADR 009 — Suitability por questionário, tetos e carteira modelo
 
-- **Status:** aceito
+- **Status:** aceito (o número de perguntas foi revisto pelo ADR 040: de nove para sete)
 - **Data:** 2026-11-21
 - **Issue:** #21
 
